@@ -7,6 +7,9 @@ import zemberek3.repository.affix.AffixRepository;
 import java.util.List;
 import java.util.Iterator;
 
+/**
+ * A simple suffix parser similar to Zemberek2's mechanism. 
+ */
 public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
 
     private final CharSequenceComparator<LetterSequence> comparator;

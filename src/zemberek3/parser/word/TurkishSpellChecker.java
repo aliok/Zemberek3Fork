@@ -8,9 +8,9 @@ import java.util.Iterator;
 
 public class TurkishSpellChecker implements SpellChecker {
 
-    final WordParser parser;
-    final CharSequenceCache cache;
-    final WordFormatter wordFormatter;
+    private final WordParser parser;
+    private final CharSequenceCache cache;
+    private final WordFormatter wordFormatter;
 
     public TurkishSpellChecker(
             WordParser parser,
@@ -25,9 +25,9 @@ public class TurkishSpellChecker implements SpellChecker {
         if (cache.check(input))
             return true;
         Iterator<Word> it = parser.parseAndIterate(input);
-        while(it.hasNext()) {
-           if(wordFormatter.format(it.next()).equals(input))
-              return true;
+        while (it.hasNext()) {
+            if (wordFormatter.format(it.next()).equals(input))
+                return true;
         }
         return false;
     }
