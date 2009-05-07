@@ -11,11 +11,11 @@ public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
 
     private final CharSequenceComparator<LetterSequence> comparator;
     private final Alphabet alphabet;
-    private final AffixRepository<TurkicSuffix> suffixes;
+    private final AffixRepository suffixes;
 
     public TopDownSuffixParser(CharSequenceComparator<LetterSequence> comparator,
                                Alphabet alphabet,
-                               AffixRepository<TurkicSuffix> suffixes) {
+                               AffixRepository suffixes) {
         this.comparator = comparator;
         this.alphabet = alphabet;
         this.suffixes = suffixes;

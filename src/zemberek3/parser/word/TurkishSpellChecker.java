@@ -21,7 +21,7 @@ public class TurkishSpellChecker implements SpellChecker {
         this.wordFormatter = wordFormatter;
     }
 
-    public boolean checkSpell(CharSequence input) {
+    public boolean check(CharSequence input) {
         if (cache.check(input))
             return true;
         Iterator<Word> it = parser.parseAndIterate(input);
@@ -32,7 +32,7 @@ public class TurkishSpellChecker implements SpellChecker {
         return false;
     }
 
-    public boolean checkSpellUnformatted(CharSequence input) {
+    public boolean checkUnformatted(CharSequence input) {
         return cache.check(input) || parser.parseAndIterate(input).hasNext();
     }
 }

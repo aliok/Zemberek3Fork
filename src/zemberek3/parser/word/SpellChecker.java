@@ -12,7 +12,7 @@ public interface SpellChecker {
      * @param input input charsequence.
      * @return tru if input is written correctly.
      */
-    boolean checkSpell(CharSequence input);
+    boolean check(CharSequence input);
 
     /**
      * if a word is spelled correctly even it does not contain formatting rules related with the language.
@@ -20,5 +20,5 @@ public interface SpellChecker {
      * @param input input word, may not be formatted correctly.
      * @return true if written is written correctly regardless od the format.
      */
-    boolean checkSpellUnformatted(CharSequence input);
+    boolean checkUnformatted(CharSequence input);
 }
