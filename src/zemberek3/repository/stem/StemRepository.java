@@ -4,10 +4,14 @@ import zemberek3.structure.Stem;
 import zemberek3.comparators.CharSequenceComparator;
 
 import java.util.List;
+import java.util.Iterator;
 
 public interface StemRepository<T extends CharSequence> {
 
-    List<Stem> findStems(T s);
+    StemRepository add(Stem s);
 
-    List<Stem> findStems(T s, CharSequenceComparator<T> comparator);
+    StemRepository remove(Stem s);
+
+    Iterator<Stem> iterator();
+
 }

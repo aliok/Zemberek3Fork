@@ -28,7 +28,7 @@ public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
         return null;
     }
 
-    public Iterator<List<Affix>> parseAndIterate(LetterSequence input, Stem stem) {
+    public Iterator<List<Affix>> parseIterator(LetterSequence input, Stem stem) {
         return null;
     }
 

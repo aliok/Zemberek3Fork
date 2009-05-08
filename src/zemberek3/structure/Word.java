@@ -7,4 +7,6 @@ public interface Word {
     Stem getStem();
 
     List<Affix> getSuffixes();
+
+    List<Affix> getPrefixes();
 }

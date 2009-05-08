@@ -22,6 +22,6 @@ public interface WordParser {
      * @param input input CharSequence
      * @return an Iterator that iterates through parse results.
      */
-    Iterator<Word> parseAndIterate(CharSequence input);
+    Iterator<Word> parseIterator(CharSequence input);
 
 }

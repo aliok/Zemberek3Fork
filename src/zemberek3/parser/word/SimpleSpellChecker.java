@@ -6,33 +6,33 @@ import zemberek3.cache.CharSequenceCache;
 
 import java.util.Iterator;
 
-public class TurkishSpellChecker implements SpellChecker {
+public class SimpleSpellChecker implements SpellChecker<String> {
 
     private final WordParser parser;
-    private final CharSequenceCache cache;
+    private final CharSequenceCache<String> cache;
     private final WordFormatter wordFormatter;
 
-    public TurkishSpellChecker(
+    public SimpleSpellChecker(
             WordParser parser,
-            CharSequenceCache cache,
+            CharSequenceCache<String> cache,
             WordFormatter wordFormatter) {
         this.parser = parser;
         this.cache = cache;
         this.wordFormatter = wordFormatter;
     }
 
-    public boolean check(CharSequence input) {
+    public boolean check(String input) {
         if (cache.check(input))
             return true;
-        Iterator<Word> it = parser.parseAndIterate(input);
+        Iterator<Word> it = parser.parseIterator(input);
         while (it.hasNext()) {
-            if (wordFormatter.format(it.next()).equals(input))
+            if (wordFormatter.format(input, it.next()).equals(input))
                 return true;
         }
         return false;
     }
 
-    public boolean checkUnformatted(CharSequence input) {
-        return cache.check(input) || parser.parseAndIterate(input).hasNext();
+    public boolean checkUnformatted(String input) {
+        return cache.check(input) || parser.parseIterator(input).hasNext();
     }
 }

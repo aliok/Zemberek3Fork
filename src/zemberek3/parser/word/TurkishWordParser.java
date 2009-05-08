@@ -28,7 +28,7 @@ public class TurkishWordParser implements WordParser {
         return Collections.emptyList();
     }
 
-    public Iterator<Word> parseAndIterate(CharSequence input) {
+    public Iterator<Word> parseIterator(CharSequence input) {
         return new ParseResultIterator(preProcessor.processForParse(input));
     }
 
@@ -41,11 +41,11 @@ public class TurkishWordParser implements WordParser {
         }
 
         public boolean hasNext() {
-            return false;  //To change body of implemented methods use File | Settings | File Templates.
+            return false;
         }
 
         public Word next() {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
+            return null;
         }
 
         public void remove() {

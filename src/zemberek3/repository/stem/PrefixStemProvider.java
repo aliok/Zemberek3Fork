@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Iterator;
 
 /**
- * Finds stems which appears only in the beginning of a word.
+ * Finds stems which appears in the beginning of a CharSequence.
  */
 public class PrefixStemProvider implements StemProvider<LetterSequence> {
 
@@ -26,6 +26,6 @@ public class PrefixStemProvider implements StemProvider<LetterSequence> {
     }
 
     public Iterator<Stem> findAndIterate(LetterSequence word) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 }

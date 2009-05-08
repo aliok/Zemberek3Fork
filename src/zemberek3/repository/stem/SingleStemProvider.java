@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 
 /**
- * provides a single stem.
+ * provides a single stem. this may be useful for parsing words with stems provided by user.
+ * This class does not require a stem repository.
  */
 public class SingleStemProvider implements StemProvider {
 

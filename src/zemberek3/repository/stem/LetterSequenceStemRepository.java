@@ -5,16 +5,15 @@ import zemberek3.structure.LetterSequence;
 import zemberek3.comparators.CharSequenceComparator;
 
 import java.util.List;
+import java.util.Iterator;
 
 public class LetterSequenceStemRepository implements StemRepository<LetterSequence> {
 
-    public List<Stem> findStems(LetterSequence s) {
+    public StemRepository add(Stem s) {
         return null;
     }
 
-    public List<Stem> findStems(LetterSequence s, CharSequenceComparator<LetterSequence> comparator) {
+    public Iterator<Stem> iterator() {
         return null;
     }
-
-
 }

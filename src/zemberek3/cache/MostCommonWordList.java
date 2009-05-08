@@ -6,11 +6,11 @@ import java.util.HashSet;
 /**
  * a simple Set based word list. containing 5000 most commonly used words.
  */
-public class MostCommonWordList implements CharSequenceCache {
+public class MostCommonWordList implements CharSequenceCache<String> {
 
-    Set<CharSequence> words = new HashSet<CharSequence>(5000);
+    Set<String> words = new HashSet<String>(5000);
 
-    public boolean check(CharSequence word) {
+    public boolean check(String word) {
         return words.contains(word);
     }
 
