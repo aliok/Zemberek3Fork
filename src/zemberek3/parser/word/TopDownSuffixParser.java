@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Iterator;
 
 /**
- * A simple suffix parser similar to Zemberek2's mechanism. 
+ * A simple suffix parser similar to Zemberek2's mechanism.
  */
 public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
 
@@ -24,12 +24,36 @@ public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
         this.suffixes = suffixes;
     }
 
+
     public List<List<Affix>> parse(LetterSequence input, Stem stem) {
         return null;
     }
 
     public Iterator<List<Affix>> parseIterator(LetterSequence input, Stem stem) {
-        return null;
+        return new ParseIterator(input, stem);
+    }
+
+    private class ParseIterator implements Iterator<List<Affix>> {
+
+        final LetterSequence input;
+        final Stem stem;
+
+        private ParseIterator(LetterSequence input, Stem stem) {
+            this.input = input;
+            this.stem = stem;
+        }
+
+        public boolean hasNext() {
+            return false;
+        }
+
+        public List<Affix> next() {
+            return null;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException("Remove is not available.");
+        }
     }
 
 }

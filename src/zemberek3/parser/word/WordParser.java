@@ -8,7 +8,7 @@ import java.util.Iterator;
 /**
  * it parses the input sequence. Finding stem and affixes.
  */
-public interface WordParser {
+public interface WordParser<T extends CharSequence> {
 
     /**
      * finds a list of Words matching the input.

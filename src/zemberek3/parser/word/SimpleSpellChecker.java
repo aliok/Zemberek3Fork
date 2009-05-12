@@ -1,6 +1,7 @@
 package zemberek3.parser.word;
 
 import zemberek3.structure.Word;
+import zemberek3.structure.LetterSequence;
 import zemberek3.generator.word.WordFormatter;
 import zemberek3.cache.CharSequenceCache;
 
@@ -8,12 +9,12 @@ import java.util.Iterator;
 
 public class SimpleSpellChecker implements SpellChecker<String> {
 
-    private final WordParser parser;
+    private final WordParser<LetterSequence> parser;
     private final CharSequenceCache<String> cache;
     private final WordFormatter wordFormatter;
 
     public SimpleSpellChecker(
-            WordParser parser,
+            WordParser<LetterSequence> parser,
             CharSequenceCache<String> cache,
             WordFormatter wordFormatter) {
         this.parser = parser;

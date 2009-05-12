@@ -15,8 +15,9 @@ public class PrefixStemProvider implements StemProvider<LetterSequence> {
     StemRepository<LetterSequence> stemRepository;
     CharSequenceComparator<LetterSequence> charSequenceComparator;
 
-    public PrefixStemProvider(StemRepository<LetterSequence> stemRepository,
-                            CharSequenceComparator<LetterSequence> charSequenceComparator) {
+    public PrefixStemProvider(
+            StemRepository<LetterSequence> stemRepository,
+            CharSequenceComparator<LetterSequence> charSequenceComparator) {
         this.stemRepository = stemRepository;
         this.charSequenceComparator = charSequenceComparator;
     }

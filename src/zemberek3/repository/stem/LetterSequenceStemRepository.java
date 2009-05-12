@@ -13,6 +13,10 @@ public class LetterSequenceStemRepository implements StemRepository<LetterSequen
         return null;
     }
 
+    public StemRepository remove(Stem s) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public Iterator<Stem> iterator() {
         return null;
     }
