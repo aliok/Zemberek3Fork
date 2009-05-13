@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * An implementation of Word Parser. Suitable for aglutinative languages with suffixes.
+ */
 public class SuffixWordParser implements WordParser {
 
     final SuffixParser<LetterSequence> suffixParser;
@@ -76,7 +79,6 @@ public class SuffixWordParser implements WordParser {
         }
 
         public boolean hasNext() {
-
             if (!suffixParseIterator.hasNext()) {
                 suffixParseIterator = getSuffixIterator();
                 if (suffixParseIterator == null)

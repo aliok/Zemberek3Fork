@@ -7,6 +7,9 @@ import zemberek3.cache.CharSequenceCache;
 
 import java.util.Iterator;
 
+/**
+ * A simple spell checker.
+ */
 public class SimpleSpellChecker implements SpellChecker<String> {
 
     private final WordParser<LetterSequence> parser;
