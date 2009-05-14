@@ -31,7 +31,7 @@ public class SuffixWordParser implements WordParser {
         // sanitize input.
         final LetterSequence processed = inputPreProcessor.processForParse(input);
 
-        // fin stem candiadtes.
+        // find stem candiadtes.
         List<Stem> stems = stemProvider.find(processed);
         if (stems.size() == 0)
             return Collections.emptyList();

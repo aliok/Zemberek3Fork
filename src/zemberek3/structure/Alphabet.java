@@ -22,4 +22,6 @@ public interface Alphabet {
     };
 
     Letter getLetter(char c);
+
+    boolean equalsAscii(Letter l1, Letter l2);
 }
