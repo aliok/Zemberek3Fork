@@ -3,8 +3,8 @@ package zemberek3.parser.word;
 import zemberek3.structure.Affix;
 import zemberek3.structure.Stem;
 
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Finds possible suffix sequences for a given input and Stem.

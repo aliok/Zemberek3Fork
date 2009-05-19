@@ -1,11 +1,11 @@
 package zemberek3.repository.stem;
 
-import zemberek3.structure.Stem;
-import zemberek3.structure.LetterSequence;
 import zemberek3.comparators.CharSequenceComparator;
+import zemberek3.structure.LetterSequence;
+import zemberek3.structure.Stem;
 
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Finds stems which appears in the beginning of a CharSequence.

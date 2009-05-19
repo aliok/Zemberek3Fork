@@ -12,15 +12,15 @@ public class CollectionUtils {
     private static class EmptyIterator<T> implements Iterator<T> {
 
         public boolean hasNext() {
-            return false;  //To change body of implemented methods use File | Settings | File Templates.
+            return false;
         }
 
         public T next() {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
+            return null;
         }
 
         public void remove() {
-            //To change body of implemented methods use File | Settings | File Templates.
+            // do nothing
         }
     }
 

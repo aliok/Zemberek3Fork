@@ -1,9 +1,9 @@
 package zemberek3.structure;
 
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
-public class SuffixWord implements Word {
+public class SuffixWord implements WordParseResult {
 
     Stem stem;
     List<Affix> suffixes;

@@ -1,7 +1,7 @@
 package zemberek3.cache;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * a simple Set based word list. containing 5000 most commonly used words.

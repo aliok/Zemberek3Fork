@@ -11,9 +11,9 @@ public interface CharSequenceComparator<T extends CharSequence> {
     boolean isEqual(T t1, T t2);
 
     /**
-     * if t2 has t1 as prefix.
+     * if t1 has t2 as prefix.
      *
-     * @param t1, Letter sequence that is searched in t2 as a prefix
+     * @param t1, Letter sequence that has t2 as a prefix
      * @param t2, letter sequence, t1 will will searched as a prefix wihin
      * @return if t2 starts with t1, true, else false.
      */

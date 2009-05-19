@@ -27,7 +27,7 @@ public class SuffixWordParser implements WordParser {
         this.stemProvider = stemProvider;
     }
 
-    public List<Word> parse(CharSequence input) {
+    public List<WordParseResult> parse(CharSequence input) {
         // sanitize input.
         final LetterSequence processed = inputPreProcessor.processForParse(input);
 
@@ -37,7 +37,7 @@ public class SuffixWordParser implements WordParser {
             return Collections.emptyList();
 
         // get suffix parse results.
-        List<Word> wordParseResults = new ArrayList<Word>();
+        List<WordParseResult> wordParseResults = new ArrayList<WordParseResult>();
         for (Stem stem : stems) {
             // process the input for stem if necessary.
             final LetterSequence processedForStem = inputPreProcessor.modifyForStem(processed, stem);
@@ -50,11 +50,11 @@ public class SuffixWordParser implements WordParser {
         return wordParseResults;
     }
 
-    public Iterator<Word> parseIterator(CharSequence input) {
+    public Iterator<WordParseResult> parseIterator(CharSequence input) {
         return new ParseResultIterator(inputPreProcessor.processForParse(input));
     }
 
-    private class ParseResultIterator implements Iterator<Word> {
+    private class ParseResultIterator implements Iterator<WordParseResult> {
 
         private final LetterSequence input;
         private final Iterator<Stem> stemIterator;
@@ -87,7 +87,7 @@ public class SuffixWordParser implements WordParser {
             return suffixParseIterator.hasNext();
         }
 
-        public Word next() {
+        public WordParseResult next() {
             return new SuffixWord(currentStem, suffixParseIterator.next());
         }
 

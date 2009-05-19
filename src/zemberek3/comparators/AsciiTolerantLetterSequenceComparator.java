@@ -1,7 +1,7 @@
 package zemberek3.comparators;
 
-import zemberek3.structure.LetterSequence;
 import zemberek3.structure.Alphabet;
+import zemberek3.structure.LetterSequence;
 
 public class AsciiTolerantLetterSequenceComparator
         implements CharSequenceComparator<LetterSequence> {

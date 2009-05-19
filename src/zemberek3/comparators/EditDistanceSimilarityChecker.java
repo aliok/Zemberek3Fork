@@ -10,10 +10,13 @@ public class EditDistanceSimilarityChecker implements SimilarityChecker<LetterSe
     final int similarityTreshold;
 
     public EditDistanceSimilarityChecker(int similarityTreshold) {
+        if (similarityTreshold < 0)
+            throw new IllegalArgumentException("Similarity threshold value cannot be negative. current:" + similarityTreshold);
         this.similarityTreshold = similarityTreshold;
     }
 
     public boolean similar(LetterSequence t1, LetterSequence t2) {
+        
         return false;
     }
 }

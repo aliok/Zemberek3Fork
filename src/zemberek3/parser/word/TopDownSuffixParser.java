@@ -1,10 +1,15 @@
 package zemberek3.parser.word;
 
-import zemberek3.structure.*;
 import zemberek3.comparators.CharSequenceComparator;
 import zemberek3.repository.affix.AffixRepository;
+import zemberek3.structure.Affix;
+import zemberek3.structure.Alphabet;
+import zemberek3.structure.LetterSequence;
+import zemberek3.structure.Stem;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * A simple suffix parser similar to Zemberek2's mechanism.
@@ -31,12 +36,11 @@ public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
     public List<List<Affix>> parse(LetterSequence input, Stem stem) {
 
         LinkedList<ParseState> parseStack = new LinkedList<ParseState>();
-        Affix rootAffix = suffixes.getRootSuffix(stem);
-        LetterSequence content = new LetterSequence(stem.getContent(), alphabet);
+        Affix rootSuffix = suffixes.getRootSuffix(stem);
+        // original stem sequence. this may be required after stem's formation is changed during the parse.
+        LetterSequence stemSequence = new LetterSequence(stem.getContent(), alphabet);
 
         
-
-
 
         return null;
     }

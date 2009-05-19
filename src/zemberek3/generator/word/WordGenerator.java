@@ -1,9 +1,9 @@
 package zemberek3.generator.word;
 
-import zemberek3.structure.Word;
+import zemberek3.structure.WordParseResult;
 
 public interface WordGenerator {
 
-    CharSequence generate(Word word);
+    CharSequence generate(WordParseResult wordParseResult);
 
 }

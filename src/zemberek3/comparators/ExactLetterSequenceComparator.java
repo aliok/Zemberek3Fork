@@ -5,11 +5,11 @@ import zemberek3.structure.LetterSequence;
 public class ExactLetterSequenceComparator implements CharSequenceComparator<LetterSequence> {
 
     public boolean isEqual(LetterSequence t1, LetterSequence t2) {
-        return false;
+        return t1.equals(t2);
     }
 
 
     public boolean startsWith(LetterSequence t1, LetterSequence t2) {
-        return false;
+        return t1.startsWith(t2);
     }
 }

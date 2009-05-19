@@ -1,10 +1,10 @@
 package zemberek3.parser.word;
 
-import zemberek3.structure.Stem;
-import zemberek3.structure.LetterSequence;
 import zemberek3.structure.Alphabet;
+import zemberek3.structure.LetterSequence;
+import zemberek3.structure.Stem;
 
-public class TurkishInputPreprocessor implements InputPreProcessor<LetterSequence> {
+public class TurkishInputPreprocessor {
 
     Alphabet alphabet;
 

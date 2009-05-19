@@ -1,6 +1,6 @@
 package zemberek3.structure;
 
-public interface Alphabet {
+public interface Alphabet<T extends Letter> {
 
     public static final Letter UNDEFINED_LETTER = new Letter() {
 
@@ -15,13 +15,9 @@ public interface Alphabet {
         public boolean isVowel() {
             return false;
         }
-
-        public boolean isCapital() {
-            return false;
-        }
     };
 
-    Letter getLetter(char c);
+    T getLetter(char c);
 
-    boolean equalsAscii(Letter l1, Letter l2);
+    boolean equalsAscii(T l1, T l2);
 }

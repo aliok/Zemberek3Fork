@@ -9,5 +9,5 @@ public interface SyllableParser<T extends CharSequence> {
      * @param input input word.
      * @return list of syllables. if word cannot be parsed, an empty list is returned.
      */
-    List<T> find(T input);
+    List<T> parse(T input);
 }

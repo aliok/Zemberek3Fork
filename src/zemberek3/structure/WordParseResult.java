@@ -2,7 +2,7 @@ package zemberek3.structure;
 
 import java.util.List;
 
-public interface Word {
+public interface WordParseResult {
 
     Stem getStem();
 

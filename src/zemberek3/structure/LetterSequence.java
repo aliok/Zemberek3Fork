@@ -268,6 +268,16 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
         return true;
     }
 
+    public boolean startsWith(LetterSequence ls) {
+        if (ls.boy > boy)
+            return false;
+        for (int i = 0; i < ls.dizi.length; i++) {
+            if (!dizi[i].equals(ls.dizi[i]))
+                return false;
+        }
+        return true;
+    }
+
     public int hashCode() {
         return toString().hashCode();
     }
@@ -380,11 +390,10 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * daha sonra dizilerin boyutuna gore yapilir.
      *
      * @param o kiyaslanacak dizi.
-     * @return
-     *        'kedi'.compareTo('kedi') -> 0
-     *        'kedi'.compareTo('ke')  -> 2 (boy farki)
-     *        'kedi'.compareTo('kedm') -> -4 (i->m alfabetik sira farki)
-     *        'kedi'.compareTo(null) -> 1
+     * @return 'kedi'.compareTo('kedi') -> 0
+     *         'kedi'.compareTo('ke')  -> 2 (boy farki)
+     *         'kedi'.compareTo('kedm') -> -4 (i->m alfabetik sira farki)
+     *         'kedi'.compareTo(null) -> 1
      */
     public int compareTo(LetterSequence o) {
         if (o == null)
@@ -424,7 +433,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      */
     public boolean hepsiBuyukHarfmi() {
         for (int i = 0; i < boy; i++) {
-            if (!dizi[i].isCapital())
+            if (Character.isLowerCase(dizi[i].charValue()))
                 return false;
         }
         return true;
