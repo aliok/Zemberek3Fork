@@ -91,11 +91,10 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @return varsa son harf, Yoksa TANIMSIZ_HARF.
      */
-    public Letter sonHarf() {
-        if (boy > 0)
-            return dizi[boy - 1];
-        else
-            return Alphabet.UNDEFINED_LETTER;
+    public Letter lastLetter() {
+        if (boy < 1)
+            throw new IllegalStateException("Letter sequence is already empty");
+        return dizi[boy - 1];
     }
 
     /**
@@ -109,7 +108,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
             if (dizi[i].isVowel())
                 return dizi[i];
         }
-        return Alphabet.UNDEFINED_LETTER;
+        throw new IllegalStateException("Letter sequence is already empty");
     }
 
     /**
@@ -226,11 +225,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @return girilen pozisyondaki harf, yoksa TANIMSIZ_HARF
      */
     public Letter harf(int i) {
-        if (i < 0)
-            return Alphabet.UNDEFINED_LETTER;
-        if (i < boy)
-            return dizi[i];
-        return Alphabet.UNDEFINED_LETTER;
+        if (i < 0 || i >= boy)
+            throw new IndexOutOfBoundsException("Letter sequence is already empty");
+        return dizi[i];
     }
 
     /**
@@ -244,7 +241,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
             if (dizi[i].isVowel())
                 return dizi[i];
         }
-        return Alphabet.UNDEFINED_LETTER;
+        throw new IllegalStateException("Letter sequence is already empty");
     }
 
     /**
@@ -350,9 +347,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @return ilk Letter.
      */
     public Letter ilkHarf() {
-        if (boy == 0) return Alphabet.UNDEFINED_LETTER;
-        else
-            return dizi[0];
+        if (boy == 0)
+            throw new IllegalStateException("Letter sequence is already empty");
+        return dizi[0];
     }
 
     /**

@@ -8,6 +8,11 @@ public interface StemRepository<T extends CharSequence> {
 
     StemRepository add(Stem s);
 
+    /**
+     * TODO: consider removing.
+     * @param s
+     * @return
+     */
     StemRepository remove(Stem s);
 
     Iterator<Stem> iterator();

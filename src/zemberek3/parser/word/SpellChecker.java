@@ -15,6 +15,7 @@ public interface SpellChecker<T extends CharSequence> {
     boolean check(T input);
 
     /**
+     * TODO: leave this to the implementation.
      * if a word is spelled correctly even it does not contain formatting rules related with the language.
      * such that, if a word must be written "Ankara'ya" but input word is "ankaraya" method will return true.
      * @param input input word, may not be formatted correctly.

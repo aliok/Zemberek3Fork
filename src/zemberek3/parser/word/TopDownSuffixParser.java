@@ -38,9 +38,7 @@ public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
         LinkedList<ParseState> parseStack = new LinkedList<ParseState>();
         Affix rootSuffix = suffixes.getRootSuffix(stem);
         // original stem sequence. this may be required after stem's formation is changed during the parse.
-        LetterSequence stemSequence = new LetterSequence(stem.getContent(), alphabet);
-
-        
+        LetterSequence stemSequence = new LetterSequence(stem.getContent(), alphabet);       
 
         return null;
     }

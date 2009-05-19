@@ -36,6 +36,7 @@ public class SimpleSpellChecker implements SpellChecker<String> {
         return false;
     }
 
+
     public boolean checkUnformatted(String input) {
         return cache.check(input) || parser.parseIterator(input).hasNext();
     }
