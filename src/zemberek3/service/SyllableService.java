@@ -1,4 +1,10 @@
 package zemberek3.service;
 
-public class SyllableService {
+import java.util.List;
+
+public interface SyllableService {
+
+    List<String> syllables(String input);
+
+    int[] syllableIndexes(String input);
 }

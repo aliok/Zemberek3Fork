@@ -2,88 +2,88 @@ package zemberek3.structure;
 
 public class LetterSequence implements CharSequence, Comparable<LetterSequence> {
 
-    private Letter[] dizi;
-    private int boy = 0;
+    private Letter[] letters;
+    private int size = 0;
     public static final LetterSequence EMPTY_SEQUENCE = new LetterSequence(0);
 
     /**
      * default constructor. 7 boyutlu bir Letter referans dizisi olusturur.
      */
     public LetterSequence() {
-        dizi = new Letter[7];
+        letters = new Letter[7];
     }
 
     /**
-     * 'kapasite' boyutlu 'Letter' dizisine sahip nesne olusturur.
+     * 'capacity' boyutlu 'Letter' dizisine sahip nesne olusturur.
      *
-     * @param kapasite baslangic olusan Letter[] boyu
+     * @param capacity baslangic olusan Letter[] boyu
      */
-    public LetterSequence(int kapasite) {
-        dizi = new Letter[kapasite];
+    public LetterSequence(int capacity) {
+        letters = new Letter[capacity];
     }
 
     /**
-     * 'kapasite' boyutlu 'Letter' dizisine sahip nesne olusturur. daha sonra
+     * 'capacity' boyutlu 'Letter' dizisine sahip nesne olusturur. daha sonra
      * girisi String'i icindeki karakterleri Letter seklinde Letter dizisine aktarir.
-     * Eger String boyu kapasiteden buyukse kapasite'yi boy'a esitler.
+     * Eger String boyu capacityden buyukse capacity'yi boy'a esitler.
      * Eger String icindeki karakter Alfabe'de yar almiyorsa "TANIMSIZ_HARF" harfi olarak eklenir.
      *
      * @param str      ornek alincak String
-     * @param kapasite baslangic olusan Letter[] boyu
-     * @param alfabe   ilgili alfabe
+     * @param capacity baslangic olusan Letter[] boyu
+     * @param alphabet   ilgili alphabet
      */
-    public LetterSequence(String str, Alphabet alfabe, int kapasite) {
-        if (kapasite < str.length())
-            kapasite = str.length();
-        dizi = new Letter[kapasite];
-        boy = str.length();
-        for (int i = 0; i < boy; i++)
-            dizi[i] = alfabe.getLetter(str.charAt(i));
+    public LetterSequence(String str, Alphabet alphabet, int capacity) {
+        if (capacity < str.length())
+            capacity = str.length();
+        letters = new Letter[capacity];
+        size = str.length();
+        for (int i = 0; i < size; i++)
+            letters[i] = alphabet.getLetter(str.charAt(i));
     }
 
 
     /**
-     * Belirlenen alfabe ile String icerigini Harflere donusturur.
+     * Belirlenen alphabet ile String icerigini Harflere donusturur.
      *
      * @param str    ornek alincak String
-     * @param alfabe ilgili alfabe
+     * @param alphabet ilgili alphabet
      */
-    public LetterSequence(String str, Alphabet alfabe) {
-        boy = str.length();
-        dizi = new Letter[boy];
-        for (int i = 0; i < boy; i++)
-            dizi[i] = alfabe.getLetter(str.charAt(i));
+    public LetterSequence(String str, Alphabet alphabet) {
+        size = str.length();
+        letters = new Letter[size];
+        for (int i = 0; i < size; i++)
+            letters[i] = alphabet.getLetter(str.charAt(i));
     }
 
     /**
      * Copy-Constructor. gelen harf dizisi ile ayni icerige sahip olacak sekilde
      * Letter dizisi olusturur.
      *
-     * @param hdizi ornek alinacak LetterSequence
+     * @param sequence ornek alinacak LetterSequence
      */
-    public LetterSequence(LetterSequence hdizi) {
-        boy = hdizi.length();
-        dizi = new Letter[boy];
-        System.arraycopy(hdizi.dizi, 0, dizi, 0, boy);
+    public LetterSequence(LetterSequence sequence) {
+        size = sequence.length();
+        letters = new Letter[size];
+        System.arraycopy(sequence.letters, 0, letters, 0, size);
     }
 
     /**
      * gelen Letter dizisini icerige kopyalar.
      *
-     * @param inpDizi kopyalancak Letter dizisi.
+     * @param sequence kopyalancak Letter dizisi.
      */
-    private LetterSequence(Letter[] inpDizi) {
-        boy = inpDizi.length;
-        dizi = new Letter[boy];
-        System.arraycopy(inpDizi, 0, dizi, 0, boy);
+    private LetterSequence(Letter[] sequence) {
+        size = sequence.length;
+        letters = new Letter[size];
+        System.arraycopy(sequence, 0, letters, 0, size);
     }
 
     /**
      * bu metod harf referansi dizisini serbest birakmaz,
      * sadece boyu sifira indirir.
      */
-    public void sil() {
-        boy = 0;
+    public void erase() {
+        size = 0;
     }
 
     /**
@@ -92,9 +92,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @return varsa son harf, Yoksa TANIMSIZ_HARF.
      */
     public Letter lastLetter() {
-        if (boy < 1)
+        if (size < 1)
             throw new IllegalStateException("Letter sequence is already empty");
-        return dizi[boy - 1];
+        return letters[size - 1];
     }
 
     /**
@@ -103,10 +103,10 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @return varsa son sesli yoksa TANIMSIZ_HARF
      */
-    public Letter sonSesli() {
-        for (int i = boy - 1; i >= 0; i--) {
-            if (dizi[i].isVowel())
-                return dizi[i];
+    public Letter lastVowel() {
+        for (int i = size - 1; i >= 0; i--) {
+            if (letters[i].isVowel())
+                return letters[i];
         }
         throw new IllegalStateException("Letter sequence is already empty");
     }
@@ -117,19 +117,19 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @param ek eklenecek LetterSequence miktari.
      */
-    private void kapasiteAyarla(int ek) {
-        Letter[] yeniDizi = new Letter[dizi.length + ek];
-        System.arraycopy(dizi, 0, yeniDizi, 0, dizi.length);
-        dizi = yeniDizi;
+    private void adjustCapacity(int ek) {
+        Letter[] newSeq = new Letter[letters.length + ek];
+        System.arraycopy(letters, 0, newSeq, 0, letters.length);
+        letters = newSeq;
     }
 
     /**
-     * otomatik kapasite ayarlama. dizi boyu iki katina cikarilir.
+     * otomatik capacity ayarlama. dizi boyu iki katina cikarilir.
      */
-    private void kapasiteAyarla() {
-        Letter[] yeniDizi = new Letter[dizi.length * 2];
-        System.arraycopy(dizi, 0, yeniDizi, 0, dizi.length);
-        dizi = yeniDizi;
+    private void adjustCapacity() {
+        Letter[] newSeq = new Letter[letters.length * 2];
+        System.arraycopy(letters, 0, newSeq, 0, letters.length);
+        letters = newSeq;
     }
 
     /**
@@ -138,10 +138,10 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param harf eklenecek harf
      * @return this
      */
-    public LetterSequence ekle(Letter harf) {
-        if (boy == dizi.length)
-            kapasiteAyarla(3);
-        dizi[boy++] = harf;
+    public LetterSequence append(Letter harf) {
+        if (size == letters.length)
+            adjustCapacity(3);
+        letters[size++] = harf;
         return this;
     }
 
@@ -153,17 +153,17 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param harf  eklenecek harf.
      * @throws ArrayIndexOutOfBoundsException
      */
-    public void ekle(int index, Letter harf) {
-        if (index < 0 || index > boy)
-            throw new ArrayIndexOutOfBoundsException("index degeri:" + index + " fakat harf dizi boyu:" + boy);
+    public void insert(int index, Letter harf) {
+        if (index < 0 || index > size)
+            throw new ArrayIndexOutOfBoundsException("index degeri:" + index + " fakat harf dizi boyu:" + size);
 
-        if (boy == dizi.length)
-            kapasiteAyarla();
+        if (size == letters.length)
+            adjustCapacity();
 
-        for (int i = boy - 1; i >= index; i--)
-            dizi[i + 1] = dizi[i];
-        dizi[index] = harf;
-        boy++;
+        for (int i = size - 1; i >= index; i--)
+            letters[i + 1] = letters[i];
+        letters[index] = harf;
+        size++;
     }
 
     /**
@@ -172,13 +172,13 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param hdizi ulanacak harf dizisi.
      * @return this.
      */
-    public LetterSequence ekle(LetterSequence hdizi) {
+    public LetterSequence append(LetterSequence hdizi) {
         int hboy = hdizi.length();
-        if (boy + hboy > dizi.length)
-            kapasiteAyarla(hboy);
+        if (size + hboy > letters.length)
+            adjustCapacity(hboy);
 
-        System.arraycopy(hdizi.dizi, 0, dizi, boy, hboy);
-        boy += hdizi.length();
+        System.arraycopy(hdizi.letters, 0, letters, size, hboy);
+        size += hdizi.length();
         return this;
     }
 
@@ -187,33 +187,33 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * "armut" icin (2, hede) "arhedemut" uretir.
      *
      * @param index eklencek pozisyon
-     * @param hdizi eklenecek harf dizisi
+     * @param sequence eklenecek harf dizisi
      * @return this.
      * @throws ArrayIndexOutOfBoundsException
      */
-    public LetterSequence ekle(int index, LetterSequence hdizi) {
-        if (index < 0 || index > boy)
-            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + boy);
+    public LetterSequence append(int index, LetterSequence sequence) {
+        if (index < 0 || index > size)
+            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
 
-        //dizi kapasitesini ayarla
-        int hboy = hdizi.length();
-        if (boy + hboy > dizi.length)
-            kapasiteAyarla(hboy);
+        //dizi capacitysini ayarla
+        int seqSize = sequence.length();
+        if (size + seqSize > letters.length)
+            adjustCapacity(seqSize);
 
         //sondan baslayarak this.dizinin index'ten sonraki kismini dizinin sonuna tasi
-        for (int i = hboy + boy - 1; i >= hboy; i--)
-            dizi[i] = dizi[i - hboy];
+        for (int i = seqSize + size - 1; i >= seqSize; i--)
+            letters[i] = letters[i - seqSize];
 
         //gelen diziyi kopyala ve boyutu degistir.
-        System.arraycopy(hdizi.dizi, 0, dizi, index, hboy);
-        boy += hdizi.length();
+        System.arraycopy(sequence.letters, 0, letters, index, seqSize);
+        size += sequence.length();
         return this;
     }
 
     public LetterSequence araDizi(int bas, int son) {
         if (son < bas) return null;
         Letter[] yeniHarfler = new Letter[son - bas];
-        System.arraycopy(dizi, bas, yeniHarfler, 0, son - bas);
+        System.arraycopy(letters, bas, yeniHarfler, 0, son - bas);
         return new LetterSequence(yeniHarfler);
     }
 
@@ -224,22 +224,22 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param i istenilen pozisyondaki harf.
      * @return girilen pozisyondaki harf, yoksa TANIMSIZ_HARF
      */
-    public Letter harf(int i) {
-        if (i < 0 || i >= boy)
+    public Letter getLetter(int i) {
+        if (i < 0 || i >= size)
             throw new IndexOutOfBoundsException("Letter sequence is already empty");
-        return dizi[i];
+        return letters[i];
     }
 
     /**
      * ilk sesliyi dondurur. eger sesli yoksa UNDEFINED_LETTER doner. aramaya belirtilen indeksten baslar.
      *
-     * @param basla baslangic indeksi.
+     * @param index baslangic indeksi.
      * @return varsa ilk sesli, yoksa UNDEFINED_LETTER
      */
-    public Letter ilkSesli(int basla) {
-        for (int i = basla; i < boy; i++) {
-            if (dizi[i].isVowel())
-                return dizi[i];
+    public Letter firstVowel(int index) {
+        for (int i = index; i < size; i++) {
+            if (letters[i].isVowel())
+                return letters[i];
         }
         throw new IllegalStateException("Letter sequence is already empty");
     }
@@ -257,19 +257,19 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
         if (!(o instanceof LetterSequence)) return false;
 
         final LetterSequence harfDizisi = (LetterSequence) o;
-        if (boy != harfDizisi.boy) return false;
-        for (int i = 0; i < boy; i++) {
-            if (dizi[i].charValue() != harfDizisi.dizi[i].charValue())
+        if (size != harfDizisi.size) return false;
+        for (int i = 0; i < size; i++) {
+            if (letters[i].charValue() != harfDizisi.letters[i].charValue())
                 return false;
         }
         return true;
     }
 
     public boolean startsWith(LetterSequence ls) {
-        if (ls.boy > boy)
+        if (ls.size > size)
             return false;
-        for (int i = 0; i < ls.dizi.length; i++) {
-            if (!dizi[i].equals(ls.dizi[i]))
+        for (int i = 0; i < ls.letters.length; i++) {
+            if (!letters[i].equals(ls.letters[i]))
                 return false;
         }
         return true;
@@ -286,18 +286,18 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param harf  kullanilacak harf
      * @throws ArrayIndexOutOfBoundsException
      */
-    public void harfDegistir(int index, Letter harf) {
-        if (index < 0 || index >= boy)
-            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + boy);
-        dizi[index] = harf;
+    public void changeLetter(int index, Letter harf) {
+        if (index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
+        letters[index] = harf;
     }
 
     /**
      * son harfi siler. eger harf yoksa hicbir etki yapmaz.
      */
-    public void sonHarfSil() {
-        if (boy > 0)
-            boy--;
+    public void eraseLast() {
+        if (size > 0)
+            size--;
     }
 
     /**
@@ -310,14 +310,14 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @return dizinin kendisi.
      * @throws ArrayIndexOutOfBoundsException
      */
-    public LetterSequence harfSil(int index) {
-        if (index < 0 || index >= boy)
-            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + boy);
-        if (index == boy - 1) {
-            boy--;
+    public LetterSequence delete(int index) {
+        if (index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
+        if (index == size - 1) {
+            size--;
         } else {
-            System.arraycopy(dizi, index + 1, dizi, index, boy - index - 1);
-            boy--;
+            System.arraycopy(letters, index + 1, letters, index, size - index - 1);
+            size--;
         }
         return this;
     }
@@ -330,14 +330,14 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param harfSayisi silinecek harf miktari
      * @return dizinin kendisi
      */
-    public LetterSequence harfSil(int index, int harfSayisi) {
-        if (index < 0 || index >= boy)
-            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + boy);
-        if (index + harfSayisi > boy)
-            harfSayisi = boy - index;
-        for (int i = index + harfSayisi; i < boy; i++)
-            dizi[i - harfSayisi] = dizi[i];
-        boy -= harfSayisi;
+    public LetterSequence delete(int index, int harfSayisi) {
+        if (index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
+        if (index + harfSayisi > size)
+            harfSayisi = size - index;
+        for (int i = index + harfSayisi; i < size; i++)
+            letters[i - harfSayisi] = letters[i];
+        size -= harfSayisi;
         return this;
     }
 
@@ -346,10 +346,10 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @return ilk Letter.
      */
-    public Letter ilkHarf() {
-        if (boy == 0)
+    public Letter firstLetter() {
+        if (size == 0)
             throw new IllegalStateException("Letter sequence is already empty");
-        return dizi[0];
+        return letters[0];
     }
 
     /**
@@ -358,9 +358,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @param index kirpilmaya baslanacak pozisyon
      */
-    public void kirp(int index) {
-        if (index <= boy && index >= 0)
-            boy = index;
+    public void clip(int index) {
+        if (index <= size && index >= 0)
+            size = index;
     }
 
     /**
@@ -370,9 +370,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @return olusan String.
      */
     public String toString(int index) {
-        if (index < 0 || index >= boy) return "";
-        StringBuilder s = new StringBuilder(boy - index);
-        for (int i = index; i < boy; i++)
+        if (index < 0 || index >= size) return "";
+        StringBuilder s = new StringBuilder(size - index);
+        for (int i = index; i < size; i++)
             s.append(charAt(i));
         return s.toString();
     }
@@ -383,13 +383,13 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
     }
 
     /**
-     * Compare to metodu siralama icin kiyaslama yapar. Kiyaslama oncelikle harflerin alfabetik sirasina
+     * Compare to metodu siralama icin kiyaslama yapar. Kiyaslama oncelikle harflerin alphabettik sirasina
      * daha sonra dizilerin boyutuna gore yapilir.
      *
      * @param o kiyaslanacak dizi.
      * @return 'kedi'.compareTo('kedi') -> 0
      *         'kedi'.compareTo('ke')  -> 2 (boy farki)
-     *         'kedi'.compareTo('kedm') -> -4 (i->m alfabetik sira farki)
+     *         'kedi'.compareTo('kedm') -> -4 (i->m alphabettik sira farki)
      *         'kedi'.compareTo(null) -> 1
      */
     public int compareTo(LetterSequence o) {
@@ -399,14 +399,14 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
         if (this == o)
             return 0;
 
-        int l = o.boy;
-        int n = Math.min(boy, l);
+        int l = o.size;
+        int n = Math.min(size, l);
 
         for (int i = 0; i < n; i++) {
-            if (!dizi[i].equals(o.dizi[i]))
-                return dizi[i].alphabeticIndex() - o.dizi[i].alphabeticIndex();
+            if (!letters[i].equals(o.letters[i]))
+                return letters[i].alphabeticIndex() - o.letters[i].alphabeticIndex();
         }
-        return boy - l;
+        return size - l;
     }
 
     /* ------------------------- ozel metodlar ------------------------------- */
@@ -416,10 +416,10 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @return inte, sesli harf sayisi.
      */
-    public int sesliSayisi() {
+    public int vowelCount() {
         int sonuc = 0;
-        for (int i = 0; i < boy; i++) {
-            if (dizi[i].isVowel())
+        for (int i = 0; i < size; i++) {
+            if (letters[i].isVowel())
                 sonuc++;
         }
         return sonuc;
@@ -428,9 +428,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
     /**
      * @return hepsi buyuk harf ise true, boy=0 dahil.
      */
-    public boolean hepsiBuyukHarfmi() {
-        for (int i = 0; i < boy; i++) {
-            if (Character.isLowerCase(dizi[i].charValue()))
+    public boolean isAllCapital() {
+        for (int i = 0; i < size; i++) {
+            if (Character.isLowerCase(letters[i].charValue()))
                 return false;
         }
         return true;
@@ -439,13 +439,13 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
     //--------- asagidaki metodlar CharSequence arayuzu icin hazirlandi. -----
 
     public int length() {
-        return boy;
+        return size;
     }
 
     public char charAt(int index) {
-        if (index < 0 || index >= boy)
+        if (index < 0 || index >= size)
             throw new StringIndexOutOfBoundsException(index);
-        return dizi[index].charValue();
+        return letters[index].charValue();
     }
 
     public LetterSequence subSequence(int start, int end) {

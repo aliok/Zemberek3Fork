@@ -11,10 +11,6 @@ public class LetterSequenceStemRepository implements StemRepository<LetterSequen
         return this;
     }
 
-    public StemRepository remove(Stem s) {
-        return this;
-    }
-
     public Iterator<Stem> iterator() {
         return null;
     }

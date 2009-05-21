@@ -1,6 +1,7 @@
 package zemberek3.structure;
 
 public class TurkicLetter implements Letter {
+
     public char charValue() {
         return 0;
     }
@@ -13,7 +14,15 @@ public class TurkicLetter implements Letter {
         return false;
     }
 
-    public boolean isCapital() {
+    public boolean isFrontalVowel() {
+        return false;
+    }
+
+    public boolean isBackVowel() {
+        return false;
+    }
+
+    public boolean isRoundedVowel() {
         return false;
     }
 

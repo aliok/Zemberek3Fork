@@ -11,6 +11,7 @@ public interface WordFormatter {
      * @return returns the formatted word.
      */
     CharSequence format(WordParseResult wordParseResult);
+    
     /**
      * Input dependend Word formatting. such as for Turkish, if parse result is a Word containing
      * "ankara" as stem and it has a suffix "ya", this returns "Ankara'ya". The actual shape is determined by the input.
