@@ -1,7 +1,7 @@
 package zemberek3.service;
 
-import zemberek3.structure.Stem;
 import zemberek3.structure.Affix;
+import zemberek3.structure.Stem;
 import zemberek3.structure.WordParseResult;
 
 import java.util.List;

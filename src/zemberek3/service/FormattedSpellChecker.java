@@ -2,27 +2,27 @@ package zemberek3.service;
 
 import zemberek3.cache.CharSequenceCache;
 import zemberek3.generator.word.WordFormatter;
-import zemberek3.structure.LetterSequence;
-import zemberek3.structure.WordParseResult;
-import zemberek3.service.SpellChecker;
 import zemberek3.parser.word.WordParser;
+import zemberek3.structure.WordParseResult;
 
 import java.util.Iterator;
 
 /**
- * A simple spell checker checks is a String is spelled correctly.
+ * A simple spell checker verifies if a String is written correctly.
  * This spell checker checks if a word is written according to it's original writing style.
  * Such that, if a word must start with a capital letter, this will result false if given input
  * starts with a small case letter.
+ * <p>Example: input "Safiyeye" will return false because it must be written as "Safiye'ye"
+ * @author afsina
  */
 public class FormattedSpellChecker implements SpellChecker<String> {
 
-    private final WordParser<LetterSequence> parser;
+    private final WordParser parser;
     private final CharSequenceCache<String> cache;
     private final WordFormatter wordFormatter;
 
     public FormattedSpellChecker(
-            WordParser<LetterSequence> parser,
+            WordParser parser,
             CharSequenceCache<String> cache,
             WordFormatter wordFormatter) {
         this.parser = parser;

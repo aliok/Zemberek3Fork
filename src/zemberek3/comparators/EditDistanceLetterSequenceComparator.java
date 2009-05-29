@@ -5,9 +5,9 @@ import zemberek3.structure.LetterSequence;
 public class EditDistanceLetterSequenceComparator 
         implements CharSequenceComparator<LetterSequence> {
 
-    final SimilarityChecker<LetterSequence> similarityChecker;
+    final SimilarityChecker similarityChecker;
 
-    public EditDistanceLetterSequenceComparator(SimilarityChecker<LetterSequence> similarityChecker) {
+    public EditDistanceLetterSequenceComparator(SimilarityChecker similarityChecker) {
         this.similarityChecker = similarityChecker;
     }
 

@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * An implementation of Word Parser. Suitable for aglutinative languages with suffixes.
+ * An implementation of <code>WordParser</code>. Suitable for aglutinative languages with suffixes.
  */
 public class SuffixWordParser implements WordParser {
 

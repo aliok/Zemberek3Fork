@@ -7,7 +7,7 @@ public class TurkicAlphabet implements Alphabet<TurkicLetter> {
         return null;
     }
 
-    public boolean equalsAscii(TurkicLetter l1, TurkicLetter l2) {
+    public boolean similarAscii(TurkicLetter l1, TurkicLetter l2) {
         return false;
     }
 

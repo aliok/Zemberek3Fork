@@ -1,6 +1,9 @@
 package zemberek3.structure;
 
-public class LetterSequence implements CharSequence, Comparable<LetterSequence> {
+/**
+ * <code>LetterSequence</code> represents a sequence of <code>Letters</code> 
+ */
+public class LetterSequence<T extends Letter> implements CharSequence, Comparable<LetterSequence> {
 
     private Letter[] letters;
     private int size = 0;

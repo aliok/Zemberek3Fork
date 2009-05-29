@@ -5,8 +5,8 @@ import java.util.List;
 
 public class SuffixWord implements WordParseResult {
 
-    Stem stem;
-    List<Affix> suffixes;
+    private final Stem stem;
+    private final List<Affix> suffixes;
 
     public SuffixWord(Stem stem, List<Affix> suffixes) {
         this.stem = stem;
@@ -18,7 +18,7 @@ public class SuffixWord implements WordParseResult {
     }
 
     public List<Affix> getSuffixes() {
-        return Collections.emptyList();
+        return suffixes;
     }
 
     public List<Affix> getPrefixes() {

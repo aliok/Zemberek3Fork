@@ -15,9 +15,12 @@ public interface InputPreProcessor<T extends CharSequence> {
     T processForParse(CharSequence input);
 
     /**
-     * makes modifications for a Stem if necessary. this is usually used for abbreviations in a language.
+     * makes modifications in the input using the stem if necessary.
+     * this is usually used for abbreviations in a language.
      * Such as for Turkish, if an abbreviation does not include a vowel, this method may insert a temporary vowel
      * required for parsing.
+     * <p>Example for Turkish:
+     * <code>input: "tdkya", Stem:[tdk, ABBRV], may return "tdkaya"</code>  
      * @param input, input char sequence.
      * @param stem, Stem that may cause input to be modified.
      * @return modified form.

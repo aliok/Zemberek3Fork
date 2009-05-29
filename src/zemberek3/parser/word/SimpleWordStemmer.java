@@ -1,11 +1,14 @@
 package zemberek3.parser.word;
 
-import zemberek3.structure.WordParseResult;
 import zemberek3.structure.Stem;
+import zemberek3.structure.WordParseResult;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * A stemmer simply finds all possible stem's for a given word.
+ */
 public class SimpleWordStemmer implements WordStemmer {
     final WordParser parser;
 

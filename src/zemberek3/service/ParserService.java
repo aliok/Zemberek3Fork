@@ -1,12 +1,12 @@
 package zemberek3.service;
 
-import zemberek3.structure.WordParseResult;
 import zemberek3.structure.Stem;
+import zemberek3.structure.WordParseResult;
 
 import java.util.List;
 
 /**
- * Provides easy access for single word related operations.
+ * Provides easy access for single word parse related operations.
  */
 public interface ParserService {
 

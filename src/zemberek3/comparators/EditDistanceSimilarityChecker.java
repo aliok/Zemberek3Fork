@@ -1,12 +1,11 @@
 package zemberek3.comparators;
 
-import zemberek3.structure.LetterSequence;
 import zemberek3.util.Preconditions;
 
 /**
  * A Similarity checker based on Damareu-levensthtein string distance algorithm.
  */
-public class EditDistanceSimilarityChecker implements SimilarityChecker<LetterSequence> {
+public class EditDistanceSimilarityChecker implements SimilarityChecker {
 
     final int similarityTreshold;
 
@@ -17,7 +16,7 @@ public class EditDistanceSimilarityChecker implements SimilarityChecker<LetterSe
         this.similarityTreshold = similarityTreshold;
     }
 
-    public boolean similar(LetterSequence t1, LetterSequence t2) {
+    public boolean similar(CharSequence t1, CharSequence t2) {
         final int n = t1.length(); //length of s
         final int m = t2.length(); //length of t
 
