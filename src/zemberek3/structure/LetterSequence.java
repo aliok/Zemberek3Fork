@@ -290,9 +290,13 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      * @throws ArrayIndexOutOfBoundsException
      */
     public void changeLetter(int index, Letter harf) {
-        if (index < 0 || index >= size)
-            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
+        validateIndex(index);
         letters[index] = harf;
+    }
+
+    private void validateIndex(int index) {
+        if (index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException("index value is:" + index + " But sequence length is:" + size);
     }
 
     /**
@@ -314,8 +318,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      * @throws ArrayIndexOutOfBoundsException
      */
     public LetterSequence delete(int index) {
-        if (index < 0 || index >= size)
-            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
+        validateIndex(index);
         if (index == size - 1) {
             size--;
         } else {
@@ -334,8 +337,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      * @return dizinin kendisi
      */
     public LetterSequence delete(int index, int harfSayisi) {
-        if (index < 0 || index >= size)
-            throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
+        validateIndex(index);
         if (index + harfSayisi > size)
             harfSayisi = size - index;
         for (int i = index + harfSayisi; i < size; i++)

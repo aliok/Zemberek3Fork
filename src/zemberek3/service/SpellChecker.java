@@ -6,7 +6,7 @@ package zemberek3.service;
 public interface SpellChecker<T extends CharSequence> {
 
     /**
-     * if a word is spelled correctly. The desicion if something is spelled correctly is determined by the implementor.
+     * if a word is spelled correctly. The decision of if something is spelled correctly is determined by the implementor.
      * @param input input charsequence.
      * @return true if input is written correctly.
      */

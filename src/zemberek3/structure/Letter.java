@@ -2,7 +2,7 @@ package zemberek3.structure;
 
 /**
  * A <code>Letter</code> is a character of an alphabet. It does however contains some linguistic properties such as if
- * it is a vowel. 
+ * it is a vowel.
  */
 public interface Letter {
 
@@ -19,12 +19,19 @@ public interface Letter {
         public boolean isVowel() {
             return false;
         }
+
+        public boolean isConsonant() {
+            return false;
+        }
+
     };
-    
+
     char charValue();
 
     int alphabeticIndex();
 
     boolean isVowel();
+
+    boolean isConsonant();
 
 }

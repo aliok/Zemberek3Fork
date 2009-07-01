@@ -19,8 +19,10 @@ public class ScoredItem<T> implements Comparable<ScoredItem> {
     }
 
     public int compareTo(ScoredItem o) {
-        if (o.score > score) return -1;
-        if (o.score < score) return 1;
+        if (o.score > score)
+            return -1;
+        if (o.score < score)
+            return 1;
         return 0;
     }
 }

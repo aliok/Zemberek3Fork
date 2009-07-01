@@ -30,6 +30,11 @@ public class FormattedSpellChecker implements SpellChecker<String> {
         this.wordFormatter = wordFormatter;
     }
 
+    /**
+     * returns true if input is spelled correctly.
+     * @param input input word.
+     * @return if word is spelled coreectly or not
+     */
     public boolean check(String input) {
         // check cache.
         if (cache.check(input))

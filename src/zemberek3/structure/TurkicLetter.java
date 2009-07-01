@@ -14,6 +14,10 @@ public class TurkicLetter implements Letter {
         return false;
     }
 
+    public boolean isConsonant() {
+        return false;
+    }
+
     public boolean isFrontalVowel() {
         return false;
     }
