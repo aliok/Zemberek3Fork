@@ -28,7 +28,7 @@ public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
         this.suffixes = suffixes;
     }
 
-    public static class ParseState {
+    private static class ParseState {
         LetterSequence sequence;
         int suffixSequence;
     }

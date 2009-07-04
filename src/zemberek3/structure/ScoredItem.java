@@ -1,9 +1,16 @@
 package zemberek3.structure;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+
+/**
+ * this is a helper class for scoring an item. it contains the item and related double score value.
+ */
 public class ScoredItem<T> implements Comparable<ScoredItem> {
 
-    final T item;
-    final double score;
+    private final T item;
+    private final double score;
 
     public ScoredItem(T item, double score) {
         this.item = item;

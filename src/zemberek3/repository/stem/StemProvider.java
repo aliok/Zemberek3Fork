@@ -10,6 +10,11 @@ import java.util.List;
  */
 public interface StemProvider<T extends CharSequence> {
 
+    /**
+     * Finds all items matching with <code>word</code>
+     * @param word input for searching
+     * @return all Stem's matching with the input word.
+     */
     List<Stem> find(T word);
 
     Iterator<Stem> findAndIterate(T word);

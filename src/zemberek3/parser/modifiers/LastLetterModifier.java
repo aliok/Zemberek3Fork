@@ -5,6 +5,9 @@ import zemberek3.structure.LetterSequence;
 
 import java.util.Map;
 
+/**
+ * modifies the last letter of a sequence according to a given Letter Map.
+ */
 public class LastLetterModifier implements SequenceModifier<LetterSequence> {
 
     Letter[] arrayLookup = new Letter[100];
@@ -15,11 +18,7 @@ public class LastLetterModifier implements SequenceModifier<LetterSequence> {
         }
     }
 
-    public LetterSequence modify(LetterSequence letterSequence) {
-        final Letter last = letterSequence.lastLetter();
-        if (last == null)
-            return letterSequence;
-        letterSequence.changeLetter(letterSequence.length() - 1, last);
-        return letterSequence;
+    public SequenceModifier<LetterSequence> modify(LetterSequence letterSequence) {
+        return this;
     }
 }

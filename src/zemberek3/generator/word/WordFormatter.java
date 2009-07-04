@@ -7,7 +7,7 @@ public interface WordFormatter {
 
     /**
      * Input independent word formatting.
-     * @param wordParseResult word to formmat.
+     * @param wordParseResult word to format.
      * @return returns the formatted word.
      */
     CharSequence format(WordParseResult wordParseResult);

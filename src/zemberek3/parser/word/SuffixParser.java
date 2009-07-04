@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Finds possible suffix sequences for a given input and Stem.
  */
-public interface SuffixParser<T extends CharSequence> {
+interface SuffixParser<T extends CharSequence> {
 
     /**
      * parses the input for a given stem. it finds all possible suffix combinations.

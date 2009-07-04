@@ -1,7 +1,8 @@
 package zemberek3.structure;
 
 /**
- * <code>LetterSequence</code> represents a sequence of <code>Letters</code> 
+ * <code>LetterSequence</code> represents a sequence of <code>Letter</code>s. It is mutable and not Thread safe.
+ * should be used for intermediate operations, not as a storage.
  */
 public class LetterSequence<T extends Letter> implements CharSequence, Comparable<LetterSequence> {
 
@@ -10,7 +11,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
     public static final LetterSequence EMPTY_SEQUENCE = new LetterSequence(0);
 
     /**
-     * default constructor. 7 boyutlu bir Letter referans dizisi olusturur.
+     * default constructor. Creates an array with  7 letter reference.
      */
     public LetterSequence() {
         letters = new Letter[7];
@@ -96,7 +97,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      */
     public Letter lastLetter() {
         if (size < 1)
-            throw new IllegalStateException("Letter sequence is already empty");
+            throw new IllegalStateException("Letter sequence is empty");
         return letters[size - 1];
     }
 
@@ -111,7 +112,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
             if (letters[i].isVowel())
                 return letters[i];
         }
-        throw new IllegalStateException("Letter sequence is already empty");
+        throw new IllegalStateException("There is no wovel in the sequence");
     }
 
     /**
