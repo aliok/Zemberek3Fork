@@ -1,4 +1,4 @@
-package zemberek3.structure;
+package zemberek3.structure.affix;
 
 import java.util.List;
 

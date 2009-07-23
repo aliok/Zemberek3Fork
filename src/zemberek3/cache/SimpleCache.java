@@ -15,7 +15,7 @@ public class SimpleCache<K, V> {
         this.capasity = capasity;
     }
 
-    private class CacheEntry {
+    private class CacheEntry implements Comparable<CacheEntry> {
         int hitCount;
         final V value;
 
@@ -23,13 +23,17 @@ public class SimpleCache<K, V> {
             this.value = value;
             this.hitCount = 0;
         }
+
+        public int compareTo(CacheEntry o) {
+            return hitCount >= o.hitCount ? (hitCount == o.hitCount ? 0 : 1) : -1;
+        }
     }
 
-    boolean containsKey(K key) {
+    public boolean containsKey(K key) {
         return map.containsKey(key);
     }
 
-    void add(K key, V value) {
+    public void add(K key, V value) {
         if (!map.containsKey(key)) {
             if (map.size() == capasity) {
                 retire(capasity / 2);
@@ -38,7 +42,7 @@ public class SimpleCache<K, V> {
         }
     }
 
-    V check(K key) {
+    public V check(K key) {
         if (map.containsKey(key)) {
             final CacheEntry ce = map.get(key);
             if (ce.hitCount < Integer.MAX_VALUE)

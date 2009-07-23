@@ -2,6 +2,7 @@ package zemberek3.parser.word;
 
 import zemberek3.repository.stem.StemProvider;
 import zemberek3.structure.*;
+import zemberek3.structure.affix.Affix;
 
 import java.util.ArrayList;
 import java.util.Collections;

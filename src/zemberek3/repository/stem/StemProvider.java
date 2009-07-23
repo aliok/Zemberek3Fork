@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * provides stems for a given char sequence. search rules are defined by the implementor.
+ * provides stems for a given char sequence. search mechanism and matching rules are defined by the implementor.
  */
 public interface StemProvider<T extends CharSequence> {
 
@@ -17,5 +17,10 @@ public interface StemProvider<T extends CharSequence> {
      */
     List<Stem> find(T word);
 
+    /**
+     * Brings an iterator over matching stems for the given <code>word</code>.
+     * @param word input for searching
+     * @return an iterator for matching stems.
+     */
     Iterator<Stem> findAndIterate(T word);
 }

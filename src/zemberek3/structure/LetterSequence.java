@@ -4,7 +4,7 @@ package zemberek3.structure;
  * <code>LetterSequence</code> represents a sequence of <code>Letter</code>s. It is mutable and not Thread safe.
  * should be used for intermediate operations, not as a storage.
  */
-public class LetterSequence<T extends Letter> implements CharSequence, Comparable<LetterSequence> {
+public class LetterSequence implements CharSequence, Comparable<LetterSequence> {
 
     private Letter[] letters;
     private int size = 0;
@@ -34,7 +34,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      *
      * @param str      ornek alincak String
      * @param capacity baslangic olusan Letter[] boyu
-     * @param alphabet   ilgili alphabet
+     * @param alphabet ilgili alphabet
      */
     public LetterSequence(String str, Alphabet alphabet, int capacity) {
         if (capacity < str.length())
@@ -49,7 +49,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
     /**
      * Belirlenen alphabet ile String icerigini Harflere donusturur.
      *
-     * @param str    ornek alincak String
+     * @param str      ornek alincak String
      * @param alphabet ilgili alphabet
      */
     public LetterSequence(String str, Alphabet alphabet) {
@@ -190,7 +190,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      * Diziye baska bir harf dizisinin icerigini index ile belirtilen harften itibaren ekler.
      * "armut" icin (2, hede) "arhedemut" uretir.
      *
-     * @param index eklencek pozisyon
+     * @param index    eklencek pozisyon
      * @param sequence eklenecek harf dizisi
      * @return this.
      * @throws ArrayIndexOutOfBoundsException
@@ -225,12 +225,13 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      * verilen pozisyondaki harfi dondurur. icerigi "kedi" olan LetterSequence icin
      * harf(1) e dondurur.
      *
-     * @param i istenilen pozisyondaki harf.
-     * @return girilen pozisyondaki harf, yoksa TANIMSIZ_HARF
+     * @param  i Letter index.
+     * @return Letter from given index i.
+     * @throws IndexOutOfBoundsException if <code>i</code> is smaller than zero or larger than size-1
      */
     public Letter getLetter(int i) {
-        if (i < 0 || i >= size)
-            throw new IndexOutOfBoundsException("Letter sequence is already empty");
+        if (i >= size || i < 0)
+            throw new IndexOutOfBoundsException("Cannot retrieve letter from sequence with index:" + i);
         return letters[i];
     }
 
@@ -354,7 +355,7 @@ public class LetterSequence<T extends Letter> implements CharSequence, Comparabl
      */
     public Letter firstLetter() {
         if (size == 0)
-            throw new IllegalStateException("Letter sequence is already empty");
+            throw new IllegalStateException("Letter sequence is empty");
         return letters[0];
     }
 

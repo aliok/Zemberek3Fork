@@ -1,6 +1,6 @@
 package zemberek3.parser.word;
 
-import zemberek3.structure.Affix;
+import zemberek3.structure.affix.Affix;
 import zemberek3.structure.Stem;
 
 import java.util.Iterator;

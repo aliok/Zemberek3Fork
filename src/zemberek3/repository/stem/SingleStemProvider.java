@@ -13,10 +13,9 @@ import java.util.List;
  */
 public class SingleStemProvider implements StemProvider {
 
-    private final List<Stem> stemList;
+    private final List<Stem> stemList = new ArrayList<Stem>(1);
 
     public SingleStemProvider(Stem stem) {
-        stemList = new ArrayList<Stem>(1);
         stemList.add(stem);
     }
 
