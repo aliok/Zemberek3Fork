@@ -1,8 +1,8 @@
 package zemberek3.service;
 
-import zemberek3.structure.affix.Affix;
-import zemberek3.structure.Stem;
+import zemberek3.structure.Lemma;
 import zemberek3.structure.WordParseResult;
+import zemberek3.structure.affix.Affix;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ public interface GeneratorService {
 
     /**
      * Generates a word using a Stem and a list of suffixes.
-     * @param stem Stem of the word.
+     * @param lemma lexeme of the word.
      * @param suffixes suffixes.
      * @return generated word.
      */
-    String generate(Stem stem, List<Affix> suffixes);
+    String generate(Lemma lemma, List<Affix> suffixes);
 
     /**
      * Generates a word from a word parse result. Uses stem and affixes.

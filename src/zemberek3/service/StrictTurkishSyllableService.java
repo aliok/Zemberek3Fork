@@ -4,7 +4,6 @@ import zemberek3.parser.syllable.SyllableParser;
 import zemberek3.structure.Letter;
 import zemberek3.structure.LetterSequence;
 import zemberek3.structure.TurkicAlphabet;
-import zemberek3.structure.TurkicLetter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +15,7 @@ import java.util.List;
  * "tren", "spor", "sfinks", "angstrom", "mavimtrak", "stetoskop" etc.
  *
  */
-public class StrictTurkishSyllableService extends BaseSyllableService implements SyllableService {
+public class StrictTurkishSyllableService extends BaseSyllableService  {
 
     private final TurkicAlphabet alphabet;
     private final SyllableParser<LetterSequence> parser = new TurkishSyllableParser();

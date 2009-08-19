@@ -1,9 +1,5 @@
 package zemberek3.structure;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-
 /**
  * this is a helper class for scoring an item. it contains the item and related double score value.
  */

@@ -1,13 +1,13 @@
 package zemberek3.repository.stem;
 
-import zemberek3.structure.Stem;
+import zemberek3.structure.Lemma;
 
 import java.util.Iterator;
 
 public interface StemRepository<T extends CharSequence> {
 
-    StemRepository add(Stem s);
+    StemRepository add(Lemma s);
 
-    Iterator<Stem> iterator();
+    Iterator<Lemma> iterator();
 
 }

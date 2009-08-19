@@ -1,6 +1,6 @@
 package zemberek3.repository.stem;
 
-import zemberek3.structure.Stem;
+import zemberek3.structure.Lemma;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,12 +15,12 @@ public interface StemProvider<T extends CharSequence> {
      * @param word input for searching
      * @return all Stem's matching with the input word.
      */
-    List<Stem> find(T word);
+    List<Lemma> find(T word);
 
     /**
      * Brings an iterator over matching stems for the given <code>word</code>.
      * @param word input for searching
      * @return an iterator for matching stems.
      */
-    Iterator<Stem> findAndIterate(T word);
+    Iterator<Lemma> findAndIterate(T word);
 }

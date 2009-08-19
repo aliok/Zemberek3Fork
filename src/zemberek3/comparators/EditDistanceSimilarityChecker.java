@@ -16,7 +16,7 @@ public class EditDistanceSimilarityChecker implements SimilarityChecker {
         this.similarityTreshold = similarityTreshold;
     }
 
-    public boolean similar(CharSequence t1, CharSequence t2) {
+    public boolean isSimilar(CharSequence t1, CharSequence t2) {
         final int n = t1.length(); //length of s
         final int m = t2.length(); //length of t
 

@@ -1,7 +1,5 @@
 package zemberek3.structure.affix;
 
-import zemberek3.structure.affix.Affix;
-
 import java.util.List;
 
 /**

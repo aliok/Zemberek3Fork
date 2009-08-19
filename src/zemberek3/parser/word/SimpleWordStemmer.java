@@ -1,6 +1,5 @@
 package zemberek3.parser.word;
 
-import zemberek3.structure.Stem;
 import zemberek3.structure.WordParseResult;
 
 import java.util.ArrayList;
@@ -18,10 +17,7 @@ public class SimpleWordStemmer implements WordStemmer {
 
     public List findStems(CharSequence input) {
         List<WordParseResult> results = parser.parse(input);
-        List<Stem> stems = new ArrayList<Stem>();
-        for (WordParseResult result : results) {
-            stems.add(result.getStem());
-        }
+        List<String> stems = new ArrayList<String>();
         return stems;
     }
 }

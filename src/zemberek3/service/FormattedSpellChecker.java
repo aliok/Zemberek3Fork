@@ -1,6 +1,5 @@
 package zemberek3.service;
 
-import zemberek3.cache.CharSequenceCache;
 import zemberek3.generator.word.WordFormatter;
 import zemberek3.parser.word.WordParser;
 import zemberek3.structure.WordParseResult;
@@ -18,15 +17,12 @@ import java.util.Iterator;
 public class FormattedSpellChecker implements SpellChecker<String> {
 
     private final WordParser parser;
-    private final CharSequenceCache<String> cache;
     private final WordFormatter wordFormatter;
 
     public FormattedSpellChecker(
             WordParser parser,
-            CharSequenceCache<String> cache,
             WordFormatter wordFormatter) {
         this.parser = parser;
-        this.cache = cache;
         this.wordFormatter = wordFormatter;
     }
 
@@ -36,9 +32,6 @@ public class FormattedSpellChecker implements SpellChecker<String> {
      * @return if word is spelled coreectly or not
      */
     public boolean check(String input) {
-        // check cache.
-        if (cache.check(input))
-            return true;
 
         Iterator<WordParseResult> it = parser.parseIterator(input);
         while (it.hasNext()) {

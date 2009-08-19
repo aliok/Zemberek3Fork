@@ -2,25 +2,26 @@ package zemberek3.structure;
 
 import zemberek3.structure.affix.Affix;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class SuffixWord implements WordParseResult {
 
-    private final Stem stem;
+    private final Lemma lemma;
     private final List<Affix> suffixes;
 
-    public SuffixWord(Stem stem, List<Affix> suffixes) {
-        this.stem = stem;
+    public SuffixWord(Lemma lemma, List<Affix> suffixes) {
+        this.lemma = lemma;
         this.suffixes = suffixes;
     }
 
-    public Stem getStem() {
-        return stem;
+    public Lemma getLemma() {
+        return lemma;
     }
 
     public List<Affix> getSuffixes() {
-        return suffixes;
+        return new ArrayList<Affix>(suffixes);
     }
 
     public List<Affix> getPrefixes() {

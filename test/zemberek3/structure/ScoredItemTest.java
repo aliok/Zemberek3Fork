@@ -9,6 +9,6 @@ public class ScoredItemTest {
     public void constructor() {
         ScoredItem<String> si = new ScoredItem<String>("hello", 0.1);
         Assert.assertEquals("hello", si.getItem());
-        Assert.assertEquals(0.1, si.getScore());
+        Assert.assertEquals(0.1d, si.getScore(),0.0000000000001d);
     }
 }

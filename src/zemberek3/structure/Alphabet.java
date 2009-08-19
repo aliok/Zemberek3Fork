@@ -1,5 +1,8 @@
 package zemberek3.structure;
 
+/**
+ * An Alphabet is a collection of symbols used for written language.
+ */
 public interface Alphabet<T extends Letter> {
 
     T getLetter(char c);

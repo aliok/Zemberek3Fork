@@ -2,10 +2,10 @@ package zemberek3.parser.word;
 
 import zemberek3.comparators.CharSequenceComparator;
 import zemberek3.repository.affix.SuffixRepository;
-import zemberek3.structure.affix.Affix;
 import zemberek3.structure.Alphabet;
+import zemberek3.structure.Lemma;
 import zemberek3.structure.LetterSequence;
-import zemberek3.structure.Stem;
+import zemberek3.structure.affix.Affix;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,28 +33,28 @@ public class TopDownSuffixParser implements SuffixParser<LetterSequence> {
         int suffixSequence;
     }
 
-    public List<List<Affix>> parse(LetterSequence input, Stem stem) {
+    public List<List<Affix>> parse(LetterSequence input, Lemma lemma) {
 
         LinkedList<ParseState> parseStack = new LinkedList<ParseState>();
-        Affix rootSuffix = suffixes.getRootSuffix(stem);
-        // original stem sequence. this may be required after stem's formation is changed during the parse.
-        LetterSequence stemSequence = new LetterSequence(stem.getContent(), alphabet);
+        Affix rootSuffix = suffixes.getRootSuffix(lemma);
+        // original lemma sequence. this may be required after lemma's formation is changed during the parse.
+        LetterSequence stemSequence = new LetterSequence(lemma.getContent(), alphabet);
 
         return null;
     }
 
-    public Iterator<List<Affix>> parseIterator(LetterSequence input, Stem stem) {
-        return new ParseIterator(input, stem);
+    public Iterator<List<Affix>> parseIterator(LetterSequence input, Lemma lemma) {
+        return new ParseIterator(input, lemma);
     }
 
     private class ParseIterator implements Iterator<List<Affix>> {
 
         final LetterSequence input;
-        final Stem stem;
+        final Lemma lemma;
 
-        private ParseIterator(LetterSequence input, Stem stem) {
+        private ParseIterator(LetterSequence input, Lemma lemma) {
             this.input = input;
-            this.stem = stem;
+            this.lemma = lemma;
         }
 
         public boolean hasNext() {

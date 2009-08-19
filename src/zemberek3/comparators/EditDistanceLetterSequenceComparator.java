@@ -12,7 +12,7 @@ public class EditDistanceLetterSequenceComparator
     }
 
     public boolean isEqual(LetterSequence t1, LetterSequence t2) {
-        return similarityChecker.similar(t1, t2);
+        return similarityChecker.isSimilar(t1, t2);
     }
 
     public boolean startsWith(LetterSequence t1, LetterSequence t2) {

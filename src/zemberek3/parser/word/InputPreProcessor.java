@@ -1,6 +1,6 @@
 package zemberek3.parser.word;
 
-import zemberek3.structure.Stem;
+import zemberek3.structure.Lemma;
 
 /**
  * it preprocess the input char sequence. Such as lower casing, or eliminating foreign characters.
@@ -22,8 +22,8 @@ public interface InputPreProcessor<T extends CharSequence> {
      * <p>Example for Turkish:
      * <code>input: "tdkya", Stem:[tdk, ABBRV], may return "tdkaya"</code>  
      * @param input, input char sequence.
-     * @param stem, Stem that may cause input to be modified.
+     * @param lemma, Stem that may cause input to be modified.
      * @return modified form.
      */
-    T modifyForStem(T input, Stem stem);
+    T modifyForStem(T input, Lemma lemma);
 }

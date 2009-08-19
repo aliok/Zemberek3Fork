@@ -1,8 +1,8 @@
 package zemberek3.parser.word;
 
 import zemberek3.structure.Alphabet;
+import zemberek3.structure.Lemma;
 import zemberek3.structure.LetterSequence;
-import zemberek3.structure.Stem;
 
 public class TurkishInputPreprocessor {
 
@@ -12,7 +12,7 @@ public class TurkishInputPreprocessor {
         return null;
     }
 
-    public LetterSequence modifyForStem(LetterSequence input, Stem stem) {
+    public LetterSequence modifyForStem(LetterSequence input, Lemma lemma) {
         return null;
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface WordParseResult {
 
-    Stem getStem();
+    Lemma getLemma();
 
     List<Affix> getSuffixes();
 

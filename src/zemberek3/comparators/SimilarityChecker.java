@@ -1,9 +1,8 @@
 package zemberek3.comparators;
 
 /**
- * this is used for checking if two charsequences are similar enough.
- * the desicion is up to the implementor.
+ * This is used for checking if two charsequences are similar. Similarity decision is up to the implementor.
  */
 public interface SimilarityChecker {
-    boolean similar(CharSequence t1, CharSequence t2);
+    boolean isSimilar(CharSequence t1, CharSequence t2);
 }

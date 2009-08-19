@@ -1,6 +1,6 @@
 package zemberek3.repository.stem;
 
-import zemberek3.structure.Stem;
+import zemberek3.structure.Lemma;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,13 +13,13 @@ import java.util.List;
  */
 public class SingleStemProvider implements StemProvider {
 
-    private final List<Stem> stemList = new ArrayList<Stem>(1);
+    private final List<Lemma> stemList = new ArrayList<Lemma>(1);
 
-    public SingleStemProvider(Stem stem) {
+    public SingleStemProvider(Lemma stem) {
         stemList.add(stem);
     }
 
-    public List<Stem> find(CharSequence word) {
+    public List<Lemma> find(CharSequence word) {
         return stemList;
     }
 

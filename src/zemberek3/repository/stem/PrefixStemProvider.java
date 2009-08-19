@@ -2,7 +2,7 @@ package zemberek3.repository.stem;
 
 import zemberek3.comparators.CharSequenceComparator;
 import zemberek3.structure.LetterSequence;
-import zemberek3.structure.Stem;
+import zemberek3.structure.Lemma;
 
 import java.util.Iterator;
 import java.util.List;
@@ -22,11 +22,11 @@ public class PrefixStemProvider implements StemProvider<LetterSequence> {
         this.charSequenceComparator = charSequenceComparator;
     }
 
-    public List<Stem> find(LetterSequence word) {
+    public List<Lemma> find(LetterSequence word) {
         return null;
     }
 
-    public Iterator<Stem> findAndIterate(LetterSequence word) {
+    public Iterator<Lemma> findAndIterate(LetterSequence word) {
         return null;
     }
 }
