@@ -6,7 +6,7 @@ import zemberek3.structure.LetterSequence;
 /**
  * Appends a predefined letter to a sequence.
  */
-public class LetterAppender implements SequenceModifier<LetterSequence> {
+public class LetterAppender implements SequenceModifier {
 
     private final Letter toBeAppended;
 
@@ -14,7 +14,7 @@ public class LetterAppender implements SequenceModifier<LetterSequence> {
         this.toBeAppended = toBeAppended;
     }
 
-    public SequenceModifier<LetterSequence> modify(LetterSequence letterSequence) {
+    public SequenceModifier modify(LetterSequence letterSequence) {
         letterSequence.append(toBeAppended);
         return this;
     }

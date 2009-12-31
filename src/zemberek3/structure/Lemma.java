@@ -1,7 +1,6 @@
 package zemberek3.structure;
 
 /**
- * A Lexeme contains the dictionary representation of 
  * <code>Lemma</code> contains the cleaned (ready for parse) form of a dictionary entry and special cases if any.
  */
 public class Lemma {

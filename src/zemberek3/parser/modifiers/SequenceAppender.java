@@ -3,7 +3,7 @@ package zemberek3.parser.modifiers;
 import zemberek3.structure.LetterSequence;
 
 
-public class SequenceAppender implements SequenceModifier<LetterSequence> {
+public class SequenceAppender implements SequenceModifier {
 
     final LetterSequence toBeAppended;
 
@@ -11,7 +11,7 @@ public class SequenceAppender implements SequenceModifier<LetterSequence> {
         this.toBeAppended = toBeAppended;
     }
 
-    public SequenceModifier<LetterSequence> modify(LetterSequence sequence) {
+    public SequenceModifier modify(LetterSequence sequence) {
         sequence.append(toBeAppended);
         return this;
     }

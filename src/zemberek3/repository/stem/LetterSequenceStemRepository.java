@@ -5,7 +5,7 @@ import zemberek3.structure.Lemma;
 
 import java.util.Iterator;
 
-public class LetterSequenceStemRepository implements StemRepository<LetterSequence> {
+public class LetterSequenceStemRepository implements StemRepository {
 
     public StemRepository add(Lemma s) {
         return this;

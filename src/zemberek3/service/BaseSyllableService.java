@@ -10,7 +10,7 @@ public abstract class BaseSyllableService implements SyllableService {
         if (spaceAvailable >= input.length())
             return input.length();
 
-        List<String> pieces = syllables(input);
+        List<String> pieces = this.syllables(input);
 
         // handle no syllable.
         if (pieces.isEmpty())

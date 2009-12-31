@@ -19,11 +19,11 @@ public class SingleStemProvider implements StemProvider {
         stemList.add(stem);
     }
 
-    public List<Lemma> find(CharSequence word) {
-        return stemList;
+    public List<Lemma> find(String word) {
+        return null;
     }
 
-    public Iterator findAndIterate(CharSequence word) {
-        return stemList.iterator();
+    public Iterator<Lemma> findAndIterate(String word) {
+        return null;
     }
 }

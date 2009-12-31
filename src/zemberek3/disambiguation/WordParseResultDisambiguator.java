@@ -1,7 +1,7 @@
 package zemberek3.disambiguation;
 
 import zemberek3.structure.ScoredItem;
-import zemberek3.structure.WordParseResult;
+import zemberek3.structure.WordParse;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,12 +10,12 @@ public interface WordParseResultDisambiguator {
 
     /**
      * provides an iterator that is generated with a sequence of input Char sequences.
-     * Iterator carries a list of ScoredItem's. Each ScoredItem carries a score, and a WordParseResult.
+     * Iterator carries a list of ScoredItem's. Each ScoredItem carries a score, and a WordParse.
      * generally highest score would be the most likely parse result for a given word.
      * <p>this is a low level method.
      * @param words a sequence of words.
-     * @return an iterator that iterates through each word's scored <code>WordParseResult</code> list..
+     * @return an iterator that iterates through each word's scored <code>WordParse</code> list..
      */
-    Iterator<List<ScoredItem<WordParseResult>>> scoreListIterator(List<CharSequence> words);
+    Iterator<List<ScoredItem<WordParse>>> scoreListIterator(List<CharSequence> words);
 
 }

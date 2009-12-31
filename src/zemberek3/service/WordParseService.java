@@ -1,7 +1,7 @@
 package zemberek3.service;
 
 import zemberek3.structure.Lemma;
-import zemberek3.structure.WordParseResult;
+import zemberek3.structure.WordParse;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface WordParseService {
      * @param input single input word.
      * @return all possible parses.
      */
-    List<WordParseResult> parse(String input);
+    List<WordParse> parse(String input);
 
     /**
      * returns all possible morphem lists. if there is no morphemes, an empty list.
@@ -52,5 +52,4 @@ public interface WordParseService {
      * @return a list of possible stems.
      */
     List<Lemma> lemmas(String input);
-
 }

@@ -7,6 +7,6 @@ import java.util.List;
 public class XmlTurkicSuffixLoader implements SuffixLoader {
 
     public List<Affix> loadAll() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 }

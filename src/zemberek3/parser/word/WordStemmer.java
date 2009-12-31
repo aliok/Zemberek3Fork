@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface WordStemmer<T extends CharSequence> {
 
-    List<String> findStems(T input);
+    List<String> findStems(T word);
 
 }

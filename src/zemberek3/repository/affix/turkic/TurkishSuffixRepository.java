@@ -23,23 +23,24 @@ public class TurkishSuffixRepository implements SuffixRepository {
         return null;
     }
 
-    private Map<AffixType, SuffixBuilder> suffixBuilders = new HashMap<AffixType, SuffixBuilder>();
+    private Map<AffixType, MutableSuffix> suffixBuilders = new HashMap<AffixType, MutableSuffix>();
 
-    static class SuffixBuilder {
+    private static class MutableSuffix {
         AffixType type;
-        List<SuffixBuilder> builder = new ArrayList<SuffixBuilder>();
+        List<MutableSuffix> builder = new ArrayList<MutableSuffix>();
         List<AffixType> successiveSuffixes = new ArrayList<AffixType>();
+        String generators;
 
-        public SuffixBuilder(AffixType type) {
+        public MutableSuffix(AffixType type) {
             this.type = type;
         }
 
-        public SuffixBuilder successiveSuffixes(AffixType... affixTypes) {
+        public MutableSuffix successiveSuffixes(AffixType... affixTypes) {
             successiveSuffixes.addAll(Arrays.asList(affixTypes));
             return this;
         }
 
-        public SuffixBuilder successiveSuffixes(List<AffixType>... affixTypes) {
+        public MutableSuffix successiveSuffixes(List<AffixType>... affixTypes) {
             for (List<AffixType> affixTypeList : affixTypes) {
                 successiveSuffixes.addAll(affixTypeList);
             }
@@ -55,7 +56,7 @@ public class TurkishSuffixRepository implements SuffixRepository {
     private void initialize() {
         AffixType[] types = TurkishSuffixType.values();
         for (AffixType type : types) {
-            suffixBuilders.put(type, new SuffixBuilder(type));
+            suffixBuilders.put(type, new MutableSuffix(type));
         }
 
         TurkicSuffix nominalNoun = suffixBuilders.get(TurkishSuffixType.N_NOMINAL).build();

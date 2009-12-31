@@ -10,23 +10,23 @@ import java.util.List;
 /**
  * Finds stems which appears in the beginning of a CharSequence.
  */
-public class PrefixStemProvider implements StemProvider<LetterSequence> {
+public class PrefixStemProvider implements StemProvider {
 
-    StemRepository<LetterSequence> stemRepository;
-    CharSequenceComparator<LetterSequence> charSequenceComparator;
+    StemRepository stemRepository;
+    CharSequenceComparator<String> charSequenceComparator;
 
     public PrefixStemProvider(
-            StemRepository<LetterSequence> stemRepository,
-            CharSequenceComparator<LetterSequence> charSequenceComparator) {
+            StemRepository stemRepository,
+            CharSequenceComparator<String> charSequenceComparator) {
         this.stemRepository = stemRepository;
         this.charSequenceComparator = charSequenceComparator;
     }
 
-    public List<Lemma> find(LetterSequence word) {
+    public List<Lemma> find(String word) {
         return null;
     }
 
-    public Iterator<Lemma> findAndIterate(LetterSequence word) {
+    public Iterator<Lemma> findAndIterate(String word) {
         return null;
     }
 }

@@ -1,16 +1,16 @@
 package zemberek3.generator.word;
 
-import zemberek3.structure.WordParseResult;
+import zemberek3.structure.WordParse;
 
 
 public interface WordFormatter {
 
     /**
      * Input independent word formatting.
-     * @param wordParseResult word to format.
+     * @param wordParse word to format.
      * @return returns the formatted word.
      */
-    CharSequence format(WordParseResult wordParseResult);
+    CharSequence format(WordParse wordParse);
     
     /**
      * Input dependend Word formatting. such as for Turkish, if parse result is a Word containing
@@ -18,8 +18,8 @@ public interface WordFormatter {
      *
      * @param input input char sequence that is used for forming the Word. input is used because result will have the
      * same format as input. such as
-     * @param wordParseResult is the parse result of the input.
+     * @param wordParse is the parse result of the input.
      * @return formatted result.
      */
-    CharSequence format(CharSequence input, WordParseResult wordParseResult);
+    CharSequence format(CharSequence input, WordParse wordParse);
 }

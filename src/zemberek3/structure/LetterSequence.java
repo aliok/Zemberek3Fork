@@ -2,7 +2,7 @@ package zemberek3.structure;
 
 /**
  * <code>LetterSequence</code> represents a sequence of <code>Letter</code>s. It is mutable and not Thread safe.
- * should be used for intermediate operations, not as a storage.
+ * should be used for intermediate operations, not as storage.
  */
 public class LetterSequence implements CharSequence, Comparable<LetterSequence> {
 
@@ -443,7 +443,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
         return true;
     }
 
-    //--------- asagidaki metodlar CharSequence arayuzu icin hazirlandi. -----
+    //--------- CharSequence methods -----
 
     public int length() {
         return size;

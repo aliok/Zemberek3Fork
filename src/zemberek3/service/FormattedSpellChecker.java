@@ -2,7 +2,7 @@ package zemberek3.service;
 
 import zemberek3.generator.word.WordFormatter;
 import zemberek3.parser.word.WordParser;
-import zemberek3.structure.WordParseResult;
+import zemberek3.structure.WordParse;
 
 import java.util.Iterator;
 
@@ -33,7 +33,7 @@ public class FormattedSpellChecker implements SpellChecker<String> {
      */
     public boolean check(String input) {
 
-        Iterator<WordParseResult> it = parser.parseIterator(input);
+        Iterator<WordParse> it = parser.parseIterator(input);
         while (it.hasNext()) {
             // check if input is formatted correctly.
             if (wordFormatter.format(input, it.next()).equals(input))

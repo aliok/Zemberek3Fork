@@ -3,7 +3,7 @@ package zemberek3.parser.word;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.LetterSequence;
 import zemberek3.structure.SuffixWord;
-import zemberek3.structure.WordParseResult;
+import zemberek3.structure.WordParse;
 import zemberek3.structure.affix.Affix;
 import zemberek3.repository.stem.StemProvider;
 
@@ -19,46 +19,46 @@ public class SuffixWordParser implements WordParser {
 
     final SuffixParser<LetterSequence> suffixParser;
     final InputPreProcessor<LetterSequence> inputPreProcessor;
-    final StemProvider<LetterSequence> lemmaProvider;
+    final StemProvider lemmaProvider;
 
 
     public SuffixWordParser(
             SuffixParser<LetterSequence> suffixParser,
             InputPreProcessor<LetterSequence> inputPreProcessor,
-            StemProvider<LetterSequence> lemmaProvider) {
+            StemProvider lemmaProvider) {
         this.suffixParser = suffixParser;
         this.inputPreProcessor = inputPreProcessor;
         this.lemmaProvider = lemmaProvider;
     }
 
-    public List<WordParseResult> parse(CharSequence input) {
+    public List<WordParse> parse(CharSequence input) {
         // sanitize input.
         final LetterSequence processed = inputPreProcessor.processForParse(input);
 
-        // find lemma candiadtes.
-        List<Lemma> lemmas = lemmaProvider.find(processed);
+        // find lemma candidates.
+        List<Lemma> lemmas = lemmaProvider.find(processed.toString());
         if (lemmas.size() == 0)
             return Collections.emptyList();
 
         // get suffix parse results.
-        List<WordParseResult> wordParseResults = new ArrayList<WordParseResult>();
+        List<WordParse> wordParses = new ArrayList<WordParse>();
         for (Lemma lemma : lemmas) {
             // process the input for lemma if necessary.
             final LetterSequence processedForStem = inputPreProcessor.modifyForStem(processed, lemma);
             // get suffix parse results and form Words.
             Iterator<List<Affix>> suffixParseIterator = suffixParser.parseIterator(processedForStem, lemma);
             while (suffixParseIterator.hasNext()) {
-                wordParseResults.add(new SuffixWord(lemma, suffixParseIterator.next()));
+                wordParses.add(new SuffixWord(lemma, suffixParseIterator.next()));
             }
         }
-        return wordParseResults;
+        return wordParses;
     }
 
-    public Iterator<WordParseResult> parseIterator(CharSequence input) {
+    public Iterator<WordParse> parseIterator(CharSequence input) {
         return new ParseResultIterator(inputPreProcessor.processForParse(input));
     }
 
-    private class ParseResultIterator implements Iterator<WordParseResult> {
+    private class ParseResultIterator implements Iterator<WordParse> {
 
         private final LetterSequence input;
         private final Iterator<Lemma> stemIterator;
@@ -67,7 +67,7 @@ public class SuffixWordParser implements WordParser {
 
         private ParseResultIterator(LetterSequence input) {
             this.input = input;
-            stemIterator = lemmaProvider.findAndIterate(input);
+            stemIterator = lemmaProvider.findAndIterate(input.toString());
             suffixParseIterator = getSuffixIterator();
         }
 
@@ -91,7 +91,7 @@ public class SuffixWordParser implements WordParser {
             return suffixParseIterator.hasNext();
         }
 
-        public WordParseResult next() {
+        public WordParse next() {
             return new SuffixWord(currentLemma, suffixParseIterator.next());
         }
 

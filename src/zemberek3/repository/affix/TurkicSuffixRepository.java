@@ -19,7 +19,7 @@ public class TurkicSuffixRepository implements SuffixRepository<TurkicSuffix> {
     }
 
     public TurkicSuffix getSuffixByType(AffixType type) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; 
     }
 
     public TurkicSuffix getSuffixByName(String name) {

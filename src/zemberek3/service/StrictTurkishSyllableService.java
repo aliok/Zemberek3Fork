@@ -3,7 +3,7 @@ package zemberek3.service;
 import zemberek3.parser.syllable.SyllableParser;
 import zemberek3.structure.Letter;
 import zemberek3.structure.LetterSequence;
-import zemberek3.structure.TurkicAlphabet;
+import zemberek3.structure.TurkishAlphabet;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,12 +15,12 @@ import java.util.List;
  * "tren", "spor", "sfinks", "angstrom", "mavimtrak", "stetoskop" etc.
  *
  */
-public class StrictTurkishSyllableService extends BaseSyllableService  {
+public class StrictTurkishSyllableService extends BaseSyllableService implements SyllableService {
 
-    private final TurkicAlphabet alphabet;
+    private final TurkishAlphabet alphabet;
     private final SyllableParser<LetterSequence> parser = new TurkishSyllableParser();
 
-    public StrictTurkishSyllableService(TurkicAlphabet alphabet) {
+    public StrictTurkishSyllableService(TurkishAlphabet alphabet) {
         this.alphabet = alphabet;
     }
 
@@ -56,7 +56,7 @@ public class StrictTurkishSyllableService extends BaseSyllableService  {
          *         kadarharfi heceyi temsil eder -1 donerse hecenin bulunamadigi
          *         anlamina gelir. sistem yabanci harf ya da isaretlerin oldugu ya
          *         da kural disi kelimeleri heceleyemez. (ornegin, three, what vs.)
-         *         TODO: sistem su anda basta bulunan iki harf sessiz oldugu
+         *         sistem su anda basta bulunan iki harf sessiz oldugu
          *         durumlari kabul etmekte ama buna kisitlama getirilmesi iyi olur.
          *         sadece "tr", "st", "kr" gibi girislere izin verilmeli
          */

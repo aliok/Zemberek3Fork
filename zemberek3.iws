@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project relativePaths="false" version="4">
+<project version="4">
   <component name="CCaseConfig">
     <option name="checkoutReserved" value="false" />
     <option name="markExternalChangeAsUpToDate" value="true" />
@@ -14,177 +14,74 @@
     <option name="scrTextFileName" value="" />
     <option name="historyRevisionsNumber" value="4" />
   </component>
-  <component name="ChangeListManager">
-    <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/comparators/SimilarityChecker.java" afterPath="$PROJECT_DIR$/src/zemberek3/comparators/SimilarityChecker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/zemberek3/service" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/structure/POS.java" />
+  <component name="ChangeListManager" verified="true">
+    <list default="true" readonly="true" id="e6444d3a-622b-455c-9751-fc082f3bf396" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\cache\MostCommonWordList.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\structure\WordParseResult.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/WordParse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/generator/word/WordFormatter.java" afterPath="$PROJECT_DIR$/src/zemberek3/generator/word/WordFormatter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/generator/word/WordGenerator.java" afterPath="$PROJECT_DIR$/src/zemberek3/generator/word/WordGenerator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/repository/SimpleCompactStringTrie.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\parser\word\SimpleWordLemmatizer.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/LastLetterModifier.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/LastLetterModifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/service/StrictTurkishSyllableService.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/StrictTurkishSyllableService.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\structure\Compound.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/SequenceAppender.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/SequenceAppender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/service/BaseSyllableService.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/BaseSyllableService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/tokenization/TokenStreams.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/SequenceModifier.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/SequenceModifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/service/FormattedSpellChecker.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/FormattedSpellChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixParser.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/ProperNoun.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/ProperNoun.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\cache\EmptyStringCache.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/SuffixWord.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/SuffixWord.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/structure/Compound.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/structure/WordType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/AffixType.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\repository\OnlineTrie.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixType.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/stem/StemRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/stem/StemRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/comparators/EditDistanceSimilarityChecker.java" afterPath="$PROJECT_DIR$/src/zemberek3/comparators/EditDistanceSimilarityChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\repository\stem\StemTree.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zemberek3.iml" afterPath="$PROJECT_DIR$/Zemberek3.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/stem/SingleStemProvider.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/stem/SingleStemProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bilgi" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/disambiguation/WordParseResultDisambiguator.java" afterPath="$PROJECT_DIR$/src/zemberek3/disambiguation/WordParseResultDisambiguator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/repository/OnlineTrie.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/stem/StemProvider.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/stem/StemProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/WordLemmatizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/zemberek3/structure/ScoredItemTest.java" afterPath="$PROJECT_DIR$/test/zemberek3/structure/ScoredItemTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/TurkishInputPreprocessor.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/TurkishInputPreprocessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/TopDownSuffixParser.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/TopDownSuffixParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/service/SyllableService.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/SyllableService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/WordParser.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/WordParser.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\parser\word\SimpleWordStemmer.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zemberek3.iws" afterPath="$PROJECT_DIR$/zemberek3.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/Abbreviation.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/Abbreviation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/tokenization/StringTokenizers.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/WordStemmer.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/WordStemmer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/service/GeneratorService.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/GeneratorService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/comparators/EditDistanceLetterSequenceComparator.java" afterPath="$PROJECT_DIR$/src/zemberek3/comparators/EditDistanceLetterSequenceComparator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/stem/PrefixStemProvider.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/stem/PrefixStemProvider.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/LetterAppender.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/LetterAppender.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/SimpleWordStemmer.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/SimpleWordStemmer.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\structure\ProperNoun.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\cache\CharSequenceCache.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zemberek3.ipr" afterPath="$PROJECT_DIR$/zemberek3.ipr" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\structure\TurkicLanguage.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/ScoredItem.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/ScoredItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/LetterSequence.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/LetterSequence.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/stem/LetterSequenceStemRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/stem/LetterSequenceStemRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/affix/TurkicSuffix.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/affix/TurkicSuffix.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/InputPreProcessor.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/InputPreProcessor.java" />
-      <change type="MOVED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\service\ParserService.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/WordParseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/WordParseResult.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/WordParseResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/SimpleWordLemmatizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic" />
-      <change type="MOVED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\structure\Stem.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/Lemma.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/zemberek3/repository/phrase" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/service/WordParseService.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/WordParseService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/LastLetterIsWovel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/Lemma.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/Lemma.java" />
+      <change type="MOVED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\structure\TurkicAlphabet.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/DeleteLastWovel.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/modifiers/DeleteLastWovel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java" />
+      <change type="MOVED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\tokenization\Tokenizer.java" afterPath="$PROJECT_DIR$/src/zemberek3/tokenization/StringTokenizer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java" />
     </list>
-    <ignored mask="*.updt" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib.*" />
     <ignored mask="*.keep" />
     <ignored mask="findmerge.log.*" />
-    <ignored mask="*.keep" />
+    <ignored mask="*.contrib.*" />
+    <ignored mask="*.updt" />
     <ignored mask="*.keep.*" />
     <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
-    <ignored mask="*.keep" />
-    <ignored mask="*.keep.*" />
-    <ignored mask="*.contrib" />
-    <ignored mask="*.contrib.*" />
-    <ignored mask="findmerge.log.*" />
-    <ignored mask="*.updt" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="true" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="SHELVE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
@@ -230,108 +127,98 @@
     <breakpoint_rules />
     <ui_properties />
   </component>
-  <component name="ErrorTreeViewConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="HIDE_WARNINGS" value="false" />
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="zemberek3" />
   </component>
   <component name="FileColors" enabled="false" enabledForTabs="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="WordParseResult.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/WordParseResult.java">
+      <file leaf-file-name="Alphabet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="17" selection-start="112" selection-end="112" vertical-scroll-proportion="0.1487965">
+            <state line="5" column="17" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compound.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Compound.java">
+      <file leaf-file-name="TurkishAlphabet.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="41" selection-start="110" selection-end="110" vertical-scroll-proportion="0.1487965">
+            <state line="182" column="60" selection-start="8920" selection-end="8920" vertical-scroll-proportion="0.37472767">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProperNoun.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/ProperNoun.java">
+      <file leaf-file-name="Arrays.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.6.0_16/src.zip!/java/util/Arrays.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="43" selection-start="113" selection-end="113" vertical-scroll-proportion="0.111597374">
+            <state line="3014" column="27" selection-start="118458" selection-end="118458" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Abbreviation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Abbreviation.java">
+      <file leaf-file-name="ScoredItemTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/ScoredItemTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="45" selection-start="118" selection-end="118" vertical-scroll-proportion="0.1487965">
+            <state line="7" column="0" selection-start="110" selection-end="346" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SingleStemProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/SingleStemProvider.java">
+      <file leaf-file-name="TurkishAlphabetTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="315" selection-end="315" vertical-scroll-proportion="0.48358864">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrefixStemProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/PrefixStemProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="17" selection-start="149" selection-end="149" vertical-scroll-proportion="0.1487965">
+            <state line="95" column="0" selection-start="5487" selection-end="5487" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LetterSequenceStemRepository.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/LetterSequenceStemRepository.java">
+      <file leaf-file-name="WordFormatter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/generator/word/WordFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="28" selection-start="107" selection-end="107" vertical-scroll-proportion="0.111597374">
+            <state line="5" column="14" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SuffixWordParser.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java">
+      <file leaf-file-name="WordGenerator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/generator/word/WordGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="24" selection-start="955" selection-end="955" vertical-scroll-proportion="0.55798686">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StemProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/StemProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="32" selection-start="68" selection-end="68" vertical-scroll-proportion="0.07439825">
+            <state line="6" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StemRepository.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/StemRepository.java">
+      <file leaf-file-name="TurkicLetter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.07439825">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="178" column="45" selection-start="5172" selection-end="5172" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Letter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Letter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="31" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TurkishSuffixRepository.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -351,22 +238,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/affix/TurkicSuffix.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/affix/AffixLoader.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/affix/XmlTurkicSuffixLoader.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/cache/SimpleCache.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/util/CollectionUtils.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/parser/syllable/SyllableParser.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/parser/syllable/TurkishSyllableParser.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/LetterSequence.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixRepository.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixLoader.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/service/TurkishSyllableService.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/service/SyllableService.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/service/BaseSyllableService.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/parser/modifiers/LastLetterIsWovel.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/Lemma.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java" />
         <option value="$PROJECT_DIR$/src/zemberek3/service/StrictTurkishSyllableService.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/LetterSequence.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/service/WordParseService.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/repository/stem/SingleStemProvider.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/ScoredItem.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/TurkicAlphabet.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/service/BaseSyllableService.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/WordParse.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java" />
+        <option value="$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java" />
       </list>
     </option>
   </component>
@@ -984,28 +871,507 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="0.2" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
       <showLibraryContents />
       <hideEmptyPackages ProjectPane="false" />
       <abbreviatePackageNames />
-      <showStructure ProjectPane="false" />
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
     </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Favorites" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tokenization" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="affix" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="affix" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="affix" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="turkic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="word" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="syllable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phrase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modifiers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="word" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="disambiguation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comparators" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.1734694" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.lookFeel" />
+    <property name="options.lastSelected" value="com.intellij.openapi.vcs.configurable.VcsManagerConfigurable$4" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -1013,44 +1379,129 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="zemberek3.tokenization" />
       <recent name="zemberek3.parser.word" />
       <recent name="zemberek3.repository.affix.turkic" />
       <recent name="zemberek3.structure.affix" />
       <recent name="zemberek3.parser.modifiers" />
-      <recent name="zemberek3.structure" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ScoredItemTest">
-    <tempConfiguration default="false" name="ScoredItemTest" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <pattern value="zemberek3.structure.*" />
+  <component name="RunManager" selected="JUnit.TurkishAlphabetTest.getEnglishquivalentChar">
+    <configuration default="false" name="TurkishAlphabetTest.getCharByAlphabeticIndex" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="Zemberek3" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="zemberek3.structure" />
-      <option name="MAIN_CLASS_NAME" value="zemberek3.structure.ScoredItemTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="zemberek3.structure.TurkishAlphabetTest" />
+      <option name="METHOD_NAME" value="getCharByAlphabeticIndex" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="ADDITIONAL_CLASS_PATH" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="wholeProject" />
       </option>
       <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
-      <method>
-        <option name="Maven.BeforeRunTask" value="false" />
-        <option name="AntTarget" value="false" />
-        <option name="Make" value="false" />
-      </method>
-    </tempConfiguration>
+      <method />
+    </configuration>
+    <configuration default="false" name="TurkishAlphabetTest.getEnglishquivalentLetter" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Zemberek3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="zemberek3.structure" />
+      <option name="MAIN_CLASS_NAME" value="zemberek3.structure.TurkishAlphabetTest" />
+      <option name="METHOD_NAME" value="getEnglishquivalentLetter" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TurkishAlphabetTest.getEnglishquivalentLetterByChar" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Zemberek3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="zemberek3.structure" />
+      <option name="MAIN_CLASS_NAME" value="zemberek3.structure.TurkishAlphabetTest" />
+      <option name="METHOD_NAME" value="getEnglishquivalentLetterByChar" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TurkishAlphabetTest.englishEqual" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Zemberek3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="zemberek3.structure" />
+      <option name="MAIN_CLASS_NAME" value="zemberek3.structure.TurkishAlphabetTest" />
+      <option name="METHOD_NAME" value="englishEqual" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="4733" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TurkishAlphabetTest.getEnglishquivalentChar" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Zemberek3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="zemberek3.structure" />
+      <option name="MAIN_CLASS_NAME" value="zemberek3.structure.TurkishAlphabetTest" />
+      <option name="METHOD_NAME" value="getEnglishquivalentChar" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1058,9 +1509,8 @@
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
       <method>
-        <option name="Maven.BeforeRunTask" value="false" />
-        <option name="AntTarget" value="false" />
-        <option name="Make" value="false" />
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -1075,36 +1525,12 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method>
-        <option name="Maven.BeforeRunTask" value="false" />
-        <option name="AntTarget" value="false" />
-        <option name="Make" value="false" />
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="ADDITIONAL_CLASS_PATH" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <method>
-        <option name="Maven.BeforeRunTask" value="false" />
-        <option name="AntTarget" value="false" />
-        <option name="Make" value="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+    <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -1117,12 +1543,35 @@
       <module name="" />
       <envs />
       <method>
-        <option name="Maven.BeforeRunTask" value="false" />
-        <option name="AntTarget" value="false" />
-        <option name="Make" value="false" />
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="false" />
       </method>
     </configuration>
-    <configuration default="false" name="ScoredItem" type="Application" factoryName="Application" enabled="false" merge="false">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="false" name="ScoredItem" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="zemberek3.structure.ScoredItem" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -1136,44 +1585,37 @@
       <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
-      <method>
-        <option name="Maven.BeforeRunTask" value="false" />
-        <option name="AntTarget" value="false" />
-        <option name="Make" value="false" />
-      </method>
+      <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ScoredItemTest" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ScoredItem" />
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TurkishAlphabetTest.getCharByAlphabeticIndex" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TurkishAlphabetTest.getEnglishquivalentLetter" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TurkishAlphabetTest.getEnglishquivalentLetterByChar" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TurkishAlphabetTest.englishEqual" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TurkishAlphabetTest.getEnglishquivalentChar" />
+      <item index="5" class="java.lang.String" itemvalue="Application.ScoredItem" />
     </list>
-    <configuration default="true" type="GoogleAppEngineDevServer" factoryName="Local">
-      <server-settings />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
   </component>
-  <component name="StructureViewFactory">
-    <option name="AUTOSCROLL_MODE" value="true" />
-    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
-    <option name="ACTIVE_ACTIONS" value="" />
-  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="LAST_MERGED_REVISION" />
     <option name="UPDATE_RUN_STATUS" value="false" />
-    <option name="UPDATE_RECURSIVELY" value="true" />
     <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <configuration useDefault="true">C:\Users\ahmetaa\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+    <supportedVersion>125</supportedVersion>
   </component>
   <component name="SvnFileUrlMappingImpl">
     <option name="myMappingRoots">
@@ -1229,31 +1671,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="886" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674572" order="1" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="3" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" order="12" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32279316" order="9" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32279316" order="7" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25835475" order="0" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="10" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
-      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="11" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32806325" order="2" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
-      <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="4" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32938075" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32279316" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25321338" sideWeight="0.66139656" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3478261" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254282" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32147563" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -1262,10 +1704,15 @@
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="false" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="false" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="continued work." />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
     <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
@@ -1309,164 +1756,115 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/modifiers/DeleteLastWovel.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/disambiguation/WordParseResultDisambiguator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.16784203">
-          <folding />
-        </state>
+        <state line="8" column="17" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/WordType.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/phrase/PhraseParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="42" selection-end="42" vertical-scroll-proportion="0.047954865">
-          <folding />
-        </state>
+        <state line="2" column="17" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/util/CollectionUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/modifiers/SequenceRule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="25" selection-start="442" selection-end="442" vertical-scroll-proportion="0.5035261">
-          <folding />
-        </state>
+        <state line="7" column="17" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/SimpleWordLemmatizer.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/modifiers/LastLetterModifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="70" selection-end="70" vertical-scroll-proportion="0.119887166">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/util/Preconditions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="38" selection-end="38" vertical-scroll-proportion="0.047954865">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/SuffixWord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="0.09590973">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/WordParseResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="112" selection-end="112" vertical-scroll-proportion="0.1487965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Compound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="41" selection-start="110" selection-end="110" vertical-scroll-proportion="0.1487965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/ProperNoun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="43" selection-start="113" selection-end="113" vertical-scroll-proportion="0.111597374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Abbreviation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="45" selection-start="118" selection-end="118" vertical-scroll-proportion="0.1487965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/StemRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="36" selection-end="36" vertical-scroll-proportion="0.07439825">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/SingleStemProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="315" selection-end="315" vertical-scroll-proportion="0.48358864">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/StemProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="32" selection-start="68" selection-end="68" vertical-scroll-proportion="0.07439825">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/PrefixStemProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="17" selection-start="149" selection-end="149" vertical-scroll-proportion="0.1487965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/stem/LetterSequenceStemRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="28" selection-start="107" selection-end="107" vertical-scroll-proportion="0.111597374">
-          <folding />
-        </state>
+        <state line="4" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="24" selection-start="955" selection-end="955" vertical-scroll-proportion="0.55798686">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="17" column="13" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/AffixType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_16/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3014" column="27" selection-start="118458" selection-end="118458" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/ScoredItemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="110" selection-end="346" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="0" selection-start="5487" selection-end="5487" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/generator/word/WordFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="14" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/generator/word/WordGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="178" column="45" selection-start="5172" selection-end="5172" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Letter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="31" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="60" selection-start="8920" selection-end="8920" vertical-scroll-proportion="0.37472767">
+          <folding />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
-    <option name="states">
-      <map>
-        <entry key="ScopeChooserConfigurable.UI">
-          <value>
-            <UIState>
-              <option name="proportions">
-                <SplitterProportionsDataImpl>
-                  <option name="proportions">
-                    <list>
-                      <option value="0.2" />
-                    </list>
-                  </option>
-                </SplitterProportionsDataImpl>
-              </option>
-            </UIState>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="myStates">
-      <map>
-        <entry key="ScopeChooserConfigurable.UI">
-          <value>
-            <UIState>
-              <option name="proportions">
-                <SplitterProportionsDataImpl>
-                  <option name="proportions">
-                    <list>
-                      <option value="0.2" />
-                    </list>
-                  </option>
-                </SplitterProportionsDataImpl>
-              </option>
-            </UIState>
-          </value>
-        </entry>
-      </map>
-    </option>
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <UIState>
+          <splitter-proportions>
+            <SplitterProportionsDataImpl />
+          </splitter-proportions>
+          <settings />
+        </UIState>
+      </state>
+      <state key="Copyright.UI">
+        <UIState>
+          <splitter-proportions>
+            <SplitterProportionsDataImpl />
+          </splitter-proportions>
+        </UIState>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <UIState>
+          <splitter-proportions>
+            <SplitterProportionsDataImpl />
+          </splitter-proportions>
+          <settings />
+        </UIState>
+      </state>
+    </states>
   </component>
 </project>
 

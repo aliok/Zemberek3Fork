@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SuffixWord implements WordParseResult {
+public class SuffixWord implements WordParse {
 
     private final Lemma lemma;
     private final List<Affix> suffixes;

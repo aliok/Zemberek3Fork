@@ -4,7 +4,7 @@ import zemberek3.structure.Lemma;
 
 import java.util.Iterator;
 
-public interface StemRepository<T extends CharSequence> {
+public interface StemRepository {
 
     StemRepository add(Lemma s);
 

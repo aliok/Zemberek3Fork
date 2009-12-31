@@ -4,7 +4,7 @@ import zemberek3.structure.affix.Affix;
 
 import java.util.List;
 
-public interface WordParseResult {
+public interface WordParse {
 
     Lemma getLemma();
 
