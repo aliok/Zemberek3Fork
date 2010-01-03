@@ -1,12 +1,12 @@
-package zemberek3.repository.stem;
+package zemberek3.repository.lemma;
 
 import zemberek3.structure.Lemma;
 
 import java.util.Iterator;
 
-public class LetterSequenceStemRepository implements StemRepository {
+public class LetterSequenceLemmaRepository implements LemmaRepository {
 
-    public StemRepository add(Lemma s) {
+    public LemmaRepository add(Lemma s) {
         return this;
     }
 

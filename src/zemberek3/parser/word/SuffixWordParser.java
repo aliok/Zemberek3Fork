@@ -1,9 +1,9 @@
 package zemberek3.parser.word;
 
+import zemberek3.repository.lemma.LemmaProvider;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.TurkicLetterSequence;
 import zemberek3.structure.TurkicWordParse;
-import zemberek3.repository.stem.StemProvider;
 import zemberek3.structure.affix.TurkicSuffix;
 
 import java.util.ArrayList;
@@ -18,13 +18,13 @@ public class SuffixWordParser implements WordParser {
 
     final SuffixParser<TurkicLetterSequence> suffixParser;
     final InputPreProcessor<TurkicLetterSequence> inputPreProcessor;
-    final StemProvider lemmaProvider;
+    final LemmaProvider lemmaProvider;
 
 
     public SuffixWordParser(
             SuffixParser<TurkicLetterSequence> suffixParser,
             InputPreProcessor<TurkicLetterSequence> inputPreProcessor,
-            StemProvider lemmaProvider) {
+            LemmaProvider lemmaProvider) {
         this.suffixParser = suffixParser;
         this.inputPreProcessor = inputPreProcessor;
         this.lemmaProvider = lemmaProvider;

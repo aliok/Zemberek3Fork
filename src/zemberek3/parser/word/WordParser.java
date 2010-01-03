@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * it parses the input sequence. Finding stem and affixes.
+ * it parses the input sequence. Finding lemma and affixes.
  */
 public interface WordParser {
 

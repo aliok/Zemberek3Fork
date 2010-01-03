@@ -17,7 +17,7 @@ public interface GeneratorService {
     String generate(Lemma lemma, List<TurkicSuffix> suffixes);
 
     /**
-     * Generates a word from a word parse result. Uses stem and affixes.
+     * Generates a word from a word parse result. Uses lemma and affixes.
      * @param wordParse word parse results.
      * @return generted word.
      */

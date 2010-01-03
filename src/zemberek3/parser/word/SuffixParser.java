@@ -12,7 +12,7 @@ import java.util.List;
 interface SuffixParser<T extends CharSequence> {
 
     /**
-     * parses the input for a given stem. it finds all possible suffix combinations.
+     * parses the input for a given lemma. it finds all possible suffix combinations.
      *
      * @param input input, a CharSequence implementation.
      * @param lemma  a Stem to use in the parsing.
@@ -27,7 +27,7 @@ interface SuffixParser<T extends CharSequence> {
      *
      * @param input input a CharSequence implementation.
      * @param lemma  a Stem to use in the parsing.
-     * @return an iterator that iterates and parses the input and stem.
+     * @return an iterator that iterates and parses the input and lemma.
      */
     Iterator<List<TurkicSuffix>> parseIterator(T input, Lemma lemma);
 }

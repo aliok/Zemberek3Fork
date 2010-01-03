@@ -1,4 +1,4 @@
-package zemberek3.repository.stem;
+package zemberek3.repository.lemma;
 
 import zemberek3.comparators.CharSequenceComparator;
 import zemberek3.structure.Lemma;
@@ -9,15 +9,15 @@ import java.util.List;
 /**
  * Finds stems which appears in the beginning of a CharSequence.
  */
-public class PrefixStemProvider implements StemProvider {
+public class PrefixLemmaProvider implements LemmaProvider {
 
-    StemRepository stemRepository;
+    LemmaRepository lemmaRepository;
     CharSequenceComparator<String> charSequenceComparator;
 
-    public PrefixStemProvider(
-            StemRepository stemRepository,
+    public PrefixLemmaProvider(
+            LemmaRepository lemmaRepository,
             CharSequenceComparator<String> charSequenceComparator) {
-        this.stemRepository = stemRepository;
+        this.lemmaRepository = lemmaRepository;
         this.charSequenceComparator = charSequenceComparator;
     }
 

@@ -1,4 +1,4 @@
-package zemberek3.repository.stem;
+package zemberek3.repository.lemma;
 
 import zemberek3.structure.Lemma;
 
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * provides stems for a given char sequence. search mechanism and matching rules are defined by the implementor.
  */
-public interface StemProvider {
+public interface LemmaProvider {
 
     /**
      * Finds all items matching with <code>word</code>

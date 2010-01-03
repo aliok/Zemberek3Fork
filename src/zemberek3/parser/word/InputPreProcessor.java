@@ -15,7 +15,7 @@ public interface InputPreProcessor<T extends CharSequence> {
     T processForParse(CharSequence input);
 
     /**
-     * makes modifications in the input using the stem if necessary.
+     * makes modifications in the input using the lemma if necessary.
      * this is usually used for abbreviations in a language.
      * Such as for Turkish, if an abbreviation does not include a vowel, this method may insert a temporary vowel
      * required for parsing.
