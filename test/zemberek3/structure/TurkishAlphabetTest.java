@@ -20,11 +20,11 @@ public class TurkishAlphabetTest {
     @Test
     public void getLetterByIndex() {
         TurkishAlphabet alphabet = new TurkishAlphabet();
+        Assert.assertEquals(alphabet.getLetter(4), TurkishAlphabet.L_cc);
         Assert.assertEquals(alphabet.getLetter(1), TurkishAlphabet.L_a);
         Assert.assertEquals(alphabet.getLetter(3), TurkishAlphabet.L_c);
         Assert.assertEquals(alphabet.getLetter(29), TurkishAlphabet.L_z);
         Assert.assertEquals(alphabet.getLetter(32), TurkishAlphabet.L_x);
-        Assert.assertEquals(alphabet.getLetter(4), TurkishAlphabet.L_cc);
         Assert.assertEquals(alphabet.getLetter(11), TurkishAlphabet.L_ii);
     }
 

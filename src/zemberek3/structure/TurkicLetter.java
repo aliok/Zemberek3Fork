@@ -7,17 +7,17 @@ public class TurkicLetter implements Letter {
 
     public final char charValue;
     public final int alphabeticIndex;
-    public final boolean vowel;
+    public final boolean vowel; // TODO: buna gerek var mi?
     public final boolean consonant;
     public final boolean frontalvowel;
     public final boolean backVowel;
     public final boolean roundedVowel;
-    public final boolean silent;
+    public final boolean silent; // TODO: ismi kontrol et.
     public final boolean nonEnglish;
     public final boolean nonTurkish;
     public final char englishEquivalentChar;
 
-    public static final TurkicLetter ILLEGAL = new TurkicLetter((char) 0, -1);
+    public static final TurkicLetter UNDEFINED = new TurkicLetter((char) 0, -1);
 
     public static Builder builder(char charValue, int alphabeticIndex) {
         return new Builder(charValue).alphabeticIndex(alphabeticIndex);
@@ -109,7 +109,6 @@ public class TurkicLetter implements Letter {
     }
 
     // only used for illegal letter.
-
     private TurkicLetter(char c, int alphabeticIndex) {
         this.charValue = c;
         this.alphabeticIndex = alphabeticIndex;
