@@ -1,8 +1,8 @@
 package zemberek3.service;
 
 import zemberek3.parser.syllable.SyllableParser;
-import zemberek3.structure.Letter;
-import zemberek3.structure.LetterSequence;
+import zemberek3.structure.TurkicLetter;
+import zemberek3.structure.TurkicLetterSequence;
 import zemberek3.structure.TurkishAlphabet;
 
 import java.util.ArrayList;
@@ -18,19 +18,19 @@ import java.util.List;
 public class StrictTurkishSyllableService extends BaseSyllableService implements SyllableService {
 
     private final TurkishAlphabet alphabet;
-    private final SyllableParser<LetterSequence> parser = new TurkishSyllableParser();
+    private final SyllableParser<TurkicLetterSequence> parser = new TurkishSyllableParser();
 
     public StrictTurkishSyllableService(TurkishAlphabet alphabet) {
         this.alphabet = alphabet;
     }
 
     public List<String> syllables(String input) {
-        return parser.parse(new LetterSequence(input, alphabet));
+        return parser.parse(new TurkicLetterSequence(input, alphabet));
     }
 
-    private class TurkishSyllableParser implements SyllableParser<LetterSequence> {
+    private class TurkishSyllableParser implements SyllableParser<TurkicLetterSequence> {
 
-        public List<String> parse(LetterSequence input) {
+        public List<String> parse(TurkicLetterSequence input) {
             List<String> list = new ArrayList<String>();
             while (input.length() > 0) {
                 int index = letterCountForLastSyllable(input);
@@ -60,11 +60,11 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
          *         durumlari kabul etmekte ama buna kisitlama getirilmesi iyi olur.
          *         sadece "tr", "st", "kr" gibi girislere izin verilmeli
          */
-        private int letterCountForLastSyllable(LetterSequence word) {
+        private int letterCountForLastSyllable(TurkicLetterSequence word) {
 
             final int boy = word.length();
-            Letter harf = word.getLetter(boy - 1);
-            Letter oncekiHarf = word.getLetter(boy - 2);
+            TurkicLetter harf = word.getLetter(boy - 1);
+            TurkicLetter oncekiHarf = word.getLetter(boy - 2);
 
             if (boy == 0)
                 return -1;
@@ -80,7 +80,7 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
                 if (boy == 2)
                     return 2;
 
-                Letter ikiOncekiHarf = word.getLetter(boy - 3);
+                TurkicLetter ikiOncekiHarf = word.getLetter(boy - 3);
 
                 //ste-tos-kop -> ste
                 if (!ikiOncekiHarf.isVowel() && boy == 3) {
@@ -93,14 +93,14 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
                 if (boy == 1)
                     return -1;
 
-                Letter ikiOncekiHarf = word.getLetter(boy - 3);
+                TurkicLetter ikiOncekiHarf = word.getLetter(boy - 3);
                 if (oncekiHarf.isVowel()) {
 
                     //word iki harfli (el, al) ya da iki onceki harf sesli (saat)
                     if (boy == 2 || ikiOncekiHarf.isVowel())
                         return 2;
 
-                    Letter ucOncekiHarf = word.getLetter(boy - 4);
+                    TurkicLetter ucOncekiHarf = word.getLetter(boy - 4);
                     // word uc harfli (kal, sel) ya da uc onceki harf sesli (kanat),
                     if (boy == 3 || ucOncekiHarf.isVowel())
                         return 3;
@@ -110,7 +110,7 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
                     if (boy == 4)
                         return -1;
 
-                    Letter dortOncekiHarf = word.getLetter(boy - 5);
+                    TurkicLetter dortOncekiHarf = word.getLetter(boy - 5);
                     if (!dortOncekiHarf.isVowel())
                         return 3;
                     return 3;
@@ -119,7 +119,7 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
 
                     if (boy == 2 || !ikiOncekiHarf.isVowel())
                         return -1;
-                    Letter ucOncekiHarf = word.getLetter(boy - 4);
+                    TurkicLetter ucOncekiHarf = word.getLetter(boy - 4);
                     if (boy > 3 && !ucOncekiHarf.isVowel())
                         return 4;
                     return 3;

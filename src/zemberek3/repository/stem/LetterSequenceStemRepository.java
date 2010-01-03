@@ -1,6 +1,5 @@
 package zemberek3.repository.stem;
 
-import zemberek3.structure.LetterSequence;
 import zemberek3.structure.Lemma;
 
 import java.util.Iterator;

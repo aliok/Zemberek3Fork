@@ -1,45 +1,45 @@
 package zemberek3.structure;
 
 /**
- * <code>LetterSequence</code> represents a sequence of <code>Letter</code>s. It is mutable and not Thread safe.
+ * <code>TurkicLetterSequence</code> represents a sequence of <code>Letter</code>s. It is mutable and not Thread safe.
  * should be used for intermediate operations, not as storage.
  */
-public class LetterSequence implements CharSequence, Comparable<LetterSequence> {
+public class TurkicLetterSequence implements CharSequence, Comparable<TurkicLetterSequence> {
 
-    private Letter[] letters;
+    private TurkicLetter[] letters;
     private int size = 0;
-    public static final LetterSequence EMPTY_SEQUENCE = new LetterSequence(0);
+    public static final TurkicLetterSequence EMPTY_SEQUENCE = new TurkicLetterSequence(0);
 
     /**
      * default constructor. Creates an array with  7 letter reference.
      */
-    public LetterSequence() {
-        letters = new Letter[7];
+    public TurkicLetterSequence() {
+        letters = new TurkicLetter[7];
     }
 
     /**
      * 'capacity' boyutlu 'Letter' dizisine sahip nesne olusturur.
      *
-     * @param capacity baslangic olusan Letter[] boyu
+     * @param capacity baslangic olusan TurkicLetter[] boyu
      */
-    public LetterSequence(int capacity) {
-        letters = new Letter[capacity];
+    public TurkicLetterSequence(int capacity) {
+        letters = new TurkicLetter[capacity];
     }
 
     /**
      * 'capacity' boyutlu 'Letter' dizisine sahip nesne olusturur. daha sonra
-     * girisi String'i icindeki karakterleri Letter seklinde Letter dizisine aktarir.
+     * girisi String'i icindeki karakterleri TurkicLetter seklinde TurkicLetter dizisine aktarir.
      * Eger String boyu capacityden buyukse capacity'yi boy'a esitler.
      * Eger String icindeki karakter Alfabe'de yar almiyorsa "TANIMSIZ_HARF" harfi olarak eklenir.
      *
      * @param str      ornek alincak String
-     * @param capacity baslangic olusan Letter[] boyu
+     * @param capacity baslangic olusan TurkicLetter[] boyu
      * @param alphabet ilgili alphabet
      */
-    public LetterSequence(String str, Alphabet alphabet, int capacity) {
+    public TurkicLetterSequence(String str, TurkicAlphabet alphabet, int capacity) {
         if (capacity < str.length())
             capacity = str.length();
-        letters = new Letter[capacity];
+        letters = new TurkicLetter[capacity];
         size = str.length();
         for (int i = 0; i < size; i++)
             letters[i] = alphabet.getLetter(str.charAt(i));
@@ -52,33 +52,33 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param str      ornek alincak String
      * @param alphabet ilgili alphabet
      */
-    public LetterSequence(String str, Alphabet alphabet) {
+    public TurkicLetterSequence(String str, TurkicAlphabet alphabet) {
         size = str.length();
-        letters = new Letter[size];
+        letters = new TurkicLetter[size];
         for (int i = 0; i < size; i++)
             letters[i] = alphabet.getLetter(str.charAt(i));
     }
 
     /**
      * Copy-Constructor. gelen harf dizisi ile ayni icerige sahip olacak sekilde
-     * Letter dizisi olusturur.
+     * TurkicLetter dizisi olusturur.
      *
-     * @param sequence ornek alinacak LetterSequence
+     * @param sequence ornek alinacak TurkicLetterSequence
      */
-    public LetterSequence(LetterSequence sequence) {
+    public TurkicLetterSequence(TurkicLetterSequence sequence) {
         size = sequence.length();
-        letters = new Letter[size];
+        letters = new TurkicLetter[size];
         System.arraycopy(sequence.letters, 0, letters, 0, size);
     }
 
     /**
-     * gelen Letter dizisini icerige kopyalar.
+     * gelen TurkicLetter dizisini icerige kopyalar.
      *
-     * @param sequence kopyalancak Letter dizisi.
+     * @param sequence kopyalancak TurkicLetter dizisi.
      */
-    private LetterSequence(Letter[] sequence) {
+    private TurkicLetterSequence(TurkicLetter[] sequence) {
         size = sequence.length;
-        letters = new Letter[size];
+        letters = new TurkicLetter[size];
         System.arraycopy(sequence, 0, letters, 0, size);
     }
 
@@ -95,7 +95,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @return varsa son harf, Yoksa TANIMSIZ_HARF.
      */
-    public Letter lastLetter() {
+    public TurkicLetter lastLetter() {
         if (size < 1)
             throw new IllegalStateException("Letter sequence is empty");
         return letters[size - 1];
@@ -107,7 +107,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *
      * @return varsa son sesli yoksa TANIMSIZ_HARF
      */
-    public Letter lastVowel() {
+    public TurkicLetter lastVowel() {
         for (int i = size - 1; i >= 0; i--) {
             if (letters[i].isVowel())
                 return letters[i];
@@ -119,10 +119,10 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * ic metod. harf dizisinin boyutu yetersiz geldiginde "ek" miktarinda daha
      * fazla yere sahip yeni dizi olusturulup icerik yeni diziye kopyalanir.
      *
-     * @param ek eklenecek LetterSequence miktari.
+     * @param ek eklenecek TurkicLetterSequence miktari.
      */
     private void adjustCapacity(int ek) {
-        Letter[] newSeq = new Letter[letters.length + ek];
+        TurkicLetter[] newSeq = new TurkicLetter[letters.length + ek];
         System.arraycopy(letters, 0, newSeq, 0, letters.length);
         letters = newSeq;
     }
@@ -131,7 +131,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * otomatik capacity ayarlama. dizi boyu iki katina cikarilir.
      */
     private void adjustCapacity() {
-        Letter[] newSeq = new Letter[letters.length * 2];
+        TurkicLetter[] newSeq = new TurkicLetter[letters.length * 2];
         System.arraycopy(letters, 0, newSeq, 0, letters.length);
         letters = newSeq;
     }
@@ -142,7 +142,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param harf eklenecek harf
      * @return this
      */
-    public LetterSequence append(Letter harf) {
+    public TurkicLetterSequence append(TurkicLetter harf) {
         if (size == letters.length)
             adjustCapacity(3);
         letters[size++] = harf;
@@ -157,7 +157,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param harf  eklenecek harf.
      * @throws ArrayIndexOutOfBoundsException
      */
-    public void insert(int index, Letter harf) {
+    public void insert(int index, TurkicLetter harf) {
         if (index < 0 || index > size)
             throw new ArrayIndexOutOfBoundsException("index degeri:" + index + " fakat harf dizi boyu:" + size);
 
@@ -176,7 +176,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param hdizi ulanacak harf dizisi.
      * @return this.
      */
-    public LetterSequence append(LetterSequence hdizi) {
+    public TurkicLetterSequence append(TurkicLetterSequence hdizi) {
         int hboy = hdizi.length();
         if (size + hboy > letters.length)
             adjustCapacity(hboy);
@@ -195,7 +195,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @return this.
      * @throws ArrayIndexOutOfBoundsException
      */
-    public LetterSequence append(int index, LetterSequence sequence) {
+    public TurkicLetterSequence append(int index, TurkicLetterSequence sequence) {
         if (index < 0 || index > size)
             throw new ArrayIndexOutOfBoundsException("indeks degeri:" + index + " fakat harf dizi boyu:" + size);
 
@@ -214,22 +214,22 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
         return this;
     }
 
-    public LetterSequence araDizi(int bas, int son) {
+    public TurkicLetterSequence araDizi(int bas, int son) {
         if (son < bas) return null;
-        Letter[] yeniHarfler = new Letter[son - bas];
+        TurkicLetter[] yeniHarfler = new TurkicLetter[son - bas];
         System.arraycopy(letters, bas, yeniHarfler, 0, son - bas);
-        return new LetterSequence(yeniHarfler);
+        return new TurkicLetterSequence(yeniHarfler);
     }
 
     /**
-     * verilen pozisyondaki harfi dondurur. icerigi "kedi" olan LetterSequence icin
+     * verilen pozisyondaki harfi dondurur. icerigi "kedi" olan TurkicLetterSequence icin
      * harf(1) e dondurur.
      *
-     * @param  i Letter index.
-     * @return Letter from given index i.
+     * @param i TurkicLetter index.
+     * @return TurkicLetter from given index i.
      * @throws IndexOutOfBoundsException if <code>i</code> is smaller than zero or larger than size-1
      */
-    public Letter getLetter(int i) {
+    public TurkicLetter getLetter(int i) {
         if (i >= size || i < 0)
             throw new IndexOutOfBoundsException("Cannot retrieve letter from sequence with index:" + i);
         return letters[i];
@@ -241,7 +241,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param index baslangic indeksi.
      * @return varsa ilk sesli, yoksa UNDEFINED_LETTER
      */
-    public Letter firstVowel(int index) {
+    public TurkicLetter firstVowel(int index) {
         for (int i = index; i < size; i++) {
             if (letters[i].isVowel())
                 return letters[i];
@@ -250,7 +250,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
     }
 
     /**
-     * Tam esitlik kiyaslamasi. kiyaslama nesne tipi, ardindan da Letter dizisi icindeki
+     * Tam esitlik kiyaslamasi. kiyaslama nesne tipi, ardindan da TurkicLetter dizisi icindeki
      * harflerin char iceriklerine gore yapilir.
      *
      * @param o kiyaslanacak nesne
@@ -259,9 +259,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
     public boolean equals(Object o) {
         if (o == null) return false;
         if (this == o) return true;
-        if (!(o instanceof LetterSequence)) return false;
+        if (!(o instanceof TurkicLetterSequence)) return false;
 
-        final LetterSequence harfDizisi = (LetterSequence) o;
+        final TurkicLetterSequence harfDizisi = (TurkicLetterSequence) o;
         if (size != harfDizisi.size) return false;
         for (int i = 0; i < size; i++) {
             if (letters[i].charValue() != harfDizisi.letters[i].charValue())
@@ -270,7 +270,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
         return true;
     }
 
-    public boolean startsWith(LetterSequence ls) {
+    public boolean startsWith(TurkicLetterSequence ls) {
         if (ls.size > size)
             return false;
         for (int i = 0; i < ls.letters.length; i++) {
@@ -285,13 +285,13 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
     }
 
     /**
-     * istenen noktadaki harfi giris parametresi olan Letter ile degistirir.
+     * istenen noktadaki harfi giris parametresi olan TurkicLetter ile degistirir.
      *
      * @param index degistirilecek indeks.
      * @param harf  kullanilacak harf
      * @throws ArrayIndexOutOfBoundsException
      */
-    public void changeLetter(int index, Letter harf) {
+    public void changeLetter(int index, TurkicLetter harf) {
         validateIndex(index);
         letters[index] = harf;
     }
@@ -319,7 +319,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @return dizinin kendisi.
      * @throws ArrayIndexOutOfBoundsException
      */
-    public LetterSequence delete(int index) {
+    public TurkicLetterSequence delete(int index) {
         validateIndex(index);
         if (index == size - 1) {
             size--;
@@ -338,7 +338,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      * @param harfSayisi silinecek harf miktari
      * @return dizinin kendisi
      */
-    public LetterSequence delete(int index, int harfSayisi) {
+    public TurkicLetterSequence delete(int index, int harfSayisi) {
         validateIndex(index);
         if (index + harfSayisi > size)
             harfSayisi = size - index;
@@ -351,9 +351,9 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
     /**
      * ilk harfi dondurur. eger harf yoksa UNDEFINED_LETTER doner.
      *
-     * @return ilk Letter.
+     * @return ilk TurkicLetter.
      */
-    public Letter firstLetter() {
+    public TurkicLetter firstLetter() {
         if (size == 0)
             throw new IllegalStateException("Letter sequence is empty");
         return letters[0];
@@ -399,7 +399,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
      *         'kedi'.compareTo('kedm') -> -4 (i->m alphabettik sira farki)
      *         'kedi'.compareTo(null) -> 1
      */
-    public int compareTo(LetterSequence o) {
+    public int compareTo(TurkicLetterSequence o) {
         if (o == null)
             return 1;
 
@@ -455,7 +455,7 @@ public class LetterSequence implements CharSequence, Comparable<LetterSequence> 
         return letters[index].charValue();
     }
 
-    public LetterSequence subSequence(int start, int end) {
+    public TurkicLetterSequence subSequence(int start, int end) {
         return araDizi(start, end);
     }
 

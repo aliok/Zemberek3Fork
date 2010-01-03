@@ -1,7 +1,7 @@
 package zemberek3.repository;
 
 
-import zemberek3.structure.Alphabet;
+import zemberek3.structure.TurkicAlphabet;
 import zemberek3.comparators.CharSequenceComparator;
 
 import java.io.DataInputStream;
@@ -17,12 +17,12 @@ import java.util.*;
  * @author mdakin
  */
 public class SimpleCompactStringTrie {
-    private final Alphabet alphabet;
+    private final TurkicAlphabet alphabet;
     //  private TinyStrings stringsHelper;
     private Node root = new Node();
 
 
-    public SimpleCompactStringTrie(Alphabet a) {
+    public SimpleCompactStringTrie(TurkicAlphabet a) {
         this.alphabet = a;
 //    stringsHelper = new TinyStrings(a);
     }
@@ -141,7 +141,7 @@ public class SimpleCompactStringTrie {
      * A compact implementation for trie nodes for memory limited systems.
      *
      * @author mdakin
-     * @TODO(mdakin): Alphabet access should be through an Alphabet singleton
+     * @TODO(mdakin): Alphabet access should be through an TurkicAlphabet singleton
      * to able to use different alphabets (languages)
      */
     public class Node<T> {

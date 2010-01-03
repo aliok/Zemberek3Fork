@@ -1,18 +1,18 @@
 package zemberek3.structure;
 
 /**
- * An Alphabet is a collection of symbols used for written language.
+ * An TurkicAlphabet is a collection of symbols used for written language.
  */
-public interface Alphabet<T extends Letter> {
+public interface TurkicAlphabet {
 
     /**
      * returns the Letter representation of a char. if there is no Letter for the char, it throws IllegalCharException
      * @param c input character
      * @return Letter representation.
      */
-    T getLetter(char c);
+    TurkicLetter getLetter(char c);
 
-    boolean englishEqual(T l1, T l2);
+    boolean englishEqual(TurkicLetter l1, TurkicLetter  l2);
 
     boolean isValid(char c);
 

@@ -1,17 +1,17 @@
 package zemberek3.parser.modifiers;
 
-import zemberek3.structure.LetterSequence;
+import zemberek3.structure.TurkicLetterSequence;
 
 
 public class SequenceAppender implements SequenceModifier {
 
-    final LetterSequence toBeAppended;
+    final TurkicLetterSequence toBeAppended;
 
-    public SequenceAppender(LetterSequence toBeAppended) {
+    public SequenceAppender(TurkicLetterSequence toBeAppended) {
         this.toBeAppended = toBeAppended;
     }
 
-    public SequenceModifier modify(LetterSequence sequence) {
+    public SequenceModifier modify(TurkicLetterSequence sequence) {
         sequence.append(toBeAppended);
         return this;
     }

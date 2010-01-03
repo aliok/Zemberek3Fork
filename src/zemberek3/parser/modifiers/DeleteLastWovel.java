@@ -1,6 +1,6 @@
 package zemberek3.parser.modifiers;
 
-import zemberek3.structure.LetterSequence;
+import zemberek3.structure.TurkicLetterSequence;
 
 /**
  * deletes the last wovel form the letter sequence. if there is no
@@ -13,7 +13,7 @@ public class DeleteLastWovel implements SequenceModifier {
      * @param letterSequence input sequence.
      * @return this
      */
-    public SequenceModifier modify(LetterSequence letterSequence) {
+    public SequenceModifier modify(TurkicLetterSequence letterSequence) {
         for (int i = letterSequence.length() - 1; i >= 0; i--) {
             if (letterSequence.getLetter(i).isVowel()) {
                 letterSequence.delete(i);

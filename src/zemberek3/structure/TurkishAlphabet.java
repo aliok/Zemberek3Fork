@@ -9,7 +9,7 @@ import static zemberek3.structure.TurkicLetter.builder;
  * Contains Turkish Letters, Turkish Letter equivalent chars, several helper methods.
  * TurkishAlphanbet only contains small case letters.
  */
-public class TurkishAlphabet implements Alphabet<TurkicLetter> {
+public class TurkishAlphabet implements TurkicAlphabet {
 
     // Turkish specific characters.
     public static final char C_CC = '\u00c7'; // Kuyruklu buyuk c (ch)
@@ -219,7 +219,7 @@ public class TurkishAlphabet implements Alphabet<TurkicLetter> {
         return ENGLISH_EQUIVALENT_LETTER_LOOKUP[getAphabeticIndex(c) - 1];
     }
 
-    // ----------------------- Alphabet Interface methods -------------------------
+    // ----------------------- TurkicAlphabet Interface methods -------------------------
 
     public final boolean isValid(char c) {
         return c < MAX_CHAR_VALUE && VALID_CHAR_TABLE[c];
