@@ -1,6 +1,6 @@
 package zemberek3.repository.affix.turkic;
 
-public enum TurkishSuffixType implements AffixType {
+public enum TurkicSuffixType {
     N_NOMINAL,
     N_PLURAL_LAR,
     N_DIMINITIVE_CIK,
@@ -9,5 +9,9 @@ public enum TurkishSuffixType implements AffixType {
     N_LOCATIVE_DA,
     N_ABLATIVE_DAN,
     N_GENITIVE_IN,
+
+    A_ADJECTIVE,
+
+    V_VERBAL
 
 }

@@ -2,10 +2,13 @@ package zemberek3.service;
 
 import java.util.List;
 
+/**
+ * Provides syllable related operations.
+ */
 public interface SyllableService {
 
     /**
-     * Returns the syllables as a String List. if word cannot be parsed, an emty list is returned.     *
+     * Returns the syllables as a String List. if word cannot be parsed, an emty list is returned.
      * <p>Example for Turkish:
      * <p><code>("merhaba") -> ["mer","ha","ba"]</code>
      * <p><code>("mr") -> []</code>

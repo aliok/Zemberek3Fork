@@ -10,7 +10,7 @@ public class TurkishSuffixRepository implements SuffixRepository {
 
     List<TurkicSuffix> suffixList = new ArrayList<TurkicSuffix>();
 
-    public TurkicSuffix getSuffixByType(AffixType type) {
+    public TurkicSuffix getSuffixByType(TurkicSuffixType type) {
         return null;
     }
 
@@ -22,25 +22,25 @@ public class TurkishSuffixRepository implements SuffixRepository {
         return null;
     }
 
-    private Map<AffixType, MutableSuffix> suffixBuilders = new HashMap<AffixType, MutableSuffix>();
+    private Map<TurkicSuffixType, MutableSuffix> suffixBuilders = new HashMap<TurkicSuffixType, MutableSuffix>();
 
     private static class MutableSuffix {
-        AffixType type;
+        TurkicSuffixType type;
         List<MutableSuffix> builder = new ArrayList<MutableSuffix>();
-        List<AffixType> successiveSuffixes = new ArrayList<AffixType>();
+        List<TurkicSuffixType> successiveSuffixes = new ArrayList<TurkicSuffixType>();
         String generators;
 
-        public MutableSuffix(AffixType type) {
+        public MutableSuffix(TurkicSuffixType type) {
             this.type = type;
         }
 
-        public MutableSuffix successiveSuffixes(AffixType... affixTypes) {
+        public MutableSuffix successiveSuffixes(TurkicSuffixType... affixTypes) {
             successiveSuffixes.addAll(Arrays.asList(affixTypes));
             return this;
         }
 
-        public MutableSuffix successiveSuffixes(List<AffixType>... affixTypes) {
-            for (List<AffixType> affixTypeList : affixTypes) {
+        public MutableSuffix successiveSuffixes(List<TurkicSuffixType>... affixTypes) {
+            for (List<TurkicSuffixType> affixTypeList : affixTypes) {
                 successiveSuffixes.addAll(affixTypeList);
             }
             return this;
@@ -53,12 +53,12 @@ public class TurkishSuffixRepository implements SuffixRepository {
     }
 
     private void initialize() {
-        AffixType[] types = TurkishSuffixType.values();
-        for (AffixType type : types) {
+        TurkicSuffixType[] types = TurkicSuffixType.values();
+        for (TurkicSuffixType type : types) {
             suffixBuilders.put(type, new MutableSuffix(type));
         }
 
-        TurkicSuffix nominalNoun = suffixBuilders.get(TurkishSuffixType.N_NOMINAL).build();
+        TurkicSuffix nominalNoun = suffixBuilders.get(TurkicSuffixType.N_NOMINAL).build();
 
     }
 

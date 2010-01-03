@@ -17,12 +17,8 @@ import java.util.List;
  */
 public class StrictTurkishSyllableService extends BaseSyllableService implements SyllableService {
 
-    private final TurkishAlphabet alphabet;
+    private final TurkishAlphabet alphabet = new TurkishAlphabet();
     private final SyllableParser<TurkicLetterSequence> parser = new TurkishSyllableParser();
-
-    public StrictTurkishSyllableService(TurkishAlphabet alphabet) {
-        this.alphabet = alphabet;
-    }
 
     public List<String> syllables(String input) {
         return parser.parse(new TurkicLetterSequence(input, alphabet));
