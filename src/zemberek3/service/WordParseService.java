@@ -1,7 +1,7 @@
 package zemberek3.service;
 
 import zemberek3.structure.Lemma;
-import zemberek3.structure.WordParse;
+import zemberek3.structure.TurkicWordParse;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface WordParseService {
      * @param input single input word.
      * @return all possible parses.
      */
-    List<WordParse> parse(String input);
+    List<TurkicWordParse> parse(String input);
 
     /**
      * returns all possible morphem lists. if there is no morphemes, an empty list.

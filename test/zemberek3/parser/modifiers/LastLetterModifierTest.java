@@ -1,7 +1,6 @@
 package zemberek3.parser.modifiers;
 
 import org.junit.Test;
-import zemberek3.structure.Letter;
 import zemberek3.structure.TurkicLetter;
 
 import java.util.Map;

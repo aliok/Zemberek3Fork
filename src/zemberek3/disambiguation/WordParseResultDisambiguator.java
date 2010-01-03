@@ -1,7 +1,7 @@
 package zemberek3.disambiguation;
 
 import zemberek3.structure.ScoredItem;
-import zemberek3.structure.WordParse;
+import zemberek3.structure.TurkicWordParse;
 
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +16,6 @@ public interface WordParseResultDisambiguator {
      * @param words a sequence of words.
      * @return an iterator that iterates through each word's scored <code>WordParse</code> list..
      */
-    Iterator<List<ScoredItem<WordParse>>> scoreListIterator(List<CharSequence> words);
+    Iterator<List<ScoredItem<TurkicWordParse>>> scoreListIterator(List<CharSequence> words);
 
 }

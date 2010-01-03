@@ -1,7 +1,7 @@
 package zemberek3.service;
 
 import zemberek3.structure.Lemma;
-import zemberek3.structure.WordParse;
+import zemberek3.structure.TurkicWordParse;
 import zemberek3.structure.affix.Affix;
 
 import java.util.List;
@@ -21,5 +21,5 @@ public interface GeneratorService {
      * @param wordParse word parse results.
      * @return generted word.
      */
-    String generate(WordParse wordParse);
+    String generate(TurkicWordParse wordParse);
 }

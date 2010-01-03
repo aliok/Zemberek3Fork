@@ -2,8 +2,7 @@ package zemberek3.parser.word;
 
 import zemberek3.structure.Lemma;
 import zemberek3.structure.TurkicLetterSequence;
-import zemberek3.structure.SuffixWord;
-import zemberek3.structure.WordParse;
+import zemberek3.structure.TurkicWordParse;
 import zemberek3.structure.affix.Affix;
 import zemberek3.repository.stem.StemProvider;
 
@@ -31,7 +30,7 @@ public class SuffixWordParser implements WordParser {
         this.lemmaProvider = lemmaProvider;
     }
 
-    public List<WordParse> parse(CharSequence input) {
+    public List<TurkicWordParse> parse(CharSequence input) {
         // sanitize input.
         final TurkicLetterSequence processed = inputPreProcessor.processForParse(input);
 
@@ -41,24 +40,24 @@ public class SuffixWordParser implements WordParser {
             return Collections.emptyList();
 
         // get suffix parse results.
-        List<WordParse> wordParses = new ArrayList<WordParse>();
+        List<TurkicWordParse> wordParses = new ArrayList<TurkicWordParse>();
         for (Lemma lemma : lemmas) {
             // process the input for lemma if necessary.
             final TurkicLetterSequence processedForStem = inputPreProcessor.modifyForStem(processed, lemma);
             // get suffix parse results and form Words.
             Iterator<List<Affix>> suffixParseIterator = suffixParser.parseIterator(processedForStem, lemma);
             while (suffixParseIterator.hasNext()) {
-                wordParses.add(new SuffixWord(lemma, suffixParseIterator.next()));
+                wordParses.add(new TurkicWordParse(lemma, suffixParseIterator.next()));
             }
         }
         return wordParses;
     }
 
-    public Iterator<WordParse> parseIterator(CharSequence input) {
+    public Iterator<TurkicWordParse> parseIterator(CharSequence input) {
         return new ParseResultIterator(inputPreProcessor.processForParse(input));
     }
 
-    private class ParseResultIterator implements Iterator<WordParse> {
+    private class ParseResultIterator implements Iterator<TurkicWordParse> {
 
         private final TurkicLetterSequence input;
         private final Iterator<Lemma> stemIterator;
@@ -91,8 +90,8 @@ public class SuffixWordParser implements WordParser {
             return suffixParseIterator.hasNext();
         }
 
-        public WordParse next() {
-            return new SuffixWord(currentLemma, suffixParseIterator.next());
+        public TurkicWordParse next() {
+            return new TurkicWordParse(currentLemma, suffixParseIterator.next());
         }
 
         public void remove() {

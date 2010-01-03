@@ -12,11 +12,19 @@ public interface TurkicAlphabet {
      */
     TurkicLetter getLetter(char c);
 
-    boolean englishEqual(TurkicLetter l1, TurkicLetter  l2);
+    public TurkicLetter getLetter(int alphabeticIndex);
 
     boolean isValid(char c);
 
+    char getCharByAlphabeticIndex(int alphabeticIndex);
+
     int getAphabeticIndex(char c);
 
-    char getCharByAlphabeticIndex(int index);
+    TurkicLetter getEnglishquivalentLetter(TurkicLetter letter);
+
+    boolean englishEqual(char c1, char c2);
+
+    public char getEnglishquivalentChar(char c);
+
+    public TurkicLetter getEnglishquivalentLetter(char c);
 }

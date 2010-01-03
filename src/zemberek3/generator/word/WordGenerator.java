@@ -1,9 +1,9 @@
 package zemberek3.generator.word;
 
-import zemberek3.structure.WordParse;
+import zemberek3.structure.TurkicWordParse;
 
 public interface WordGenerator {
 
-    CharSequence generate(WordParse wordParse);
+    CharSequence generate(TurkicWordParse wordParse);
 
 }

@@ -1,6 +1,6 @@
 package zemberek3.generator.word;
 
-import zemberek3.structure.WordParse;
+import zemberek3.structure.TurkicWordParse;
 
 
 public interface WordFormatter {
@@ -10,7 +10,7 @@ public interface WordFormatter {
      * @param wordParse word to format.
      * @return returns the formatted word.
      */
-    CharSequence format(WordParse wordParse);
+    CharSequence format(TurkicWordParse wordParse);
     
     /**
      * Input dependend Word formatting. such as for Turkish, if parse result is a Word containing
@@ -21,5 +21,5 @@ public interface WordFormatter {
      * @param wordParse is the parse result of the input.
      * @return formatted result.
      */
-    CharSequence format(CharSequence input, WordParse wordParse);
+    CharSequence format(CharSequence input, TurkicWordParse wordParse);
 }

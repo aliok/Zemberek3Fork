@@ -185,17 +185,6 @@ public class TurkishAlphabet implements TurkicAlphabet {
     }
 
     /**
-     * checks if two letter are enlishcharacter equal.
-     *
-     * @param l1 first letter
-     * @param l2 second letter
-     * @return true if equals or enlishequivalents are same.
-     */
-    public boolean englishEqual(TurkicLetter l1, TurkicLetter l2) {
-        return l1.englishEquivalentChar() == l2.englishEquivalentChar();
-    }
-
-    /**
      * checks if two characters are enlishcharacter equal.
      *
      * @param c1 first char
