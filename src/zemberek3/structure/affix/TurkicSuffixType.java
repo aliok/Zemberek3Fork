@@ -1,4 +1,4 @@
-package zemberek3.repository.affix.turkic;
+package zemberek3.structure.affix;
 
 public enum TurkicSuffixType {
     N_NOMINAL,

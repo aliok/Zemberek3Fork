@@ -1,6 +1,6 @@
 package zemberek3.repository.affix;
 
-import zemberek3.repository.affix.turkic.TurkicSuffixType;
+import zemberek3.structure.affix.TurkicSuffixType;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.affix.TurkicSuffix;
 
