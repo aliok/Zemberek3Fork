@@ -1,6 +1,5 @@
 package zemberek3.parser.modifiers;
 
-import zemberek3.structure.Letter;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicLetterSequence;
 

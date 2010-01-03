@@ -5,6 +5,9 @@ import zemberek3.structure.affix.TurkicSuffix;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the parse result of a TurkicWord. it always contain a Lemma, and zero or more TurkicSuffix.
+ */
 public class TurkicWordParse {
 
     private final Lemma lemma;

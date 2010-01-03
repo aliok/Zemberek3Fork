@@ -3,7 +3,7 @@ package zemberek3.structure;
 /**
  * This is a Letter which contains Turkic language specific attributes, such as vowel type, englishEquivalent characters.
  */
-public class TurkicLetter implements Letter {
+public class TurkicLetter {
 
     public final char charValue;
     public final int alphabeticIndex;

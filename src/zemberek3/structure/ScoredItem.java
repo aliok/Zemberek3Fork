@@ -1,8 +1,8 @@
 package zemberek3.structure;
 
 /**
- * this is a helper class for scoring an item. it contains the item and related double score value.
- * it is immutable providing T is not modified.
+ * this is a class for scoring an item. it contains the item and related double score value.
+ * it is immutable providing T is immutable.
  */
 public class ScoredItem<T> implements Comparable<ScoredItem> {
 
