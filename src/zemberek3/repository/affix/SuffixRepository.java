@@ -2,13 +2,13 @@ package zemberek3.repository.affix;
 
 import zemberek3.repository.affix.turkic.AffixType;
 import zemberek3.structure.Lemma;
-import zemberek3.structure.affix.Affix;
+import zemberek3.structure.affix.TurkicSuffix;
 
-public interface SuffixRepository<T extends Affix> {
+public interface SuffixRepository {
 
-    T getSuffixByType(AffixType type); 
+    TurkicSuffix getSuffixByType(AffixType type);
 
-    T getSuffixByName(String name);
+    TurkicSuffix getSuffixByName(String name);
 
-    T getRootSuffix(Lemma lemma);
+    TurkicSuffix getRootSuffix(Lemma lemma);
 }

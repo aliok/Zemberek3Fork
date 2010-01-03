@@ -5,7 +5,7 @@ import zemberek3.repository.affix.SuffixRepository;
 import zemberek3.structure.TurkicAlphabet;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.TurkicLetterSequence;
-import zemberek3.structure.affix.Affix;
+import zemberek3.structure.affix.TurkicSuffix;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,21 +33,21 @@ public class TopDownSuffixParser implements SuffixParser<TurkicLetterSequence> {
         int suffixSequence;
     }
 
-    public List<List<Affix>> parse(TurkicLetterSequence input, Lemma lemma) {
+    public List<List<TurkicSuffix>> parse(TurkicLetterSequence input, Lemma lemma) {
 
         LinkedList<ParseState> parseStack = new LinkedList<ParseState>();
-        Affix rootSuffix = suffixes.getRootSuffix(lemma);
+        TurkicSuffix rootSuffix = suffixes.getRootSuffix(lemma);
         // original lemma sequence. this may be required after lemma's formation is changed during the parse.
         TurkicLetterSequence stemSequence = new TurkicLetterSequence(lemma.getContent(), alphabet);
 
         return null;
     }
 
-    public Iterator<List<Affix>> parseIterator(TurkicLetterSequence input, Lemma lemma) {
+    public Iterator<List<TurkicSuffix>> parseIterator(TurkicLetterSequence input, Lemma lemma) {
         return new ParseIterator(input, lemma);
     }
 
-    private class ParseIterator implements Iterator<List<Affix>> {
+    private class ParseIterator implements Iterator<List<TurkicSuffix>> {
 
         final TurkicLetterSequence input;
         final Lemma lemma;
@@ -61,7 +61,7 @@ public class TopDownSuffixParser implements SuffixParser<TurkicLetterSequence> {
             return false;
         }
 
-        public List<Affix> next() {
+        public List<TurkicSuffix> next() {
             return null;
         }
 

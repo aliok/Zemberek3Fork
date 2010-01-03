@@ -5,13 +5,13 @@ import java.util.List;
 /**
  * represents a Turkic language suffix
  */
-public class TurkicSuffix implements Affix {
+public class TurkicSuffix {
 
-    public List<Affix> successors() {
+    public List<TurkicSuffix> successors() {
         return null;
     }
 
-    public List<Affix> predecessors() {
+    public List<TurkicSuffix> predecessors() {
         return null;
     }
 }

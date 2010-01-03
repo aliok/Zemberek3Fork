@@ -16,12 +16,19 @@
   </component>
   <component name="ChangeListManager" verified="true">
     <list default="true" readonly="true" id="e6444d3a-622b-455c-9751-fc082f3bf396" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java" afterPath="$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/Letter.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/Letter.java" />
-      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\cache\SimpleCache.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixParser.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java" />
+      <change type="DELETED" beforePath="C:\usr\projects\zemberek3\src\zemberek3\structure\affix\Affix.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/TopDownSuffixParser.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/TopDownSuffixParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/affix/TurkicSuffix.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/affix/TurkicSuffix.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zemberek3.iws" afterPath="$PROJECT_DIR$/zemberek3.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/service/GeneratorService.java" afterPath="$PROJECT_DIR$/src/zemberek3/service/GeneratorService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixLoader.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java" afterPath="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java" afterPath="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zemberek3/structure/TurkicWordParse.java" afterPath="$PROJECT_DIR$/src/zemberek3/structure/TurkicWordParse.java" />
     </list>
     <ignored mask="findmerge.log.*" />
     <ignored mask="*.contrib.*" />
@@ -85,82 +92,48 @@
   <component name="FileColors" enabled="false" enabledForTabs="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TurkishAlphabet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java">
+      <file leaf-file-name="TurkicWordParse.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkicWordParse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="30" selection-start="7542" selection-end="7542" vertical-scroll-proportion="0.42060086">
+            <state line="25" column="0" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TurkishAlphabetTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java">
+      <file leaf-file-name="XmlTurkicSuffixLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="40" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
+            <state line="8" column="28" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneratorService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/service/GeneratorService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="50" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoredItem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/ScoredItem.java">
+      <file leaf-file-name="SuffixParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/SuffixParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+            <state line="31" column="30" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lemma.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Lemma.java">
+      <file leaf-file-name="SuffixWordParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LetterSequence.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/LetterSequence.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="5" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Abbreviation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Abbreviation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Alphabet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TurkicLetter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="0" selection-start="5262" selection-end="5262" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Letter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Letter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0">
+            <state line="17" column="0" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -169,7 +142,45 @@
       <file leaf-file-name="TurkishSuffixRepository.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+            <state line="20" column="23" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TopDownSuffixParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/TopDownSuffixParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="32" selection-start="2147" selection-end="2147" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LastLetterModifierTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/zemberek3/parser/modifiers/LastLetterModifierTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="22" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TurkishAlphabetTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="8" selection-start="169" selection-end="169" vertical-scroll-proportion="0.21648045">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Iterator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.6.0_16/src.zip!/java/util/Iterator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="6" selection-start="1387" selection-end="1387" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -190,22 +201,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/service/StrictTurkishSyllableService.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/LetterSequence.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/disambiguation/WordParseResultDisambiguator.java" />
         <option value="$PROJECT_DIR$/src/zemberek3/service/WordParseService.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/service/FormattedSpellChecker.java" />
+        <option value="$PROJECT_DIR$/test/zemberek3/parser/modifiers/LastLetterModifierTest.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/affix/Affix.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixRepository.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/affix/TurkicSuffix.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixLoader.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/structure/TurkicWordParse.java" />
         <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/repository/stem/SingleStemProvider.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/ScoredItem.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/TurkicAlphabet.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/service/BaseSyllableService.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/WordParse.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/Letter.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/Lemma.java" />
-        <option value="$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java" />
-        <option value="$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/service/GeneratorService.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixParser.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java" />
+        <option value="$PROJECT_DIR$/src/zemberek3/parser/word/TopDownSuffixParser.java" />
       </list>
     </option>
   </component>
@@ -904,6 +915,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modifiers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -957,6 +994,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="structure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zemberek3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="affix" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1595,16 +1658,16 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32806325" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32279316" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254282" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2596401" sideWeight="0.64295125" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2596401" sideWeight="0.6693017" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3478261" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254282" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1626,7 +1689,7 @@
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="continued work." />
+    <option name="LAST_COMMIT_MESSAGE" value="eliminate Affix interface. now there is only TurkicSuffix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1644,6 +1707,9 @@
     <MESSAGE value="continued" />
     <MESSAGE value="continued. mostly parser" />
     <MESSAGE value="continued work." />
+    <MESSAGE value="Eliminate Letter interface&#10;Alphabet -&gt; TurkicAlphabet. it is no longer generic.&#10;LetterSequence -&gt; TurkicLetterSequence&#10;&#10;More simplifications to follow." />
+    <MESSAGE value="Eliminate WordParse Interface. There is only a concrete TurkishWordParse class." />
+    <MESSAGE value="eliminate Affix interface. now there is only TurkicSuffix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1673,100 +1739,120 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/ScoredItemTest.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/service/WordParseService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="110" selection-end="346" vertical-scroll-proportion="0.0" />
+        <state line="18" column="24" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/service/StrictTurkishSyllableService.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/service/FormattedSpellChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="28" selection-start="1693" selection-end="1693" vertical-scroll-proportion="0.0" />
+        <state line="37" column="27" selection-start="1262" selection-end="1262" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/modifiers/DeleteLastWovel.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/affix/TurkicSuffix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" />
+        <state line="7" column="26" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/comparators/AsciiTolerantLetterSequenceComparator.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0" />
+        <state line="6" column="17" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/generator/word/WordFormatter.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/TurkicSuffixRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="14" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" />
+        <state line="16" column="54" selection-start="497" selection-end="497" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/generator/word/WordGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/SuffixLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" />
+        <state line="7" column="9" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkicWordParse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/XmlTurkicSuffixLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="28" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/service/GeneratorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="50" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/SuffixParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="30" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/SuffixWordParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zemberek3/repository/affix/turkic/TurkishSuffixRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Abbreviation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0">
+        <state line="20" column="23" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Letter.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_16/src.zip!/java/util/Iterator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0">
+        <state line="46" column="6" selection-start="1387" selection-end="1387" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/LetterSequence.java">
+    <entry file="file://$PROJECT_DIR$/src/zemberek3/parser/word/TopDownSuffixParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="5" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
+        <state line="63" column="32" selection-start="2147" selection-end="2147" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/ScoredItem.java">
+    <entry file="file://$PROJECT_DIR$/test/zemberek3/parser/modifiers/LastLetterModifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkicLetter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="0" selection-start="5262" selection-end="5262" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Lemma.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/Alphabet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="14" column="22" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/zemberek3/structure/TurkishAlphabetTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="40" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zemberek3/structure/TurkishAlphabet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="30" selection-start="7542" selection-end="7542" vertical-scroll-proportion="0.42060086">
+        <state line="9" column="8" selection-start="169" selection-end="169" vertical-scroll-proportion="0.21648045">
           <folding />
         </state>
       </provider>

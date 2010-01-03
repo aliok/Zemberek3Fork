@@ -1,12 +1,12 @@
 package zemberek3.repository.affix;
 
-import zemberek3.structure.affix.Affix;
+import zemberek3.structure.affix.TurkicSuffix;
 
 import java.util.List;
 
 public class XmlTurkicSuffixLoader implements SuffixLoader {
 
-    public List<Affix> loadAll() {
+    public List<TurkicSuffix> loadAll() {
         return null;
     }
 }

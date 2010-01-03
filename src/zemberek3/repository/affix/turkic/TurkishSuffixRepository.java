@@ -2,7 +2,6 @@ package zemberek3.repository.affix.turkic;
 
 import zemberek3.repository.affix.SuffixRepository;
 import zemberek3.structure.Lemma;
-import zemberek3.structure.affix.Affix;
 import zemberek3.structure.affix.TurkicSuffix;
 
 import java.util.*;
@@ -11,15 +10,15 @@ public class TurkishSuffixRepository implements SuffixRepository {
 
     List<TurkicSuffix> suffixList = new ArrayList<TurkicSuffix>();
 
-    public Affix getSuffixByType(AffixType type) {
+    public TurkicSuffix getSuffixByType(AffixType type) {
         return null;
     }
 
-    public Affix getSuffixByName(String name) {
+    public TurkicSuffix getSuffixByName(String name) {
         return null;
     }
 
-    public Affix getRootSuffix(Lemma lemma) {
+    public TurkicSuffix getRootSuffix(Lemma lemma) {
         return null;
     }
 

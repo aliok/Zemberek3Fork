@@ -1,7 +1,7 @@
 package zemberek3.parser.word;
 
 import zemberek3.structure.Lemma;
-import zemberek3.structure.affix.Affix;
+import zemberek3.structure.affix.TurkicSuffix;
 
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +19,7 @@ interface SuffixParser<T extends CharSequence> {
      * @return List of Words contianing the given Stem and possible affix list combinations.
      *         if parsing is not successfull, and empty list is returned.
      */
-    List<List<Affix>> parse(T input, Lemma lemma);
+    List<List<TurkicSuffix>> parse(T input, Lemma lemma);
 
     /**
      * provides an iterator over parse results. this may be useful when all results are not required for
@@ -29,5 +29,5 @@ interface SuffixParser<T extends CharSequence> {
      * @param lemma  a Stem to use in the parsing.
      * @return an iterator that iterates and parses the input and stem.
      */
-    Iterator<List<Affix>> parseIterator(T input, Lemma lemma);
+    Iterator<List<TurkicSuffix>> parseIterator(T input, Lemma lemma);
 }
