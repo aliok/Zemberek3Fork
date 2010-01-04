@@ -31,7 +31,7 @@ public abstract class BaseSyllableService implements SyllableService {
         if (index == 0)
             return -1;
 
-        // find breaking letter index +1 .
+        // find breaking letter index + 1 .
         int k = 0;
         for (int j = 0; j < index; j++) {
             k += pieces.get(j).length();

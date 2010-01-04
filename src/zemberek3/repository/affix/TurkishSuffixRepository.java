@@ -59,7 +59,7 @@ public class TurkishSuffixRepository implements SuffixRepository {
             suffixBuilders.put(type, new MutableSuffix(type));
         }
 
-        TurkicSuffix nominalNoun = suffixBuilders.get(TurkicSuffixType.N_NOMINAL).build();
+        TurkicSuffix nominalNoun = suffixBuilders.get(TurkicSuffixType.NOMINAL).build();
 
     }
 

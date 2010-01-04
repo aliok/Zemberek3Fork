@@ -7,7 +7,7 @@ import zemberek3.structure.TurkicWordParse;
 import java.util.Iterator;
 
 /**
- * A simple spell checker verifies if a String is written correctly.
+ * A  spell checker verifies if a String is written correctly.
  * This spell checker checks if a word is written according to it's original writing style.
  * Such that, if a word must start with a capital letter, this will result false if given input
  * starts with a small case letter.

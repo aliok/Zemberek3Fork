@@ -27,9 +27,9 @@ public interface SyllableService {
      * <p>Example for Turkish:
      * <p><code>("merhaba", 4) -> 3 ["mer-haba"]</code>
      * <p><code>("merhaba", 6) -> 5 ["merha-ba"]</code>
-     * <p><code>("merhaba", 2) -> -1</code>
-     * <p><code>("dddaddd", 2) -> -1</code>
-     * <p><code>("merhaba", 8) -> 7</code>
+     * <p><code>("merhaba", 2) -> -1 []</code>
+     * <p><code>("dddaddd", 2) -> -1 []</code>
+     * <p><code>("merhaba", 8) -> 7 ["merhaba"]</code>
      * @param input          input String.
      * @param spaceAvailable the available space
      * @return an integer.

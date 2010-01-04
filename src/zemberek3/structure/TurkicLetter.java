@@ -7,12 +7,10 @@ public class TurkicLetter {
 
     public final char charValue;
     public final int alphabeticIndex;
-    public final boolean vowel; // TODO: buna gerek var mi?
-    public final boolean consonant;
-    public final boolean frontalvowel;
-    public final boolean backVowel;
+    public final boolean vowel;
+    public final boolean frontalVowel;
     public final boolean roundedVowel;
-    public final boolean silent; // TODO: ismi kontrol et.
+    public final boolean voiceless;
     public final boolean nonEnglish;
     public final boolean nonTurkish;
     public final char englishEquivalentChar;
@@ -27,11 +25,9 @@ public class TurkicLetter {
         private char _charValue = 0;
         private int _alphabeticIndex = -1;
         private boolean _vowel = false;
-        private boolean _consonant = true;
         private boolean _frontalVowel = false;
-        private boolean _backVowel = false;
         private boolean _roundedVowel = false;
-        private boolean _silent = false;
+        private boolean _voiceless = false;
         private boolean _nonEnglish = false;
         private boolean _nonTurkish = false;
         private char _englishEquivalentChar = 0;
@@ -48,7 +44,6 @@ public class TurkicLetter {
 
         public Builder vowel() {
             this._vowel = true;
-            this._consonant = false;
             return this;
         }
 
@@ -57,18 +52,13 @@ public class TurkicLetter {
             return this;
         }
 
-        public Builder backVowel() {
-            this._backVowel = true;
-            return this;
-        }
-
         public Builder roundedVowel() {
             this._roundedVowel = true;
             return this;
         }
 
-        public Builder silent() {
-            this._silent = true;
+        public Builder voiceless() {
+            this._voiceless = true;
             return this;
         }
 
@@ -98,11 +88,9 @@ public class TurkicLetter {
         this.charValue = builder._charValue;
         this.alphabeticIndex = builder._alphabeticIndex;
         this.vowel = builder._vowel;
-        this.consonant = builder._consonant;
-        this.frontalvowel = builder._frontalVowel;
-        this.backVowel = builder._backVowel;
+        this.frontalVowel = builder._frontalVowel;
         this.roundedVowel = builder._roundedVowel;
-        this.silent = builder._silent;
+        this.voiceless = builder._voiceless;
         this.nonEnglish = builder._nonEnglish;
         this.nonTurkish = builder._nonTurkish;
         this.englishEquivalentChar = builder._englishEquivalentChar;
@@ -113,18 +101,16 @@ public class TurkicLetter {
         this.charValue = c;
         this.alphabeticIndex = alphabeticIndex;
         vowel = false;
-        consonant = false;
-        frontalvowel = false;
-        backVowel = false;
+        frontalVowel = false;
         roundedVowel = false;
-        silent = false;
+        voiceless = false;
         nonEnglish = false;
         nonTurkish = false;
         englishEquivalentChar = c;
     }
 
     private void validateConsistency() {
-        if ((consonant || silent) && (vowel || frontalvowel || backVowel || roundedVowel)) {
+        if ((voiceless) && (vowel || frontalVowel ||  roundedVowel)) {
             throw new IllegalArgumentException("Letter seems to have both vowel and Consonant attributes");
         } else if ((!nonEnglish) && (charValue < 'a' && charValue > 'z')) {
             throw new IllegalArgumentException("Marked as english alphabet but it is not." + charValue);
@@ -146,23 +132,19 @@ public class TurkicLetter {
     }
 
     public boolean isConsonant() {
-        return consonant;
+        return !vowel;
     }
 
-    public boolean isFrontalvowel() {
-        return frontalvowel;
-    }
-
-    public boolean isBackVowel() {
-        return backVowel;
+    public boolean isFrontalVowel() {
+        return frontalVowel;
     }
 
     public boolean isRoundedVowel() {
         return roundedVowel;
     }
 
-    public boolean isSilent() {
-        return silent;
+    public boolean isVoiceless() {
+        return voiceless;
     }
 
     public boolean isNonEnglish() {

@@ -20,7 +20,6 @@ public class SuffixWordParser implements WordParser {
     final InputPreProcessor<TurkicLetterSequence> inputPreProcessor;
     final LemmaProvider lemmaProvider;
 
-
     public SuffixWordParser(
             SuffixParser<TurkicLetterSequence> suffixParser,
             InputPreProcessor<TurkicLetterSequence> inputPreProcessor,

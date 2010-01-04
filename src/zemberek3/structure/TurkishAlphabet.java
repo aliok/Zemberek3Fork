@@ -36,31 +36,31 @@ public class TurkishAlphabet implements TurkicAlphabet {
     /**
      * Turkish Letters. q,x,w is also added for foreign proper nouns. They are marked as 'foreign'
      */
-    public static final TurkicLetter L_a = builder('a', 1).vowel().frontalVowel().build();
+    public static final TurkicLetter L_a = builder('a', 1).vowel().build();
     public static final TurkicLetter L_b = builder('b', 2).build();
     public static final TurkicLetter L_c = builder('c', 3).build();
-    public static final TurkicLetter L_cc = builder(C_cc, 4).nonEnglish().silent().englishEquivalentChar('c').build();
+    public static final TurkicLetter L_cc = builder(C_cc, 4).nonEnglish().voiceless().englishEquivalentChar('c').build();
     public static final TurkicLetter L_d = builder('d', 5).build();
     public static final TurkicLetter L_e = builder('e', 6).vowel().frontalVowel().build();
     public static final TurkicLetter L_f = builder('f', 7).build();
     public static final TurkicLetter L_g = builder('g', 8).build();
     public static final TurkicLetter L_gg = builder(C_gg, 9).nonEnglish().englishEquivalentChar('g').build();
     public static final TurkicLetter L_h = builder('h', 10).build();
-    public static final TurkicLetter L_ii = builder(C_ii, 11).vowel().backVowel().nonEnglish().englishEquivalentChar('i').build();
+    public static final TurkicLetter L_ii = builder(C_ii, 11).vowel().nonEnglish().englishEquivalentChar('i').build();
     public static final TurkicLetter L_i = builder('i', 12).vowel().frontalVowel().build();
     public static final TurkicLetter L_j = builder('j', 13).build();
-    public static final TurkicLetter L_k = builder('k', 14).silent().build();
+    public static final TurkicLetter L_k = builder('k', 14).voiceless().build();
     public static final TurkicLetter L_l = builder('l', 15).build();
     public static final TurkicLetter L_m = builder('m', 16).build();
     public static final TurkicLetter L_n = builder('n', 17).build();
     public static final TurkicLetter L_o = builder('o', 18).build();
-    public static final TurkicLetter L_oo = builder(C_oo, 19).vowel().roundedVowel().nonEnglish().englishEquivalentChar('o').build();
-    public static final TurkicLetter L_p = builder('p', 20).silent().build();
+    public static final TurkicLetter L_oo = builder(C_oo, 19).vowel().frontalVowel().roundedVowel().nonEnglish().englishEquivalentChar('o').build();
+    public static final TurkicLetter L_p = builder('p', 20).voiceless().build();
     public static final TurkicLetter L_r = builder('r', 21).build();
     public static final TurkicLetter L_s = builder('s', 22).build();
     public static final TurkicLetter L_ss = builder(C_ss, 23).nonEnglish().englishEquivalentChar('s').build();
-    public static final TurkicLetter L_t = builder('t', 24).silent().build();
-    public static final TurkicLetter L_u = builder('u', 25).vowel().roundedVowel().frontalVowel().build();
+    public static final TurkicLetter L_t = builder('t', 24).voiceless().build();
+    public static final TurkicLetter L_u = builder('u', 25).vowel().roundedVowel().build();
     public static final TurkicLetter L_uu = builder(C_uu, 26).vowel().roundedVowel().frontalVowel().englishEquivalentChar('u').nonEnglish().build();
     public static final TurkicLetter L_v = builder('v', 27).build();
     public static final TurkicLetter L_y = builder('y', 28).build();
@@ -78,7 +78,7 @@ public class TurkishAlphabet implements TurkicAlphabet {
     static final LetterAttribute FOREIGN = new LetterAttribute('x', 'q', 'w');
 */
 
-    private static TurkicLetter[] TURKISH_LETTERS = {
+    private static final TurkicLetter[] TURKISH_LETTERS = {
             L_a, L_b, L_c, L_cc, L_d, L_e, L_f, L_g,
             L_gg, L_h, L_ii, L_i, L_j, L_k, L_l, L_m,
             L_n, L_o, L_oo, L_p, L_r, L_s, L_ss, L_t,
@@ -88,10 +88,10 @@ public class TurkishAlphabet implements TurkicAlphabet {
 
     // 0x15f is the maximum char value in turkish speific characters.
     private static final int MAX_CHAR_VALUE = 0x15f + 1;
-    private static TurkicLetter[] CHAR_TO_LETTER_LOOKUP = new TurkicLetter[MAX_CHAR_VALUE];
-    private static char[] TURKISH_ALPHABET_CHARS = new char[MAX_CHAR_VALUE];
-    private static int[] TURKISH_ALPHABET_INDEXES = new int[MAX_CHAR_VALUE];
-    private static boolean[] VALID_CHAR_TABLE = new boolean[MAX_CHAR_VALUE];
+    private static final TurkicLetter[] CHAR_TO_LETTER_LOOKUP = new TurkicLetter[MAX_CHAR_VALUE];
+    private static final char[] TURKISH_ALPHABET_CHARS = new char[MAX_CHAR_VALUE];
+    private static final int[] TURKISH_ALPHABET_INDEXES = new int[MAX_CHAR_VALUE];
+    private static final boolean[] VALID_CHAR_TABLE = new boolean[MAX_CHAR_VALUE];
 
     static {
         Arrays.fill(CHAR_TO_LETTER_LOOKUP, TurkicLetter.UNDEFINED);
