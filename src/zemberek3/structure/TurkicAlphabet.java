@@ -20,11 +20,11 @@ public interface TurkicAlphabet {
 
     int getAphabeticIndex(char c);
 
-    TurkicLetter getEnglishquivalentLetter(TurkicLetter letter);
+    TurkicLetter getAsciiEquivalentLetter(TurkicLetter letter);
 
-    boolean englishEqual(char c1, char c2);
+    boolean asciiEqual(char c1, char c2);
 
-    public char getEnglishquivalentChar(char c);
+    public char getAsciiEquivalentChar(char c);
 
-    public TurkicLetter getEnglishquivalentLetter(char c);
+    public TurkicLetter getAsciEquivalentLetter(char c);
 }

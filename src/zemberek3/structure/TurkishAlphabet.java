@@ -39,14 +39,14 @@ public class TurkishAlphabet implements TurkicAlphabet {
     public static final TurkicLetter L_a = builder('a', 1).vowel().build();
     public static final TurkicLetter L_b = builder('b', 2).build();
     public static final TurkicLetter L_c = builder('c', 3).build();
-    public static final TurkicLetter L_cc = builder(C_cc, 4).nonEnglish().voiceless().englishEquivalentChar('c').build();
+    public static final TurkicLetter L_cc = builder(C_cc, 4).notInAscii().voiceless().similarAscii('c').build();
     public static final TurkicLetter L_d = builder('d', 5).build();
     public static final TurkicLetter L_e = builder('e', 6).vowel().frontalVowel().build();
     public static final TurkicLetter L_f = builder('f', 7).build();
     public static final TurkicLetter L_g = builder('g', 8).build();
-    public static final TurkicLetter L_gg = builder(C_gg, 9).nonEnglish().englishEquivalentChar('g').build();
+    public static final TurkicLetter L_gg = builder(C_gg, 9).notInAscii().similarAscii('g').build();
     public static final TurkicLetter L_h = builder('h', 10).build();
-    public static final TurkicLetter L_ii = builder(C_ii, 11).vowel().nonEnglish().englishEquivalentChar('i').build();
+    public static final TurkicLetter L_ii = builder(C_ii, 11).vowel().notInAscii().similarAscii('i').build();
     public static final TurkicLetter L_i = builder('i', 12).vowel().frontalVowel().build();
     public static final TurkicLetter L_j = builder('j', 13).build();
     public static final TurkicLetter L_k = builder('k', 14).voiceless().build();
@@ -54,29 +54,20 @@ public class TurkishAlphabet implements TurkicAlphabet {
     public static final TurkicLetter L_m = builder('m', 16).build();
     public static final TurkicLetter L_n = builder('n', 17).build();
     public static final TurkicLetter L_o = builder('o', 18).build();
-    public static final TurkicLetter L_oo = builder(C_oo, 19).vowel().frontalVowel().roundedVowel().nonEnglish().englishEquivalentChar('o').build();
+    public static final TurkicLetter L_oo = builder(C_oo, 19).vowel().frontalVowel().roundedVowel().notInAscii().similarAscii('o').build();
     public static final TurkicLetter L_p = builder('p', 20).voiceless().build();
     public static final TurkicLetter L_r = builder('r', 21).build();
     public static final TurkicLetter L_s = builder('s', 22).build();
-    public static final TurkicLetter L_ss = builder(C_ss, 23).nonEnglish().englishEquivalentChar('s').build();
+    public static final TurkicLetter L_ss = builder(C_ss, 23).notInAscii().similarAscii('s').build();
     public static final TurkicLetter L_t = builder('t', 24).voiceless().build();
     public static final TurkicLetter L_u = builder('u', 25).vowel().roundedVowel().build();
-    public static final TurkicLetter L_uu = builder(C_uu, 26).vowel().roundedVowel().frontalVowel().englishEquivalentChar('u').nonEnglish().build();
+    public static final TurkicLetter L_uu = builder(C_uu, 26).vowel().roundedVowel().frontalVowel().similarAscii('u').notInAscii().build();
     public static final TurkicLetter L_v = builder('v', 27).build();
     public static final TurkicLetter L_y = builder('y', 28).build();
     public static final TurkicLetter L_z = builder('z', 29).build();
     public static final TurkicLetter L_q = builder('q', 30).foreign().build();
     public static final TurkicLetter L_w = builder('w', 31).foreign().build();
     public static final TurkicLetter L_x = builder('x', 32).foreign().build();
-
-/*
-    static final LetterAttribute VOWELS = new LetterAttribute('a', 'e', 'i', C_ii, 'o', C_oo, 'u', C_uu);
-    static final LetterAttribute ROUNDED_VOWELS = new LetterAttribute('o', C_oo, 'u', C_uu);
-    static final LetterAttribute FRONTAL_VOWELS = new LetterAttribute('a', 'e', 'i', C_ii);
-    static final LetterAttribute CONSONANTS = new LetterAttribute("bcdfghjklmnprstvyzqwx" + String.valueOf(C_cc) + String.valueOf(C_gg) + String.valueOf(C_ss));
-    static final LetterAttribute NON_ENGLISH = new LetterAttribute(C_cc, C_gg, C_ss, C_ii, C_ss, C_oo, C_uu);
-    static final LetterAttribute FOREIGN = new LetterAttribute('x', 'q', 'w');
-*/
 
     private static final TurkicLetter[] TURKISH_LETTERS = {
             L_a, L_b, L_c, L_cc, L_d, L_e, L_f, L_g,
@@ -159,18 +150,18 @@ public class TurkishAlphabet implements TurkicAlphabet {
 
     // ------------------------ ASCII equivalency ----------------------------------
 
-    private static TurkicLetter[] ENGLISH_EQUIVALENT_LETTER_LOOKUP = {
+    private static TurkicLetter[] ASCII_EQUIVALENT_LETTER_LOOKUP = {
             L_a, L_b, L_c, L_c, L_d, L_e, L_f, L_g,
             L_g, L_h, L_i, L_i, L_j, L_k, L_l, L_m,
             L_n, L_o, L_o, L_p, L_r, L_s, L_s, L_t,
             L_u, L_u, L_v, L_y, L_z, L_q, L_w, L_x};
 
-    private static char[] ENGLISH_EQUIVALENT_CHARS_LOOKUP = new char[MAX_CHAR_VALUE];
+    private static char[] ASCII_EQUIVALENT_CHARS_LOOKUP = new char[MAX_CHAR_VALUE];
 
     static {
-        Arrays.fill(ENGLISH_EQUIVALENT_CHARS_LOOKUP, (char) 0);
+        Arrays.fill(ASCII_EQUIVALENT_CHARS_LOOKUP, (char) 0);
         for (TurkicLetter turkicLetter : TURKISH_LETTERS) {
-            ENGLISH_EQUIVALENT_CHARS_LOOKUP[turkicLetter.charValue] = turkicLetter.englishEquivalentChar();
+            ASCII_EQUIVALENT_CHARS_LOOKUP[turkicLetter.charValue] = turkicLetter.englishEquivalentChar();
         }
     }
 
@@ -180,8 +171,8 @@ public class TurkishAlphabet implements TurkicAlphabet {
      * @param letter turkicletter
      * @return english equivalent letter.
      */
-    public TurkicLetter getEnglishquivalentLetter(TurkicLetter letter) {
-        return ENGLISH_EQUIVALENT_LETTER_LOOKUP[letter.alphabeticIndex() - 1];
+    public TurkicLetter getAsciiEquivalentLetter(TurkicLetter letter) {
+        return ASCII_EQUIVALENT_LETTER_LOOKUP[letter.alphabeticIndex() - 1];
     }
 
     /**
@@ -191,48 +182,29 @@ public class TurkishAlphabet implements TurkicAlphabet {
      * @param c2 second char.
      * @return true if equals or enlishequivalents are same.
      */
-    public boolean englishEqual(char c1, char c2) {
+    public boolean asciiEqual(char c1, char c2) {
         return (isValid(c1) && isValid(c2)) &&
-                (c1 == c2 || ENGLISH_EQUIVALENT_CHARS_LOOKUP[c1] == ENGLISH_EQUIVALENT_CHARS_LOOKUP[c2]);
+                (c1 == c2 || ASCII_EQUIVALENT_CHARS_LOOKUP[c1] == ASCII_EQUIVALENT_CHARS_LOOKUP[c2]);
     }
 
-    public char getEnglishquivalentChar(char c) {
+    public char getAsciiEquivalentChar(char c) {
         if (!isValid(c))
             throw new IllegalArgumentException("unexpected char:" + c);
         return CHAR_TO_LETTER_LOOKUP[c].englishEquivalentChar();
     }
 
-    public TurkicLetter getEnglishquivalentLetter(char c) {
+    public TurkicLetter getAsciEquivalentLetter(char c) {
         if (!isValid(c))
             throw new IllegalArgumentException("unexpected char:" + c);
-        return ENGLISH_EQUIVALENT_LETTER_LOOKUP[getAphabeticIndex(c) - 1];
+        return ASCII_EQUIVALENT_LETTER_LOOKUP[getAphabeticIndex(c) - 1];
     }
 
-    // ----------------------- TurkicAlphabet Interface methods -------------------------
-
+    /**
+     * checks if a character is part of TurkishAlphabet.
+     * @param c character to check
+     * @return true if it is part of the Turkish alphabet. false otherwise
+     */
     public final boolean isValid(char c) {
         return c < MAX_CHAR_VALUE && VALID_CHAR_TABLE[c];
-    }
-
-    private static class LetterAttribute {
-        private long attributeMap;
-
-        public LetterAttribute(char... chars) {
-            for (char aChar : chars) {
-                if (aChar >= MAX_CHAR_VALUE || !VALID_CHAR_TABLE[aChar])
-                    throw new IllegalArgumentException("unexpected char:" + aChar);
-                attributeMap &= 0x01 << TURKISH_ALPHABET_INDEXES[aChar];
-            }
-        }
-
-        public LetterAttribute(String str) {
-            this(str.toCharArray());
-        }
-
-        public boolean contains(char c) {
-            if (c >= MAX_CHAR_VALUE || !VALID_CHAR_TABLE[c])
-                throw new IllegalArgumentException("unexpected char:" + c);
-            return (attributeMap & (0x01 << TURKISH_ALPHABET_INDEXES[c])) != 0;
-        }
     }
 }

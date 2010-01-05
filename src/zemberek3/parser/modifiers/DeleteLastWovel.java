@@ -8,7 +8,7 @@ import zemberek3.structure.TurkicLetterSequence;
 public class DeleteLastWovel implements SequenceModifier {
 
     /**
-     * Deletes the last wovel from the sequence. if there is no wovel, no modifications are made.
+     * Deletes the last wovel from the sequence. if there is no vowel, no modifications are made.
      *
      * @param letterSequence input sequence.
      * @return this

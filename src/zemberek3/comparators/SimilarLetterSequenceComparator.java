@@ -2,12 +2,12 @@ package zemberek3.comparators;
 
 import zemberek3.structure.TurkicLetterSequence;
 
-public class EditDistanceLetterSequenceComparator 
+public class SimilarLetterSequenceComparator 
         implements CharSequenceComparator<TurkicLetterSequence> {
 
     final SimilarityChecker similarityChecker;
 
-    public EditDistanceLetterSequenceComparator(SimilarityChecker similarityChecker) {
+    public SimilarLetterSequenceComparator(SimilarityChecker similarityChecker) {
         this.similarityChecker = similarityChecker;
     }
 

@@ -1,7 +1,7 @@
 package zemberek3.parser.word;
 
 import zemberek3.comparators.CharSequenceComparator;
-import zemberek3.repository.affix.SuffixRepository;
+import zemberek3.repository.affix.TurkishSuffixRepository;
 import zemberek3.structure.TurkicAlphabet;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.TurkicLetterSequence;
@@ -18,11 +18,11 @@ public class TopDownSuffixParser implements SuffixParser<TurkicLetterSequence> {
 
     private final CharSequenceComparator<TurkicLetterSequence> comparator;
     private final TurkicAlphabet alphabet;
-    private final SuffixRepository suffixes;
+    private final TurkishSuffixRepository suffixes;
 
     public TopDownSuffixParser(CharSequenceComparator<TurkicLetterSequence> comparator,
                                TurkicAlphabet alphabet,
-                               SuffixRepository suffixes) {
+                               TurkishSuffixRepository suffixes) {
         this.comparator = comparator;
         this.alphabet = alphabet;
         this.suffixes = suffixes;

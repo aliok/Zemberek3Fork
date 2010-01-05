@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * provides stems for a given char sequence. search mechanism and matching rules are defined by the implementor.
+ * provides lemmas for a given char sequence. search mechanism and matching rules are defined by the implementor.
  */
 public interface LemmaProvider {
 

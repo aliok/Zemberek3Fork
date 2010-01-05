@@ -40,57 +40,68 @@ public class TurkishAlphabetTest {
     }
 
     @Test
-    public void getEnglishquivalentLetter() {
+    public void getCharByAlphabeticIndex() {
         TurkishAlphabet alphabet = new TurkishAlphabet();
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_a), TurkishAlphabet.L_a);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_x), TurkishAlphabet.L_x);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_cc), TurkishAlphabet.L_c);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_ii), TurkishAlphabet.L_i);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_ss), TurkishAlphabet.L_s);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_gg), TurkishAlphabet.L_g);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_oo), TurkishAlphabet.L_o);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.L_uu), TurkishAlphabet.L_u);
+        Assert.assertEquals(alphabet.getCharByAlphabeticIndex(1), 'a');
+        Assert.assertEquals(alphabet.getCharByAlphabeticIndex(3), 'c');
+        Assert.assertEquals(alphabet.getCharByAlphabeticIndex(29), 'z');
+        Assert.assertEquals(alphabet.getCharByAlphabeticIndex(32), 'x');
+        Assert.assertEquals(alphabet.getCharByAlphabeticIndex(4), TurkishAlphabet.C_cc);
+        Assert.assertEquals(alphabet.getCharByAlphabeticIndex(11), TurkishAlphabet.C_ii);
     }
 
     @Test
-    public void getEnglishquivalentLetterByChar() {
+    public void getAsciiEquivalentLetter() {
         TurkishAlphabet alphabet = new TurkishAlphabet();
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter('a'), TurkishAlphabet.L_a);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter('x'), TurkishAlphabet.L_x);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.C_cc), TurkishAlphabet.L_c);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.C_ii), TurkishAlphabet.L_i);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.C_ss), TurkishAlphabet.L_s);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.C_gg), TurkishAlphabet.L_g);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.C_oo), TurkishAlphabet.L_o);
-        Assert.assertEquals(alphabet.getEnglishquivalentLetter(TurkishAlphabet.C_uu), TurkishAlphabet.L_u);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_a), TurkishAlphabet.L_a);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_x), TurkishAlphabet.L_x);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_cc), TurkishAlphabet.L_c);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_ii), TurkishAlphabet.L_i);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_ss), TurkishAlphabet.L_s);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_gg), TurkishAlphabet.L_g);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_oo), TurkishAlphabet.L_o);
+        Assert.assertEquals(alphabet.getAsciiEquivalentLetter(TurkishAlphabet.L_uu), TurkishAlphabet.L_u);
     }
 
     @Test
-    public void englishEqual() {
+    public void getasciiEquivalentLetterByChar() {
         TurkishAlphabet alphabet = new TurkishAlphabet();
-        Assert.assertTrue(alphabet.englishEqual('a', 'a'));
-        Assert.assertTrue(alphabet.englishEqual('x', 'x'));
-        Assert.assertTrue(alphabet.englishEqual(TurkishAlphabet.C_gg, 'g'));
-        Assert.assertTrue(alphabet.englishEqual(TurkishAlphabet.C_cc, 'c'));
-        Assert.assertTrue(alphabet.englishEqual(TurkishAlphabet.C_ii, 'i'));
-        Assert.assertTrue(alphabet.englishEqual(TurkishAlphabet.C_ss, 's'));
-        Assert.assertTrue(alphabet.englishEqual(TurkishAlphabet.C_oo, 'o'));
-        Assert.assertTrue(alphabet.englishEqual(TurkishAlphabet.C_uu, 'u'));
-        Assert.assertFalse(alphabet.englishEqual(TurkishAlphabet.C_uu, 'a'));
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter('a'), TurkishAlphabet.L_a);
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter('x'), TurkishAlphabet.L_x);
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter(TurkishAlphabet.C_cc), TurkishAlphabet.L_c);
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter(TurkishAlphabet.C_ii), TurkishAlphabet.L_i);
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter(TurkishAlphabet.C_ss), TurkishAlphabet.L_s);
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter(TurkishAlphabet.C_gg), TurkishAlphabet.L_g);
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter(TurkishAlphabet.C_oo), TurkishAlphabet.L_o);
+        Assert.assertEquals(alphabet.getAsciEquivalentLetter(TurkishAlphabet.C_uu), TurkishAlphabet.L_u);
+    }
+
+    @Test
+    public void asciiEqual() {
+        TurkishAlphabet alphabet = new TurkishAlphabet();
+        Assert.assertTrue(alphabet.asciiEqual('a', 'a'));
+        Assert.assertTrue(alphabet.asciiEqual('x', 'x'));
+        Assert.assertTrue(alphabet.asciiEqual(TurkishAlphabet.C_gg, 'g'));
+        Assert.assertTrue(alphabet.asciiEqual(TurkishAlphabet.C_cc, 'c'));
+        Assert.assertTrue(alphabet.asciiEqual(TurkishAlphabet.C_ii, 'i'));
+        Assert.assertTrue(alphabet.asciiEqual(TurkishAlphabet.C_ss, 's'));
+        Assert.assertTrue(alphabet.asciiEqual(TurkishAlphabet.C_oo, 'o'));
+        Assert.assertTrue(alphabet.asciiEqual(TurkishAlphabet.C_uu, 'u'));
+        Assert.assertFalse(alphabet.asciiEqual(TurkishAlphabet.C_uu, 'a'));
     }
 
 
     @Test
-    public void getEnglishquivalentChar() {
+    public void getAsciiEquivalentChar() {
         TurkishAlphabet alphabet = new TurkishAlphabet();
-        Assert.assertEquals(alphabet.getEnglishquivalentChar('a'), 'a');
-        Assert.assertEquals(alphabet.getEnglishquivalentChar('x'), 'x');
-        Assert.assertEquals(alphabet.getEnglishquivalentChar(TurkishAlphabet.C_gg), 'g');
-        Assert.assertEquals(alphabet.getEnglishquivalentChar(TurkishAlphabet.C_cc), 'c');
-        Assert.assertEquals(alphabet.getEnglishquivalentChar(TurkishAlphabet.C_ii), 'i');
-        Assert.assertEquals(alphabet.getEnglishquivalentChar(TurkishAlphabet.C_ss), 's');
-        Assert.assertEquals(alphabet.getEnglishquivalentChar(TurkishAlphabet.C_oo), 'o');
-        Assert.assertEquals(alphabet.getEnglishquivalentChar(TurkishAlphabet.C_uu), 'u');
-        Assert.assertNotSame(alphabet.getEnglishquivalentChar(TurkishAlphabet.C_uu), 'a');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar('a'), 'a');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar('x'), 'x');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_gg), 'g');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_cc), 'c');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_ii), 'i');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_ss), 's');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_oo), 'o');
+        Assert.assertEquals(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_uu), 'u');
+        Assert.assertNotSame(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_uu), 'a');
     }
 }

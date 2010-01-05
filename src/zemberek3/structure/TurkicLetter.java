@@ -11,8 +11,8 @@ public class TurkicLetter {
     public final boolean frontalVowel;
     public final boolean roundedVowel;
     public final boolean voiceless;
-    public final boolean nonEnglish;
-    public final boolean nonTurkish;
+    public final boolean inAscii;
+    public final boolean foreign;
     public final char englishEquivalentChar;
 
     public static final TurkicLetter UNDEFINED = new TurkicLetter((char) 0, -1);
@@ -28,8 +28,8 @@ public class TurkicLetter {
         private boolean _frontalVowel = false;
         private boolean _roundedVowel = false;
         private boolean _voiceless = false;
-        private boolean _nonEnglish = false;
-        private boolean _nonTurkish = false;
+        private boolean _inAscii = true;
+        private boolean _foreign = false;
         private char _englishEquivalentChar = 0;
 
         public Builder(char charValue) {
@@ -62,17 +62,17 @@ public class TurkicLetter {
             return this;
         }
 
-        public Builder nonEnglish() {
-            this._nonEnglish = true;
+        public Builder notInAscii() {
+            this._inAscii = false;
             return this;
         }
 
         public Builder foreign() {
-            this._nonTurkish = true;
+            this._foreign = true;
             return this;
         }
 
-        public Builder englishEquivalentChar(char equivalent) {
+        public Builder similarAscii(char equivalent) {
             this._englishEquivalentChar = equivalent;
             return this;
         }
@@ -91,12 +91,13 @@ public class TurkicLetter {
         this.frontalVowel = builder._frontalVowel;
         this.roundedVowel = builder._roundedVowel;
         this.voiceless = builder._voiceless;
-        this.nonEnglish = builder._nonEnglish;
-        this.nonTurkish = builder._nonTurkish;
+        this.inAscii = builder._inAscii;
+        this.foreign = builder._foreign;
         this.englishEquivalentChar = builder._englishEquivalentChar;
     }
 
     // only used for illegal letter.
+
     private TurkicLetter(char c, int alphabeticIndex) {
         this.charValue = c;
         this.alphabeticIndex = alphabeticIndex;
@@ -104,15 +105,15 @@ public class TurkicLetter {
         frontalVowel = false;
         roundedVowel = false;
         voiceless = false;
-        nonEnglish = false;
-        nonTurkish = false;
+        inAscii = false;
+        foreign = false;
         englishEquivalentChar = c;
     }
 
     private void validateConsistency() {
-        if ((voiceless) && (vowel || frontalVowel ||  roundedVowel)) {
+        if ((voiceless && vowel) || (!vowel && (frontalVowel || roundedVowel))) {
             throw new IllegalArgumentException("Letter seems to have both vowel and Consonant attributes");
-        } else if ((!nonEnglish) && (charValue < 'a' && charValue > 'z')) {
+        } else if ((!inAscii) && (charValue < 'a' && charValue > 'z')) {
             throw new IllegalArgumentException("Marked as english alphabet but it is not." + charValue);
         } else if (alphabeticIndex < 0) {
             throw new IllegalArgumentException("Alphabetical index must be positive:" + alphabeticIndex);
@@ -147,8 +148,8 @@ public class TurkicLetter {
         return voiceless;
     }
 
-    public boolean isNonEnglish() {
-        return nonEnglish;
+    public boolean isInAscii() {
+        return inAscii;
     }
 
     public char englishEquivalentChar() {

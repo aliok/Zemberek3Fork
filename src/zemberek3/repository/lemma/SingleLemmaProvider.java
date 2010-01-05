@@ -20,10 +20,10 @@ public class SingleLemmaProvider implements LemmaProvider {
     }
 
     public List<Lemma> find(String word) {
-        return null;
+        return stemList;
     }
 
     public Iterator<Lemma> findAndIterate(String word) {
-        return null;
+        return stemList.iterator();
     }
 }
