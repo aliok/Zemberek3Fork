@@ -104,4 +104,11 @@ public class TurkishAlphabetTest {
         Assert.assertEquals(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_uu), 'u');
         Assert.assertNotSame(alphabet.getAsciiEquivalentChar(TurkishAlphabet.C_uu), 'a');
     }
+    
+    @Test
+    public void toIndexes() {
+        TurkishAlphabet alphabet = new TurkishAlphabet();
+        byte[] expected = {1, 2, 3, };
+        Assert.assertArrayEquals(expected, alphabet.toIndexes("abc"));
+    }
 }

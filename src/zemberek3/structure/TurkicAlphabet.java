@@ -19,6 +19,8 @@ public interface TurkicAlphabet {
     char getCharByAlphabeticIndex(int alphabeticIndex);
 
     int getAphabeticIndex(char c);
+    
+    byte[] toIndexes(String s);
 
     TurkicLetter getAsciiEquivalentLetter(TurkicLetter letter);
 

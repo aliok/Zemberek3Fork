@@ -207,4 +207,12 @@ public class TurkishAlphabet implements TurkicAlphabet {
     public final boolean isValid(char c) {
         return c < MAX_CHAR_VALUE && VALID_CHAR_TABLE[c];
     }
+
+	public byte[] toIndexes(String s) {
+		byte[] indexes = new byte[s.length()];
+		for (int i=0; i<indexes.length; i++) {
+			indexes[i] = (byte)getAphabeticIndex(s.charAt(i));
+		}
+		return indexes;
+	}
 }
