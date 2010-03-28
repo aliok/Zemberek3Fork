@@ -18,24 +18,25 @@ import java.util.List;
 public class StrictTurkishSyllableService extends BaseSyllableService implements SyllableService {
 
     private final TurkishAlphabet alphabet = new TurkishAlphabet();
-    private final SyllableParser<TurkicLetterSequence> parser = new TurkishSyllableParser();
+    private final SyllableParser parser = new TurkishSyllableParser();
 
     public List<String> syllables(String input) {
-        return parser.parse(new TurkicLetterSequence(input, alphabet));
+        return parser.parse(input);
     }
 
-    private class TurkishSyllableParser implements SyllableParser<TurkicLetterSequence> {
+    private class TurkishSyllableParser implements SyllableParser {
 
-        public List<String> parse(TurkicLetterSequence input) {
+        public List<String> parse(String input) {
+            TurkicLetterSequence sequence = new TurkicLetterSequence(input, alphabet);
             List<String> list = new ArrayList<String>();
             while (input.length() > 0) {
-                int index = letterCountForLastSyllable(input);
+                int index = letterCountForLastSyllable(sequence);
                 if (index < 0) {
                     return Collections.emptyList();
                 }
-                int basla = input.length() - index;
-                list.add(input.toString(basla));
-                input.clip(basla);
+                int basla = sequence.length() - index;
+                list.add(sequence.toString(basla));
+                sequence.clip(basla);
             }
             Collections.reverse(list);
             return list;

@@ -8,7 +8,6 @@ public class ExactLetterSequenceComparator implements CharSequenceComparator<Tur
         return t1.equals(t2);
     }
 
-
     public boolean startsWith(TurkicLetterSequence t1, TurkicLetterSequence t2) {
         return t1.startsWith(t2);
     }

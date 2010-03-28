@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import static zemberek3.structure.TurkicLetter.builder;
 
-
 /**
  * Contains Turkish Letters, Turkish Letter equivalent chars, several helper methods.
  * TurkishAlphanbet only contains small case letters.

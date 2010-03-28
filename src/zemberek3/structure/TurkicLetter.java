@@ -79,7 +79,7 @@ public class TurkicLetter {
 
         public TurkicLetter build() {
             TurkicLetter tl = new TurkicLetter(this);
-            tl.validateConsistency();
+            tl.checkConsistency();
             return tl;
         }
     }
@@ -97,7 +97,6 @@ public class TurkicLetter {
     }
 
     // only used for illegal letter.
-
     private TurkicLetter(char c, int alphabeticIndex) {
         this.charValue = c;
         this.alphabeticIndex = alphabeticIndex;
@@ -110,7 +109,7 @@ public class TurkicLetter {
         englishEquivalentChar = c;
     }
 
-    private void validateConsistency() {
+    private void checkConsistency() {
         if ((voiceless && vowel) || (!vowel && (frontalVowel || roundedVowel))) {
             throw new IllegalArgumentException("Letter seems to have both vowel and Consonant attributes");
         } else if ((!inAscii) && (charValue < 'a' && charValue > 'z')) {
