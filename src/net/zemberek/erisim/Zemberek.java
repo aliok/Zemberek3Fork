@@ -27,7 +27,6 @@ import net.zemberek.islemler.KelimeKokFrekansKiyaslayici;
 import net.zemberek.islemler.KelimeTabanliKokBulucu;
 import net.zemberek.islemler.KelimeUretici;
 import net.zemberek.islemler.KokBulucu;
-import net.zemberek.islemler.TurkceYaziTesti;
 import net.zemberek.islemler.cozumleme.AsciiToleransliHDKiyaslayici;
 import net.zemberek.islemler.cozumleme.CozumlemeSeviyesi;
 import net.zemberek.islemler.cozumleme.KelimeCozumleyici;
@@ -56,7 +55,6 @@ public class Zemberek {
     private KelimeCozumleyici cozumleyici;
     private KelimeUretici kelimeUretici;
     private KelimeCozumleyici asciiToleransliCozumleyici;
-    private TurkceYaziTesti turkceTest;
     private OneriUretici oneriUretici;
     private AsciiDonusturucu asciiDonusturucu;
     private HeceIslemleri heceIslemleri;
@@ -123,8 +121,6 @@ public class Zemberek {
                 asciiToleransliCozumleyici,
                 toleransliCozumleyici,
                 ayarlar);
-
-        turkceTest = new TurkceYaziTesti(cozumleyici, asciiToleransliCozumleyici);
 
         asciiDonusturucu = new AsciiDonusturucu(dilBilgisi.alfabe());
         heceIslemleri = new HeceIslemleri(dilBilgisi.alfabe(), dilBilgisi.heceBulucu());
@@ -311,24 +307,7 @@ public class Zemberek {
         return oneriUretici.oner(giris);
     }
 
-    /**
-     * Basit sekilde giris kelime ya da kelime dizisinin Zemberek olusturulrken kullanilan dil ile
-     * benzerligi kestirir. Girilen kelime sayisinin azligi soznucun basarimini dusurur.
-     * donus farkli seviyelerde olabilir.
-     *
-     * @param giris giris string
-     * @return Donus integer 0-4 arasi deger alabilir. nesne olusturulurken kullanilan dil D ise
-     *         0 yazinin D dili olmadigi 4 ise kesin D oldugunu belirtir.
-     *         ara degerler
-     *         1- yazi icinde D olabilecek kelimeler var, ama genel D degil.
-     *         2- yazi D, cok fazla yabanci ya da bozuk kelime var.
-     *         3- yazi D, yabanci ve bozuk kelimeler iceriyor.
-     */
-    public int dilTesti(String giris) {
-        return turkceTest.turkceTest(giris);
-    }
-
-    /**
+   /**
      * Zemberek olusumu sirasinda kullanilan DilBilgisi nesnesi doner. Bu nesne uzerinden
      * dile ozel cesitli dil bilgisi islemlerine erisilebilir.
      *

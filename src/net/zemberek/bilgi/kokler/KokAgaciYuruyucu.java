@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.zemberek.araclar.IstatistikAraclari;
-import net.zemberek.araclar.TimeTracker;
 import net.zemberek.bilgi.araclar.IkiliKokOkuyucu;
 import net.zemberek.bilgi.araclar.KokOkuyucu;
 import net.zemberek.yapi.Alfabe;
@@ -131,11 +130,9 @@ public class KokAgaciYuruyucu {
         DilBilgisi dilBilgisi = new TurkceDilBilgisi((DilAyarlari) c.newInstance());
         Alfabe alfabe = dilBilgisi.alfabe();
         AgacSozluk sozluk = null;
-        TimeTracker.startClock("a");
         for(int i=0; i<10; i++){
         	KokOkuyucu okuyucu = new IkiliKokOkuyucu("kaynaklar/tr/bilgi/kokler_tr.bin", dilBilgisi.kokOzelDurumlari());
         	sozluk = new AgacSozluk(okuyucu, alfabe, dilBilgisi.kokOzelDurumlari());
-        	System.out.println(TimeTracker.getElapsedTimeString("a"));
         }
     	KokAgaciYuruyucu yuruyucu = new KokAgaciYuruyucu(sozluk, new HashSet<Kok>());
     	yuruyucu.agaciTara();
