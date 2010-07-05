@@ -31,25 +31,25 @@
             ,Prog2
         </suffix-set>
 
-        <suffix-set id="FIIL_DONUSUM">
-            FIIL_DONUSUM_EN
+        <suffix-set id="DerivationalVerbSuffixes">
+            PresPart
             ,FIIL_DONUSUM_IM
             ,FIIL_DONUSUM_INTI
-            ,FIIL_DONUSUM_IS
-            ,FIIL_DONUSUM_ME
-            ,FIIL_DONUSUM_ECEK
+            ,Inf3
+            ,Inf2
+            ,FutPart
             ,FIIL_DONUSUM_MIS
             ,FIIL_DONUSUM_ILI
         </suffix-set>
 
         <suffix-set id="FIIL_BILESIK">
             FIIL_SUREKLILIK_EREK
-            ,FIIL_SURERLIK_EDUR
+            ,Cont
             ,FIIL_SURERLIK_EGEL
-            ,FIIL_SURERLIK_EGOR
-            ,FIIL_SURERLIK_EKAL
+            ,Cont2
+            ,Stay
             ,FIIL_DEVAMLILIK_DIKCE
-            ,FIIL_YAKLASMA_AYAZ
+            ,Almost
         </suffix-set>
 
         <suffix-set id="FIIL_EMIR_ISTEK">
@@ -64,27 +64,27 @@
 
         <suffix-set id="FIIL_KOK">
             FIIL_MASTAR_CE
-            ,FIIL_MASTAR_MEK
-            ,FIIL_IMSI_IP
+            ,Inf
+            ,AfterDoing
             ,FIIL_DONUSUM_ESICE
             ,FIIL_DONUSUM_ESIYE
             ,FIIL_DONUSUM_ESI
             ,FIIL_OLUMSUZLUK_ME
-            ,FIIL_OLUMSUZLUK_MEDEN
+            ,WithoutDoing
             ,FIIL_OLUMSUZLUK_MEKSIZIN
             ,Cond
-            ,FIIL_ZAMAN_INCE
+            ,JustAfter
             ,Necess
-            ,FIIL_YETENEK_EBIL
+            ,Abil
             ,FIIL_YETERSIZLIK_E
-            ,FIIL_EDILGEN_IL
+            ,Pass
             ,Caus
             ,FIIL_OLDURGAN_T
-            ,FIIL_TANIMLAMA_ICI
-            ,FIIL_BERI_ELI
-            ,FIIL_TEZLIK_IVER
-            ,FIIL_BELIRTME_DIK
-            ,FIIL_BERABERLIK_IS
+            ,Agt
+            ,SinceDoing
+            ,Hastily
+            ,PastPart
+            ,Recip
         </suffix-set>
 
         <suffix-set id="FIIL_ZAMAN_ARDISIL">
@@ -157,7 +157,7 @@
         <suffix id="FIIL_KOK" gen="">
             <allowed-suffixes>
                 FIIL_ZAMAN
-                ,FIIL_DONUSUM
+                ,DerivationalVerbSuffixes
                 ,FIIL_BILESIK
                 ,FIIL_KOK
                 ,FIIL_EMIR_ISTEK
@@ -711,7 +711,7 @@
         <suffix id="FIIL_DEVAMLILIK_DIKCE" gen=">dIkçA"/>
 
         <!-- gel-en -->
-        <suffix id="FIIL_DONUSUM_EN" gen="+yAn">
+        <suffix id="PresPart" gen="+yAn">
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
@@ -728,12 +728,12 @@
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ILI" gen="IlI">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="PresPart"/>
         </suffix>
 
         <!-- bu gelisler artik sIkmaya basladi. -->
-        <suffix id="FIIL_DONUSUM_IS" gen="+yIş">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN">
+        <suffix id="Inf3" gen="+yIş">
+            <allowed-suffixes copy-from="PresPart">
                 FIIL_GIBI_CESINE
                 ,ISIM_ILGI_CI
                 ,P3sg
@@ -742,21 +742,21 @@
 
         <!-- yatik, kalkik . genellestirmek dogru olmayabilir.-->
         <!--        <suffix id="FIIL_DONUSUM_IK" gen="+yI~k">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="PresPart"/>
         </suffix>-->
 
         <suffix id="FIIL_DONUSUM_IM" gen="+nIm">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN">
+            <allowed-suffixes copy-from="PresPart">
                 ISIM_ILGI_CI
             </allowed-suffixes>
         </suffix>
 
         <suffix id="FIIL_DONUSUM_INTI" gen="+yIntI">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="PresPart"/>
         </suffix>
 
         <!-- gidecsuffixes hazirlansin. yapacak bir sey yok.  -->
-        <suffix id="FIIL_DONUSUM_ECEK" gen="+yAcA~k">
+        <suffix id="FutPart" gen="+yAcA~k">
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
@@ -777,34 +777,34 @@
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ESICE" gen="+yAsIcA">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="PresPart"/>
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ESI" gen="+yAsI">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="PresPart"/>
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ESIYE" gen="+yAsIyA">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="PresPart"/>
         </suffix>
 
-        <suffix id="FIIL_DONUSUM_ME" gen="mA">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN">
+        <suffix id="Inf2" gen="mA">
+            <allowed-suffixes copy-from="PresPart">
                 FIIL_GIBI_CESINE
                 ,ISIM_ILGI_CI
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_TANIMLAMA_ICI" gen="+yIcI">
-            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
+        <suffix id="Agt" gen="+yIcI">
+            <allowed-suffixes copy-from="PresPart"/>
         </suffix>
 
         <!-- edilgenlik sorunlu bir ek. iki ayri ek seklinde ifade etmek zorunda kaldik. -->
-        <suffix id="FIIL_EDILGEN_IL" gen="Il">
+        <suffix id="Pass" gen="Il">
             <exception id="EDILGEN" gen=""/>
             <allowed-suffixes>
                 FIIL_ZAMAN
-                ,FIIL_DONUSUM
+                ,DerivationalVerbSuffixes
                 ,FIIL_BILESIK
                 ,FIIL_KOK
                 ,FIIL_EMIR_ISTEK
@@ -815,7 +815,7 @@
             <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
 
-        <suffix id="FIIL_BERI_ELI" gen="+yAlI"/>
+        <suffix id="SinceDoing" gen="+yAlI"/>
 
         <suffix id="FIIL_EMIR_O_SIN" gen="sIn"/>
 
@@ -847,19 +847,19 @@
         <suffix id="FIIL_ETTIRGEN_TEKRAR_T" gen="t">
             <allowed-suffixes>
                 FIIL_ZAMAN
-                ,FIIL_DONUSUM
+                ,DerivationalVerbSuffixes
                 ,FIIL_BILESIK
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_OLUMSUZLUK_ME
-                ,FIIL_YETENEK_EBIL
-                ,FIIL_BERI_ELI
-                ,FIIL_EDILGEN_IL
-                ,FIIL_TANIMLAMA_ICI
-                ,FIIL_ZAMAN_INCE
-                ,FIIL_IMSI_IP
-                ,FIIL_MASTAR_MEK
+                ,Abil
+                ,SinceDoing
+                ,Pass
+                ,Agt
+                ,JustAfter
+                ,AfterDoing
+                ,Inf
                 ,FIIL_OLUMSUZLUK_MEKSIZIN
-                ,FIIL_OLUMSUZLUK_MEDEN
+                ,WithoutDoing
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESI
                 ,FIIL_DONUSUM_ESIYE
@@ -925,15 +925,15 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_ZAMAN_INCE" gen="+yIncA">
+        <suffix id="JustAfter" gen="+yIncA">
             <allowed-suffixes>
                 Dat
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_IMSI_IP" gen="+yIp"/>
+        <suffix id="AfterDoing" gen="+yIp"/>
 
-        <suffix id="FIIL_BERABERLIK_IS" gen="Iş">
+        <suffix id="Recip" gen="Iş">
             <exception id="BERABERLIK_IS" gen="+yIş"/>
             <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
@@ -948,7 +948,7 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_MASTAR_MEK" gen="mAk">
+        <suffix id="Inf" gen="mAk">
             <allowed-suffixes>
                 IMEK_ZAMAN
                 ,Abl
@@ -963,43 +963,43 @@
             <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
 
-        <suffix id="FIIL_OLUMSUZLUK_MEDEN" gen="mAdAn"/>
+        <suffix id="WithoutDoing" gen="mAdAn"/>
 
         <suffix id="FIIL_OLUMSUZLUK_ME" gen="mA">
             <exception id="SIMDIKI_ZAMAN" gen="m"/>
             <allowed-suffixes>
                 FIIL_ZAMAN
-                ,FIIL_DONUSUM
+                ,DerivationalVerbSuffixes
                 ,FIIL_BILESIK
                 ,PersonNumberSuffixes
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_MASTAR_CE
-                ,FIIL_MASTAR_MEK
+                ,Inf
                 ,FIIL_OLUMSUZLUK_MEKSIZIN
-                ,FIIL_IMSI_IP
+                ,AfterDoing
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESI
                 ,FIIL_DONUSUM_ESIYE
                 ,Cond
-                ,FIIL_ZAMAN_INCE
+                ,JustAfter
                 ,Necess
-                ,FIIL_YETENEK_EBIL
-                ,FIIL_EDILGEN_IL
-                ,FIIL_TANIMLAMA_ICI
-                ,FIIL_BELIRTME_DIK
-                ,FIIL_BERI_ELI
+                ,Abil
+                ,Pass
+                ,Agt
+                ,PastPart
+                ,SinceDoing
             </allowed-suffixes>
         </suffix>
 
         <suffix id="FIIL_YETERSIZLIK_E" gen="+yA">
             <allowed-suffixes>
                 FIIL_OLUMSUZLUK_ME
-                ,FIIL_OLUMSUZLUK_MEDEN
+                ,WithoutDoing
             </allowed-suffixes>
         </suffix>
 
         <!-- bil-dik bir yuz. calmadik kapi.. bu ekin asil adi nedir+-->
-        <suffix id="FIIL_BELIRTME_DIK" gen=">dI~k">
+        <suffix id="PastPart" gen=">dI~k">
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
@@ -1026,58 +1026,58 @@
 
         <suffix id="FIIL_OLUMSUZLUK_MEKSIZIN" gen="mAksIzIn"/>
 
-        <suffix id="FIIL_SURERLIK_EDUR" gen="+yAdur">
+        <suffix id="Cont" gen="+yAdur">
             <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_KOK
-                ,FIIL_DONUSUM
+                ,DerivationalVerbSuffixes
             </allowed-suffixes>
         </suffix>
 
         <suffix id="FIIL_SURERLIK_EGEL" gen="+yAgel">
-            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
+            <allowed-suffixes copy-from="Cont"/>
         </suffix>
 
-        <suffix id="FIIL_SURERLIK_EGOR" gen="+yAgör">
-            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
+        <suffix id="Cont2" gen="+yAgör">
+            <allowed-suffixes copy-from="Cont"/>
         </suffix>
 
-        <suffix id="FIIL_SURERLIK_EKAL" gen="+yAkal">
-            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
+        <suffix id="Stay" gen="+yAkal">
+            <allowed-suffixes copy-from="Cont"/>
         </suffix>
 
-        <suffix id="FIIL_TEZLIK_IVER" gen="+yIver">
-            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
+        <suffix id="Hastily" gen="+yIver">
+            <allowed-suffixes copy-from="Cont"/>
         </suffix>
 
-        <suffix id="FIIL_YAKLASMA_AYAZ" gen="+yAyaz">
-            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
+        <suffix id="Almost" gen="+yAyaz">
+            <allowed-suffixes copy-from="Cont"/>
         </suffix>
 
-        <suffix id="FIIL_YETENEK_EBIL" gen="+yAbil">
+        <suffix id="Abil" gen="+yAbil">
             <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_EMIR_ISTEK
-                ,FIIL_MASTAR_MEK
+                ,Inf
                 ,FIIL_OLUMSUZLUK_MEKSIZIN
-                ,FIIL_IMSI_IP
+                ,AfterDoing
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESIYE
                 ,FIIL_DONUSUM_ESI
                 ,Cond
-                ,FIIL_ZAMAN_INCE
+                ,JustAfter
                 ,Necess
                 ,FIIL_YETERSIZLIK_E
-                ,FIIL_EDILGEN_IL
-                ,FIIL_TANIMLAMA_ICI
-                ,FIIL_BERI_ELI
-                ,FIIL_TEZLIK_IVER
-                ,FIIL_BELIRTME_DIK
-                ,FIIL_DONUSUM_EN
-                ,FIIL_DONUSUM_IS
-                ,FIIL_DONUSUM_ME
-                ,FIIL_DONUSUM_ECEK
+                ,Pass
+                ,Agt
+                ,SinceDoing
+                ,Hastily
+                ,PastPart
+                ,PresPart
+                ,Inf3
+                ,Inf2
+                ,FutPart
                 ,FIIL_DONUSUM_MIS
             </allowed-suffixes>
         </suffix>

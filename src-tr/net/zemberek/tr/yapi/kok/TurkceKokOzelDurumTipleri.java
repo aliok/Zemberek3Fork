@@ -30,7 +30,7 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
 
     CIFTLEME("ConsDoubling"),
 
-    FIIL_ARA_SESLI_DUSMESI("VowDropPass", FIIL_EDILGEN_IL),
+    FIIL_ARA_SESLI_DUSMESI("VowDropPass", Pass),
 
     KUCULTME("ConsDrop", Dim),
 
@@ -39,23 +39,23 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
     FIIL_KOK_BOZULMASI("VerbDeformation",
             Prog,
             Fut,
-            FIIL_DONUSUM_ECEK,
-            FIIL_DONUSUM_EN,
-            FIIL_DONUSUM_IS,
+            FutPart,
+            PresPart,
+            Inf3,
             FIIL_ISTEK_E,
             FIIL_SUREKLILIK_EREK,
-            FIIL_SURERLIK_EDUR,
+            Cont,
             FIIL_SURERLIK_EGEL,
-            FIIL_SURERLIK_EKAL,
-            FIIL_YAKLASMA_AYAZ,
-            FIIL_YETENEK_EBIL,
-            FIIL_BERABERLIK_IS,
+            Stay,
+            Almost,
+            Abil,
+            Recip,
             FIIL_EMIR_SIZ_IN,
-            FIIL_ZAMAN_INCE,
+            JustAfter,
             FIIL_EMIR_SIZRESMI_INIZ,
             FIIL_YETERSIZLIK_E,
             FIIL_DONUSUM_ESI,
-            FIIL_IMSI_IP
+            AfterDoing
     ),
 
     TERS_SESLI_EK("Frontal"),
