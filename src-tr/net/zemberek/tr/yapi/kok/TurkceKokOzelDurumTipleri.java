@@ -37,8 +37,8 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
     TEKIL_KISI_BOZULMASI("PronDeformation", Dat),
 
     FIIL_KOK_BOZULMASI("VerbDeformation",
-            FIIL_SIMDIKIZAMAN_IYOR,
-            FIIL_GELECEKZAMAN_ECEK,
+            Prog,
+            Fut,
             FIIL_DONUSUM_ECEK,
             FIIL_DONUSUM_EN,
             FIIL_DONUSUM_IS,
@@ -60,7 +60,7 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
 
     TERS_SESLI_EK("Frontal"),
 
-    SIMDIKI_ZAMAN("SDK_ZAMAN", FIIL_SIMDIKIZAMAN_IYOR),
+    SIMDIKI_ZAMAN("SDK_ZAMAN", Prog),
 
     ISIM_SON_SESLI_DUSMESI("DUS_SON",
             Loc,

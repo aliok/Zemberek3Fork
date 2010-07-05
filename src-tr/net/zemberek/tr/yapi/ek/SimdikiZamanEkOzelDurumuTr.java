@@ -45,7 +45,7 @@ public class SimdikiZamanEkOzelDurumuTr extends EkOzelDurumu {
 
     @Override
     public HarfDizisi olusumIcinUret(Kelime kelime, Ek sonrakiEk){
-        if(sonrakiEk.ad().equals(TurkceEkAdlari.FIIL_SIMDIKIZAMAN_IYOR))
+        if(sonrakiEk.ad().equals(TurkceEkAdlari.Prog))
           return ekUretici.olusumIcinEkUret(kelime.icerik(),sonrakiEk, uretimBilesenleri);
         return null;
     }

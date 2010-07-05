@@ -23,12 +23,12 @@
         </suffix-set>
 
         <suffix-set id="FIIL_ZAMAN">
-            FIIL_GECMISZAMAN_DI
-            ,FIIL_GECMISZAMAN_MIS
-            ,FIIL_GELECEKZAMAN_ECEK
-            ,FIIL_GENISZAMAN_IR
-            ,FIIL_SIMDIKIZAMAN_IYOR
-            ,FIIL_SIMDIKIZAMAN_MEKTE
+            Past
+            ,Narr
+            ,Fut
+            ,Aor
+            ,Prog
+            ,Prog2
         </suffix-set>
 
         <suffix-set id="FIIL_DONUSUM">
@@ -72,13 +72,13 @@
             ,FIIL_OLUMSUZLUK_ME
             ,FIIL_OLUMSUZLUK_MEDEN
             ,FIIL_OLUMSUZLUK_MEKSIZIN
-            ,FIIL_SART_SE
+            ,Cond
             ,FIIL_ZAMAN_INCE
-            ,FIIL_ZORUNLULUK_MELI
+            ,Necess
             ,FIIL_YETENEK_EBIL
             ,FIIL_YETERSIZLIK_E
             ,FIIL_EDILGEN_IL
-            ,FIIL_ETTIRGEN_TIR
+            ,Caus
             ,FIIL_OLDURGAN_T
             ,FIIL_TANIMLAMA_ICI
             ,FIIL_BERI_ELI
@@ -129,7 +129,7 @@
 
         <!-- isim yalin. -->
         <suffix id="ISIM_KOK" gen="">
-            <ardisil-suffixes>
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,PersonNumberSuffixes
@@ -150,7 +150,7 @@
                 ,Quite
                 ,By
                 ,FIIL_GIBI_CESINE
-            </ardisil-suffixes>
+            </allowed-suffixes>
         </suffix>
 
         <!-- fiil KOK -->
@@ -218,7 +218,7 @@
         <suffix id="Dat" gen="+yA">
             <exception id="ON_EK" gen="nA">
                 ZAMAN_BELIRTME_KI
-                ,ISIM_BULUNMA_KI
+                ,Rel
                 ,P3sg
                 ,P3pl
             </exception>
@@ -234,7 +234,7 @@
         <suffix id="Loc" gen=">dA">
             <exception id="ON_EK" gen="ndA">
                 ZAMAN_BELIRTME_KI
-                ,ISIM_BULUNMA_KI
+                ,Rel
                 ,P3sg
                 ,P3pl
             </exception>
@@ -242,7 +242,7 @@
                 IMEK_ZAMAN
                 ,PersonNumberSuffixes
                 ,Copula
-                ,ISIM_BULUNMA_KI
+                ,Rel
             </allowed-suffixes>
         </suffix>
 
@@ -250,7 +250,7 @@
         <suffix id="Abl" gen=">dAn">
             <exception id="ON_EK" gen="ndAn">
                 ZAMAN_BELIRTME_KI
-                ,ISIM_BULUNMA_KI
+                ,Rel
                 ,P3sg
                 ,P3pl
             </exception>
@@ -273,7 +273,7 @@
         <suffix id="Acc" gen="+yI">
             <exception id="ON_EK" gen="nI">
                 ZAMAN_BELIRTME_KI
-                ,ISIM_BULUNMA_KI
+                ,Rel
                 ,P3sg
                 ,P3pl
             </exception>
@@ -324,7 +324,7 @@
 
         <!-- isim andirma _si: "odunsu bir yapisi var"  -->
         <suffix id="Resemblance2" gen="+msI">
-            <allowed-suffixes kopya-ek="Resemblance">
+            <allowed-suffixes copy-from="Resemblance">
                 Become
             </allowed-suffixes>
         </suffix>
@@ -335,12 +335,12 @@
             <exception id="SU" gen="yun"/>
             <allowed-suffixes>
                 IMEK_ZAMAN
-                ,ISIM_BULUNMA_KI
+                ,Rel
             </allowed-suffixes>
         </suffix>
 
         <!-- isim bulunma _(de)ki: "kedide_ki pire"  -->
-        <suffix id="ISIM_BULUNMA_KI" gen="ki">
+        <suffix id="Rel" gen="ki">
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
@@ -363,12 +363,12 @@
         <!-- isim fiil donusumu _le(mek): "deriyi tuz_la_mamiz lazim"  -->
         <suffix id="ISIM_DONUSUM_LE" gen="lA">
             <exception id="SIMDIKI_ZAMAN" gen="l"/>
-            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+            <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
 
         <!-- isim fiil donusumu _les(mek): "ahmak_lasmak gerekmez."  -->
         <suffix id="Become" gen="lAş">
-            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+            <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
 
         <!-- isim icinde bulunma  _li: "limon_lu kek."  -->
@@ -570,8 +570,8 @@
             <exception id="ON_EK" gen="n">
                 IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
-                ,FIIL_SART_SE
-                ,FIIL_GECMISZAMAN_DI
+                ,Cond
+                ,Past
 
             </exception>
             <allowed-suffixes>
@@ -588,8 +588,8 @@
             <exception id="ON_EK" gen="k">
                 IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
-                ,FIIL_SART_SE
-                ,FIIL_GECMISZAMAN_DI
+                ,Cond
+                ,Past
             </exception>
             <exception id="ON_EK" gen="lIm">
                 FIIL_ISTEK_E
@@ -606,8 +606,8 @@
             <exception id="ON_EK" gen="nIz">
                 IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
-                ,FIIL_SART_SE
-                ,FIIL_GECMISZAMAN_DI
+                ,Cond
+                ,Past
             </exception>
             <allowed-suffixes>
                 Copula
@@ -660,32 +660,32 @@
         <!-- Ulestirme sayi eki, distributive numeral adjective : bir-er, iki-Ser  -->
 
         <suffix id="SAYI_ULESTIRME_ER" gen="+şAr">
-            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+            <allowed-suffixes copy-from="ISIM_KOK"/>
         </suffix>
 
         <!-- Kesir Sayi eki: "uC-te bir", "altI-da beS" -->
         <suffix id="SAYI_KESIR_DE" gen=">dA">
-            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+            <allowed-suffixes copy-from="ISIM_KOK"/>
         </suffix>
 
         <!-- Sira Sayi eki, ordinal numeral adjective : bir-inci, altI-ncI-->
         <suffix id="SAYI_SIRA_INCI" gen="IncI">
-            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+            <allowed-suffixes copy-from="ISIM_KOK"/>
         </suffix>
 
         <!-- Topluluk sayi eki : "dOrd-Uz, altI-z" -->
         <suffix id="SAYI_TOPLULUK_IZ" gen="Iz">
-            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+            <allowed-suffixes copy-from="ISIM_KOK"/>
         </suffix>
 
         <!--  geometrik kose eki : altI-gen, UC-gen -->
         <suffix id="SAYI_KOSE_GEN" gen="gen">
-            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+            <allowed-suffixes copy-from="ISIM_KOK"/>
         </suffix>
 
         <!--  Asil sayi sifati, numeral adjective -->
         <suffix id="SAYI_KOK" gen="">
-            <allowed-suffixes kopya-ek="ISIM_KOK">
+            <allowed-suffixes copy-from="ISIM_KOK">
                 SAYI_ULESTIRME_ER
                 ,SAYI_KESIR_DE
                 ,SAYI_SIRA_INCI
@@ -700,7 +700,7 @@
 
         <!-- aglamaca yok. -->
         <suffix id="FIIL_MASTAR_CE" gen=">cA">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_MIS"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_MIS"/>
         </suffix>
 
         <!-- ... demir pencenin bilegini yakar-casina
@@ -728,12 +728,12 @@
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ILI" gen="IlI">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
         </suffix>
 
         <!-- bu gelisler artik sIkmaya basladi. -->
         <suffix id="FIIL_DONUSUM_IS" gen="+yIş">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN">
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN">
                 FIIL_GIBI_CESINE
                 ,ISIM_ILGI_CI
                 ,P3sg
@@ -742,17 +742,17 @@
 
         <!-- yatik, kalkik . genellestirmek dogru olmayabilir.-->
         <!--        <suffix id="FIIL_DONUSUM_IK" gen="+yI~k">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
         </suffix>-->
 
         <suffix id="FIIL_DONUSUM_IM" gen="+nIm">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN">
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN">
                 ISIM_ILGI_CI
             </allowed-suffixes>
         </suffix>
 
         <suffix id="FIIL_DONUSUM_INTI" gen="+yIntI">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
         </suffix>
 
         <!-- gidecsuffixes hazirlansin. yapacak bir sey yok.  -->
@@ -777,26 +777,26 @@
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ESICE" gen="+yAsIcA">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ESI" gen="+yAsI">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ESIYE" gen="+yAsIyA">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
         </suffix>
 
         <suffix id="FIIL_DONUSUM_ME" gen="mA">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN">
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN">
                 FIIL_GIBI_CESINE
                 ,ISIM_ILGI_CI
             </allowed-suffixes>
         </suffix>
 
         <suffix id="FIIL_TANIMLAMA_ICI" gen="+yIcI">
-            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+            <allowed-suffixes copy-from="FIIL_DONUSUM_EN"/>
         </suffix>
 
         <!-- edilgenlik sorunlu bir ek. iki ayri ek seklinde ifade etmek zorunda kaldik. -->
@@ -812,7 +812,7 @@
         </suffix>
 
         <suffix id="FIIL_EDILGENSESLI_N" gen="+n">
-            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+            <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
 
         <suffix id="FIIL_BERI_ELI" gen="+yAlI"/>
@@ -833,8 +833,8 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_ETTIRGEN_TIR" gen=">dIr">
-            <allowed-suffixes kopya-ek="FIIL_KOK">
+        <suffix id="Caus" gen=">dIr">
+            <allowed-suffixes copy-from="FIIL_KOK">
                 FIIL_ETTIRGEN_TEKRAR_T
             </allowed-suffixes>
         </suffix>
@@ -863,14 +863,14 @@
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESI
                 ,FIIL_DONUSUM_ESIYE
-                ,FIIL_ZORUNLULUK_MELI
-                ,FIIL_SART_SE
+                ,Necess
+                ,Cond
                 ,FIIL_YETERSIZLIK_E
-                ,FIIL_ETTIRGEN_TIR
+                ,Caus
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_GELECEKZAMAN_ECEK" gen="+yAcA~k">
+        <suffix id="Fut" gen="+yAcA~k">
             <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,Copula
@@ -878,7 +878,7 @@
         </suffix>
 
         <!-- dun halami ziyaret et-ti-m. -->
-        <suffix id="FIIL_GECMISZAMAN_DI" gen=">dI">
+        <suffix id="Past" gen=">dI">
             <allowed-suffixes>
                 PersonNumberSuffixes
                 ,IMEK_SART_SE
@@ -886,7 +886,7 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_GECMISZAMAN_MIS" gen="mIş">
+        <suffix id="Narr" gen="mIş">
             <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,PersonNumberSuffixes
@@ -897,7 +897,7 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_GENISZAMAN_IR" gen="Ir">
+        <suffix id="Aor" gen="Ir">
             <exception id="GENIS_ZAMAN" gen="Ar"/>
             <exception id="ON_EK" gen="z">
                 FIIL_OLUMSUZLUK_ME
@@ -911,14 +911,14 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_SIMDIKIZAMAN_IYOR" gen="Iyor">
+        <suffix id="Prog" gen="Iyor">
             <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,Copula
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_SIMDIKIZAMAN_MEKTE" gen="mAktA">
+        <suffix id="Prog2" gen="mAktA">
             <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,Copula
@@ -935,7 +935,7 @@
 
         <suffix id="FIIL_BERABERLIK_IS" gen="Iş">
             <exception id="BERABERLIK_IS" gen="+yIş"/>
-            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+            <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
 
         <!-- gel-e-sin, oku-ya-yim -->
@@ -960,7 +960,7 @@
 
         <suffix id="FIIL_OLDURGAN_T" gen="">
             <exception id="OLDURGAN" gen="t"/>
-            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+            <allowed-suffixes copy-from="FIIL_KOK"/>
         </suffix>
 
         <suffix id="FIIL_OLUMSUZLUK_MEDEN" gen="mAdAn"/>
@@ -980,9 +980,9 @@
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESI
                 ,FIIL_DONUSUM_ESIYE
-                ,FIIL_SART_SE
+                ,Cond
                 ,FIIL_ZAMAN_INCE
-                ,FIIL_ZORUNLULUK_MELI
+                ,Necess
                 ,FIIL_YETENEK_EBIL
                 ,FIIL_EDILGEN_IL
                 ,FIIL_TANIMLAMA_ICI
@@ -1012,7 +1012,7 @@
 
 
 
-        <suffix id="FIIL_SART_SE" gen="sA">
+        <suffix id="Cond" gen="sA">
             <allowed-suffixes>
                 PersonNumberSuffixes
                 ,IMEK_RIVAYET_MIS
@@ -1036,23 +1036,23 @@
         </suffix>
 
         <suffix id="FIIL_SURERLIK_EGEL" gen="+yAgel">
-            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
         </suffix>
 
         <suffix id="FIIL_SURERLIK_EGOR" gen="+yAgör">
-            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
         </suffix>
 
         <suffix id="FIIL_SURERLIK_EKAL" gen="+yAkal">
-            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
         </suffix>
 
         <suffix id="FIIL_TEZLIK_IVER" gen="+yIver">
-            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
         </suffix>
 
         <suffix id="FIIL_YAKLASMA_AYAZ" gen="+yAyaz">
-            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+            <allowed-suffixes copy-from="FIIL_SURERLIK_EDUR"/>
         </suffix>
 
         <suffix id="FIIL_YETENEK_EBIL" gen="+yAbil">
@@ -1065,9 +1065,9 @@
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESIYE
                 ,FIIL_DONUSUM_ESI
-                ,FIIL_SART_SE
+                ,Cond
                 ,FIIL_ZAMAN_INCE
-                ,FIIL_ZORUNLULUK_MELI
+                ,Necess
                 ,FIIL_YETERSIZLIK_E
                 ,FIIL_EDILGEN_IL
                 ,FIIL_TANIMLAMA_ICI
@@ -1082,10 +1082,10 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_ZORUNLULUK_MELI" gen="mAlI">
+        <suffix id="Necess" gen="mAlI">
             <allowed-suffixes>
                 PersonNumberSuffixes
-                ,FIIL_SART_SE
+                ,Cond
                 ,Copula
             </allowed-suffixes>
         </suffix>
@@ -1146,7 +1146,7 @@
             <allowed-suffixes>
                 IMEK_ZAMAN
                 ,Inst
-                ,ISIM_BULUNMA_KI
+                ,Rel
                 ,Copula
                 ,Acc
             </allowed-suffixes>
@@ -1154,7 +1154,7 @@
 
 
         <suffix id="ZAMIR_SAHIPLIK_IM" gen="Im">
-            <allowed-suffixes kopya-ek="ZAMIR_SAHIPLIK_IN"/>
+            <allowed-suffixes copy-from="ZAMIR_SAHIPLIK_IN"/>
         </suffix>
 
         <suffix id="ZAMIR_KOK" gen="">
@@ -1192,8 +1192,8 @@
         <suffix id="FIIL_SORU_MI" gen="mI">
             <allowed-suffixes>
                 PersonNumberSuffixes
-                ,FIIL_GECMISZAMAN_DI
-                ,FIIL_GECMISZAMAN_MIS
+                ,Past
+                ,Narr
                 ,Copula
             </allowed-suffixes>
         </suffix>

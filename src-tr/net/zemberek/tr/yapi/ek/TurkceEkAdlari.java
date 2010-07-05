@@ -38,7 +38,7 @@ public class TurkceEkAdlari {
     public static final String Resemblance = "Resemblance";
     public static final String Resemblance2 = "Resemblance2";
     public static final String Gen = "Gen";
-    public static final String ISIM_BULUNMA_KI = "ISIM_BULUNMA_KI";
+    public static final String Rel = "Rel";
     public static final String By = "By";
     public static final String ISIM_DONUSUM_LE = "ISIM_DONUSUM_LE";
     public static final String Become = "Become";
@@ -90,14 +90,14 @@ public class TurkceEkAdlari {
     public static final String FIIL_EMIR_SIZ_IN = "FIIL_EMIR_SIZ_IN";
     public static final String FIIL_EMIR_SIZRESMI_INIZ = "FIIL_EMIR_SIZRESMI_INIZ";
     public static final String FIIL_SUREKLILIK_EREK = "FIIL_SUREKLILIK_EREK";
-    public static final String FIIL_ETTIRGEN_TIR = "FIIL_ETTIRGEN_TIR";
+    public static final String Caus = "Caus";
     public static final String FIIL_ETTIRGEN_TEKRAR_T = "FIIL_ETTIRGEN_TEKRAR_T";
-    public static final String FIIL_GELECEKZAMAN_ECEK = "FIIL_GELECEKZAMAN_ECEK";
-    public static final String FIIL_GECMISZAMAN_DI = "FIIL_GECMISZAMAN_DI";
-    public static final String FIIL_GECMISZAMAN_MIS = "FIIL_GECMISZAMAN_MIS";
-    public static final String FIIL_GENISZAMAN_IR = "FIIL_GENISZAMAN_IR";
-    public static final String FIIL_SIMDIKIZAMAN_IYOR = "FIIL_SIMDIKIZAMAN_IYOR";
-    public static final String FIIL_SIMDIKIZAMAN_MEKTE = "FIIL_SIMDIKIZAMAN_MEKTE";
+    public static final String Fut = "Fut";
+    public static final String Past = "Past";
+    public static final String Narr = "Narr";
+    public static final String Aor = "Aor";
+    public static final String Prog = "Prog";
+    public static final String Prog2 = "Prog2";
     public static final String FIIL_ZAMAN_INCE = "FIIL_ZAMAN_INCE";
     public static final String FIIL_IMSI_IP = "FIIL_IMSI_IP";
     public static final String FIIL_BERABERLIK_IS = "FIIL_BERABERLIK_IS";
@@ -108,7 +108,7 @@ public class TurkceEkAdlari {
     public static final String FIIL_OLUMSUZLUK_ME = "FIIL_OLUMSUZLUK_ME";
     public static final String FIIL_YETERSIZLIK_E = "FIIL_YETERSIZLIK_E";
     public static final String FIIL_BELIRTME_DIK = "FIIL_BELIRTME_DIK";
-    public static final String FIIL_SART_SE = "FIIL_SART_SE";
+    public static final String Cond = "Cond";
     public static final String FIIL_ISTEK_SENE = "FIIL_ISTEK_SENE";
     public static final String FIIL_ISTEK_SENIZE = "FIIL_ISTEK_SENIZE";
     public static final String FIIL_OLUMSUZLUK_MEKSIZIN = "FIIL_OLUMSUZLUK_MEKSIZIN";
@@ -119,7 +119,7 @@ public class TurkceEkAdlari {
     public static final String FIIL_TEZLIK_IVER = "FIIL_TEZLIK_IVER";
     public static final String FIIL_YAKLASMA_AYAZ = "FIIL_YAKLASMA_AYAZ";
     public static final String FIIL_YETENEK_EBIL = "FIIL_YETENEK_EBIL";
-    public static final String FIIL_ZORUNLULUK_MELI = "FIIL_ZORUNLULUK_MELI";
+    public static final String Necess = "Necess";
 
     public static final String ZAMAN_BELIRTME_KI = "ZAMAN_BELIRTME_KI";
 

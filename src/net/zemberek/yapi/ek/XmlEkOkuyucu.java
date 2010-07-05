@@ -174,7 +174,7 @@ public class XmlEkOkuyucu {
         ardisilEkSet.addAll(getSuffixesfromCommaSeparated(ekListeString));
 
         //varsa baska bir ekin ardisil eklerini kopyala.
-        Attr attr = ardisilEklerEl.getAttributeNode("kopya-ek");
+        Attr attr = ardisilEklerEl.getAttributeNode("copy-from");
         if (attr != null) {
             final String kopyaEkadi = attr.getValue();
             Ek ek = this.ekler.get(kopyaEkadi);
