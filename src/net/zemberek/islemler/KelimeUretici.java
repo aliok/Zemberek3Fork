@@ -93,7 +93,7 @@ public class KelimeUretici {
 
     /**
      * Kok ve Ek listesi tasiyan bir kelimeyi String listesi seklinde parcalara ayirir.
-     * Kelime {kok={kitap, ISIM} ekler = {ISIM_SAHIPLIK_BEN, ISIM_YONELME_E}} icin
+     * Kelime {kok={kitap, ISIM} ekler = {ISIM_SAHIPLIK_BEN, Dat}} icin
      * {kitap,Im,a} dizisi doner.
      *
      * @param kelime : kelime
