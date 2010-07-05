@@ -11,26 +11,26 @@ import static zemberek3.structure.TurkicLetter.builder;
 public class TurkishAlphabet implements TurkicAlphabet {
 
     // Turkish specific characters.
-    public static final char C_CC = '\u00c7'; // Kuyruklu buyuk c (ch)
-    public static final char C_cc = '\u00e7'; // Kuyruklu kucuk c (ch)
-    public static final char C_GG = '\u011e'; // Buyuk yumusak g
-    public static final char C_gg = '\u011f'; // Kucuk yumusak g
-    public static final char C_ii = '\u0131'; // Noktassiz kucuk i
-    public static final char C_II = '\u0130'; // Noktali buyuk i
-    public static final char C_OO = '\u00d6'; // Noktali buyuk o
-    public static final char C_oo = '\u00f6'; // Noktali kucuk o
-    public static final char C_SS = '\u015e'; // Kuyruklu buyuk s (sh)
-    public static final char C_ss = '\u015f'; // Kuyruklu kucuk s (sh)
-    public static final char C_UU = '\u00dc'; // Noktali buyuk u
-    public static final char C_uu = '\u00fc'; // Noktali kucuk u
+    public static final char C_CC = '\u00c7'; // Ç
+    public static final char C_cc = '\u00e7'; // ç
+    public static final char C_GG = '\u011e'; // Ğ
+    public static final char C_gg = '\u011f'; // ğ
+    public static final char C_ii = '\u0131'; // ı
+    public static final char C_II = '\u0130'; // İ
+    public static final char C_OO = '\u00d6'; // Ö
+    public static final char C_oo = '\u00f6'; // ö
+    public static final char C_SS = '\u015e'; // Ş
+    public static final char C_ss = '\u015f'; // ş
+    public static final char C_UU = '\u00dc'; // Ü
+    public static final char C_uu = '\u00fc'; // ü
 
     // letters used in turkish text having circumflex.
-    public static final char A_CIRC = '\u00c2'; // sapkali buyuk A
-    public static final char a_CIRC = '\u00e2'; // sapkali kucuk A
-    public static final char I_CIRC = '\u00ce'; // sapkali buyuk noktasiz i
-    public static final char i_CIRC = '\u00ee'; // sapkali kucuk noktasiz i
-    public static final char U_CIRC = '\u00db'; // sapkali buyuk U
-    public static final char u_CIRC = '\u00fb'; // sapkali kucuk u
+    public static final char A_CIRC = '\u00c2'; // Â
+    public static final char a_CIRC = '\u00e2'; // â
+    public static final char I_CIRC = '\u00ce'; // Î
+    public static final char i_CIRC = '\u00ee'; // î
+    public static final char U_CIRC = '\u00db'; // Û
+    public static final char u_CIRC = '\u00fb'; // û
 
     /**
      * Turkish Letters. q,x,w is also added for foreign proper nouns. They are marked as 'foreign'
@@ -64,19 +64,26 @@ public class TurkishAlphabet implements TurkicAlphabet {
     public static final TurkicLetter L_v = builder('v', 27).build();
     public static final TurkicLetter L_y = builder('y', 28).build();
     public static final TurkicLetter L_z = builder('z', 29).build();
+    // Not Turkish but sometimes appears in geographical names etc.
     public static final TurkicLetter L_q = builder('q', 30).foreign().build();
     public static final TurkicLetter L_w = builder('w', 31).foreign().build();
     public static final TurkicLetter L_x = builder('x', 32).foreign().build();
+    // Circumflexed letters
+    public static final TurkicLetter L_ac = builder(a_CIRC, 33).vowel().frontalVowel().similarAscii('a').notInAscii().build();
+    public static final TurkicLetter L_ic = builder(i_CIRC, 34).vowel().frontalVowel().similarAscii('i').notInAscii().build();
+    public static final TurkicLetter L_uc = builder(u_CIRC, 35).vowel().foreign().frontalVowel().similarAscii('u').roundedVowel().notInAscii().build();
 
     private static final TurkicLetter[] TURKISH_LETTERS = {
             L_a, L_b, L_c, L_cc, L_d, L_e, L_f, L_g,
             L_gg, L_h, L_ii, L_i, L_j, L_k, L_l, L_m,
             L_n, L_o, L_oo, L_p, L_r, L_s, L_ss, L_t,
-            L_u, L_uu, L_v, L_y, L_z, L_q, L_w, L_x};
+            L_u, L_uu, L_v, L_y, L_z, L_q, L_w, L_x, 
+            L_ac, L_ic, L_uc};
 
     private static final int ALPHABET_LETTER_COUNT = TURKISH_LETTERS.length;
 
-    // 0x15f is the maximum char value in turkish speific characters.
+    // 0x15f is the maximum char value in turkish specific characters. It is the size
+    // of our lookup tables. This could be done better, but for now it works.
     private static final int MAX_CHAR_VALUE = 0x15f + 1;
     private static final TurkicLetter[] CHAR_TO_LETTER_LOOKUP = new TurkicLetter[MAX_CHAR_VALUE];
     private static final char[] TURKISH_ALPHABET_CHARS = new char[MAX_CHAR_VALUE];
@@ -148,12 +155,13 @@ public class TurkishAlphabet implements TurkicAlphabet {
     }
 
     // ------------------------ ASCII equivalency ----------------------------------
-
+    // This lookp table maps each Turkish letter to its ASCII counterpart.
     private static TurkicLetter[] ASCII_EQUIVALENT_LETTER_LOOKUP = {
             L_a, L_b, L_c, L_c, L_d, L_e, L_f, L_g,
             L_g, L_h, L_i, L_i, L_j, L_k, L_l, L_m,
             L_n, L_o, L_o, L_p, L_r, L_s, L_s, L_t,
-            L_u, L_u, L_v, L_y, L_z, L_q, L_w, L_x};
+            L_u, L_u, L_v, L_y, L_z, L_q, L_w, L_x,
+            L_a, L_i, L_u};
 
     private static char[] ASCII_EQUIVALENT_CHARS_LOOKUP = new char[MAX_CHAR_VALUE];
 
@@ -175,15 +183,16 @@ public class TurkishAlphabet implements TurkicAlphabet {
     }
 
     /**
-     * checks if two characters are enlishcharacter equal.
+     * checks if two characters are enlish character equal.
      *
      * @param c1 first char
      * @param c2 second char.
-     * @return true if equals or enlishequivalents are same.
+     * @return true if equals or enlish equivalents are same.
      */
     public boolean asciiEqual(char c1, char c2) {
         return (isValid(c1) && isValid(c2)) &&
-                (c1 == c2 || ASCII_EQUIVALENT_CHARS_LOOKUP[c1] == ASCII_EQUIVALENT_CHARS_LOOKUP[c2]);
+                (c1 == c2 || 
+                    ASCII_EQUIVALENT_CHARS_LOOKUP[c1] == ASCII_EQUIVALENT_CHARS_LOOKUP[c2]);
     }
 
     public char getAsciiEquivalentChar(char c) {
