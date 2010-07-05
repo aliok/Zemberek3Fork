@@ -12,7 +12,7 @@
         </suffix-set>
 
         <suffix-set id="CaseSuffixes">
-            Dat, Loc, Abl, Acc, Gen, Copula
+            Dat, Loc, Abl, Acc, Gen, Inst, Copula
         </suffix-set>
 
         <suffix-set id="IMEK_ZAMAN">
@@ -139,7 +139,6 @@
                 ,MadeFor
                 ,Ness
                 ,Without
-                ,Inst
                 ,Dim
                 ,Dim2
                 ,Become
@@ -178,7 +177,6 @@
                 ,A1pl
                 ,A2pl
                 ,By
-                ,Inst
             </allowed-suffixes>
         </suffix>
 
@@ -194,7 +192,6 @@
                 ,MadeFor
                 ,Ness
                 ,With
-                ,Inst
             </allowed-suffixes>
         </suffix>
 
@@ -210,7 +207,6 @@
                 ,MadeFor
                 ,Ness
                 ,With
-                ,Inst
             </allowed-suffixes>
         </suffix>
 
@@ -287,7 +283,6 @@
                 ,IMEK_ZAMAN
                 ,Copula
                 ,Plural
-                ,Inst
                 ,ISIM_ILGI_CI
             </allowed-suffixes>
         </suffix>
@@ -344,8 +339,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Gen
-                ,Inst
                 ,Plural
             </allowed-suffixes>
         </suffix>
@@ -379,11 +372,9 @@
                 ,PersonNumberSuffixes
                 ,PossessiveSuffixes
                 ,Plural
-                ,Gen
                 ,Ness
                 ,Dim2
                 ,By
-                ,Inst
                 ,Become
             </allowed-suffixes>
         </suffix>
@@ -396,11 +387,9 @@
                 ,PersonNumberSuffixes
                 ,PossessiveSuffixes
                 ,Plural
-                ,Gen
                 ,Dim2
                 ,Ness
                 ,By
-                ,Inst
                 ,Become
                 ,With
                 ,ISIM_ILGI_CI
@@ -424,8 +413,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Inst
-                ,Gen
                 ,By
                 ,A2sg
                 ,A2pl
@@ -438,8 +425,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Inst
-                ,Gen
                 ,By
                 ,A1sg
                 ,A1pl
@@ -456,9 +441,7 @@
                 ,A2sg
                 ,A1pl
                 ,A2pl
-                ,Gen
                 ,By
-                ,Inst
             </allowed-suffixes>
         </suffix>
 
@@ -468,8 +451,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Inst
-                ,Gen
                 ,By
                 ,A2sg
                 ,A2pl
@@ -482,8 +463,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Inst
-                ,Gen
                 ,By
                 ,A1sg
                 ,A1pl
@@ -495,8 +474,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Inst
-                ,Gen
                 ,By
             </allowed-suffixes>
         </suffix>
@@ -508,8 +485,6 @@
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
-                ,Inst
-                ,Gen
                 ,Quite
                 ,Ness
                 ,Become
@@ -528,7 +503,6 @@
                 ,Ness
                 ,Become
                 ,Quite
-                ,Inst
             </allowed-suffixes>
         </suffix>
 
@@ -543,7 +517,6 @@
                 ,Ness
                 ,Become
                 ,Quite
-                ,Inst
                 ,With
                 ,Without
             </allowed-suffixes>
@@ -572,7 +545,6 @@
                 ,IMEK_HIKAYE_DI
                 ,Cond
                 ,Past
-
             </exception>
             <allowed-suffixes>
                 Copula
@@ -637,12 +609,10 @@
                 ,PersonNumberSuffixes
                 ,PossessiveSuffixes
                 ,Plural
-                ,Gen
                 ,Dim2
                 ,Dim
                 ,Ness
                 ,By
-                ,Inst
                 ,Become
                 ,With
                 ,Without
@@ -722,7 +692,6 @@
                 ,MadeFor
                 ,Ness
                 ,With
-                ,Inst
                 ,Become
             </allowed-suffixes>
         </suffix>
@@ -757,7 +726,6 @@
                 CaseSuffixes
                 ,PossessiveSuffixes
                 ,Plural
-                ,Gen
                 ,Copula
             </allowed-suffixes>
         </suffix>
@@ -767,7 +735,6 @@
                 CaseSuffixes
                 ,PossessiveSuffixes
                 ,Plural
-                ,Gen
                 ,Copula
             </allowed-suffixes>
         </suffix>
@@ -1116,7 +1083,6 @@
                 ,MadeFor
                 ,Ness
                 ,Without
-                ,Inst
                 ,Dim
                 ,Dim2
                 ,Become
@@ -1168,7 +1134,6 @@
                 ,With
                 ,Ness
                 ,Without
-                ,Inst
                 ,Dim2
                 ,By
                 ,ZAMIR_SAHIPLIK_IM
