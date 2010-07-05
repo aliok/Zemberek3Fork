@@ -69,19 +69,18 @@ public class TurkceEkAdlari {
 
     public static final String FIIL_MASTAR_CE = "FIIL_MASTAR_CE";
     public static final String FIIL_GIBI_CESINE = "FIIL_GIBI_CESINE";
-    public static final String FIIL_DEVAMLILIK_DIKCE = "FIIL_DEVAMLILIK_DIKCE";
+    public static final String AsLongAs = "AsLongAs";
     public static final String PresPart = "PresPart";
     public static final String Inf3 = "Inf3";
     public static final String FIIL_DONUSUM_IM = "FIIL_DONUSUM_IM";
     public static final String FIIL_DONUSUM_ILI = "FIIL_DONUSUM_ILI";
-    public static final String FIIL_DONUSUM_INTI = "FIIL_DONUSUM_INTI";
     public static final String FIIL_DONUSUM_ESICE = "FIIL_DONUSUM_ESICE";
     public static final String FIIL_DONUSUM_ESI = "FIIL_DONUSUM_ESI";
     public static final String FIIL_DONUSUM_ESIYE = "FIIL_DONUSUM_ESIYE";
     public static final String Inf2 = "Inf2";
     public static final String FutPart = "FutPart";
     public static final String FIIL_DONUSUM_MIS = "FIIL_DONUSUM_MIS";
-    public static final String Agt = "Agt";
+    public static final String MakerOf = "MakerOf";
     public static final String Pass = "Pass";
     public static final String FIIL_EDILGENSESLI_N = "FIIL_EDILGENSESLI_N";
     public static final String SinceDoing = "SinceDoing";
@@ -111,7 +110,8 @@ public class TurkceEkAdlari {
     public static final String Cond = "Cond";
     public static final String FIIL_ISTEK_SENE = "FIIL_ISTEK_SENE";
     public static final String FIIL_ISTEK_SENIZE = "FIIL_ISTEK_SENIZE";
-    public static final String FIIL_OLUMSUZLUK_MEKSIZIN = "FIIL_OLUMSUZLUK_MEKSIZIN";
+    public static final String WithoutDoing2 = "WithoutDoing2";
+    public static final String RatherThan = "RatherThan";
     public static final String Cont = "Cont";
     public static final String FIIL_SURERLIK_EGEL = "FIIL_SURERLIK_EGEL";
     public static final String Cont2 = "Cont2";

@@ -3,7 +3,7 @@
 
     <suffix-sets>
 
-        <suffix-set id="Possessive">
+        <suffix-set id="PossessiveSuffixes">
             P1sg, P2sg, P3sg, P1pl, P2pl, P3pl
         </suffix-set>
 
@@ -34,7 +34,6 @@
         <suffix-set id="DerivationalVerbSuffixes">
             PresPart
             ,FIIL_DONUSUM_IM
-            ,FIIL_DONUSUM_INTI
             ,Inf3
             ,Inf2
             ,FutPart
@@ -48,7 +47,7 @@
             ,FIIL_SURERLIK_EGEL
             ,Cont2
             ,Stay
-            ,FIIL_DEVAMLILIK_DIKCE
+            ,AsLongAs
             ,Almost
         </suffix-set>
 
@@ -71,7 +70,8 @@
             ,FIIL_DONUSUM_ESI
             ,FIIL_OLUMSUZLUK_ME
             ,WithoutDoing
-            ,FIIL_OLUMSUZLUK_MEKSIZIN
+            ,WithoutDoing2
+            ,RatherThan
             ,Cond
             ,JustAfter
             ,Necess
@@ -80,7 +80,7 @@
             ,Pass
             ,Caus
             ,FIIL_OLDURGAN_T
-            ,Agt
+            ,MakerOf
             ,SinceDoing
             ,Hastily
             ,PastPart
@@ -131,7 +131,7 @@
         <suffix id="ISIM_KOK" gen="">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
@@ -186,7 +186,7 @@
         <suffix id="Dim" gen=">cI~k">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
@@ -202,7 +202,7 @@
         <suffix id="Dim2" gen="cAğIz">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
@@ -283,7 +283,7 @@
         <suffix id="Ness" gen="lI~k">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,IMEK_ZAMAN
                 ,Copula
                 ,Plural
@@ -310,7 +310,7 @@
                 CaseSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Copula
                 ,Plural
                 ,Gen
@@ -377,7 +377,7 @@
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,PersonNumberSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Plural
                 ,Gen
                 ,Ness
@@ -394,7 +394,7 @@
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,PersonNumberSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Plural
                 ,Gen
                 ,Dim2
@@ -523,7 +523,7 @@
                 CaseSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Plural
                 ,Ness
                 ,Become
@@ -538,7 +538,7 @@
                 CaseSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Plural
                 ,Ness
                 ,Become
@@ -635,7 +635,7 @@
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,PersonNumberSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Plural
                 ,Gen
                 ,Dim2
@@ -708,13 +708,13 @@
         <suffix id="FIIL_GIBI_CESINE" gen="cAsInA"/>
 
         <!-- ye-dikce yiyesin geliyor. -->
-        <suffix id="FIIL_DEVAMLILIK_DIKCE" gen=">dIkçA"/>
+        <suffix id="AsLongAs" gen=">dIkçA"/>
 
         <!-- gel-en -->
         <suffix id="PresPart" gen="+yAn">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
@@ -751,15 +751,11 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_DONUSUM_INTI" gen="+yIntI">
-            <allowed-suffixes copy-from="PresPart"/>
-        </suffix>
-
         <!-- gidecsuffixes hazirlansin. yapacak bir sey yok.  -->
         <suffix id="FutPart" gen="+yAcA~k">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Plural
                 ,Gen
                 ,Copula
@@ -769,7 +765,7 @@
         <suffix id="FIIL_DONUSUM_MIS" gen="mIş">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,Plural
                 ,Gen
                 ,Copula
@@ -795,7 +791,7 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="Agt" gen="+yIcI">
+        <suffix id="MakerOf" gen="+yIcI">
             <allowed-suffixes copy-from="PresPart"/>
         </suffix>
 
@@ -854,12 +850,13 @@
                 ,Abil
                 ,SinceDoing
                 ,Pass
-                ,Agt
+                ,MakerOf
                 ,JustAfter
                 ,AfterDoing
                 ,Inf
-                ,FIIL_OLUMSUZLUK_MEKSIZIN
+                ,WithoutDoing2
                 ,WithoutDoing
+                ,RatherThan
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESI
                 ,FIIL_DONUSUM_ESIYE
@@ -975,7 +972,8 @@
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_MASTAR_CE
                 ,Inf
-                ,FIIL_OLUMSUZLUK_MEKSIZIN
+                ,WithoutDoing2
+                ,RatherThan
                 ,AfterDoing
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESI
@@ -985,7 +983,7 @@
                 ,Necess
                 ,Abil
                 ,Pass
-                ,Agt
+                ,MakerOf
                 ,PastPart
                 ,SinceDoing
             </allowed-suffixes>
@@ -1003,7 +1001,7 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Possessive
+                ,PossessiveSuffixes
             </allowed-suffixes>
         </suffix>
 
@@ -1024,7 +1022,9 @@
 
         <suffix id="FIIL_ISTEK_SENIZE" gen="sAnIzA"/>
 
-        <suffix id="FIIL_OLUMSUZLUK_MEKSIZIN" gen="mAksIzIn"/>
+        <suffix id="WithoutDoing2" gen="mAksIzIn"/>
+
+        <suffix id="RatherThan" gen="mAktAnsA"/>
 
         <suffix id="Cont" gen="+yAdur">
             <allowed-suffixes>
@@ -1060,7 +1060,8 @@
                 FIIL_ZAMAN
                 ,FIIL_EMIR_ISTEK
                 ,Inf
-                ,FIIL_OLUMSUZLUK_MEKSIZIN
+                ,WithoutDoing2
+                ,RatherThan
                 ,AfterDoing
                 ,FIIL_DONUSUM_ESICE
                 ,FIIL_DONUSUM_ESIYE
@@ -1070,7 +1071,7 @@
                 ,Necess
                 ,FIIL_YETERSIZLIK_E
                 ,Pass
-                ,Agt
+                ,MakerOf
                 ,SinceDoing
                 ,Hastily
                 ,PastPart
@@ -1107,7 +1108,7 @@
         <suffix id="ZAMAN_KOK" gen="">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
@@ -1160,7 +1161,7 @@
         <suffix id="ZAMIR_KOK" gen="">
             <allowed-suffixes>
                 CaseSuffixes
-                ,Possessive
+                ,PossessiveSuffixes
                 ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
