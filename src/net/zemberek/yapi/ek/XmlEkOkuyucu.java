@@ -61,9 +61,9 @@ public class XmlEkOkuyucu {
         // kok elemente ulas.
         Element kokElement = document.getDocumentElement();
 
-        ilkEkleriOlustur(XmlYardimcisi.ilkEleman(kokElement, "ekler"));
-        ekKumeleriniOlustur(XmlYardimcisi.ilkEleman(kokElement, "ek-kumeleri"));
-        ekleriOlustur(XmlYardimcisi.ilkEleman(kokElement, "ekler"));
+        ilkEkleriOlustur(XmlYardimcisi.ilkEleman(kokElement, "suffixes"));
+        ekKumeleriniOlustur(XmlYardimcisi.ilkEleman(kokElement, "suffix-sets"));
+        ekleriOlustur(XmlYardimcisi.ilkEleman(kokElement, "suffixes"));
     }
 
     /**
@@ -73,10 +73,10 @@ public class XmlEkOkuyucu {
      * @param eklerElement tum ekleri iceren Ekler bileseni
      */
     private void ilkEkleriOlustur(Element eklerElement) {
-        List<Element> tumEkler = XmlYardimcisi.elemanlar(eklerElement, "ek");
+        List<Element> tumEkler = XmlYardimcisi.elemanlar(eklerElement, "suffix");
         // tum ekleri bos haliyle uret.
         for (Element ekElement : tumEkler) {
-            String ekadi = ekElement.getAttribute("ad");
+            String ekadi = ekElement.getAttribute("id");
             if (ekler.containsKey(ekadi))
                 throw new EkKonfigurasyonHatasi("Ek tekrari! " + ekadi);
             ekler.put(ekadi, new Ek(ekadi));
@@ -89,17 +89,10 @@ public class XmlEkOkuyucu {
      * @param ekKumeleriElement tum ek kumelerini iceren xml bileseni.
      */
     private void ekKumeleriniOlustur(Element ekKumeleriElement) {
-        List<Element> xmlKumeler = XmlYardimcisi.elemanlar(ekKumeleriElement, "ek-kumesi");
+        List<Element> xmlKumeler = XmlYardimcisi.elemanlar(ekKumeleriElement, "suffix-set");
         for (Element ekKumeEl : xmlKumeler) {
-            String kumeAdi = ekKumeEl.getAttribute("ad");
-            Set<Ek> kumeEkleri = new HashSet<Ek>();
-            List<Element> xmlKumeEkleri = XmlYardimcisi.elemanlar(ekKumeEl, "ek");
-            for (Element ekEl : xmlKumeEkleri) {
-                String ekAdi = ekEl.getTextContent();
-                Ek ek = this.ekler.get(ekAdi);
-                if (ek == null) throw new EkKonfigurasyonHatasi("kume eki bulunamiyor!" + ekAdi);
-                kumeEkleri.add(ek);
-            }
+            String kumeAdi = ekKumeEl.getAttribute("id");           
+            Set<Ek> kumeEkleri = new HashSet<Ek>(getSuffixesfromCommaSeparated(ekKumeEl.getTextContent()));
             ekKumeleri.put(kumeAdi, kumeEkleri);
         }
     }
@@ -110,12 +103,12 @@ public class XmlEkOkuyucu {
      * @param eklerElement tum ekleri iceren xml ekler bileseni.
      */
     private void ekleriOlustur(Element eklerElement) {
-        List<Element> tumEkler = XmlYardimcisi.elemanlar(eklerElement, "ek");
+        List<Element> tumEkler = XmlYardimcisi.elemanlar(eklerElement, "suffix");
         for (Element ekElement : tumEkler) {
-            String ekAdi = ekElement.getAttribute("ad");
+            String ekAdi = ekElement.getAttribute("id");
             Ek ek = this.ekler.get(ekAdi);
             // uretim kuralini oku ve ekleri uret.
-            Attr uretimKurali = ekElement.getAttributeNode("uretim");
+            Attr uretimKurali = ekElement.getAttributeNode("gen");
             if (uretimKurali == null)
                 throw new EkKonfigurasyonHatasi("ek uretim kural kelimesi yok!" + ekAdi);
 
@@ -125,8 +118,6 @@ public class XmlEkOkuyucu {
             ek.setUretimBilesenleri(bilesenler);
             List<EkOzelDurumu> ozelDurumlar = ozelDurumlariOku(ekElement);
             ek.setOzelDurumlar(ozelDurumlar);
-
-            ekOzellikleriBelirle(ek, ekElement);
 
             ek.setSesliIleBaslayabilir(ekUretici.sesliIleBaslayabilir(bilesenler));
 
@@ -138,34 +129,16 @@ public class XmlEkOkuyucu {
         log.fine("ek olusumu sonlandi.");
     }
 
-    /**
-     * HAL ve IYELIK eki ozellikleri burada belirlenir. ek iceriisne farkli ozellikler
-     * eklenecekse burasi ona gore degistirilmeli.
-     *
-     * @param ek        ozellikleri belirlenecek Ek
-     * @param ekElement xml Ek bileseni.
-     */
-    private void ekOzellikleriBelirle(Ek ek, Element ekElement) {
-        List<Element> ozellikler = XmlYardimcisi.elemanlar(ekElement, "ozellik");
-        for (Element element : ozellikler) {
-            String ozellik = element.getTextContent().trim();
-            if (ozellik.equals("HAL"))
-                ek.setHalEki(true);
-            else if (ozellik.equals("IYELIK"))
-                ek.setIyelikEki(true);
-        }
-    }
-
     private List<EkOzelDurumu> ozelDurumlariOku(Element ekElement) {
         List<EkOzelDurumu> ozelDurumlar = new ArrayList<EkOzelDurumu>();
         //xml ozel durumlarini al.
-        List<Element> ozelDurumlarXml = XmlYardimcisi.elemanlar(ekElement, "ozel-durum");
+        List<Element> ozelDurumlarXml = XmlYardimcisi.elemanlar(ekElement, "exception");
         if (ozelDurumlarXml == null) return Collections.emptyList();
 
         for (Element element : ozelDurumlarXml) {
-            String ozelDurumAdi = element.getAttribute("ad");
+            String ozelDurumAdi = element.getAttribute("id");
             EkOzelDurumu oz = ekOzelDurumUretici.uret(ozelDurumAdi);
-            Attr uretimKurali = element.getAttributeNode("uretim");
+            Attr uretimKurali = element.getAttributeNode("gen");
 
             if (uretimKurali != null) {
                 oz.setEkKuralCozumleyici(ekUretici);
@@ -194,7 +167,7 @@ public class XmlEkOkuyucu {
     private List<Ek> ardisilEkleriOlustur(Ek anaEk, Element ekElement) {
 
         Set<Ek> ardisilEkSet = new HashSet<Ek>();
-        Element ardisilEklerEl = XmlYardimcisi.ilkEleman(ekElement, "ardisil-ekler");
+        Element ardisilEklerEl = XmlYardimcisi.ilkEleman(ekElement, "allowed-suffixes");
         if (ardisilEklerEl == null) return Collections.emptyList();
 
         String ekListeString = ardisilEklerEl.getTextContent();
@@ -210,27 +183,7 @@ public class XmlEkOkuyucu {
             ardisilEkSet.addAll(ek.ardisilEkler());
         }
 
-        List<Ek> ardisilEkler = new ArrayList<Ek>(ardisilEkSet.size());
-
-        //varsa oncelikli ekleri oku ve ardisil ekler listesinin ilk basina koy.
-        // bu tamamen performans ile iliskili bir islemdir.
-        Element oncelikliEklerEl = XmlYardimcisi.ilkEleman(ekElement, "oncelikli-ekler");
-        if (oncelikliEklerEl != null) {
-            List<Element> oncelikliEkler = XmlYardimcisi.elemanlar(oncelikliEklerEl, "oek");
-            for (Element element : oncelikliEkler) {
-                String ekAdi = element.getTextContent();
-                Ek ek = this.ekler.get(ekAdi);
-                if (ek == null)
-                    throw new EkKonfigurasyonHatasi(anaEk.ad() + " icin oncelikli ek bulunamiyor! " + ekAdi);
-                if (ardisilEkSet.contains(ek)) {
-                    ardisilEkler.add(ek);
-                    ardisilEkSet.remove(ek);
-                } else log.warning(anaEk.ad() + "icin oncelikli ek:" + ekAdi + " bu ekin ardisil eki degil!");
-            }
-        }
-
-        ardisilEkler.addAll(ardisilEkSet);
-        return ardisilEkler;
+        return new ArrayList<Ek>(ardisilEkSet);
     }
 
     private List<Ek> getSuffixesfromCommaSeparated(String ekListeString) {

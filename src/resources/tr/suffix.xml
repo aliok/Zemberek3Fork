@@ -1,123 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ek-bilgisi>
+<suffix-data>
 
-    <ek-kumeleri>
-        <!-- sahiplik, iyelik ekleri (cekim eki) -->
-        <ek-kumesi ad="Possessive">
-            <ek>P1sg</ek>
-            <ek>P2sg</ek>
-            <ek>P3sg</ek>
-            <ek>P1pl</ek>
-            <ek>P2pl</ek>
-            <ek>P3pl</ek>
-        </ek-kumesi>
+    <suffix-sets>
 
-        <ek-kumesi ad="PersonalSuffixes">
-            <ek>A1sg</ek>
-            <ek>A2sg</ek>
-            <ek>A3sg</ek>
-            <ek>A1pl</ek>
-            <ek>A2pl</ek>
-            <ek>A3pl</ek>
-        </ek-kumesi>
+        <suffix-set id="Possessive">
+            P1sg, P2sg, P3sg, P1pl, P2pl, P3pl
+        </suffix-set>
 
-        <!-- durum ekleri -->
-        <ek-kumesi ad="CaseSuffixes">
-            <ek>Dat</ek>
-            <ek>Loc</ek>
-            <ek>Abl</ek>
-            <ek>Acc</ek>
-            <ek>Gen</ek>
-            <ek>Copula</ek>
-        </ek-kumesi>
+        <suffix-set id="PersonalSuffixes">
+            A1sg, A2sg, A3sg, A1pl, A2pl, A3pl
+        </suffix-set>
 
-        <ek-kumesi ad="IMEK_ZAMAN">
-            <ek>IMEK_RIVAYET_MIS</ek>
-            <ek>IMEK_SART_SE</ek>
-            <ek>IMEK_HIKAYE_DI</ek>
-            <ek>IMEK_ZAMAN_KEN</ek>
-        </ek-kumesi>
+        <suffix-set id="CaseSuffixes">
+            Dat, Loc, Abl, Acc, Gen, Copula
+        </suffix-set>
 
-        <ek-kumesi ad="FIIL_ZAMAN">
-            <ek>FIIL_GECMISZAMAN_DI</ek>
-            <ek>FIIL_GECMISZAMAN_MIS</ek>
-            <ek>FIIL_GELECEKZAMAN_ECEK</ek>
-            <ek>FIIL_GENISZAMAN_IR</ek>
-            <ek>FIIL_SIMDIKIZAMAN_IYOR</ek>
-            <ek>FIIL_SIMDIKIZAMAN_MEKTE</ek>
-        </ek-kumesi>
+        <suffix-set id="IMEK_ZAMAN">
+            IMEK_RIVAYET_MIS
+            ,IMEK_SART_SE
+            ,IMEK_HIKAYE_DI
+            ,IMEK_ZAMAN_KEN
+        </suffix-set>
 
-        <ek-kumesi ad="FIIL_DONUSUM">
-            <ek>FIIL_DONUSUM_EN</ek>
-            <ek>FIIL_DONUSUM_IM</ek>
-            <ek>FIIL_DONUSUM_INTI</ek>
-            <ek>FIIL_DONUSUM_IS</ek>
-            <ek>FIIL_DONUSUM_ME</ek>
-            <ek>FIIL_DONUSUM_ECEK</ek>
-            <ek>FIIL_DONUSUM_MIS</ek>
-            <ek>FIIL_DONUSUM_ILI</ek>
-        </ek-kumesi>
+        <suffix-set id="FIIL_ZAMAN">
+            FIIL_GECMISZAMAN_DI
+            ,FIIL_GECMISZAMAN_MIS
+            ,FIIL_GELECEKZAMAN_ECEK
+            ,FIIL_GENISZAMAN_IR
+            ,FIIL_SIMDIKIZAMAN_IYOR
+            ,FIIL_SIMDIKIZAMAN_MEKTE
+        </suffix-set>
 
-        <ek-kumesi ad="FIIL_BILESIK">
-            <ek>FIIL_SUREKLILIK_EREK</ek>
-            <ek>FIIL_SURERLIK_EDUR</ek>
-            <ek>FIIL_SURERLIK_EGEL</ek>
-            <ek>FIIL_SURERLIK_EGOR</ek>
-            <ek>FIIL_SURERLIK_EKAL</ek>
-            <ek>FIIL_DEVAMLILIK_DIKCE</ek>
-            <ek>FIIL_YAKLASMA_AYAZ</ek>
-        </ek-kumesi>
+        <suffix-set id="FIIL_DONUSUM">
+            FIIL_DONUSUM_EN
+            ,FIIL_DONUSUM_IM
+            ,FIIL_DONUSUM_INTI
+            ,FIIL_DONUSUM_IS
+            ,FIIL_DONUSUM_ME
+            ,FIIL_DONUSUM_ECEK
+            ,FIIL_DONUSUM_MIS
+            ,FIIL_DONUSUM_ILI
+        </suffix-set>
 
-        <ek-kumesi ad="FIIL_EMIR_ISTEK">
-            <ek>FIIL_EMIR_O_SIN</ek>
-            <ek>FIIL_EMIR_ONLAR_SINLER</ek>
-            <ek>FIIL_EMIR_SIZ_IN</ek>
-            <ek>FIIL_EMIR_SIZRESMI_INIZ</ek>
-            <ek>FIIL_ISTEK_E</ek>
-            <ek>FIIL_ISTEK_SENE</ek>
-            <ek>FIIL_ISTEK_SENIZE</ek>
-        </ek-kumesi>
+        <suffix-set id="FIIL_BILESIK">
+            FIIL_SUREKLILIK_EREK
+            ,FIIL_SURERLIK_EDUR
+            ,FIIL_SURERLIK_EGEL
+            ,FIIL_SURERLIK_EGOR
+            ,FIIL_SURERLIK_EKAL
+            ,FIIL_DEVAMLILIK_DIKCE
+            ,FIIL_YAKLASMA_AYAZ
+        </suffix-set>
 
-        <ek-kumesi ad="FIIL_KOK">
-            <ek>FIIL_MASTAR_CE</ek>
-            <ek>FIIL_MASTAR_MEK</ek>
-            <ek>FIIL_IMSI_IP</ek>
-            <ek>FIIL_DONUSUM_ESICE</ek>
-            <ek>FIIL_DONUSUM_ESIYE</ek>
-            <ek>FIIL_DONUSUM_ESI</ek>
-            <ek>FIIL_OLUMSUZLUK_ME</ek>
-            <ek>FIIL_OLUMSUZLUK_MEDEN</ek>
-            <ek>FIIL_OLUMSUZLUK_MEKSIZIN</ek>
-            <ek>FIIL_SART_SE</ek>
-            <ek>FIIL_ZAMAN_INCE</ek>
-            <ek>FIIL_ZORUNLULUK_MELI</ek>
-            <ek>FIIL_YETENEK_EBIL</ek>
-            <ek>FIIL_YETERSIZLIK_E</ek>
-            <ek>FIIL_EDILGEN_IL</ek>
-            <ek>FIIL_ETTIRGEN_TIR</ek>
-            <ek>FIIL_OLDURGAN_T</ek>
-            <ek>FIIL_TANIMLAMA_ICI</ek>
-            <ek>FIIL_BERI_ELI</ek>
-            <ek>FIIL_TEZLIK_IVER</ek>
-            <ek>FIIL_BELIRTME_DIK</ek>
-            <ek>FIIL_BERABERLIK_IS</ek>
-        </ek-kumesi>
+        <suffix-set id="FIIL_EMIR_ISTEK">
+            FIIL_EMIR_O_SIN
+            ,FIIL_EMIR_ONLAR_SINLER
+            ,FIIL_EMIR_SIZ_IN
+            ,FIIL_EMIR_SIZRESMI_INIZ
+            ,FIIL_ISTEK_E
+            ,FIIL_ISTEK_SENE
+            ,FIIL_ISTEK_SENIZE
+        </suffix-set>
 
-        <ek-kumesi ad="FIIL_ZAMAN_ARDISIL">
-            <ek>A1sg</ek>
-            <ek>A2sg</ek>
-            <ek>A3sg</ek>
-            <ek>A1pl</ek>
-            <ek>A2pl</ek>
-            <ek>A3pl</ek>
-            <ek>IMEK_RIVAYET_MIS</ek>
-            <ek>IMEK_SART_SE</ek>
-            <ek>IMEK_HIKAYE_DI</ek>
-            <ek>IMEK_ZAMAN_KEN</ek>
-            <ek>FIIL_GIBI_CESINE</ek>
-        </ek-kumesi>
+        <suffix-set id="FIIL_KOK">
+            FIIL_MASTAR_CE
+            ,FIIL_MASTAR_MEK
+            ,FIIL_IMSI_IP
+            ,FIIL_DONUSUM_ESICE
+            ,FIIL_DONUSUM_ESIYE
+            ,FIIL_DONUSUM_ESI
+            ,FIIL_OLUMSUZLUK_ME
+            ,FIIL_OLUMSUZLUK_MEDEN
+            ,FIIL_OLUMSUZLUK_MEKSIZIN
+            ,FIIL_SART_SE
+            ,FIIL_ZAMAN_INCE
+            ,FIIL_ZORUNLULUK_MELI
+            ,FIIL_YETENEK_EBIL
+            ,FIIL_YETERSIZLIK_E
+            ,FIIL_EDILGEN_IL
+            ,FIIL_ETTIRGEN_TIR
+            ,FIIL_OLDURGAN_T
+            ,FIIL_TANIMLAMA_ICI
+            ,FIIL_BERI_ELI
+            ,FIIL_TEZLIK_IVER
+            ,FIIL_BELIRTME_DIK
+            ,FIIL_BERABERLIK_IS
+        </suffix-set>
 
-    </ek-kumeleri>
+        <suffix-set id="FIIL_ZAMAN_ARDISIL">
+            A1sg
+            ,A2sg
+            ,A3sg
+            ,A1pl
+            ,A2pl
+            ,A3pl
+            ,IMEK_RIVAYET_MIS
+            ,IMEK_SART_SE
+            ,IMEK_HIKAYE_DI
+            ,IMEK_ZAMAN_KEN
+            ,FIIL_GIBI_CESINE
+        </suffix-set>
+
+    </suffix-sets>
 
 
     <!-- ############################  EKLER ##################################### -->
@@ -139,13 +123,13 @@
     -->
 
 
-    <ekler>
+    <suffixes>
 
-        <ek ad="BOS_EK" uretim=""/>
+        <suffix id="BOS_EK" gen=""/>
 
         <!-- isim yalin. -->
-        <ek ad="ISIM_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="ISIM_KOK" gen="">
+            <ardisil-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,PersonalSuffixes
@@ -167,24 +151,24 @@
                 ,ISIM_GIBI_CE
                 ,ISIM_TARAFINDAN_CE
                 ,FIIL_GIBI_CESINE
-            </ardisil-ekler>
-        </ek>
+            </ardisil-suffixes>
+        </suffix>
 
         <!-- fiil KOK -->
-        <ek ad="FIIL_KOK" uretim="" k_en="verb" kis="eylem">
-            <ardisil-ekler>
+        <suffix id="FIIL_KOK" gen="">
+            <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_DONUSUM
                 ,FIIL_BILESIK
                 ,FIIL_KOK
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_EDILGENSESLI_N
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim cogul eki _ler. "gelsin cay_lar.." -->
-        <ek ad="Plural" uretim="lAr">
-            <ardisil-ekler>
+        <suffix id="Plural" gen="lAr">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,P1sg
@@ -196,12 +180,12 @@
                 ,A2pl
                 ,ISIM_TARAFINDAN_CE
                 ,Inst
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim kucultme _cik.  "Kedi_cik pek SirinmiS".  -->
-        <ek ad="Dim" uretim=">cI~k">
-            <ardisil-ekler>
+        <suffix id="Dim" gen=">cI~k">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,PersonalSuffixes
@@ -212,12 +196,12 @@
                 ,Ness
                 ,With
                 ,Inst
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- cegiz: "kedi_ceGiz, kitapcaGIz  -->
-        <ek ad="Dim2" uretim="cAğIz">
-            <ardisil-ekler>
+        <suffix id="Dim2" gen="cAğIz">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,PersonalSuffixes
@@ -229,80 +213,80 @@
                 ,With
                 ,Inst
                 ,ISIM_TAMLAMA_I
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim yonelme : "kedi_ye bak"  en: dative-->
-        <ek ad="Dat" uretim="+yA">
-            <ozel-durum ad="ON_EK" uretim="nA">
+        <suffix id="Dat" gen="+yA">
+            <exception id="ON_EK" gen="nA">
                 ZAMAN_BELIRTME_KI
                 ,ISIM_BULUNMA_KI
                 ,P3sg
                 ,ISIM_TAMLAMA_I
                 ,P3pl
-            </ozel-durum>
-            <ardisil-ekler>
-                <!-- kisi ekleri bue ek icin tartismali. karsiyayim oluyor, ama elmayayim + -->
+            </exception>
+            <allowed-suffixes>
+                <!-- kisi suffixesi bue ek icin tartismali. karsiyayim oluyor, ama elmayayim + -->
                 PersonalSuffixes
                 ,IMEK_ZAMAN
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim kalma : "ev_de yemek var."  en:locative -->
-        <ek ad="Loc" uretim=">dA">
-            <ozel-durum ad="ON_EK" uretim="ndA">
+        <suffix id="Loc" gen=">dA">
+            <exception id="ON_EK" gen="ndA">
                 ZAMAN_BELIRTME_KI
                 ,ISIM_BULUNMA_KI
                 ,P3sg
                 ,ISIM_TAMLAMA_I
                 ,P3pl
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,PersonalSuffixes
                 ,Copula
                 ,ISIM_BULUNMA_KI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim yonlenme _den : "okul_dan geliyorum"  en:ablative -->
-        <ek ad="Abl" uretim=">dAn">
-            <ozel-durum ad="ON_EK" uretim="ndAn">
+        <suffix id="Abl" gen=">dAn">
+            <exception id="ON_EK" gen="ndAn">
                 ZAMAN_BELIRTME_KI
                 ,ISIM_BULUNMA_KI
                 ,P3sg
                 ,ISIM_TAMLAMA_I
                 ,P3pl
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,PersonalSuffixes
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim tanimlama _dir,  "kedi_dir, bu_dur"  -->
-        <ek ad="Copula" uretim=">dIr">
-            <ardisil-ekler>
+        <suffix id="Copula" gen=">dIr">
+            <allowed-suffixes>
                 <!-- supheli.. her zaman olmuyor-->
                 Plural
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim belirtme _i: "kedi_yi gordun mu+"  -->
-        <ek ad="Acc" uretim="+yI">
-            <ozel-durum ad="ON_EK" uretim="nI">
+        <suffix id="Acc" gen="+yI">
+            <exception id="ON_EK" gen="nI">
                 ZAMAN_BELIRTME_KI
                 ,ISIM_BULUNMA_KI
                 ,P3sg
                 ,P3pl
-            </ozel-durum>
-        </ek>
+            </exception>
+        </suffix>
 
         <!-- isim durum lik: "deli_lik etme.."  -->
-        <ek ad="Ness" uretim="lI~k">
-            <ardisil-ekler>
+        <suffix id="Ness" gen="lI~k">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,IMEK_ZAMAN
@@ -310,25 +294,25 @@
                 ,Plural
                 ,Inst
                 ,ISIM_ILGI_CI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim gibi ce: "insan_ca yasamak istiyor."  -->
         <!-- TODO: isim tamlamasi _i eki eklenmeli mi+ "kisacasi" -->
-        <ek ad="ISIM_GIBI_CE" uretim=">cA">
-            <ardisil-ekler>
+        <suffix id="ISIM_GIBI_CE" gen=">cA">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,PersonalSuffixes
                 ,Copula
                 ,Plural
                 ,ISIM_TAMLAMA_I
                 ,Gen
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim andirma _imsi: "odunumsu bir yapisi var"  -->
-        <ek ad="Resemblance" uretim="ImsI">
-            <ardisil-ekler>
+        <suffix id="Resemblance" gen="ImsI">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,PersonalSuffixes
                 ,IMEK_ZAMAN
@@ -342,30 +326,30 @@
                 ,Without
                 ,Dim2
                 ,Inst
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim andirma _si: "odunsu bir yapisi var"  -->
-        <ek ad="Resemblance2" uretim="+msI">
-            <ardisil-ekler kopya-ek="Resemblance">
+        <suffix id="Resemblance2" gen="+msI">
+            <allowed-suffixes kopya-ek="Resemblance">
                 ISIM_DONUSUM_LES
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim tamlama _in: "kedi_nin kuyrugu"  !! bu ekin sahiplik eki ile karismis olma durumu var -->
 
-        <ek ad="Gen" uretim="+nIn">
-            <ozel-durum ad="SU" uretim="yun"/>
-            <ardisil-ekler>
+        <suffix id="Gen" gen="+nIn">
+            <exception id="SU" gen="yun"/>
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,ISIM_BULUNMA_KI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim tamlama _i: "Van kedi_si"  -->
-        <ek ad="ISIM_TAMLAMA_I" uretim="+sI">
-            <ozel-durum ad="SU" uretim="yu"/>
-            <ardisil-ekler>
+        <suffix id="ISIM_TAMLAMA_I" gen="+sI">
+            <exception id="SU" gen="yu"/>
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,IMEK_ZAMAN
                 ,Copula
@@ -379,45 +363,45 @@
                 ,Copula
                 ,ISIM_TARAFINDAN_CE
                 ,Inst
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
 
         <!-- isim bulunma _(de)ki: "kedide_ki pire"  -->
-        <ek ad="ISIM_BULUNMA_KI" uretim="ki">
-            <ardisil-ekler>
+        <suffix id="ISIM_BULUNMA_KI" gen="ki">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Gen
                 ,Inst
                 ,Plural
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!--
              isim tarafindan _ce: "yapilanlar ogrenciler_ce normal karsilandi. "
              isim tamlamasi gelirse oncesinde farkli olusuma neden olur. mahkemesi-nce
         -->
-        <ek ad="ISIM_TARAFINDAN_CE" uretim=">cA">
-            <ozel-durum ad="ON_EK" uretim="ncA">
+        <suffix id="ISIM_TARAFINDAN_CE" gen=">cA">
+            <exception id="ON_EK" gen="ncA">
                 ISIM_TAMLAMA_I
-            </ozel-durum>
-        </ek>
+            </exception>
+        </suffix>
 
         <!-- isim fiil donusumu _le(mek): "deriyi tuz_la_mamiz lazim"  -->
-        <ek ad="ISIM_DONUSUM_LE" uretim="lA">
-            <ozel-durum ad="SIMDIKI_ZAMAN" uretim="l"/>
-            <ardisil-ekler kopya-ek="FIIL_KOK"/>
-        </ek>
+        <suffix id="ISIM_DONUSUM_LE" gen="lA">
+            <exception id="SIMDIKI_ZAMAN" gen="l"/>
+            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+        </suffix>
 
         <!-- isim fiil donusumu _les(mek): "ahmak_lasmak gerekmez."  -->
-        <ek ad="ISIM_DONUSUM_LES" uretim="lAş">
-            <ardisil-ekler kopya-ek="FIIL_KOK"/>
-        </ek>
+        <suffix id="ISIM_DONUSUM_LES" gen="lAş">
+            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+        </suffix>
 
         <!-- isim icinde bulunma  _li: "limon_lu kek."  -->
-        <ek ad="With" uretim="lI">
-            <ardisil-ekler>
+        <suffix id="With" gen="lI">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,PersonalSuffixes
@@ -430,12 +414,12 @@
                 ,ISIM_TARAFINDAN_CE
                 ,Inst
                 ,ISIM_DONUSUM_LES
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim "icin yapilmis" _lik : "limon_luk_ta seni bekliyorlar."  -->
-        <ek ad="MadeFor" uretim="lI~k">
-            <ardisil-ekler>
+        <suffix id="MadeFor" gen="lI~k">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,PersonalSuffixes
@@ -451,23 +435,23 @@
                 ,With
                 ,ISIM_ILGI_CI
                 ,Without
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim birliktelik _ile: "domates_le ekmek olsun yeter. Ha, bir de tuz."  -->
-        <ek ad="Inst" uretim="+ylA">
-            <ardisil-ekler>
+        <suffix id="Inst" gen="+ylA">
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,PersonalSuffixes
                 ,Copula
-            </ardisil-ekler>
+            </allowed-suffixes>
 
-        </ek>
+        </suffix>
 
         <!-- isim sahiplik ben _im : "kedi_m margarita deli etti beni."  -->
-        <ek ad="P1sg" uretim="Im">
-            <ozel-durum ad="SU" uretim="yum"/>
-            <ardisil-ekler>
+        <suffix id="P1sg" gen="Im">
+            <exception id="SU" gen="yum"/>
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Inst
@@ -475,13 +459,13 @@
                 ,ISIM_TARAFINDAN_CE
                 ,A2sg
                 ,A2pl
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim sahiplik sen _in : "ev-in guzelmis.."  -->
-        <ek ad="P2sg" uretim="In">
-            <ozel-durum ad="SU" uretim="yun"/>
-            <ardisil-ekler>
+        <suffix id="P2sg" gen="In">
+            <exception id="SU" gen="yun"/>
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Inst
@@ -489,13 +473,13 @@
                 ,ISIM_TARAFINDAN_CE
                 ,A1sg
                 ,A1pl
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim sahiplik biz _imiz : "ev_i guzelmis.."  -->
-        <ek ad="P3sg" uretim="+sI">
-            <ozel-durum ad="SU" uretim="yu"/>
-            <ardisil-ekler>
+        <suffix id="P3sg" gen="+sI">
+            <exception id="SU" gen="yu"/>
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Inst
@@ -505,13 +489,13 @@
                 ,A2pl
                 ,A1sg
                 ,A1pl
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim sahiplik biz _imiz : "ev_imiz perisan.."  -->
-        <ek ad="P1pl" uretim="ImIz">
-            <ozel-durum ad="SU" uretim="yumuz"/>
-            <ardisil-ekler>
+        <suffix id="P1pl" gen="ImIz">
+            <exception id="SU" gen="yumuz"/>
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Inst
@@ -519,13 +503,13 @@
                 ,ISIM_TARAFINDAN_CE
                 ,A2sg
                 ,A2pl
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim sahiplik siz _iniz : "ev_iniz guzelmis.."  -->
-        <ek ad="P2pl" uretim="InIz">
-            <ozel-durum ad="SU" uretim="yunuz"/>
-            <ardisil-ekler>
+        <suffix id="P2pl" gen="InIz">
+            <exception id="SU" gen="yunuz"/>
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Inst
@@ -533,24 +517,24 @@
                 ,ISIM_TARAFINDAN_CE
                 ,A1sg
                 ,A1pl
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim sahiplik onlar _lari : "ev_leri guzelmis.."  -->
-        <ek ad="P3pl" uretim="lArI">
-            <ardisil-ekler>
+        <suffix id="P3pl" gen="lArI">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Inst
                 ,Gen
                 ,ISIM_TARAFINDAN_CE
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim "iliskili" _sal : "kurum_sal yazilim.."  -->
         <!-- bu ek dile sonradan eklenmistir. -->
-        <ek ad="Related" uretim="sAl">
-            <ardisil-ekler>
+        <suffix id="Related" gen="sAl">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
@@ -560,12 +544,12 @@
                 ,Ness
                 ,ISIM_DONUSUM_LES
                 ,ISIM_ILGI_CI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim yokluk _siz : "balyoz_suz olmayacak.. yikamadik Su duvari." -->
-        <ek ad="Without" uretim="sIz">
-            <ardisil-ekler>
+        <suffix id="Without" gen="sIz">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,PersonalSuffixes
                 ,IMEK_ZAMAN
@@ -575,12 +559,12 @@
                 ,ISIM_DONUSUM_LES
                 ,ISIM_GIBI_CE
                 ,Inst
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim ilgi _ci : "oduncu" -->
-        <ek ad="ISIM_ILGI_CI" uretim=">cI">
-            <ardisil-ekler>
+        <suffix id="ISIM_ILGI_CI" gen=">cI">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,PersonalSuffixes
                 ,IMEK_ZAMAN
@@ -592,82 +576,82 @@
                 ,Inst
                 ,With
                 ,Without
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
 
         <!-- isim KISI ben _im : "ne tuhaf adam_im"  -->
         <!-- imek fiili durumunda:  _m : "kucuk_tu_m ufacikti_m top oynadim aciktim."  -->
-        <ek ad="A1sg" uretim="+yIm">
-            <ozel-durum ad="ON_EK" uretim="m">
+        <suffix id="A1sg" gen="+yIm">
+            <exception id="ON_EK" gen="m">
                 FIIL_OLUMSUZLUK_ME
                 ,IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
 
         <!-- isim KISI sen _sin : "ne tuhaf adam_sin"  -->
         <!-- imek fiili durumunda _n: "yahu sen iyi bir adamdi_n. adam_sa_n .. " -->
-        <ek ad="A2sg" uretim="sIn">
-            <ozel-durum ad="ON_EK" uretim="n">
+        <suffix id="A2sg" gen="sIn">
+            <exception id="ON_EK" gen="n">
                 IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
                 ,FIIL_SART_SE
                 ,FIIL_GECMISZAMAN_DI
 
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim KISI o"  -->
-        <ek ad="A3sg" uretim=""/>
+        <suffix id="A3sg" gen=""/>
 
         <!-- isim KISI biz _iz : "ne tuhaf millet_iz"  -->
         <!-- imek fiili durumunda _k: ""Kurttu_k kopek olduk dedi sinirlice."" -->
-        <ek ad="A1pl" uretim="+yIz">
-            <ozel-durum ad="ON_EK" uretim="k">
+        <suffix id="A1pl" gen="+yIz">
+            <exception id="ON_EK" gen="k">
                 IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
                 ,FIIL_SART_SE
                 ,FIIL_GECMISZAMAN_DI
-            </ozel-durum>
-            <ozel-durum ad="ON_EK" uretim="lIm">
+            </exception>
+            <exception id="ON_EK" gen="lIm">
                 FIIL_ISTEK_E
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
 
         <!-- isim KISI siz _siniz : "ne tuhaf adam_siniz"  -->
         <!-- imek fiili durumunda _niz: "Tembelseniz ben ne yapayim+" -->
-        <ek ad="A2pl" uretim="sInIz">
-            <ozel-durum ad="ON_EK" uretim="nIz">
+        <suffix id="A2pl" gen="sInIz">
+            <exception id="ON_EK" gen="nIz">
                 IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
                 ,FIIL_SART_SE
                 ,FIIL_GECMISZAMAN_DI
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim KISI onlar _lar : "ne tuhaf adam_lar"  -->
-        <ek ad="A3pl" uretim="lAr">
-            <ardisil-ekler>
+        <suffix id="A3pl" gen="lAr">
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,Copula
                 ,FIIL_GIBI_CESINE
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
 
 
@@ -676,8 +660,8 @@
         <!-- ~~~~~~~~~~~~~~~~~~~~~~ OZEL ISIM    ~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <ek ad="OZEL_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="OZEL_KOK" gen="">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,PersonalSuffixes
@@ -695,71 +679,71 @@
                 ,Without
                 ,ISIM_ILGI_CI
                 ,ISIM_GIBI_CE
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~ SAYI EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ SAYI suffixesI  ~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- sayilar (numeral adjectives) belirtme sifatlari grubuna girer.  -->
 
 
         <!-- Ulestirme sayi eki, distributive numeral adjective : bir-er, iki-Ser  -->
 
-        <ek ad="SAYI_ULESTIRME_ER" uretim="+şAr">
-            <ardisil-ekler kopya-ek="ISIM_KOK"/>
-        </ek>
+        <suffix id="SAYI_ULESTIRME_ER" gen="+şAr">
+            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+        </suffix>
 
         <!-- Kesir Sayi eki: "uC-te bir", "altI-da beS" -->
-        <ek ad="SAYI_KESIR_DE" uretim=">dA">
-            <ardisil-ekler kopya-ek="ISIM_KOK"/>
-        </ek>
+        <suffix id="SAYI_KESIR_DE" gen=">dA">
+            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+        </suffix>
 
         <!-- Sira Sayi eki, ordinal numeral adjective : bir-inci, altI-ncI-->
-        <ek ad="SAYI_SIRA_INCI" uretim="IncI">
-            <ardisil-ekler kopya-ek="ISIM_KOK"/>
-        </ek>
+        <suffix id="SAYI_SIRA_INCI" gen="IncI">
+            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+        </suffix>
 
         <!-- Topluluk sayi eki : "dOrd-Uz, altI-z" -->
-        <ek ad="SAYI_TOPLULUK_IZ" uretim="Iz">
-            <ardisil-ekler kopya-ek="ISIM_KOK"/>
-        </ek>
+        <suffix id="SAYI_TOPLULUK_IZ" gen="Iz">
+            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+        </suffix>
 
         <!--  geometrik kose eki : altI-gen, UC-gen -->
-        <ek ad="SAYI_KOSE_GEN" uretim="gen">
-            <ardisil-ekler kopya-ek="ISIM_KOK"/>
-        </ek>
+        <suffix id="SAYI_KOSE_GEN" gen="gen">
+            <allowed-suffixes kopya-ek="ISIM_KOK"/>
+        </suffix>
 
         <!--  Asil sayi sifati, numeral adjective -->
-        <ek ad="SAYI_KOK" uretim="">
-            <ardisil-ekler kopya-ek="ISIM_KOK">
+        <suffix id="SAYI_KOK" gen="">
+            <allowed-suffixes kopya-ek="ISIM_KOK">
                 SAYI_ULESTIRME_ER
                 ,SAYI_KESIR_DE
                 ,SAYI_SIRA_INCI
                 ,SAYI_TOPLULUK_IZ
                 ,SAYI_KOSE_GEN
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~ FIIL EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ FIIL suffixesI  ~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
         <!-- aglamaca yok. -->
-        <ek ad="FIIL_MASTAR_CE" uretim=">cA">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_MIS"/>
-        </ek>
+        <suffix id="FIIL_MASTAR_CE" gen=">cA">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_MIS"/>
+        </suffix>
 
         <!-- ... demir pencenin bilegini yakar-casina
              acitmasini hissedince, keske biraz pesrev yapsaydim diye hayiflanmisti... -->
-        <ek ad="FIIL_GIBI_CESINE" uretim="cAsInA"/>
+        <suffix id="FIIL_GIBI_CESINE" gen="cAsInA"/>
 
         <!-- ye-dikce yiyesin geliyor. -->
-        <ek ad="FIIL_DEVAMLILIK_DIKCE" uretim=">dIkçA"/>
+        <suffix id="FIIL_DEVAMLILIK_DIKCE" gen=">dIkçA"/>
 
         <!-- gel-en -->
-        <ek ad="FIIL_DONUSUM_EN" uretim="+yAn">
-            <ardisil-ekler>
+        <suffix id="FIIL_DONUSUM_EN" gen="+yAn">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,PersonalSuffixes
@@ -771,130 +755,130 @@
                 ,With
                 ,Inst
                 ,ISIM_DONUSUM_LES
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_DONUSUM_ILI" uretim="IlI">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
-        </ek>
+        <suffix id="FIIL_DONUSUM_ILI" gen="IlI">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+        </suffix>
 
         <!-- bu gelisler artik sIkmaya basladi. -->
-        <ek ad="FIIL_DONUSUM_IS" uretim="+yIş">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN">
+        <suffix id="FIIL_DONUSUM_IS" gen="+yIş">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN">
                 FIIL_GIBI_CESINE
                 ,ISIM_ILGI_CI
                 ,ISIM_TAMLAMA_I
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- yatik, kalkik . genellestirmek dogru olmayabilir.-->
-        <!--        <ek ad="FIIL_DONUSUM_IK" uretim="+yI~k">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
-        </ek>-->
+        <!--        <suffix id="FIIL_DONUSUM_IK" gen="+yI~k">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+        </suffix>-->
 
-        <ek ad="FIIL_DONUSUM_IM" uretim="+nIm">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN">
+        <suffix id="FIIL_DONUSUM_IM" gen="+nIm">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN">
                 ISIM_ILGI_CI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_DONUSUM_INTI" uretim="+yIntI">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
-        </ek>
+        <suffix id="FIIL_DONUSUM_INTI" gen="+yIntI">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+        </suffix>
 
-        <!-- gidecekler hazirlansin. yapacak bir sey yok.  -->
-        <ek ad="FIIL_DONUSUM_ECEK" uretim="+yAcA~k">
-            <ardisil-ekler>
+        <!-- gidecsuffixes hazirlansin. yapacak bir sey yok.  -->
+        <suffix id="FIIL_DONUSUM_ECEK" gen="+yAcA~k">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,ISIM_TAMLAMA_I
                 ,Plural
                 ,Gen
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_DONUSUM_MIS" uretim="mIş">
-            <ardisil-ekler>
+        <suffix id="FIIL_DONUSUM_MIS" gen="mIş">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,ISIM_TAMLAMA_I
                 ,Plural
                 ,Gen
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_DONUSUM_ESICE" uretim="+yAsIcA">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
-        </ek>
+        <suffix id="FIIL_DONUSUM_ESICE" gen="+yAsIcA">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+        </suffix>
 
-        <ek ad="FIIL_DONUSUM_ESI" uretim="+yAsI">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
-        </ek>
+        <suffix id="FIIL_DONUSUM_ESI" gen="+yAsI">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+        </suffix>
 
-        <ek ad="FIIL_DONUSUM_ESIYE" uretim="+yAsIyA">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
-        </ek>
+        <suffix id="FIIL_DONUSUM_ESIYE" gen="+yAsIyA">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+        </suffix>
 
-        <ek ad="FIIL_DONUSUM_ME" uretim="mA">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN">
+        <suffix id="FIIL_DONUSUM_ME" gen="mA">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN">
                 FIIL_GIBI_CESINE
                 ,ISIM_ILGI_CI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_TANIMLAMA_ICI" uretim="+yIcI">
-            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
-        </ek>
+        <suffix id="FIIL_TANIMLAMA_ICI" gen="+yIcI">
+            <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN"/>
+        </suffix>
 
         <!-- edilgenlik sorunlu bir ek. iki ayri ek seklinde ifade etmek zorunda kaldik. -->
-        <ek ad="FIIL_EDILGEN_IL" uretim="Il">
-            <ozel-durum ad="EDILGEN" uretim=""/>
-            <ardisil-ekler>
+        <suffix id="FIIL_EDILGEN_IL" gen="Il">
+            <exception id="EDILGEN" gen=""/>
+            <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_DONUSUM
                 ,FIIL_BILESIK
                 ,FIIL_KOK
                 ,FIIL_EMIR_ISTEK
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_EDILGENSESLI_N" uretim="+n">
-            <ardisil-ekler kopya-ek="FIIL_KOK"/>
-        </ek>
+        <suffix id="FIIL_EDILGENSESLI_N" gen="+n">
+            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+        </suffix>
 
-        <ek ad="FIIL_BERI_ELI" uretim="+yAlI"/>
+        <suffix id="FIIL_BERI_ELI" gen="+yAlI"/>
 
-        <ek ad="FIIL_EMIR_O_SIN" uretim="sIn"/>
+        <suffix id="FIIL_EMIR_O_SIN" gen="sIn"/>
 
-        <ek ad="FIIL_EMIR_ONLAR_SINLER" uretim="sInlAr"/>
+        <suffix id="FIIL_EMIR_ONLAR_SINLER" gen="sInlAr"/>
 
-        <ek ad="FIIL_EMIR_SIZ_IN" uretim="+yIn"/>
+        <suffix id="FIIL_EMIR_SIZ_IN" gen="+yIn"/>
 
-        <ek ad="FIIL_EMIR_SIZRESMI_INIZ" uretim="+yInIz"/>
+        <suffix id="FIIL_EMIR_SIZRESMI_INIZ" gen="+yInIz"/>
 
         <!-- Utanc verici ekimiz. "rakibini calim at-arak gecti.." -->
-        <ek ad="FIIL_SUREKLILIK_EREK" uretim="+yArA~k">
-            <!-- ardisil ek biraz sorunlu. gelerekten+ -->
-            <ardisil-ekler>
+        <suffix id="FIIL_SUREKLILIK_EREK" gen="+yArA~k">
+            <!-- allowed ek biraz sorunlu. gelerekten+ -->
+            <allowed-suffixes>
                 Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_ETTIRGEN_TIR" uretim=">dIr">
-            <ardisil-ekler kopya-ek="FIIL_KOK">
+        <suffix id="FIIL_ETTIRGEN_TIR" gen=">dIr">
+            <allowed-suffixes kopya-ek="FIIL_KOK">
                 FIIL_ETTIRGEN_TEKRAR_T
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <!-- TODO: bu ek henuz kullanilmiyor ama alsinda gelecek zaman eki gibi eklerin ardindan gelmesi gerekiyor. -->
+        <!-- TODO: bu ek henuz kullanilmiyor ama alsinda gelecek zaman eki gibi suffixesin ardindan gelmesi gerekiyor. -->
         <!-- herhalde gelecektir. -->
-        <ek ad="FIIL_UMMA_DIR" uretim=">dIr">
-        </ek>
+        <suffix id="FIIL_UMMA_DIR" gen=">dIr">
+        </suffix>
 
-        <ek ad="FIIL_ETTIRGEN_TEKRAR_T" uretim="t">
-            <ardisil-ekler>
+        <suffix id="FIIL_ETTIRGEN_TEKRAR_T" gen="t">
+            <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_DONUSUM
                 ,FIIL_BILESIK
@@ -916,107 +900,107 @@
                 ,FIIL_SART_SE
                 ,FIIL_YETERSIZLIK_E
                 ,FIIL_ETTIRGEN_TIR
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_GELECEKZAMAN_ECEK" uretim="+yAcA~k">
-            <ardisil-ekler>
+        <suffix id="FIIL_GELECEKZAMAN_ECEK" gen="+yAcA~k">
+            <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- dun halami ziyaret et-ti-m. -->
-        <ek ad="FIIL_GECMISZAMAN_DI" uretim=">dI">
-            <ardisil-ekler>
+        <suffix id="FIIL_GECMISZAMAN_DI" gen=">dI">
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_GECMISZAMAN_MIS" uretim="mIş">
-            <ardisil-ekler>
+        <suffix id="FIIL_GECMISZAMAN_MIS" gen="mIş">
+            <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,PersonalSuffixes
                 ,IMEK_ZAMAN
                 ,CaseSuffixes
                 ,Ness
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_GENISZAMAN_IR" uretim="Ir">
-            <ozel-durum ad="GENIS_ZAMAN" uretim="Ar"/>
-            <ozel-durum ad="ON_EK" uretim="z">
+        <suffix id="FIIL_GENISZAMAN_IR" gen="Ir">
+            <exception id="GENIS_ZAMAN" gen="Ar"/>
+            <exception id="ON_EK" gen="z">
                 FIIL_OLUMSUZLUK_ME
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,Ness
                 <!--,FIIL_MASTAR_CE-->
                 ,FIIL_GIBI_CESINE
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_SIMDIKIZAMAN_IYOR" uretim="Iyor">
-            <ardisil-ekler>
+        <suffix id="FIIL_SIMDIKIZAMAN_IYOR" gen="Iyor">
+            <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_SIMDIKIZAMAN_MEKTE" uretim="mAktA">
-            <ardisil-ekler>
+        <suffix id="FIIL_SIMDIKIZAMAN_MEKTE" gen="mAktA">
+            <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_ZAMAN_INCE" uretim="+yIncA">
-            <ardisil-ekler>
+        <suffix id="FIIL_ZAMAN_INCE" gen="+yIncA">
+            <allowed-suffixes>
                 Dat
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_IMSI_IP" uretim="+yIp"/>
+        <suffix id="FIIL_IMSI_IP" gen="+yIp"/>
 
-        <ek ad="FIIL_BERABERLIK_IS" uretim="Iş">
-            <ozel-durum ad="BERABERLIK_IS" uretim="+yIş"/>
-            <ardisil-ekler kopya-ek="FIIL_KOK"/>
-        </ek>
+        <suffix id="FIIL_BERABERLIK_IS" gen="Iş">
+            <exception id="BERABERLIK_IS" gen="+yIş"/>
+            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+        </suffix>
 
         <!-- gel-e-sin, oku-ya-yim -->
-        <ek ad="FIIL_ISTEK_E" uretim="+yA">
-            <ardisil-ekler>
+        <suffix id="FIIL_ISTEK_E" gen="+yA">
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,IMEK_RIVAYET_MIS
                 ,IMEK_HIKAYE_DI
                 ,FIIL_OLUMSUZLUK_ME
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_MASTAR_MEK" uretim="mAk">
-            <ardisil-ekler>
+        <suffix id="FIIL_MASTAR_MEK" gen="mAk">
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,Abl
                 ,Loc
                 ,Copula
                 ,Inst
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_OLDURGAN_T" uretim="">
-            <ozel-durum ad="OLDURGAN" uretim="t"/>
-            <ardisil-ekler kopya-ek="FIIL_KOK"/>
-        </ek>
+        <suffix id="FIIL_OLDURGAN_T" gen="">
+            <exception id="OLDURGAN" gen="t"/>
+            <allowed-suffixes kopya-ek="FIIL_KOK"/>
+        </suffix>
 
-        <ek ad="FIIL_OLUMSUZLUK_MEDEN" uretim="mAdAn"/>
+        <suffix id="FIIL_OLUMSUZLUK_MEDEN" gen="mAdAn"/>
 
-        <ek ad="FIIL_OLUMSUZLUK_ME" uretim="mA">
-            <ozel-durum ad="SIMDIKI_ZAMAN" uretim="m"/>
-            <ardisil-ekler>
+        <suffix id="FIIL_OLUMSUZLUK_ME" gen="mA">
+            <exception id="SIMDIKI_ZAMAN" gen="m"/>
+            <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_DONUSUM
                 ,FIIL_BILESIK
@@ -1037,76 +1021,76 @@
                 ,FIIL_TANIMLAMA_ICI
                 ,FIIL_BELIRTME_DIK
                 ,FIIL_BERI_ELI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_YETERSIZLIK_E" uretim="+yA">
-            <ardisil-ekler>
+        <suffix id="FIIL_YETERSIZLIK_E" gen="+yA">
+            <allowed-suffixes>
                 FIIL_OLUMSUZLUK_ME
                 ,FIIL_OLUMSUZLUK_MEDEN
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- bil-dik bir yuz. calmadik kapi.. bu ekin asil adi nedir+-->
-        <ek ad="FIIL_BELIRTME_DIK" uretim=">dI~k">
-            <ardisil-ekler>
+        <suffix id="FIIL_BELIRTME_DIK" gen=">dI~k">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Possessive
                 ,ISIM_TAMLAMA_I
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
 
 
 
 
 
-        <ek ad="FIIL_SART_SE" uretim="sA">
-            <ardisil-ekler>
+        <suffix id="FIIL_SART_SE" gen="sA">
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,IMEK_RIVAYET_MIS
                 ,IMEK_HIKAYE_DI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_ISTEK_SENE" uretim="sAnA"/>
+        <suffix id="FIIL_ISTEK_SENE" gen="sAnA"/>
 
-        <ek ad="FIIL_ISTEK_SENIZE" uretim="sAnIzA"/>
+        <suffix id="FIIL_ISTEK_SENIZE" gen="sAnIzA"/>
 
-        <ek ad="FIIL_OLUMSUZLUK_MEKSIZIN" uretim="mAksIzIn"/>
+        <suffix id="FIIL_OLUMSUZLUK_MEKSIZIN" gen="mAksIzIn"/>
 
-        <ek ad="FIIL_SURERLIK_EDUR" uretim="+yAdur">
-            <ardisil-ekler>
+        <suffix id="FIIL_SURERLIK_EDUR" gen="+yAdur">
+            <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_KOK
                 ,FIIL_DONUSUM
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_SURERLIK_EGEL" uretim="+yAgel">
-            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
-        </ek>
+        <suffix id="FIIL_SURERLIK_EGEL" gen="+yAgel">
+            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </suffix>
 
-        <ek ad="FIIL_SURERLIK_EGOR" uretim="+yAgör">
-            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
-        </ek>
+        <suffix id="FIIL_SURERLIK_EGOR" gen="+yAgör">
+            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </suffix>
 
-        <ek ad="FIIL_SURERLIK_EKAL" uretim="+yAkal">
-            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
-        </ek>
+        <suffix id="FIIL_SURERLIK_EKAL" gen="+yAkal">
+            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </suffix>
 
-        <ek ad="FIIL_TEZLIK_IVER" uretim="+yIver">
-            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
-        </ek>
+        <suffix id="FIIL_TEZLIK_IVER" gen="+yIver">
+            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </suffix>
 
-        <ek ad="FIIL_YAKLASMA_AYAZ" uretim="+yAyaz">
-            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
-        </ek>
+        <suffix id="FIIL_YAKLASMA_AYAZ" gen="+yAyaz">
+            <allowed-suffixes kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </suffix>
 
-        <ek ad="FIIL_YETENEK_EBIL" uretim="+yAbil">
-            <ardisil-ekler>
+        <suffix id="FIIL_YETENEK_EBIL" gen="+yAbil">
+            <allowed-suffixes>
                 FIIL_ZAMAN
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_MASTAR_MEK
@@ -1129,33 +1113,33 @@
                 ,FIIL_DONUSUM_ME
                 ,FIIL_DONUSUM_ECEK
                 ,FIIL_DONUSUM_MIS
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="FIIL_ZORUNLULUK_MELI" uretim="mAlI">
-            <ardisil-ekler>
+        <suffix id="FIIL_ZORUNLULUK_MELI" gen="mAlI">
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,FIIL_SART_SE
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~ YANKI EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ YANKI suffixesI  ~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <ek ad="YANKI_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="YANKI_KOK" gen="">
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,PersonalSuffixes
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~ ZAMAN EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ ZAMAN suffixesI  ~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <ek ad="ZAMAN_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="ZAMAN_KOK" gen="">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,PersonalSuffixes
@@ -1177,39 +1161,39 @@
                 ,ISIM_GIBI_CE
                 ,ISIM_TARAFINDAN_CE
                 ,ZAMAN_BELIRTME_KI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="ZAMAN_BELIRTME_KI" uretim="ki">
-            <ozel-durum ad="ZAMAN_KI" uretim="kü"/>
-            <ardisil-ekler>
+        <suffix id="ZAMAN_BELIRTME_KI" gen="ki">
+            <exception id="ZAMAN_KI" gen="kü"/>
+            <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~ ZAMIR EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ ZAMIR suffixesI  ~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <ek ad="ZAMIR_SAHIPLIK_IN" uretim="In">
-            <ardisil-ekler>
+        <suffix id="ZAMIR_SAHIPLIK_IN" gen="In">
+            <allowed-suffixes>
                 IMEK_ZAMAN
                 ,Inst
                 ,ISIM_BULUNMA_KI
                 ,Copula
                 ,Acc
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
 
-        <ek ad="ZAMIR_SAHIPLIK_IM" uretim="Im">
-            <ardisil-ekler kopya-ek="ZAMIR_SAHIPLIK_IN"/>
-        </ek>
+        <suffix id="ZAMIR_SAHIPLIK_IM" gen="Im">
+            <allowed-suffixes kopya-ek="ZAMIR_SAHIPLIK_IN"/>
+        </suffix>
 
-        <ek ad="ZAMIR_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="ZAMIR_KOK" gen="">
+            <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
                 ,PersonalSuffixes
@@ -1224,109 +1208,109 @@
                 ,ISIM_TARAFINDAN_CE
                 ,ZAMIR_SAHIPLIK_IM
                 ,ZAMIR_SAHIPLIK_IM
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~ SORU EKI ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <ek ad="SORU_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="SORU_KOK" gen="">
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,IMEK_HIKAYE_DI
                 ,IMEK_RIVAYET_MIS
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- bu ek normalde kullanilmaz. sadece ceviri gibi islemlerde gerekli olabilir. -->
-        <ek ad="FIIL_SORU_MI" uretim="mI">
-            <ardisil-ekler>
+        <suffix id="FIIL_SORU_MI" gen="mI">
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,FIIL_GECMISZAMAN_DI
                 ,FIIL_GECMISZAMAN_MIS
                 ,Copula
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~ IMEK FIILI ~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <ek ad="IMEK_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="IMEK_KOK" gen="">
+            <allowed-suffixes>
                 IMEK_ZAMAN
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- imek "imis" _miS : "bu kelebek tirtil_mis bir zamanlar."  -->
-        <ek ad="IMEK_RIVAYET_MIS" uretim="+ymIş">
+        <suffix id="IMEK_RIVAYET_MIS" gen="+ymIş">
             <ozellik>HAL</ozellik>
-            <ozel-durum ad="ON_EK" uretim="mIş">
+            <exception id="ON_EK" gen="mIş">
                 IMEK_KOK
                 ,FIIL_KOK
                 ,FIIL_OLUMSUZLUK_ME
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,CaseSuffixes
-                <!-- dikkat! ardisil IMEK_ZAMAN ekleri kendini yineleme durumu olusturur.-->
+                <!-- dikkat! allowed IMEK_ZAMAN suffixesi kendini yineleme durumu olusturur.-->
                 ,IMEK_ZAMAN
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim imek "ise" _se : "tukenmez kalem_se kullanma." -->
-        <ek ad="IMEK_SART_SE" uretim="+ysA">
+        <suffix id="IMEK_SART_SE" gen="+ysA">
             <ozellik>HAL</ozellik>
-            <ozel-durum ad="ON_EK" uretim="se">
+            <exception id="ON_EK" gen="se">
                 IMEK_KOK
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 PersonalSuffixes
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim imek "idi" _di : "adam aslan_di simdi elin kopegi oldu.." -->
-        <ek ad="IMEK_HIKAYE_DI" uretim="+y>dI">
+        <suffix id="IMEK_HIKAYE_DI" gen="+y>dI">
             <ozellik>HAL</ozellik>
-            <ozel-durum ad="ON_EK" uretim="di">
+            <exception id="ON_EK" gen="di">
                 IMEK_KOK
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 PersonalSuffixes
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- isim imek "iken" _ken : "ben cocuk_ken buralari karpuz tarlasiydi" -->
         <!-- imek fiilinde "ken" olarak uretilir. -->
-        <ek ad="IMEK_ZAMAN_KEN" uretim="+yken">
-            <ozel-durum ad="ON_EK" uretim="ken">
+        <suffix id="IMEK_ZAMAN_KEN" gen="+yken">
+            <exception id="ON_EK" gen="ken">
                 IMEK_KOK
-            </ozel-durum>
-            <ardisil-ekler>
+            </exception>
+            <allowed-suffixes>
                 ZAMAN_BELIRTME_KI
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~ DIGER KOK EKLER~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ DIGER KOK suffixes~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <ek ad="BAGLAC_KOK" uretim=""/>
+        <suffix id="BAGLAC_KOK" gen=""/>
 
-        <ek ad="EDAT_KOK" uretim="">
-            <ardisil-ekler>
+        <suffix id="EDAT_KOK" gen="">
+            <allowed-suffixes>
                 PersonalSuffixes
                 ,IMEK_ZAMAN
                 ,Copula
                 ,ISIM_TAMLAMA_I
-            </ardisil-ekler>
-        </ek>
+            </allowed-suffixes>
+        </suffix>
 
-        <ek ad="ZARF_KOK" uretim=""/>
+        <suffix id="ZARF_KOK" gen=""/>
 
-        <ek ad="UNLEM_KOK" uretim=""/>
+        <suffix id="UNLEM_KOK" gen=""/>
 
-    </ekler>
-</ek-bilgisi>
+    </suffixes>
+</suffix-data>
