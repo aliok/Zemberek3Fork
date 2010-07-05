@@ -1,0 +1,1367 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ek-bilgisi>
+
+    <ek-kumeleri>
+        <!-- sahiplik, iyelik ekleri (cekim eki) -->
+        <ek-kumesi ad="ISIM_SAHIPLIK">
+            <ek>ISIM_SAHIPLIK_BEN_IM</ek>
+            <ek>ISIM_SAHIPLIK_SEN_IN</ek>
+            <ek>ISIM_SAHIPLIK_O_I</ek>
+            <ek>ISIM_SAHIPLIK_BIZ_IMIZ</ek>
+            <ek>ISIM_SAHIPLIK_SIZ_INIZ</ek>
+            <ek>ISIM_SAHIPLIK_ONLAR_LERI</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="ISIM_KISI">
+            <ek>ISIM_KISI_BEN_IM</ek>
+            <ek>ISIM_KISI_SEN_SIN</ek>
+            <ek>ISIM_KISI_O_BOS</ek>
+            <ek>ISIM_KISI_BIZ_IZ</ek>
+            <ek>ISIM_KISI_SIZ_SINIZ</ek>
+            <ek>ISIM_KISI_ONLAR_LER</ek>
+        </ek-kumesi>
+
+        <!-- durum ekleri -->
+        <ek-kumesi ad="ISIM_HAL">
+            <ek>ISIM_YONELME_E</ek>
+            <ek>ISIM_KALMA_DE</ek>
+            <ek>ISIM_CIKMA_DEN</ek>
+            <ek>ISIM_BELIRTME_I</ek>
+            <ek>ISIM_TAMLAMA_IN</ek>
+            <ek>ISIM_TANIMLAMA_DIR</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="IMEK_ZAMAN">
+            <ek>IMEK_RIVAYET_MIS</ek>
+            <ek>IMEK_SART_SE</ek>
+            <ek>IMEK_HIKAYE_DI</ek>
+            <ek>IMEK_ZAMAN_KEN</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="FIIL_ZAMAN">
+            <ek>FIIL_GECMISZAMAN_DI</ek>
+            <ek>FIIL_GECMISZAMAN_MIS</ek>
+            <ek>FIIL_GELECEKZAMAN_ECEK</ek>
+            <ek>FIIL_GENISZAMAN_IR</ek>
+            <ek>FIIL_SIMDIKIZAMAN_IYOR</ek>
+            <ek>FIIL_SIMDIKIZAMAN_MEKTE</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="FIIL_DONUSUM">
+            <ek>FIIL_DONUSUM_EN</ek>
+            <ek>FIIL_DONUSUM_IM</ek>
+            <ek>FIIL_DONUSUM_INTI</ek>
+            <ek>FIIL_DONUSUM_IS</ek>
+            <ek>FIIL_DONUSUM_ME</ek>
+            <ek>FIIL_DONUSUM_ECEK</ek>
+            <ek>FIIL_DONUSUM_MIS</ek>
+            <ek>FIIL_DONUSUM_ILI</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="FIIL_KISI">
+            <ek>FIIL_KISI_BEN</ek>
+            <ek>FIIL_KISI_SEN</ek>
+            <ek>FIIL_KISI_O</ek>
+            <ek>FIIL_KISI_BIZ</ek>
+            <ek>FIIL_KISI_SIZ</ek>
+            <ek>FIIL_KISI_ONLAR</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="FIIL_BILESIK">
+            <ek>FIIL_SUREKLILIK_EREK</ek>
+            <ek>FIIL_SURERLIK_EDUR</ek>
+            <ek>FIIL_SURERLIK_EGEL</ek>
+            <ek>FIIL_SURERLIK_EGOR</ek>
+            <ek>FIIL_SURERLIK_EKAL</ek>
+            <ek>FIIL_DEVAMLILIK_DIKCE</ek>
+            <ek>FIIL_YAKLASMA_AYAZ</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="FIIL_EMIR_ISTEK">
+            <ek>FIIL_EMIR_O_SIN</ek>
+            <ek>FIIL_EMIR_ONLAR_SINLER</ek>
+            <ek>FIIL_EMIR_SIZ_IN</ek>
+            <ek>FIIL_EMIR_SIZRESMI_INIZ</ek>
+            <ek>FIIL_ISTEK_E</ek>
+            <ek>FIIL_ISTEK_SENE</ek>
+            <ek>FIIL_ISTEK_SENIZE</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="FIIL_KOK">
+            <ek>FIIL_MASTAR_CE</ek>
+            <ek>FIIL_MASTAR_MEK</ek>
+            <ek>FIIL_IMSI_IP</ek>
+            <ek>FIIL_DONUSUM_ESICE</ek>
+            <ek>FIIL_DONUSUM_ESIYE</ek>
+            <ek>FIIL_DONUSUM_ESI</ek>
+            <ek>FIIL_OLUMSUZLUK_ME</ek>
+            <ek>FIIL_OLUMSUZLUK_MEDEN</ek>
+            <ek>FIIL_OLUMSUZLUK_MEKSIZIN</ek>
+            <ek>FIIL_SART_SE</ek>
+            <ek>FIIL_ZAMAN_INCE</ek>
+            <ek>FIIL_ZORUNLULUK_MELI</ek>
+            <ek>FIIL_YETENEK_EBIL</ek>
+            <ek>FIIL_YETERSIZLIK_E</ek>
+            <ek>FIIL_EDILGEN_IL</ek>
+            <ek>FIIL_ETTIRGEN_TIR</ek>
+            <ek>FIIL_OLDURGAN_T</ek>
+            <ek>FIIL_TANIMLAMA_ICI</ek>
+            <ek>FIIL_BERI_ELI</ek>
+            <ek>FIIL_TEZLIK_IVER</ek>
+            <ek>FIIL_BELIRTME_DIK</ek>
+            <ek>FIIL_BERABERLIK_IS</ek>
+        </ek-kumesi>
+
+        <ek-kumesi ad="FIIL_ZAMAN_ARDISIL">
+            <ek>FIIL_KISI_BEN</ek>
+            <ek>FIIL_KISI_SEN</ek>
+            <ek>FIIL_KISI_O</ek>
+            <ek>FIIL_KISI_BIZ</ek>
+            <ek>FIIL_KISI_SIZ</ek>
+            <ek>FIIL_KISI_ONLAR</ek>
+            <ek>IMEK_RIVAYET_MIS</ek>
+            <ek>IMEK_SART_SE</ek>
+            <ek>IMEK_HIKAYE_DI</ek>
+            <ek>IMEK_ZAMAN_KEN</ek>
+            <ek>FIIL_GIBI_CESINE</ek>
+        </ek-kumesi>
+
+    </ek-kumeleri>
+
+
+    <!-- ############################  EKLER ##################################### -->
+
+    <!-- uretim kurralarina iliskin aciklama
+
+      uretim kurallari bir ekin hangi kurallara gore nasil olusacagini belirler.
+      Ek yazilim tarafindan okundugunda bu kurallara gore olasi tum uretimlar
+      tespit edilir.
+
+      kurallar:
+      A:son seslinin ince_kalin olmasina gore a ya da e harfi uretilir.
+      I:son seslinin durumuna gore i,I,u ya da U uretilir.
+      +x: son harf sesli ise x harfi (ya da kural ise ilgili harfler) eklenir.
+      >x: son harf sert ise gore x harfinin sert hali kullanilir.
+      ~x: sonrasinda gelen harf sesli ise yumusar.
+      kucuk harfler: dogrudan uretime eklenir.
+      buyuk harfler: turkceye ozel karakterlerin benzerleri. G yumusak g gibi. dogrudan eklenir.
+    -->
+
+
+    <ekler>
+
+        <ek ad="BOS_EK" uretim=""/>
+
+        <!-- isim yalin. -->
+        <ek ad="ISIM_KOK" uretim="">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+                ,ISIM_BULUNMA_LI
+                ,ISIM_BULUNMA_LIK
+                ,ISIM_DURUM_LIK
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_KUCULTME_CIK
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_TAMLAMA_I
+                ,ISIM_DONUSUM_LES
+                ,ISIM_ILISKILI_SEL
+                ,ISIM_ANDIRMA_IMSI
+                ,ISIM_ANDIRMA_SI
+                ,ISIM_ILGI_CI
+                ,ISIM_GIBI_CE
+                ,ISIM_TARAFINDAN_CE
+                ,FIIL_GIBI_CESINE
+            </ardisil-ekler>
+        </ek>
+
+        <!-- fiil KOK -->
+        <ek ad="FIIL_KOK" uretim="" k_en="verb" kis="eylem">
+            <ardisil-ekler>
+                FIIL_ZAMAN
+                ,FIIL_DONUSUM
+                ,FIIL_BILESIK
+                ,FIIL_KOK
+                ,FIIL_EMIR_ISTEK
+                ,FIIL_EDILGENSESLI_N
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim cogul eki _ler. "gelsin cay_lar.." -->
+        <ek ad="ISIM_COGUL_LER" uretim="lAr">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_SAHIPLIK_BEN_IM
+                ,ISIM_SAHIPLIK_SEN_IN
+                ,ISIM_SAHIPLIK_O_I
+                ,ISIM_SAHIPLIK_BIZ_IMIZ
+                ,ISIM_SAHIPLIK_SIZ_INIZ
+                ,ISIM_KISI_BIZ_IZ
+                ,ISIM_KISI_SIZ_SINIZ
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_BIRLIKTELIK_LE
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim kucultme _cik.  "Kedi_cik pek SirinmiS".  -->
+        <ek ad="ISIM_KUCULTME_CIK" uretim=">cI~k">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_BULUNMA_LIK
+                ,ISIM_DURUM_LIK
+                ,ISIM_BULUNMA_LI
+                ,ISIM_BIRLIKTELIK_LE
+            </ardisil-ekler>
+        </ek>
+
+        <!-- cegiz: "kedi_ceGiz, kitapcaGIz  -->
+        <ek ad="ISIM_KUCULTME_CEGIZ" uretim="cAğIz">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_BULUNMA_LIK
+                ,ISIM_DURUM_LIK
+                ,ISIM_BULUNMA_LI
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_I
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim yonelme : "kedi_ye bak"  en: dative-->
+        <ek ad="ISIM_YONELME_E" uretim="+yA">
+            <ozel-durum ad="ON_EK" uretim="nA">
+                ZAMAN_BELIRTME_KI
+                ,ISIM_BULUNMA_KI
+                ,ISIM_SAHIPLIK_O_I
+                ,ISIM_TAMLAMA_I
+                ,ISIM_SAHIPLIK_ONLAR_LERI
+            </ozel-durum>
+            <ardisil-ekler>
+                <!-- kisi ekleri bue ek icin tartismali. karsiyayim oluyor, ama elmayayim + -->
+                ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim kalma : "ev_de yemek var."  en:locative -->
+        <ek ad="ISIM_KALMA_DE" uretim=">dA">
+            <ozel-durum ad="ON_EK" uretim="ndA">
+                ZAMAN_BELIRTME_KI
+                ,ISIM_BULUNMA_KI
+                ,ISIM_SAHIPLIK_O_I
+                ,ISIM_TAMLAMA_I
+                ,ISIM_SAHIPLIK_ONLAR_LERI
+            </ozel-durum>
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_KISI
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_BULUNMA_KI
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim yonlenme _den : "okul_dan geliyorum"  en:ablative -->
+        <ek ad="ISIM_CIKMA_DEN" uretim=">dAn">
+            <ozel-durum ad="ON_EK" uretim="ndAn">
+                ZAMAN_BELIRTME_KI
+                ,ISIM_BULUNMA_KI
+                ,ISIM_SAHIPLIK_O_I
+                ,ISIM_TAMLAMA_I
+                ,ISIM_SAHIPLIK_ONLAR_LERI
+            </ozel-durum>
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_KISI
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim tanimlama _dir,  "kedi_dir, bu_dur"  -->
+        <ek ad="ISIM_TANIMLAMA_DIR" uretim=">dIr">
+            <ardisil-ekler>
+                <!-- supheli.. her zaman olmuyor-->
+                ISIM_COGUL_LER
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim belirtme _i: "kedi_yi gordun mu+"  -->
+        <ek ad="ISIM_BELIRTME_I" uretim="+yI">
+            <ozel-durum ad="ON_EK" uretim="nI">
+                ZAMAN_BELIRTME_KI
+                ,ISIM_BULUNMA_KI
+                ,ISIM_SAHIPLIK_O_I
+                ,ISIM_SAHIPLIK_ONLAR_LERI
+            </ozel-durum>
+        </ek>
+
+        <!-- isim durum lik: "deli_lik etme.."  -->
+        <ek ad="ISIM_DURUM_LIK" uretim="lI~k">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,IMEK_ZAMAN
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_COGUL_LER
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_ILGI_CI
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim gibi ce: "insan_ca yasamak istiyor."  -->
+        <!-- TODO: isim tamlamasi _i eki eklenmeli mi+ "kisacasi" -->
+        <ek ad="ISIM_GIBI_CE" uretim=">cA">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_KISI
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_COGUL_LER
+                ,ISIM_TAMLAMA_I
+                ,ISIM_TAMLAMA_IN
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim andirma _imsi: "odunumsu bir yapisi var"  -->
+        <ek ad="ISIM_ANDIRMA_IMSI" uretim="ImsI">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_SAHIPLIK
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_COGUL_LER
+                ,ISIM_TAMLAMA_I
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_DURUM_LIK
+                ,ISIM_BULUNMA_LI
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_BIRLIKTELIK_LE
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim andirma _si: "odunsu bir yapisi var"  -->
+        <ek ad="ISIM_ANDIRMA_SI" uretim="+msI">
+            <ardisil-ekler kopya-ek="ISIM_ANDIRMA_IMSI">
+                ISIM_DONUSUM_LES
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim tamlama _in: "kedi_nin kuyrugu"  !! bu ekin sahiplik eki ile karismis olma durumu var -->
+
+        <ek ad="ISIM_TAMLAMA_IN" uretim="+nIn">
+            <ozel-durum ad="SU" uretim="yun"/>
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_BULUNMA_KI
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim tamlama _i: "Van kedi_si"  -->
+        <ek ad="ISIM_TAMLAMA_I" uretim="+sI">
+            <ozel-durum ad="SU" uretim="yu"/>
+            <ardisil-ekler>
+                ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_DURUM_LIK
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_YONELME_E
+                ,ISIM_KALMA_DE
+                ,ISIM_CIKMA_DEN
+                ,ISIM_BELIRTME_I
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_BIRLIKTELIK_LE
+            </ardisil-ekler>
+        </ek>
+
+
+        <!-- isim bulunma _(de)ki: "kedide_ki pire"  -->
+        <ek ad="ISIM_BULUNMA_KI" uretim="ki">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_COGUL_LER
+            </ardisil-ekler>
+        </ek>
+
+        <!--
+             isim tarafindan _ce: "yapilanlar ogrenciler_ce normal karsilandi. "
+             isim tamlamasi gelirse oncesinde farkli olusuma neden olur. mahkemesi-nce
+        -->
+        <ek ad="ISIM_TARAFINDAN_CE" uretim=">cA">
+            <ozel-durum ad="ON_EK" uretim="ncA">
+                ISIM_TAMLAMA_I
+            </ozel-durum>
+        </ek>
+
+        <!-- isim fiil donusumu _le(mek): "deriyi tuz_la_mamiz lazim"  -->
+        <ek ad="ISIM_DONUSUM_LE" uretim="lA">
+            <ozel-durum ad="SIMDIKI_ZAMAN" uretim="l"/>
+            <ardisil-ekler kopya-ek="FIIL_KOK"/>
+        </ek>
+
+        <!-- isim fiil donusumu _les(mek): "ahmak_lasmak gerekmez."  -->
+        <ek ad="ISIM_DONUSUM_LES" uretim="lAş">
+            <ardisil-ekler kopya-ek="FIIL_KOK"/>
+        </ek>
+
+        <!-- isim icinde bulunma  _li: "limon_lu kek."  -->
+        <ek ad="ISIM_BULUNMA_LI" uretim="lI">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_KISI
+                ,ISIM_SAHIPLIK
+                ,ISIM_COGUL_LER
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_DURUM_LIK
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_TAMLAMA_I
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_DONUSUM_LES
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim "icin yapilmis" _lik : "limon_luk_ta seni bekliyorlar."  -->
+        <ek ad="ISIM_BULUNMA_LIK" uretim="lI~k">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_KISI
+                ,ISIM_SAHIPLIK
+                ,ISIM_COGUL_LER
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_DURUM_LIK
+                ,ISIM_TAMLAMA_I
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_DONUSUM_LES
+                ,ISIM_BULUNMA_LI
+                ,ISIM_ILGI_CI
+                ,ISIM_YOKLUK_SIZ
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim birliktelik _ile: "domates_le ekmek olsun yeter. Ha, bir de tuz."  -->
+        <ek ad="ISIM_BIRLIKTELIK_LE" uretim="+ylA">
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_KISI
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+
+        </ek>
+
+        <!-- isim sahiplik ben _im : "kedi_m margarita deli etti beni."  -->
+        <ek ad="ISIM_SAHIPLIK_BEN_IM" uretim="Im">
+            <ozel-durum ad="SU" uretim="yum"/>
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_KISI_SEN_SIN
+                ,ISIM_KISI_SIZ_SINIZ
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim sahiplik sen _in : "ev-in guzelmis.."  -->
+        <ek ad="ISIM_SAHIPLIK_SEN_IN" uretim="In">
+            <ozel-durum ad="SU" uretim="yun"/>
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_KISI_BEN_IM
+                ,ISIM_KISI_BIZ_IZ
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim sahiplik biz _imiz : "ev_i guzelmis.."  -->
+        <ek ad="ISIM_SAHIPLIK_O_I" uretim="+sI">
+            <ozel-durum ad="SU" uretim="yu"/>
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_KISI_SEN_SIN
+                ,ISIM_KISI_SIZ_SINIZ
+                ,ISIM_KISI_BEN_IM
+                ,ISIM_KISI_BIZ_IZ
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim sahiplik biz _imiz : "ev_imiz perisan.."  -->
+        <ek ad="ISIM_SAHIPLIK_BIZ_IMIZ" uretim="ImIz">
+            <ozel-durum ad="SU" uretim="yumuz"/>
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_KISI_SEN_SIN
+                ,ISIM_KISI_SIZ_SINIZ
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim sahiplik siz _iniz : "ev_iniz guzelmis.."  -->
+        <ek ad="ISIM_SAHIPLIK_SIZ_INIZ" uretim="InIz">
+            <ozel-durum ad="SU" uretim="yunuz"/>
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_KISI_BEN_IM
+                ,ISIM_KISI_BIZ_IZ
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim sahiplik onlar _lari : "ev_leri guzelmis.."  -->
+        <ek ad="ISIM_SAHIPLIK_ONLAR_LERI" uretim="lArI">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TARAFINDAN_CE
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim "iliskili" _sal : "kurum_sal yazilim.."  -->
+        <!-- bu ek dile sonradan eklenmistir. -->
+        <ek ad="ISIM_ILISKILI_SEL" uretim="sAl">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_GIBI_CE
+                ,ISIM_DURUM_LIK
+                ,ISIM_DONUSUM_LES
+                ,ISIM_ILGI_CI
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim yokluk _siz : "balyoz_suz olmayacak.. yikamadik Su duvari." -->
+        <ek ad="ISIM_YOKLUK_SIZ" uretim="sIz">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_SAHIPLIK
+                ,ISIM_COGUL_LER
+                ,ISIM_DURUM_LIK
+                ,ISIM_DONUSUM_LES
+                ,ISIM_GIBI_CE
+                ,ISIM_BIRLIKTELIK_LE
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim ilgi _ci : "oduncu" -->
+        <ek ad="ISIM_ILGI_CI" uretim=">cI">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_SAHIPLIK
+                ,ISIM_COGUL_LER
+                ,ISIM_DURUM_LIK
+                ,ISIM_DONUSUM_LES
+                ,ISIM_GIBI_CE
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_BULUNMA_LI
+                ,ISIM_YOKLUK_SIZ
+            </ardisil-ekler>
+        </ek>
+
+
+        <!-- isim KISI ben _im : "ne tuhaf adam_im"  -->
+        <!-- imek fiili durumunda:  _m : "kucuk_tu_m ufacikti_m top oynadim aciktim."  -->
+        <ek ad="ISIM_KISI_BEN_IM" uretim="+yIm">
+            <ozel-durum ad="ON_EK" uretim="m">
+                IMEK_SART_SE
+                ,IMEK_HIKAYE_DI
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim KISI sen _sin : "ne tuhaf adam_sin"  -->
+        <!-- imek fiili durumunda _n: "yahu sen iyi bir adamdi_n. adam_sa_n .. " -->
+        <ek ad="ISIM_KISI_SEN_SIN" uretim="sIn">
+            <ozel-durum ad="ON_EK" uretim="n">
+                IMEK_SART_SE
+                ,IMEK_HIKAYE_DI
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim KISI o"  -->
+        <ek ad="ISIM_KISI_O_BOS" uretim=""/>
+
+        <!-- isim KISI biz _iz : "ne tuhaf millet_iz"  -->
+        <!-- imek fiili durumunda _k: ""Kurttu_k kopek olduk dedi sinirlice."" -->
+        <ek ad="ISIM_KISI_BIZ_IZ" uretim="+yIz">
+            <ozel-durum ad="ON_EK" uretim="k">
+                IMEK_SART_SE
+                ,IMEK_HIKAYE_DI
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim KISI siz _siniz : "ne tuhaf adam_siniz"  -->
+        <!-- imek fiili durumunda _niz: "Tembelseniz ben ne yapayim+" -->
+        <ek ad="ISIM_KISI_SIZ_SINIZ" uretim="sInIz">
+            <ozel-durum ad="ON_EK" uretim="nIz">
+                IMEK_SART_SE
+                ,IMEK_HIKAYE_DI
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim KISI onlar _lar : "ne tuhaf adam_lar"  -->
+        <ek ad="ISIM_KISI_ONLAR_LER" uretim="lAr"/>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ OZEL ISIM    ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <ek ad="OZEL_KOK" uretim="">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_KISI
+                ,ISIM_SAHIPLIK
+                ,ISIM_COGUL_LER
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_KUCULTME_CIK
+                ,ISIM_DURUM_LIK
+                ,ISIM_TAMLAMA_I
+                ,ISIM_TARAFINDAN_CE
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_DONUSUM_LES
+                ,ISIM_BULUNMA_LI
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_ILGI_CI
+                ,ISIM_GIBI_CE
+            </ardisil-ekler>
+        </ek>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ SAYI EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- sayilar (numeral adjectives) belirtme sifatlari grubuna girer.  -->
+
+
+        <!-- Ulestirme sayi eki, distributive numeral adjective : bir-er, iki-Ser  -->
+
+        <ek ad="SAYI_ULESTIRME_ER" uretim="+şAr">
+            <ardisil-ekler kopya-ek="ISIM_KOK"/>
+        </ek>
+
+        <!-- Kesir Sayi eki: "uC-te bir", "altI-da beS" -->
+        <ek ad="SAYI_KESIR_DE" uretim=">dA">
+            <ardisil-ekler kopya-ek="ISIM_KOK"/>
+        </ek>
+
+        <!-- Sira Sayi eki, ordinal numeral adjective : bir-inci, altI-ncI-->
+        <ek ad="SAYI_SIRA_INCI" uretim="IncI">
+            <ardisil-ekler kopya-ek="ISIM_KOK"/>
+        </ek>
+
+        <!-- Topluluk sayi eki : "dOrd-Uz, altI-z" -->
+        <ek ad="SAYI_TOPLULUK_IZ" uretim="Iz">
+            <ardisil-ekler kopya-ek="ISIM_KOK"/>
+        </ek>
+
+        <!--  geometrik kose eki : altI-gen, UC-gen -->
+        <ek ad="SAYI_KOSE_GEN" uretim="gen">
+            <ardisil-ekler kopya-ek="ISIM_KOK"/>
+        </ek>
+
+        <!--  Asil sayi sifati, numeral adjective -->
+        <ek ad="SAYI_KOK" uretim="">
+            <ardisil-ekler kopya-ek="ISIM_KOK">
+                SAYI_ULESTIRME_ER
+                ,SAYI_KESIR_DE
+                ,SAYI_SIRA_INCI
+                ,SAYI_TOPLULUK_IZ
+                ,SAYI_KOSE_GEN
+            </ardisil-ekler>
+        </ek>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ FIIL EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <!-- aglamaca yok. -->
+        <ek ad="FIIL_MASTAR_CE" uretim=">cA">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_MIS"/>
+        </ek>
+
+        <!-- ... demir pencenin bilegini yakar-casina
+             acitmasini hissedince, keske biraz pesrev yapsaydim diye hayiflanmisti... -->
+        <ek ad="FIIL_GIBI_CESINE" uretim="cAsInA"/>
+
+        <!-- ye-dikce yiyesin geliyor. -->
+        <ek ad="FIIL_DEVAMLILIK_DIKCE" uretim=">dIkçA"/>
+
+        <!-- gel-en -->
+        <ek ad="FIIL_DONUSUM_EN" uretim="+yAn">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_BULUNMA_LIK
+                ,ISIM_DURUM_LIK
+                ,ISIM_BULUNMA_LI
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_DONUSUM_LES
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_DONUSUM_ILI" uretim="IlI">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
+        </ek>
+
+        <!-- bu gelisler artik sIkmaya basladi. -->
+        <ek ad="FIIL_DONUSUM_IS" uretim="+yIş">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN">
+                FIIL_GIBI_CESINE
+                ,ISIM_ILGI_CI
+                ,ISIM_TAMLAMA_I
+            </ardisil-ekler>
+        </ek>
+
+        <!-- yatik, kalkik . genellestirmek dogru olmayabilir.-->
+        <!--        <ek ad="FIIL_DONUSUM_IK" uretim="+yI~k">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
+        </ek>-->
+
+        <ek ad="FIIL_DONUSUM_IM" uretim="+nIm">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN">
+                ISIM_ILGI_CI
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_DONUSUM_INTI" uretim="+yIntI">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
+        </ek>
+
+        <!-- gidecekler hazirlansin. yapacak bir sey yok.  -->
+        <ek ad="FIIL_DONUSUM_ECEK" uretim="+yAcA~k">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_TAMLAMA_I
+                ,ISIM_COGUL_LER
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_DONUSUM_MIS" uretim="mIş">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_TAMLAMA_I
+                ,ISIM_COGUL_LER
+                ,ISIM_TAMLAMA_IN
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_DONUSUM_ESICE" uretim="+yAsIcA">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
+        </ek>
+
+        <ek ad="FIIL_DONUSUM_ESI" uretim="+yAsI">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
+        </ek>
+
+        <ek ad="FIIL_DONUSUM_ESIYE" uretim="+yAsIyA">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
+        </ek>
+
+        <ek ad="FIIL_DONUSUM_ME" uretim="mA">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN">
+                FIIL_GIBI_CESINE
+                ,ISIM_ILGI_CI
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_TANIMLAMA_ICI" uretim="+yIcI">
+            <ardisil-ekler kopya-ek="FIIL_DONUSUM_EN"/>
+        </ek>
+
+        <!-- edilgenlik sorunlu bir ek. iki ayri ek seklinde ifade etmek zorunda kaldik. -->
+        <ek ad="FIIL_EDILGEN_IL" uretim="Il">
+            <ozel-durum ad="EDILGEN" uretim=""/>
+            <ardisil-ekler>
+                FIIL_ZAMAN
+                ,FIIL_DONUSUM
+                ,FIIL_BILESIK
+                ,FIIL_KOK
+                ,FIIL_EMIR_ISTEK
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_EDILGENSESLI_N" uretim="+n">
+            <ardisil-ekler kopya-ek="FIIL_KOK"/>
+        </ek>
+
+        <ek ad="FIIL_BERI_ELI" uretim="+yAlI"/>
+
+        <ek ad="FIIL_EMIR_O_SIN" uretim="sIn"/>
+
+        <ek ad="FIIL_EMIR_ONLAR_SINLER" uretim="sInlAr"/>
+
+        <ek ad="FIIL_EMIR_SIZ_IN" uretim="+yIn"/>
+
+        <ek ad="FIIL_EMIR_SIZRESMI_INIZ" uretim="+yInIz"/>
+
+        <!-- Utanc verici ekimiz. "rakibini calim at-arak gecti.." -->
+        <ek ad="FIIL_SUREKLILIK_EREK" uretim="+yArA~k">
+            <!-- ardisil ek biraz sorunlu. gelerekten+ -->
+            <ardisil-ekler>
+                ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_ETTIRGEN_TIR" uretim=">dIr">
+            <ardisil-ekler kopya-ek="FIIL_KOK">
+                FIIL_ETTIRGEN_TEKRAR_T
+            </ardisil-ekler>
+        </ek>
+
+        <!-- TODO: bu ek henuz kullanilmiyor ama alsinda gelecek zaman eki gibi eklerin ardindan gelmesi gerekiyor. -->
+        <!-- herhalde gelecektir. -->
+        <ek ad="FIIL_UMMA_DIR" uretim=">dIr">
+        </ek>
+
+        <ek ad="FIIL_ETTIRGEN_TEKRAR_T" uretim="t">
+            <ardisil-ekler>
+                FIIL_ZAMAN
+                ,FIIL_DONUSUM
+                ,FIIL_BILESIK
+                ,FIIL_EMIR_ISTEK
+                ,FIIL_OLUMSUZLUK_ME
+                ,FIIL_YETENEK_EBIL
+                ,FIIL_BERI_ELI
+                ,FIIL_EDILGEN_IL
+                ,FIIL_TANIMLAMA_ICI
+                ,FIIL_ZAMAN_INCE
+                ,FIIL_IMSI_IP
+                ,FIIL_MASTAR_MEK
+                ,FIIL_OLUMSUZLUK_MEKSIZIN
+                ,FIIL_OLUMSUZLUK_MEDEN
+                ,FIIL_DONUSUM_ESICE
+                ,FIIL_DONUSUM_ESI
+                ,FIIL_DONUSUM_ESIYE
+                ,FIIL_ZORUNLULUK_MELI
+                ,FIIL_SART_SE
+                ,FIIL_YETERSIZLIK_E
+                ,FIIL_ETTIRGEN_TIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_GELECEKZAMAN_ECEK" uretim="+yAcA~k">
+            <ardisil-ekler>
+                FIIL_ZAMAN_ARDISIL
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- dun halami ziyaret et-ti-m. -->
+        <ek ad="FIIL_GECMISZAMAN_DI" uretim=">dI">
+            <ardisil-ekler>
+                FIIL_KISI
+                ,IMEK_SART_SE
+                ,IMEK_HIKAYE_DI
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_GECMISZAMAN_MIS" uretim="mIş">
+            <ardisil-ekler>
+                FIIL_ZAMAN_ARDISIL
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_HAL
+                ,ISIM_DURUM_LIK
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_GENISZAMAN_IR" uretim="Ir">
+            <ozel-durum ad="GENIS_ZAMAN" uretim="Ar"/>
+            <ozel-durum ad="ON_EK" uretim="z">
+                FIIL_OLUMSUZLUK_ME
+            </ozel-durum>
+            <ardisil-ekler>
+                FIIL_ZAMAN_ARDISIL
+                ,ISIM_DURUM_LIK
+                <!--,FIIL_MASTAR_CE-->
+                ,FIIL_GIBI_CESINE
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_SIMDIKIZAMAN_IYOR" uretim="Iyor">
+            <ardisil-ekler>
+                FIIL_ZAMAN_ARDISIL
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_SIMDIKIZAMAN_MEKTE" uretim="mAktA">
+            <ardisil-ekler>
+                FIIL_ZAMAN_ARDISIL
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_ZAMAN_INCE" uretim="+yIncA">
+            <ardisil-ekler>
+                ISIM_YONELME_E
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_IMSI_IP" uretim="+yIp"/>
+
+        <ek ad="FIIL_BERABERLIK_IS" uretim="Iş">
+            <ozel-durum ad="BERABERLIK_IS" uretim="+yIş"/>
+            <ardisil-ekler kopya-ek="FIIL_KOK"/>
+        </ek>
+
+        <!-- gel-e-sin, oku-ya-yim -->
+        <ek ad="FIIL_ISTEK_E" uretim="+yA">
+            <ardisil-ekler>
+                FIIL_KISI
+                ,IMEK_RIVAYET_MIS
+                ,IMEK_HIKAYE_DI
+                ,FIIL_OLUMSUZLUK_ME
+            </ardisil-ekler>
+            <oncelikli-ekler>
+                <oek>FIIL_KISI_BIZ</oek>
+                <oek>FIIL_KISI_BEN</oek>
+            </oncelikli-ekler>
+        </ek>
+
+        <ek ad="FIIL_MASTAR_MEK" uretim="mAk">
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_CIKMA_DEN
+                ,ISIM_KALMA_DE
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_BIRLIKTELIK_LE
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_OLDURGAN_T" uretim="">
+            <ozel-durum ad="OLDURGAN" uretim="t"/>
+            <ardisil-ekler kopya-ek="FIIL_KOK"/>
+        </ek>
+
+        <ek ad="FIIL_OLUMSUZLUK_MEDEN" uretim="mAdAn"/>
+
+        <ek ad="FIIL_OLUMSUZLUK_ME" uretim="mA">
+            <ozel-durum ad="SIMDIKI_ZAMAN" uretim="m"/>
+            <ardisil-ekler>
+                FIIL_ZAMAN
+                ,FIIL_DONUSUM
+                ,FIIL_BILESIK
+                ,FIIL_KISI
+                ,FIIL_EMIR_ISTEK
+                ,FIIL_MASTAR_CE
+                ,FIIL_MASTAR_MEK
+                ,FIIL_OLUMSUZLUK_MEKSIZIN
+                ,FIIL_IMSI_IP
+                ,FIIL_DONUSUM_ESICE
+                ,FIIL_DONUSUM_ESI
+                ,FIIL_DONUSUM_ESIYE
+                ,FIIL_SART_SE
+                ,FIIL_ZAMAN_INCE
+                ,FIIL_ZORUNLULUK_MELI
+                ,FIIL_YETENEK_EBIL
+                ,FIIL_EDILGEN_IL
+                ,FIIL_TANIMLAMA_ICI
+                ,FIIL_BELIRTME_DIK
+                ,FIIL_BERI_ELI
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_YETERSIZLIK_E" uretim="+yA">
+            <ardisil-ekler>
+                FIIL_OLUMSUZLUK_ME
+                ,FIIL_OLUMSUZLUK_MEDEN
+            </ardisil-ekler>
+        </ek>
+
+        <!-- bil-dik bir yuz. calmadik kapi.. bu ekin asil adi nedir+-->
+        <ek ad="FIIL_BELIRTME_DIK" uretim=">dI~k">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_SAHIPLIK
+                ,ISIM_TAMLAMA_I
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_KISI_BEN" uretim="+yIm">
+            <ozel-durum ad="ON_EK" uretim="m">
+                FIIL_OLUMSUZLUK_ME
+                ,FIIL_GECMISZAMAN_DI
+                ,FIIL_SART_SE
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_KISI_BIZ" uretim="+yIz">
+            <ozel-durum ad="ON_EK" uretim="k">
+                FIIL_SART_SE
+                ,FIIL_GECMISZAMAN_DI
+            </ozel-durum>
+            <ozel-durum ad="ON_EK" uretim="lIm">
+                FIIL_ISTEK_E
+            </ozel-durum>
+            <ardisil-ekler kopya-ek="FIIL_KISI_BEN"/>
+        </ek>
+
+        <ek ad="FIIL_KISI_O" uretim=""/>
+
+        <ek ad="FIIL_KISI_ONLAR" uretim="lAr">
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_TANIMLAMA_DIR
+                ,FIIL_GIBI_CESINE
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_KISI_SEN" uretim="sIn">
+            <ozel-durum ad="ON_EK" uretim="n">
+                FIIL_SART_SE
+                ,FIIL_GECMISZAMAN_DI
+            </ozel-durum>
+            <ardisil-ekler kopya-ek="FIIL_KISI_BEN"/>
+        </ek>
+
+        <ek ad="FIIL_KISI_SIZ" uretim="sInIz">
+            <ozel-durum ad="ON_EK" uretim="nIz">
+                FIIL_SART_SE
+                ,FIIL_GECMISZAMAN_DI
+            </ozel-durum>
+            <ardisil-ekler kopya-ek="FIIL_KISI_BEN"/>
+        </ek>
+
+        <ek ad="FIIL_SART_SE" uretim="sA">
+            <ardisil-ekler>
+                FIIL_KISI
+                ,IMEK_RIVAYET_MIS
+                ,IMEK_HIKAYE_DI
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_ISTEK_SENE" uretim="sAnA"/>
+
+        <ek ad="FIIL_ISTEK_SENIZE" uretim="sAnIzA"/>
+
+        <ek ad="FIIL_OLUMSUZLUK_MEKSIZIN" uretim="mAksIzIn"/>
+
+        <ek ad="FIIL_SURERLIK_EDUR" uretim="+yAdur">
+            <ardisil-ekler>
+                FIIL_ZAMAN
+                ,FIIL_EMIR_ISTEK
+                ,FIIL_KOK
+                ,FIIL_DONUSUM
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_SURERLIK_EGEL" uretim="+yAgel">
+            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </ek>
+
+        <ek ad="FIIL_SURERLIK_EGOR" uretim="+yAgör">
+            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </ek>
+
+        <ek ad="FIIL_SURERLIK_EKAL" uretim="+yAkal">
+            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </ek>
+
+        <ek ad="FIIL_TEZLIK_IVER" uretim="+yIver">
+            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </ek>
+
+        <ek ad="FIIL_YAKLASMA_AYAZ" uretim="+yAyaz">
+            <ardisil-ekler kopya-ek="FIIL_SURERLIK_EDUR"/>
+        </ek>
+
+        <ek ad="FIIL_YETENEK_EBIL" uretim="+yAbil">
+            <ardisil-ekler>
+                FIIL_ZAMAN
+                ,FIIL_EMIR_ISTEK
+                ,FIIL_MASTAR_MEK
+                ,FIIL_OLUMSUZLUK_MEKSIZIN
+                ,FIIL_IMSI_IP
+                ,FIIL_DONUSUM_ESICE
+                ,FIIL_DONUSUM_ESIYE
+                ,FIIL_DONUSUM_ESI
+                ,FIIL_SART_SE
+                ,FIIL_ZAMAN_INCE
+                ,FIIL_ZORUNLULUK_MELI
+                ,FIIL_YETERSIZLIK_E
+                ,FIIL_EDILGEN_IL
+                ,FIIL_TANIMLAMA_ICI
+                ,FIIL_BERI_ELI
+                ,FIIL_TEZLIK_IVER
+                ,FIIL_BELIRTME_DIK
+                ,FIIL_DONUSUM_EN
+                ,FIIL_DONUSUM_IS
+                ,FIIL_DONUSUM_ME
+                ,FIIL_DONUSUM_ECEK
+                ,FIIL_DONUSUM_MIS
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="FIIL_ZORUNLULUK_MELI" uretim="mAlI">
+            <ardisil-ekler>
+                FIIL_KISI
+                ,FIIL_SART_SE
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ YANKI EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <ek ad="YANKI_KOK" uretim="">
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_KISI
+            </ardisil-ekler>
+        </ek>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ ZAMAN EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <ek ad="ZAMAN_KOK" uretim="">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+                ,ISIM_BULUNMA_LI
+                ,ISIM_BULUNMA_LIK
+                ,ISIM_DURUM_LIK
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_KUCULTME_CIK
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_TAMLAMA_I
+                ,ISIM_DONUSUM_LES
+                ,ISIM_ILISKILI_SEL
+                ,ISIM_ANDIRMA_IMSI
+                ,ISIM_ANDIRMA_SI
+                ,ISIM_ILGI_CI
+                ,ISIM_GIBI_CE
+                ,ISIM_TARAFINDAN_CE
+                ,ZAMAN_BELIRTME_KI
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="ZAMAN_BELIRTME_KI" uretim="ki">
+            <ozel-durum ad="ZAMAN_KI" uretim="kü"/>
+            <ardisil-ekler>
+                ISIM_HAL
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+            </ardisil-ekler>
+        </ek>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ ZAMIR EKLERI  ~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <ek ad="ZAMIR_SAHIPLIK_IN" uretim="In">
+            <ardisil-ekler>
+                IMEK_ZAMAN
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_BULUNMA_KI
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_BELIRTME_I
+            </ardisil-ekler>
+        </ek>
+
+
+        <ek ad="ZAMIR_SAHIPLIK_IM" uretim="Im">
+            <ardisil-ekler kopya-ek="ZAMIR_SAHIPLIK_IN"/>
+        </ek>
+
+        <ek ad="ZAMIR_KOK" uretim="">
+            <ardisil-ekler>
+                ISIM_HAL
+                ,ISIM_SAHIPLIK
+                ,ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_COGUL_LER
+                ,ISIM_BULUNMA_LI
+                ,ISIM_DURUM_LIK
+                ,ISIM_YOKLUK_SIZ
+                ,ISIM_BIRLIKTELIK_LE
+                ,ISIM_KUCULTME_CEGIZ
+                ,ISIM_TAMLAMA_I
+                ,ISIM_TARAFINDAN_CE
+                ,ZAMIR_SAHIPLIK_IM
+                ,ZAMIR_SAHIPLIK_IM
+            </ardisil-ekler>
+        </ek>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ SORU EKI ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <ek ad="SORU_KOK" uretim="">
+            <ardisil-ekler>
+                FIIL_KISI
+                ,IMEK_HIKAYE_DI
+                ,IMEK_RIVAYET_MIS
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- bu ek normalde kullanilmaz. sadece ceviri gibi islemlerde gerekli olabilir. -->
+        <ek ad="FIIL_SORU_MI" uretim="mI">
+            <ardisil-ekler>
+                FIIL_KISI
+                ,FIIL_GECMISZAMAN_DI
+                ,FIIL_GECMISZAMAN_MIS
+                ,ISIM_TANIMLAMA_DIR
+            </ardisil-ekler>
+        </ek>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ IMEK FIILI ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <ek ad="IMEK_KOK" uretim="">
+            <ardisil-ekler>
+                IMEK_ZAMAN
+            </ardisil-ekler>
+        </ek>
+
+        <!-- imek "imis" _miS : "bu kelebek tirtil_mis bir zamanlar."  -->
+        <ek ad="IMEK_RIVAYET_MIS" uretim="+ymIş">
+            <ozellik>HAL</ozellik>
+            <ozel-durum ad="ON_EK" uretim="mIş">
+                IMEK_KOK
+                ,FIIL_KOK
+                ,FIIL_OLUMSUZLUK_ME
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_KISI
+                ,ISIM_HAL
+                <!-- dikkat! ardisil IMEK_ZAMAN ekleri kendini yineleme durumu olusturur.-->
+                ,IMEK_ZAMAN
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim imek "ise" _se : "tukenmez kalem_se kullanma." -->
+        <ek ad="IMEK_SART_SE" uretim="+ysA">
+            <ozellik>HAL</ozellik>
+            <ozel-durum ad="ON_EK" uretim="se">
+                IMEK_KOK
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_KISI
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim imek "idi" _di : "adam aslan_di simdi elin kopegi oldu.." -->
+        <ek ad="IMEK_HIKAYE_DI" uretim="+y>dI">
+            <ozellik>HAL</ozellik>
+            <ozel-durum ad="ON_EK" uretim="di">
+                IMEK_KOK
+            </ozel-durum>
+            <ardisil-ekler>
+                ISIM_KISI
+            </ardisil-ekler>
+        </ek>
+
+        <!-- isim imek "iken" _ken : "ben cocuk_ken buralari karpuz tarlasiydi" -->
+        <!-- imek fiilinde "ken" olarak uretilir. -->
+        <ek ad="IMEK_ZAMAN_KEN" uretim="+yken">
+            <ozel-durum ad="ON_EK" uretim="ken">
+                IMEK_KOK
+            </ozel-durum>
+            <ardisil-ekler>
+                ZAMAN_BELIRTME_KI
+            </ardisil-ekler>
+        </ek>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~ DIGER KOK EKLER~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <ek ad="BAGLAC_KOK" uretim=""/>
+
+        <ek ad="EDAT_KOK" uretim="">
+            <ardisil-ekler>
+                ISIM_KISI
+                ,IMEK_ZAMAN
+                ,ISIM_TANIMLAMA_DIR
+                ,ISIM_TAMLAMA_I
+            </ardisil-ekler>
+        </ek>
+
+        <ek ad="ZARF_KOK" uretim=""/>
+
+        <ek ad="UNLEM_KOK" uretim=""/>
+
+    </ekler>
+</ek-bilgisi>

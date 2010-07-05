@@ -2,6 +2,7 @@ package zemberek3.structure;
 
 /**
  * <code>Lemma</code> contains the cleaned (ready for parse) form of a dictionary entry and special cases if any.
+ * http://en.wikipedia.org/wiki/Lemma_(linguistics) * 
  */
 public class Lemma {
 

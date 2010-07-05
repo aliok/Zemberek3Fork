@@ -16,6 +16,6 @@ public interface WordParseResultDisambiguator {
      * @param words a sequence of words.
      * @return an iterator that iterates through each word's scored <code>WordParse</code> list..
      */
-    Iterator<List<ScoredItem<TurkicWordParse>>> scoreListIterator(List<CharSequence> words);
+    Iterator<List<ScoredItem<TurkicWordParse>>> scoreListIterator(List<String> words);
 
 }
