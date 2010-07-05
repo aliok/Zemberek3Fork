@@ -7,7 +7,7 @@
             P1sg, P2sg, P3sg, P1pl, P2pl, P3pl
         </suffix-set>
 
-        <suffix-set id="PersonalSuffixes">
+        <suffix-set id="PersonNumberSuffixes">
             A1sg, A2sg, A3sg, A1pl, A2pl, A3pl
         </suffix-set>
 
@@ -132,7 +132,7 @@
             <ardisil-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
                 ,With
@@ -142,14 +142,13 @@
                 ,Inst
                 ,Dim
                 ,Dim2
-                ,ISIM_TAMLAMA_I
-                ,ISIM_DONUSUM_LES
+                ,Become
                 ,Related
                 ,Resemblance
                 ,Resemblance2
                 ,ISIM_ILGI_CI
-                ,ISIM_GIBI_CE
-                ,ISIM_TARAFINDAN_CE
+                ,Quite
+                ,By
                 ,FIIL_GIBI_CESINE
             </ardisil-suffixes>
         </suffix>
@@ -178,7 +177,7 @@
                 ,P2pl
                 ,A1pl
                 ,A2pl
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,Inst
             </allowed-suffixes>
         </suffix>
@@ -188,7 +187,7 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
                 ,Without
@@ -204,7 +203,7 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
                 ,Without
@@ -212,7 +211,6 @@
                 ,Ness
                 ,With
                 ,Inst
-                ,ISIM_TAMLAMA_I
             </allowed-suffixes>
         </suffix>
 
@@ -222,12 +220,11 @@
                 ZAMAN_BELIRTME_KI
                 ,ISIM_BULUNMA_KI
                 ,P3sg
-                ,ISIM_TAMLAMA_I
                 ,P3pl
             </exception>
             <allowed-suffixes>
                 <!-- kisi suffixesi bue ek icin tartismali. karsiyayim oluyor, ama elmayayim + -->
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Copula
             </allowed-suffixes>
@@ -239,12 +236,11 @@
                 ZAMAN_BELIRTME_KI
                 ,ISIM_BULUNMA_KI
                 ,P3sg
-                ,ISIM_TAMLAMA_I
                 ,P3pl
             </exception>
             <allowed-suffixes>
                 IMEK_ZAMAN
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,Copula
                 ,ISIM_BULUNMA_KI
             </allowed-suffixes>
@@ -256,12 +252,11 @@
                 ZAMAN_BELIRTME_KI
                 ,ISIM_BULUNMA_KI
                 ,P3sg
-                ,ISIM_TAMLAMA_I
                 ,P3pl
             </exception>
             <allowed-suffixes>
                 IMEK_ZAMAN
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,Copula
             </allowed-suffixes>
         </suffix>
@@ -299,13 +294,12 @@
 
         <!-- isim gibi ce: "insan_ca yasamak istiyor."  -->
         <!-- TODO: isim tamlamasi _i eki eklenmeli mi+ "kisacasi" -->
-        <suffix id="ISIM_GIBI_CE" gen=">cA">
+        <suffix id="Quite" gen=">cA">
             <allowed-suffixes>
                 CaseSuffixes
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,Copula
                 ,Plural
-                ,ISIM_TAMLAMA_I
                 ,Gen
             </allowed-suffixes>
         </suffix>
@@ -314,12 +308,11 @@
         <suffix id="Resemblance" gen="ImsI">
             <allowed-suffixes>
                 CaseSuffixes
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Possessive
                 ,Copula
                 ,Plural
-                ,ISIM_TAMLAMA_I
                 ,Gen
                 ,Ness
                 ,With
@@ -332,7 +325,7 @@
         <!-- isim andirma _si: "odunsu bir yapisi var"  -->
         <suffix id="Resemblance2" gen="+msI">
             <allowed-suffixes kopya-ek="Resemblance">
-                ISIM_DONUSUM_LES
+                Become
             </allowed-suffixes>
         </suffix>
 
@@ -345,27 +338,6 @@
                 ,ISIM_BULUNMA_KI
             </allowed-suffixes>
         </suffix>
-
-        <!-- isim tamlama _i: "Van kedi_si"  -->
-        <suffix id="ISIM_TAMLAMA_I" gen="+sI">
-            <exception id="SU" gen="yu"/>
-            <allowed-suffixes>
-                PersonalSuffixes
-                ,IMEK_ZAMAN
-                ,Copula
-                ,Gen
-                ,Dim2
-                ,Dat
-                ,Loc
-                ,Abl
-                ,Acc
-                ,Gen
-                ,Copula
-                ,ISIM_TARAFINDAN_CE
-                ,Inst
-            </allowed-suffixes>
-        </suffix>
-
 
         <!-- isim bulunma _(de)ki: "kedide_ki pire"  -->
         <suffix id="ISIM_BULUNMA_KI" gen="ki">
@@ -382,9 +354,9 @@
              isim tarafindan _ce: "yapilanlar ogrenciler_ce normal karsilandi. "
              isim tamlamasi gelirse oncesinde farkli olusuma neden olur. mahkemesi-nce
         -->
-        <suffix id="ISIM_TARAFINDAN_CE" gen=">cA">
+        <suffix id="By" gen=">cA">
             <exception id="ON_EK" gen="ncA">
-                ISIM_TAMLAMA_I
+                P3sg
             </exception>
         </suffix>
 
@@ -395,7 +367,7 @@
         </suffix>
 
         <!-- isim fiil donusumu _les(mek): "ahmak_lasmak gerekmez."  -->
-        <suffix id="ISIM_DONUSUM_LES" gen="lAş">
+        <suffix id="Become" gen="lAş">
             <allowed-suffixes kopya-ek="FIIL_KOK"/>
         </suffix>
 
@@ -404,16 +376,15 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,Possessive
                 ,Plural
                 ,Gen
                 ,Ness
                 ,Dim2
-                ,ISIM_TAMLAMA_I
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,Inst
-                ,ISIM_DONUSUM_LES
+                ,Become
             </allowed-suffixes>
         </suffix>
 
@@ -422,16 +393,15 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,Possessive
                 ,Plural
                 ,Gen
                 ,Dim2
                 ,Ness
-                ,ISIM_TAMLAMA_I
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,Inst
-                ,ISIM_DONUSUM_LES
+                ,Become
                 ,With
                 ,ISIM_ILGI_CI
                 ,Without
@@ -442,7 +412,7 @@
         <suffix id="Inst" gen="+ylA">
             <allowed-suffixes>
                 IMEK_ZAMAN
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,Copula
             </allowed-suffixes>
 
@@ -456,7 +426,7 @@
                 ,IMEK_ZAMAN
                 ,Inst
                 ,Gen
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,A2sg
                 ,A2pl
             </allowed-suffixes>
@@ -470,7 +440,7 @@
                 ,IMEK_ZAMAN
                 ,Inst
                 ,Gen
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,A1sg
                 ,A1pl
             </allowed-suffixes>
@@ -482,13 +452,13 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,Inst
-                ,Gen
-                ,ISIM_TARAFINDAN_CE
-                ,A2sg
-                ,A2pl
                 ,A1sg
+                ,A2sg
                 ,A1pl
+                ,A2pl
+                ,Gen
+                ,By
+                ,Inst
             </allowed-suffixes>
         </suffix>
 
@@ -500,7 +470,7 @@
                 ,IMEK_ZAMAN
                 ,Inst
                 ,Gen
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,A2sg
                 ,A2pl
             </allowed-suffixes>
@@ -514,7 +484,7 @@
                 ,IMEK_ZAMAN
                 ,Inst
                 ,Gen
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,A1sg
                 ,A1pl
             </allowed-suffixes>
@@ -527,7 +497,7 @@
                 ,IMEK_ZAMAN
                 ,Inst
                 ,Gen
-                ,ISIM_TARAFINDAN_CE
+                ,By
             </allowed-suffixes>
         </suffix>
 
@@ -540,9 +510,9 @@
                 ,Plural
                 ,Inst
                 ,Gen
-                ,ISIM_GIBI_CE
+                ,Quite
                 ,Ness
-                ,ISIM_DONUSUM_LES
+                ,Become
                 ,ISIM_ILGI_CI
             </allowed-suffixes>
         </suffix>
@@ -551,13 +521,13 @@
         <suffix id="Without" gen="sIz">
             <allowed-suffixes>
                 CaseSuffixes
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Possessive
                 ,Plural
                 ,Ness
-                ,ISIM_DONUSUM_LES
-                ,ISIM_GIBI_CE
+                ,Become
+                ,Quite
                 ,Inst
             </allowed-suffixes>
         </suffix>
@@ -566,13 +536,13 @@
         <suffix id="ISIM_ILGI_CI" gen=">cI">
             <allowed-suffixes>
                 CaseSuffixes
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Possessive
                 ,Plural
                 ,Ness
-                ,ISIM_DONUSUM_LES
-                ,ISIM_GIBI_CE
+                ,Become
+                ,Quite
                 ,Inst
                 ,With
                 ,Without
@@ -664,21 +634,20 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,IMEK_ZAMAN
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,Possessive
                 ,Plural
                 ,Gen
                 ,Dim2
                 ,Dim
                 ,Ness
-                ,ISIM_TAMLAMA_I
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,Inst
-                ,ISIM_DONUSUM_LES
+                ,Become
                 ,With
                 ,Without
                 ,ISIM_ILGI_CI
-                ,ISIM_GIBI_CE
+                ,Quite
             </allowed-suffixes>
         </suffix>
 
@@ -746,7 +715,7 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
                 ,Without
@@ -754,7 +723,7 @@
                 ,Ness
                 ,With
                 ,Inst
-                ,ISIM_DONUSUM_LES
+                ,Become
             </allowed-suffixes>
         </suffix>
 
@@ -767,7 +736,7 @@
             <allowed-suffixes kopya-ek="FIIL_DONUSUM_EN">
                 FIIL_GIBI_CESINE
                 ,ISIM_ILGI_CI
-                ,ISIM_TAMLAMA_I
+                ,P3sg
             </allowed-suffixes>
         </suffix>
 
@@ -791,7 +760,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,ISIM_TAMLAMA_I
                 ,Plural
                 ,Gen
                 ,Copula
@@ -802,7 +770,6 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,ISIM_TAMLAMA_I
                 ,Plural
                 ,Gen
                 ,Copula
@@ -913,7 +880,7 @@
         <!-- dun halami ziyaret et-ti-m. -->
         <suffix id="FIIL_GECMISZAMAN_DI" gen=">dI">
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,IMEK_SART_SE
                 ,IMEK_HIKAYE_DI
             </allowed-suffixes>
@@ -922,7 +889,7 @@
         <suffix id="FIIL_GECMISZAMAN_MIS" gen="mIş">
             <allowed-suffixes>
                 FIIL_ZAMAN_ARDISIL
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,CaseSuffixes
                 ,Ness
@@ -974,7 +941,7 @@
         <!-- gel-e-sin, oku-ya-yim -->
         <suffix id="FIIL_ISTEK_E" gen="+yA">
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,IMEK_RIVAYET_MIS
                 ,IMEK_HIKAYE_DI
                 ,FIIL_OLUMSUZLUK_ME
@@ -1004,7 +971,7 @@
                 FIIL_ZAMAN
                 ,FIIL_DONUSUM
                 ,FIIL_BILESIK
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,FIIL_EMIR_ISTEK
                 ,FIIL_MASTAR_CE
                 ,FIIL_MASTAR_MEK
@@ -1037,7 +1004,6 @@
                 CaseSuffixes
                 ,IMEK_ZAMAN
                 ,Possessive
-                ,ISIM_TAMLAMA_I
             </allowed-suffixes>
         </suffix>
 
@@ -1048,7 +1014,7 @@
 
         <suffix id="FIIL_SART_SE" gen="sA">
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,IMEK_RIVAYET_MIS
                 ,IMEK_HIKAYE_DI
             </allowed-suffixes>
@@ -1118,7 +1084,7 @@
 
         <suffix id="FIIL_ZORUNLULUK_MELI" gen="mAlI">
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,FIIL_SART_SE
                 ,Copula
             </allowed-suffixes>
@@ -1131,7 +1097,7 @@
         <suffix id="YANKI_KOK" gen="">
             <allowed-suffixes>
                 IMEK_ZAMAN
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
             </allowed-suffixes>
         </suffix>
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -1142,7 +1108,7 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
                 ,With
@@ -1152,14 +1118,13 @@
                 ,Inst
                 ,Dim
                 ,Dim2
-                ,ISIM_TAMLAMA_I
-                ,ISIM_DONUSUM_LES
+                ,Become
                 ,Related
                 ,Resemblance
                 ,Resemblance2
                 ,ISIM_ILGI_CI
-                ,ISIM_GIBI_CE
-                ,ISIM_TARAFINDAN_CE
+                ,Quite
+                ,By
                 ,ZAMAN_BELIRTME_KI
             </allowed-suffixes>
         </suffix>
@@ -1196,7 +1161,7 @@
             <allowed-suffixes>
                 CaseSuffixes
                 ,Possessive
-                ,PersonalSuffixes
+                ,PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Plural
                 ,With
@@ -1204,8 +1169,7 @@
                 ,Without
                 ,Inst
                 ,Dim2
-                ,ISIM_TAMLAMA_I
-                ,ISIM_TARAFINDAN_CE
+                ,By
                 ,ZAMIR_SAHIPLIK_IM
                 ,ZAMIR_SAHIPLIK_IM
             </allowed-suffixes>
@@ -1217,7 +1181,7 @@
 
         <suffix id="SORU_KOK" gen="">
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,IMEK_HIKAYE_DI
                 ,IMEK_RIVAYET_MIS
                 ,Copula
@@ -1227,7 +1191,7 @@
         <!-- bu ek normalde kullanilmaz. sadece ceviri gibi islemlerde gerekli olabilir. -->
         <suffix id="FIIL_SORU_MI" gen="mI">
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,FIIL_GECMISZAMAN_DI
                 ,FIIL_GECMISZAMAN_MIS
                 ,Copula
@@ -1253,7 +1217,7 @@
                 ,FIIL_OLUMSUZLUK_ME
             </exception>
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,CaseSuffixes
                 <!-- dikkat! allowed IMEK_ZAMAN suffixesi kendini yineleme durumu olusturur.-->
                 ,IMEK_ZAMAN
@@ -1267,7 +1231,7 @@
                 IMEK_KOK
             </exception>
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
             </allowed-suffixes>
         </suffix>
 
@@ -1278,7 +1242,7 @@
                 IMEK_KOK
             </exception>
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
             </allowed-suffixes>
         </suffix>
 
@@ -1301,10 +1265,10 @@
 
         <suffix id="EDAT_KOK" gen="">
             <allowed-suffixes>
-                PersonalSuffixes
+                PersonNumberSuffixes
                 ,IMEK_ZAMAN
                 ,Copula
-                ,ISIM_TAMLAMA_I
+                ,P3sg
             </allowed-suffixes>
         </suffix>
 

@@ -26,8 +26,7 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
             P2pl,
             P3sg,
             P1pl,
-            Gen,
-            ISIM_TAMLAMA_I),
+            Gen),
 
     CIFTLEME("ConsDoubling"),
 
@@ -76,7 +75,7 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
             Gen,
             Without,
             Plural,
-            ISIM_TARAFINDAN_CE,
+            By,
             Ness,
             Dim2),
 
@@ -96,13 +95,12 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
             P1pl,
             P2pl,
             P3pl,
-            ISIM_TAMLAMA_I,
             Gen,
             MadeFor,
             With,
             Plural,
             Without,
-            ISIM_TARAFINDAN_CE,
+            By,
             Ness,
             Dim2,
             ISIM_ILGI_CI),
