@@ -20,11 +20,11 @@ public enum POS {
     CONJUNCTION("Conj", "BAGLAC"); // TR: baglac
 
     private String label;
-    private String zemberekAbbrev;
+    private String zemberekLabel;
 
-    POS(String label, String zemberekAbbrev) {
+    POS(String label, String zemberekLabel) {
         this.label = label;
-        this.zemberekAbbrev = zemberekAbbrev;
+        this.zemberekLabel = zemberekLabel;
     }
 
     private static final Map<String, POS> shortToPOS = new HashMap<String, POS>();
@@ -33,7 +33,7 @@ public enum POS {
     static {
         for (POS p : POS.values()) {
             shortToPOS.put(p.label, p);
-            zemberekToPOS.put(p.zemberekAbbrev, p);
+            zemberekToPOS.put(p.zemberekLabel, p);
         }
     }
 
