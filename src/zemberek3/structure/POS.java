@@ -27,21 +27,26 @@ public enum POS {
         this.zemberekLabel = zemberekLabel;
     }
 
-    private static final Map<String, POS> shortToPOS = new HashMap<String, POS>();
-    private static final Map<String, POS> zemberekToPOS = new HashMap<String, POS>();
+    private static final Map<String, POS> labelToPOS = new HashMap<String, POS>();
+    private static final Map<String, POS> zemberekLabelToPOS = new HashMap<String, POS>();
 
     static {
         for (POS p : POS.values()) {
-            shortToPOS.put(p.label, p);
-            zemberekToPOS.put(p.zemberekLabel, p);
+            labelToPOS.put(p.label, p);
+            zemberekLabelToPOS.put(p.zemberekLabel, p);
         }
     }
 
     public static POS getPOSByLabel(String label) {
-        POS p = shortToPOS.get(label);
+        POS p = labelToPOS.get(label);
         if (p != null)
             return p;
         return POS.UNKNOWN;
+    }
+    
+    @Override
+    public String toString() {
+        return label;
     }
 
 }
