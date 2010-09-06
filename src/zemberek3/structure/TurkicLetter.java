@@ -11,6 +11,7 @@ public class TurkicLetter {
     public final boolean frontalVowel;
     public final boolean roundedVowel;
     public final boolean voiceless;
+    public final boolean stopConsonant;
     public final boolean inAscii;
     public final boolean foreign;
     public final char englishEquivalentChar;
@@ -28,6 +29,7 @@ public class TurkicLetter {
         private boolean _frontalVowel = false;
         private boolean _roundedVowel = false;
         private boolean _voiceless = false;
+        private boolean _stopConsonant = false;
         private boolean _inAscii = true;
         private boolean _foreign = false;
         private char _englishEquivalentChar = 0;
@@ -62,6 +64,11 @@ public class TurkicLetter {
             return this;
         }
 
+        public Builder stopConsosnant() {
+            this._stopConsonant = true;
+            return this;
+        }
+
         public Builder notInAscii() {
             this._inAscii = false;
             return this;
@@ -91,6 +98,7 @@ public class TurkicLetter {
         this.frontalVowel = builder._frontalVowel;
         this.roundedVowel = builder._roundedVowel;
         this.voiceless = builder._voiceless;
+        this.stopConsonant = builder._stopConsonant;
         this.inAscii = builder._inAscii;
         this.foreign = builder._foreign;
         this.englishEquivalentChar = builder._englishEquivalentChar;
@@ -104,13 +112,14 @@ public class TurkicLetter {
         frontalVowel = false;
         roundedVowel = false;
         voiceless = false;
+        stopConsonant = false;
         inAscii = false;
         foreign = false;
         englishEquivalentChar = c;
     }
 
     private void checkConsistency() {
-        if ((voiceless && vowel) || (!vowel && (frontalVowel || roundedVowel))) {
+        if (((voiceless||stopConsonant) && vowel) || (!vowel && (frontalVowel || roundedVowel))) {
             throw new IllegalArgumentException("Letter seems to have both vowel and Consonant attributes");
         } else if ((!inAscii) && (charValue < 'a' && charValue > 'z')) {
             throw new IllegalArgumentException("Marked as english alphabet but it is not." + charValue);
@@ -153,6 +162,10 @@ public class TurkicLetter {
 
     public char englishEquivalentChar() {
         return englishEquivalentChar;
+    }
+
+    public boolean isStopConsonant() {
+        return stopConsonant;
     }
 
     @Override

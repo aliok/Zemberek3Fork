@@ -53,7 +53,7 @@ public class TurkceEkAdlari {
     public static final String P3pl = "P3pl";
     public static final String Related = "Related";
     public static final String Without = "Without";
-    public static final String ISIM_ILGI_CI = "ISIM_ILGI_CI";
+    public static final String Agt = "Agt";
     public static final String A1sg = "A1sg";
     public static final String A2sg = "A2sg";
     public static final String A3sg = "A3sg";

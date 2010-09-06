@@ -144,7 +144,7 @@
                 ,Related
                 ,Resemblance
                 ,Resemblance2
-                ,ISIM_ILGI_CI
+                ,Agt
                 ,Quite
                 ,By
                 ,FIIL_GIBI_CESINE
@@ -282,7 +282,7 @@
                 ,IMEK_ZAMAN
                 ,Copula
                 ,Plural
-                ,ISIM_ILGI_CI
+                ,Agt
             </allowed-suffixes>
         </suffix>
 
@@ -391,7 +391,7 @@
                 ,By
                 ,Become
                 ,With
-                ,ISIM_ILGI_CI
+                ,Agt
                 ,Without
             </allowed-suffixes>
         </suffix>
@@ -487,7 +487,7 @@
                 ,Quite
                 ,Ness
                 ,Become
-                ,ISIM_ILGI_CI
+                ,Agt
             </allowed-suffixes>
         </suffix>
 
@@ -506,7 +506,7 @@
         </suffix>
 
         <!-- isim ilgi _ci : "oduncu" -->
-        <suffix id="ISIM_ILGI_CI" gen=">cI">
+        <suffix id="Agt" gen=">cI">
             <allowed-suffixes>
                 CaseSuffixes
                 ,PersonNumberSuffixes
@@ -615,7 +615,7 @@
                 ,Become
                 ,With
                 ,Without
-                ,ISIM_ILGI_CI
+                ,Agt
                 ,Quite
             </allowed-suffixes>
         </suffix>
@@ -699,7 +699,7 @@
         <suffix id="Inf3" gen="+yIş">
             <allowed-suffixes copy-from="PresPart">
                 FIIL_GIBI_CESINE
-                ,ISIM_ILGI_CI
+                ,Agt
                 ,P3sg
             </allowed-suffixes>
         </suffix>
@@ -711,7 +711,7 @@
 
         <suffix id="FIIL_DONUSUM_IM" gen="+nIm">
             <allowed-suffixes copy-from="PresPart">
-                ISIM_ILGI_CI
+                Agt
             </allowed-suffixes>
         </suffix>
 
@@ -749,7 +749,7 @@
         <suffix id="Inf2" gen="mA">
             <allowed-suffixes copy-from="PresPart">
                 FIIL_GIBI_CESINE
-                ,ISIM_ILGI_CI
+                ,Agt
             </allowed-suffixes>
         </suffix>
 
@@ -1079,7 +1079,7 @@
                 ,Related
                 ,Resemblance
                 ,Resemblance2
-                ,ISIM_ILGI_CI
+                ,Agt
                 ,Quite
                 ,By
                 ,ZAMAN_BELIRTME_KI

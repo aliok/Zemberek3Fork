@@ -103,7 +103,7 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
             By,
             Ness,
             Dim2,
-            ISIM_ILGI_CI),
+            Agt),
 
     YALIN("YAL"),
     GENIS_ZAMAN("Aor2"),
