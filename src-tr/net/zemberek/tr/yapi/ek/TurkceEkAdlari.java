@@ -73,7 +73,6 @@ public class TurkceEkAdlari {
     public static final String PresPart = "PresPart";
     public static final String Inf3 = "Inf3";
     public static final String FIIL_DONUSUM_IM = "FIIL_DONUSUM_IM";
-    public static final String FIIL_DONUSUM_ILI = "FIIL_DONUSUM_ILI";
     public static final String FIIL_DONUSUM_ESICE = "FIIL_DONUSUM_ESICE";
     public static final String FIIL_DONUSUM_ESI = "FIIL_DONUSUM_ESI";
     public static final String FIIL_DONUSUM_ESIYE = "FIIL_DONUSUM_ESIYE";
@@ -88,7 +87,7 @@ public class TurkceEkAdlari {
     public static final String FIIL_EMIR_ONLAR_SINLER = "FIIL_EMIR_ONLAR_SINLER";
     public static final String FIIL_EMIR_SIZ_IN = "FIIL_EMIR_SIZ_IN";
     public static final String FIIL_EMIR_SIZRESMI_INIZ = "FIIL_EMIR_SIZRESMI_INIZ";
-    public static final String FIIL_SUREKLILIK_EREK = "FIIL_SUREKLILIK_EREK";
+    public static final String ByDoing = "ByDoing";
     public static final String Caus = "Caus";
     public static final String FIIL_ETTIRGEN_TEKRAR_T = "FIIL_ETTIRGEN_TEKRAR_T";
     public static final String Fut = "Fut";

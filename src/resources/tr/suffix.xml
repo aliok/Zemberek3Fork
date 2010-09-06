@@ -38,11 +38,10 @@
             ,Inf2
             ,FutPart
             ,FIIL_DONUSUM_MIS
-            ,FIIL_DONUSUM_ILI
         </suffix-set>
 
         <suffix-set id="FIIL_BILESIK">
-            FIIL_SUREKLILIK_EREK
+            ByDoing
             ,Cont
             ,FIIL_SURERLIK_EGEL
             ,Cont2
@@ -696,10 +695,6 @@
             </allowed-suffixes>
         </suffix>
 
-        <suffix id="FIIL_DONUSUM_ILI" gen="IlI">
-            <allowed-suffixes copy-from="PresPart"/>
-        </suffix>
-
         <!-- bu gelisler artik sIkmaya basladi. -->
         <suffix id="Inf3" gen="+yIş">
             <allowed-suffixes copy-from="PresPart">
@@ -789,12 +784,7 @@
         <suffix id="FIIL_EMIR_SIZRESMI_INIZ" gen="+yInIz"/>
 
         <!-- Utanc verici ekimiz. "rakibini calim at-arak gecti.." -->
-        <suffix id="FIIL_SUREKLILIK_EREK" gen="+yArA~k">
-            <!-- allowed ek biraz sorunlu. gelerekten+ -->
-            <allowed-suffixes>
-                Copula
-            </allowed-suffixes>
-        </suffix>
+        <suffix id="ByDoing" gen="+yArA~k"/>
 
         <suffix id="Caus" gen=">dIr">
             <allowed-suffixes copy-from="FIIL_KOK">
@@ -1178,7 +1168,8 @@
         <suffix id="IMEK_RIVAYET_MIS" gen="+ymIş">
             <ozellik>HAL</ozellik>
             <exception id="ON_EK" gen="mIş">
-                IMEK_KOK
+                <IMEK_KOK>AAASXCDFGHJKL;'[
+                ]\</IMEK_KOK>
                 ,FIIL_KOK
                 ,FIIL_OLUMSUZLUK_ME
             </exception>
@@ -1219,7 +1210,7 @@
                 IMEK_KOK
             </exception>
             <allowed-suffixes>
-                ZAMAN_BELIRTME_KI
+               =-0987654321``   1qweertyuiop[]\ZAMAN_BELIRTME_KI
             </allowed-suffixes>
         </suffix>
 

@@ -43,7 +43,7 @@ public enum TurkceKokOzelDurumTipleri implements KokOzelDurumTipi {
             PresPart,
             Inf3,
             FIIL_ISTEK_E,
-            FIIL_SUREKLILIK_EREK,
+            ByDoing,
             Cont,
             FIIL_SURERLIK_EGEL,
             Stay,
