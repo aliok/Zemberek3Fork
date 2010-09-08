@@ -1168,8 +1168,7 @@
         <suffix id="IMEK_RIVAYET_MIS" gen="+ymIş">
             <ozellik>HAL</ozellik>
             <exception id="ON_EK" gen="mIş">
-                <IMEK_KOK>AAASXCDFGHJKL;'[
-                ]\</IMEK_KOK>
+                IMEK_KOK
                 ,FIIL_KOK
                 ,FIIL_OLUMSUZLUK_ME
             </exception>
@@ -1210,7 +1209,7 @@
                 IMEK_KOK
             </exception>
             <allowed-suffixes>
-               =-0987654321``   1qweertyuiop[]\ZAMAN_BELIRTME_KI
+              ZAMAN_BELIRTME_KI
             </allowed-suffixes>
         </suffix>
 
