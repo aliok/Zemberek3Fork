@@ -1,0 +1,108 @@
+# this is the development dictionary for Zemberek 3.
+# it includes actual lemmas with all possible POS types with
+# tag sequences and corner cases.
+
+# Usage
+# lemma [Pos: pos1,pos2 ; A: attribute1, attribute2]
+
+# ------------------------------------------------------------------------------------------
+# Nouns.
+
+# Main Pos info is optional.
+elma
+
+# infer Pos, Voicing Attribute. k->ğ
+kapak
+
+# Fully written form.
+kepek [Pos: Noun; A: Voicing]
+
+# NoVoicing attribute is inferred because it is single syllable.
+küp
+
+# Fully written form.
+kek [Pos: Noun; A: NoVoicing]
+
+# Attribute tags are required.
+takat [A: NoVoicing, InverseHarmony]
+
+saat [A:InverseHarmony]
+
+# Attribute tag is required.
+ağız [A:LastVowelDrop]
+
+# Attribute tag is required.
+karın [A:LastVowelDrop]
+
+# Attribute tags are required.
+ret [A:Voicing, Doubling]
+
+# No tags are required. -nk end has voicing attribute k->g
+cenk
+
+# No tags are required. -og end has voicing attribute. g->ğ
+psikolog
+
+# Voicing tag was required. Because it is a single syllable word yet voicing applies. p->b
+harp [A: Voicing]
+
+# Tag required.
+nakit [A: LastVowelDrop]
+lütuf [A: LastVowelDrop]
+
+# these words are also adjectives.
+arı
+iki
+
+# use of a secondary Pos. Noun pos was optional actually.
+çıtır [Pos:Noun,Dup]
+
+# because verbs are also inferred from -mek -mak, here Pos info is required. But Voicing Attribute is optional
+sumak [Pos: Noun]
+yemek [Pos: Noun]
+
+# Proper nouns. Noun tag is optional.
+Ankara [Pos: Prop]
+Adana [Pos: Noun, Prop]
+
+adem [Noun]
+âdem [Noun]
+Âdem [PropNoun]
+
+ad
+ad [A: Doubling, InverseHarmony]
+
+# ------------------------------------------------------------------------------------------
+# Adjectives
+# Pos info needs to be written, allways.
+
+arı [Pos:Adj]
+
+# secondary pos. both are required.
+çıtır [Pos:Adj,Dup]
+
+iki [Pos:Adj]
+
+# ------------------------------------------------------------------------------------------
+# Adverbs
+# Pos info needs to be written, allways.
+
+ayrı [Pos:Adv]
+behemehâl [Pos:Adv]
+
+# ------------------------------------------------------------------------------------------
+# Verbs
+# Pos info is inferred from -mek -mak suffix. So it is optional.
+
+atmak
+
+# Aor-I is required here. because normally Aorist suffix is generated as -Ar if verb is single syllable. but not in this case.
+almak [A:Aor-I]
+
+kavurmak [A:LastVowelDrop]
+
+# ------------------------------------------------------------------------------------------
+# Interjection
+behey [Pos:Interj]
+
+
