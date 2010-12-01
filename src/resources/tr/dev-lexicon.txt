@@ -52,7 +52,7 @@ lütuf [A: LastVowelDrop]
 
 # these words are also adjectives.
 arı
-iki
+iki [Pos:Num]
 
 # use of a secondary Pos. Noun pos was optional actually.
 çıtır [Pos:Noun,Dup]
@@ -72,6 +72,9 @@ adem [Noun]
 ad
 ad [A: Doubling, InverseHarmony]
 
+bugün [Pos:Time]
+ben
+
 # ------------------------------------------------------------------------------------------
 # Adjectives
 # Pos info needs to be written, allways.
@@ -81,7 +84,8 @@ arı [Pos:Adj]
 # secondary pos. both are required.
 çıtır [Pos:Adj,Dup]
 
-iki [Pos:Adj]
+iki [Pos:Adj, Num]
+şu [Pos:Adj,Demons]
 
 # ------------------------------------------------------------------------------------------
 # Adverbs
@@ -89,6 +93,7 @@ iki [Pos:Adj]
 
 ayrı [Pos:Adv]
 behemehâl [Pos:Adv]
+bugün [Pos:Adv, Time]
 
 # ------------------------------------------------------------------------------------------
 # Verbs
@@ -101,8 +106,19 @@ almak [A:Aor-I]
 
 kavurmak [A:LastVowelDrop]
 
+demek [A:StemChange]
+yemek [A:StemChange]
+
 # ------------------------------------------------------------------------------------------
 # Interjection
 behey [Pos:Interj]
+a [Pos:Interj]
 
+
+# ------------------------------------------------------------------------------------------
+# Pronoun
+
+ben [Pos:Pron, A:StemChange]
+o [Pos:Pron]
+şu [Pos:Pron,Demons]
 
