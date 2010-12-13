@@ -27,21 +27,7 @@ public class TurkishWictionaryExtractor {
             "Soyadı", "Erkek adı", "Erkek ismi", "Kısaltma", "Belirteç", "Kız ismi", "Sayı", "Kısaltılmış sözcük",
             "Ek", "Harf", "Özel isim", "Özel ad");
 
-    static Map<String, POS> posMap = new HashMap<String, POS>();
 
-    static {
-        posMap.put("Bağlaç", POS.CONJUNCTION);
-        posMap.put("Fiil", POS.VERB);
-        posMap.put("Eylem", POS.VERB);
-        posMap.put("Sıfat", POS.ADJECTIVE);
-        posMap.put("Zamir", POS.PRONOUN);
-        posMap.put("Ad", POS.NOUN);
-        posMap.put("İsim", POS.NOUN);
-        posMap.put("İlgeç", POS.PARTICLE);
-        posMap.put("Edat", POS.PARTICLE);
-        posMap.put("Zarf", POS.ADVERB);
-        posMap.put("Ünlem", POS.INTERJECTION);
-    }
 
     public static void main(String[] args) throws XMLStreamException, IOException {
         FileInputStream fileInputStream = new FileInputStream("/home/kodlab/Downloads/trwiktionary.xml");
@@ -116,23 +102,5 @@ public class TurkishWictionaryExtractor {
         return lemmas;
     }
 
-    static class WikiLemma {
-        POS pos;
-        String lemma;
-        String wikiType;
-
-
-        WikiLemma(String wikiType, String lemma) {
-            if (posMap.containsKey(wikiType)) {
-                this.pos = posMap.get(wikiType);
-            } else
-                this.pos = POS.UNKNOWN;
-            this.lemma = lemma;
-            this.wikiType = wikiType;
-        }
-
-        public String toString() {
-            return lemma + " : " + wikiType;
-        }
-    }
+  
 }

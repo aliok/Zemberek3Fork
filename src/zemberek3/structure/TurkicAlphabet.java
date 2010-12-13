@@ -20,7 +20,7 @@ public interface TurkicAlphabet {
 
     int getAphabeticIndex(char c);
     
-    byte[] toIndexes(String s);
+    byte[] toByteIndexes(String s);
 
     TurkicLetter getAsciiEquivalentLetter(TurkicLetter letter);
 

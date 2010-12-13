@@ -25,7 +25,7 @@ public class StringTrie {
 		if (s == null) {
 			throw new NullPointerException("Input key can not be null");
 		}
-		byte[] indexedChars = alphabet.toIndexes(s);
+		byte[] indexedChars = alphabet.toByteIndexes(s);
 		Node node = root;
 		Node previousNode = null;
 		// i holds the char index for input

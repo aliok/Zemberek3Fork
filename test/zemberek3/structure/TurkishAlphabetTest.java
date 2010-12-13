@@ -109,6 +109,6 @@ public class TurkishAlphabetTest {
     public void toIndexes() {
         TurkishAlphabet alphabet = new TurkishAlphabet();
         byte[] expected = {1, 2, 3, };
-        Assert.assertArrayEquals(expected, alphabet.toIndexes("abc"));
+        Assert.assertArrayEquals(expected, alphabet.toByteIndexes("abc"));
     }
 }

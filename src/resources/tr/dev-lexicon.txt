@@ -1,6 +1,5 @@
 # this is the development dictionary for Zemberek 3.
-# it includes actual lemmas with all possible POS types with
-# tag sequences and corner cases.
+# it includes actual lemmas with all possible POS types with tag sequences and corner cases.
 
 # Usage
 # lemma [Pos: pos1,pos2 ; A: attribute1, attribute2]
@@ -74,6 +73,7 @@ ad [A: Doubling, InverseHarmony]
 
 bugün [Pos:Time]
 ben
+hükûmet [A:NoVoicing]
 
 # ------------------------------------------------------------------------------------------
 # Adjectives
@@ -97,7 +97,7 @@ bugün [Pos:Adv, Time]
 
 # ------------------------------------------------------------------------------------------
 # Verbs
-# Pos info is inferred from -mek -mak suffix. So it is optional.
+# Pos:Verb info is inferred from -mek -mak suffix. So it is optional.
 
 atmak
 
@@ -109,6 +109,9 @@ kavurmak [A:LastVowelDrop]
 demek [A:StemChange]
 yemek [A:StemChange]
 
+gelmek [A:NonTransitive]
+pişmek [A:NonTransitive]
+
 # ------------------------------------------------------------------------------------------
 # Interjection
 behey [Pos:Interj]
@@ -118,7 +121,7 @@ a [Pos:Interj]
 # ------------------------------------------------------------------------------------------
 # Pronoun
 
-ben [Pos:Pron, A:StemChange]
+ben [Pos:Pron, A:StemChange-Ben]
 o [Pos:Pron]
 şu [Pos:Pron,Demons]
 

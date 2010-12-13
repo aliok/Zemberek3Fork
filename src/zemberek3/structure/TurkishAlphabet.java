@@ -155,7 +155,7 @@ public class TurkishAlphabet implements TurkicAlphabet {
     }
 
     // ------------------------ ASCII equivalency ----------------------------------
-    // This lookp table maps each Turkish letter to its ASCII counterpart.
+    // This lookup table maps each Turkish letter to its ASCII counterpart.
     private static TurkicLetter[] ASCII_EQUIVALENT_LETTER_LOOKUP = {
             L_a, L_b, L_c, L_c, L_d, L_e, L_f, L_g,
             L_g, L_h, L_i, L_i, L_j, L_k, L_l, L_m,
@@ -216,7 +216,7 @@ public class TurkishAlphabet implements TurkicAlphabet {
         return c < MAX_CHAR_VALUE && VALID_CHAR_TABLE[c];
     }
 
-	public byte[] toIndexes(String s) {
+	public byte[] toByteIndexes(String s) {
 		byte[] indexes = new byte[s.length()];
 		for (int i=0; i<indexes.length; i++) {
 			indexes[i] = (byte)getAphabeticIndex(s.charAt(i));
