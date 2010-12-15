@@ -22,10 +22,11 @@ küp
 # Fully written form.
 kek [Pos: Noun; A: NoVoicing]
 
-# Attribute tags are required.
-takat [A: NoVoicing, InverseHarmony]
+# Attribute InverseHarmony required. However, when there is InverseHarmony, NoVoicing attribute is added automatically.
+takat [A: InverseHarmony]
 
-saat [A:InverseHarmony]
+# here writing NoVoicing is optional.
+saat [A: NoVoicing, InverseHarmony]
 
 # Attribute tag is required.
 ağız [A:LastVowelDrop]

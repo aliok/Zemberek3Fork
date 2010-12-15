@@ -7,7 +7,8 @@ public enum SecondaryPos implements StringEnum<SecondaryPos> {
     Question("Ques"),
     Demonstrative("Demons"),
     Numeral("Dup"),
-    ProperNoun("Prop");
+    ProperNoun("Prop"),
+    None("None");
 
     String shortForm;
 
