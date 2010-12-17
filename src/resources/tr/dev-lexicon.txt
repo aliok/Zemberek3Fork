@@ -65,9 +65,9 @@ yemek [Pos: Noun]
 Ankara [Pos: Prop]
 Adana [Pos: Noun, Prop]
 
-adem [Noun]
-âdem [Noun]
-Âdem [PropNoun]
+adem [Pos:Noun]
+âdem [Pos:Noun]
+Âdem [Pos:Prop]
 
 ad
 ad [A: Doubling, InverseHarmony]

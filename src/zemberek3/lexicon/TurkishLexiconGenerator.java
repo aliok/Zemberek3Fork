@@ -45,13 +45,7 @@ public class TurkishLexiconGenerator {
             String posString = getGroup1Match(line, posPattern).trim();
             if (posString.length() == 0) {
                 //infer the type.
-                if (word.endsWith("mek") || word.endsWith("mak")) {
-                    System.out.println("Verb: " + word);
-                    return new PosInfo(PrimaryPos.Verb, SecondaryPos.None);
-                } else {
-                    System.out.println("Noun: " + word);
-                    return new PosInfo(PrimaryPos.Noun, SecondaryPos.None);
-                }
+                return new PosInfo(inferPrimaryPos(word), SecondaryPos.None);
             } else {
                 PrimaryPos primaryPos = null;
                 SecondaryPos secondaryPos = null;
@@ -68,9 +62,22 @@ public class TurkishLexiconGenerator {
                     } else
                         throw new LexiconGenerationException("Unrecognized pos data [" + s + "] in :" + line);
                 }
+                if (primaryPos == null) {
+                    primaryPos = inferPrimaryPos(word);
+                }
                 return new PosInfo(primaryPos, secondaryPos);
             }
 
+        }
+
+        private PrimaryPos inferPrimaryPos(String word) {
+            if (word.endsWith("mek") || word.endsWith("mak")) {
+                System.out.println("Verb: " + word);
+                return PrimaryPos.Verb;
+            } else {
+                System.out.println("Noun: " + word);
+                return PrimaryPos.Noun;
+            }
         }
 
         public Long getResult() {
