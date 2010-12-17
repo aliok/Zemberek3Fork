@@ -8,7 +8,11 @@ import com.google.common.io.LineProcessor;
 import javax.swing.text.Position;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Modifier;
 import java.security.Security;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -80,6 +84,29 @@ public class TurkishLexiconGenerator {
             }
         }
 
+        static Pattern attributePattern = Pattern.compile("(?:A:)(.?+)(?:;|\\])");
+
+        private MorphemicAttribute[] morphemicAttributes(String word, PosInfo posData, String line) {
+            List<MorphemicAttribute> attributesList = new ArrayList<MorphemicAttribute>(2);
+            String attributeStr = getGroup1Match(line, attributePattern).trim();
+            if (attributeStr.length() == 0) {
+
+            } else {
+                for (String s : Splitter.on(",").split(attributeStr)) {
+                    if (!MorphemicAttribute.converter().enumExists(s))
+                        throw new LexiconGenerationException("Unrecognized attribute data [" + s + "] in :" + line);
+                    MorphemicAttribute morphemicAttribute = MorphemicAttribute.converter().getEnum(s);
+                    attributesList.add(morphemicAttribute);
+                }
+                inferMorphemicAttributes(word, posData, attributesList);
+            }
+            return attributesList.toArray(new MorphemicAttribute[attributesList.size()]);
+        }
+
+        private void inferMorphemicAttributes(String word, PosInfo posData, List<MorphemicAttribute> attributesList) {
+
+        }
+
         public Long getResult() {
             return null;
         }
@@ -103,3 +130,4 @@ public class TurkishLexiconGenerator {
     }
 
 }
+
