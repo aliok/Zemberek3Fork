@@ -9,10 +9,7 @@ import zemberek3.structure.TurkishAlphabet;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,8 +33,13 @@ public class TurkishLexiconGenerator {
                 return true;
             String word = getWord(line);
             PosInfo posInfo = getPosData(word, line);
-            MorphemicAttribute[] morphemicAttributes = morphemicAttributes(word, posInfo, line);
-            lexiconItems.add(new LexiconItem(word, posInfo.primaryPos, posInfo.secondaryPos, morphemicAttributes));
+            Set<MorphemicAttribute> morphemicAttributes = morphemicAttributes(word, posInfo, line);
+
+            lexiconItems.add(new LexiconItem(
+                    word,
+                    posInfo.primaryPos,
+                    posInfo.secondaryPos,
+                    morphemicAttributes.toArray(new MorphemicAttribute[morphemicAttributes.size()])));
             return true;
         }
 
@@ -100,8 +102,8 @@ public class TurkishLexiconGenerator {
 
         static Pattern attributePattern = Pattern.compile("(?:A:)(.+?)(?:;|\\])");
 
-        private MorphemicAttribute[] morphemicAttributes(String word, PosInfo posData, String line) {
-            List<MorphemicAttribute> attributesList = new ArrayList<MorphemicAttribute>(2);
+        private Set<MorphemicAttribute> morphemicAttributes(String word, PosInfo posData, String line) {
+            LinkedHashSet<MorphemicAttribute> attributesList = new LinkedHashSet<MorphemicAttribute>(2);
             String attributeStr = getGroup1Match(line, attributePattern).trim();
             if (attributeStr.length() == 0) {
                 inferMorphemicAttributes(word, posData, attributesList);
@@ -115,12 +117,14 @@ public class TurkishLexiconGenerator {
                 }
                 inferMorphemicAttributes(word, posData, attributesList);
             }
-            attributesList = new ArrayList<MorphemicAttribute>(new LinkedHashSet<MorphemicAttribute>(attributesList));
-            return attributesList.toArray(new MorphemicAttribute[attributesList.size()]);
+            // remove unnecessary items.
+            attributesList.remove(MorphemicAttribute.NoVoicing);
+            return attributesList;
         }
 
         static Locale locale = new Locale("tr");
-        private void inferMorphemicAttributes(String word, PosInfo posData, List<MorphemicAttribute> attributesList) {
+
+        private void inferMorphemicAttributes(String word, PosInfo posData, Set<MorphemicAttribute> attributesList) {
             TurkicLetterSequence sequence = new TurkicLetterSequence(word.toLowerCase(locale), alphabet);
             switch (posData.primaryPos) {
                 case Verb:
