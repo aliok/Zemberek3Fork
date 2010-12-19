@@ -85,10 +85,8 @@ public class TurkishLexiconGenerator {
 
         private PrimaryPos inferPrimaryPos(String word) {
             if (word.endsWith("mek") || word.endsWith("mak")) {
-                System.out.println("Verb: " + word);
                 return PrimaryPos.Verb;
             } else {
-                System.out.println("Noun: " + word);
                 return PrimaryPos.Noun;
             }
         }
