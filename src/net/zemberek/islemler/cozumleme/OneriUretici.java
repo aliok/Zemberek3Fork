@@ -8,19 +8,13 @@
  */
 package net.zemberek.islemler.cozumleme;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import net.zemberek.bilgi.ZemberekAyarlari;
 import net.zemberek.islemler.KelimeKokFrekansKiyaslayici;
-import net.zemberek.yapi.Kelime;
-import net.zemberek.yapi.HarfDizisi;
 import net.zemberek.yapi.Alfabe;
+import net.zemberek.yapi.HarfDizisi;
+import net.zemberek.yapi.Kelime;
+
+import java.util.*;
 
 public class OneriUretici {
 

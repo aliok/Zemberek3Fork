@@ -7,9 +7,9 @@
  */
 package net.zemberek.bilgi.kokler;
 
-import java.util.List;
-
 import net.zemberek.yapi.Kok;
+
+import java.util.List;
 
 /**
  * Kok secme islemi yazim denetleme isleminin ilk asamalarindandir. Bu arayuz sayesinde

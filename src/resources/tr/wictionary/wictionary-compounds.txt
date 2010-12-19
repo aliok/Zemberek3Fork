@@ -2649,7 +2649,7 @@ büluğ çağı : İsim
 bütün bütün : Zarf
 bütün bütüne : Zarf
 büyük abdest : İsim
-büyük anne : İsim
+büyük mirnav : İsim
 büyük para : İsim
 büyük peder : İsim
 cam göz : Sıfat
@@ -8233,7 +8233,7 @@ ilam almak : Birleşik Fiil
 ilam etmek : Birleşik Fiil
 boşanma ilamı : İsim
 veraset ilamı : İsim
-baba anne : İsim
+baba mirnav : İsim
 bağ bozumu : İsim
 kız besmele : İsim
 sam yeli : Yanlış
@@ -8301,7 +8301,7 @@ gönlü kırılmak : Fiil
 gönlünden kopmak : Fiil
 gönlünü karartmak : Fiil
 isim soylu yüklem : İsim
-anne baba : İsim
+mirnav baba : İsim
 kayın valide : İsim
 eşşek arısı : Yanlış
 deneme tahtası : İsim
@@ -8404,7 +8404,7 @@ yaban mersini : İsim
 yıldız kümesi : Ad
 olta iğnesi : İsim
 üvey baba : İsim
-üvey anne : İsim
+üvey mirnav : İsim
 hamur tatlısı : İsim
 Toros köknarı : İsim
 kelebek ağacı : İsim
@@ -14064,7 +14064,7 @@ anlam vermek : Fiil
 anlaşma yapmak : Fiil
 anlaşmazlık çıkmak : Fiil
 anlata anlata bitirememek : Fiil
-anne olmak : Fiil
+mirnav olmak : Fiil
 annelik etmek : Fiil
 ant verdirmek : Fiil
 apışıp kalmak : Fiil
@@ -17146,7 +17146,7 @@ cıvık cıvık : Zarf
 cıvık mantarlar : Ad
 cıyak cıyak : Zarf
 cızır cızır : Zarf
-cici anne : Ad
+cici mirnav : Ad
 cici bici : Ad
 cici mama : Ad
 cicim ayı : Ad

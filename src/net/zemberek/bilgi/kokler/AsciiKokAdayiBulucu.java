@@ -4,12 +4,12 @@
 
 package net.zemberek.bilgi.kokler;
 
+import net.zemberek.yapi.Kok;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import net.zemberek.yapi.Kok;
 
 /**
  * Bu seçici Deasciifier için kullanılır. Verilen kelime için ağaçta ilerlerken

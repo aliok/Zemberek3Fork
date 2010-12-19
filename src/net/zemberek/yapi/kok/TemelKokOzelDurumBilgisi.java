@@ -4,16 +4,16 @@
 
 package net.zemberek.yapi.kok;
 
+import net.zemberek.araclar.Kayitci;
+import net.zemberek.yapi.Alfabe;
+import net.zemberek.yapi.ek.Ek;
+import net.zemberek.yapi.ek.EkYonetici;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
-
-import net.zemberek.araclar.Kayitci;
-import net.zemberek.yapi.Alfabe;
-import net.zemberek.yapi.ek.Ek;
-import net.zemberek.yapi.ek.EkYonetici;
 
 /**
  * User: ahmet

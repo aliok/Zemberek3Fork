@@ -4,20 +4,16 @@
 
 package net.zemberek.bilgi.araclar;
 
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.zemberek.bilgi.KaynakYukleyici;
 import net.zemberek.yapi.KelimeTipi;
-import net.zemberek.yapi.Kok;
 import net.zemberek.yapi.Kisaltma;
+import net.zemberek.yapi.Kok;
 import net.zemberek.yapi.kok.KokOzelDurumBilgisi;
 import net.zemberek.yapi.kok.KokOzelDurumu;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IkiliKokOkuyucu implements KokOkuyucu {
 

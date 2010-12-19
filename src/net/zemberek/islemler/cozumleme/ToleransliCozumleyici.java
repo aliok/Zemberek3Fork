@@ -4,11 +4,6 @@
 
 package net.zemberek.islemler.cozumleme;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import net.zemberek.araclar.MetinAraclari;
 import net.zemberek.bilgi.kokler.KokAdayiBulucu;
 import net.zemberek.yapi.Alfabe;
@@ -17,6 +12,11 @@ import net.zemberek.yapi.Kelime;
 import net.zemberek.yapi.Kok;
 import net.zemberek.yapi.ek.Ek;
 import net.zemberek.yapi.ek.EkYonetici;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  */

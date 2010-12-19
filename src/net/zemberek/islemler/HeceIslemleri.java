@@ -4,11 +4,11 @@
 
 package net.zemberek.islemler;
 
-import java.util.List;
-
 import net.zemberek.yapi.Alfabe;
 import net.zemberek.yapi.HarfDizisi;
 import net.zemberek.yapi.Heceleyici;
+
+import java.util.List;
 
 /**
  * HeceIslemleri

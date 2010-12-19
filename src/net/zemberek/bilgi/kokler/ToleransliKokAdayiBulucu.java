@@ -4,11 +4,11 @@
 
 package net.zemberek.bilgi.kokler;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.zemberek.araclar.MetinAraclari;
 import net.zemberek.yapi.Kok;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Hata toleranslı kök bulucu hatalı girişler için öneri üretmekte kullanılır.

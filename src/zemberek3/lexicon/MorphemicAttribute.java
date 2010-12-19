@@ -11,6 +11,8 @@ public enum MorphemicAttribute implements StringEnum {
     Doubling,
     StemChange,
     ProgressiveVowelDrop,
+    Aorist_I,
+    Aorist_A,
     NonTransitive;
 
     private static StringEnumMap<MorphemicAttribute> shortFormToPosMap =  StringEnumMap.get(MorphemicAttribute.class);

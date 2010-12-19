@@ -7,11 +7,11 @@
  */
 package net.zemberek.bilgi.kokler;
 
-import java.util.Collection;
-import java.util.List;
-
 import net.zemberek.yapi.KelimeTipi;
 import net.zemberek.yapi.Kok;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Birden fazla sozlukle calisabilmek icin Sozluk arayuzu. 

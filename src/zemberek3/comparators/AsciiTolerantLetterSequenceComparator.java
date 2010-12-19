@@ -1,6 +1,5 @@
 package zemberek3.comparators;
 
-import zemberek3.structure.TurkicAlphabet;
 import zemberek3.structure.TurkicLetterSequence;
 import zemberek3.structure.TurkishAlphabet;
 

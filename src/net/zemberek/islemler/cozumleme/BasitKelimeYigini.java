@@ -4,9 +4,9 @@
 
 package net.zemberek.islemler.cozumleme;
 
-import java.util.LinkedList;
-
 import net.zemberek.yapi.Kelime;
+
+import java.util.LinkedList;
 
 
 public class BasitKelimeYigini {

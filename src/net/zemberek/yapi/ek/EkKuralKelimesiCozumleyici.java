@@ -4,13 +4,9 @@
 
 package net.zemberek.yapi.ek;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-
 import net.zemberek.yapi.Alfabe;
+
+import java.util.*;
 
 /**
  * Ek bilgi dosyasinda yer alan ek kural kelimeinin cozumlenmesinde kullanilir.

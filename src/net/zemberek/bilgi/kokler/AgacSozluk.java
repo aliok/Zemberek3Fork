@@ -7,16 +7,16 @@
  */
 package net.zemberek.bilgi.kokler;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-
 import net.zemberek.bilgi.araclar.KokOkuyucu;
 import net.zemberek.yapi.Alfabe;
 import net.zemberek.yapi.KelimeTipi;
 import net.zemberek.yapi.Kok;
 import net.zemberek.yapi.kok.KokOzelDurumBilgisi;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 
 /**

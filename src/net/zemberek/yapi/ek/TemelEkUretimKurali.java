@@ -4,11 +4,7 @@
 
 package net.zemberek.yapi.ek;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Turk dilleri icin cesitli uretim kurallarini belirler. Bazi kurallar sadece belli dillerde

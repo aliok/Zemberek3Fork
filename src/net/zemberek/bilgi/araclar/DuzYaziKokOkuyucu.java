@@ -4,6 +4,14 @@
 
 package net.zemberek.bilgi.araclar;
 
+import net.zemberek.araclar.Kayitci;
+import net.zemberek.bilgi.KaynakYukleyici;
+import net.zemberek.yapi.Alfabe;
+import net.zemberek.yapi.KelimeTipi;
+import net.zemberek.yapi.Kisaltma;
+import net.zemberek.yapi.Kok;
+import net.zemberek.yapi.kok.KokOzelDurumBilgisi;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,14 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-
-import net.zemberek.araclar.Kayitci;
-import net.zemberek.bilgi.KaynakYukleyici;
-import net.zemberek.yapi.Alfabe;
-import net.zemberek.yapi.KelimeTipi;
-import net.zemberek.yapi.Kok;
-import net.zemberek.yapi.Kisaltma;
-import net.zemberek.yapi.kok.KokOzelDurumBilgisi;
 
 /**
  * BinarySozlukOkuyucu sınıfı düzyazı olarak düzenlenmiş sözlüğü okur.

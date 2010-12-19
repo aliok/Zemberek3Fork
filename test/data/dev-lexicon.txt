@@ -61,9 +61,11 @@ iki [Pos:Num]
 sumak [Pos: Noun]
 yemek [Pos: Noun]
 
-# Proper nouns. Noun tag is optional.
+# Proper nouns. both noun and Prop tags are optional.Prop attribute is inferred from first letter.
 Ankara [Pos: Prop]
 Adana [Pos: Noun, Prop]
+Ağrı
+ağrı
 
 adem [Pos:Noun]
 âdem [Pos:Noun]
@@ -103,7 +105,7 @@ bugün [Pos:Adv, Time]
 atmak
 
 # Aor-I is required here. because normally Aorist suffix is generated as -Ar if verb is single syllable. but not in this case.
-almak [A:Aor-I]
+almak [A:Aorist_I]
 
 kavurmak [A:LastVowelDrop]
 
@@ -122,7 +124,7 @@ a [Pos:Interj]
 # ------------------------------------------------------------------------------------------
 # Pronoun
 
-ben [Pos:Pron, A:StemChange-Ben]
+ben [Pos:Pron; A:StemChange]
 o [Pos:Pron]
 şu [Pos:Pron,Demons]
 

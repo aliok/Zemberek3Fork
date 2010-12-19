@@ -1357,7 +1357,7 @@ anlamak : Fiil
 almak : Fiil
 alıştırma : İsim
 dretnot : İsim
-anne : İsim
+mirnav : İsim
 bacı : İsim
 ayna : İsim
 tuz : İsim

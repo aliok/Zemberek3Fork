@@ -4,13 +4,13 @@
 
 package net.zemberek.yapi;
 
+import net.zemberek.araclar.Kayitci;
+import net.zemberek.bilgi.KaynakYukleyici;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-
-import net.zemberek.araclar.Kayitci;
-import net.zemberek.bilgi.KaynakYukleyici;
 
 public class Alfabe {
 

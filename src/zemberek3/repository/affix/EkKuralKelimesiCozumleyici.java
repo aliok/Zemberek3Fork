@@ -1,6 +1,5 @@
 package zemberek3.repository.affix;
 
-import zemberek3.structure.TurkicAlphabet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkishAlphabet;
 

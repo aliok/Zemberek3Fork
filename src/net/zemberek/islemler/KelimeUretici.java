@@ -4,20 +4,16 @@
 
 package net.zemberek.islemler;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Collections;
-
 import net.zemberek.islemler.cozumleme.CozumlemeYardimcisi;
-import net.zemberek.yapi.Alfabe;
-import net.zemberek.yapi.EkSiralayici;
-import net.zemberek.yapi.HarfDizisi;
-import net.zemberek.yapi.Kelime;
-import net.zemberek.yapi.Kok;
+import net.zemberek.yapi.*;
 import net.zemberek.yapi.ek.Ek;
 import net.zemberek.yapi.ek.EkYonetici;
 import net.zemberek.yapi.ek.TemelEkYonetici;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  */

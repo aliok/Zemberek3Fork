@@ -7,10 +7,10 @@
  */
 package net.zemberek.bilgi.kokler;
 
+import net.zemberek.yapi.Kok;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.zemberek.yapi.Kok;
 
 /**
  * Çözümleyicinin verilen bir kelime için aday kökleri bulması için kullanılır.

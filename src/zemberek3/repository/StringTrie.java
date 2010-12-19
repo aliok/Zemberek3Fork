@@ -1,14 +1,13 @@
 package zemberek3.repository;
 
+import zemberek3.structure.TurkishAlphabet;
+
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import zemberek3.structure.TurkicAlphabet;
-import zemberek3.structure.TurkishAlphabet;
 
 /**
  * A simple online compact String trie.
