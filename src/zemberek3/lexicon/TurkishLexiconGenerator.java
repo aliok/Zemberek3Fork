@@ -36,6 +36,7 @@ public class TurkishLexiconGenerator {
                 return true;
             String word = getWord(line);
             PosInfo posInfo = getPosData(word, line);
+            MorphemicAttribute[] morphemicAttributes = morphemicAttributes(word, posInfo, line);
             return true;
         }
 
@@ -95,7 +96,7 @@ public class TurkishLexiconGenerator {
             List<MorphemicAttribute> attributesList = new ArrayList<MorphemicAttribute>(2);
             String attributeStr = getGroup1Match(line, attributePattern).trim();
             if (attributeStr.length() == 0) {
-
+                inferMorphemicAttributes(word, posData, attributesList);
             } else {
                 for (String s : Splitter.on(",").split(attributeStr)) {
                     if (!MorphemicAttribute.converter().enumExists(s))
@@ -121,14 +122,15 @@ public class TurkishLexiconGenerator {
                     // if a noun or adjective has more than one syllable and last letter is a stop consonant, add voicing.
                     if (sequence.vowelCount() > 1
                             && sequence.lastLetter().isStopConsonant()
-                            && !attributesList.contains(MorphemicAttribute.NoVoicing))
+                            && !attributesList.contains(MorphemicAttribute.NoVoicing)
+                            && !attributesList.contains(MorphemicAttribute.InverseHarmony))
                         attributesList.add(MorphemicAttribute.Voicing);
-
+                    if (word.endsWith("nk"))
+                        attributesList.add(MorphemicAttribute.Voicing);
+                    if (word.endsWith("og"))
+                        attributesList.add(MorphemicAttribute.Voicing);
                     break;
             }
-
-
-
         }
 
         public Long getResult() {
