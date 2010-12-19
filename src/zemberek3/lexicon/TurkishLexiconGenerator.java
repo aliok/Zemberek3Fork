@@ -7,9 +7,11 @@ import com.google.common.io.LineProcessor;
 import zemberek3.structure.TurkicLetterSequence;
 import zemberek3.structure.TurkishAlphabet;
 
+import javax.sound.sampled.Line;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -114,6 +116,7 @@ public class TurkishLexiconGenerator {
                 }
                 inferMorphemicAttributes(word, posData, attributesList);
             }
+            attributesList = new ArrayList<MorphemicAttribute>(new LinkedHashSet<MorphemicAttribute>(attributesList));
             return attributesList.toArray(new MorphemicAttribute[attributesList.size()]);
         }
 
