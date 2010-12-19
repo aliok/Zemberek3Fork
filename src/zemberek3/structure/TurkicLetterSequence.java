@@ -36,7 +36,7 @@ public class TurkicLetterSequence implements CharSequence, Comparable<TurkicLett
      * @param capacity baslangic olusan TurkicLetter[] boyu
      * @param alphabet ilgili alphabet
      */
-    public TurkicLetterSequence(String str, TurkicAlphabet alphabet, int capacity) {
+    public TurkicLetterSequence(String str, TurkishAlphabet alphabet, int capacity) {
         if (capacity < str.length())
             capacity = str.length();
         letters = new TurkicLetter[capacity];
@@ -52,7 +52,7 @@ public class TurkicLetterSequence implements CharSequence, Comparable<TurkicLett
      * @param str      ornek alincak String
      * @param alphabet ilgili alphabet
      */
-    public TurkicLetterSequence(String str, TurkicAlphabet alphabet) {
+    public TurkicLetterSequence(String str, TurkishAlphabet alphabet) {
         size = str.length();
         letters = new TurkicLetter[size];
         for (int i = 0; i < size; i++)

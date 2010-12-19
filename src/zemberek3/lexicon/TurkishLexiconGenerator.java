@@ -4,6 +4,8 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
+import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkishAlphabet;
 
 import javax.swing.text.Position;
 import java.io.File;
@@ -18,12 +20,15 @@ import java.util.regex.Pattern;
 
 public class TurkishLexiconGenerator {
 
+    TurkishAlphabet alphabet = new TurkishAlphabet();
+
     public static void convert(File input, File output) throws IOException {
         long elapsedTime = Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor());
-
     }
 
     static class LexiconFileProcessor implements LineProcessor<Long> {
+
+        TurkishAlphabet alphabet = new TurkishAlphabet();
 
         public boolean processLine(String line) throws IOException {
             line = line.trim();
@@ -104,6 +109,25 @@ public class TurkishLexiconGenerator {
         }
 
         private void inferMorphemicAttributes(String word, PosInfo posData, List<MorphemicAttribute> attributesList) {
+            TurkicLetterSequence sequence = new TurkicLetterSequence(word, alphabet);
+            switch (posData.primaryPos) {
+                case Verb:
+                    // if a verb ends with a wovel, and -Iyor suffix is appended, last vowel drops.
+                    if (sequence.lastLetter().isVowel())
+                        attributesList.add(MorphemicAttribute.ProgressiveVowelDrop);
+                    break;
+                case Noun:
+                case Adjective:
+                    // if a noun or adjective has more than one syllable and last letter is a stop consonant, add voicing.
+                    if (sequence.vowelCount() > 1
+                            && sequence.lastLetter().isStopConsonant()
+                            && !attributesList.contains(MorphemicAttribute.NoVoicing))
+                        attributesList.add(MorphemicAttribute.Voicing);
+
+                    break;
+            }
+
+
 
         }
 

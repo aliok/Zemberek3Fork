@@ -5,6 +5,7 @@ import zemberek3.repository.affix.TurkishSuffixRepository;
 import zemberek3.structure.TurkicAlphabet;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkishAlphabet;
 import zemberek3.structure.affix.TurkicSuffix;
 
 import java.util.Iterator;
@@ -17,11 +18,11 @@ import java.util.List;
 public class TopDownSuffixParser implements SuffixParser<TurkicLetterSequence> {
 
     private final CharSequenceComparator<TurkicLetterSequence> comparator;
-    private final TurkicAlphabet alphabet;
+    private final TurkishAlphabet alphabet;
     private final TurkishSuffixRepository suffixes;
 
     public TopDownSuffixParser(CharSequenceComparator<TurkicLetterSequence> comparator,
-                               TurkicAlphabet alphabet,
+                               TurkishAlphabet alphabet,
                                TurkishSuffixRepository suffixes) {
         this.comparator = comparator;
         this.alphabet = alphabet;

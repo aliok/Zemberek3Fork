@@ -2,6 +2,7 @@ package zemberek3.repository.affix;
 
 import zemberek3.structure.TurkicAlphabet;
 import zemberek3.structure.TurkicLetter;
+import zemberek3.structure.TurkishAlphabet;
 
 import java.util.*;
 
@@ -13,14 +14,14 @@ import java.util.*;
  */
 public class EkKuralKelimesiCozumleyici {
 
-    private TurkicAlphabet alfabe;
+    private TurkishAlphabet alfabe;
     /**
      * Ek kural bilgisi nesnesi dile ozel ek kural kelime enum sinifindan elde edilir.
      */
     private EkKuralBilgisi ekKuralBilgisi;
 
 
-    public EkKuralKelimesiCozumleyici(TurkicAlphabet alfabe, EkKuralBilgisi ekKuralBilgisi) {
+    public EkKuralKelimesiCozumleyici(TurkishAlphabet alfabe, EkKuralBilgisi ekKuralBilgisi) {
         this.alfabe = alfabe;
         this.ekKuralBilgisi = ekKuralBilgisi;
     }

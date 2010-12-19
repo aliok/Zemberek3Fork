@@ -19,7 +19,7 @@ import zemberek3.structure.TurkishAlphabet;
 public class StringTrie {
 	private Node root = new Node(false, null);
 	public int nodesCreated;
-	private static final TurkicAlphabet alphabet = new TurkishAlphabet();
+	private static final TurkishAlphabet alphabet = new TurkishAlphabet();
 
 	public void add(String s) {
 		if (s == null) {

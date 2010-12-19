@@ -8,7 +8,7 @@ import static zemberek3.structure.TurkicLetter.builder;
  * Contains Turkish Letters, Turkish Letter equivalent chars, several helper methods.
  * TurkishAlphanbet only contains small case letters.
  */
-public class TurkishAlphabet implements TurkicAlphabet {
+public class TurkishAlphabet {
 
     // Turkish specific characters.
     public static final char C_CC = '\u00c7'; // Ç
@@ -223,4 +223,6 @@ public class TurkishAlphabet implements TurkicAlphabet {
 		}
 		return indexes;
 	}
+
+
 }

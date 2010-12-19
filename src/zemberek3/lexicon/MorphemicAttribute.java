@@ -10,6 +10,7 @@ public enum MorphemicAttribute implements StringEnum {
     LastVowelDrop,
     Doubling,
     StemChange,
+    ProgressiveVowelDrop,
     NonTransitive;
 
     private static StringEnumMap<MorphemicAttribute> shortFormToPosMap =  StringEnumMap.get(MorphemicAttribute.class);

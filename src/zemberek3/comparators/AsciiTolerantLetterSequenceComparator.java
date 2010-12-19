@@ -2,13 +2,14 @@ package zemberek3.comparators;
 
 import zemberek3.structure.TurkicAlphabet;
 import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkishAlphabet;
 
 public class AsciiTolerantLetterSequenceComparator
         implements CharSequenceComparator<TurkicLetterSequence> {
 
-    TurkicAlphabet alphabet;
+    TurkishAlphabet alphabet;
 
-    public AsciiTolerantLetterSequenceComparator(TurkicAlphabet alphabet) {
+    public AsciiTolerantLetterSequenceComparator(TurkishAlphabet alphabet) {
         this.alphabet = alphabet;
     }
 
