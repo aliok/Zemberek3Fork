@@ -52,7 +52,7 @@ public class TurkishAlphabet {
     public static final TurkicLetter L_l = builder('l', 15).build();
     public static final TurkicLetter L_m = builder('m', 16).build();
     public static final TurkicLetter L_n = builder('n', 17).build();
-    public static final TurkicLetter L_o = builder('o', 18).build();
+    public static final TurkicLetter L_o = builder('o', 18).vowel().roundedVowel().build();
     public static final TurkicLetter L_oo = builder(C_oo, 19).vowel().frontalVowel().roundedVowel().notInAscii().similarAscii('o').build();
     public static final TurkicLetter L_p = builder('p', 20).voiceless().stopConsosnant().build();
     public static final TurkicLetter L_r = builder('r', 21).build();

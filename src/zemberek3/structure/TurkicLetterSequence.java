@@ -1,5 +1,7 @@
 package zemberek3.structure;
 
+import java.util.Arrays;
+
 /**
  * <code>TurkicLetterSequence</code> represents a sequence of <code>Letter</code>s. It is mutable and not Thread safe.
  * should be used for intermediate operations, not as storage.
@@ -112,7 +114,7 @@ public class TurkicLetterSequence implements CharSequence, Comparable<TurkicLett
             if (letters[i].isVowel())
                 return letters[i];
         }
-        throw new IllegalStateException("There is no wovel in the sequence");
+        throw new IllegalStateException("There is no wovel in the sequence:" + Arrays.toString(letters));
     }
 
     /**
