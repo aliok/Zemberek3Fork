@@ -9,6 +9,7 @@ import zemberek3.structure.TurkishAlphabet;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,10 +34,13 @@ public class TurkishLexiconGenerator {
                 return true;
             String word = getWord(line);
             PosInfo posInfo = getPosData(word, line);
-            Set<MorphemicAttribute> morphemicAttributes = morphemicAttributes(word, posInfo, line);
+            String cleanWord = cleanWord(word, posInfo);
+
+            Set<MorphemicAttribute> morphemicAttributes = morphemicAttributes(cleanWord, posInfo, line);
 
             lexiconItems.add(new LexiconItem(
                     word,
+                    cleanWord,
                     posInfo.primaryPos,
                     posInfo.secondaryPos,
                     morphemicAttributes.toArray(new MorphemicAttribute[morphemicAttributes.size()])));
@@ -49,6 +53,12 @@ public class TurkishLexiconGenerator {
             String word = getGroup1Match(line, wordPattern).trim();
             if (word.length() == 0)
                 throw new IllegalArgumentException("Line does not contain word :" + line);
+            return word;
+        }
+
+        private String cleanWord(String word, PosInfo posInfo) {
+            if (posInfo.primaryPos == PrimaryPos.Verb)
+                return word.substring(0, word.length() - 3);
             return word;
         }
 
@@ -162,6 +172,8 @@ public class TurkishLexiconGenerator {
             } else if (attributesList.contains(MorphemicAttribute.InverseHarmony)) {
                 // saat, takat
                 attributesList.add(MorphemicAttribute.LastVowelFrontal);
+                // we no longer need Inverse Harmony tag.
+                attributesList.remove(MorphemicAttribute.InverseHarmony);
             }
             if (sequence.lastLetter().isVowel()) {
                 // elma
