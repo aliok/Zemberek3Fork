@@ -154,6 +154,23 @@ public class TurkishLexiconGenerator {
 
                     break;
             }
+            // general phonetic attributes.
+            if (sequence.lastVowel().isRoundedVowel())
+                attributesList.add(MorphemicAttribute.LastVowelRounded);
+            if (sequence.lastVowel().isFrontalVowel()) {
+                attributesList.add(MorphemicAttribute.LastVowelFrontal);
+            } else if (attributesList.contains(MorphemicAttribute.InverseHarmony)) {
+                // saat, takat
+                attributesList.add(MorphemicAttribute.LastVowelFrontal);
+            }
+            if (sequence.lastLetter().isVowel()) {
+                // elma
+                attributesList.add(MorphemicAttribute.LastLetterVowel);
+            }
+            if (sequence.lastLetter().isVoiceless() && sequence.lastLetter().isStopConsonant()) {
+                // kitap
+                attributesList.add(MorphemicAttribute.LastLetterVoicelessStop);
+            }
         }
 
         public List<LexiconItem> getResult() {

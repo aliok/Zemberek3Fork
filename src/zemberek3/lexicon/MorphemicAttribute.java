@@ -13,9 +13,14 @@ public enum MorphemicAttribute implements StringEnum {
     ProgressiveVowelDrop,
     Aorist_I,
     Aorist_A,
-    NonTransitive;
+    NonTransitive,
 
-    private static StringEnumMap<MorphemicAttribute> shortFormToPosMap =  StringEnumMap.get(MorphemicAttribute.class);
+    LastVowelFrontal,
+    LastVowelRounded,
+    LastLetterVoicelessStop,
+    LastLetterVowel;
+
+    private static StringEnumMap<MorphemicAttribute> shortFormToPosMap = StringEnumMap.get(MorphemicAttribute.class);
 
     public static StringEnumMap<MorphemicAttribute> converter() {
         return shortFormToPosMap;
