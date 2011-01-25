@@ -22,6 +22,8 @@ küp
 # Fully written form.
 kek [Pos: Noun; A: NoVoicing]
 
+kap [A:Voicing]
+
 # Attribute InverseHarmony required. However, when there is InverseHarmony, NoVoicing attribute is added automatically.
 takat [A: InverseHarmony]
 
@@ -30,9 +32,6 @@ saat [A: NoVoicing, InverseHarmony]
 
 # Attribute tag is required.
 ağız [A:LastVowelDrop]
-
-# Attribute tag is required.
-karın [A:LastVowelDrop]
 
 # Attribute tags are required.
 ret [A:Voicing, Doubling]

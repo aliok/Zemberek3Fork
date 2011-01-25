@@ -18,7 +18,12 @@ public enum MorphemicAttribute implements StringEnum {
     LastVowelFrontal,
     LastVowelRounded,
     LastLetterVoicelessStop,
-    LastLetterVowel;
+    LastLetterVowel,
+
+    ExpectsVowel,
+    ExpectsConsonant;
+
+
 
     private static StringEnumMap<MorphemicAttribute> shortFormToPosMap = StringEnumMap.get(MorphemicAttribute.class);
 

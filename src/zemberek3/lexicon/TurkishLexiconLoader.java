@@ -9,18 +9,14 @@ import zemberek3.structure.TurkishAlphabet;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.Normalizer;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TurkishLexiconGenerator {
+public class TurkishLexiconLoader {
 
-    public static void convert(File input, File output) throws IOException {
-        List<LexiconItem> items = Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor());
-        for (LexiconItem item : items) {
-            System.out.println(item);
-        }
+    public static List<LexiconItem> load(File input) throws IOException {
+        return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor());
     }
 
     static class LexiconFileProcessor implements LineProcessor<List<LexiconItem>> {
@@ -172,7 +168,7 @@ public class TurkishLexiconGenerator {
             } else if (attributesList.contains(MorphemicAttribute.InverseHarmony)) {
                 // saat, takat
                 attributesList.add(MorphemicAttribute.LastVowelFrontal);
-                // we no longer need Inverse Harmony tag.
+                // we no longer need InverseHarmony tag.
                 attributesList.remove(MorphemicAttribute.InverseHarmony);
             }
             if (sequence.lastLetter().isVowel()) {
@@ -213,7 +209,10 @@ public class TurkishLexiconGenerator {
     }
 
     public static void main(String[] args) throws IOException {
-        TurkishLexiconGenerator.convert(new File("test/data/dev-lexicon.txt"), new File("auto-generated-lexicon.txt"));
+        List<LexiconItem> items = TurkishLexiconLoader.load(new File("test/data/dev-lexicon.txt"));
+        for (LexiconItem item : items) {
+            System.out.println(item);
+        }
     }
 
 }
