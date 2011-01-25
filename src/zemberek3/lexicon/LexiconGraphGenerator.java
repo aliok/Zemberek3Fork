@@ -6,10 +6,7 @@ import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicLetterSequence;
 import zemberek3.structure.TurkishAlphabet;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * This class gets a list of Lexicon Items and builds the lexicon part of the main graph.
@@ -27,14 +24,19 @@ public class LexiconGraphGenerator {
     public void generate() {
         for (LexiconItem lexiconItem : lexicon) {
             if (hasModifierAttribute(lexiconItem)) {
-                RootState modifiedState = generateModifiedRootState(lexiconItem);
-                rootStates.add(modifiedState);
+                rootStates.addAll(generateModifiedRootStates(lexiconItem));
+            } else {
+                rootStates.add(generateRootState(lexiconItem));
             }
-            rootStates.add(generateRootState(lexiconItem));
         }
     }
 
     private RootState generateRootState(LexiconItem lexiconItem) {
+        BoundaryState boundaryState = generateBoundaryState(lexiconItem);
+        return new RootState(lexiconItem.root, lexiconItem, boundaryState, true);
+    }
+
+    private BoundaryState generateBoundaryState(LexiconItem lexiconItem) {
         BoundaryState boundaryState = new BoundaryState(lexiconItem.primaryPos);
         for (MorphemicAttribute attribute : lexiconItem.attributes) {
             if (boundaryStateAttributes.contains(attribute))
@@ -44,9 +46,7 @@ public class LexiconGraphGenerator {
         if (!boundaryStateMap.containsKey(boundaryState)) {
             boundaryStateMap.put(boundaryState, boundaryState);
         } else boundaryState = boundaryStateMap.get(boundaryState);
-
-        return new RootState(lexiconItem.root, lexiconItem, boundaryState, true);
-
+        return boundaryState;
     }
 
     public boolean hasModifierAttribute(LexiconItem item) {
@@ -82,21 +82,29 @@ public class LexiconGraphGenerator {
         voicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_gg);
     }
 
-    private RootState generateModifiedRootState(LexiconItem lexiconItem) {
+    private List<RootState> generateModifiedRootStates(LexiconItem lexiconItem) {
 
+        List<RootState> states = new ArrayList<RootState>();
         TurkicLetterSequence sequence = new TurkicLetterSequence(lexiconItem.root, alphabet);
 
         for (MorphemicAttribute attribute : lexiconItem.attributes) {
             switch (attribute) {
                 case Voicing:
                     TurkicLetter last = sequence.lastLetter();
+                    TurkicLetter modifiedLetter = voicingMap.get(last);
                     if (!voicingMap.containsKey(last)) {
                         throw new LexiconGenerationException("Voicing letter is not proper in:" + lexiconItem);
                     }
-                    sequence.changeLetter(sequence.length() - 1, voicingMap.get(last));
-                    String modified = sequence.toString();
-
-
+                    //TODO:handle -nk endings
+                    sequence.changeLetter(sequence.length() - 1, modifiedLetter);
+                    BoundaryState boundaryState = generateBoundaryState(lexiconItem);
+                    boundaryState.add(MorphemicAttribute.ExpectsVowel);
+                    RootState modified = new RootState(sequence.toString(), lexiconItem, boundaryState, false);
+                    BoundaryState boundaryStateOriginal = generateBoundaryState(lexiconItem);
+                    boundaryState.add(MorphemicAttribute.ExpectsConsonant);
+                    RootState original = new RootState(lexiconItem.root, lexiconItem, boundaryStateOriginal, true);
+                    states.add(modified);
+                    states.add(original);
                     break;
                 case Doubling:
                     break;
@@ -112,7 +120,7 @@ public class LexiconGraphGenerator {
 
         }
 
-        return null;
+        return states;
 
 
     }

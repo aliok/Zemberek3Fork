@@ -14,4 +14,19 @@ public class BoundaryState {
     public void add(MorphemicAttribute morphemicAttribute) {
         attributes.add(morphemicAttribute);
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[Pos:" + primaryPos.shortForm);
+        if (attributes.size() > 0)
+            sb.append(" A:");
+        int i = 0;
+        for (MorphemicAttribute attribute : attributes) {
+            sb.append(attribute.getStringForm());
+            if (i++ < attributes.size() - 1)
+                sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }
