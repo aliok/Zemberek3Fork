@@ -12,11 +12,11 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * This class gets a list of Lexicon Items and builds the lexicon part of the main morphologic graph.
+ * This class gets a list of Lexicon Items and builds the lexicon part of the main graph.
  */
 public class LexiconGraphGenerator {
     List<LexiconItem> lexicon;
-    Set<BoundaryState> boundaryStates = new HashSet<BoundaryState>();
+    Map<BoundaryState, BoundaryState> boundaryStateMap = Maps.newHashMap();
     Set<RootState> rootStates = new HashSet<RootState>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
 
@@ -31,8 +31,6 @@ public class LexiconGraphGenerator {
                 rootStates.add(modifiedState);
             }
             rootStates.add(generateRootState(lexiconItem));
-
-
         }
     }
 
@@ -42,9 +40,11 @@ public class LexiconGraphGenerator {
             if (boundaryStateAttributes.contains(attribute))
                 boundaryState.add(attribute);
         }
-        if (!boundaryStates.contains(boundaryState)) {
-            boundaryStates.add(boundaryState);
-        }
+        // crazy. but i needed to do this.
+        if (!boundaryStateMap.containsKey(boundaryState)) {
+            boundaryStateMap.put(boundaryState, boundaryState);
+        } else boundaryState = boundaryStateMap.get(boundaryState);
+
         return new RootState(lexiconItem.root, lexiconItem, boundaryState, true);
 
     }
