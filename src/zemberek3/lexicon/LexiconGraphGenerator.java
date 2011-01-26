@@ -16,7 +16,7 @@ import java.util.*;
 public class LexiconGraphGenerator {
     List<LexiconItem> lexicon;
     Map<BoundaryState, BoundaryState> boundaryStateMap = Maps.newHashMap();
-    Set<RootState> rootStates = new HashSet<RootState>();
+    List<RootState> rootStates = new ArrayList<RootState>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
 
     public LexiconGraphGenerator(List<LexiconItem> lexicon) {
@@ -95,6 +95,7 @@ public class LexiconGraphGenerator {
         voicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_gg);
     }
 
+    // TODO: this cannot handle the double variation in "demek" de-di-d
     private RootState[] generateModifiedRootStates(LexiconItem lexiconItem) {
 
         BoundaryState modifiedState = new BoundaryState(lexiconItem.primaryPos);
@@ -176,6 +177,10 @@ public class LexiconGraphGenerator {
         generator.generate();
         for(BoundaryState bs : generator.boundaryStateMap.values()) {
             System.out.println(bs);
+        }
+
+        for(RootState rootState: generator.rootStates) {
+            System.out.println(rootState);
         }
 
     }

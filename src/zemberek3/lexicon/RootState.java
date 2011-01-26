@@ -19,4 +19,9 @@ public class RootState {
         this.boundaryState = boundaryState;
         this.terminal = terminal;
     }
+
+    public String toString() {
+        return surfaceForm + " : " + (terminal ? "terminal " : "non-terminal") + " : " + lexiconItem.toString() + " : " + boundaryState;
+    }
+
 }
