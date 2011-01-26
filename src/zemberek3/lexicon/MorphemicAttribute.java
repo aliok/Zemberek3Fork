@@ -21,7 +21,14 @@ public enum MorphemicAttribute implements StringEnum {
     LastLetterVowel,
 
     ExpectsVowel,
-    ExpectsConsonant;
+    ExpectsConsonant,
+
+    ExpectsProgressive,
+    ExpectsNonProgressive,
+
+
+    ExpectsStemChanger,
+    ExpectsNonStemChanger;
 
 
 
