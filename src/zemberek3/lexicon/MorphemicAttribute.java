@@ -26,7 +26,6 @@ public enum MorphemicAttribute implements StringEnum {
     ExpectsProgressive,
     ExpectsNonProgressive,
 
-
     ExpectsStemChanger,
     ExpectsNonStemChanger;
 
