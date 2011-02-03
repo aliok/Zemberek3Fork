@@ -1,6 +1,6 @@
 package z3.repository.lemma;
 
-import zemberek3.comparators.CharSequenceComparator;
+import z3.comparators.CharSequenceComparator;
 import zemberek3.structure.Lemma;
 
 import java.util.Iterator;
