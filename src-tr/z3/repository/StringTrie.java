@@ -1,4 +1,4 @@
-package zemberek3.repository;
+package z3.repository;
 
 import zemberek3.structure.TurkishAlphabet;
 

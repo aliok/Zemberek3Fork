@@ -1,4 +1,4 @@
-package zemberek3.repository.affix;
+package z3.repository.affix;
 
 import zemberek3.structure.Lemma;
 import zemberek3.structure.affix.TurkicSuffix;

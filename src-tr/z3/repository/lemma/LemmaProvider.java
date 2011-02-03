@@ -1,4 +1,4 @@
-package zemberek3.repository.lemma;
+package z3.repository.lemma;
 
 import zemberek3.structure.Lemma;
 
