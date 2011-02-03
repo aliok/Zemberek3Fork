@@ -57,7 +57,6 @@ public class StringTrie {
 			// Trie: root-foo input:foobar
 			// result: root - foo* - bar*
 			previousNode.addChild(new Node(true, getSuffix(indexedChars, i)));
-			return;
 		}
 		//
 		// Trie: root - foobar input: foo
@@ -67,7 +66,7 @@ public class StringTrie {
 		// root - fo - x*
 		//         \ _ obar*
 		//
-		if (node != null) {
+		else {
 			Node newNode = new Node(node.wordNode, getSuffix(node.fragment, fragmentSplitIndex));
 			if (i == indexedChars.length) {
 				node.wordNode = true;
@@ -175,12 +174,12 @@ public class StringTrie {
 			int x = node.getChar();
 			int counter = 0;
 			// We keep nodes sorted by their chars
-			for (int i = 0; i < children.size(); i++) {
-				if (x < children.get(i).getChar()) {
-					break;
-				}
-				counter++;
-			}
+            for (Node child : children) {
+                if (x < child.getChar()) {
+                    break;
+                }
+                counter++;
+            }
 			children.add(counter, node);
 		}
 

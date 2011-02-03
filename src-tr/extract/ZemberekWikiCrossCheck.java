@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.text.Collator;
 import java.util.*;
 
-
 public class ZemberekWikiCrossCheck {
 
     static Map<KelimeTipi, POS> posMap = new HashMap<KelimeTipi, POS>();

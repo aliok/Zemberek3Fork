@@ -22,4 +22,8 @@ public class HarfDizisiUretici {
     public final HarfDizisi uret(String str) {
         return new HarfDizisi(str, alfabe);
     }
+
+    public static void main(String[] args) {
+        
+    }
 }
