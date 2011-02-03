@@ -1,4 +1,4 @@
-package zemberek3.util;
+package z3.util;
 
 import java.util.*;
 

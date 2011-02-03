@@ -1,4 +1,4 @@
-package zemberek3.generator.word;
+package z3.generator.word;
 
 import zemberek3.structure.TurkicWordParse;
 

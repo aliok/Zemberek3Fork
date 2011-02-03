@@ -1,4 +1,4 @@
-package zemberek3.comparators;
+package z3.comparators;
 
 public interface CharSequenceComparator<T extends CharSequence> {
 

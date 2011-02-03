@@ -1,4 +1,4 @@
-package zemberek3.disambiguation;
+package z3.disambiguation;
 
 import zemberek3.structure.ScoredItem;
 import zemberek3.structure.TurkicWordParse;

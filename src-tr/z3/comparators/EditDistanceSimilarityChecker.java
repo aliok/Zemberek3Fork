@@ -1,6 +1,6 @@
-package zemberek3.comparators;
+package z3.comparators;
 
-import zemberek3.util.Preconditions;
+import z3.util.Preconditions;
 
 /**
  * A Similarity checker based on Damareu-levensthtein string distance algorithm.

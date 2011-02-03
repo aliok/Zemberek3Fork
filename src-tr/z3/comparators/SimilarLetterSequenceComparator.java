@@ -1,19 +1,18 @@
-package zemberek3.comparators;
+package z3.comparators;
 
 import zemberek3.structure.TurkicLetterSequence;
-import zemberek3.structure.TurkishAlphabet;
 
-public class AsciiTolerantLetterSequenceComparator
+public class SimilarLetterSequenceComparator 
         implements CharSequenceComparator<TurkicLetterSequence> {
 
-    TurkishAlphabet alphabet;
+    final SimilarityChecker similarityChecker;
 
-    public AsciiTolerantLetterSequenceComparator(TurkishAlphabet alphabet) {
-        this.alphabet = alphabet;
+    public SimilarLetterSequenceComparator(SimilarityChecker similarityChecker) {
+        this.similarityChecker = similarityChecker;
     }
 
     public boolean isEqual(TurkicLetterSequence t1, TurkicLetterSequence t2) {
-        return false;
+        return similarityChecker.isSimilar(t1, t2);
     }
 
     public boolean startsWith(TurkicLetterSequence t1, TurkicLetterSequence t2) {

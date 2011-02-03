@@ -1,6 +1,6 @@
 package zemberek3.parser.word;
 
-import zemberek3.repository.lemma.LemmaProvider;
+import z3.repository.lemma.LemmaProvider;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.TurkicLetterSequence;
 import zemberek3.structure.TurkicWordParse;

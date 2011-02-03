@@ -1,6 +1,6 @@
 package zemberek3.service;
 
-import zemberek3.generator.word.WordFormatter;
+import z3.generator.word.WordFormatter;
 import zemberek3.parser.word.WordParser;
 import zemberek3.structure.TurkicWordParse;
 

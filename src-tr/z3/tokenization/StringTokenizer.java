@@ -1,4 +1,4 @@
-package zemberek3.tokenization;
+package z3.tokenization;
 
 import java.util.List;
 

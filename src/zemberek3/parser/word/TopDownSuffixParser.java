@@ -1,7 +1,7 @@
 package zemberek3.parser.word;
 
-import zemberek3.comparators.CharSequenceComparator;
-import zemberek3.repository.affix.TurkishSuffixRepository;
+import z3.comparators.CharSequenceComparator;
+import z3.repository.affix.TurkishSuffixRepository;
 import zemberek3.structure.Lemma;
 import zemberek3.structure.TurkicLetterSequence;
 import zemberek3.structure.TurkishAlphabet;

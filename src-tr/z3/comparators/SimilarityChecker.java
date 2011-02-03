@@ -1,4 +1,4 @@
-package zemberek3.comparators;
+package z3.comparators;
 
 /**
  * This is used for checking if two charsequences are similar. Similarity decision is up to the implementor.
