@@ -30,20 +30,24 @@ public class BoundaryState implements Cloneable {
         return null;
     }
 
-    public void add(MorphemicAttribute morphemicAttribute) {
+    public BoundaryState add(MorphemicAttribute morphemicAttribute) {
         attributes.add(morphemicAttribute);
+        return this;
     }
 
-    public void remove(MorphemicAttribute morphemicAttribute) {
+    public BoundaryState remove(MorphemicAttribute morphemicAttribute) {
         attributes.remove(morphemicAttribute);
+        return this;
     }
 
-    public void addExclusiveSuffix(TurkishSuffix... suffix) {
+    public BoundaryState addExclusiveSuffix(TurkishSuffix... suffix) {
         exclusiveSuffixes.addAll(Arrays.asList(suffix));
+        return this;
     }
 
-    public void addRestrictedsuffix(TurkishSuffix... suffix) {
+    public BoundaryState addRestrictedsuffix(TurkishSuffix... suffix) {
         restrictedSuffixes.addAll(Arrays.asList(suffix));
+        return this;
     }
 
     public String toString() {

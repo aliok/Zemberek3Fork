@@ -163,16 +163,13 @@ public class LexiconGraphGenerator {
         if ((lexiconItem.root.equals("ye") || lexiconItem.root.equals("de")) && lexiconItem.primaryPos == Verb) {
             RootState[] states = new RootState[3];
             BoundaryState originalState = new BoundaryState(
-                    lexiconItem.primaryPos, LastVowelFrontal, LastLetterVowel);
-            originalState.addRestrictedsuffix(Prog_Iyor);
+                    lexiconItem.primaryPos, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor);
             states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
 
-            BoundaryState progressiveState = new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal);
-            progressiveState.addExclusiveSuffix(Prog_Iyor);
+            BoundaryState progressiveState = new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
             states[1] = new RootState(lexiconItem.root.substring(0, 1), lexiconItem, progressiveState, false);
 
-            BoundaryState modifiedState = originalState.clone();
-            modifiedState.addExclusiveSuffix(Fut_yAcAk, Opt_yA);
+            BoundaryState modifiedState = originalState.clone().addExclusiveSuffix(Fut_yAcAk, Opt_yA);
             if (lexiconItem.root.equals("ye")) {
                 modifiedState.addExclusiveSuffix(AfterDoing_yIp);
             }
@@ -180,11 +177,10 @@ public class LexiconGraphGenerator {
             return states;
         } else if ((lexiconItem.root.equals("ben") || lexiconItem.root.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
             RootState[] states = new RootState[2];
-            BoundaryState originalState = new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal);
-            originalState.addRestrictedsuffix(Dat_yA);
+            BoundaryState originalState =
+                    new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal).addRestrictedsuffix(Dat_yA);
             states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
-            BoundaryState modifiedState = originalState.clone();
-            modifiedState.addExclusiveSuffix(Dat_yA);
+            BoundaryState modifiedState = originalState.clone().addExclusiveSuffix(Dat_yA);
             if (lexiconItem.root.equals("ben"))
                 states[1] = new RootState("ban", lexiconItem, modifiedState, false);
             else
