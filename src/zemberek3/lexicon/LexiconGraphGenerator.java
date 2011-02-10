@@ -162,11 +162,12 @@ public class LexiconGraphGenerator {
     private RootState[] handleSpecialStems(LexiconItem lexiconItem) {
         if ((lexiconItem.root.equals("ye") || lexiconItem.root.equals("de")) && lexiconItem.primaryPos == Verb) {
             RootState[] states = new RootState[3];
-            BoundaryState originalState = new BoundaryState(
-                    lexiconItem.primaryPos, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor);
+            BoundaryState originalState =
+                    new BoundaryState(Verb, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor);
             states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
 
-            BoundaryState progressiveState = new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
+            BoundaryState progressiveState =
+                    new BoundaryState(Verb, LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
             states[1] = new RootState(lexiconItem.root.substring(0, 1), lexiconItem, progressiveState, false);
 
             BoundaryState modifiedState = originalState.clone().addExclusiveSuffix(Fut_yAcAk, Opt_yA);
@@ -178,7 +179,7 @@ public class LexiconGraphGenerator {
         } else if ((lexiconItem.root.equals("ben") || lexiconItem.root.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
             RootState[] states = new RootState[2];
             BoundaryState originalState =
-                    new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal).addRestrictedsuffix(Dat_yA);
+                    new BoundaryState(Pronoun, LastVowelFrontal).addRestrictedsuffix(Dat_yA);
             states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
             BoundaryState modifiedState = originalState.clone().addExclusiveSuffix(Dat_yA);
             if (lexiconItem.root.equals("ben"))
