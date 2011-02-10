@@ -6,6 +6,8 @@ import java.util.Set;
 public class BoundaryState {
     PrimaryPos primaryPos;
     Set<MorphemicAttribute> attributes = new HashSet<MorphemicAttribute>();
+    Set<LexiconItem> exceptionalLexiconItems = new HashSet<LexiconItem>();
+    Set<SuffixState> suffixesToFollow = new HashSet<SuffixState>();
 
     public BoundaryState(PrimaryPos primaryPos) {
         this.primaryPos = primaryPos;
@@ -42,7 +44,10 @@ public class BoundaryState {
         BoundaryState that = (BoundaryState) o;
 
         if (attributes != null ? !attributes.equals(that.attributes) : that.attributes != null) return false;
+        if (exceptionalLexiconItems != null ? !exceptionalLexiconItems.equals(that.exceptionalLexiconItems) : that.exceptionalLexiconItems != null)
+            return false;
         if (primaryPos != that.primaryPos) return false;
+        if (suffixesToFollow != null ? !suffixesToFollow.equals(that.suffixesToFollow) : that.suffixesToFollow != null) return false;
 
         return true;
     }
@@ -51,6 +56,8 @@ public class BoundaryState {
     public int hashCode() {
         int result = primaryPos != null ? primaryPos.hashCode() : 0;
         result = 31 * result + (attributes != null ? attributes.hashCode() : 0);
+        result = 31 * result + (exceptionalLexiconItems != null ? exceptionalLexiconItems.hashCode() : 0);
+        result = 31 * result + (suffixesToFollow != null ? suffixesToFollow.hashCode() : 0);
         return result;
     }
 }

@@ -38,6 +38,27 @@ public class TurkishSuffixes {
     static TurkishSuffix Ly_cA;
     static TurkishSuffix Quite_cA;
 
+    static TurkishSuffix Aor_Ir;
+    static TurkishSuffix Prog_Iyor;
+    static TurkishSuffix Prog_mAktA;
+    static TurkishSuffix Fut_yAcAk;
+    static TurkishSuffix Past_dI;
+    static TurkishSuffix Evid_mIs;
+    static TurkishSuffix Neg_mA;
+    static TurkishSuffix Cond_sa;
+    static TurkishSuffix Necess_mAlI;
+    static TurkishSuffix Opt_yA;
+
+    static TurkishSuffix Cop_dIr;
+    static TurkishSuffix PastCop_ydI;
+    static TurkishSuffix EvidCop_ymIs;
+    static TurkishSuffix CondCop_ysA;
+    static TurkishSuffix While_yken;
+
+    static TurkishSuffix AfterDoing_yIp;
+    static TurkishSuffix JustAfter_yIncA;
+
+
     public void generate() {
 
 
