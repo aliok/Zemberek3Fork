@@ -10,6 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import static zemberek3.lexicon.MorphemicAttribute.*;
+import static zemberek3.lexicon.PrimaryPos.*;
+import static zemberek3.lexicon.TurkishSuffixes.*;
+
 /**
  * This class gets a list of Lexicon Items and builds the lexicon part of the main graph.
  */
@@ -63,26 +67,22 @@ public class LexiconGraphGenerator {
     }
 
     Set<MorphemicAttribute> modifiers = Sets.newHashSet(
-            MorphemicAttribute.Doubling,
-            MorphemicAttribute.LastVowelDrop,
-            MorphemicAttribute.ProgressiveVowelDrop,
-            MorphemicAttribute.Voicing,
-            MorphemicAttribute.StemChange
+            Doubling,
+            LastVowelDrop,
+            ProgressiveVowelDrop,
+            Voicing,
+            StemChange
     );
 
     Set<MorphemicAttribute> boundaryStateAttributes = Sets.newHashSet(
-            MorphemicAttribute.LastLetterVowel,
-            MorphemicAttribute.LastVowelFrontal,
-            MorphemicAttribute.LastVowelRounded,
-            MorphemicAttribute.LastLetterVoicelessStop,
-            MorphemicAttribute.ExpectsProgressive,
-            MorphemicAttribute.ExpectsNonProgressive,
-            MorphemicAttribute.ExpectsVowel,
-            MorphemicAttribute.ExpectsConsonant,
-            MorphemicAttribute.ExpectsStemChanger,
-            MorphemicAttribute.ExpectsNonStemChanger,
-            MorphemicAttribute.Aorist_A,
-            MorphemicAttribute.Aorist_I
+            LastLetterVowel,
+            LastVowelFrontal,
+            LastVowelRounded,
+            LastLetterVoicelessStop,
+            ExpectsVowel,
+            ExpectsConsonant,
+            Aorist_A,
+            Aorist_I
     );
 
     static Map<TurkicLetter, TurkicLetter> voicingMap = Maps.newHashMap();
@@ -95,7 +95,6 @@ public class LexiconGraphGenerator {
         voicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_gg);
     }
 
-    // TODO: this cannot handle the double variation in "demek" de-di-d
     private RootState[] generateModifiedRootStates(LexiconItem lexiconItem) {
 
         BoundaryState modifiedState = new BoundaryState(lexiconItem.primaryPos);
@@ -123,39 +122,27 @@ public class LexiconGraphGenerator {
                     if (lexiconItem.root.endsWith("nk"))
                         modifiedLetter = TurkishAlphabet.L_g;
                     modifiedSequence.changeLetter(modifiedSequence.length() - 1, modifiedLetter);
-                    modifiedState.add(MorphemicAttribute.ExpectsVowel);
-                    modifiedState.remove(MorphemicAttribute.LastLetterVoicelessStop);
-                    originalState.add(MorphemicAttribute.ExpectsConsonant);
+                    modifiedState.add(ExpectsVowel);
+                    modifiedState.remove(LastLetterVoicelessStop);
+                    originalState.add(ExpectsConsonant);
                     break;
                 case Doubling:
-                    modifiedState.add(MorphemicAttribute.ExpectsVowel);
-                    originalState.add(MorphemicAttribute.ExpectsConsonant);
+                    modifiedState.add(ExpectsVowel);
+                    originalState.add(ExpectsConsonant);
                     modifiedSequence.append(modifiedSequence.lastLetter());
                     break;
                 case LastVowelDrop:
-                    modifiedState.add(MorphemicAttribute.ExpectsVowel);
-                    originalState.add(MorphemicAttribute.ExpectsConsonant);
+                    modifiedState.add(ExpectsVowel);
+                    originalState.add(ExpectsConsonant);
                     modifiedSequence.delete(modifiedSequence.length() - 2);
                     break;
                 case ProgressiveVowelDrop:
-                    modifiedState.add(MorphemicAttribute.ExpectsProgressive);
-                    originalState.add(MorphemicAttribute.ExpectsNonProgressive);
+                    modifiedState.addExclusiveSuffix(TurkishSuffixes.Prog_Iyor);
+                    originalState.addRestrictedsuffix(TurkishSuffixes.Prog_Iyor);
                     modifiedSequence.delete(modifiedSequence.length() - 1);
                     break;
                 case StemChange:
-                    //TODO: this info may better be read from the lexicon file.
-                    if (lexiconItem.root.equals("ben"))
-                        modifiedSequence = new TurkicLetterSequence("ban", alphabet);
-                    else if (lexiconItem.root.equals("sen"))
-                        modifiedSequence = new TurkicLetterSequence("san", alphabet);
-                    else if (lexiconItem.root.equals("de"))
-                        modifiedSequence = new TurkicLetterSequence("di", alphabet);
-                    else if (lexiconItem.root.equals("ye"))
-                        modifiedSequence = new TurkicLetterSequence("yi", alphabet);
-                    else throw new LexiconGenerationException("Unexpected stem change!");
-                    modifiedState.add(MorphemicAttribute.ExpectsStemChanger);
-                    originalState.add(MorphemicAttribute.ExpectsNonStemChanger);
-                    break;
+                    return handleSpecialStems(lexiconItem);
                 default:
                     break;
             }
@@ -171,18 +158,53 @@ public class LexiconGraphGenerator {
 
     }
 
+    // handle stem changes demek-diyecek , beni-bana
+    private RootState[] handleSpecialStems(LexiconItem lexiconItem) {
+        if ((lexiconItem.root.equals("ye") || lexiconItem.root.equals("de")) && lexiconItem.primaryPos == Verb) {
+            RootState[] states = new RootState[3];
+            BoundaryState originalState = new BoundaryState(
+                    lexiconItem.primaryPos, LastVowelFrontal, LastLetterVowel);
+            originalState.addRestrictedsuffix(Prog_Iyor);
+            states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
+
+            BoundaryState progressiveState = new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal);
+            progressiveState.addExclusiveSuffix(Prog_Iyor);
+            states[1] = new RootState(lexiconItem.root.substring(0, 1), lexiconItem, progressiveState, false);
+
+            BoundaryState modifiedState = originalState.clone();
+            modifiedState.addExclusiveSuffix(Fut_yAcAk, Opt_yA);
+            if (lexiconItem.root.equals("ye")) {
+                modifiedState.addExclusiveSuffix(AfterDoing_yIp);
+            }
+            states[2] = new RootState(lexiconItem.root.substring(0, 1) + "i", lexiconItem, modifiedState, false);
+            return states;
+        } else if ((lexiconItem.root.equals("ben") || lexiconItem.root.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
+            RootState[] states = new RootState[2];
+            BoundaryState originalState = new BoundaryState(lexiconItem.primaryPos, LastVowelFrontal);
+            originalState.addRestrictedsuffix(Dat_yA);
+            states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
+            BoundaryState modifiedState = originalState.clone();
+            modifiedState.addExclusiveSuffix(Dat_yA);
+            if (lexiconItem.root.equals("ben"))
+                states[1] = new RootState("ban", lexiconItem, modifiedState, false);
+            else
+                states[1] = new RootState("san", lexiconItem, modifiedState, false);
+            return states;
+        }
+        throw new IllegalArgumentException("Lexicon Item with special stem change cannot be handled:" + lexiconItem);
+    }
+
     public static void main(String[] args) throws IOException {
         List<LexiconItem> items = TurkishLexiconLoader.load(new File("test/data/dev-lexicon.txt"));
         LexiconGraphGenerator generator = new LexiconGraphGenerator(items);
         generator.generate();
-        for(BoundaryState bs : generator.boundaryStateMap.values()) {
+        for (BoundaryState bs : generator.boundaryStateMap.values()) {
             System.out.println(bs);
         }
 
-        for(RootState rootState: generator.rootStates) {
+        for (RootState rootState : generator.rootStates) {
             System.out.println(rootState);
         }
-
     }
 
 

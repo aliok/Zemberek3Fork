@@ -21,14 +21,7 @@ public enum MorphemicAttribute implements StringEnum {
     LastLetterVowel,
 
     ExpectsVowel,
-    ExpectsConsonant,
-
-    ExpectsProgressive,
-    ExpectsNonProgressive,
-
-    ExpectsStemChanger,
-    ExpectsNonStemChanger;
-
+    ExpectsConsonant;
 
 
     private static StringEnumMap<MorphemicAttribute> shortFormToPosMap = StringEnumMap.get(MorphemicAttribute.class);
