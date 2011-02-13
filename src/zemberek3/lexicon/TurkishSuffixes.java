@@ -1,19 +1,21 @@
 package zemberek3.lexicon;
 
 public class TurkishSuffixes {
-    static TurkishSuffix Pl_lAr;
+    static TurkishSuffix Pl_lAr = new TurkishSuffix("Pl_lAr", "lAr");
     static TurkishSuffix Dat_yA;
     static TurkishSuffix Loc_dA;
     static TurkishSuffix Abl_dAn;
     static TurkishSuffix Gen_nIn;
     static TurkishSuffix Acc_yI;
     static TurkishSuffix Inst_lA;
+
     static TurkishSuffix P1sg_Im;
     static TurkishSuffix P2sg_In;
     static TurkishSuffix P3sg_sI;
     static TurkishSuffix P1pl_ImIz;
     static TurkishSuffix P2pl_InIz;
     static TurkishSuffix P3pl_lArI;
+
     static TurkishSuffix Dim_cIk;
     static TurkishSuffix Dim_cAgIz;
     static TurkishSuffix With_lI;
@@ -48,6 +50,13 @@ public class TurkishSuffixes {
     static TurkishSuffix Cond_sa;
     static TurkishSuffix Necess_mAlI;
     static TurkishSuffix Opt_yA;
+    static TurkishSuffix Pass_In;
+    static TurkishSuffix Caus_dIr;
+    static TurkishSuffix Recip_yIs;
+    static TurkishSuffix Reflex_In;
+    static TurkishSuffix Abil_yAbIl;
+    static TurkishSuffix Cont_yAdur;
+
 
     static TurkishSuffix Cop_dIr;
     static TurkishSuffix PastCop_ydI;
@@ -58,8 +67,20 @@ public class TurkishSuffixes {
     static TurkishSuffix AfterDoing_yIp;
     static TurkishSuffix JustAfter_yIncA;
 
+    TurkishSuffix[] NOUN_CASE = {Pl_lAr, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_lA};
+    TurkishSuffix[] NOUN_POSS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
+    TurkishSuffix[] NOUN_PERSON = {A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
+    TurkishSuffix[] COPULAR = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_yken};
 
     public void generate() {
+        SuffixState stateA = new SuffixState(Pl_lAr, "lar");
+        SuffixState stateE = new SuffixState(Pl_lAr, "ler", MorphemicAttribute.LastVowelFrontal);
+        Pl_lAr.addStates(stateA, stateE).
+                addSuccessor(NOUN_CASE).
+                addSuccessor(COPULAR).
+                addSuccessor(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, By_cA);
+
+        
 
 
     }

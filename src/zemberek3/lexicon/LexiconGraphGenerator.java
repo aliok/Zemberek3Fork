@@ -134,6 +134,10 @@ public class LexiconGraphGenerator {
                 case LastVowelDrop:
                     modifiedState.add(ExpectsVowel);
                     originalState.add(ExpectsConsonant);
+                    if(lexiconItem.primaryPos==Verb) {
+                        modifiedState.addExclusiveSuffix(TurkishSuffixes.Pass_In);
+                        originalState.addRestrictedsuffix(TurkishSuffixes.Prog_Iyor);
+                    }
                     modifiedSequence.delete(modifiedSequence.length() - 2);
                     break;
                 case ProgressiveVowelDrop:
@@ -163,7 +167,7 @@ public class LexiconGraphGenerator {
         if ((lexiconItem.root.equals("ye") || lexiconItem.root.equals("de")) && lexiconItem.primaryPos == Verb) {
             RootState[] states = new RootState[3];
             BoundaryState originalState =
-                    new BoundaryState(Verb, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor);
+                    new BoundaryState(Verb, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor, Fut_yAcAk, Opt_yA);
             states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
 
             BoundaryState progressiveState =

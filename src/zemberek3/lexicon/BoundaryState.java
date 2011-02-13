@@ -61,6 +61,8 @@ public class BoundaryState implements Cloneable {
                 sb.append(", ");
         }
         sb.append("]");
+        sb.append(exclusiveSuffixes.toString());
+        sb.append(restrictedSuffixes.toString());
         return sb.toString();
     }
 
