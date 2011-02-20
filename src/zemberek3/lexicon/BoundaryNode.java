@@ -4,48 +4,48 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class BoundaryState implements Cloneable {
+public class BoundaryNode implements Cloneable {
     PrimaryPos primaryPos;
     Set<MorphemicAttribute> attributes = new HashSet<MorphemicAttribute>();
     Set<LexiconItem> exceptionalLexiconItems = new HashSet<LexiconItem>();
     Set<TurkishSuffix> exclusiveSuffixes = new HashSet<TurkishSuffix>();
     Set<TurkishSuffix> restrictedSuffixes = new HashSet<TurkishSuffix>();
 
-    public BoundaryState(PrimaryPos primaryPos) {
+    public BoundaryNode(PrimaryPos primaryPos) {
         this.primaryPos = primaryPos;
     }
 
-    public BoundaryState(PrimaryPos primaryPos, MorphemicAttribute... attributes) {
+    public BoundaryNode(PrimaryPos primaryPos, MorphemicAttribute... attributes) {
         this.primaryPos = primaryPos;
         this.attributes.addAll(Arrays.asList(attributes));
     }
 
     @Override
-    public BoundaryState clone() {
+    public BoundaryNode clone() {
         try {
-            return (BoundaryState) super.clone();
+            return (BoundaryNode) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public BoundaryState add(MorphemicAttribute morphemicAttribute) {
+    public BoundaryNode add(MorphemicAttribute morphemicAttribute) {
         attributes.add(morphemicAttribute);
         return this;
     }
 
-    public BoundaryState remove(MorphemicAttribute morphemicAttribute) {
+    public BoundaryNode remove(MorphemicAttribute morphemicAttribute) {
         attributes.remove(morphemicAttribute);
         return this;
     }
 
-    public BoundaryState addExclusiveSuffix(TurkishSuffix... suffix) {
+    public BoundaryNode addExclusiveSuffix(TurkishSuffix... suffix) {
         exclusiveSuffixes.addAll(Arrays.asList(suffix));
         return this;
     }
 
-    public BoundaryState addRestrictedsuffix(TurkishSuffix... suffix) {
+    public BoundaryNode addRestrictedsuffix(TurkishSuffix... suffix) {
         restrictedSuffixes.addAll(Arrays.asList(suffix));
         return this;
     }
@@ -71,7 +71,7 @@ public class BoundaryState implements Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BoundaryState that = (BoundaryState) o;
+        BoundaryNode that = (BoundaryNode) o;
 
         if (attributes != null ? !attributes.equals(that.attributes) : that.attributes != null) return false;
         if (exceptionalLexiconItems != null ? !exceptionalLexiconItems.equals(that.exceptionalLexiconItems) : that.exceptionalLexiconItems != null)

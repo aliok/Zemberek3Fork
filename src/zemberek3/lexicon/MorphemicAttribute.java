@@ -14,6 +14,7 @@ public enum MorphemicAttribute implements StringEnum {
     Aorist_I,
     Aorist_A,
     NonTransitive,
+    CompoundP3sg,
 
     LastVowelFrontal,
     LastVowelRounded,

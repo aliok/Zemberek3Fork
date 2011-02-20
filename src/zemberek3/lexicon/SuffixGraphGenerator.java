@@ -3,10 +3,10 @@ package zemberek3.lexicon;
 import java.util.List;
 
 public class SuffixGraphGenerator {
-    List<BoundaryState> boundaryStates;
+    List<BoundaryNode> boundaryNodes;
 
-    public SuffixGraphGenerator(List<BoundaryState> boundaryStates) {
-        this.boundaryStates = boundaryStates;
+    public SuffixGraphGenerator(List<BoundaryNode> boundaryNodes) {
+        this.boundaryNodes = boundaryNodes;
     }
 
     public void generateSuffixFormations() {

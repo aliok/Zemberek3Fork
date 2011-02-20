@@ -9,7 +9,7 @@ public class TurkishSuffix {
     String id;
     String generationString;
     List<TurkishSuffix> successors = new ArrayList<TurkishSuffix>();
-    List<SuffixState> states = new ArrayList<SuffixState>();
+    List<SuffixNode> nodes = new ArrayList<SuffixNode>();
 
     public TurkishSuffix(String id, String generationString) {
         this.id = id;
@@ -21,8 +21,8 @@ public class TurkishSuffix {
         return this;
     }
 
-    public TurkishSuffix addStates(SuffixState... states) {
-        this.states.addAll(Arrays.asList(states));
+    public TurkishSuffix addStates(SuffixNode... nodes) {
+        this.nodes.addAll(Arrays.asList(nodes));
         return this;
     }
 

@@ -5,15 +5,15 @@ import com.google.common.collect.Sets;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SuffixState {
+public class SuffixNode {
     TurkishSuffix suffix;
     String content;
-    Set<SuffixState> successors = new HashSet<SuffixState>();
+    Set<SuffixNode> successors = new HashSet<SuffixNode>();
     Set<MorphemicAttribute> attributes = new HashSet<MorphemicAttribute>();
     boolean endState = true;
     boolean mergeMorphemicAttributes = false;
 
-    public SuffixState(TurkishSuffix suffix, String content, MorphemicAttribute... attributes) {
+    public SuffixNode(TurkishSuffix suffix, String content, MorphemicAttribute... attributes) {
         this.suffix = suffix;
         this.content = content;
         this.attributes = Sets.newHashSet(attributes);

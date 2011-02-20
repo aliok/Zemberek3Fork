@@ -19,8 +19,8 @@ import static zemberek3.lexicon.TurkishSuffixes.*;
  */
 public class LexiconGraphGenerator {
     List<LexiconItem> lexicon;
-    Map<BoundaryState, BoundaryState> boundaryStateMap = Maps.newHashMap();
-    List<RootState> rootStates = new ArrayList<RootState>();
+    Map<BoundaryNode, BoundaryNode> boundaryStateMap = Maps.newHashMap();
+    List<RootNode> rootNodes = new ArrayList<RootNode>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
 
     public LexiconGraphGenerator(List<LexiconItem> lexicon) {
@@ -30,33 +30,33 @@ public class LexiconGraphGenerator {
     public void generate() {
         for (LexiconItem lexiconItem : lexicon) {
             if (hasModifierAttribute(lexiconItem)) {
-                rootStates.addAll(Arrays.asList(generateModifiedRootStates(lexiconItem)));
+                rootNodes.addAll(Arrays.asList(generateModifiedRootStates(lexiconItem)));
             } else {
-                rootStates.add(generateRootState(lexiconItem));
+                rootNodes.add(generateRootState(lexiconItem));
             }
         }
     }
 
-    private RootState generateRootState(LexiconItem lexiconItem) {
-        BoundaryState boundaryState = generateBoundaryState(lexiconItem);
-        return new RootState(lexiconItem.root, lexiconItem, boundaryState, true);
+    private RootNode generateRootState(LexiconItem lexiconItem) {
+        BoundaryNode boundaryNode = generateBoundaryState(lexiconItem);
+        return new RootNode(lexiconItem.root, lexiconItem, boundaryNode, true);
     }
 
-    private BoundaryState generateBoundaryState(LexiconItem lexiconItem) {
-        BoundaryState boundaryState = new BoundaryState(lexiconItem.primaryPos);
+    private BoundaryNode generateBoundaryState(LexiconItem lexiconItem) {
+        BoundaryNode boundaryNode = new BoundaryNode(lexiconItem.primaryPos);
         for (MorphemicAttribute attribute : lexiconItem.attributes) {
             if (boundaryStateAttributes.contains(attribute))
-                boundaryState.add(attribute);
+                boundaryNode.add(attribute);
         }
-        return createIfNotExist(boundaryState);
+        return createIfNotExist(boundaryNode);
     }
 
-    private BoundaryState createIfNotExist(BoundaryState boundaryState) {
+    private BoundaryNode createIfNotExist(BoundaryNode boundaryNode) {
         // weird. but i needed to do this.
-        if (!boundaryStateMap.containsKey(boundaryState)) {
-            boundaryStateMap.put(boundaryState, boundaryState);
-        } else boundaryState = boundaryStateMap.get(boundaryState);
-        return boundaryState;
+        if (!boundaryStateMap.containsKey(boundaryNode)) {
+            boundaryStateMap.put(boundaryNode, boundaryNode);
+        } else boundaryNode = boundaryStateMap.get(boundaryNode);
+        return boundaryNode;
     }
 
     public boolean hasModifierAttribute(LexiconItem item) {
@@ -95,10 +95,10 @@ public class LexiconGraphGenerator {
         voicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_gg);
     }
 
-    private RootState[] generateModifiedRootStates(LexiconItem lexiconItem) {
+    private RootNode[] generateModifiedRootStates(LexiconItem lexiconItem) {
 
-        BoundaryState modifiedState = new BoundaryState(lexiconItem.primaryPos);
-        BoundaryState originalState = new BoundaryState(lexiconItem.primaryPos);
+        BoundaryNode modifiedNode = new BoundaryNode(lexiconItem.primaryPos);
+        BoundaryNode originalNode = new BoundaryNode(lexiconItem.primaryPos);
 
         TurkicLetterSequence modifiedSequence = new TurkicLetterSequence(lexiconItem.root, alphabet);
 
@@ -106,8 +106,8 @@ public class LexiconGraphGenerator {
 
             // transfer necessary attributes to boundary state.
             if (boundaryStateAttributes.contains(attribute)) {
-                modifiedState.add(attribute);
-                originalState.add(attribute);
+                modifiedNode.add(attribute);
+                originalNode.add(attribute);
             }
 
             // generate other boundary attributes and modified root state.
@@ -122,27 +122,27 @@ public class LexiconGraphGenerator {
                     if (lexiconItem.root.endsWith("nk"))
                         modifiedLetter = TurkishAlphabet.L_g;
                     modifiedSequence.changeLetter(modifiedSequence.length() - 1, modifiedLetter);
-                    modifiedState.add(ExpectsVowel);
-                    modifiedState.remove(LastLetterVoicelessStop);
-                    originalState.add(ExpectsConsonant);
+                    modifiedNode.add(ExpectsVowel);
+                    modifiedNode.remove(LastLetterVoicelessStop);
+                    originalNode.add(ExpectsConsonant);
                     break;
                 case Doubling:
-                    modifiedState.add(ExpectsVowel);
-                    originalState.add(ExpectsConsonant);
+                    modifiedNode.add(ExpectsVowel);
+                    originalNode.add(ExpectsConsonant);
                     modifiedSequence.append(modifiedSequence.lastLetter());
                     break;
                 case LastVowelDrop:
-                    modifiedState.add(ExpectsVowel);
-                    originalState.add(ExpectsConsonant);
-                    if(lexiconItem.primaryPos==Verb) {
-                        modifiedState.addExclusiveSuffix(TurkishSuffixes.Pass_In);
-                        originalState.addRestrictedsuffix(TurkishSuffixes.Prog_Iyor);
+                    modifiedNode.add(ExpectsVowel);
+                    originalNode.add(ExpectsConsonant);
+                    if (lexiconItem.primaryPos == Verb) {
+                        modifiedNode.addExclusiveSuffix(TurkishSuffixes.Pass_In);
+                        originalNode.addRestrictedsuffix(TurkishSuffixes.Prog_Iyor);
                     }
                     modifiedSequence.delete(modifiedSequence.length() - 2);
                     break;
                 case ProgressiveVowelDrop:
-                    modifiedState.addExclusiveSuffix(TurkishSuffixes.Prog_Iyor);
-                    originalState.addRestrictedsuffix(TurkishSuffixes.Prog_Iyor);
+                    modifiedNode.addExclusiveSuffix(TurkishSuffixes.Prog_Iyor);
+                    originalNode.addRestrictedsuffix(TurkishSuffixes.Prog_Iyor);
                     modifiedSequence.delete(modifiedSequence.length() - 1);
                     break;
                 case StemChange:
@@ -152,59 +152,66 @@ public class LexiconGraphGenerator {
             }
 
         }
-        originalState = createIfNotExist(originalState);
-        modifiedState = createIfNotExist(modifiedState);
+        originalNode = createIfNotExist(originalNode);
+        modifiedNode = createIfNotExist(modifiedNode);
 
-        RootState[] states = new RootState[2];
-        states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
-        states[1] = new RootState(modifiedSequence.toString(), lexiconItem, modifiedState, false);
-        return states;
+        RootNode[] nodes = new RootNode[2];
+        nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
+        nodes[1] = new RootNode(modifiedSequence.toString(), lexiconItem, modifiedNode, false);
+        return nodes;
 
     }
 
     // handle stem changes demek-diyecek , beni-bana
-    private RootState[] handleSpecialStems(LexiconItem lexiconItem) {
+    private RootNode[] handleSpecialStems(LexiconItem lexiconItem) {
         if ((lexiconItem.root.equals("ye") || lexiconItem.root.equals("de")) && lexiconItem.primaryPos == Verb) {
-            RootState[] states = new RootState[3];
-            BoundaryState originalState =
-                    new BoundaryState(Verb, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor, Fut_yAcAk, Opt_yA);
-            states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
+            RootNode[] nodes = new RootNode[3];
+            BoundaryNode originalNode =
+                    new BoundaryNode(Verb, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor, Fut_yAcAk, Opt_yA);
+            nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
 
-            BoundaryState progressiveState =
-                    new BoundaryState(Verb, LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
-            states[1] = new RootState(lexiconItem.root.substring(0, 1), lexiconItem, progressiveState, false);
+            BoundaryNode progressiveNode =
+                    new BoundaryNode(Verb, LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
+            nodes[1] = new RootNode(lexiconItem.root.substring(0, 1), lexiconItem, progressiveNode, false);
 
-            BoundaryState modifiedState = originalState.clone().addExclusiveSuffix(Fut_yAcAk, Opt_yA);
+            BoundaryNode modifiedNode = originalNode.clone().addExclusiveSuffix(Fut_yAcAk, Opt_yA);
             if (lexiconItem.root.equals("ye")) {
-                modifiedState.addExclusiveSuffix(AfterDoing_yIp);
+                modifiedNode.addExclusiveSuffix(AfterDoing_yIp);
             }
-            states[2] = new RootState(lexiconItem.root.substring(0, 1) + "i", lexiconItem, modifiedState, false);
-            return states;
+            nodes[2] = new RootNode(lexiconItem.root.substring(0, 1) + "i", lexiconItem, modifiedNode, false);
+            return nodes;
         } else if ((lexiconItem.root.equals("ben") || lexiconItem.root.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
-            RootState[] states = new RootState[2];
-            BoundaryState originalState =
-                    new BoundaryState(Pronoun, LastVowelFrontal).addRestrictedsuffix(Dat_yA);
-            states[0] = new RootState(lexiconItem.root, lexiconItem, originalState, true);
-            BoundaryState modifiedState = originalState.clone().addExclusiveSuffix(Dat_yA);
+            RootNode[] nodes = new RootNode[2];
+            BoundaryNode originalNode =
+                    new BoundaryNode(Pronoun, LastVowelFrontal).addRestrictedsuffix(Dat_yA);
+            nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
+            BoundaryNode modifiedNode = originalNode.clone().addExclusiveSuffix(Dat_yA);
             if (lexiconItem.root.equals("ben"))
-                states[1] = new RootState("ban", lexiconItem, modifiedState, false);
+                nodes[1] = new RootNode("ban", lexiconItem, modifiedNode, false);
             else
-                states[1] = new RootState("san", lexiconItem, modifiedState, false);
-            return states;
+                nodes[1] = new RootNode("san", lexiconItem, modifiedNode, false);
+            return nodes;
         }
         throw new IllegalArgumentException("Lexicon Item with special stem change cannot be handled:" + lexiconItem);
     }
+
+/*    private RootNode[] handleCompounds(LexiconItem lexiconItem) {
+        RootNode[] nodes = new RootNode[2];
+        BoundaryNode originalState =
+                new BoundaryNode(Verb, LastVowelFrontal, LastLetterVowel).addRestrictedsuffix(Prog_Iyor, Fut_yAcAk, Opt_yA);
+    }*/
+
 
     public static void main(String[] args) throws IOException {
         List<LexiconItem> items = TurkishLexiconLoader.load(new File("test/data/dev-lexicon.txt"));
         LexiconGraphGenerator generator = new LexiconGraphGenerator(items);
         generator.generate();
-        for (BoundaryState bs : generator.boundaryStateMap.values()) {
+        for (BoundaryNode bs : generator.boundaryStateMap.values()) {
             System.out.println(bs);
         }
 
-        for (RootState rootState : generator.rootStates) {
-            System.out.println(rootState);
+        for (RootNode rootNode : generator.rootNodes) {
+            System.out.println(rootNode);
         }
     }
 
