@@ -1,9 +1,9 @@
 package zemberek3.lexicon;
 
 public class TurkishSuffixes {
-    static TurkishSuffix Pl_lAr = new TurkishSuffix("Pl_lAr", "lAr");
-    static TurkishSuffix Dat_yA;
-    static TurkishSuffix Loc_dA;
+    static TurkishSuffix Pl_lAr = new TurkishSuffix("Pl_lAr");
+    static TurkishSuffix Dat_yA = new TurkishSuffix("Dat_yA");;
+    static TurkishSuffix Loc_dA = new TurkishSuffix("Loc_dA");
     static TurkishSuffix Abl_dAn;
     static TurkishSuffix Gen_nIn;
     static TurkishSuffix Acc_yI;
@@ -50,7 +50,7 @@ public class TurkishSuffixes {
     static TurkishSuffix Cond_sa;
     static TurkishSuffix Necess_mAlI;
     static TurkishSuffix Opt_yA;
-    static TurkishSuffix Pass_In;
+    static TurkishSuffix Pass_In =  new TurkishSuffix("Pass_In");
     static TurkishSuffix Caus_dIr;
     static TurkishSuffix Recip_yIs;
     static TurkishSuffix Reflex_In;

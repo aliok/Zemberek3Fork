@@ -11,9 +11,8 @@ public class TurkishSuffix {
     List<TurkishSuffix> successors = new ArrayList<TurkishSuffix>();
     List<SuffixNode> nodes = new ArrayList<SuffixNode>();
 
-    public TurkishSuffix(String id, String generationString) {
+    public TurkishSuffix(String id) {
         this.id = id;
-        this.generationString = generationString;
     }
 
     public TurkishSuffix addSuccessor(TurkishSuffix... suffix) {
@@ -26,4 +25,8 @@ public class TurkishSuffix {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return id;
+    }
 }
