@@ -37,6 +37,10 @@ public class LexiconGraphGenerator {
         }
     }
 
+    public List<RootNode> getRootNodes() {
+        return rootNodes;
+    }
+
     private RootNode generateRootState(LexiconItem lexiconItem) {
         BoundaryNode boundaryNode = generateBoundaryState(lexiconItem);
         return new RootNode(lexiconItem.root, lexiconItem, boundaryNode, true);
@@ -175,6 +179,7 @@ public class LexiconGraphGenerator {
             nodes[1] = new RootNode(lexiconItem.root.substring(0, 1), lexiconItem, progressiveNode, false);
 
             BoundaryNode modifiedNode = originalNode.clone().addExclusiveSuffix(Fut_yAcAk, Opt_yA);
+            // modification rule does not apply for some suffixes for "demek". like deyip, not deyip
             if (lexiconItem.root.equals("ye")) {
                 modifiedNode.addExclusiveSuffix(AfterDoing_yIp);
             }
@@ -206,11 +211,8 @@ public class LexiconGraphGenerator {
         List<LexiconItem> items = TurkishLexiconLoader.load(new File("test/data/dev-lexicon.txt"));
         LexiconGraphGenerator generator = new LexiconGraphGenerator(items);
         generator.generate();
-        for (BoundaryNode bs : generator.boundaryStateMap.values()) {
-            System.out.println(bs);
-        }
-
-        for (RootNode rootNode : generator.rootNodes) {
+        List<RootNode> rootNodes = generator.getRootNodes();
+        for (RootNode rootNode : rootNodes) {
             System.out.println(rootNode);
         }
     }
