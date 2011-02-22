@@ -45,7 +45,7 @@ public class BoundaryNode implements Cloneable {
         return this;
     }
 
-    public BoundaryNode addRestrictedsuffix(TurkishSuffix... suffix) {
+    public BoundaryNode addRestrictedsuffixes(TurkishSuffix... suffix) {
         restrictedSuffixes.addAll(Arrays.asList(suffix));
         return this;
     }

@@ -306,9 +306,10 @@ public class TurkicLetterSequence implements CharSequence, Comparable<TurkicLett
     /**
      * son harfi siler. eger harf yoksa hicbir etki yapmaz.
      */
-    public void eraseLast() {
+    public TurkicLetterSequence eraseLast() {
         if (size > 0)
             size--;
+        return this;
     }
 
     /**

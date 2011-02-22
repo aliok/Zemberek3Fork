@@ -15,6 +15,14 @@ public class LexiconItem {
         this.attributes = attributes;
     }
 
+    public boolean hasAttribute(MorphemicAttribute attribute) {
+        for (MorphemicAttribute morphemicAttribute : attributes) {
+            if(attribute==morphemicAttribute)
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[" + lemma + ":" + root + "]" + " Pos:" + primaryPos.shortForm);
