@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static zemberek3.lexicon.MorphemicAttribute.*;
+import static zemberek3.lexicon.MorphemicAttribute.Voicing;
 import static zemberek3.lexicon.PrimaryPos.*;
 import static zemberek3.lexicon.TurkishSuffixes.*;
 
@@ -177,11 +178,11 @@ public class LexiconGraphGenerator {
                     new BoundaryNode(Verb, LastVowelFrontal, LastLetterVowel).addRestrictedsuffixes(Prog_Iyor, Fut_yAcAk, Opt_yA);
             nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
 
-            BoundaryNode progressiveNode =
-                    new BoundaryNode(Verb, LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
+            BoundaryNode progressiveNode = new BoundaryNode(Verb, LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
             nodes[1] = new RootNode(lexiconItem.root.substring(0, 1), lexiconItem, progressiveNode, false);
 
-            BoundaryNode modifiedNode = originalNode.clone().addExclusiveSuffix(Fut_yAcAk, Opt_yA);
+            BoundaryNode modifiedNode = new BoundaryNode(originalNode.getPrimaryPos(), originalNode.getAttributes())
+                    .addExclusiveSuffix(Fut_yAcAk, Opt_yA);
             // modification rule does not apply for some suffixes for "demek". like deyip, not deyip
             if (lexiconItem.root.equals("ye")) {
                 modifiedNode.addExclusiveSuffix(AfterDoing_yIp);
@@ -190,10 +191,12 @@ public class LexiconGraphGenerator {
             return nodes;
         } else if ((lexiconItem.root.equals("ben") || lexiconItem.root.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
             RootNode[] nodes = new RootNode[2];
-            BoundaryNode originalNode =
-                    new BoundaryNode(Pronoun, LastVowelFrontal).addRestrictedsuffixes(Dat_yA);
+
+            BoundaryNode originalNode = new BoundaryNode(Pronoun, LastVowelFrontal).addRestrictedsuffixes(Dat_yA);
             nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
-            BoundaryNode modifiedNode = originalNode.clone().addExclusiveSuffix(Dat_yA);
+
+            BoundaryNode modifiedNode = new BoundaryNode(originalNode.getPrimaryPos(), originalNode.getAttributes())
+                    .addExclusiveSuffix(Dat_yA);
             if (lexiconItem.root.equals("ben"))
                 nodes[1] = new RootNode("ban", lexiconItem, modifiedNode, false);
             else
@@ -223,23 +226,24 @@ public class LexiconGraphGenerator {
                 .addExclusiveSuffix(TurkishSuffixes.NOUN_POSS);
         nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalState, true);
 
-        TurkicSeq modifiedSequence = new TurkicSeq(lexiconItem.root, alphabet);
+        TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
         // TODO: phonetic properties needs to be found again nicely.
-        BoundaryNode modifiedState = new BoundaryNode(lexiconItem.primaryPos, lexiconItem.attributes).
-                remove(MorphemicAttribute.Voicing).
-                remove( LastLetterVowel).addExclusiveSuffix(Pl_lAr, With_lI, P3pl_lArI);
-        String modified = modifiedSequence.delete(modifiedSequence.length() - 1).toString();
-        if (lexiconItem.hasAttribute(MorphemicAttribute.Voicing)) {
+        BoundaryNode modifiedNode = new BoundaryNode(lexiconItem.primaryPos, lexiconItem.attributes).
+                remove(Voicing).
+                remove(LastLetterVowel).addExclusiveSuffix(Pl_lAr, With_lI, P3pl_lArI);
+        String modified = modifiedSeq.eraseLast().toString();
+        // for cases compund's last word has voicing. atkuruGu
+        if (lexiconItem.hasAttribute(Voicing)) {
             // hack for cases denizbiyoloGu - denizbiyologlari
             if (modified.endsWith("o" + String.valueOf(TurkishAlphabet.C_gg)))
-                modifiedSequence.eraseLast().append(TurkishAlphabet.L_g);
+                modifiedSeq.eraseLast().append(TurkishAlphabet.L_g);
             else {
-                TurkicLetter l = devoicingMap.get(modifiedSequence.lastLetter());
-                modifiedSequence.changeLetter(modifiedSequence.length()-1,l);
+                TurkicLetter l = devoicingMap.get(modifiedSeq.lastLetter());
+                modifiedSeq.changeLetter(modifiedSeq.length() - 1, l);
             }
-            nodes[1] = new RootNode(modifiedSequence.toString(), lexiconItem, modifiedState, false);
+            nodes[1] = new RootNode(modifiedSeq.toString(), lexiconItem, modifiedNode, false);
         } else {
-            nodes[1] = new RootNode(modified, lexiconItem, modifiedState, false);
+            nodes[1] = new RootNode(modified, lexiconItem, modifiedNode, false);
         }
         return nodes;
     }
