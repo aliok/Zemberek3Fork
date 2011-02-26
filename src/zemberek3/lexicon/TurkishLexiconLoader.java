@@ -4,7 +4,7 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
 import java.io.File;
@@ -131,7 +131,7 @@ public class TurkishLexiconLoader {
         static Locale locale = new Locale("tr");
 
         private void inferMorphemicAttributes(String word, PosInfo posData, Set<MorphemicAttribute> attributesList) {
-            TurkicLetterSequence sequence = new TurkicLetterSequence(word.toLowerCase(locale), alphabet);
+            TurkicSeq sequence = new TurkicSeq(word.toLowerCase(locale), alphabet);
             switch (posData.primaryPos) {
                 case Verb:
                     // if a verb ends with a wovel, and -Iyor suffix is appended, last vowel drops.

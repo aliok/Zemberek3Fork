@@ -2,7 +2,7 @@ package zemberek3.service;
 
 import zemberek3.parser.syllable.SyllableParser;
 import zemberek3.structure.TurkicLetter;
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
     private class TurkishSyllableParser implements SyllableParser {
 
         public List<String> parse(String input) {
-            TurkicLetterSequence sequence = new TurkicLetterSequence(input, alphabet);
+            TurkicSeq sequence = new TurkicSeq(input, alphabet);
             List<String> list = new ArrayList<String>();
             while (input.length() > 0) {
                 int index = letterCountForLastSyllable(sequence);
@@ -48,7 +48,7 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
          * sayisini dondurur.
          * Sistem, -trak ve benzeri harf dizilimine sahip kelimeleri hecelemiyor.
          *
-         * @param word: turkce harf dizisi.
+         * @param seq: turkce harf dizisi.
          * @return int, 1,2,3 ya da 4 donerse giris dizisinin dizinin sondan o
          *         kadarharfi heceyi temsil eder -1 donerse hecenin bulunamadigi
          *         anlamina gelir. sistem yabanci harf ya da isaretlerin oldugu ya
@@ -57,27 +57,27 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
          *         durumlari kabul etmekte ama buna kisitlama getirilmesi iyi olur.
          *         sadece "tr", "st", "kr" gibi girislere izin verilmeli
          */
-        private int letterCountForLastSyllable(TurkicLetterSequence word) {
+        private int letterCountForLastSyllable(TurkicSeq seq) {
 
-            final int boy = word.length();
-            TurkicLetter harf = word.getLetter(boy - 1);
-            TurkicLetter oncekiHarf = word.getLetter(boy - 2);
+            final int boy = seq.length();
+            TurkicLetter harf = seq.getLetter(boy - 1);
+            TurkicLetter oncekiHarf = seq.getLetter(boy - 2);
 
             if (boy == 0)
                 return -1;
 
             if (harf.isVowel()) {
-                //word sadece sesli.
+                //seq sadece sesli.
                 if (boy == 1)
                     return 1;
-                //onceki harf sesli word="saa" ise son ek "a"
+                //onceki harf sesli seq="saa" ise son ek "a"
                 if (oncekiHarf.isVowel())
                     return 1;
-                //onceki harf sessiz ise ve word sadece 2 harf ise hece tum word. "ya"
+                //onceki harf sessiz ise ve seq sadece 2 harf ise hece tum seq. "ya"
                 if (boy == 2)
                     return 2;
 
-                TurkicLetter ikiOncekiHarf = word.getLetter(boy - 3);
+                TurkicLetter ikiOncekiHarf = seq.getLetter(boy - 3);
 
                 //ste-tos-kop -> ste
                 if (!ikiOncekiHarf.isVowel() && boy == 3) {
@@ -90,24 +90,24 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
                 if (boy == 1)
                     return -1;
 
-                TurkicLetter ikiOncekiHarf = word.getLetter(boy - 3);
+                TurkicLetter ikiOncekiHarf = seq.getLetter(boy - 3);
                 if (oncekiHarf.isVowel()) {
 
-                    //word iki harfli (el, al) ya da iki onceki harf sesli (saat)
+                    //seq iki harfli (el, al) ya da iki onceki harf sesli (saat)
                     if (boy == 2 || ikiOncekiHarf.isVowel())
                         return 2;
 
-                    TurkicLetter ucOncekiHarf = word.getLetter(boy - 4);
-                    // word uc harfli (kal, sel) ya da uc onceki harf sesli (kanat),
+                    TurkicLetter ucOncekiHarf = seq.getLetter(boy - 4);
+                    // seq uc harfli (kal, sel) ya da uc onceki harf sesli (kanat),
                     if (boy == 3 || ucOncekiHarf.isVowel())
                         return 3;
 
-                    //word dort harfli ise yukaridaki kurallari gecmesi nedeniyle hecelenemez sayiyoruz.
+                    //seq dort harfli ise yukaridaki kurallari gecmesi nedeniyle hecelenemez sayiyoruz.
                     // tren, strateji, krank, angstrom gibi kelimeler henuz hecelenmiyor.
                     if (boy == 4)
                         return -1;
 
-                    TurkicLetter dortOncekiHarf = word.getLetter(boy - 5);
+                    TurkicLetter dortOncekiHarf = seq.getLetter(boy - 5);
                     if (!dortOncekiHarf.isVowel())
                         return 3;
                     return 3;
@@ -116,7 +116,7 @@ public class StrictTurkishSyllableService extends BaseSyllableService implements
 
                     if (boy == 2 || !ikiOncekiHarf.isVowel())
                         return -1;
-                    TurkicLetter ucOncekiHarf = word.getLetter(boy - 4);
+                    TurkicLetter ucOncekiHarf = seq.getLetter(boy - 4);
                     if (boy > 3 && !ucOncekiHarf.isVowel())
                         return 4;
                     return 3;

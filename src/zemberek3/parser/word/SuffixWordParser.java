@@ -2,7 +2,7 @@ package zemberek3.parser.word;
 
 import z3.repository.lemma.LemmaProvider;
 import zemberek3.structure.Lemma;
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkicWordParse;
 import zemberek3.structure.affix.TurkicSuffix;
 
@@ -16,13 +16,13 @@ import java.util.List;
  */
 public class SuffixWordParser implements WordParser {
 
-    final SuffixParser<TurkicLetterSequence> suffixParser;
-    final InputPreProcessor<TurkicLetterSequence> inputPreProcessor;
+    final SuffixParser<TurkicSeq> suffixParser;
+    final InputPreProcessor<TurkicSeq> inputPreProcessor;
     final LemmaProvider lemmaProvider;
 
     public SuffixWordParser(
-            SuffixParser<TurkicLetterSequence> suffixParser,
-            InputPreProcessor<TurkicLetterSequence> inputPreProcessor,
+            SuffixParser<TurkicSeq> suffixParser,
+            InputPreProcessor<TurkicSeq> inputPreProcessor,
             LemmaProvider lemmaProvider) {
         this.suffixParser = suffixParser;
         this.inputPreProcessor = inputPreProcessor;
@@ -31,7 +31,7 @@ public class SuffixWordParser implements WordParser {
 
     public List<TurkicWordParse> parse(CharSequence input) {
         // sanitize input.
-        final TurkicLetterSequence processed = inputPreProcessor.processForParse(input);
+        final TurkicSeq processed = inputPreProcessor.processForParse(input);
 
         // find lemma candidates.
         List<Lemma> lemmas = lemmaProvider.find(processed.toString());
@@ -42,7 +42,7 @@ public class SuffixWordParser implements WordParser {
         List<TurkicWordParse> wordParses = new ArrayList<TurkicWordParse>();
         for (Lemma lemma : lemmas) {
             // process the input for lemma if necessary.
-            final TurkicLetterSequence processedForStem = inputPreProcessor.modifyForStem(processed, lemma);
+            final TurkicSeq processedForStem = inputPreProcessor.modifyForStem(processed, lemma);
             // get suffix parse results and form Words.
             Iterator<List<TurkicSuffix>> suffixParseIterator = suffixParser.parseIterator(processedForStem, lemma);
             while (suffixParseIterator.hasNext()) {
@@ -58,12 +58,12 @@ public class SuffixWordParser implements WordParser {
 
     private class ParseResultIterator implements Iterator<TurkicWordParse> {
 
-        private final TurkicLetterSequence input;
+        private final TurkicSeq input;
         private final Iterator<Lemma> stemIterator;
         private Iterator<List<TurkicSuffix>> suffixParseIterator;
         private Lemma currentLemma;
 
-        private ParseResultIterator(TurkicLetterSequence input) {
+        private ParseResultIterator(TurkicSeq input) {
             this.input = input;
             stemIterator = lemmaProvider.findAndIterate(input.toString());
             suffixParseIterator = getSuffixIterator();
@@ -73,7 +73,7 @@ public class SuffixWordParser implements WordParser {
             if (stemIterator.hasNext()) {
                 currentLemma = stemIterator.next();
                 // process the input for lemma if necessary.
-                final TurkicLetterSequence processedForStem = inputPreProcessor.modifyForStem(input, currentLemma);
+                final TurkicSeq processedForStem = inputPreProcessor.modifyForStem(input, currentLemma);
                 return suffixParser.parseIterator(processedForStem, currentLemma);
             } else {
                 return null;

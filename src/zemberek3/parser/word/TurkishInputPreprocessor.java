@@ -1,18 +1,18 @@
 package zemberek3.parser.word;
 
 import zemberek3.structure.Lemma;
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
 public class TurkishInputPreprocessor {
 
     TurkishAlphabet alphabet;
 
-    public TurkicLetterSequence processForParse(CharSequence input) {
+    public TurkicSeq processForParse(CharSequence input) {
         return null;
     }
 
-    public TurkicLetterSequence modifyForStem(TurkicLetterSequence input, Lemma lemma) {
+    public TurkicSeq modifyForStem(TurkicSeq input, Lemma lemma) {
         return null;
     }
 }

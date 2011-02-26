@@ -3,7 +3,7 @@ package zemberek3.parser.word;
 import z3.comparators.CharSequenceComparator;
 import z3.repository.affix.TurkishSuffixRepository;
 import zemberek3.structure.Lemma;
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 import zemberek3.structure.affix.TurkicSuffix;
 
@@ -14,13 +14,13 @@ import java.util.List;
 /**
  * A simple suffix parser similar to Zemberek2's mechanism.
  */
-public class TopDownSuffixParser implements SuffixParser<TurkicLetterSequence> {
+public class TopDownSuffixParser implements SuffixParser<TurkicSeq> {
 
-    private final CharSequenceComparator<TurkicLetterSequence> comparator;
+    private final CharSequenceComparator<TurkicSeq> comparator;
     private final TurkishAlphabet alphabet;
     private final TurkishSuffixRepository suffixes;
 
-    public TopDownSuffixParser(CharSequenceComparator<TurkicLetterSequence> comparator,
+    public TopDownSuffixParser(CharSequenceComparator<TurkicSeq> comparator,
                                TurkishAlphabet alphabet,
                                TurkishSuffixRepository suffixes) {
         this.comparator = comparator;
@@ -29,30 +29,30 @@ public class TopDownSuffixParser implements SuffixParser<TurkicLetterSequence> {
     }
 
     private static class ParseState {
-        TurkicLetterSequence sequence;
+        TurkicSeq sequence;
         int suffixSequence;
     }
 
-    public List<List<TurkicSuffix>> parse(TurkicLetterSequence input, Lemma lemma) {
+    public List<List<TurkicSuffix>> parse(TurkicSeq input, Lemma lemma) {
 
         LinkedList<ParseState> parseStack = new LinkedList<ParseState>();
         TurkicSuffix rootSuffix = suffixes.getRootSuffix(lemma);
         // original lemma sequence. this may be required after lemma's formation is changed during the parse.
-        TurkicLetterSequence stemSequence = new TurkicLetterSequence(lemma.getContent(), alphabet);
+        TurkicSeq stemSequence = new TurkicSeq(lemma.getContent(), alphabet);
 
         return null;
     }
 
-    public Iterator<List<TurkicSuffix>> parseIterator(TurkicLetterSequence input, Lemma lemma) {
+    public Iterator<List<TurkicSuffix>> parseIterator(TurkicSeq input, Lemma lemma) {
         return new ParseIterator(input, lemma);
     }
 
     private class ParseIterator implements Iterator<List<TurkicSuffix>> {
 
-        final TurkicLetterSequence input;
+        final TurkicSeq input;
         final Lemma lemma;
 
-        private ParseIterator(TurkicLetterSequence input, Lemma lemma) {
+        private ParseIterator(TurkicSeq input, Lemma lemma) {
             this.input = input;
             this.lemma = lemma;
         }

@@ -3,7 +3,7 @@ package zemberek3.lexicon;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import zemberek3.structure.TurkicLetter;
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
 import java.io.File;
@@ -105,7 +105,7 @@ public class LexiconGraphGenerator {
         BoundaryNode modifiedNode = new BoundaryNode(lexiconItem.primaryPos);
         BoundaryNode originalNode = new BoundaryNode(lexiconItem.primaryPos);
 
-        TurkicLetterSequence modifiedSequence = new TurkicLetterSequence(lexiconItem.root, alphabet);
+        TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
 
         for (MorphemicAttribute attribute : lexiconItem.attributes) {
 
@@ -119,14 +119,14 @@ public class LexiconGraphGenerator {
             switch (attribute) {
 
                 case Voicing:
-                    TurkicLetter last = modifiedSequence.lastLetter();
+                    TurkicLetter last = modifiedSeq.lastLetter();
                     TurkicLetter modifiedLetter = voicingMap.get(last);
                     if (!voicingMap.containsKey(last)) {
                         throw new LexiconGenerationException("Voicing letter is not proper in:" + lexiconItem);
                     }
                     if (lexiconItem.root.endsWith("nk"))
                         modifiedLetter = TurkishAlphabet.L_g;
-                    modifiedSequence.changeLetter(modifiedSequence.length() - 1, modifiedLetter);
+                    modifiedSeq.changeLetter(modifiedSeq.length() - 1, modifiedLetter);
                     modifiedNode.add(ExpectsVowel);
                     modifiedNode.remove(LastLetterVoicelessStop);
                     originalNode.add(ExpectsConsonant);
@@ -134,7 +134,7 @@ public class LexiconGraphGenerator {
                 case Doubling:
                     modifiedNode.add(ExpectsVowel);
                     originalNode.add(ExpectsConsonant);
-                    modifiedSequence.append(modifiedSequence.lastLetter());
+                    modifiedSeq.append(modifiedSeq.lastLetter());
                     break;
                 case LastVowelDrop:
                     modifiedNode.add(ExpectsVowel);
@@ -143,12 +143,12 @@ public class LexiconGraphGenerator {
                         modifiedNode.addExclusiveSuffix(TurkishSuffixes.Pass_In);
                         originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog_Iyor);
                     }
-                    modifiedSequence.delete(modifiedSequence.length() - 2);
+                    modifiedSeq.delete(modifiedSeq.length() - 2);
                     break;
                 case ProgressiveVowelDrop:
                     modifiedNode.addExclusiveSuffix(TurkishSuffixes.Prog_Iyor);
                     originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog_Iyor);
-                    modifiedSequence.delete(modifiedSequence.length() - 1);
+                    modifiedSeq.delete(modifiedSeq.length() - 1);
                     break;
                 case StemChange:
                     return handleSpecialStems(lexiconItem);
@@ -164,7 +164,7 @@ public class LexiconGraphGenerator {
 
         RootNode[] nodes = new RootNode[2];
         nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
-        nodes[1] = new RootNode(modifiedSequence.toString(), lexiconItem, modifiedNode, false);
+        nodes[1] = new RootNode(modifiedSeq.toString(), lexiconItem, modifiedNode, false);
         return nodes;
 
     }
@@ -223,7 +223,7 @@ public class LexiconGraphGenerator {
                 .addExclusiveSuffix(TurkishSuffixes.NOUN_POSS);
         nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalState, true);
 
-        TurkicLetterSequence modifiedSequence = new TurkicLetterSequence(lexiconItem.root, alphabet);
+        TurkicSeq modifiedSequence = new TurkicSeq(lexiconItem.root, alphabet);
         // TODO: phonetic properties needs to be found again nicely.
         BoundaryNode modifiedState = new BoundaryNode(lexiconItem.primaryPos, lexiconItem.attributes).
                 remove(MorphemicAttribute.Voicing).

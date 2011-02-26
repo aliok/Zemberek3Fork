@@ -1,6 +1,6 @@
 package zemberek3.parser.modifiers;
 
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 
 /**
  * A modifier makes generic modifications in a charsequence. Some examples can be
@@ -14,5 +14,5 @@ public interface SequenceModifier {
      * @param sequence  input char sequence to be modified.
      * @return a SequenceModifier. usually the class itself for chaining.
      */
-    SequenceModifier modify(TurkicLetterSequence sequence);
+    SequenceModifier modify(TurkicSeq sequence);
 }

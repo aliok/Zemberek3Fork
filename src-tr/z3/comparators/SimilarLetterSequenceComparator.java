@@ -1,9 +1,9 @@
 package z3.comparators;
 
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 
 public class SimilarLetterSequenceComparator 
-        implements CharSequenceComparator<TurkicLetterSequence> {
+        implements CharSequenceComparator<TurkicSeq> {
 
     final SimilarityChecker similarityChecker;
 
@@ -11,11 +11,11 @@ public class SimilarLetterSequenceComparator
         this.similarityChecker = similarityChecker;
     }
 
-    public boolean isEqual(TurkicLetterSequence t1, TurkicLetterSequence t2) {
+    public boolean isEqual(TurkicSeq t1, TurkicSeq t2) {
         return similarityChecker.isSimilar(t1, t2);
     }
 
-    public boolean startsWith(TurkicLetterSequence t1, TurkicLetterSequence t2) {
+    public boolean startsWith(TurkicSeq t1, TurkicSeq t2) {
         return false;
     }
 }

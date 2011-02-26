@@ -2,7 +2,7 @@ package zemberek3.lexicon;
 
 public class TurkishSuffixes {
     static TurkishSuffix Pl_lAr = new TurkishSuffix("Pl_lAr");
-    static TurkishSuffix Dat_yA = new TurkishSuffix("Dat_yA");;
+    static TurkishSuffix Dat_yA = new TurkishSuffix("Dat_yA");
     static TurkishSuffix Loc_dA = new TurkishSuffix("Loc_dA");
     static TurkishSuffix Abl_dAn;
     static TurkishSuffix Gen_nIn;

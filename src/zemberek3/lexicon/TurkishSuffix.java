@@ -7,7 +7,6 @@ import java.util.List;
 public class TurkishSuffix {
 
     String id;
-    String generationString;
     List<TurkishSuffix> successors = new ArrayList<TurkishSuffix>();
     List<SuffixNode> nodes = new ArrayList<SuffixNode>();
 

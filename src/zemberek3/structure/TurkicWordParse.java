@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is the parse result of a TurkicWord. it always contain a Lemma, and zero or more TurkicSuffix.
+ * This is the parse result of a TurkicSeq. it always contain a Lemma, and zero or more TurkicSuffix.
  */
 public class TurkicWordParse {
 

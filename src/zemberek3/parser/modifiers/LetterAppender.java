@@ -1,7 +1,7 @@
 package zemberek3.parser.modifiers;
 
 import zemberek3.structure.TurkicLetter;
-import zemberek3.structure.TurkicLetterSequence;
+import zemberek3.structure.TurkicSeq;
 
 /**
  * Appends a predefined letter to a sequence.
@@ -14,8 +14,8 @@ public class LetterAppender implements SequenceModifier {
         this.toBeAppended = toBeAppended;
     }
 
-    public SequenceModifier modify(TurkicLetterSequence letterSequence) {
-        letterSequence.append(toBeAppended);
+    public SequenceModifier modify(TurkicSeq seq) {
+        seq.append(toBeAppended);
         return this;
     }
 }
