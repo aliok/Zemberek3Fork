@@ -1,6 +1,10 @@
 package zemberek3.structure;
 
+import com.google.common.collect.Maps;
+
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static zemberek3.structure.TurkicLetter.builder;
 
@@ -77,7 +81,7 @@ public class TurkishAlphabet {
             L_a, L_b, L_c, L_cc, L_d, L_e, L_f, L_g,
             L_gg, L_h, L_ii, L_i, L_j, L_k, L_l, L_m,
             L_n, L_o, L_oo, L_p, L_r, L_s, L_ss, L_t,
-            L_u, L_uu, L_v, L_y, L_z, L_q, L_w, L_x, 
+            L_u, L_uu, L_v, L_y, L_z, L_q, L_w, L_x,
             L_ac, L_ic, L_uc};
 
     private static final int ALPHABET_LETTER_COUNT = TURKISH_LETTERS.length;
@@ -100,6 +104,34 @@ public class TurkishAlphabet {
             TURKISH_ALPHABET_INDEXES[turkicLetter.charValue()] = turkicLetter.alphabeticIndex();
             VALID_CHAR_TABLE[turkicLetter.charValue()] = true;
         }
+    }
+
+    private static Map<TurkicLetter, TurkicLetter> devoicingMap = new HashMap<TurkicLetter, TurkicLetter>();
+
+    static {
+        devoicingMap.put(TurkishAlphabet.L_b, TurkishAlphabet.L_p);
+        devoicingMap.put(TurkishAlphabet.L_c, TurkishAlphabet.L_cc);
+        devoicingMap.put(TurkishAlphabet.L_d, TurkishAlphabet.L_t);
+        devoicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_k);
+        devoicingMap.put(TurkishAlphabet.L_gg, TurkishAlphabet.L_k);
+    }
+
+    public TurkicLetter devoice(TurkicLetter l) {
+        return devoicingMap.get(l);
+    }
+
+    static Map<TurkicLetter, TurkicLetter> voicingMap = Maps.newHashMap();
+
+    static {
+        voicingMap.put(TurkishAlphabet.L_p, TurkishAlphabet.L_b);
+        voicingMap.put(TurkishAlphabet.L_k, TurkishAlphabet.L_gg);
+        voicingMap.put(TurkishAlphabet.L_cc, TurkishAlphabet.L_c);
+        voicingMap.put(TurkishAlphabet.L_t, TurkishAlphabet.L_d);
+        voicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_gg);
+    }
+
+    public TurkicLetter voice(TurkicLetter l) {
+        return voicingMap.get(l);
     }
 
     /**
@@ -191,8 +223,8 @@ public class TurkishAlphabet {
      */
     public boolean asciiEqual(char c1, char c2) {
         return (isValid(c1) && isValid(c2)) &&
-                (c1 == c2 || 
-                    ASCII_EQUIVALENT_CHARS_LOOKUP[c1] == ASCII_EQUIVALENT_CHARS_LOOKUP[c2]);
+                (c1 == c2 ||
+                        ASCII_EQUIVALENT_CHARS_LOOKUP[c1] == ASCII_EQUIVALENT_CHARS_LOOKUP[c2]);
     }
 
     public char getAsciiEquivalentChar(char c) {
@@ -209,6 +241,7 @@ public class TurkishAlphabet {
 
     /**
      * checks if a character is part of TurkishAlphabet.
+     *
      * @param c character to check
      * @return true if it is part of the Turkish alphabet. false otherwise
      */
@@ -216,13 +249,13 @@ public class TurkishAlphabet {
         return c < MAX_CHAR_VALUE && VALID_CHAR_TABLE[c];
     }
 
-	public byte[] toByteIndexes(String s) {
-		byte[] indexes = new byte[s.length()];
-		for (int i=0; i<indexes.length; i++) {
-			indexes[i] = (byte)getAphabeticIndex(s.charAt(i));
-		}
-		return indexes;
-	}
+    public byte[] toByteIndexes(String s) {
+        byte[] indexes = new byte[s.length()];
+        for (int i = 0; i < indexes.length; i++) {
+            indexes[i] = (byte) getAphabeticIndex(s.charAt(i));
+        }
+        return indexes;
+    }
 
 
 }

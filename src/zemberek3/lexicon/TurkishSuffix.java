@@ -19,7 +19,7 @@ public class TurkishSuffix {
         return this;
     }
 
-    public TurkishSuffix addStates(SuffixNode... nodes) {
+    public TurkishSuffix addNodes(SuffixNode... nodes) {
         this.nodes.addAll(Arrays.asList(nodes));
         return this;
     }

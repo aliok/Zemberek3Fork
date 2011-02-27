@@ -6,7 +6,11 @@ import java.util.Set;
 
 public class BoundaryNode implements Cloneable {
 
+    // this defines the main suffixes that can follow this boundary node. However, if exclusiveSuffixes
+    // has any element, other suffixes cannot follow this node.
     PrimaryPos primaryPos;
+
+
     Set<MorphemicAttribute> attributes = new HashSet<MorphemicAttribute>();
 
     //If this list is not empty, ONLY the exclusive suffixes in the list can follow this Node.

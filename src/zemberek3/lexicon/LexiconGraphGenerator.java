@@ -91,15 +91,6 @@ public class LexiconGraphGenerator {
             Aorist_I
     );
 
-    static Map<TurkicLetter, TurkicLetter> voicingMap = Maps.newHashMap();
-
-    static {
-        voicingMap.put(TurkishAlphabet.L_p, TurkishAlphabet.L_b);
-        voicingMap.put(TurkishAlphabet.L_k, TurkishAlphabet.L_gg);
-        voicingMap.put(TurkishAlphabet.L_cc, TurkishAlphabet.L_c);
-        voicingMap.put(TurkishAlphabet.L_t, TurkishAlphabet.L_d);
-        voicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_gg);
-    }
 
     private RootNode[] generateModifiedRootStates(LexiconItem lexiconItem) {
 
@@ -121,8 +112,8 @@ public class LexiconGraphGenerator {
 
                 case Voicing:
                     TurkicLetter last = modifiedSeq.lastLetter();
-                    TurkicLetter modifiedLetter = voicingMap.get(last);
-                    if (!voicingMap.containsKey(last)) {
+                    TurkicLetter modifiedLetter = alphabet.voice(last);
+                    if (modifiedLetter==null) {
                         throw new LexiconGenerationException("Voicing letter is not proper in:" + lexiconItem);
                     }
                     if (lexiconItem.root.endsWith("nk"))
@@ -206,16 +197,6 @@ public class LexiconGraphGenerator {
         throw new IllegalArgumentException("Lexicon Item with special stem change cannot be handled:" + lexiconItem);
     }
 
-    private static Map<TurkicLetter, TurkicLetter> devoicingMap = new HashMap<TurkicLetter, TurkicLetter>();
-
-    static {
-        devoicingMap.put(TurkishAlphabet.L_b, TurkishAlphabet.L_p);
-        devoicingMap.put(TurkishAlphabet.L_c, TurkishAlphabet.L_cc);
-        devoicingMap.put(TurkishAlphabet.L_d, TurkishAlphabet.L_t);
-        devoicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_k);
-        devoicingMap.put(TurkishAlphabet.L_gg, TurkishAlphabet.L_k);
-    }
-
     private RootNode[] handleP3sgCompounds(LexiconItem lexiconItem) {
 
         RootNode[] nodes = new RootNode[2];
@@ -238,7 +219,7 @@ public class LexiconGraphGenerator {
             if (modified.endsWith("o" + String.valueOf(TurkishAlphabet.C_gg)))
                 modifiedSeq.eraseLast().append(TurkishAlphabet.L_g);
             else {
-                TurkicLetter l = devoicingMap.get(modifiedSeq.lastLetter());
+                TurkicLetter l = alphabet.devoice(modifiedSeq.lastLetter());
                 modifiedSeq.changeLetter(modifiedSeq.length() - 1, l);
             }
             nodes[1] = new RootNode(modifiedSeq.toString(), lexiconItem, modifiedNode, false);

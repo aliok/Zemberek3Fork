@@ -251,6 +251,14 @@ public class TurkicSeq implements CharSequence, Comparable<TurkicSeq> {
         throw new IllegalStateException("Letter sequence is already empty");
     }
 
+    public boolean hasVowel() {
+        for (int i = 0; i < size; i++) {
+            if (letters[i].isVowel())
+                return true;
+        }
+        return false;
+    }
+
     /**
      * Tam esitlik kiyaslamasi. kiyaslama nesne tipi, ardindan da TurkicLetter dizisi icindeki
      * harflerin char iceriklerine gore yapilir.
