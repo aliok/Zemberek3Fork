@@ -79,19 +79,19 @@ public class TurkishSuffixes {
     static TurkishSuffix[] COPULAR = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_yken};
 
     public void generate() {
-        SuffixNode nodeA = new SuffixNode(Pl_lAr, "lar");
-        SuffixNode nodeE = new SuffixNode(Pl_lAr, "ler", MorphemicAttribute.LastVowelFrontal);
-        Pl_lAr.addNodes(nodeA, nodeE).
+        Pl_lAr.addNodes(generateNodes(Pl_lAr, "lAr")).
                 addSuccessor(NOUN_CASE).
                 addSuccessor(COPULAR).
                 addSuccessor(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, By_cA);
+
+        
     }
 
     TurkishAlphabet alphabet = new TurkishAlphabet();
 
-    private List<SuffixNode> generateFromSuffixString(String suffixString) {
+    private List<TurkicSeq> generateFromSuffixString(String suffixString) {
 
-        LinkedList<TurkicSeq> sequences = new LinkedList<TurkicSeq>();
+        ArrayList<TurkicSeq> sequences = new ArrayList<TurkicSeq>();
         if (suffixString.length() > 0)
             sequences.add(new TurkicSeq());
 
@@ -99,48 +99,51 @@ public class TurkishSuffixes {
         while (tokenIterator.hasNext()) {
             SuffixToken token = tokenIterator.next();
             switch (token.type) {
+
                 case LETTER:
-                    for (TurkicSeq sequence : sequences) {
-                        sequence.append(token.l);
+                    for (TurkicSeq seq : sequences) {
+                        seq.append(token.l);
                     }
                     break;
+
                 case A_WOVEL:
-                    LinkedList<TurkicSeq> alist = new LinkedList<TurkicSeq>();
-                    for (TurkicSeq sequence : sequences) {
-                        if (!sequence.hasVowel()) {
-                            if (sequence.length() == 0 && sequences.size()==1)
+                    ArrayList<TurkicSeq> alist = new ArrayList<TurkicSeq>();
+                    for (TurkicSeq seq : sequences) {
+                        if (!seq.hasVowel()) {
+                            if (seq.length() == 0 && sequences.size() == 1)
                                 alist.add(new TurkicSeq());
-                            alist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_a));
-                            alist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_e));
-                        } else if (sequence.lastVowel().isFrontalVowel()) {
-                            alist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_e));
+                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_a));
+                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_e));
+                        } else if (seq.lastVowel().isFrontalVowel()) {
+                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_e));
                         } else {
-                            alist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_a));
+                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_a));
                         }
                     }
                     sequences = alist;
                     break;
+
                 case I_WOVEL:
-                    LinkedList<TurkicSeq> ilist = new LinkedList<TurkicSeq>();
-                    for (TurkicSeq sequence : sequences) {
-                        if (!sequence.hasVowel()) {
-                            if (sequence.length() == 0 && sequences.size()==1)
+                    ArrayList<TurkicSeq> ilist = new ArrayList<TurkicSeq>();
+                    for (TurkicSeq seq : sequences) {
+                        if (!seq.hasVowel()) {
+                            if (seq.length() == 0 && sequences.size() == 1)
                                 ilist.add(new TurkicSeq());
-                            ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_ii));
-                            ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_i));
-                            ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_u));
-                            ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_uu));
+                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_ii));
+                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_i));
+                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_u));
+                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_uu));
                         } else {
-                            boolean frontal = sequence.lastVowel().frontalVowel;
-                            boolean round = sequence.lastVowel().roundedVowel;
+                            boolean frontal = seq.lastVowel().frontalVowel;
+                            boolean round = seq.lastVowel().roundedVowel;
                             if (frontal && round) {
-                                ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_uu));
+                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_uu));
                             } else if (frontal && !round) {
-                                ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_i));
+                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_i));
                             } else if (!frontal && round) {
-                                ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_uu));
+                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_uu));
                             } else if (!frontal && !round) {
-                                ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_ii));
+                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_ii));
                             }
                         }
                     }
@@ -148,7 +151,7 @@ public class TurkishSuffixes {
                     break;
 
                 case DEVOICE:
-                    LinkedList<TurkicSeq> dlist = new LinkedList<TurkicSeq>();
+                    ArrayList<TurkicSeq> dlist = new ArrayList<TurkicSeq>();
                     for (TurkicSeq sequence : sequences) {
                         dlist.add(new TurkicSeq(sequence).append(token.l));
                         dlist.add(new TurkicSeq(sequence).append(alphabet.devoice(token.l)));
@@ -157,7 +160,7 @@ public class TurkishSuffixes {
                     break;
 
                 case VOICE:
-                    LinkedList<TurkicSeq> vlist = new LinkedList<TurkicSeq>();
+                    ArrayList<TurkicSeq> vlist = new ArrayList<TurkicSeq>();
                     for (TurkicSeq sequence : sequences) {
                         vlist.add(new TurkicSeq(sequence).append(token.l));
                         vlist.add(new TurkicSeq(sequence).append(alphabet.voice(token.l)));
@@ -166,22 +169,40 @@ public class TurkishSuffixes {
                     break;
 
                 case APPEND:
-                    LinkedList<TurkicSeq> aplist = new LinkedList<TurkicSeq>();
+                    ArrayList<TurkicSeq> aplist = new ArrayList<TurkicSeq>();
                     for (TurkicSeq sequence : sequences) {
                         aplist.add(new TurkicSeq(sequence).append(token.l));
                         aplist.add(new TurkicSeq(sequence));
                     }
                     sequences = aplist;
                     break;
-
             }
         }
+        return sequences;
+    }
 
-        for (TurkicSeq sequence : sequences) {
-            System.out.println(sequence);
+    private SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord) {
+        List<SuffixNode> nodes = new ArrayList<SuffixNode>();
+        for (TurkicSeq sequence : generateFromSuffixString(generationWord)) {
+            nodes.add(new SuffixNode(suffix, sequence.toString(), defineMorphemicAttributes(sequence)));
         }
+        return nodes.toArray(new SuffixNode[nodes.size()]);
+    }
 
-        return null;
+    // in suffix, defining morphemic attributes is straight forward.
+    private Set<MorphemicAttribute> defineMorphemicAttributes(TurkicSeq seq) {
+        Set<MorphemicAttribute> attributes = new HashSet<MorphemicAttribute>();
+        if (seq.hasVowel()) {
+            if (seq.lastVowel().isFrontalVowel())
+                attributes.add(MorphemicAttribute.LastVowelFrontal);
+        }
+        if (seq.lastLetter().isVowel()) {
+            attributes.add(MorphemicAttribute.LastLetterVowel);
+        }
+        if (seq.lastLetter().isStopConsonant()) {
+            attributes.add(MorphemicAttribute.LastLetterVoicelessStop);
+        }
+        return attributes;
     }
 
 
@@ -245,6 +266,6 @@ public class TurkishSuffixes {
 
     public static void main(String[] args) {
         TurkishSuffixes suffixes = new TurkishSuffixes();
-        suffixes.generateFromSuffixString("In");
+        //   suffixes.generateFromSuffixString("In");
     }
 }
