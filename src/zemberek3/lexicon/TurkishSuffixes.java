@@ -4,7 +4,6 @@ import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
-import javax.sound.midi.Sequence;
 import java.util.*;
 
 public class TurkishSuffixes {
@@ -109,7 +108,7 @@ public class TurkishSuffixes {
                     LinkedList<TurkicSeq> alist = new LinkedList<TurkicSeq>();
                     for (TurkicSeq sequence : sequences) {
                         if (!sequence.hasVowel()) {
-                            if (sequence.length() == 0)
+                            if (sequence.length() == 0 && sequences.size()==1)
                                 alist.add(new TurkicSeq());
                             alist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_a));
                             alist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_e));
@@ -125,7 +124,7 @@ public class TurkishSuffixes {
                     LinkedList<TurkicSeq> ilist = new LinkedList<TurkicSeq>();
                     for (TurkicSeq sequence : sequences) {
                         if (!sequence.hasVowel()) {
-                            if (sequence.length() == 0)
+                            if (sequence.length() == 0 && sequences.size()==1)
                                 ilist.add(new TurkicSeq());
                             ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_ii));
                             ilist.add(new TurkicSeq(sequence).append(TurkishAlphabet.L_i));
@@ -165,6 +164,16 @@ public class TurkishSuffixes {
                     }
                     sequences = vlist;
                     break;
+
+                case APPEND:
+                    LinkedList<TurkicSeq> aplist = new LinkedList<TurkicSeq>();
+                    for (TurkicSeq sequence : sequences) {
+                        aplist.add(new TurkicSeq(sequence).append(token.l));
+                        aplist.add(new TurkicSeq(sequence));
+                    }
+                    sequences = aplist;
+                    break;
+
             }
         }
 
@@ -181,7 +190,7 @@ public class TurkishSuffixes {
         A_WOVEL,
         VOICE,
         DEVOICE,
-        APPEND_AFTER_VOWEL,
+        APPEND,
         LETTER
     }
 
@@ -216,7 +225,7 @@ public class TurkishSuffixes {
             char p = generationWord.charAt(pointer++);
             switch (p) {
                 case '+':
-                    return new SuffixToken(TokenType.APPEND_AFTER_VOWEL, alphabet.getLetter(generationWord.charAt(pointer++)));
+                    return new SuffixToken(TokenType.APPEND, alphabet.getLetter(generationWord.charAt(pointer++)));
                 case '>':
                     return new SuffixToken(TokenType.DEVOICE, alphabet.getLetter(generationWord.charAt(pointer++)));
                 case '~':
@@ -236,6 +245,6 @@ public class TurkishSuffixes {
 
     public static void main(String[] args) {
         TurkishSuffixes suffixes = new TurkishSuffixes();
-        suffixes.generateFromSuffixString(">cI~k");
+        suffixes.generateFromSuffixString("In");
     }
 }
