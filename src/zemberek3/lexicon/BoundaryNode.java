@@ -11,7 +11,7 @@ public class BoundaryNode implements Cloneable {
     PrimaryPos primaryPos;
 
 
-    Set<MorphemicAttribute> attributes = new HashSet<MorphemicAttribute>();
+    Set<MorphAttr> attributes = new HashSet<MorphAttr>();
 
     //If this list is not empty, ONLY the exclusive suffixes in the list can follow this Node.
     Set<TurkishSuffix> exclusiveSuffixes = new HashSet<TurkishSuffix>();
@@ -23,23 +23,23 @@ public class BoundaryNode implements Cloneable {
         this.primaryPos = primaryPos;
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, Set<MorphemicAttribute> attributes) {
+    public BoundaryNode(PrimaryPos primaryPos, Set<MorphAttr> attributes) {
         this.primaryPos = primaryPos;
         this.attributes = attributes;
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, MorphemicAttribute... attributes) {
+    public BoundaryNode(PrimaryPos primaryPos, MorphAttr... attributes) {
         this.primaryPos = primaryPos;
         this.attributes.addAll(Arrays.asList(attributes));
     }
 
-    public BoundaryNode add(MorphemicAttribute morphemicAttribute) {
-        attributes.add(morphemicAttribute);
+    public BoundaryNode add(MorphAttr morphAttr) {
+        attributes.add(morphAttr);
         return this;
     }
 
-    public BoundaryNode remove(MorphemicAttribute morphemicAttribute) {
-        attributes.remove(morphemicAttribute);
+    public BoundaryNode remove(MorphAttr morphAttr) {
+        attributes.remove(morphAttr);
         return this;
     }
 
@@ -57,7 +57,7 @@ public class BoundaryNode implements Cloneable {
         return primaryPos;
     }
 
-    public Set<MorphemicAttribute> getAttributes() {
+    public Set<MorphAttr> getAttributes() {
         return attributes;
     }
 
@@ -66,7 +66,7 @@ public class BoundaryNode implements Cloneable {
         if (attributes.size() > 0)
             sb.append(" A:");
         int i = 0;
-        for (MorphemicAttribute attribute : attributes) {
+        for (MorphAttr attribute : attributes) {
             sb.append(attribute.getStringForm());
             if (i++ < attributes.size() - 1)
                 sb.append(", ");

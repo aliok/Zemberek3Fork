@@ -190,17 +190,17 @@ public class TurkishSuffixes {
     }
 
     // in suffix, defining morphemic attributes is straight forward.
-    private Set<MorphemicAttribute> defineMorphemicAttributes(TurkicSeq seq) {
-        Set<MorphemicAttribute> attributes = new HashSet<MorphemicAttribute>();
+    private Set<MorphAttr> defineMorphemicAttributes(TurkicSeq seq) {
+        Set<MorphAttr> attributes = new HashSet<MorphAttr>();
         if (seq.hasVowel()) {
             if (seq.lastVowel().isFrontalVowel())
-                attributes.add(MorphemicAttribute.LastVowelFrontal);
+                attributes.add(MorphAttr.LastVowelFrontal);
         }
         if (seq.lastLetter().isVowel()) {
-            attributes.add(MorphemicAttribute.LastLetterVowel);
+            attributes.add(MorphAttr.LastLetterVowel);
         }
         if (seq.lastLetter().isStopConsonant()) {
-            attributes.add(MorphemicAttribute.LastLetterVoicelessStop);
+            attributes.add(MorphAttr.LastLetterVoicelessStop);
         }
         return attributes;
     }

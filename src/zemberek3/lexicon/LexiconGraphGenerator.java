@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import static zemberek3.lexicon.MorphemicAttribute.*;
-import static zemberek3.lexicon.MorphemicAttribute.Voicing;
+import static zemberek3.lexicon.MorphAttr.*;
+import static zemberek3.lexicon.MorphAttr.Voicing;
 import static zemberek3.lexicon.PrimaryPos.*;
 import static zemberek3.lexicon.TurkishSuffixes.*;
 
@@ -49,7 +49,7 @@ public class LexiconGraphGenerator {
 
     private BoundaryNode generateBoundaryState(LexiconItem lexiconItem) {
         BoundaryNode boundaryNode = new BoundaryNode(lexiconItem.primaryPos);
-        for (MorphemicAttribute attribute : lexiconItem.attributes) {
+        for (MorphAttr attribute : lexiconItem.attributes) {
             if (boundaryStateAttributes.contains(attribute))
                 boundaryNode.add(attribute);
         }
@@ -65,13 +65,13 @@ public class LexiconGraphGenerator {
     }
 
     public boolean hasModifierAttribute(LexiconItem item) {
-        for (MorphemicAttribute attribute : item.attributes)
+        for (MorphAttr attribute : item.attributes)
             if (modifiers.contains(attribute))
                 return true;
         return false;
     }
 
-    Set<MorphemicAttribute> modifiers = Sets.newHashSet(
+    Set<MorphAttr> modifiers = Sets.newHashSet(
             Doubling,
             LastVowelDrop,
             ProgressiveVowelDrop,
@@ -80,7 +80,7 @@ public class LexiconGraphGenerator {
             CompoundP3sg
     );
 
-    Set<MorphemicAttribute> boundaryStateAttributes = Sets.newHashSet(
+    Set<MorphAttr> boundaryStateAttributes = Sets.newHashSet(
             LastLetterVowel,
             LastVowelFrontal,
             LastVowelRounded,
@@ -99,7 +99,7 @@ public class LexiconGraphGenerator {
 
         TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
 
-        for (MorphemicAttribute attribute : lexiconItem.attributes) {
+        for (MorphAttr attribute : lexiconItem.attributes) {
 
             // transfer necessary attributes to boundary state.
             if (boundaryStateAttributes.contains(attribute)) {

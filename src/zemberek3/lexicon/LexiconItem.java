@@ -5,9 +5,9 @@ public class LexiconItem {
     String root;
     public PrimaryPos primaryPos;
     public SecondaryPos secondaryPos;
-    MorphemicAttribute[] attributes;
+    MorphAttr[] attributes;
 
-    public LexiconItem(String lemma, String root, PrimaryPos primaryPos, SecondaryPos secondaryPos, MorphemicAttribute[] attributes) {
+    public LexiconItem(String lemma, String root, PrimaryPos primaryPos, SecondaryPos secondaryPos, MorphAttr[] attributes) {
         this.lemma = lemma;
         this.root = root;
         this.primaryPos = primaryPos;
@@ -15,9 +15,9 @@ public class LexiconItem {
         this.attributes = attributes;
     }
 
-    public boolean hasAttribute(MorphemicAttribute attribute) {
-        for (MorphemicAttribute morphemicAttribute : attributes) {
-            if(attribute==morphemicAttribute)
+    public boolean hasAttribute(MorphAttr attribute) {
+        for (MorphAttr morphAttr : attributes) {
+            if(attribute== morphAttr)
                 return true;
         }
         return false;
@@ -31,7 +31,7 @@ public class LexiconItem {
         if (attributes.length > 0)
             sb.append(" A:");
         int i = 0;
-        for (MorphemicAttribute attribute : attributes) {
+        for (MorphAttr attribute : attributes) {
             sb.append(attribute.getStringForm());
             if (i++ < attributes.length - 1)
                 sb.append(", ");
