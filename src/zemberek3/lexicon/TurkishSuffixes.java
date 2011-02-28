@@ -22,7 +22,7 @@ public class TurkishSuffixes {
     static TurkishSuffix P2pl_InIz;
     static TurkishSuffix P3pl_lArI;
 
-    static TurkishSuffix Dim_cIk;
+    static TurkishSuffix Dim_cIk = new TurkishSuffix("Dim_cIk");
     static TurkishSuffix Dim_cAgIz;
     static TurkishSuffix With_lI;
     static TurkishSuffix Without_sIz;
@@ -30,7 +30,7 @@ public class TurkishSuffixes {
     static TurkishSuffix Related_sAl;
     static TurkishSuffix Drv_lIk;
     static TurkishSuffix Drv_ImsI;
-    static TurkishSuffix Rel_kI;
+    static TurkishSuffix Rel_ki;
     static TurkishSuffix By_cA;
     static TurkishSuffix Cmp_cA;
     static TurkishSuffix Agt_cI;
@@ -79,14 +79,50 @@ public class TurkishSuffixes {
     static TurkishSuffix[] COPULAR = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_yken};
 
     public void generate() {
-        Pl_lAr.addNodes(generateNodes(Pl_lAr, "lAr")).
-                addSuccessor(NOUN_CASE).
-                addSuccessor(COPULAR).
-                addSuccessor(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, By_cA);
-        Acc_yI.addNodes(generateNodes(Acc_yI, "+yI"));
 
-        
+        Pl_lAr.addNodes(generateNodes(Pl_lAr, "lAr"))
+                .addSuccessor(NOUN_CASE, COPULAR)
+                .addSuccessors(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, By_cA);
+
+        Dat_yA.addNodes(generateNodes(Dat_yA, "+yA"))
+                .addSuccessors(COPULAR);
+        Dat_yA.addNodes(generatePredecessorNodes(Dat_yA, "nA", Rel_ki, P3sg_sI, P3pl_lArI));
+
+        Loc_dA.addNodes(generateNodes(Loc_dA, ">dA")).addSuccessors(COPULAR);
+        Loc_dA.addNodes(generatePredecessorNodes(Loc_dA, "ndA", Rel_ki, P3sg_sI, P3pl_lArI));
+
+        Abl_dAn.addNodes(generateNodes(Abl_dAn, ">dAn")).addSuccessors(COPULAR);
+        Abl_dAn.addNodes(generatePredecessorNodes(Abl_dAn, "ndAn", Rel_ki, P3sg_sI, P3pl_lArI));
+
+        Gen_nIn.addNodes(generateNodes(Gen_nIn, "+nIn"))
+                .addSuccessors(COPULAR)
+                .addSuccessors(Rel_ki);
+
+        Acc_yI.addNodes(generateNodes(Acc_yI, "+yI"))
+                .addNodes(generatePredecessorNodes(Abl_dAn, "nI", Rel_ki, P3sg_sI, P3pl_lArI));
+
+        Dim_cIk.addNodes(generateNodes(Dim_cIk, ">cI~k")).
+                addSuccessor(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
+                addSuccessors(Pl_lAr, With_lI, Without_sIz);
+        //TODO: make it nicer.
+        for (SuffixNode suffixNode : Dim_cIk.nodes) {
+            if (suffixNode.seq.lastLetter() == TurkishAlphabet.L_gg)
+                suffixNode.add(MorphAttr.ExpectsVowel);
+            if (suffixNode.seq.lastLetter() == TurkishAlphabet.L_k)
+                suffixNode.add(MorphAttr.ExpectsConsonant);
+        }
+
+
     }
+
+    private SuffixNode[] generatePredecessorNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... predecessorSuffixes) {
+        SuffixNode[] accExceptionNodes = generateNodes(suffix, generationWord);
+        for (SuffixNode node : accExceptionNodes) {
+            node.addExclusivePredecessor(predecessorSuffixes);
+        }
+        return accExceptionNodes;
+    }
+
 
     TurkishAlphabet alphabet = new TurkishAlphabet();
 
@@ -185,7 +221,7 @@ public class TurkishSuffixes {
     private SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord) {
         List<SuffixNode> nodes = new ArrayList<SuffixNode>();
         for (TurkicSeq sequence : generateFromSuffixString(generationWord)) {
-            nodes.add(new SuffixNode(suffix, sequence.toString(), defineMorphemicAttributes(sequence)));
+            nodes.add(new SuffixNode(suffix, sequence, defineMorphemicAttributes(sequence)));
         }
         return nodes.toArray(new SuffixNode[nodes.size()]);
     }
@@ -203,6 +239,7 @@ public class TurkishSuffixes {
         if (seq.lastLetter().isStopConsonant()) {
             attributes.add(MorphAttr.LastLetterVoicelessStop);
         }
+
         return attributes;
     }
 
@@ -267,6 +304,9 @@ public class TurkishSuffixes {
 
     public static void main(String[] args) {
         TurkishSuffixes suffixes = new TurkishSuffixes();
-        //   suffixes.generateFromSuffixString("In");
+        suffixes.generate();
+        for (SuffixNode node : TurkishSuffixes.Acc_yI.nodes) {
+            System.out.println(node.content);
+        }
     }
 }

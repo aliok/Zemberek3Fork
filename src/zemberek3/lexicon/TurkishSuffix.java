@@ -14,8 +14,15 @@ public class TurkishSuffix {
         this.id = id;
     }
 
-    public TurkishSuffix addSuccessor(TurkishSuffix... suffix) {
+    public TurkishSuffix addSuccessors(TurkishSuffix... suffix) {
         this.successors.addAll(Arrays.asList(suffix));
+        return this;
+    }
+
+    public TurkishSuffix addSuccessor(TurkishSuffix[]... suffixArrays) {
+        for (TurkishSuffix[] suffixArray : suffixArrays) {
+            this.successors.addAll(Arrays.asList(suffixArray));
+        }
         return this;
     }
 
