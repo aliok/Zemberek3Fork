@@ -7,82 +7,74 @@ import zemberek3.structure.TurkishAlphabet;
 import java.util.*;
 
 public class TurkishSuffixes {
-    static TurkishSuffix Pl_lAr = new TurkishSuffix("Pl_lAr");
-    static TurkishSuffix Dat_yA = new TurkishSuffix("Dat_yA");
-    static TurkishSuffix Loc_dA = new TurkishSuffix("Loc_dA");
-    static TurkishSuffix Abl_dAn = new TurkishSuffix("Abl_dAn");
-    static TurkishSuffix Gen_nIn = new TurkishSuffix("Gen_nIn");
-    static TurkishSuffix Acc_yI = new TurkishSuffix("Acc_yI");
-    static TurkishSuffix Inst_lA;
 
-    static TurkishSuffix P1sg_Im;
-    static TurkishSuffix P2sg_In;
-    static TurkishSuffix P3sg_sI;
-    static TurkishSuffix P1pl_ImIz;
-    static TurkishSuffix P2pl_InIz;
-    static TurkishSuffix P3pl_lArI;
+    public static final TurkishSuffix Pl_lAr = new TurkishSuffix("Pl_lAr");
+    public static final TurkishSuffix Dat_yA = new TurkishSuffix("Dat_yA");
+    public static final TurkishSuffix Loc_dA = new TurkishSuffix("Loc_dA");
+    public static final TurkishSuffix Abl_dAn = new TurkishSuffix("Abl_dAn");
+    public static final TurkishSuffix Gen_nIn = new TurkishSuffix("Gen_nIn");
+    public static final TurkishSuffix Acc_yI = new TurkishSuffix("Acc_yI");
+    public static final TurkishSuffix Inst_lA = new TurkishSuffix("Inst_lA");
 
-    static TurkishSuffix Dim_cIk = new TurkishSuffix("Dim_cIk");
-    static TurkishSuffix Dim_cAgIz;
-    static TurkishSuffix With_lI;
-    static TurkishSuffix Without_sIz;
-    static TurkishSuffix Since_dIr;
-    static TurkishSuffix Related_sAl;
-    static TurkishSuffix Drv_lIk;
-    static TurkishSuffix Drv_ImsI;
-    static TurkishSuffix Rel_ki;
-    static TurkishSuffix By_cA;
-    static TurkishSuffix Cmp_cA;
-    static TurkishSuffix Agt_cI;
+    public static final TurkishSuffix P1sg_Im = new TurkishSuffix("P1sg_Im");
+    public static final TurkishSuffix P2sg_In = new TurkishSuffix("P2sg_In");
+    public static final TurkishSuffix P3sg_sI = new TurkishSuffix("P3sg_sI");
+    public static final TurkishSuffix P1pl_ImIz = new TurkishSuffix("P1pl_ImIz");
+    public static final TurkishSuffix P2pl_InIz = new TurkishSuffix("P2pl_InIz");
+    public static final TurkishSuffix P3pl_lArI = new TurkishSuffix("P3pl_lArI");
 
-    static TurkishSuffix A1sg_yIm;
-    static TurkishSuffix A2sg_sIn;
-    static TurkishSuffix A3sg;
-    static TurkishSuffix A1pl_yIz;
-    static TurkishSuffix A2pl_sInIz;
-    static TurkishSuffix A3pl_lAr;
+    public static final TurkishSuffix Dim_cIk = new TurkishSuffix("Dim_cIk");
+    public static final TurkishSuffix Dim_cAgIz = new TurkishSuffix("Dim_cAgIz");
+    public static final TurkishSuffix With_lI = new TurkishSuffix("With_lI");
+    public static final TurkishSuffix Without_sIz = new TurkishSuffix("Without_sIz");
+    public static final TurkishSuffix Rel_ki = new TurkishSuffix("Rel_ki");
 
-    static TurkishSuffix Become_lAs;
-    static TurkishSuffix Ly_cA;
-    static TurkishSuffix Quite_cA;
+    public static final TurkishSuffix A1sg_yIm = new TurkishSuffix("A1sg_yIm");
+    public static final TurkishSuffix A2sg_sIn = new TurkishSuffix("A2sg_sIn");
+    public static final TurkishSuffix A3sg = new TurkishSuffix("A3sg");
+    public static final TurkishSuffix A1pl_yIz = new TurkishSuffix("A1pl_yIz");
+    public static final TurkishSuffix A2pl_sInIz = new TurkishSuffix("A2pl_sInIz");
+    public static final TurkishSuffix A3pl_lAr = new TurkishSuffix("A3pl_lAr");
 
-    static TurkishSuffix Aor_Ir;
-    static TurkishSuffix Prog_Iyor;
-    static TurkishSuffix Prog_mAktA;
-    static TurkishSuffix Fut_yAcAk;
-    static TurkishSuffix Past_dI;
-    static TurkishSuffix Evid_mIs;
-    static TurkishSuffix Neg_mA;
-    static TurkishSuffix Cond_sa;
-    static TurkishSuffix Necess_mAlI;
-    static TurkishSuffix Opt_yA;
-    static TurkishSuffix Pass_In = new TurkishSuffix("Pass_In");
-    static TurkishSuffix Caus_dIr;
-    static TurkishSuffix Recip_yIs;
-    static TurkishSuffix Reflex_In;
-    static TurkishSuffix Abil_yAbIl;
-    static TurkishSuffix Cont_yAdur;
+    public static final TurkishSuffix Become_lAs = new TurkishSuffix("Become_lAs");
+
+    public static final TurkishSuffix Aor_Ir = new TurkishSuffix("Aor_Ir");
+    public static final TurkishSuffix Prog_Iyor = new TurkishSuffix("Prog_Iyor");
+    public static final TurkishSuffix Prog_mAktA = new TurkishSuffix("Prog_mAktA");
+    public static final TurkishSuffix Fut_yAcAk = new TurkishSuffix("Fut_yAcAk");
+    public static final TurkishSuffix Past_dI = new TurkishSuffix("Past_dI");
+    public static final TurkishSuffix Evid_mIs = new TurkishSuffix("Evid_mIs");
+    public static final TurkishSuffix Neg_mA = new TurkishSuffix("Neg_mA");
+    public static final TurkishSuffix Cond_sa = new TurkishSuffix("Cond_sa");
+    public static final TurkishSuffix Necess_mAlI = new TurkishSuffix("Necess_mAlI");
+    public static final TurkishSuffix Opt_yA = new TurkishSuffix("Opt_yA");
+    public static final TurkishSuffix Pass_In = new TurkishSuffix("Pass_In");
+    public static final TurkishSuffix Caus_dIr = new TurkishSuffix("Caus_dIr");
+    public static final TurkishSuffix Recip_yIs = new TurkishSuffix("Recip_yIs");
+    public static final TurkishSuffix Reflex_In = new TurkishSuffix("Reflex_In");
+    public static final TurkishSuffix Abil_yAbIl = new TurkishSuffix("Abil_yAbIl");
+    public static final TurkishSuffix Cont_yAdur = new TurkishSuffix("Cont_yAdur");
 
 
-    static TurkishSuffix Cop_dIr;
-    static TurkishSuffix PastCop_ydI;
-    static TurkishSuffix EvidCop_ymIs;
-    static TurkishSuffix CondCop_ysA;
-    static TurkishSuffix While_yken;
+    public static final TurkishSuffix Cop_dIr = new TurkishSuffix("Cop_dIr");
+    public static final TurkishSuffix PastCop_ydI = new TurkishSuffix("PastCop_ydI");
+    public static final TurkishSuffix EvidCop_ymIs = new TurkishSuffix("EvidCop_ymIs");
+    public static final TurkishSuffix CondCop_ysA = new TurkishSuffix("CondCop_ysA");
+    public static final TurkishSuffix While_yken = new TurkishSuffix("While_yken");
 
-    static TurkishSuffix AfterDoing_yIp;
-    static TurkishSuffix JustAfter_yIncA;
+    public static final TurkishSuffix AfterDoing_yIp = new TurkishSuffix("AfterDoing_yIp");
+    public static final TurkishSuffix JustAfter_yIncA = new TurkishSuffix("JustAfter_yIncA");
 
-    static TurkishSuffix[] NOUN_CASE = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_lA};
-    static TurkishSuffix[] NOUN_POSS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
-    static TurkishSuffix[] NOUN_PERSON = {A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
-    static TurkishSuffix[] COPULAR = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_yken};
+    public static final TurkishSuffix[] NOUN_CASE = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_lA};
+    public static final TurkishSuffix[] NOUN_POSS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
+    public static final TurkishSuffix[] NOUN_PERSON = {A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
+    public static final TurkishSuffix[] COPULAR = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_yken};
 
     public void generate() {
 
         Pl_lAr.addNodes(generateNodes(Pl_lAr, "lAr"))
-                .addSuccessor(NOUN_CASE, COPULAR)
-                .addSuccessors(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, By_cA);
+                .addSuccessors(NOUN_CASE, COPULAR)
+                .addSuccessors(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz);
 
         Dat_yA.addNodes(generateNodes(Dat_yA, "+yA"))
                 .addSuccessors(COPULAR);
@@ -101,8 +93,21 @@ public class TurkishSuffixes {
         Acc_yI.addNodes(generateNodes(Acc_yI, "+yI"))
                 .addNodes(generatePredecessorNodes(Abl_dAn, "nI", Rel_ki, P3sg_sI, P3pl_lArI));
 
+        P1sg_Im.addNodes(generateNodes(P1sg_Im, "Im")).
+                addSuccessors(NOUN_CASE, COPULAR).
+                addSuccessors(A2sg_sIn, A2pl_sInIz);
+
+        P2sg_In.addNodes(generateNodes(P2sg_In, "In")).
+                addSuccessors(NOUN_CASE, COPULAR).
+                addSuccessors(A1sg_yIm, A1pl_yIz);
+
+        P3sg_sI.addNodes(generateNodes(P3sg_sI, "+sI")).
+                addSuccessors(NOUN_CASE, COPULAR).
+                addSuccessors(A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz);
+
+
         Dim_cIk.addNodes(generateNodes(Dim_cIk, ">cI~k")).
-                addSuccessor(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
+                addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
                 addSuccessors(Pl_lAr, With_lI, Without_sIz);
         //TODO: make it nicer.
         for (SuffixNode suffixNode : Dim_cIk.nodes) {
@@ -112,6 +117,19 @@ public class TurkishSuffixes {
                 suffixNode.add(MorphAttr.ExpectsConsonant);
         }
 
+        Dim_cAgIz.addNodes(generateNodes(Dim_cAgIz, ">cağız")).
+                addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
+                addSuccessors(Pl_lAr, With_lI, Without_sIz);
+
+        With_lI.addNodes(generateNodes(With_lI, "lI")).
+                addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
+                addSuccessors(Pl_lAr);
+
+        Without_sIz.addNodes(generateNodes(Without_sIz, "sIz")).
+                addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
+                addSuccessors(Pl_lAr);
+
+        Rel_ki.addNodes(generateNodes(Rel_ki, "ki")).addSuccessors(NOUN_CASE, COPULAR, NOUN_PERSON);
 
     }
 

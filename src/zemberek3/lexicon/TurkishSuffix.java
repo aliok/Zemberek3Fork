@@ -19,7 +19,7 @@ public class TurkishSuffix {
         return this;
     }
 
-    public TurkishSuffix addSuccessor(TurkishSuffix[]... suffixArrays) {
+    public TurkishSuffix addSuccessors(TurkishSuffix[]... suffixArrays) {
         for (TurkishSuffix[] suffixArray : suffixArrays) {
             this.successors.addAll(Arrays.asList(suffixArray));
         }
