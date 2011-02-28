@@ -1,6 +1,6 @@
 package z3.generator.word;
 
-import zemberek3.structure.TurkicWordParse;
+import z3.structure.TurkicWordParse;
 
 public interface WordGenerator {
 

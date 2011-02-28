@@ -1,6 +1,6 @@
 package z3.repository.lemma;
 
-import zemberek3.structure.Lemma;
+import z3.structure.Lemma;
 
 import java.util.Iterator;
 

@@ -3,7 +3,7 @@ package extract;
 import com.google.common.collect.Sets;
 import org.jcaki.SimpleTextWriter;
 import org.jcaki.Strings;
-import zemberek3.structure.POS;
+import z3.structure.POS;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;

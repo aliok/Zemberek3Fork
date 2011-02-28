@@ -1,6 +1,6 @@
 package extract;
 
-import zemberek3.structure.POS;
+import z3.structure.POS;
 
 import java.util.HashMap;
 import java.util.Map;

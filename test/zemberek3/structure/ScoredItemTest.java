@@ -2,6 +2,7 @@ package zemberek3.structure;
 
 import org.junit.Test;
 import org.junit.Assert;
+import z3.structure.ScoredItem;
 
 
 public class ScoredItemTest {

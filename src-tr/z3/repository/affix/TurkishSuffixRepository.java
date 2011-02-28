@@ -1,8 +1,8 @@
 package z3.repository.affix;
 
-import zemberek3.structure.Lemma;
-import zemberek3.structure.affix.TurkicSuffix;
-import zemberek3.structure.affix.TurkicSuffixType;
+import z3.structure.Lemma;
+import z3.structure.affix.TurkicSuffix;
+import z3.structure.affix.TurkicSuffixType;
 
 import java.util.*;
 

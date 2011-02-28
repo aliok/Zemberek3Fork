@@ -1,7 +1,7 @@
 package z3.disambiguation;
 
-import zemberek3.structure.ScoredItem;
-import zemberek3.structure.TurkicWordParse;
+import z3.structure.TurkicWordParse;
+import z3.structure.ScoredItem;
 
 import java.util.Iterator;
 import java.util.List;

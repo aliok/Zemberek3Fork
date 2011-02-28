@@ -11,7 +11,7 @@ import org.jcaki.IOs;
 import org.jcaki.SimpleTextReader;
 import org.jcaki.SimpleTextWriter;
 import org.jcaki.Strings;
-import zemberek3.structure.POS;
+import z3.structure.POS;
 
 import java.io.File;
 import java.io.IOException;

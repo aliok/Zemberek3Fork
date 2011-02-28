@@ -1,5 +1,7 @@
 package zemberek3.service;
 
+import z3.service.SyllableService;
+
 import java.util.List;
 
 public abstract class BaseSyllableService implements SyllableService {
