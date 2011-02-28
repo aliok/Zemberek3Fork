@@ -1,4 +1,4 @@
-package z3.service;
+package zemberek3.service;
 
 import java.util.List;
 

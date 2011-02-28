@@ -1,6 +1,5 @@
 package zemberek3.service;
 
-import z3.service.SyllableService;
 import zemberek3.parser.syllable.SyllableParser;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
