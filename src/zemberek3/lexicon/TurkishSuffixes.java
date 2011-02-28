@@ -10,9 +10,9 @@ public class TurkishSuffixes {
     static TurkishSuffix Pl_lAr = new TurkishSuffix("Pl_lAr");
     static TurkishSuffix Dat_yA = new TurkishSuffix("Dat_yA");
     static TurkishSuffix Loc_dA = new TurkishSuffix("Loc_dA");
-    static TurkishSuffix Abl_dAn;
-    static TurkishSuffix Gen_nIn;
-    static TurkishSuffix Acc_yI;
+    static TurkishSuffix Abl_dAn = new TurkishSuffix("Acc_yI");
+    static TurkishSuffix Gen_nIn = new TurkishSuffix("Acc_yI");
+    static TurkishSuffix Acc_yI = new TurkishSuffix("Acc_yI");
     static TurkishSuffix Inst_lA;
 
     static TurkishSuffix P1sg_Im;
@@ -83,6 +83,7 @@ public class TurkishSuffixes {
                 addSuccessor(NOUN_CASE).
                 addSuccessor(COPULAR).
                 addSuccessor(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, By_cA);
+        Acc_yI.addNodes(generateNodes(Acc_yI, "+yI"));
 
         
     }
