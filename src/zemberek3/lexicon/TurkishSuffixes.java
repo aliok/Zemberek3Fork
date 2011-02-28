@@ -131,6 +131,11 @@ public class TurkishSuffixes {
 
         Rel_ki.addNodes(generateNodes(Rel_ki, "ki")).addSuccessors(NOUN_CASE, COPULAR, NOUN_PERSON);
 
+        A1sg_yIm.addNodes(generateNodes(A1sg_yIm,"+yIm")).addSuccessors(Cop_dIr);
+        A2sg_sIn.addNodes(generateNodes(A2sg_sIn,"sIn")).addSuccessors(Cop_dIr);
+        A1pl_yIz.addNodes(generateNodes(A1pl_yIz,"+yIz")).addSuccessors(Cop_dIr);
+        A2pl_sInIz.addNodes(generateNodes(A2pl_sInIz,"sInIz")).addSuccessors(Cop_dIr);
+        A3pl_lAr.addNodes(generateNodes(A3pl_lAr,"lAr")).addSuccessors(Cop_dIr);
     }
 
     private SuffixNode[] generatePredecessorNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... predecessorSuffixes) {
