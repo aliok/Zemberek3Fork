@@ -70,6 +70,24 @@ public class TurkishSuffixes {
     public static final TurkishSuffix[] NOUN_PERSON = {A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final TurkishSuffix[] COPULAR = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_yken};
 
+    public static final List<TurkishSuffix> NOUN_ROOT_SUFFIXES = new ArrayList<TurkishSuffix>();
+
+    static {
+        NOUN_ROOT_SUFFIXES.addAll(Arrays.asList(NOUN_CASE));
+        NOUN_ROOT_SUFFIXES.addAll(Arrays.asList(NOUN_POSS));
+        NOUN_ROOT_SUFFIXES.addAll(Arrays.asList(COPULAR));
+        NOUN_ROOT_SUFFIXES.addAll(Arrays.asList(NOUN_PERSON));
+        NOUN_ROOT_SUFFIXES.addAll(Arrays.asList(Dim_cIk, Dim_cAgIz, With_lI, Without_sIz));
+    }
+
+    public List<TurkishSuffix> getSuffixesForPos(PrimaryPos pos) {
+        switch (pos) {
+            case Noun:
+                return NOUN_ROOT_SUFFIXES;
+        }
+        return Collections.emptyList();
+    }
+
     public void generate() {
 
         Pl_lAr.addNodes(generateNodes(Pl_lAr, "lAr"))
@@ -338,5 +356,12 @@ public class TurkishSuffixes {
         for (SuffixNode node : TurkishSuffixes.PastCop_ydI.nodes) {
             System.out.println(node.content);
         }
+
+        System.out.println("Noun root suffix count: " + NOUN_ROOT_SUFFIXES.size());
+        int i = 0;
+        for (TurkishSuffix suffix : NOUN_ROOT_SUFFIXES) {
+            i += suffix.nodes.size();
+        }
+        System.out.println("SuffixNode Count: " + i);
     }
 }

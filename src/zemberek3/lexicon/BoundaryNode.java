@@ -10,7 +10,6 @@ public class BoundaryNode implements Cloneable {
     // has any element, other suffixes cannot follow this node.
     PrimaryPos primaryPos;
 
-
     Set<MorphAttr> attributes = new HashSet<MorphAttr>();
 
     //If this list is not empty, ONLY the exclusive suffixes in the list can follow this Node.
@@ -18,6 +17,10 @@ public class BoundaryNode implements Cloneable {
 
     //If this set is not empty, NONE of the suffixes can follow this boundary node.
     Set<TurkishSuffix> restrictedSuffixes = new HashSet<TurkishSuffix>();
+
+    // set of suffix nodes this boundary nodes connects to. Suffix nodes are the actual nodes that is used in the
+    // graph. 
+    Set<SuffixNode> suffixNodes = new HashSet<SuffixNode>();
 
     public BoundaryNode(PrimaryPos primaryPos) {
         this.primaryPos = primaryPos;
@@ -35,6 +38,11 @@ public class BoundaryNode implements Cloneable {
 
     public BoundaryNode add(MorphAttr morphAttr) {
         attributes.add(morphAttr);
+        return this;
+    }
+
+    public BoundaryNode addNodes(SuffixNode... suffixNode) {
+        this.suffixNodes.addAll(Arrays.asList(suffixNode));
         return this;
     }
 
