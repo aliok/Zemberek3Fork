@@ -131,11 +131,17 @@ public class TurkishSuffixes {
 
         Rel_ki.addNodes(generateNodes(Rel_ki, "ki")).addSuccessors(NOUN_CASE, COPULAR, NOUN_PERSON);
 
-        A1sg_yIm.addNodes(generateNodes(A1sg_yIm,"+yIm")).addSuccessors(Cop_dIr);
-        A2sg_sIn.addNodes(generateNodes(A2sg_sIn,"sIn")).addSuccessors(Cop_dIr);
-        A1pl_yIz.addNodes(generateNodes(A1pl_yIz,"+yIz")).addSuccessors(Cop_dIr);
-        A2pl_sInIz.addNodes(generateNodes(A2pl_sInIz,"sInIz")).addSuccessors(Cop_dIr);
-        A3pl_lAr.addNodes(generateNodes(A3pl_lAr,"lAr")).addSuccessors(Cop_dIr);
+        A1sg_yIm.addNodes(generateNodes(A1sg_yIm, "+yIm")).addSuccessors(Cop_dIr);
+        A2sg_sIn.addNodes(generateNodes(A2sg_sIn, "sIn")).addSuccessors(Cop_dIr);
+        A1pl_yIz.addNodes(generateNodes(A1pl_yIz, "+yIz")).addSuccessors(Cop_dIr);
+        A2pl_sInIz.addNodes(generateNodes(A2pl_sInIz, "sInIz")).addSuccessors(Cop_dIr);
+        A3pl_lAr.addNodes(generateNodes(A3pl_lAr, "lAr")).addSuccessors(Cop_dIr);
+
+        Cop_dIr.addNodes(generateNodes(Cop_dIr, ">dIr"));
+        PastCop_ydI.addNodes(generateNodes(PastCop_ydI, "+y>dI")).addSuccessors(NOUN_PERSON);
+        EvidCop_ymIs.addNodes(generateNodes(EvidCop_ymIs, "+ymIş")).addSuccessors(NOUN_PERSON);
+        CondCop_ysA.addNodes(generateNodes(CondCop_ysA, "+ysA")).addSuccessors(NOUN_PERSON);
+        While_yken.addNodes(generateNodes(While_yken, "+yken"));
     }
 
     private SuffixNode[] generatePredecessorNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... predecessorSuffixes) {
@@ -214,7 +220,8 @@ public class TurkishSuffixes {
                     ArrayList<TurkicSeq> dlist = new ArrayList<TurkicSeq>();
                     for (TurkicSeq sequence : sequences) {
                         dlist.add(new TurkicSeq(sequence).append(token.l));
-                        dlist.add(new TurkicSeq(sequence).append(alphabet.devoice(token.l)));
+                        if (sequence.length() == 0)
+                            dlist.add(new TurkicSeq(sequence).append(alphabet.devoice(token.l)));
                     }
                     sequences = dlist;
                     break;
@@ -328,7 +335,7 @@ public class TurkishSuffixes {
     public static void main(String[] args) {
         TurkishSuffixes suffixes = new TurkishSuffixes();
         suffixes.generate();
-        for (SuffixNode node : TurkishSuffixes.Acc_yI.nodes) {
+        for (SuffixNode node : TurkishSuffixes.PastCop_ydI.nodes) {
             System.out.println(node.content);
         }
     }
