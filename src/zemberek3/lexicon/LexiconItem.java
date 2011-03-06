@@ -1,5 +1,7 @@
 package zemberek3.lexicon;
 
+import zemberek3.structure.TinyEnumSet;
+
 public class LexiconItem {
     String lemma;
     String root;

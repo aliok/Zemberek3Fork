@@ -1,5 +1,8 @@
 package zemberek3.lexicon;
 
+import zemberek3.structure.StringEnum;
+import zemberek3.structure.StringEnumMap;
+
 /**
  * These represents attributes of morphemes.
  */

@@ -1,4 +1,4 @@
-package zemberek3.lexicon;
+package zemberek3.structure;
 
 public interface StringEnum<T extends Enum> {
 

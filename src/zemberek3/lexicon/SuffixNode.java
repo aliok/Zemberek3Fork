@@ -1,6 +1,6 @@
 package zemberek3.lexicon;
 
-import com.google.common.collect.Sets;
+import zemberek3.structure.TinyEnumSet;
 import zemberek3.structure.TurkicSeq;
 
 import java.util.Arrays;

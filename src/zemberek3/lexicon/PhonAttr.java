@@ -1,5 +1,8 @@
 package zemberek3.lexicon;
 
+import zemberek3.structure.BitEnum;
+import zemberek3.structure.BitEnumMap;
+
 public enum PhonAttr implements BitEnum {
     LastVowelFrontal,
     LastVowelRounded,

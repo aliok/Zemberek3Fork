@@ -1,5 +1,7 @@
 package zemberek3.lexicon;
 
+import zemberek3.structure.TinyEnumSet;
+
 import java.util.*;
 
 public class BoundaryNode implements Cloneable {

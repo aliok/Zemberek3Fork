@@ -1,5 +1,8 @@
 package zemberek3.lexicon;
 
+import zemberek3.structure.StringEnum;
+import zemberek3.structure.StringEnumMap;
+
 public enum SecondaryPos implements StringEnum<SecondaryPos> {
     Duplicator("Dup"),
     Determiner("Det"),

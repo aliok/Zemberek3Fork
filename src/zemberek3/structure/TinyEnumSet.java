@@ -1,4 +1,4 @@
-package zemberek3.lexicon;
+package zemberek3.structure;
 
 import java.util.ArrayList;
 import java.util.List;
