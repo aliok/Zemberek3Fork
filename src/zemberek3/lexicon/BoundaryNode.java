@@ -1,8 +1,6 @@
 package zemberek3.lexicon;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class BoundaryNode implements Cloneable {
 
@@ -10,7 +8,8 @@ public class BoundaryNode implements Cloneable {
     // has any element, other suffixes cannot follow this node.
     PrimaryPos primaryPos;
 
-    Set<MorphAttr> attributes = new HashSet<MorphAttr>();
+    TinyEnumSet<PhonAttr> forwardAttributes = new TinyEnumSet<PhonAttr>();
+    TinyEnumSet<PhonAttr> forwardExpectations = new TinyEnumSet<PhonAttr>();
 
     //If this list is not empty, ONLY the exclusive suffixes in the list can follow this Node.
     Set<TurkishSuffix> exclusiveSuffixes = new HashSet<TurkishSuffix>();
@@ -26,28 +25,32 @@ public class BoundaryNode implements Cloneable {
         this.primaryPos = primaryPos;
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, Set<MorphAttr> attributes) {
+    public BoundaryNode(PrimaryPos primaryPos, Iterable<PhonAttr> forwardAttributes) {
         this.primaryPos = primaryPos;
-        this.attributes = attributes;
+        this.forwardAttributes.set(forwardAttributes);
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, MorphAttr... attributes) {
+    public BoundaryNode(PrimaryPos primaryPos, PhonAttr... forwardAttributes) {
         this.primaryPos = primaryPos;
-        this.attributes.addAll(Arrays.asList(attributes));
+        this.forwardAttributes.set(forwardAttributes);
     }
 
-    public BoundaryNode add(MorphAttr morphAttr) {
-        attributes.add(morphAttr);
-        return this;
+    public BoundaryNode(PrimaryPos primaryPos, TinyEnumSet<PhonAttr> forwardAttributes, TinyEnumSet<PhonAttr> forwardExpectations) {
+        this.primaryPos = primaryPos;
+        this.forwardAttributes = forwardAttributes;
+        this.forwardExpectations = forwardExpectations;
+    }
+
+    public TinyEnumSet<PhonAttr> getForwardExpectations() {
+        return forwardExpectations;
+    }
+
+    public TinyEnumSet<PhonAttr> getForwardAttributes() {
+        return forwardExpectations;
     }
 
     public BoundaryNode addNodes(SuffixNode... suffixNode) {
         this.suffixNodes.addAll(Arrays.asList(suffixNode));
-        return this;
-    }
-
-    public BoundaryNode remove(MorphAttr morphAttr) {
-        attributes.remove(morphAttr);
         return this;
     }
 
@@ -65,24 +68,33 @@ public class BoundaryNode implements Cloneable {
         return primaryPos;
     }
 
-    public Set<MorphAttr> getAttributes() {
-        return attributes;
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[Pos:" + primaryPos.shortForm + "]");
+        printAttributes(sb, forwardAttributes, " FATTR:");
+        printAttributes(sb, forwardExpectations, " FEXPC:");
+        if (exclusiveSuffixes.size() > 0) {
+            sb.append(" exc suffixes:");
+            sb.append(exclusiveSuffixes.toString());
+        }
+        if (restrictedSuffixes.size() > 0) {
+            sb.append(" restrc suffixes:");
+            sb.append(restrictedSuffixes.toString());
+        }
+        return sb.toString();
     }
 
-    public String toString() {
-        StringBuilder sb = new StringBuilder("[Pos:" + primaryPos.shortForm);
-        if (attributes.size() > 0)
-            sb.append(" A:");
+    private void printAttributes(StringBuilder sb, TinyEnumSet<PhonAttr> attrs, String str) {
+        if (!attrs.isEmpty())
+            sb.append("[").append(str);
+        else return;
         int i = 0;
-        for (MorphAttr attribute : attributes) {
-            sb.append(attribute.getStringForm());
-            if (i++ < attributes.size() - 1)
+        List<PhonAttr> arr = attrs.getAsList(PhonAttr.class);
+        for (PhonAttr attribute : arr) {
+            sb.append(attribute.name());
+            if (i++ < arr.size() - 1)
                 sb.append(", ");
         }
         sb.append("]");
-        sb.append(exclusiveSuffixes.toString());
-        sb.append(restrictedSuffixes.toString());
-        return sb.toString();
     }
 
     @Override
@@ -92,12 +104,16 @@ public class BoundaryNode implements Cloneable {
 
         BoundaryNode that = (BoundaryNode) o;
 
-        if (attributes != null ? !attributes.equals(that.attributes) : that.attributes != null) return false;
-        if (primaryPos != that.primaryPos) return false;
-        if (restrictedSuffixes != null ? !restrictedSuffixes.equals(that.restrictedSuffixes) : that.restrictedSuffixes != null)
+        if (forwardAttributes != null ? !forwardAttributes.equals(that.forwardAttributes) : that.forwardAttributes != null)
             return false;
         if (exclusiveSuffixes != null ? !exclusiveSuffixes.equals(that.exclusiveSuffixes) : that.exclusiveSuffixes != null)
             return false;
+        if (forwardExpectations != null ? !forwardExpectations.equals(that.forwardExpectations) : that.forwardExpectations != null)
+            return false;
+        if (primaryPos != that.primaryPos) return false;
+        if (restrictedSuffixes != null ? !restrictedSuffixes.equals(that.restrictedSuffixes) : that.restrictedSuffixes != null)
+            return false;
+        if (suffixNodes != null ? !suffixNodes.equals(that.suffixNodes) : that.suffixNodes != null) return false;
 
         return true;
     }
@@ -105,9 +121,11 @@ public class BoundaryNode implements Cloneable {
     @Override
     public int hashCode() {
         int result = primaryPos != null ? primaryPos.hashCode() : 0;
-        result = 31 * result + (attributes != null ? attributes.hashCode() : 0);
+        result = 31 * result + (forwardAttributes != null ? forwardAttributes.hashCode() : 0);
+        result = 31 * result + (forwardExpectations != null ? forwardExpectations.hashCode() : 0);
         result = 31 * result + (exclusiveSuffixes != null ? exclusiveSuffixes.hashCode() : 0);
         result = 31 * result + (restrictedSuffixes != null ? restrictedSuffixes.hashCode() : 0);
+        result = 31 * result + (suffixNodes != null ? suffixNodes.hashCode() : 0);
         return result;
     }
 }

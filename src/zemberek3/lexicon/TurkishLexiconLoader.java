@@ -32,14 +32,14 @@ public class TurkishLexiconLoader {
             PosInfo posInfo = getPosData(word, line);
             String cleanWord = cleanWord(word, posInfo);
 
-            Set<MorphAttr> morphAttrs = morphemicAttributes(cleanWord, posInfo, line);
+            Set<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo, line);
 
             lexiconItems.add(new LexiconItem(
                     word,
                     cleanWord,
                     posInfo.primaryPos,
                     posInfo.secondaryPos,
-                    morphAttrs.toArray(new MorphAttr[morphAttrs.size()])));
+                    rootAttrs.toArray(new RootAttr[rootAttrs.size()])));
             return true;
         }
 
@@ -55,6 +55,9 @@ public class TurkishLexiconLoader {
         private String cleanWord(String word, PosInfo posInfo) {
             if (posInfo.primaryPos == PrimaryPos.Verb)
                 return word.substring(0, word.length() - 3);
+            if (posInfo.secondaryPos == SecondaryPos.ProperNoun) {
+                return word.toLowerCase(locale);
+            }
             return word;
         }
 
@@ -108,41 +111,44 @@ public class TurkishLexiconLoader {
 
         static Pattern attributePattern = Pattern.compile("(?:A:)(.+?)(?:;|\\])");
 
-        private Set<MorphAttr> morphemicAttributes(String word, PosInfo posData, String line) {
-            LinkedHashSet<MorphAttr> attributesList = new LinkedHashSet<MorphAttr>(2);
+        private Set<RootAttr> morphemicAttributes(String word, PosInfo posData, String line) {
+            LinkedHashSet<RootAttr> attributesList = new LinkedHashSet<RootAttr>(2);
             String attributeStr = getGroup1Match(line, attributePattern).trim();
             if (attributeStr.length() == 0) {
                 inferMorphemicAttributes(word, posData, attributesList);
             } else {
                 for (String s : Splitter.on(",").split(attributeStr)) {
                     s = s.trim();
-                    if (!MorphAttr.converter().enumExists(s))
+                    if (!RootAttr.converter().enumExists(s))
                         throw new LexiconGenerationException("Unrecognized attribute data [" + s + "] in :" + line);
-                    MorphAttr morphAttr = MorphAttr.converter().getEnum(s);
-                    attributesList.add(morphAttr);
+                    RootAttr rootAttr = RootAttr.converter().getEnum(s);
+                    attributesList.add(rootAttr);
                 }
                 inferMorphemicAttributes(word, posData, attributesList);
             }
             // remove unnecessary items.
-            attributesList.remove(MorphAttr.NoVoicing);
+            attributesList.remove(RootAttr.NoVoicing);
             return attributesList;
         }
 
         static Locale locale = new Locale("tr");
 
-        private void inferMorphemicAttributes(String word, PosInfo posData, Set<MorphAttr> attributesList) {
+        private void inferMorphemicAttributes(
+                String word,
+                PosInfo posData,
+                Set<RootAttr> attributesList) {
             TurkicSeq sequence = new TurkicSeq(word.toLowerCase(locale), alphabet);
             switch (posData.primaryPos) {
                 case Verb:
                     // if a verb ends with a wovel, and -Iyor suffix is appended, last vowel drops.
                     if (sequence.lastLetter().isVowel())
-                        attributesList.add(MorphAttr.ProgressiveVowelDrop);
+                        attributesList.add(RootAttr.ProgressiveVowelDrop);
                     // if verb has more than 1 syllable and there is no Aorist_A label, add Aorist_I.
-                    if (sequence.vowelCount() > 1 && !attributesList.contains(MorphAttr.Aorist_A))
-                        attributesList.add(MorphAttr.Aorist_I);
+                    if (sequence.vowelCount() > 1 && !attributesList.contains(RootAttr.Aorist_A))
+                        attributesList.add(RootAttr.Aorist_I);
                     // if verb has 1 syllable and there is no Aorist_I label, add Aorist_A
-                    if (sequence.vowelCount() == 1 && !attributesList.contains(MorphAttr.Aorist_I)) {
-                        attributesList.add(MorphAttr.Aorist_A);
+                    if (sequence.vowelCount() == 1 && !attributesList.contains(RootAttr.Aorist_I)) {
+                        attributesList.add(RootAttr.Aorist_A);
                     }
                     break;
                 case Noun:
@@ -150,34 +156,12 @@ public class TurkishLexiconLoader {
                     // if a noun or adjective has more than one syllable and last letter is a stop consonant, add voicing.
                     if (sequence.vowelCount() > 1
                             && sequence.lastLetter().isStopConsonant()
-                            && !attributesList.contains(MorphAttr.NoVoicing)
-                            && !attributesList.contains(MorphAttr.InverseHarmony))
-                        attributesList.add(MorphAttr.Voicing);
-                    if (word.endsWith("nk"))
-                        attributesList.add(MorphAttr.Voicing);
-                    if (word.endsWith("og"))
-                        attributesList.add(MorphAttr.Voicing);
-
+                            && !attributesList.contains(RootAttr.NoVoicing)
+                            && !attributesList.contains(RootAttr.InverseHarmony))
+                        attributesList.add(RootAttr.Voicing);
+                    if (word.endsWith("nk") || word.endsWith("og"))
+                        attributesList.add(RootAttr.Voicing);
                     break;
-            }
-            // general phonetic attributes.
-            if (sequence.lastVowel().isRoundedVowel())
-                attributesList.add(MorphAttr.LastVowelRounded);
-            if (sequence.lastVowel().isFrontalVowel()) {
-                attributesList.add(MorphAttr.LastVowelFrontal);
-            } else if (attributesList.contains(MorphAttr.InverseHarmony)) {
-                // saat, takat
-                attributesList.add(MorphAttr.LastVowelFrontal);
-                // we no longer need InverseHarmony tag.
-                attributesList.remove(MorphAttr.InverseHarmony);
-            }
-            if (sequence.lastLetter().isVowel()) {
-                // elma
-                attributesList.add(MorphAttr.LastLetterVowel);
-            }
-            if (sequence.lastLetter().isVoiceless() && sequence.lastLetter().isStopConsonant()) {
-                // kitap
-                attributesList.add(MorphAttr.LastLetterVoicelessStop);
             }
         }
 

@@ -5,9 +5,10 @@ public class LexiconItem {
     String root;
     public PrimaryPos primaryPos;
     public SecondaryPos secondaryPos;
-    MorphAttr[] attributes;
+    RootAttr[] attributes;
+    TinyEnumSet phoneticAttrs;
 
-    public LexiconItem(String lemma, String root, PrimaryPos primaryPos, SecondaryPos secondaryPos, MorphAttr[] attributes) {
+    public LexiconItem(String lemma, String root, PrimaryPos primaryPos, SecondaryPos secondaryPos, RootAttr[] attributes) {
         this.lemma = lemma;
         this.root = root;
         this.primaryPos = primaryPos;
@@ -15,9 +16,9 @@ public class LexiconItem {
         this.attributes = attributes;
     }
 
-    public boolean hasAttribute(MorphAttr attribute) {
-        for (MorphAttr morphAttr : attributes) {
-            if(attribute== morphAttr)
+    public boolean hasAttribute(RootAttr attribute) {
+        for (RootAttr rootAttr : attributes) {
+            if(attribute== rootAttr)
                 return true;
         }
         return false;
@@ -31,7 +32,7 @@ public class LexiconItem {
         if (attributes.length > 0)
             sb.append(" A:");
         int i = 0;
-        for (MorphAttr attribute : attributes) {
+        for (RootAttr attribute : attributes) {
             sb.append(attribute.getStringForm());
             if (i++ < attributes.length - 1)
                 sb.append(", ");

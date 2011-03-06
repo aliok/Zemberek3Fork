@@ -3,7 +3,7 @@ package zemberek3.lexicon;
 /**
  * These represents attributes of morphemes.
  */
-public enum MorphAttr implements StringEnum {
+public enum RootAttr implements StringEnum {
     Voicing,
     NoVoicing,
     InverseHarmony,
@@ -14,20 +14,11 @@ public enum MorphAttr implements StringEnum {
     Aorist_I,
     Aorist_A,
     NonTransitive,
-    CompoundP3sg,
+    CompoundP3sg;
 
-    LastVowelFrontal,
-    LastVowelRounded,
-    LastLetterVoicelessStop,
-    LastLetterVowel,
+    private static StringEnumMap<RootAttr> shortFormToPosMap = StringEnumMap.get(RootAttr.class);
 
-    ExpectsVowel,
-    ExpectsConsonant;
-
-
-    private static StringEnumMap<MorphAttr> shortFormToPosMap = StringEnumMap.get(MorphAttr.class);
-
-    public static StringEnumMap<MorphAttr> converter() {
+    public static StringEnumMap<RootAttr> converter() {
         return shortFormToPosMap;
     }
 

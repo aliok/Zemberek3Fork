@@ -12,37 +12,24 @@ public class SuffixNode {
     String content;
     TurkicSeq seq;
     Set<SuffixNode> successors = new HashSet<SuffixNode>();
-    Set<MorphAttr> attributes = new HashSet<MorphAttr>();
+
+    TinyEnumSet<PhonAttr> forwardAttributes = new TinyEnumSet<PhonAttr>();
+    TinyEnumSet<PhonAttr> forwardExpectations = new TinyEnumSet<PhonAttr>();
+    TinyEnumSet<PhonAttr> backwardAttributes = new TinyEnumSet<PhonAttr>();
+    TinyEnumSet<PhonAttr> backwardExpectations = new TinyEnumSet<PhonAttr>();
+
     Set<TurkishSuffix> exclusivePredecessors = new HashSet<TurkishSuffix>();
     boolean terminal = true;
     boolean mergeMorphemicAttributes = false;
 
-    public SuffixNode(TurkishSuffix suffix, TurkicSeq seq, MorphAttr... attributes) {
+    public SuffixNode(TurkishSuffix suffix, TurkicSeq seq) {
         this.suffix = suffix;
         this.seq = seq;
         this.content = seq.toString();
-        this.attributes = Sets.newHashSet(attributes);
     }
 
     public SuffixNode addExclusivePredecessor(TurkishSuffix... suffixes) {
         exclusivePredecessors.addAll(Arrays.asList(suffixes));
-        return this;
-    }
-
-    public SuffixNode(TurkishSuffix suffix, TurkicSeq seq, Set<MorphAttr> attributes) {
-        this.suffix = suffix;
-        this.seq = seq;
-        this.content = seq.toString();
-        this.attributes = Sets.newHashSet(attributes);
-    }
-
-    public SuffixNode add(MorphAttr... morphAttrs) {
-        attributes.addAll(Arrays.asList(morphAttrs));
-        return this;
-    }
-
-    public SuffixNode remove(MorphAttr morphAttr) {
-        attributes.remove(morphAttr);
         return this;
     }
 

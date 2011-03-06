@@ -61,8 +61,8 @@ sumak [Pos: Noun]
 yemek [Pos: Noun]
 
 # Proper nouns. both noun and Prop tags are optional.Prop attribute is inferred from first letter.
-Ankara [Pos: Prop]
-Adana [Pos: Noun, Prop]
+Ankara
+Adana 
 Ağrı
 ağrı
 

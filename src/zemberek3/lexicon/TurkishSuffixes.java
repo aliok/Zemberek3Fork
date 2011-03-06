@@ -96,6 +96,7 @@ public class TurkishSuffixes {
 
         Dat_yA.addNodes(generateNodes(Dat_yA, "+yA"))
                 .addSuccessors(COPULAR);
+        // TODO: we dont need to treat this as an exception. make it like "add form or such."
         Dat_yA.addNodes(generatePredecessorNodes(Dat_yA, "nA", Rel_ki, P3sg_sI, P3pl_lArI));
 
         Loc_dA.addNodes(generateNodes(Loc_dA, ">dA")).addSuccessors(COPULAR);
@@ -130,9 +131,9 @@ public class TurkishSuffixes {
         //TODO: make it nicer.
         for (SuffixNode suffixNode : Dim_cIk.nodes) {
             if (suffixNode.seq.lastLetter() == TurkishAlphabet.L_gg)
-                suffixNode.add(MorphAttr.ExpectsVowel);
+                suffixNode.forwardExpectations.set(PhonAttr.FirstLetterVowel);
             if (suffixNode.seq.lastLetter() == TurkishAlphabet.L_k)
-                suffixNode.add(MorphAttr.ExpectsConsonant);
+                suffixNode.forwardExpectations.set(PhonAttr.FirstLetterConsonant);
         }
 
         Dim_cAgIz.addNodes(generateNodes(Dim_cAgIz, ">cağız")).
@@ -169,7 +170,6 @@ public class TurkishSuffixes {
         }
         return accExceptionNodes;
     }
-
 
     TurkishAlphabet alphabet = new TurkishAlphabet();
 
@@ -269,26 +269,35 @@ public class TurkishSuffixes {
     private SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord) {
         List<SuffixNode> nodes = new ArrayList<SuffixNode>();
         for (TurkicSeq sequence : generateFromSuffixString(generationWord)) {
-            nodes.add(new SuffixNode(suffix, sequence, defineMorphemicAttributes(sequence)));
+            SuffixNode node = new SuffixNode(suffix, sequence);
+            defineMorphemicAttributes(node, sequence);
+            nodes.add(node);
         }
         return nodes.toArray(new SuffixNode[nodes.size()]);
     }
 
     // in suffix, defining morphemic attributes is straight forward.
-    private Set<MorphAttr> defineMorphemicAttributes(TurkicSeq seq) {
-        Set<MorphAttr> attributes = new HashSet<MorphAttr>();
+    private void defineMorphemicAttributes(SuffixNode node, TurkicSeq seq) {
         if (seq.hasVowel()) {
             if (seq.lastVowel().isFrontalVowel())
-                attributes.add(MorphAttr.LastVowelFrontal);
-        }
-        if (seq.lastLetter().isVowel()) {
-            attributes.add(MorphAttr.LastLetterVowel);
+                node.forwardAttributes.set(PhonAttr.LastVowelFrontal);
+            if (seq.lastVowel().isRoundedVowel())
+                node.forwardAttributes.set(PhonAttr.LastVowelRounded);
+            if (seq.lastLetter().isVowel())
+                node.forwardAttributes.set(PhonAttr.LastLetterVowel);
+            if (seq.firstLetter().isVowel())
+                node.backwardAttributes.set(PhonAttr.FirstLetterVowel);
+            if (seq.firstLetter().isFrontalVowel())
+                node.backwardAttributes.set(PhonAttr.FirstVowelFrontal);
+            if (seq.firstLetter().isRoundedVowel())
+                node.backwardAttributes.set(PhonAttr.FirstVowelRounded);
+        } else {
+            node.forwardAttributes.set(PhonAttr.HasNoVowel);
+            node.backwardAttributes.set(PhonAttr.HasNoVowel);
         }
         if (seq.lastLetter().isStopConsonant()) {
-            attributes.add(MorphAttr.LastLetterVoicelessStop);
+            node.forwardAttributes.set(PhonAttr.LastLetterVoicelessStop);
         }
-
-        return attributes;
     }
 
 

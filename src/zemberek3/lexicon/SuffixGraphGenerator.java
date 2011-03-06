@@ -33,8 +33,6 @@ public class SuffixGraphGenerator {
             // using the matching morphemic attributes of the both side.
             for (TurkishSuffix turkishSuffix : suffixesToFollow) {
                 for (SuffixNode suffixNode : turkishSuffix.nodes) {
-                    Set<MorphAttr> boundayAttrs = boundaryNode.getAttributes();
-                    Set<MorphAttr> suffixAttrs = suffixNode.attributes;
 
 
 
