@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class BitEnumMap<T extends BitEnum> {
+public class BitEnumMap<T extends BitEnum> {
     Map<Integer, T> map = new HashMap<Integer, T>();
     Class<T> clazz;
 

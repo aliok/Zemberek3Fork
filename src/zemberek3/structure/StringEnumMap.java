@@ -3,7 +3,7 @@ package zemberek3.structure;
 import java.util.HashMap;
 import java.util.Map;
 
-class StringEnumMap<T extends StringEnum> {
+public class StringEnumMap<T extends StringEnum> {
     Map<String, T> map = new HashMap<String, T>();
     Class<T> clazz;
 
