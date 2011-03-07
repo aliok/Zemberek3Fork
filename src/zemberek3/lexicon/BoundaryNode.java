@@ -1,6 +1,6 @@
 package zemberek3.lexicon;
 
-import zemberek3.structure.TinyEnumSet;
+import zemberek3.structure.AttributeSet;
 
 import java.util.*;
 
@@ -10,8 +10,8 @@ public class BoundaryNode implements Cloneable {
     // has any element, other suffixes cannot follow this node.
     PrimaryPos primaryPos;
 
-    TinyEnumSet<PhonAttr> forwardAttributes = new TinyEnumSet<PhonAttr>();
-    TinyEnumSet<PhonAttr> forwardExpectations = new TinyEnumSet<PhonAttr>();
+    AttributeSet<PhonAttr> forwardAttributes = new AttributeSet<PhonAttr>();
+    AttributeSet<PhonAttr> forwardExpectations = new AttributeSet<PhonAttr>();
 
     //If this list is not empty, ONLY the exclusive suffixes in the list can follow this Node.
     Set<TurkishSuffix> exclusiveSuffixes = new HashSet<TurkishSuffix>();
@@ -37,17 +37,17 @@ public class BoundaryNode implements Cloneable {
         this.forwardAttributes.set(forwardAttributes);
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, TinyEnumSet<PhonAttr> forwardAttributes, TinyEnumSet<PhonAttr> forwardExpectations) {
+    public BoundaryNode(PrimaryPos primaryPos, AttributeSet<PhonAttr> forwardAttributes, AttributeSet<PhonAttr> forwardExpectations) {
         this.primaryPos = primaryPos;
         this.forwardAttributes = forwardAttributes;
         this.forwardExpectations = forwardExpectations;
     }
 
-    public TinyEnumSet<PhonAttr> getForwardExpectations() {
+    public AttributeSet<PhonAttr> getForwardExpectations() {
         return forwardExpectations;
     }
 
-    public TinyEnumSet<PhonAttr> getForwardAttributes() {
+    public AttributeSet<PhonAttr> getForwardAttributes() {
         return forwardExpectations;
     }
 
@@ -85,7 +85,7 @@ public class BoundaryNode implements Cloneable {
         return sb.toString();
     }
 
-    private void printAttributes(StringBuilder sb, TinyEnumSet<PhonAttr> attrs, String str) {
+    private void printAttributes(StringBuilder sb, AttributeSet<PhonAttr> attrs, String str) {
         if (!attrs.isEmpty())
             sb.append("[").append(str);
         else return;

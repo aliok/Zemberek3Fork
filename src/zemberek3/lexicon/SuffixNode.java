@@ -1,6 +1,6 @@
 package zemberek3.lexicon;
 
-import zemberek3.structure.TinyEnumSet;
+import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicSeq;
 
 import java.util.Arrays;
@@ -13,10 +13,10 @@ public class SuffixNode {
     TurkicSeq seq;
     Set<SuffixNode> successors = new HashSet<SuffixNode>();
 
-    TinyEnumSet<PhonAttr> forwardAttributes = new TinyEnumSet<PhonAttr>();
-    TinyEnumSet<PhonAttr> forwardExpectations = new TinyEnumSet<PhonAttr>();
-    TinyEnumSet<PhonAttr> backwardAttributes = new TinyEnumSet<PhonAttr>();
-    TinyEnumSet<PhonAttr> backwardExpectations = new TinyEnumSet<PhonAttr>();
+    AttributeSet<PhonAttr> forwardAttributes = new AttributeSet<PhonAttr>();
+    AttributeSet<PhonAttr> forwardExpectations = new AttributeSet<PhonAttr>();
+    AttributeSet<PhonAttr> backwardAttributes = new AttributeSet<PhonAttr>();
+    AttributeSet<PhonAttr> backwardExpectations = new AttributeSet<PhonAttr>();
 
     Set<TurkishSuffix> exclusivePredecessors = new HashSet<TurkishSuffix>();
     boolean terminal = true;

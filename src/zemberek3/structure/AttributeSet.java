@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * A bit set backed by an 32 bit integer.
  */
-public class TinyEnumSet<T extends BitEnum> {
+public class AttributeSet<T extends BitEnum> {
 
     private int data;
 
@@ -36,31 +36,31 @@ public class TinyEnumSet<T extends BitEnum> {
         return (data & setMasks[bitEnum.getBitIndex()]) == 0;
     }
 
-    public TinyEnumSet set(int bitIndex) {
+    public AttributeSet set(int bitIndex) {
         data |= setMasks[bitIndex];
         return this;
     }
 
-    public TinyEnumSet set(T... enums) {
+    public AttributeSet set(T... enums) {
         for (BitEnum en : enums) {
             data |= setMasks[en.getBitIndex()];
         }
         return this;
     }
 
-    public TinyEnumSet set(Iterable<T> enumIt) {
+    public AttributeSet set(Iterable<T> enumIt) {
         for (BitEnum bitEnum : enumIt) {
             data |= setMasks[bitEnum.getBitIndex()];
         }
         return this;
     }
 
-    public TinyEnumSet reset(int bitIndex) {
+    public AttributeSet reset(int bitIndex) {
         data &= resetMasks[bitIndex];
         return this;
     }
 
-    public TinyEnumSet reset(T... enums) {
+    public AttributeSet reset(T... enums) {
         for (BitEnum anEnum : enums) {
             data &= resetMasks[anEnum.getBitIndex()];
         }
@@ -75,7 +75,7 @@ public class TinyEnumSet<T extends BitEnum> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TinyEnumSet that = (TinyEnumSet) o;
+        AttributeSet that = (AttributeSet) o;
         return data == that.data;
     }
 

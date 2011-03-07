@@ -1,6 +1,6 @@
 package zemberek3.lexicon;
 
-import zemberek3.structure.TinyEnumSet;
+import zemberek3.structure.AttributeSet;
 
 public class LexiconItem {
     String lemma;
@@ -8,7 +8,7 @@ public class LexiconItem {
     public PrimaryPos primaryPos;
     public SecondaryPos secondaryPos;
     RootAttr[] attributes;
-    TinyEnumSet phoneticAttrs;
+    AttributeSet phoneticAttrs;
 
     public LexiconItem(String lemma, String root, PrimaryPos primaryPos, SecondaryPos secondaryPos, RootAttr[] attributes) {
         this.lemma = lemma;
