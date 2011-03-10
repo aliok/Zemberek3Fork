@@ -1,10 +1,14 @@
 package zemberek3.lexicon;
 
+import com.google.common.collect.Lists;
+import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
 import java.util.*;
+
+import static zemberek3.structure.TurkishAlphabet.*;
 
 public class TurkishSuffixes {
 
@@ -96,7 +100,7 @@ public class TurkishSuffixes {
 
         Dat_yA.addNodes(generateNodes(Dat_yA, "+yA"))
                 .addSuccessors(COPULAR);
-        // TODO: we dont need to treat this as an exception. make it like "add form or such."
+        // TODO: we dont need to treat this as an exception. make it like "add surface or such."
         Dat_yA.addNodes(generatePredecessorNodes(Dat_yA, "nA", Rel_ki, P3sg_sI, P3pl_lArI));
 
         Loc_dA.addNodes(generateNodes(Loc_dA, ">dA")).addSuccessors(COPULAR);
@@ -128,13 +132,6 @@ public class TurkishSuffixes {
         Dim_cIk.addNodes(generateNodes(Dim_cIk, ">cI~k")).
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
                 addSuccessors(Pl_lAr, With_lI, Without_sIz);
-        //TODO: make it nicer.
-        for (SuffixNode suffixNode : Dim_cIk.nodes) {
-            if (suffixNode.seq.lastLetter() == TurkishAlphabet.L_gg)
-                suffixNode.forwardExpectations.set(PhonAttr.FirstLetterVowel);
-            if (suffixNode.seq.lastLetter() == TurkishAlphabet.L_k)
-                suffixNode.forwardExpectations.set(PhonAttr.FirstLetterConsonant);
-        }
 
         Dim_cAgIz.addNodes(generateNodes(Dim_cAgIz, ">cağız")).
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
@@ -173,104 +170,173 @@ public class TurkishSuffixes {
 
     TurkishAlphabet alphabet = new TurkishAlphabet();
 
-    private List<TurkicSeq> generateFromSuffixString(String suffixString) {
 
-        ArrayList<TurkicSeq> sequences = new ArrayList<TurkicSeq>();
+    private List<Form> generateFromSuffixString(String suffixString) {
+
+        ArrayList<Form> forms = new ArrayList<Form>();
         if (suffixString.length() > 0)
-            sequences.add(new TurkicSeq());
+            forms.add(new Form());
 
-        Iterator<SuffixToken> tokenIterator = new SuffixStringTokenizer(suffixString);
-        while (tokenIterator.hasNext()) {
-            SuffixToken token = tokenIterator.next();
+        List<SuffixToken> list = Lists.newArrayList(new SuffixStringTokenizer(suffixString));
+
+        int i = 0;
+        for (SuffixToken token : list) {
             switch (token.type) {
-
                 case LETTER:
-                    for (TurkicSeq seq : sequences) {
-                        seq.append(token.l);
+                    for (Form seq : forms) {
+                        seq.surface.append(token.letter);
                     }
                     break;
 
                 case A_WOVEL:
-                    ArrayList<TurkicSeq> alist = new ArrayList<TurkicSeq>();
-                    for (TurkicSeq seq : sequences) {
-                        if (!seq.hasVowel()) {
-                            if (seq.length() == 0 && sequences.size() == 1)
-                                alist.add(new TurkicSeq());
-                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_a));
-                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_e));
-                        } else if (seq.lastVowel().isFrontalVowel()) {
-                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_e));
+                    ArrayList<Form> alist = new ArrayList<Form>();
+                    for (Form form : forms) {
+                        if (!form.surface.hasVowel()) {
+                            if (form.surface.length() == 0 && forms.size() == 1) {
+                                Form empty = new Form();
+                                empty.backwardExpts.set(PhonAttr.LastLetterVowel);
+                                alist.add(empty);
+                            }
+                            Form a = form.copy().append(L_a);
+                            a.backwardExpts.set(PhonAttr.LastVowelBack);
+                            alist.add(a);
+
+                            Form e = form.copy().append(L_e);
+                            e.backwardExpts.set(PhonAttr.LastVowelFrontal);
+                            alist.add(e);
+
+                        } else if (form.surface.lastVowel().isFrontalVowel()) {
+                            alist.add(form.copy().append(L_e));
                         } else {
-                            alist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_a));
+                            alist.add(form.copy().append(L_a));
                         }
                     }
-                    sequences = alist;
+                    forms = alist;
                     break;
 
                 case I_WOVEL:
-                    ArrayList<TurkicSeq> ilist = new ArrayList<TurkicSeq>();
-                    for (TurkicSeq seq : sequences) {
-                        if (!seq.hasVowel()) {
-                            if (seq.length() == 0 && sequences.size() == 1)
-                                ilist.add(new TurkicSeq());
-                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_ii));
-                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_i));
-                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_u));
-                            ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_uu));
+                    ArrayList<Form> ilist = new ArrayList<Form>();
+                    for (Form form : forms) {
+                        if (!form.surface.hasVowel()) {
+                            if (form.surface.length() == 0 && forms.size() == 1) {
+                                Form empty = new Form();
+                                empty.backwardExpts.set(PhonAttr.LastLetterVowel);
+                                ilist.add(empty);
+                            }
+
+                            Form fii = form.copy().append(L_ii);
+                            fii.backwardExpts.set(PhonAttr.LastVowelBack, PhonAttr.LastVowelUnrounded);
+                            ilist.add(fii);
+
+                            Form fi = form.copy().append(L_i);
+                            fi.backwardExpts.set(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelUnrounded);
+                            ilist.add(fi);
+
+                            Form fu = form.copy().append(L_u);
+                            fu.backwardExpts.set(PhonAttr.LastVowelBack, PhonAttr.LastVowelRounded);
+                            ilist.add(fu);
+
+                            Form fuu = form.copy().append(L_uu);
+                            fuu.backwardExpts.set(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelRounded);
+                            ilist.add(fuu);
                         } else {
-                            boolean frontal = seq.lastVowel().frontalVowel;
-                            boolean round = seq.lastVowel().roundedVowel;
+                            boolean frontal = form.surface.lastVowel().frontalVowel;
+                            boolean round = form.surface.lastVowel().roundedVowel;
                             if (frontal && round) {
-                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_uu));
+                                ilist.add(form.copy().append(L_uu));
                             } else if (frontal && !round) {
-                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_i));
+                                ilist.add(form.copy().append(L_i));
                             } else if (!frontal && round) {
-                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_uu));
+                                ilist.add(form.copy().append(L_uu));
                             } else if (!frontal && !round) {
-                                ilist.add(new TurkicSeq(seq).append(TurkishAlphabet.L_ii));
+                                ilist.add(form.copy().append(L_ii));
                             }
                         }
                     }
-                    sequences = ilist;
+                    forms = ilist;
                     break;
 
                 case DEVOICE:
-                    ArrayList<TurkicSeq> dlist = new ArrayList<TurkicSeq>();
-                    for (TurkicSeq sequence : sequences) {
-                        dlist.add(new TurkicSeq(sequence).append(token.l));
-                        if (sequence.length() == 0)
-                            dlist.add(new TurkicSeq(sequence).append(alphabet.devoice(token.l)));
+                    ArrayList<Form> dlist = new ArrayList<Form>();
+                    for (Form form : forms) {
+                        Form fn = form.copy().append(token.letter);
+                        if (i == 0)
+                            fn.backwardExpts.set(PhonAttr.LastLetterNotVoicelessStop);
+                        dlist.add(fn);
+                        if (form.surface.length() == 0) {
+                            fn = form.copy().append(alphabet.devoice(token.letter));
+                            if (i == 0)
+                                fn.backwardExpts.set(PhonAttr.LastLetterVoicelessStop);
+                            dlist.add(fn);
+                        }
                     }
-                    sequences = dlist;
+                    forms = dlist;
                     break;
 
                 case VOICE:
-                    ArrayList<TurkicSeq> vlist = new ArrayList<TurkicSeq>();
-                    for (TurkicSeq sequence : sequences) {
-                        vlist.add(new TurkicSeq(sequence).append(token.l));
-                        vlist.add(new TurkicSeq(sequence).append(alphabet.voice(token.l)));
+                    ArrayList<Form> vlist = new ArrayList<Form>();
+                    for (Form form : forms) {
+                        Form fn = form.copy().append(token.letter);
+                        if (i == list.size() - 1)
+                            fn.forwardExpts.set(PhonAttr.FirstLetterConsonant);
+                        vlist.add(fn);
+                        fn = form.copy().append(alphabet.voice(token.letter));
+                        if (i == list.size() - 1)
+                            fn.forwardExpts.set(PhonAttr.FirstLetterVowel);
+                        vlist.add(fn);
                     }
-                    sequences = vlist;
+                    forms = vlist;
                     break;
 
                 case APPEND:
-                    ArrayList<TurkicSeq> aplist = new ArrayList<TurkicSeq>();
-                    for (TurkicSeq sequence : sequences) {
-                        aplist.add(new TurkicSeq(sequence).append(token.l));
-                        aplist.add(new TurkicSeq(sequence));
+                    ArrayList<Form> aplist = new ArrayList<Form>();
+                    for (Form form : forms) {
+                        Form fn = form.copy().append(token.letter);
+                        fn.backwardExpts.set(PhonAttr.LastLetterVowel);
+                        aplist.add(fn);
+                        fn = form.copy();
+                        fn.forwardExpts.set(PhonAttr.LastLetterConsonant);
+                        aplist.add(fn);
                     }
-                    sequences = aplist;
+                    forms = aplist;
                     break;
             }
         }
-        return sequences;
+        return forms;
+    }
+
+    private static class Form {
+
+        TurkicSeq surface = new TurkicSeq();
+        AttributeSet<PhonAttr> forwardAttrs = new AttributeSet<PhonAttr>();
+        AttributeSet<PhonAttr> forwardExpts = new AttributeSet<PhonAttr>();
+        AttributeSet<PhonAttr> backwardAttrs = new AttributeSet<PhonAttr>();
+        AttributeSet<PhonAttr> backwardExpts = new AttributeSet<PhonAttr>();
+
+        Form copy() {
+            Form copy = new Form();
+            copy.surface = new TurkicSeq(surface);
+            copy.backwardAttrs = backwardAttrs.copy();
+            copy.backwardExpts = backwardExpts.copy();
+            copy.forwardAttrs = forwardAttrs.copy();
+            copy.forwardExpts = forwardExpts.copy();
+
+            return copy;
+        }
+
+        Form append(TurkicLetter letter) {
+            surface.append(letter);
+            return this;
+        }
     }
 
     private SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord) {
         List<SuffixNode> nodes = new ArrayList<SuffixNode>();
-        for (TurkicSeq sequence : generateFromSuffixString(generationWord)) {
-            SuffixNode node = new SuffixNode(suffix, sequence);
-            defineMorphemicAttributes(node, sequence);
+        for (Form form : generateFromSuffixString(generationWord)) {
+            SuffixNode node = new SuffixNode(suffix, form.surface);
+            node.forwardExpectations = form.forwardExpts;
+            node.backwardExpectations = form.backwardExpts;
+            defineMorphemicAttributes(node, form.surface);
             nodes.add(node);
         }
         return nodes.toArray(new SuffixNode[nodes.size()]);
@@ -281,23 +347,37 @@ public class TurkishSuffixes {
         if (seq.hasVowel()) {
             if (seq.lastVowel().isFrontalVowel())
                 node.forwardAttributes.set(PhonAttr.LastVowelFrontal);
+            else
+                node.forwardAttributes.set(PhonAttr.LastVowelBack);
+
             if (seq.lastVowel().isRoundedVowel())
                 node.forwardAttributes.set(PhonAttr.LastVowelRounded);
+            else
+                node.forwardAttributes.set(PhonAttr.LastVowelUnrounded);
             if (seq.lastLetter().isVowel())
                 node.forwardAttributes.set(PhonAttr.LastLetterVowel);
+            else
+                node.forwardAttributes.set(PhonAttr.LastLetterConsonant);
             if (seq.firstLetter().isVowel())
                 node.backwardAttributes.set(PhonAttr.FirstLetterVowel);
+            else
+                node.backwardAttributes.set(PhonAttr.FirstLetterConsonant);
             if (seq.firstLetter().isFrontalVowel())
                 node.backwardAttributes.set(PhonAttr.FirstVowelFrontal);
+            else
+                node.backwardAttributes.set(PhonAttr.FirstVowelBack);
             if (seq.firstLetter().isRoundedVowel())
                 node.backwardAttributes.set(PhonAttr.FirstVowelRounded);
+            else
+                node.backwardAttributes.set(PhonAttr.FirstVowelUnrounded);
         } else {
             node.forwardAttributes.set(PhonAttr.HasNoVowel);
             node.backwardAttributes.set(PhonAttr.HasNoVowel);
         }
         if (seq.lastLetter().isStopConsonant()) {
             node.forwardAttributes.set(PhonAttr.LastLetterVoicelessStop);
-        }
+        } else
+            node.forwardAttributes.set(PhonAttr.LastLetterNotVoicelessStop);
     }
 
 
@@ -312,11 +392,11 @@ public class TurkishSuffixes {
 
     private static class SuffixToken {
         TokenType type;
-        TurkicLetter l;
+        TurkicLetter letter;
 
-        private SuffixToken(TokenType type, TurkicLetter l) {
+        private SuffixToken(TokenType type, TurkicLetter letter) {
             this.type = type;
-            this.l = l;
+            this.letter = letter;
         }
     }
 
@@ -324,7 +404,6 @@ public class TurkishSuffixes {
 
         private int pointer;
         private final String generationWord;
-
 
         public SuffixStringTokenizer(String generationWord) {
             this.generationWord = generationWord;

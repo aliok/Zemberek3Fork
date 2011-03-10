@@ -24,6 +24,10 @@ public class AttributeSet<T extends BitEnum> {
         return (data & setMasks[bitIndex]) != 0;
     }
 
+    public AttributeSet<T> copy() {
+        return new AttributeSet<T>(data);
+    }
+
     public boolean isSet(BitEnum bitEnum) {
         return (data & setMasks[bitEnum.getBitIndex()]) != 0;
     }
@@ -46,6 +50,15 @@ public class AttributeSet<T extends BitEnum> {
             data |= setMasks[en.getBitIndex()];
         }
         return this;
+    }
+
+    private AttributeSet(int data) {
+        this.data = data;
+    }
+
+
+    public AttributeSet() {
+        this.data = 0;
     }
 
     public AttributeSet set(Iterable<T> enumIt) {

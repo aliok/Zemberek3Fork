@@ -5,12 +5,18 @@ import zemberek3.structure.BitEnumMap;
 
 public enum PhonAttr implements BitEnum {
     LastVowelFrontal,
+    LastVowelBack,
     LastVowelRounded,
+    LastVowelUnrounded,
     LastLetterVoicelessStop,
+    LastLetterNotVoicelessStop,
     LastLetterVowel,
+    LastLetterConsonant,
     HasNoVowel,
     FirstVowelFrontal,
+    FirstVowelBack,
     FirstVowelRounded,
+    FirstVowelUnrounded,
     FirstLetterVowel,
     FirstLetterConsonant;
 

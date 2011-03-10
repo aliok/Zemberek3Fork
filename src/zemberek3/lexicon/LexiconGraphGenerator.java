@@ -82,20 +82,25 @@ public class LexiconGraphGenerator {
         // general phonetic attributes.
         if (sequence.lastVowel().isRoundedVowel())
             attributesList.add(PhonAttr.LastVowelRounded);
+        else
+            attributesList.add(PhonAttr.LastVowelUnrounded);
         if (sequence.lastVowel().isFrontalVowel()) {
             attributesList.add(PhonAttr.LastVowelFrontal);
         } else if (lexiconItem.hasAttribute(RootAttr.InverseHarmony)) {
             // saat, takat
             attributesList.add(PhonAttr.LastVowelFrontal);
-        }
+        } else
+            attributesList.add(PhonAttr.LastVowelBack);
         if (sequence.lastLetter().isVowel()) {
             // elma
             attributesList.add(PhonAttr.LastLetterVowel);
-        }
+        } else
+            attributesList.add(PhonAttr.LastLetterConsonant);
         if (sequence.lastLetter().isVoiceless() && sequence.lastLetter().isStopConsonant()) {
             // kitap
             attributesList.add(PhonAttr.LastLetterVoicelessStop);
-        }
+        } else
+            attributesList.add(PhonAttr.LastLetterNotVoicelessStop);
         return attributesList;
     }
 
