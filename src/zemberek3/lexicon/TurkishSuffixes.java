@@ -100,21 +100,21 @@ public class TurkishSuffixes {
 
         Dat_yA.addNodes(generateNodes(Dat_yA, "+yA"))
                 .addSuccessors(COPULAR);
-        // TODO: we dont need to treat this as an exception. make it like "add surface or such."
-        Dat_yA.addNodes(generatePredecessorNodes(Dat_yA, "nA", Rel_ki, P3sg_sI, P3pl_lArI));
+
+        Dat_yA.addNodes(generateNodes(Dat_yA, "nA", Rel_ki, P3sg_sI, P3pl_lArI));
 
         Loc_dA.addNodes(generateNodes(Loc_dA, ">dA")).addSuccessors(COPULAR);
-        Loc_dA.addNodes(generatePredecessorNodes(Loc_dA, "ndA", Rel_ki, P3sg_sI, P3pl_lArI));
+        Loc_dA.addNodes(generateNodes(Loc_dA, "ndA", Rel_ki, P3sg_sI, P3pl_lArI));
 
         Abl_dAn.addNodes(generateNodes(Abl_dAn, ">dAn")).addSuccessors(COPULAR);
-        Abl_dAn.addNodes(generatePredecessorNodes(Abl_dAn, "ndAn", Rel_ki, P3sg_sI, P3pl_lArI));
+        Abl_dAn.addNodes(generateNodes(Abl_dAn, "ndAn", Rel_ki, P3sg_sI, P3pl_lArI));
 
         Gen_nIn.addNodes(generateNodes(Gen_nIn, "+nIn"))
                 .addSuccessors(COPULAR)
                 .addSuccessors(Rel_ki);
 
         Acc_yI.addNodes(generateNodes(Acc_yI, "+yI"))
-                .addNodes(generatePredecessorNodes(Abl_dAn, "nI", Rel_ki, P3sg_sI, P3pl_lArI));
+                .addNodes(generateNodes(Abl_dAn, "nI", Rel_ki, P3sg_sI, P3pl_lArI));
 
         P1sg_Im.addNodes(generateNodes(P1sg_Im, "Im")).
                 addSuccessors(NOUN_CASE, COPULAR).
@@ -158,14 +158,6 @@ public class TurkishSuffixes {
         EvidCop_ymIs.addNodes(generateNodes(EvidCop_ymIs, "+ymIş")).addSuccessors(NOUN_PERSON);
         CondCop_ysA.addNodes(generateNodes(CondCop_ysA, "+ysA")).addSuccessors(NOUN_PERSON);
         While_yken.addNodes(generateNodes(While_yken, "+yken"));
-    }
-
-    private SuffixNode[] generatePredecessorNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... predecessorSuffixes) {
-        SuffixNode[] accExceptionNodes = generateNodes(suffix, generationWord);
-        for (SuffixNode node : accExceptionNodes) {
-            node.addExclusivePredecessor(predecessorSuffixes);
-        }
-        return accExceptionNodes;
     }
 
     TurkishAlphabet alphabet = new TurkishAlphabet();
@@ -330,12 +322,15 @@ public class TurkishSuffixes {
         }
     }
 
-    private SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord) {
+    private SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... exclusivePredecessors) {
         List<SuffixNode> nodes = new ArrayList<SuffixNode>();
         for (Form form : generateFromSuffixString(generationWord)) {
             SuffixNode node = new SuffixNode(suffix, form.surface);
             node.forwardExpectations = form.forwardExpts;
             node.backwardExpectations = form.backwardExpts;
+            if (exclusivePredecessors.length > 0) {
+                node.addExclusivePredecessor(exclusivePredecessors);
+            }
             defineMorphemicAttributes(node, form.surface);
             nodes.add(node);
         }
