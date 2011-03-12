@@ -1,5 +1,6 @@
 package zemberek3.lexicon;
 
+import com.google.common.collect.Lists;
 import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.structure.AttributeSet;
@@ -51,7 +52,36 @@ public class TurkishLexiconLoaderTest {
             Assert.assertEquals(PrimaryPos.Noun, item.primaryPos);
             Assert.assertEquals("error in:" + s, new AttributeSet<RootAttr>(RootAttr.NoVoicing), item.attrs);
         }
+    }
 
+    public void nounAttributesTest() {
+        TurkishLexiconLoader loader = new TurkishLexiconLoader();
+
+        List<ItemAttrPair> testList = Lists.newArrayList(
+                testPair("takat [A:NoVoicing, InverseHarmony]", RootAttr.NoVoicing, RootAttr.InverseHarmony),
+                testPair("nakit [A: LastVowelDrop]", RootAttr.Voicing, RootAttr.LastVowelDrop),
+                testPair("ret [A:Voicing, Doubling]", RootAttr.Voicing, RootAttr.LastVowelDrop)
+        );
+        for (ItemAttrPair pair : testList) {
+            LexiconItem item = loader.loadFromString(pair.str);
+            Assert.assertEquals(PrimaryPos.Noun, item.primaryPos);
+            Assert.assertEquals("error in:" + pair.str, pair.attrs, item.attrs);
+        }
+    }
+
+
+    private static ItemAttrPair testPair(String s, RootAttr... attrs) {
+        return new ItemAttrPair(s, new AttributeSet<RootAttr>(attrs));
+    }
+
+    private static class ItemAttrPair {
+        String str;
+        AttributeSet<RootAttr> attrs;
+
+        private ItemAttrPair(String str, AttributeSet<RootAttr> attrs) {
+            this.str = str;
+            this.attrs = attrs;
+        }
     }
 
 
