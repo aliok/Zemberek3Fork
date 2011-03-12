@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
+import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
@@ -15,44 +16,47 @@ import java.util.regex.Pattern;
 
 public class TurkishLexiconLoader {
 
-    public static List<LexiconItem> load(File input) throws IOException {
+    public List<LexiconItem> load(File input) throws IOException {
         return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor());
     }
 
-    static class LexiconFileProcessor implements LineProcessor<List<LexiconItem>> {
+    LexiconItem loadFromString(String lexiconItemString) {
+        return new LexiconItemMaker(lexiconItemString).getItem();
+    }
 
-        TurkishAlphabet alphabet = new TurkishAlphabet();
-        List<LexiconItem> lexiconItems = new ArrayList<LexiconItem>();
+    static class LexiconItemMaker {
+        final String line;
 
-        public boolean processLine(String line) throws IOException {
-            line = line.trim();
-            if (line.length() == 0 || line.startsWith("#"))
-                return true;
-            String word = getWord(line);
-            PosInfo posInfo = getPosData(word, line);
+        static final TurkishAlphabet alphabet = new TurkishAlphabet();
+
+        LexiconItemMaker(String line) {
+            this.line = line;
+        }
+
+        LexiconItem getItem() {
+            String word = getWord();
+            PosInfo posInfo = getPosData(word);
             String cleanWord = cleanWord(word, posInfo);
 
-            Set<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo, line);
-
-            lexiconItems.add(new LexiconItem(
+            AttributeSet<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo);
+            return new LexiconItem(
                     word,
                     cleanWord,
                     posInfo.primaryPos,
                     posInfo.secondaryPos,
-                    rootAttrs.toArray(new RootAttr[rootAttrs.size()])));
-            return true;
+                    rootAttrs);
         }
 
         static Pattern wordPattern = Pattern.compile("(?:^)(.+?)(?:$|\\[)");
 
-        private String getWord(String line) {
-            String word = getGroup1Match(line, wordPattern).trim();
+        String getWord() {
+            String word = getGroup1Match(wordPattern).trim();
             if (word.length() == 0)
                 throw new IllegalArgumentException("Line does not contain word :" + line);
             return word;
         }
 
-        private String cleanWord(String word, PosInfo posInfo) {
+        String cleanWord(String word, PosInfo posInfo) {
             if (posInfo.primaryPos == PrimaryPos.Verb)
                 return word.substring(0, word.length() - 3);
             if (posInfo.secondaryPos == SecondaryPos.ProperNoun) {
@@ -63,8 +67,8 @@ public class TurkishLexiconLoader {
 
         static Pattern posPattern = Pattern.compile("(?:Pos:)(.+?)(?:;|\\])");
 
-        private PosInfo getPosData(String word, String line) {
-            String posString = getGroup1Match(line, posPattern).trim();
+        PosInfo getPosData(String word) {
+            String posString = getGroup1Match(posPattern).trim();
             if (posString.length() == 0) {
                 //infer the type.
                 return new PosInfo(inferPrimaryPos(word), inferSecondaryPos(word));
@@ -111,9 +115,9 @@ public class TurkishLexiconLoader {
 
         static Pattern attributePattern = Pattern.compile("(?:A:)(.+?)(?:;|\\])");
 
-        private Set<RootAttr> morphemicAttributes(String word, PosInfo posData, String line) {
+        private AttributeSet<RootAttr> morphemicAttributes(String word, PosInfo posData) {
             LinkedHashSet<RootAttr> attributesList = new LinkedHashSet<RootAttr>(2);
-            String attributeStr = getGroup1Match(line, attributePattern).trim();
+            String attributeStr = getGroup1Match(attributePattern).trim();
             if (attributeStr.length() == 0) {
                 inferMorphemicAttributes(word, posData, attributesList);
             } else {
@@ -126,9 +130,7 @@ public class TurkishLexiconLoader {
                 }
                 inferMorphemicAttributes(word, posData, attributesList);
             }
-            // remove unnecessary items.
-            attributesList.remove(RootAttr.NoVoicing);
-            return attributesList;
+            return new AttributeSet<RootAttr>(attributesList);
         }
 
         static Locale locale = new Locale("tr");
@@ -159,22 +161,40 @@ public class TurkishLexiconLoader {
                             && !attributesList.contains(RootAttr.NoVoicing)
                             && !attributesList.contains(RootAttr.InverseHarmony))
                         attributesList.add(RootAttr.Voicing);
-                    if (word.endsWith("nk") || word.endsWith("og"))
+                    else if (word.endsWith("nk") || word.endsWith("og"))
                         attributesList.add(RootAttr.Voicing);
+                    else if (!attributesList.contains(RootAttr.Voicing))
+                        attributesList.add(RootAttr.NoVoicing);
                     break;
             }
+        }
+
+        private String getGroup1Match(Pattern pattern) {
+            Matcher m = pattern.matcher(line);
+            if (m.find()) {
+                return m.group(1);
+            } else return "";
+        }
+
+    }
+
+    static class LexiconFileProcessor implements LineProcessor<List<LexiconItem>> {
+
+        List<LexiconItem> lexiconItems = new ArrayList<LexiconItem>();
+
+        public boolean processLine(String line) throws IOException {
+            line = line.trim();
+            if (line.length() == 0 || line.startsWith("#"))
+                return true;
+
+            lexiconItems.add(new LexiconItemMaker(line).getItem());
+            return true;
         }
 
         public List<LexiconItem> getResult() {
             return lexiconItems;
         }
 
-        private String getGroup1Match(String line, Pattern pattern) {
-            Matcher m = pattern.matcher(line);
-            if (m.find()) {
-                return m.group(1);
-            } else return "";
-        }
     }
 
     static class PosInfo {
@@ -193,7 +213,7 @@ public class TurkishLexiconLoader {
     }
 
     public static void main(String[] args) throws IOException {
-        List<LexiconItem> items = TurkishLexiconLoader.load(new File("test/data/dev-lexicon.txt"));
+        List<LexiconItem> items = new TurkishLexiconLoader().load(new File("test/data/dev-lexicon.txt"));
         for (LexiconItem item : items) {
             System.out.println(item);
         }

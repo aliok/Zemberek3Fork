@@ -56,6 +56,13 @@ public class AttributeSet<T extends BitEnum> {
         this.data = data;
     }
 
+    public AttributeSet(Iterable<T> enumIt) {
+        set(enumIt);
+    }
+
+    public AttributeSet(T... enumIt) {
+        set(enumIt);
+    }
 
     public AttributeSet() {
         this.data = 0;

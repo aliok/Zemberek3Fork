@@ -61,7 +61,7 @@ public class LexiconGraphGenerator {
     }
 
     public boolean hasModifierAttribute(LexiconItem item) {
-        for (RootAttr attribute : item.attributes)
+        for (RootAttr attribute : item.attrs.getAsList(RootAttr.class))
             if (modifiers.contains(attribute))
                 return true;
         return false;
@@ -112,7 +112,7 @@ public class LexiconGraphGenerator {
 
         TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
 
-        for (RootAttr attribute : lexiconItem.attributes) {
+        for (RootAttr attribute : lexiconItem.attrs.getAsList(RootAttr.class)) {
 
             // generate other boundary attributes and modified root state.
             switch (attribute) {
@@ -247,7 +247,7 @@ public class LexiconGraphGenerator {
 
 
     public static void main(String[] args) throws IOException {
-        List<LexiconItem> items = TurkishLexiconLoader.load(new File("test/data/dev-lexicon.txt"));
+        List<LexiconItem> items = new TurkishLexiconLoader().load(new File("test/data/dev-lexicon.txt"));
         LexiconGraphGenerator generator = new LexiconGraphGenerator(items);
         generator.generate();
         List<RootNode> rootNodes = generator.getRootNodes();
