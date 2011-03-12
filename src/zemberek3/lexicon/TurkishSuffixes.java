@@ -91,346 +91,75 @@ public class TurkishSuffixes {
         }
         return Collections.emptyList();
     }
+    
+    SuffixFormGenerator generator;
 
     public void generate() {
 
-        Pl_lAr.addNodes(generateNodes(Pl_lAr, "lAr"))
+        Pl_lAr.addNodes(generator.generateNodes(Pl_lAr, "lAr"))
                 .addSuccessors(NOUN_CASE, COPULAR)
                 .addSuccessors(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz);
 
-        Dat_yA.addNodes(generateNodes(Dat_yA, "+yA"))
+        Dat_yA.addNodes(generator.generateNodes(Dat_yA, "+yA"))
                 .addSuccessors(COPULAR);
 
-        Dat_yA.addNodes(generateNodes(Dat_yA, "nA", Rel_ki, P3sg_sI, P3pl_lArI));
+        Dat_yA.addNodes(generator.generateNodes(Dat_yA, "nA", Rel_ki, P3sg_sI, P3pl_lArI));
 
-        Loc_dA.addNodes(generateNodes(Loc_dA, ">dA")).addSuccessors(COPULAR);
-        Loc_dA.addNodes(generateNodes(Loc_dA, "ndA", Rel_ki, P3sg_sI, P3pl_lArI));
+        Loc_dA.addNodes(generator.generateNodes(Loc_dA, ">dA")).addSuccessors(COPULAR);
+        Loc_dA.addNodes(generator.generateNodes(Loc_dA, "ndA", Rel_ki, P3sg_sI, P3pl_lArI));
 
-        Abl_dAn.addNodes(generateNodes(Abl_dAn, ">dAn")).addSuccessors(COPULAR);
-        Abl_dAn.addNodes(generateNodes(Abl_dAn, "ndAn", Rel_ki, P3sg_sI, P3pl_lArI));
+        Abl_dAn.addNodes(generator.generateNodes(Abl_dAn, ">dAn")).addSuccessors(COPULAR);
+        Abl_dAn.addNodes(generator.generateNodes(Abl_dAn, "ndAn", Rel_ki, P3sg_sI, P3pl_lArI));
 
-        Gen_nIn.addNodes(generateNodes(Gen_nIn, "+nIn"))
+        Gen_nIn.addNodes(generator.generateNodes(Gen_nIn, "+nIn"))
                 .addSuccessors(COPULAR)
                 .addSuccessors(Rel_ki);
 
-        Acc_yI.addNodes(generateNodes(Acc_yI, "+yI"))
-                .addNodes(generateNodes(Abl_dAn, "nI", Rel_ki, P3sg_sI, P3pl_lArI));
+        Acc_yI.addNodes(generator.generateNodes(Acc_yI, "+yI"))
+                .addNodes(generator.generateNodes(Abl_dAn, "nI", Rel_ki, P3sg_sI, P3pl_lArI));
 
-        P1sg_Im.addNodes(generateNodes(P1sg_Im, "Im")).
+        P1sg_Im.addNodes(generator.generateNodes(P1sg_Im, "Im")).
                 addSuccessors(NOUN_CASE, COPULAR).
                 addSuccessors(A2sg_sIn, A2pl_sInIz);
 
-        P2sg_In.addNodes(generateNodes(P2sg_In, "In")).
+        P2sg_In.addNodes(generator.generateNodes(P2sg_In, "In")).
                 addSuccessors(NOUN_CASE, COPULAR).
                 addSuccessors(A1sg_yIm, A1pl_yIz);
 
-        P3sg_sI.addNodes(generateNodes(P3sg_sI, "+sI")).
+        P3sg_sI.addNodes(generator.generateNodes(P3sg_sI, "+sI")).
                 addSuccessors(NOUN_CASE, COPULAR).
                 addSuccessors(A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz);
 
 
-        Dim_cIk.addNodes(generateNodes(Dim_cIk, ">cI~k")).
+        Dim_cIk.addNodes(generator.generateNodes(Dim_cIk, ">cI~k")).
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
                 addSuccessors(Pl_lAr, With_lI, Without_sIz);
 
-        Dim_cAgIz.addNodes(generateNodes(Dim_cAgIz, ">cağız")).
+        Dim_cAgIz.addNodes(generator.generateNodes(Dim_cAgIz, ">cağız")).
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
                 addSuccessors(Pl_lAr, With_lI, Without_sIz);
 
-        With_lI.addNodes(generateNodes(With_lI, "lI")).
+        With_lI.addNodes(generator.generateNodes(With_lI, "lI")).
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
                 addSuccessors(Pl_lAr);
 
-        Without_sIz.addNodes(generateNodes(Without_sIz, "sIz")).
+        Without_sIz.addNodes(generator.generateNodes(Without_sIz, "sIz")).
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
                 addSuccessors(Pl_lAr);
 
-        Rel_ki.addNodes(generateNodes(Rel_ki, "ki")).addSuccessors(NOUN_CASE, COPULAR, NOUN_PERSON);
+        Rel_ki.addNodes(generator.generateNodes(Rel_ki, "ki")).addSuccessors(NOUN_CASE, COPULAR, NOUN_PERSON);
 
-        A1sg_yIm.addNodes(generateNodes(A1sg_yIm, "+yIm")).addSuccessors(Cop_dIr);
-        A2sg_sIn.addNodes(generateNodes(A2sg_sIn, "sIn")).addSuccessors(Cop_dIr);
-        A1pl_yIz.addNodes(generateNodes(A1pl_yIz, "+yIz")).addSuccessors(Cop_dIr);
-        A2pl_sInIz.addNodes(generateNodes(A2pl_sInIz, "sInIz")).addSuccessors(Cop_dIr);
-        A3pl_lAr.addNodes(generateNodes(A3pl_lAr, "lAr")).addSuccessors(Cop_dIr);
+        A1sg_yIm.addNodes(generator.generateNodes(A1sg_yIm, "+yIm")).addSuccessors(Cop_dIr);
+        A2sg_sIn.addNodes(generator.generateNodes(A2sg_sIn, "sIn")).addSuccessors(Cop_dIr);
+        A1pl_yIz.addNodes(generator.generateNodes(A1pl_yIz, "+yIz")).addSuccessors(Cop_dIr);
+        A2pl_sInIz.addNodes(generator.generateNodes(A2pl_sInIz, "sInIz")).addSuccessors(Cop_dIr);
+        A3pl_lAr.addNodes(generator.generateNodes(A3pl_lAr, "lAr")).addSuccessors(Cop_dIr);
 
-        Cop_dIr.addNodes(generateNodes(Cop_dIr, ">dIr"));
-        PastCop_ydI.addNodes(generateNodes(PastCop_ydI, "+y>dI")).addSuccessors(NOUN_PERSON);
-        EvidCop_ymIs.addNodes(generateNodes(EvidCop_ymIs, "+ymIş")).addSuccessors(NOUN_PERSON);
-        CondCop_ysA.addNodes(generateNodes(CondCop_ysA, "+ysA")).addSuccessors(NOUN_PERSON);
-        While_yken.addNodes(generateNodes(While_yken, "+yken"));
-    }
-
-    TurkishAlphabet alphabet = new TurkishAlphabet();
-
-
-    private List<Form> generateFromSuffixString(String suffixString) {
-
-        ArrayList<Form> forms = new ArrayList<Form>();
-        if (suffixString.length() > 0)
-            forms.add(new Form());
-
-        List<SuffixToken> list = Lists.newArrayList(new SuffixStringTokenizer(suffixString));
-
-        int i = 0;
-        for (SuffixToken token : list) {
-            switch (token.type) {
-                case LETTER:
-                    for (Form seq : forms) {
-                        seq.surface.append(token.letter);
-                    }
-                    break;
-
-                case A_WOVEL:
-                    ArrayList<Form> alist = new ArrayList<Form>();
-                    for (Form form : forms) {
-                        if (!form.surface.hasVowel()) {
-                            if (form.surface.length() == 0 && forms.size() == 1) {
-                                Form empty = new Form();
-                                empty.backwardExpts.set(PhonAttr.LastLetterVowel);
-                                alist.add(empty);
-                            }
-                            Form a = form.copy().append(L_a);
-                            a.backwardExpts.set(PhonAttr.LastVowelBack);
-                            alist.add(a);
-
-                            Form e = form.copy().append(L_e);
-                            e.backwardExpts.set(PhonAttr.LastVowelFrontal);
-                            alist.add(e);
-
-                        } else if (form.surface.lastVowel().isFrontalVowel()) {
-                            alist.add(form.copy().append(L_e));
-                        } else {
-                            alist.add(form.copy().append(L_a));
-                        }
-                    }
-                    forms = alist;
-                    break;
-
-                case I_WOVEL:
-                    ArrayList<Form> ilist = new ArrayList<Form>();
-                    for (Form form : forms) {
-                        if (!form.surface.hasVowel()) {
-                            if (form.surface.length() == 0 && forms.size() == 1) {
-                                Form empty = new Form();
-                                empty.backwardExpts.set(PhonAttr.LastLetterVowel);
-                                ilist.add(empty);
-                            }
-
-                            Form fii = form.copy().append(L_ii);
-                            fii.backwardExpts.set(PhonAttr.LastVowelBack, PhonAttr.LastVowelUnrounded);
-                            ilist.add(fii);
-
-                            Form fi = form.copy().append(L_i);
-                            fi.backwardExpts.set(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelUnrounded);
-                            ilist.add(fi);
-
-                            Form fu = form.copy().append(L_u);
-                            fu.backwardExpts.set(PhonAttr.LastVowelBack, PhonAttr.LastVowelRounded);
-                            ilist.add(fu);
-
-                            Form fuu = form.copy().append(L_uu);
-                            fuu.backwardExpts.set(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelRounded);
-                            ilist.add(fuu);
-                        } else {
-                            boolean frontal = form.surface.lastVowel().frontalVowel;
-                            boolean round = form.surface.lastVowel().roundedVowel;
-                            if (frontal && round) {
-                                ilist.add(form.copy().append(L_uu));
-                            } else if (frontal && !round) {
-                                ilist.add(form.copy().append(L_i));
-                            } else if (!frontal && round) {
-                                ilist.add(form.copy().append(L_uu));
-                            } else if (!frontal && !round) {
-                                ilist.add(form.copy().append(L_ii));
-                            }
-                        }
-                    }
-                    forms = ilist;
-                    break;
-
-                case DEVOICE:
-                    ArrayList<Form> dlist = new ArrayList<Form>();
-                    for (Form form : forms) {
-                        Form fn = form.copy().append(token.letter);
-                        if (i == 0)
-                            fn.backwardExpts.set(PhonAttr.LastLetterNotVoicelessStop);
-                        dlist.add(fn);
-                        if (form.surface.length() == 0) {
-                            fn = form.copy().append(alphabet.devoice(token.letter));
-                            if (i == 0)
-                                fn.backwardExpts.set(PhonAttr.LastLetterVoicelessStop);
-                            dlist.add(fn);
-                        }
-                    }
-                    forms = dlist;
-                    break;
-
-                case VOICE:
-                    ArrayList<Form> vlist = new ArrayList<Form>();
-                    for (Form form : forms) {
-                        Form fn = form.copy().append(token.letter);
-                        if (i == list.size() - 1)
-                            fn.forwardExpts.set(PhonAttr.FirstLetterConsonant);
-                        vlist.add(fn);
-                        fn = form.copy().append(alphabet.voice(token.letter));
-                        if (i == list.size() - 1)
-                            fn.forwardExpts.set(PhonAttr.FirstLetterVowel);
-                        vlist.add(fn);
-                    }
-                    forms = vlist;
-                    break;
-
-                case APPEND:
-                    ArrayList<Form> aplist = new ArrayList<Form>();
-                    for (Form form : forms) {
-                        Form fn = form.copy().append(token.letter);
-                        fn.backwardExpts.set(PhonAttr.LastLetterVowel);
-                        aplist.add(fn);
-                        fn = form.copy();
-                        fn.forwardExpts.set(PhonAttr.LastLetterConsonant);
-                        aplist.add(fn);
-                    }
-                    forms = aplist;
-                    break;
-            }
-        }
-        return forms;
-    }
-
-    private static class Form {
-
-        TurkicSeq surface = new TurkicSeq();
-        AttributeSet<PhonAttr> forwardAttrs = new AttributeSet<PhonAttr>();
-        AttributeSet<PhonAttr> forwardExpts = new AttributeSet<PhonAttr>();
-        AttributeSet<PhonAttr> backwardAttrs = new AttributeSet<PhonAttr>();
-        AttributeSet<PhonAttr> backwardExpts = new AttributeSet<PhonAttr>();
-
-        Form copy() {
-            Form copy = new Form();
-            copy.surface = new TurkicSeq(surface);
-            copy.backwardAttrs = backwardAttrs.copy();
-            copy.backwardExpts = backwardExpts.copy();
-            copy.forwardAttrs = forwardAttrs.copy();
-            copy.forwardExpts = forwardExpts.copy();
-
-            return copy;
-        }
-
-        Form append(TurkicLetter letter) {
-            surface.append(letter);
-            return this;
-        }
-    }
-
-    private SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... exclusivePredecessors) {
-        List<SuffixNode> nodes = new ArrayList<SuffixNode>();
-        for (Form form : generateFromSuffixString(generationWord)) {
-            SuffixNode node = new SuffixNode(suffix, form.surface);
-            node.forwardExpectations = form.forwardExpts;
-            node.backwardExpectations = form.backwardExpts;
-            if (exclusivePredecessors.length > 0) {
-                node.addExclusivePredecessor(exclusivePredecessors);
-            }
-            defineMorphemicAttributes(node, form.surface);
-            nodes.add(node);
-        }
-        return nodes.toArray(new SuffixNode[nodes.size()]);
-    }
-
-    // in suffix, defining morphemic attributes is straight forward.
-    private void defineMorphemicAttributes(SuffixNode node, TurkicSeq seq) {
-        if (seq.hasVowel()) {
-            if (seq.lastVowel().isFrontalVowel())
-                node.forwardAttributes.set(PhonAttr.LastVowelFrontal);
-            else
-                node.forwardAttributes.set(PhonAttr.LastVowelBack);
-
-            if (seq.lastVowel().isRoundedVowel())
-                node.forwardAttributes.set(PhonAttr.LastVowelRounded);
-            else
-                node.forwardAttributes.set(PhonAttr.LastVowelUnrounded);
-            if (seq.lastLetter().isVowel())
-                node.forwardAttributes.set(PhonAttr.LastLetterVowel);
-            else
-                node.forwardAttributes.set(PhonAttr.LastLetterConsonant);
-            if (seq.firstLetter().isVowel())
-                node.backwardAttributes.set(PhonAttr.FirstLetterVowel);
-            else
-                node.backwardAttributes.set(PhonAttr.FirstLetterConsonant);
-            if (seq.firstLetter().isFrontalVowel())
-                node.backwardAttributes.set(PhonAttr.FirstVowelFrontal);
-            else
-                node.backwardAttributes.set(PhonAttr.FirstVowelBack);
-            if (seq.firstLetter().isRoundedVowel())
-                node.backwardAttributes.set(PhonAttr.FirstVowelRounded);
-            else
-                node.backwardAttributes.set(PhonAttr.FirstVowelUnrounded);
-        } else {
-            node.forwardAttributes.set(PhonAttr.HasNoVowel);
-            node.backwardAttributes.set(PhonAttr.HasNoVowel);
-        }
-        if (seq.lastLetter().isStopConsonant()) {
-            node.forwardAttributes.set(PhonAttr.LastLetterVoicelessStop);
-        } else
-            node.forwardAttributes.set(PhonAttr.LastLetterNotVoicelessStop);
-    }
-
-
-    private static enum TokenType {
-        I_WOVEL,
-        A_WOVEL,
-        VOICE,
-        DEVOICE,
-        APPEND,
-        LETTER
-    }
-
-    private static class SuffixToken {
-        TokenType type;
-        TurkicLetter letter;
-
-        private SuffixToken(TokenType type, TurkicLetter letter) {
-            this.type = type;
-            this.letter = letter;
-        }
-    }
-
-    class SuffixStringTokenizer implements Iterator<SuffixToken> {
-
-        private int pointer;
-        private final String generationWord;
-
-        public SuffixStringTokenizer(String generationWord) {
-            this.generationWord = generationWord;
-        }
-
-        public boolean hasNext() {
-            return generationWord != null && pointer < generationWord.length();
-        }
-
-        public SuffixToken next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException("no elements left!");
-            }
-            char p = generationWord.charAt(pointer++);
-            switch (p) {
-                case '+':
-                    return new SuffixToken(TokenType.APPEND, alphabet.getLetter(generationWord.charAt(pointer++)));
-                case '>':
-                    return new SuffixToken(TokenType.DEVOICE, alphabet.getLetter(generationWord.charAt(pointer++)));
-                case '~':
-                    return new SuffixToken(TokenType.VOICE, alphabet.getLetter(generationWord.charAt(pointer++)));
-                case 'I':
-                    return new SuffixToken(TokenType.I_WOVEL, TurkicLetter.UNDEFINED);
-                case 'A':
-                    return new SuffixToken(TokenType.A_WOVEL, TurkicLetter.UNDEFINED);
-                default:
-                    return new SuffixToken(TokenType.LETTER, alphabet.getLetter(p));
-            }
-        }
-
-        public void remove() {
-        }
+        Cop_dIr.addNodes(generator.generateNodes(Cop_dIr, ">dIr"));
+        PastCop_ydI.addNodes(generator.generateNodes(PastCop_ydI, "+y>dI")).addSuccessors(NOUN_PERSON);
+        EvidCop_ymIs.addNodes(generator.generateNodes(EvidCop_ymIs, "+ymIş")).addSuccessors(NOUN_PERSON);
+        CondCop_ysA.addNodes(generator.generateNodes(CondCop_ysA, "+ysA")).addSuccessors(NOUN_PERSON);
+        While_yken.addNodes(generator.generateNodes(While_yken, "+yken"));
     }
 
     public static void main(String[] args) {
