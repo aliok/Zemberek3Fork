@@ -36,23 +36,23 @@ public class AttributeSetTest {
     @Test
     public void setTest() {
         AttributeSet<TestAttr> set = new AttributeSet<TestAttr>();
-        set.set(Apple);
-        Assert.assertTrue(set.isSet(Apple));
-        Assert.assertTrue(set.isAllReset(Orange, Radish));
-        set.set(Radish);
-        Assert.assertTrue(set.isAllReset(Orange));
+        set.add(Apple);
+        Assert.assertTrue(set.contains(Apple));
+        Assert.assertTrue(set.containsNone(Orange, Radish));
+        set.add(Radish);
+        Assert.assertTrue(set.containsNone(Orange));
     }
 
     @Test
     public void resetTest() {
         AttributeSet<TestAttr> set = new AttributeSet<TestAttr>();
-        set.set(Apple, Orange);
-        Assert.assertTrue(set.isAllSet(Apple, Orange));
-        Assert.assertTrue(set.isReset(Radish));
-        set.reset(Apple, Orange);
-        set.set(Radish);
-        Assert.assertTrue(set.isSet(Radish));
-        Assert.assertTrue(set.isAllReset(Apple, Orange));
+        set.add(Apple, Orange);
+        Assert.assertTrue(set.containsAll(Apple, Orange));
+        Assert.assertTrue(!set.contains(Radish));
+        set.remove(Apple, Orange);
+        set.add(Radish);
+        Assert.assertTrue(set.contains(Radish));
+        Assert.assertTrue(set.containsNone(Apple, Orange));
     }
 
 

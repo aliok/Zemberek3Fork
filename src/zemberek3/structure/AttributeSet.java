@@ -20,49 +20,31 @@ public class AttributeSet<T extends BitEnum> {
         }
     }
 
-    public boolean isSet(int bitIndex) {
-        return (data & setMasks[bitIndex]) != 0;
-    }
-
     public AttributeSet<T> copy() {
         return new AttributeSet<T>(data);
     }
 
-    public boolean isSet(BitEnum bitEnum) {
+    public boolean contains(BitEnum bitEnum) {
         return (data & setMasks[bitEnum.getBitIndex()]) != 0;
     }
 
-    public boolean isAllSet(BitEnum... bitEnum) {
+    public boolean containsAll(BitEnum... bitEnum) {
         for (BitEnum en : bitEnum) {
-            if (!isSet(en))
+            if (!contains(en))
                 return false;
         }
         return true;
     }
 
-    public boolean isAllReset(BitEnum... bitEnum) {
+    public boolean containsNone(BitEnum... bitEnum) {
         for (BitEnum en : bitEnum) {
-            if (isSet(en))
+            if (contains(en))
                 return false;
         }
         return true;
     }
 
-
-    private boolean isReset(int bitIndex) {
-        return (data & setMasks[bitIndex]) == 0;
-    }
-
-    public boolean isReset(BitEnum bitEnum) {
-        return (data & setMasks[bitEnum.getBitIndex()]) == 0;
-    }
-
-    private AttributeSet set(int bitIndex) {
-        data |= setMasks[bitIndex];
-        return this;
-    }
-
-    public AttributeSet set(T... enums) {
+    public AttributeSet add(T... enums) {
         for (BitEnum en : enums) {
             data |= setMasks[en.getBitIndex()];
         }
@@ -74,30 +56,25 @@ public class AttributeSet<T extends BitEnum> {
     }
 
     public AttributeSet(Iterable<T> enumIt) {
-        set(enumIt);
+        add(enumIt);
     }
 
     public AttributeSet(T... enumIt) {
-        set(enumIt);
+        add(enumIt);
     }
 
     public AttributeSet() {
         this.data = 0;
     }
 
-    public AttributeSet set(Iterable<T> enumIt) {
+    public AttributeSet add(Iterable<T> enumIt) {
         for (BitEnum bitEnum : enumIt) {
             data |= setMasks[bitEnum.getBitIndex()];
         }
         return this;
     }
 
-    private AttributeSet reset(int bitIndex) {
-        data &= resetMasks[bitIndex];
-        return this;
-    }
-
-    public AttributeSet reset(T... enums) {
+   public AttributeSet remove(T... enums) {
         for (BitEnum anEnum : enums) {
             data &= resetMasks[anEnum.getBitIndex()];
         }
@@ -124,7 +101,7 @@ public class AttributeSet<T extends BitEnum> {
     public List<T> getAsList(Class<T> clazz) {
         List<T> tt = new ArrayList<T>();
         for (T t : clazz.getEnumConstants()) {
-            if (isSet(t)) {
+            if (contains(t)) {
                 tt.add(t);
             }
         }

@@ -29,12 +29,12 @@ public class BoundaryNode implements Cloneable {
 
     public BoundaryNode(PrimaryPos primaryPos, Iterable<PhonAttr> forwardAttributes) {
         this.primaryPos = primaryPos;
-        this.forwardAttributes.set(forwardAttributes);
+        this.forwardAttributes.add(forwardAttributes);
     }
 
     public BoundaryNode(PrimaryPos primaryPos, PhonAttr... forwardAttributes) {
         this.primaryPos = primaryPos;
-        this.forwardAttributes.set(forwardAttributes);
+        this.forwardAttributes.add(forwardAttributes);
     }
 
     public BoundaryNode(PrimaryPos primaryPos, AttributeSet<PhonAttr> forwardAttributes, AttributeSet<PhonAttr> forwardExpectations) {

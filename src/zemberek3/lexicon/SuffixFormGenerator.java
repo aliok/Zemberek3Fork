@@ -53,15 +53,15 @@ public class SuffixFormGenerator {
                         if (!form.surface.hasVowel()) {
                             if (form.surface.length() == 0 && forms.size() == 1) {
                                 Form empty = new Form();
-                                empty.backwardExpcts.set(PhonAttr.LastLetterVowel);
+                                empty.backwardExpcts.add(PhonAttr.LastLetterVowel);
                                 alist.add(empty);
                             }
                             Form af = form.copy().append(L_a);
-                            af.backwardExpcts.set(PhonAttr.LastVowelBack);
+                            af.backwardExpcts.add(PhonAttr.LastVowelBack);
                             alist.add(af);
 
                             Form ef = form.copy().append(L_e);
-                            ef.backwardExpcts.set(PhonAttr.LastVowelFrontal);
+                            ef.backwardExpcts.add(PhonAttr.LastVowelFrontal);
                             alist.add(ef);
 
                         } else if (form.surface.lastVowel().isFrontal()) {
@@ -79,24 +79,24 @@ public class SuffixFormGenerator {
                         if (!form.surface.hasVowel()) {
                             if (form.surface.length() == 0 && forms.size() == 1) {
                                 Form empty = new Form();
-                                empty.backwardExpcts.set(PhonAttr.LastLetterVowel);
+                                empty.backwardExpcts.add(PhonAttr.LastLetterVowel);
                                 ilist.add(empty);
                             }
 
                             Form fii = form.copy().append(L_ii);
-                            fii.backwardExpcts.set(PhonAttr.LastVowelBack, PhonAttr.LastVowelUnrounded);
+                            fii.backwardExpcts.add(PhonAttr.LastVowelBack, PhonAttr.LastVowelUnrounded);
                             ilist.add(fii);
 
                             Form fi = form.copy().append(L_i);
-                            fi.backwardExpcts.set(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelUnrounded);
+                            fi.backwardExpcts.add(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelUnrounded);
                             ilist.add(fi);
 
                             Form fu = form.copy().append(L_u);
-                            fu.backwardExpcts.set(PhonAttr.LastVowelBack, PhonAttr.LastVowelRounded);
+                            fu.backwardExpcts.add(PhonAttr.LastVowelBack, PhonAttr.LastVowelRounded);
                             ilist.add(fu);
 
                             Form fuu = form.copy().append(L_uu);
-                            fuu.backwardExpcts.set(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelRounded);
+                            fuu.backwardExpcts.add(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelRounded);
                             ilist.add(fuu);
                         } else {
                             boolean frontal = form.surface.lastVowel().frontal;
@@ -120,12 +120,12 @@ public class SuffixFormGenerator {
                     for (Form form : forms) {
                         Form fn = form.copy().append(token.letter);
                         if (i == 0)
-                            fn.backwardExpcts.set(PhonAttr.LastLetterNotVoicelessStop);
+                            fn.backwardExpcts.add(PhonAttr.LastLetterNotVoicelessStop);
                         dlist.add(fn);
                         if (form.surface.length() == 0) {
                             fn = form.copy().append(alphabet.devoice(token.letter));
                             if (i == 0)
-                                fn.backwardExpcts.set(PhonAttr.LastLetterVoicelessStop);
+                                fn.backwardExpcts.add(PhonAttr.LastLetterVoicelessStop);
                             dlist.add(fn);
                         }
                     }
@@ -137,11 +137,11 @@ public class SuffixFormGenerator {
                     for (Form form : forms) {
                         Form fn = form.copy().append(token.letter);
                         if (i == list.size() - 1)
-                            fn.forwardExpcts.set(PhonAttr.FirstLetterConsonant);
+                            fn.forwardExpcts.add(PhonAttr.FirstLetterConsonant);
                         vlist.add(fn);
                         fn = form.copy().append(alphabet.voice(token.letter));
                         if (i == list.size() - 1)
-                            fn.forwardExpcts.set(PhonAttr.FirstLetterVowel);
+                            fn.forwardExpcts.add(PhonAttr.FirstLetterVowel);
                         vlist.add(fn);
                     }
                     forms = vlist;
@@ -151,10 +151,10 @@ public class SuffixFormGenerator {
                     ArrayList<Form> aplist = new ArrayList<Form>();
                     for (Form form : forms) {
                         Form fn = form.copy().append(token.letter);
-                        fn.backwardExpcts.set(PhonAttr.LastLetterVowel);
+                        fn.backwardExpcts.add(PhonAttr.LastLetterVowel);
                         aplist.add(fn);
                         fn = form.copy();
-                        fn.forwardExpcts.set(PhonAttr.LastLetterConsonant);
+                        fn.forwardExpcts.add(PhonAttr.LastLetterConsonant);
                         aplist.add(fn);
                     }
                     forms = aplist;
@@ -222,37 +222,37 @@ public class SuffixFormGenerator {
     private void defineMorphemicAttributes(Form form, TurkicSeq seq) {
         if (seq.hasVowel()) {
             if (seq.lastVowel().isFrontal())
-                form.forwardAttrs.set(PhonAttr.LastVowelFrontal);
+                form.forwardAttrs.add(PhonAttr.LastVowelFrontal);
             else
-                form.forwardAttrs.set(PhonAttr.LastVowelBack);
+                form.forwardAttrs.add(PhonAttr.LastVowelBack);
             if (seq.lastVowel().isRounded())
-                form.forwardAttrs.set(PhonAttr.LastVowelRounded);
+                form.forwardAttrs.add(PhonAttr.LastVowelRounded);
             else
-                form.forwardAttrs.set(PhonAttr.LastVowelUnrounded);
+                form.forwardAttrs.add(PhonAttr.LastVowelUnrounded);
             if (seq.lastLetter().isVowel())
-                form.forwardAttrs.set(PhonAttr.LastLetterVowel);
+                form.forwardAttrs.add(PhonAttr.LastLetterVowel);
             else
-                form.forwardAttrs.set(PhonAttr.LastLetterConsonant);
+                form.forwardAttrs.add(PhonAttr.LastLetterConsonant);
             if (seq.firstLetter().isVowel())
-                form.backwardAttrs.set(PhonAttr.FirstLetterVowel);
+                form.backwardAttrs.add(PhonAttr.FirstLetterVowel);
             else
-                form.backwardAttrs.set(PhonAttr.FirstLetterConsonant);
+                form.backwardAttrs.add(PhonAttr.FirstLetterConsonant);
             if (seq.firstLetter().isFrontal())
-                form.backwardAttrs.set(PhonAttr.FirstVowelFrontal);
+                form.backwardAttrs.add(PhonAttr.FirstVowelFrontal);
             else
-                form.backwardAttrs.set(PhonAttr.FirstVowelBack);
+                form.backwardAttrs.add(PhonAttr.FirstVowelBack);
             if (seq.firstLetter().isRounded())
-                form.backwardAttrs.set(PhonAttr.FirstVowelRounded);
+                form.backwardAttrs.add(PhonAttr.FirstVowelRounded);
             else
-                form.backwardAttrs.set(PhonAttr.FirstVowelUnrounded);
+                form.backwardAttrs.add(PhonAttr.FirstVowelUnrounded);
         } else {
-            form.forwardAttrs.set(PhonAttr.HasNoVowel);
-            form.backwardAttrs.set(PhonAttr.HasNoVowel);
+            form.forwardAttrs.add(PhonAttr.HasNoVowel);
+            form.backwardAttrs.add(PhonAttr.HasNoVowel);
         }
         if (seq.lastLetter().isStopConsonant()) {
-            form.forwardAttrs.set(PhonAttr.LastLetterVoicelessStop);
+            form.forwardAttrs.add(PhonAttr.LastLetterVoicelessStop);
         } else
-            form.forwardAttrs.set(PhonAttr.LastLetterNotVoicelessStop);
+            form.forwardAttrs.add(PhonAttr.LastLetterNotVoicelessStop);
     }
 
 

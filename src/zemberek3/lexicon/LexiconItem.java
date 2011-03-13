@@ -20,7 +20,7 @@ public class LexiconItem {
     }
 
     public boolean hasAttribute(RootAttr attribute) {
-        attrs.isSet(attribute);
+        attrs.contains(attribute);
         return false;
     }
 
