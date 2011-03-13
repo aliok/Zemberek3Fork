@@ -144,11 +144,11 @@ public class TurkicLetter {
         return !vowel;
     }
 
-    public boolean isFrontalVowel() {
+    public boolean isFrontal() {
         return frontalVowel;
     }
 
-    public boolean isRoundedVowel() {
+    public boolean isRounded() {
         return roundedVowel;
     }
 

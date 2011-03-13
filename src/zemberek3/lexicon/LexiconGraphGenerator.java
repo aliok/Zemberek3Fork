@@ -80,11 +80,11 @@ public class LexiconGraphGenerator {
         List<PhonAttr> attributesList = new ArrayList<PhonAttr>();
         TurkicSeq sequence = new TurkicSeq(lexiconItem.root, alphabet);
         // general phonetic attributes.
-        if (sequence.lastVowel().isRoundedVowel())
+        if (sequence.lastVowel().isRounded())
             attributesList.add(PhonAttr.LastVowelRounded);
         else
             attributesList.add(PhonAttr.LastVowelUnrounded);
-        if (sequence.lastVowel().isFrontalVowel()) {
+        if (sequence.lastVowel().isFrontal()) {
             attributesList.add(PhonAttr.LastVowelFrontal);
         } else if (lexiconItem.hasAttribute(RootAttr.InverseHarmony)) {
             // saat, takat

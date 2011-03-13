@@ -64,7 +64,7 @@ public class SuffixFormGenerator {
                             ef.backwardExpcts.set(PhonAttr.LastVowelFrontal);
                             alist.add(ef);
 
-                        } else if (form.surface.lastVowel().isFrontalVowel()) {
+                        } else if (form.surface.lastVowel().isFrontal()) {
                             alist.add(form.copy().append(L_e));
                         } else {
                             alist.add(form.copy().append(L_a));
@@ -163,7 +163,7 @@ public class SuffixFormGenerator {
         }
         return forms;
     }
-    //seni seviyorum canim askimcim <3
+    //<3
 
     private static class Form {
 
@@ -221,11 +221,11 @@ public class SuffixFormGenerator {
     // in suffix, defining morphemic attributes is straight forward.
     private void defineMorphemicAttributes(Form form, TurkicSeq seq) {
         if (seq.hasVowel()) {
-            if (seq.lastVowel().isFrontalVowel())
+            if (seq.lastVowel().isFrontal())
                 form.forwardAttrs.set(PhonAttr.LastVowelFrontal);
             else
                 form.forwardAttrs.set(PhonAttr.LastVowelBack);
-            if (seq.lastVowel().isRoundedVowel())
+            if (seq.lastVowel().isRounded())
                 form.forwardAttrs.set(PhonAttr.LastVowelRounded);
             else
                 form.forwardAttrs.set(PhonAttr.LastVowelUnrounded);
@@ -237,11 +237,11 @@ public class SuffixFormGenerator {
                 form.backwardAttrs.set(PhonAttr.FirstLetterVowel);
             else
                 form.backwardAttrs.set(PhonAttr.FirstLetterConsonant);
-            if (seq.firstLetter().isFrontalVowel())
+            if (seq.firstLetter().isFrontal())
                 form.backwardAttrs.set(PhonAttr.FirstVowelFrontal);
             else
                 form.backwardAttrs.set(PhonAttr.FirstVowelBack);
-            if (seq.firstLetter().isRoundedVowel())
+            if (seq.firstLetter().isRounded())
                 form.backwardAttrs.set(PhonAttr.FirstVowelRounded);
             else
                 form.backwardAttrs.set(PhonAttr.FirstVowelUnrounded);

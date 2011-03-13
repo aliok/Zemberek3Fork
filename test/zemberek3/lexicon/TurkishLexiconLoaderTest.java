@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import static zemberek3.lexicon.PrimaryPos.Noun;
+import static zemberek3.lexicon.RootAttr.*;
+
 public class TurkishLexiconLoaderTest {
     @Test
     public void loadNounsFromFileTest() throws IOException {
@@ -17,7 +20,7 @@ public class TurkishLexiconLoaderTest {
 
         Assert.assertFalse(items.isEmpty());
         for (LexiconItem item : items) {
-            Assert.assertTrue(item.primaryPos == PrimaryPos.Noun);
+            Assert.assertTrue(item.primaryPos == Noun);
         }
     }
 
@@ -27,12 +30,12 @@ public class TurkishLexiconLoaderTest {
         LexiconItem item = loader.loadFromString("elma");
         Assert.assertEquals("elma", item.root);
         Assert.assertEquals("elma", item.lemma);
-        Assert.assertEquals(PrimaryPos.Noun, item.primaryPos);
+        Assert.assertEquals(Noun, item.primaryPos);
 
         item = loader.loadFromString("elma [Pos:Noun]");
         Assert.assertEquals("elma", item.root);
         Assert.assertEquals("elma", item.lemma);
-        Assert.assertEquals(PrimaryPos.Noun, item.primaryPos);
+        Assert.assertEquals(Noun, item.primaryPos);
     }
 
 
@@ -42,33 +45,33 @@ public class TurkishLexiconLoaderTest {
         String[] voicing = {"kabak", "kabak [A:Voicing]", "psikolog", "havuç", "turp [A:Voicing]", "galip", "nohut", "cenk"};
         for (String s : voicing) {
             LexiconItem item = loader.loadFromString(s);
-            Assert.assertEquals(PrimaryPos.Noun, item.primaryPos);
-            Assert.assertEquals("error in:" + s, new AttributeSet<RootAttr>(RootAttr.Voicing), item.attrs);
+            Assert.assertEquals(Noun, item.primaryPos);
+            Assert.assertEquals("error in:" + s, new AttributeSet<RootAttr>(Voicing), item.attrs);
         }
 
         String[] novoicing = {"kek", "top", "kulp", "takat [A:NoVoicing]"};
         for (String s : novoicing) {
             LexiconItem item = loader.loadFromString(s);
-            Assert.assertEquals(PrimaryPos.Noun, item.primaryPos);
-            Assert.assertEquals("error in:" + s, new AttributeSet<RootAttr>(RootAttr.NoVoicing), item.attrs);
+            Assert.assertEquals(Noun, item.primaryPos);
+            Assert.assertEquals("error in:" + s, new AttributeSet<RootAttr>(NoVoicing), item.attrs);
         }
     }
 
+    @Test
     public void nounAttributesTest() {
         TurkishLexiconLoader loader = new TurkishLexiconLoader();
 
         List<ItemAttrPair> testList = Lists.newArrayList(
-                testPair("takat [A:NoVoicing, InverseHarmony]", RootAttr.NoVoicing, RootAttr.InverseHarmony),
-                testPair("nakit [A: LastVowelDrop]", RootAttr.Voicing, RootAttr.LastVowelDrop),
-                testPair("ret [A:Voicing, Doubling]", RootAttr.Voicing, RootAttr.LastVowelDrop)
+                testPair("takat [A:NoVoicing, InverseHarmony]", NoVoicing, InverseHarmony),
+                testPair("nakit [A: LastVowelDrop]", Voicing, LastVowelDrop),
+                testPair("ret [A:Voicing, Doubling]", Voicing, Doubling)
         );
         for (ItemAttrPair pair : testList) {
             LexiconItem item = loader.loadFromString(pair.str);
-            Assert.assertEquals(PrimaryPos.Noun, item.primaryPos);
+            Assert.assertEquals(Noun, item.primaryPos);
             Assert.assertEquals("error in:" + pair.str, pair.attrs, item.attrs);
         }
     }
-
 
     private static ItemAttrPair testPair(String s, RootAttr... attrs) {
         return new ItemAttrPair(s, new AttributeSet<RootAttr>(attrs));
