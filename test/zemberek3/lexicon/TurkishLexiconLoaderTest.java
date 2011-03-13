@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static zemberek3.lexicon.PrimaryPos.Noun;
+import static zemberek3.lexicon.PrimaryPos.Verb;
 import static zemberek3.lexicon.RootAttr.*;
 
 public class TurkishLexiconLoaderTest {
@@ -25,7 +26,7 @@ public class TurkishLexiconLoaderTest {
     }
 
     @Test
-    public void nounAttributesTest1() {
+    public void nounInferenceTest() {
         TurkishLexiconLoader loader = new TurkishLexiconLoader();
         LexiconItem item = loader.loadFromString("elma");
         Assert.assertEquals("elma", item.root);
@@ -38,6 +39,21 @@ public class TurkishLexiconLoaderTest {
         Assert.assertEquals(Noun, item.primaryPos);
     }
 
+
+    @Test
+    public void verbInferenceTest() {
+        TurkishLexiconLoader loader = new TurkishLexiconLoader();
+        LexiconItem item = loader.loadFromString("gelmek");
+        Assert.assertEquals("gel", item.root);
+        Assert.assertEquals("gelmek", item.lemma);
+        Assert.assertEquals(Verb, item.primaryPos);
+
+        String[] verbs = {"germek", "yarmak", "salmak", "yermek [Pos:Verb]", "etmek [Pos:Verb; A:Voicing]"};
+        for (String verb : verbs) {
+            item = loader.loadFromString(verb);
+            Assert.assertEquals(Verb, item.primaryPos);
+        }
+    }
 
     @Test
     public void nounVoicingTest() {

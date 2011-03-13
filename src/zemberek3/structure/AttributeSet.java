@@ -32,7 +32,24 @@ public class AttributeSet<T extends BitEnum> {
         return (data & setMasks[bitEnum.getBitIndex()]) != 0;
     }
 
-    public boolean isReset(int bitIndex) {
+    public boolean isAllSet(BitEnum... bitEnum) {
+        for (BitEnum en : bitEnum) {
+            if (!isSet(en))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean isAllReset(BitEnum... bitEnum) {
+        for (BitEnum en : bitEnum) {
+            if (isSet(en))
+                return false;
+        }
+        return true;
+    }
+
+
+    private boolean isReset(int bitIndex) {
         return (data & setMasks[bitIndex]) == 0;
     }
 
@@ -40,7 +57,7 @@ public class AttributeSet<T extends BitEnum> {
         return (data & setMasks[bitEnum.getBitIndex()]) == 0;
     }
 
-    public AttributeSet set(int bitIndex) {
+    private AttributeSet set(int bitIndex) {
         data |= setMasks[bitIndex];
         return this;
     }
@@ -75,7 +92,7 @@ public class AttributeSet<T extends BitEnum> {
         return this;
     }
 
-    public AttributeSet reset(int bitIndex) {
+    private AttributeSet reset(int bitIndex) {
         data &= resetMasks[bitIndex];
         return this;
     }

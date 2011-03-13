@@ -99,8 +99,8 @@ public class SuffixFormGenerator {
                             fuu.backwardExpcts.set(PhonAttr.LastVowelFrontal, PhonAttr.LastVowelRounded);
                             ilist.add(fuu);
                         } else {
-                            boolean frontal = form.surface.lastVowel().frontalVowel;
-                            boolean round = form.surface.lastVowel().roundedVowel;
+                            boolean frontal = form.surface.lastVowel().frontal;
+                            boolean round = form.surface.lastVowel().rounded;
                             if (frontal && round) {
                                 ilist.add(form.copy().append(L_uu));
                             } else if (frontal && !round) {

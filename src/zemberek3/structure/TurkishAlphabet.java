@@ -123,11 +123,11 @@ public class TurkishAlphabet {
     static Map<TurkicLetter, TurkicLetter> voicingMap = Maps.newHashMap();
 
     static {
-        voicingMap.put(TurkishAlphabet.L_p, TurkishAlphabet.L_b);
-        voicingMap.put(TurkishAlphabet.L_k, TurkishAlphabet.L_gg);
-        voicingMap.put(TurkishAlphabet.L_cc, TurkishAlphabet.L_c);
-        voicingMap.put(TurkishAlphabet.L_t, TurkishAlphabet.L_d);
-        voicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_gg);
+        voicingMap.put(L_p, L_b);
+        voicingMap.put(L_k, L_gg);
+        voicingMap.put(L_cc, L_c);
+        voicingMap.put(L_t, L_d);
+        voicingMap.put(L_g, L_gg);
     }
 
     public TurkicLetter voice(TurkicLetter l) {

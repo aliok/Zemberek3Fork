@@ -8,8 +8,8 @@ public class TurkicLetter {
     public final char charValue;
     public final int alphabeticIndex;
     public final boolean vowel;
-    public final boolean frontalVowel;
-    public final boolean roundedVowel;
+    public final boolean frontal;
+    public final boolean rounded;
     public final boolean voiceless;
     public final boolean stopConsonant;
     public final boolean inAscii;
@@ -95,8 +95,8 @@ public class TurkicLetter {
         this.charValue = builder._charValue;
         this.alphabeticIndex = builder._alphabeticIndex;
         this.vowel = builder._vowel;
-        this.frontalVowel = builder._frontalVowel;
-        this.roundedVowel = builder._roundedVowel;
+        this.frontal = builder._frontalVowel;
+        this.rounded = builder._roundedVowel;
         this.voiceless = builder._voiceless;
         this.stopConsonant = builder._stopConsonant;
         this.inAscii = builder._inAscii;
@@ -109,8 +109,8 @@ public class TurkicLetter {
         this.charValue = c;
         this.alphabeticIndex = alphabeticIndex;
         vowel = false;
-        frontalVowel = false;
-        roundedVowel = false;
+        frontal = false;
+        rounded = false;
         voiceless = false;
         stopConsonant = false;
         inAscii = false;
@@ -119,7 +119,7 @@ public class TurkicLetter {
     }
 
     private void checkConsistency() {
-        if (((voiceless||stopConsonant) && vowel) || (!vowel && (frontalVowel || roundedVowel))) {
+        if (((voiceless||stopConsonant) && vowel) || (!vowel && (frontal || rounded))) {
             throw new IllegalArgumentException("Letter seems to have both vowel and Consonant attributes");
         } else if ((!inAscii) && (charValue < 'a' && charValue > 'z')) {
             throw new IllegalArgumentException("Marked as english alphabet but it is not." + charValue);
@@ -145,11 +145,11 @@ public class TurkicLetter {
     }
 
     public boolean isFrontal() {
-        return frontalVowel;
+        return frontal;
     }
 
     public boolean isRounded() {
-        return roundedVowel;
+        return rounded;
     }
 
     public boolean isVoiceless() {
