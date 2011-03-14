@@ -118,6 +118,8 @@ public class LexiconGraphGenerator {
             switch (attribute) {
 
                 case Voicing:
+                    if(lexiconItem.hasAttribute(RootAttr.CompoundP3sg))
+                        break;
                     TurkicLetter last = modifiedSeq.lastLetter();
                     TurkicLetter modifiedLetter = alphabet.voice(last);
                     if (modifiedLetter == null) {

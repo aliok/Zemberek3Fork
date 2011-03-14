@@ -20,8 +20,7 @@ public class LexiconItem {
     }
 
     public boolean hasAttribute(RootAttr attribute) {
-        attrs.contains(attribute);
-        return false;
+        return attrs.contains(attribute);
     }
 
     @Override
