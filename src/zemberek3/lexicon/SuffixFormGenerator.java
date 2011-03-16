@@ -6,18 +6,162 @@ import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
+import static zemberek3.lexicon.PhonAttr.*;
 import static zemberek3.structure.TurkishAlphabet.*;
 import static zemberek3.structure.TurkishAlphabet.L_ii;
 import static zemberek3.structure.TurkishAlphabet.L_uu;
 
 public class SuffixFormGenerator {
 
+    List<SuffixForm> suffixNodes(
+            AttributeSet<PhonAttr> attrs,
+            AttributeSet<PhonAttr> expectations,
+            String generationString) {
+        List<SuffixToken> tokenList = Lists.newArrayList(new SuffixStringTokenizer(generationString));
+
+        // zero length token
+        if (tokenList.size() == 0) {
+            Lists.newArrayList(new SuffixForm(new TurkicSeq(), attrs.copy(), expectations.copy()));
+        }
+
+        // generation of forms. normally only one form is generated. But in situations like cI~k, two Forms are generated.
+        List<SuffixForm> forms = Lists.newArrayList(new SuffixForm(new TurkicSeq()));
+        int index = 0;
+        for (SuffixToken token : tokenList) {
+            switch (token.type) {
+                case LETTER:
+                    for (SuffixForm form : forms) {
+                        form.sequence.append(token.letter);
+                    }
+                    break;
+
+                case A_WOVEL:
+                    if (index == 0 && attrs.contains(LastLetterVowel)) {
+                        break;
+                    }
+                    TurkicLetter lA = TurkicLetter.UNDEFINED;
+                    if (attrs.contains(LastVowelBack))
+                        lA = L_a;
+                    else if (attrs.contains(LastVowelFrontal))
+                        lA = L_e;
+                    if (lA == TurkicLetter.UNDEFINED)
+                        throw new IllegalArgumentException("Cannot generate A form!");
+                    for (SuffixForm form : forms) {
+                        form.sequence.append(lA);
+                    }
+                    break;
+                case I_WOVEL:
+                    if (index == 0 && attrs.contains(LastLetterVowel))
+                        break;
+                    TurkicLetter li = TurkicLetter.UNDEFINED;
+                    if (attrs.containsAll(LastVowelBack, LastVowelRounded))
+                        li = L_u;
+                    else if (attrs.containsAll(LastVowelBack, LastVowelUnrounded))
+                        li = L_ii;
+                    else if (attrs.containsAll(LastVowelFrontal, LastVowelRounded))
+                        li = L_uu;
+                    else if (attrs.containsAll(LastVowelFrontal, LastVowelUnrounded))
+                        li = L_i;
+                    if (li == TurkicLetter.UNDEFINED)
+                        throw new IllegalArgumentException("Cannot generate I form!");
+                    for (SuffixForm form : forms) {
+                        form.sequence.append(li);
+                    }
+                    break;
+                case APPEND:
+                    if (attrs.contains(LastLetterVowel)) {
+                        for (SuffixForm form : forms) {
+                            form.sequence.append(token.letter);
+                        }
+                    }
+                    break;
+
+                case DEVOICE_FIRST:
+                    TurkicLetter ld = token.letter;
+                    if(attrs.contains(LastLetterVoicelessStop))
+                       ld = alphabet.devoice(token.letter);
+                    for (SuffixForm form : forms) {
+                        form.sequence.append(ld);
+                    }
+                    break;
+
+                case VOICE_LAST:
+                    List<SuffixForm> nf = Lists.newArrayList();
+                    for (SuffixForm form : forms) {
+                        SuffixForm second = form.copy();
+                        second.sequence.append(alphabet.voice(token.letter));
+                        form.expectations.add(FirstLetterVowel);
+                        form.sequence.append(token.letter);
+                        form.expectations.add(FirstLetterConsonant);
+                    }
+                    break;
+            }
+        }
+        return forms;
+    }
+
+
     TurkishAlphabet alphabet = new TurkishAlphabet();
+
+    private static enum TokenType {
+        I_WOVEL,
+        A_WOVEL,
+        VOICE_LAST,
+        DEVOICE_FIRST,
+        APPEND,
+        LETTER
+    }
+
+    private static class SuffixToken {
+        TokenType type;
+        TurkicLetter letter;
+
+        private SuffixToken(TokenType type, TurkicLetter letter) {
+            this.type = type;
+            this.letter = letter;
+        }
+    }
+
+    class SuffixStringTokenizer implements Iterator<SuffixToken> {
+
+        private int pointer;
+        private final String generationWord;
+
+        public SuffixStringTokenizer(String generationWord) {
+            this.generationWord = generationWord;
+        }
+
+        public boolean hasNext() {
+            return generationWord != null && pointer < generationWord.length();
+        }
+
+        public SuffixToken next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("no elements left!");
+            }
+            char p = generationWord.charAt(pointer++);
+            switch (p) {
+                case '+':
+                    return new SuffixToken(TokenType.APPEND, alphabet.getLetter(generationWord.charAt(pointer++)));
+                case '>':
+                    return new SuffixToken(TokenType.DEVOICE_FIRST, alphabet.getLetter(generationWord.charAt(pointer++)));
+                case '~':
+                    return new SuffixToken(TokenType.VOICE_LAST, alphabet.getLetter(generationWord.charAt(pointer++)));
+                case 'I':
+                    return new SuffixToken(TokenType.I_WOVEL, TurkicLetter.UNDEFINED);
+                case 'A':
+                    return new SuffixToken(TokenType.A_WOVEL, TurkicLetter.UNDEFINED);
+                default:
+                    return new SuffixToken(TokenType.LETTER, alphabet.getLetter(p));
+            }
+        }
+
+        public void remove() {
+        }
+    }
+
 
     private List<Form> generateFormWithNoVowel(String generationString) {
         ArrayList<Form> forms = new ArrayList<Form>();
@@ -28,7 +172,6 @@ public class SuffixFormGenerator {
         }
         return forms;
     }
-
 
     private List<Form> generateFromSuffixString(String suffixString) {
 
@@ -115,7 +258,7 @@ public class SuffixFormGenerator {
                     forms = ilist;
                     break;
 
-                case DEVOICE:
+                case DEVOICE_FIRST:
                     ArrayList<Form> dlist = new ArrayList<Form>();
                     for (Form form : forms) {
                         Form fn = form.copy().append(token.letter);
@@ -132,7 +275,7 @@ public class SuffixFormGenerator {
                     forms = dlist;
                     break;
 
-                case VOICE:
+                case VOICE_LAST:
                     ArrayList<Form> vlist = new ArrayList<Form>();
                     for (Form form : forms) {
                         Form fn = form.copy().append(token.letter);
@@ -254,64 +397,5 @@ public class SuffixFormGenerator {
         } else
             form.forwardAttrs.add(PhonAttr.LastLetterNotVoicelessStop);
     }
-
-
-    private static enum TokenType {
-        I_WOVEL,
-        A_WOVEL,
-        VOICE,
-        DEVOICE,
-        APPEND,
-        LETTER
-    }
-
-    private static class SuffixToken {
-        TokenType type;
-        TurkicLetter letter;
-
-        private SuffixToken(TokenType type, TurkicLetter letter) {
-            this.type = type;
-            this.letter = letter;
-        }
-    }
-
-    class SuffixStringTokenizer implements Iterator<SuffixToken> {
-
-        private int pointer;
-        private final String generationWord;
-
-        public SuffixStringTokenizer(String generationWord) {
-            this.generationWord = generationWord;
-        }
-
-        public boolean hasNext() {
-            return generationWord != null && pointer < generationWord.length();
-        }
-
-        public SuffixToken next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException("no elements left!");
-            }
-            char p = generationWord.charAt(pointer++);
-            switch (p) {
-                case '+':
-                    return new SuffixToken(TokenType.APPEND, alphabet.getLetter(generationWord.charAt(pointer++)));
-                case '>':
-                    return new SuffixToken(TokenType.DEVOICE, alphabet.getLetter(generationWord.charAt(pointer++)));
-                case '~':
-                    return new SuffixToken(TokenType.VOICE, alphabet.getLetter(generationWord.charAt(pointer++)));
-                case 'I':
-                    return new SuffixToken(TokenType.I_WOVEL, TurkicLetter.UNDEFINED);
-                case 'A':
-                    return new SuffixToken(TokenType.A_WOVEL, TurkicLetter.UNDEFINED);
-                default:
-                    return new SuffixToken(TokenType.LETTER, alphabet.getLetter(p));
-            }
-        }
-
-        public void remove() {
-        }
-    }
-
 
 }

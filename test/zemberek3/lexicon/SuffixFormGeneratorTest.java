@@ -6,6 +6,7 @@ public class SuffixFormGeneratorTest {
 
     @Test
     public void aTypeHarmonyTest() {
+        
 
 
     }

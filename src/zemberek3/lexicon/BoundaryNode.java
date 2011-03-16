@@ -10,8 +10,8 @@ public class BoundaryNode implements Cloneable {
     // has any element, other suffixes cannot follow this node.
     PrimaryPos primaryPos;
 
-    AttributeSet<PhonAttr> forwardAttributes = new AttributeSet<PhonAttr>();
-    AttributeSet<PhonAttr> forwardExpectations = new AttributeSet<PhonAttr>();
+    AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
+    AttributeSet<PhonAttr> expectations = new AttributeSet<PhonAttr>();
 
     //If this list is not empty, ONLY the exclusive suffixes in the list can follow this Node.
     Set<TurkishSuffix> exclusiveSuffixes = new HashSet<TurkishSuffix>();
@@ -27,28 +27,28 @@ public class BoundaryNode implements Cloneable {
         this.primaryPos = primaryPos;
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, Iterable<PhonAttr> forwardAttributes) {
+    public BoundaryNode(PrimaryPos primaryPos, Iterable<PhonAttr> attributes) {
         this.primaryPos = primaryPos;
-        this.forwardAttributes.add(forwardAttributes);
+        this.attributes.add(attributes);
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, PhonAttr... forwardAttributes) {
+    public BoundaryNode(PrimaryPos primaryPos, PhonAttr... attributes) {
         this.primaryPos = primaryPos;
-        this.forwardAttributes.add(forwardAttributes);
+        this.attributes.add(attributes);
     }
 
-    public BoundaryNode(PrimaryPos primaryPos, AttributeSet<PhonAttr> forwardAttributes, AttributeSet<PhonAttr> forwardExpectations) {
+    public BoundaryNode(PrimaryPos primaryPos, AttributeSet<PhonAttr> attributes, AttributeSet<PhonAttr> expectations) {
         this.primaryPos = primaryPos;
-        this.forwardAttributes = forwardAttributes;
-        this.forwardExpectations = forwardExpectations;
+        this.attributes = attributes;
+        this.expectations = expectations;
     }
 
-    public AttributeSet<PhonAttr> getForwardExpectations() {
-        return forwardExpectations;
+    public AttributeSet<PhonAttr> getExpectations() {
+        return expectations;
     }
 
-    public AttributeSet<PhonAttr> getForwardAttributes() {
-        return forwardExpectations;
+    public AttributeSet<PhonAttr> getAttributes() {
+        return expectations;
     }
 
     public BoundaryNode addNodes(SuffixNode... suffixNode) {
@@ -72,8 +72,8 @@ public class BoundaryNode implements Cloneable {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("[Pos:" + primaryPos.shortForm + "]");
-        printAttributes(sb, forwardAttributes, " FATTR:");
-        printAttributes(sb, forwardExpectations, " FEXPC:");
+        printAttributes(sb, attributes, " ATTR:");
+        printAttributes(sb, expectations, " EXPC:");
         if (exclusiveSuffixes.size() > 0) {
             sb.append(" exc suffixes:");
             sb.append(exclusiveSuffixes.toString());
@@ -106,11 +106,11 @@ public class BoundaryNode implements Cloneable {
 
         BoundaryNode that = (BoundaryNode) o;
 
-        if (forwardAttributes != null ? !forwardAttributes.equals(that.forwardAttributes) : that.forwardAttributes != null)
+        if (attributes != null ? !attributes.equals(that.attributes) : that.attributes != null)
             return false;
         if (exclusiveSuffixes != null ? !exclusiveSuffixes.equals(that.exclusiveSuffixes) : that.exclusiveSuffixes != null)
             return false;
-        if (forwardExpectations != null ? !forwardExpectations.equals(that.forwardExpectations) : that.forwardExpectations != null)
+        if (expectations != null ? !expectations.equals(that.expectations) : that.expectations != null)
             return false;
         if (primaryPos != that.primaryPos) return false;
         if (restrictedSuffixes != null ? !restrictedSuffixes.equals(that.restrictedSuffixes) : that.restrictedSuffixes != null)
@@ -123,8 +123,8 @@ public class BoundaryNode implements Cloneable {
     @Override
     public int hashCode() {
         int result = primaryPos != null ? primaryPos.hashCode() : 0;
-        result = 31 * result + (forwardAttributes != null ? forwardAttributes.hashCode() : 0);
-        result = 31 * result + (forwardExpectations != null ? forwardExpectations.hashCode() : 0);
+        result = 31 * result + (attributes != null ? attributes.hashCode() : 0);
+        result = 31 * result + (expectations != null ? expectations.hashCode() : 0);
         result = 31 * result + (exclusiveSuffixes != null ? exclusiveSuffixes.hashCode() : 0);
         result = 31 * result + (restrictedSuffixes != null ? restrictedSuffixes.hashCode() : 0);
         result = 31 * result + (suffixNodes != null ? suffixNodes.hashCode() : 0);
