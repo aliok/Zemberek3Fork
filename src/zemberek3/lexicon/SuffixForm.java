@@ -23,6 +23,9 @@ public class SuffixForm {
         return new SuffixForm(new TurkicSeq(sequence), attributes.copy(), expectations.copy());
     }
 
+    public String surface() {
+        return sequence.toString();
+    }
 
     @Override
     public boolean equals(Object o) {

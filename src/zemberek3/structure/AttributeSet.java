@@ -24,6 +24,12 @@ public class AttributeSet<T extends BitEnum> {
         return new AttributeSet<T>(data);
     }
 
+    private static final AttributeSet EMPTY_SET = new AttributeSet();
+
+    public static <T extends BitEnum> AttributeSet<T> emptySet() {
+        return (AttributeSet<T>) EMPTY_SET;
+    }
+
     public boolean contains(BitEnum bitEnum) {
         return (data & setMasks[bitEnum.getBitIndex()]) != 0;
     }

@@ -34,7 +34,7 @@ public class AttributeSetTest {
 
 
     @Test
-    public void setTest() {
+    public void addTest() {
         AttributeSet<TestAttr> set = new AttributeSet<TestAttr>();
         set.add(Apple);
         Assert.assertTrue(set.contains(Apple));
@@ -44,7 +44,7 @@ public class AttributeSetTest {
     }
 
     @Test
-    public void resetTest() {
+    public void removeTest() {
         AttributeSet<TestAttr> set = new AttributeSet<TestAttr>();
         set.add(Apple, Orange);
         Assert.assertTrue(set.containsAll(Apple, Orange));
