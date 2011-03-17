@@ -50,6 +50,26 @@ public class SuffixFormGeneratorTest {
     }
 
     @Test
+    public void emptyFormTest() {
+        SuffixFormGenerator sfg = new SuffixFormGenerator();
+        List<SuffixForm> forms = sfg.suffixNodes(set(LastVowelBack, LastVowelRounded, LastLetterConsonant), set(FirstLetterConsonant), "");
+        Assert.assertEquals(1, forms.size());
+        Assert.assertEquals("", forms.get(0).surface());
+        Assert.assertTrue(forms.get(0).attributes.containsAll(LastVowelBack, LastVowelRounded, LastLetterConsonant));
+        Assert.assertTrue(forms.get(0).expectations.contains(FirstLetterConsonant));
+    }
+
+    @Test
+    public void novowelFormTest() {
+        SuffixFormGenerator sfg = new SuffixFormGenerator();
+        List<SuffixForm> forms = sfg.suffixNodes(set(LastVowelBack, LastVowelRounded, LastLetterVowel), set(FirstLetterConsonant), "m");
+        Assert.assertEquals(1, forms.size());
+        Assert.assertEquals("m", forms.get(0).surface());
+        Assert.assertTrue(forms.get(0).attributes.containsAll(LastVowelBack, LastVowelRounded, LastLetterConsonant));
+        Assert.assertTrue(forms.get(0).expectations.isEmpty());
+    }
+
+    @Test
     public void surfaceFormFunctionalTest() {
         Triple[] triples = {
                 new Triple("kalem", "lAr", "ler"),

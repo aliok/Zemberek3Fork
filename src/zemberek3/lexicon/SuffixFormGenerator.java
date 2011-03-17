@@ -21,7 +21,7 @@ public class SuffixFormGenerator {
 
         // zero length token
         if (tokenList.size() == 0) {
-            Lists.newArrayList(new SuffixForm(new TurkicSeq(), attrs.copy(), expectations.copy()));
+            return Lists.newArrayList(new SuffixForm(new TurkicSeq(), attrs.copy(), expectations.copy()));
         }
 
         // generation of forms. normally only one form is generated. But in situations like cI~k, two Forms are generated.
@@ -99,7 +99,7 @@ public class SuffixFormGenerator {
                         nf.add(form);
                         second.sequence.append(alphabet.voice(token.letter));
                         second.expectations.add(FirstLetterVowel);
-                        nf.add(second);                        
+                        nf.add(second);
                     }
                     forms = nf;
                     break;
