@@ -69,14 +69,44 @@ public class SuffixFormGeneratorTest {
                 new Triple("kedi", "lIk", "lik"),
                 new Triple("kabak", "lIk", "lık"),
                 new Triple("kuzu", "lIk", "luk"),
+                new Triple("göz", "lIk", "lük"),
+                new Triple("gö", "lIk", "lük"),
+                new Triple("ö", "lIk", "lük"),
+
+                new Triple("kalem", "lArI", "leri"),
+                new Triple("arı", "lArI", "ları"),
+                new Triple("odun", "lArI", "ları"),
+                new Triple("odun", "lIrA", "lura"),
+
+                new Triple("kale", "+yA", "ye"),
+                new Triple("kale", "+nA", "ne"),
+                new Triple("kalem", "+yA", "e"),
+                new Triple("kale", "+yI", "yi"),
+                new Triple("kalem", "+yI", "i"),
+                new Triple("kale", "+yIr", "yir"),
+                new Triple("kale", "+yAr", "yer"),
+
+                new Triple("kitap", ">cA", "ça"),
+                new Triple("gitar", ">cA", "ca"),
+                new Triple("kalem", ">cA", "ce"),
+                new Triple("kale", ">cA", "ce"),
+                new Triple("kitap", ">dAn", "tan"),
+                new Triple("gitar", ">dIn", "dın"),
+                new Triple("kalem", ">dA", "de"),
+                new Triple("kale", ">dArI", "deri"),
+
+                new Triple("kitap", ">cI~k", "çık", "çığ"),
+                new Triple("kalem", ">cI~k", "cik", "ciğ"),
+                new Triple("kalem", ">cI~p", "cip", "cib")
+
         };
         SuffixFormGenerator sfg = new SuffixFormGenerator();
         for (Triple triple : triples) {
             List<SuffixForm> forms = sfg.suffixNodes(
                     sfg.defineMorphemicAttributes(new TurkicSeq(triple.predecessor, alphabet)),
-                    set(),
+                    set(), //no expectation.
                     triple.generationWord);
-            Assert.assertEquals(triple.expectedSize(), forms.size());
+            Assert.assertEquals("Error in:" + triple, triple.expectedSize(), forms.size());
             Assert.assertEquals("Error in:" + triple, triple.expectedSurface[0], forms.get(0).surface());
         }
     }

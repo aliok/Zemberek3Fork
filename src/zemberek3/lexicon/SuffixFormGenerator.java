@@ -39,48 +39,53 @@ public class SuffixFormGenerator {
                     if (index == 0 && attrs.contains(LastLetterVowel)) {
                         break;
                     }
-                    TurkicLetter lA = TurkicLetter.UNDEFINED;
-                    if (attrs.contains(LastVowelBack))
-                        lA = L_a;
-                    else if (attrs.contains(LastVowelFrontal))
-                        lA = L_e;
-                    if (lA == TurkicLetter.UNDEFINED)
-                        throw new IllegalArgumentException("Cannot generate A form!");
                     for (SuffixForm form : forms) {
+                        AttributeSet<PhonAttr> fromAttrs = defineMorphemicAttributes(form.sequence, attrs);
+                        TurkicLetter lA = TurkicLetter.UNDEFINED;
+                        if (fromAttrs.contains(LastVowelBack))
+                            lA = L_a;
+                        else if (fromAttrs.contains(LastVowelFrontal))
+                            lA = L_e;
+                        if (lA == TurkicLetter.UNDEFINED)
+                            throw new IllegalArgumentException("Cannot generate A form!");
                         form.sequence.append(lA);
                     }
                     break;
                 case I_WOVEL:
-                    if (index == 0 && attrs.contains(LastLetterVowel))
-                        break;
-                    TurkicLetter li = TurkicLetter.UNDEFINED;
-                    if (attrs.containsAll(LastVowelBack, LastVowelRounded))
-                        li = L_u;
-                    else if (attrs.containsAll(LastVowelBack, LastVowelUnrounded))
-                        li = L_ii;
-                    else if (attrs.containsAll(LastVowelFrontal, LastVowelRounded))
-                        li = L_uu;
-                    else if (attrs.containsAll(LastVowelFrontal, LastVowelUnrounded))
-                        li = L_i;
-                    if (li == TurkicLetter.UNDEFINED)
-                        throw new IllegalArgumentException("Cannot generate I form!");
                     for (SuffixForm form : forms) {
+                        AttributeSet<PhonAttr> fromAttrs = defineMorphemicAttributes(form.sequence, attrs);
+                        if (index == 0 && attrs.contains(LastLetterVowel))
+                            break;
+                        TurkicLetter li = TurkicLetter.UNDEFINED;
+                        if (fromAttrs.containsAll(LastVowelBack, LastVowelRounded))
+                            li = L_u;
+                        else if (fromAttrs.containsAll(LastVowelBack, LastVowelUnrounded))
+                            li = L_ii;
+                        else if (fromAttrs.containsAll(LastVowelFrontal, LastVowelRounded))
+                            li = L_uu;
+                        else if (fromAttrs.containsAll(LastVowelFrontal, LastVowelUnrounded))
+                            li = L_i;
+                        if (li == TurkicLetter.UNDEFINED)
+                            throw new IllegalArgumentException("Cannot generate I form!");
                         form.sequence.append(li);
                     }
                     break;
                 case APPEND:
-                    if (attrs.contains(LastLetterVowel)) {
-                        for (SuffixForm form : forms) {
+                    for (SuffixForm form : forms) {
+                        AttributeSet<PhonAttr> fromAttrs = defineMorphemicAttributes(form.sequence, attrs);
+                        if (fromAttrs.contains(LastLetterVowel)) {
                             form.sequence.append(token.letter);
                         }
                     }
+
                     break;
 
                 case DEVOICE_FIRST:
-                    TurkicLetter ld = token.letter;
-                    if (attrs.contains(LastLetterVoicelessStop))
-                        ld = alphabet.devoice(token.letter);
                     for (SuffixForm form : forms) {
+                        AttributeSet<PhonAttr> fromAttrs = defineMorphemicAttributes(form.sequence, attrs);
+                        TurkicLetter ld = token.letter;
+                        if (fromAttrs.contains(LastLetterVoicelessStop))
+                            ld = alphabet.devoice(token.letter);
                         form.sequence.append(ld);
                     }
                     break;
@@ -89,10 +94,12 @@ public class SuffixFormGenerator {
                     List<SuffixForm> nf = Lists.newArrayList();
                     for (SuffixForm form : forms) {
                         SuffixForm second = form.copy();
-                        second.sequence.append(alphabet.voice(token.letter));
-                        second.expectations.add(FirstLetterVowel);
                         form.sequence.append(token.letter);
                         form.expectations.add(FirstLetterConsonant);
+                        nf.add(form);
+                        second.sequence.append(alphabet.voice(token.letter));
+                        second.expectations.add(FirstLetterVowel);
+                        nf.add(second);                        
                     }
                     forms = nf;
                     break;
@@ -107,6 +114,8 @@ public class SuffixFormGenerator {
 
     // in suffix, defining morphemic attributes is straight forward.
     AttributeSet<PhonAttr> defineMorphemicAttributes(TurkicSeq seq, AttributeSet<PhonAttr> predecessorAttrs) {
+        if (seq.length() == 0)
+            return predecessorAttrs.copy();
         AttributeSet<PhonAttr> attrs = new AttributeSet<PhonAttr>();
         if (seq.hasVowel()) {
             if (seq.lastVowel().isFrontal())
