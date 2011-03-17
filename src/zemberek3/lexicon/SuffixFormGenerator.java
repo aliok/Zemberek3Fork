@@ -106,8 +106,12 @@ public class SuffixFormGenerator {
             }
             index++;
         }
+
+        // we define attributes, and check if they match with expectations.
         for (SuffixForm form : forms) {
             form.attributes = defineMorphemicAttributes(form.sequence, attrs);
+            if (!form.attributes.containsAll(expectations))
+                return Collections.emptyList();
         }
         return forms;
     }
@@ -130,6 +134,18 @@ public class SuffixFormGenerator {
                 attrs.add(LastLetterVowel);
             else
                 attrs.add(LastLetterConsonant);
+            if (seq.firstVowel().isFrontal())
+                attrs.add(FirstVowelFrontal);
+            else
+                attrs.add(FirstVowelBack);
+            if (seq.firstVowel().isRounded())
+                attrs.add(FirstVowelRounded);
+            else
+                attrs.add(FirstVowelUnrounded);
+            if (seq.firstLetter().isVowel())
+                attrs.add(FirstLetterVowel);
+            else
+                attrs.add(FirstLetterConsonant);
         } else {
             // we transfer vowel attributes from the predecessor attributes.
             attrs = predecessorAttrs.copy();

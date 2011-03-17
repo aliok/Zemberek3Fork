@@ -70,6 +70,24 @@ public class SuffixFormGeneratorTest {
     }
 
     @Test
+    public void expectationTest_1() {
+        SuffixFormGenerator sfg = new SuffixFormGenerator();
+        List<SuffixForm> forms = sfg.suffixNodes(set(LastVowelBack, LastLetterConsonant), set(FirstLetterVowel), "mA");
+        Assert.assertEquals(0, forms.size());
+    }
+
+    @Test
+    public void expectationTest_2() {
+        SuffixFormGenerator sfg = new SuffixFormGenerator();
+        List<SuffixForm> forms = sfg.suffixNodes(set(LastVowelBack, LastVowelRounded, LastLetterConsonant), set(FirstLetterConsonant), "cI~k");
+        Assert.assertEquals(2, forms.size());
+        Assert.assertEquals("cuk", forms.get(0).surface());
+        Assert.assertEquals("cuğ", forms.get(1).surface());
+        Assert.assertTrue(forms.get(0).expectations.contains(FirstLetterConsonant));
+        Assert.assertTrue(forms.get(1).expectations.contains(FirstLetterVowel));
+    }
+
+    @Test
     public void surfaceFormFunctionalTest() {
         Triple[] triples = {
                 new Triple("kalem", "lAr", "ler"),

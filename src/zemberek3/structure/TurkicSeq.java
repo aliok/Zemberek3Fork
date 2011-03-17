@@ -93,9 +93,10 @@ public class TurkicSeq implements CharSequence, Comparable<TurkicSeq> {
     }
 
     /**
-     * Dizinin son harfini dondurur.
+     * returns the last letter.
      *
-     * @return varsa son harf, Yoksa TANIMSIZ_HARF.
+     * @return last letter.
+     * @throws IllegalStateException if there is no letter in sequence.
      */
     public TurkicLetter lastLetter() {
         if (size < 1)
@@ -104,10 +105,10 @@ public class TurkicSeq implements CharSequence, Comparable<TurkicSeq> {
     }
 
     /**
-     * dizideki son sesliyi dondurur. eger dizi boyu 0 ise ya da sesli harf yoksa
-     * TANIMSIZ_HARF doner.
+     * returns the last vowel.
      *
-     * @return varsa son sesli yoksa TANIMSIZ_HARF
+     * @return last vowel.
+     * @throws IllegalStateException if there is no vowel in sequence.
      */
     public TurkicLetter lastVowel() {
         for (int i = size - 1; i >= 0; i--) {
@@ -249,6 +250,21 @@ public class TurkicSeq implements CharSequence, Comparable<TurkicSeq> {
                 return letters[i];
         }
         throw new IllegalStateException("Letter sequence is already empty");
+    }
+
+
+    /**
+     * returns the first vowel.
+     *
+     * @return first vowel.
+     * @throws IllegalStateException if there is no vowel in sequence.
+     */
+    public TurkicLetter firstVowel() {
+        for (int i = 0; i < size; i++) {
+            if (letters[i].isVowel())
+                return letters[i];
+        }
+        throw new IllegalStateException("There is no wovel in the sequence:" + Arrays.toString(letters));
     }
 
     public boolean hasVowel() {

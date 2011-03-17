@@ -42,6 +42,10 @@ public class AttributeSet<T extends BitEnum> {
         return true;
     }
 
+    public boolean containsAll(AttributeSet<T> set) {
+        return (this.data & set.data) == set.data;
+    }
+
     public boolean containsNone(BitEnum... bitEnum) {
         for (BitEnum en : bitEnum) {
             if (contains(en))
@@ -80,7 +84,7 @@ public class AttributeSet<T extends BitEnum> {
         return this;
     }
 
-   public AttributeSet remove(T... enums) {
+    public AttributeSet remove(T... enums) {
         for (BitEnum anEnum : enums) {
             data &= resetMasks[anEnum.getBitIndex()];
         }
