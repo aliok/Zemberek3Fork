@@ -15,7 +15,7 @@ public class SuffixNode {
     // generation word.
     String generation;
 
-    Set<SuffixNode> successors = new HashSet<SuffixNode>();
+    Set<TurkishSuffix> successors = new HashSet<TurkishSuffix>();
     Set<TurkishSuffix> exclusivePredecessors = new HashSet<TurkishSuffix>();
 
     public SuffixNode(String id, TurkishSuffix suffix, String generation) {
@@ -34,9 +34,26 @@ public class SuffixNode {
     public SuffixNode(TurkishSuffix suffix, String generation) {
         this.suffix = suffix;
         this.generation = generation;
-        this.id = generation;
+        this.id = suffix.id+"_"+generation;
     }
 
+    public SuffixNode addSuccessors(TurkishSuffix... suffix) {
+        this.successors.addAll(Arrays.asList(suffix));
+        return this;
+    }
+
+    public SuffixNode addSuccessors(Iterable<TurkishSuffix> it) {
+        for(TurkishSuffix suff : it)
+         successors.add(suff);
+        return this;
+    }
+
+    public SuffixNode addSuccessors(TurkishSuffix[]... suffixArrays) {
+        for (TurkishSuffix[] suffixArray : suffixArrays) {
+            this.successors.addAll(Arrays.asList(suffixArray));
+        }
+        return this;
+    }
 
     public SuffixNode addExclusivePredecessor(TurkishSuffix... suffixes) {
         exclusivePredecessors.addAll(Arrays.asList(suffixes));

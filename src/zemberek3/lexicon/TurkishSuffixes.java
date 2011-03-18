@@ -82,49 +82,54 @@ public class TurkishSuffixes {
         }
         return Collections.emptyList();
     }
-    
-    SuffixFormGenerator generator;
+
+    static Map<String, SuffixNode> nodeMap = new HashMap<String, SuffixNode>();
+
+    static void add(SuffixNode node) {
+        if (nodeMap.containsKey(node.id))
+            throw new IllegalArgumentException("There is already a suffix node with same id:" + node.id);
+        nodeMap.put(node.id, node);
+    }
 
     public void generate() {
 
-        Pl.addNode(new SuffixNode(Pl, "lAr"))
+        add(new SuffixNode(Pl, "lAr")
                 .addSuccessors(NOUN_CASE, COPULAR)
-                .addSuccessors(P1sg, P2sg, P1pl, P2pl, A1pl, A2pl);
+                .addSuccessors(P1sg, P2sg, P1pl, P2pl, A1pl, A2pl));
 
-        Dat.addNode(new SuffixNode(Dat, "+yA")).addSuccessors(COPULAR);
-        Dat.addNode(new SuffixNode(Dat, "nA", Rel, P3sg, P3pl));
 
-        Loc.addNode(new SuffixNode(Loc, ">dA")).addSuccessors(COPULAR);
-        Loc.addNode(new SuffixNode(Loc, "ndA", Rel, P3sg, P3pl));
+        add(new SuffixNode(Dat, "+yA").addSuccessors(COPULAR));
+        add(new SuffixNode(Dat, "nA").addExclusivePredecessor(Rel, P3sg, P3pl).addSuccessors(COPULAR));
 
-        Abl.addNode(new SuffixNode(Abl, ">dAn")).addSuccessors(COPULAR);
-        Abl.addNode(new SuffixNode(Abl, "ndAn", Rel, P3sg, P3pl));
+        add(new SuffixNode(Loc, ">dA").addSuccessors(COPULAR));
+        add(new SuffixNode(Loc, "ndA").addExclusivePredecessor(Rel, P3sg, P3pl).addSuccessors(COPULAR));
 
-        Gen.addNode(new SuffixNode(Gen, "+nIn")).addSuccessors(COPULAR).addSuccessors(Rel);
+        add(new SuffixNode(Abl, ">dAn").addSuccessors(COPULAR));
+        add(new SuffixNode(Abl, "ndAn").addExclusivePredecessor(Rel, P3sg, P3pl));
 
-        Acc.addNode(new SuffixNode(Acc, "+yI"))
-                .addNode(new SuffixNode(Abl, "nI", Rel, P3sg, P3pl));
+        add(new SuffixNode(Gen, "+nIn").addSuccessors(COPULAR).addSuccessors(Rel));
 
-        P1sg.addNode(new SuffixNode(P1sg, "Im")).
+        add(new SuffixNode(Acc, "+yI"));
+        add(new SuffixNode(Acc, "nI", Rel, P3sg, P3pl));
+
+        add(new SuffixNode(P1sg, "Im").
                 addSuccessors(NOUN_CASE, COPULAR).
-                addSuccessors(A2sg, A2pl);
+                addSuccessors(A2sg, A2pl));
 
-        P2sg.addNode(new SuffixNode(P2sg, "In")).
+        add(new SuffixNode(P2sg, "In").
                 addSuccessors(NOUN_CASE, COPULAR).
-                addSuccessors(A1sg, A1pl);
+                addSuccessors(A1sg, A1pl));
 
-        P3sg.addNode(new SuffixNode(P3sg, "+sI")).
+        add(new SuffixNode(P3sg, "+sI").
                 addSuccessors(NOUN_CASE, COPULAR).
-                addSuccessors(A1sg, A2sg, A1pl, A2pl);
+                addSuccessors(A1sg, A2sg, A1pl, A2pl));
 
-
-        Dim.addNode(new SuffixNode(Dim, ">cI~k")).
+        SuffixNode dim = new SuffixNode(Dim, ">cI~k").
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
                 addSuccessors(Pl, With, Without);
-
-        Dim.addNode(new SuffixNode(Dim, ">cağız")).
-                addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
-                addSuccessors(Pl, With, Without);
+        add(dim);
+        add(new SuffixNode(Dim, ">cağız").
+                addSuccessors(dim.successors));
 
         With.addNode(new SuffixNode(With, "lI")).
                 addSuccessors(NOUN_CASE, COPULAR, NOUN_POSS, NOUN_PERSON).
