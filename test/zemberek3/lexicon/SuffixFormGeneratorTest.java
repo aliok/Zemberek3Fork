@@ -135,7 +135,9 @@ public class SuffixFormGeneratorTest {
 
                 new Triple("kitap", ">cI~k", "çık", "çığ"),
                 new Triple("kalem", ">cI~k", "cik", "ciğ"),
-                new Triple("kalem", ">cI~p", "cip", "cib")
+
+                new Triple("kale", "+y>cI", "yci"),
+                new Triple("kitap", "+y>cI", "çı")
 
         };
         SuffixFormGenerator sfg = new SuffixFormGenerator();

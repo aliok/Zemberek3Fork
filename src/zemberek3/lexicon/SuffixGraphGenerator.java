@@ -28,7 +28,7 @@ public class SuffixGraphGenerator {
             }
 
             // we iterate throuh the TurkıshSuffix'es that can follow this BoundaryNode and attach the proper variation
-            // of the suffix (we call that variation a SuffixNode) to this boundary. Such as, for TurkishSuffix[Pl_lAr],
+            // of the suffix (we call that variation a SuffixNode) to this boundary. Such as, for TurkishSuffix[Pl],
             // and BoundaryNode[last vowel frontal], variation will be the SuffixNode[ler]. This desicion will be made
             // using the matching morphemic attributes of the both side.
             for (TurkishSuffix turkishSuffix : suffixesToFollow) {

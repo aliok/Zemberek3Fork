@@ -142,14 +142,14 @@ public class LexiconGraphGenerator {
                     modifiedNode.getExpectations().add(PhonAttr.FirstLetterVowel);
                     originalNode.getExpectations().add(PhonAttr.FirstLetterConsonant);
                     if (lexiconItem.primaryPos == Verb) {
-                        modifiedNode.addExclusiveSuffix(TurkishSuffixes.Pass_In);
-                        originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog_Iyor);
+                        modifiedNode.addExclusiveSuffix(TurkishSuffixes.Pass);
+                        originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog);
                     }
                     modifiedSeq.delete(modifiedSeq.length() - 2);
                     break;
                 case ProgressiveVowelDrop:
-                    modifiedNode.addExclusiveSuffix(TurkishSuffixes.Prog_Iyor);
-                    originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog_Iyor);
+                    modifiedNode.addExclusiveSuffix(TurkishSuffixes.Prog);
+                    originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog);
                     modifiedSeq.delete(modifiedSeq.length() - 1);
                     break;
                 case StemChange:
@@ -177,34 +177,34 @@ public class LexiconGraphGenerator {
             RootNode[] nodes = new RootNode[3];
             BoundaryNode originalNode =
                     new BoundaryNode(Verb, PhonAttr.LastVowelFrontal, PhonAttr.LastLetterVowel)
-                            .addRestrictedsuffixes(Prog_Iyor, Fut_yAcAk, Opt_yA);
+                            .addRestrictedsuffixes(Prog, Fut, Opt);
             nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
 
-            BoundaryNode progressiveNode = new BoundaryNode(Verb, PhonAttr.LastVowelFrontal).addExclusiveSuffix(Prog_Iyor);
+            BoundaryNode progressiveNode = new BoundaryNode(Verb, PhonAttr.LastVowelFrontal).addExclusiveSuffix(Prog);
             nodes[1] = new RootNode(lexiconItem.root.substring(0, 1), lexiconItem, progressiveNode, false);
 
             BoundaryNode modifiedNode = new BoundaryNode(
                     originalNode.getPrimaryPos(),
                     originalNode.getAttributes(),
                     originalNode.getExpectations())
-                    .addExclusiveSuffix(Fut_yAcAk, Opt_yA);
+                    .addExclusiveSuffix(Fut, Opt);
             // modification rule does not apply for some suffixes for "demek". like deyip, not deyip
             if (lexiconItem.root.equals("ye")) {
-                modifiedNode.addExclusiveSuffix(AfterDoing_yIp);
+                modifiedNode.addExclusiveSuffix(AfterDoing);
             }
             nodes[2] = new RootNode(lexiconItem.root.substring(0, 1) + "i", lexiconItem, modifiedNode, false);
             return nodes;
         } else if ((lexiconItem.root.equals("ben") || lexiconItem.root.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
             RootNode[] nodes = new RootNode[2];
 
-            BoundaryNode originalNode = new BoundaryNode(Pronoun, PhonAttr.LastVowelFrontal).addRestrictedsuffixes(Dat_yA);
+            BoundaryNode originalNode = new BoundaryNode(Pronoun, PhonAttr.LastVowelFrontal).addRestrictedsuffixes(Dat);
             nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
 
             BoundaryNode modifiedNode = new BoundaryNode(
                     originalNode.getPrimaryPos(),
                     originalNode.getAttributes(),
                     originalNode.getExpectations())
-                    .addExclusiveSuffix(Dat_yA);
+                    .addExclusiveSuffix(Dat);
             if (lexiconItem.root.equals("ben"))
                 nodes[1] = new RootNode("ban", lexiconItem, modifiedNode, false);
             else
@@ -227,7 +227,7 @@ public class LexiconGraphGenerator {
         TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
         // TODO: phonetic properties needs to be found again nicely.
         BoundaryNode modifiedNode = new BoundaryNode(lexiconItem.primaryPos, calculateRootAttributes(lexiconItem)).
-                addExclusiveSuffix(Pl_lAr, With_lI, P3pl_lArI);
+                addExclusiveSuffix(Pl, With, P3pl);
         modifiedNode.getAttributes().remove(PhonAttr.LastLetterVowel);
 
         String modified = modifiedSeq.eraseLast().toString();

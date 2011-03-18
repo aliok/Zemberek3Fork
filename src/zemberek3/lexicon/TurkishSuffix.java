@@ -1,15 +1,13 @@
 package zemberek3.lexicon;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TurkishSuffix {
 
     String id;
     List<TurkishSuffix> successors = new ArrayList<TurkishSuffix>();
     List<SuffixNode> nodes = new ArrayList<SuffixNode>();
+    Map<String, SuffixNode> nodeMap = new HashMap<String, SuffixNode>();
 
     public TurkishSuffix(String id) {
         this.id = id;
@@ -27,8 +25,11 @@ public class TurkishSuffix {
         return this;
     }
 
-    public TurkishSuffix addNodes(SuffixNode... nodes) {
+    public TurkishSuffix addNode(SuffixNode... nodes) {
         this.nodes.addAll(Arrays.asList(nodes));
+        for (SuffixNode node : nodes) {
+            nodeMap.put(node.getId(), node);
+        }
         return this;
     }
 

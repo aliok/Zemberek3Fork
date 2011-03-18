@@ -13,10 +13,11 @@ import static zemberek3.structure.TurkishAlphabet.*;
 
 public class SuffixFormGenerator {
 
-    List<SuffixForm> suffixNodes(
+    public List<SuffixForm> suffixNodes(
             AttributeSet<PhonAttr> attrs,
             AttributeSet<PhonAttr> expectations,
             String generationString) {
+
         List<SuffixToken> tokenList = Lists.newArrayList(new SuffixStringTokenizer(generationString));
 
         // zero length token
