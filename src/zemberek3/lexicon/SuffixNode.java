@@ -15,8 +15,7 @@ public class SuffixNode {
     // generation word.
     String generation;
 
-    Set<TurkishSuffix> successors = new HashSet<TurkishSuffix>();
-    Set<TurkishSuffix> exclusivePredecessors = new HashSet<TurkishSuffix>();
+    private Set<SuffixNode> successors = new HashSet<SuffixNode>();
 
     public SuffixNode(String id, TurkishSuffix suffix, String generation) {
         this.id = id;
@@ -24,39 +23,31 @@ public class SuffixNode {
         this.generation = generation;
     }
 
-    public SuffixNode(TurkishSuffix suffix, String generation, TurkishSuffix... exclusivePredecessors) {
-        this.id = id;
-        this.suffix = suffix;
-        this.generation = generation;
-        addExclusivePredecessor(exclusivePredecessors);
-    }
-
     public SuffixNode(TurkishSuffix suffix, String generation) {
         this.suffix = suffix;
         this.generation = generation;
-        this.id = suffix.id+"_"+generation;
+        this.id = suffix.id + "_" + generation;
     }
 
-    public SuffixNode addSuccessors(TurkishSuffix... suffix) {
+    public Iterable<SuffixNode> getSuccessors() {
+        return successors;
+    }
+
+    public SuffixNode succ(SuffixNode... suffix) {
         this.successors.addAll(Arrays.asList(suffix));
         return this;
     }
 
-    public SuffixNode addSuccessors(Iterable<TurkishSuffix> it) {
-        for(TurkishSuffix suff : it)
-         successors.add(suff);
+    public SuffixNode succ(Iterable<SuffixNode> it) {
+        for (SuffixNode suff : it)
+            successors.add(suff);
         return this;
     }
 
-    public SuffixNode addSuccessors(TurkishSuffix[]... suffixArrays) {
-        for (TurkishSuffix[] suffixArray : suffixArrays) {
+    public SuffixNode succ(SuffixNode[]... suffixArrays) {
+        for (SuffixNode[] suffixArray : suffixArrays) {
             this.successors.addAll(Arrays.asList(suffixArray));
         }
-        return this;
-    }
-
-    public SuffixNode addExclusivePredecessor(TurkishSuffix... suffixes) {
-        exclusivePredecessors.addAll(Arrays.asList(suffixes));
         return this;
     }
 

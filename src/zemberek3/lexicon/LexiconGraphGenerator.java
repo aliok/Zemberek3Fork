@@ -219,9 +219,9 @@ public class LexiconGraphGenerator {
         RootNode[] nodes = new RootNode[2];
         // atkuyruGu -
         BoundaryNode originalState = new BoundaryNode(lexiconItem.primaryPos, calculateRootAttributes(lexiconItem))
-                .addExclusiveSuffix(TurkishSuffixes.NOUN_CASE)
+                .addExclusiveSuffix(TurkishSuffixes.CASE)
                 .addExclusiveSuffix(TurkishSuffixes.COPULAR)
-                .addExclusiveSuffix(TurkishSuffixes.NOUN_POSS);
+                .addExclusiveSuffix(TurkishSuffixes.POSSESSIVE);
         nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalState, true);
 
         TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
