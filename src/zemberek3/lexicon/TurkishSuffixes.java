@@ -105,13 +105,13 @@ public class TurkishSuffixes {
 
     static TurkishSuffix Fut = new TurkishSuffix("Fut");
     static SuffixNode Fut_yAcAk = new SuffixNode(Fut, "+yAcAk");
-    static SuffixNode Fut_yAcAğ = new SuffixNode(Fut, "+yAcAğ");
+    static SuffixNode Fut_yAcAg = new SuffixNode(Fut, "+yAcAğ");
 
     static TurkishSuffix Past = new TurkishSuffix("Past");
     static SuffixNode Past_dI = new SuffixNode(Past, ">dI");
 
     static TurkishSuffix Evid = new TurkishSuffix("Evid");
-    static SuffixNode Evid_dI = new SuffixNode(Evid, "mIş");
+    static SuffixNode Evid_mIs = new SuffixNode(Evid, "mIş");
 
     static TurkishSuffix Neg = new TurkishSuffix("Neg");
     static SuffixNode Neg_mA = new SuffixNode(Neg, "mA"); //gel-me
@@ -168,7 +168,7 @@ public class TurkishSuffixes {
     public static final TurkishSuffix[] POSSESSIVE = {P1sg, P2sg, P1pl, P2pl, P3pl};
     public static final SuffixNode[] POSSESSIVE_FORMS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
     public static final TurkishSuffix[] PERSON = {A1sg, A2sg, A1pl, A2pl, A3pl};
-    public static final SuffixNode[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
+    public static final SuffixNode[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final TurkishSuffix[] COPULAR = {Cop, PastCop, EvidCop, CondCop, While};
     public static final SuffixNode[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
 
@@ -225,44 +225,27 @@ public class TurkishSuffixes {
 
         Gen_nIn.succ(COPULAR_FORMS).succ(Rel_ki);
 
-/*        Acc_yI.add(new SuffixNode(Acc, "+yI"));
-        add(new SuffixNode(Acc, "nI", Rel, P3sg, P3pl));
+        Dim_cIg.succ(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);
+        Dim_cIk.succ(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr).succ(COPULAR_FORMS);
+        Dim_cAgIz.succ(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N);
 
+        With_lI.succ(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).succ(Pl_lAr);
+        Without_sIz.succ(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).succ(Pl_lAr);
 
-        SuffixNode dim = new SuffixNode(Dim, ">cI~k").
-                succ(CASE, COPULAR, POSSESSIVE, PERSON).
-                succ(Pl, With, Without);
-        add(dim);
-        add(new SuffixNode(Dim, ">cağız").
-                succ(dim.successors));
+        PastCop_ydI.succ(PERSON_FORMS_N);
+        EvidCop_ymIs.succ(PERSON_FORMS_N);
+        CondCop_ysA.succ(PERSON_FORMS_N);
 
-        add(new SuffixNode(With, "lI").
-                succ(CASE, COPULAR, POSSESSIVE, PERSON).
-                succ(Pl));
+        Neg_mA.succ(Aor_z, Aor_EMPTY, Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI);
+        Neg_m.succ(Prog_Iyor);
 
-        add(new SuffixNode(Without, "sIz").
-                succ(CASE, COPULAR, POSSESSIVE, PERSON).
-                succ(Pl));
+        Aor_Ar.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
+        Aor_Ir.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
+        Aor_z.succ(COPULAR_FORMS).succ(A3sg_sIn, Cond_ysA);
+        Aor_EMPTY.succ(A1sg_m, A3sg_EMPTY).succ(Cond_ysA);
 
-        add(new SuffixNode(Rel, "ki").succ(CASE, COPULAR, PERSON));
-
-        add(new SuffixNode(A1sg, "+yIm").succ(Cop));
-        add(new SuffixNode(A2sg, "sIn").succ(Cop));
-        add(new SuffixNode(A1pl, "+yIz").succ(Cop));
-        add(new SuffixNode(A2pl, "sInIz").succ(Cop));
-        add(new SuffixNode(A3pl, "lAr").succ(Cop));
-
-        add(new SuffixNode(Cop, ">dIr"));
-        add(new SuffixNode(PastCop, "+y>dI").succ(PERSON));
-        add(new SuffixNode(EvidCop, "+ymIş").succ(PERSON));
-        add(new SuffixNode(CondCop, "+ysA").succ(PERSON));
-        add(new SuffixNode(While, "+yken"));
-
-        add(new SuffixNode(Prog, "Iyor").succ(PERSON));
-
-        add(new SuffixNode(Neg, "mA").succ(Past, Fut, Evid, Aor));
-        add(new SuffixNode(Neg, "m").succ(Prog));
-   */
+        Prog_Iyor.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
+        Prog_mAktA.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
 
     }
 
