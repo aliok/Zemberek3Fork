@@ -51,6 +51,19 @@ public class SuffixNode {
         return this;
     }
 
+    public SuffixNode remove(SuffixNode... suffixNodes) {
+        for (SuffixNode suffixNode : suffixNodes) {
+            this.successors.remove(suffixNode);
+        }
+        return this;
+    }
+
+    public SuffixNode remove(Iterable<SuffixNode> it) {
+        for (SuffixNode suff : it)
+            successors.remove(suff);
+        return this;
+    }
+
     public String getId() {
         return id;
     }

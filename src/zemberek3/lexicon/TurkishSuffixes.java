@@ -144,7 +144,7 @@ public class TurkishSuffixes {
 
     static TurkishSuffix Abil = new TurkishSuffix("Abil");
     static SuffixNode Abil_yAbil = new SuffixNode(Abil, "+yAbil");
-    static SuffixNode Abil_A = new SuffixNode(Abil, "A");
+    static SuffixNode Abil_yA = new SuffixNode(Abil, "+yA");
 
     static TurkishSuffix Cop = new TurkishSuffix("Cop");
     static SuffixNode Cop_dIr = new SuffixNode(Cop, ">dIr");
@@ -162,6 +162,31 @@ public class TurkishSuffixes {
     static SuffixNode While_ken = new SuffixNode(While, "+yken");
 
     static TurkishSuffix AfterDoing = new TurkishSuffix("AfterDoing");
+    static SuffixNode AfterDoing_yIncA = new SuffixNode(AfterDoing, "+yIncA");
+
+
+    public static TurkishSuffix NounRoot = new TurkishSuffix("NounRoot");
+    public static SuffixNode Noun_Main = new SuffixNode(NounRoot, "");
+    public static SuffixNode Noun_Exp_C = new SuffixNode(NounRoot, "");
+    public static SuffixNode Noun_Exp_V = new SuffixNode(NounRoot, "");
+    public static SuffixNode Noun_Comp_p3sg = new SuffixNode(NounRoot, "");
+    public static SuffixNode Noun_Comp_p3sg_Root = new SuffixNode(NounRoot, "");
+
+
+    public static TurkishSuffix VerbRoot = new TurkishSuffix("VerbRoot");
+    public static SuffixNode Verb_Main = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Aor_A = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Prog_Drop = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Prog_NotDrop = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Vow_Drop = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Vow_NotDrop = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Exp_C = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Exp_V = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_De = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Ye = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Di = new SuffixNode(VerbRoot, "");
+    public static SuffixNode Verb_Yi = new SuffixNode(VerbRoot, "");
+
 
     public static final TurkishSuffix[] CASE = {Dat, Loc, Abl, Gen, Acc, Inst};
     public static final SuffixNode[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_nI, Inst_ylA};
@@ -171,6 +196,7 @@ public class TurkishSuffixes {
     public static final SuffixNode[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final TurkishSuffix[] COPULAR = {Cop, PastCop, EvidCop, CondCop, While};
     public static final SuffixNode[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
+    public static final SuffixNode[] TENSE_DEFAULT_FORMS = {Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir};
 
     public static final List<TurkishSuffix> NOUN_ROOT_SUFFIXES = new ArrayList<TurkishSuffix>();
 
@@ -200,7 +226,32 @@ public class TurkishSuffixes {
         }
     }
 
-    public void generate() {
+    public TurkishSuffixes() {
+
+        Noun_Main.succ(CASE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
+                .succ(Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz);
+        Noun_Exp_C.succ(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr, With_lI, Without_sIz)
+                .succ(COPULAR_FORMS);
+        Noun_Exp_V.succ(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);
+        Noun_Comp_p3sg.succ(COPULAR_FORMS)
+                .succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
+                .succ(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
+        Noun_Comp_p3sg_Root.succ(With_lI, Without_sIz);
+
+        Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir)
+                .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA);
+        Verb_Aor_A.succ(Verb_Main.getSuccessors()).remove(Aor_Ir).succ(Aor_Ar);
+        Verb_Vow_Drop.succ(Pass_Il);
+        Verb_Vow_NotDrop.succ(Verb_Main.getSuccessors()).remove(Pass_Il);
+        Verb_Prog_Drop.succ(Prog_Iyor);
+        Verb_Prog_NotDrop.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor);
+        Verb_Ye.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
+        Verb_De.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
+        Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
+        Verb_Di.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk);
+        Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ir, Prog_Iyor);
+        Verb_Exp_C.succ(Verb_Main.getSuccessors()).remove(Verb_Exp_V.getSuccessors());
+
 
         Pl_lAr.succ(CASE_FORMS, COPULAR_FORMS)
                 .succ(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz);
@@ -251,11 +302,9 @@ public class TurkishSuffixes {
 
     public static void main(String[] args) {
         TurkishSuffixes suffixes = new TurkishSuffixes();
-        suffixes.generate();
         for (SuffixNode node : TurkishSuffixes.PastCop.nodes) {
             System.out.println(node.id);
         }
-
         System.out.println("Noun root suffix count: " + NOUN_ROOT_SUFFIXES.size());
         int i = 0;
         for (TurkishSuffix suffix : NOUN_ROOT_SUFFIXES) {
