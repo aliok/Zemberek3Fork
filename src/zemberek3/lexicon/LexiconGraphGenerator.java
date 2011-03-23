@@ -1,7 +1,6 @@
 package zemberek3.lexicon;
 
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
@@ -20,9 +19,11 @@ import static zemberek3.lexicon.TurkishSuffixes.*;
  */
 public class LexiconGraphGenerator {
     List<LexiconItem> lexicon;
-    Map<BoundaryNode, BoundaryNode> boundaryStateMap = Maps.newHashMap();
-    List<RootNode> rootNodes = new ArrayList<RootNode>();
+    List<Stem> stems = new ArrayList<Stem>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
+
+    SuffixFormGenerator formGenerator = new SuffixFormGenerator();
+    TurkishSuffixes suffixes = new TurkishSuffixes();
 
     public LexiconGraphGenerator(List<LexiconItem> lexicon) {
         this.lexicon = lexicon;
@@ -31,43 +32,30 @@ public class LexiconGraphGenerator {
     public void generate() {
         for (LexiconItem lexiconItem : lexicon) {
             if (hasModifierAttribute(lexiconItem)) {
-                rootNodes.addAll(Arrays.asList(generateModifiedRootStates(lexiconItem)));
+                stems.addAll(Arrays.asList(generateModifiedRootStates(lexiconItem)));
             } else {
-                rootNodes.add(generateRootState(lexiconItem));
+                stems.add(generateRootState(lexiconItem));
             }
         }
     }
 
-    public List<RootNode> getRootNodes() {
-        return rootNodes;
+    public List<Stem> getStems() {
+        return stems;
     }
 
-    private RootNode generateRootState(LexiconItem lexiconItem) {
-        BoundaryNode boundaryNode = generateBoundaryState(lexiconItem);
-        return new RootNode(lexiconItem.root, lexiconItem, boundaryNode, true);
-    }
-
-    private BoundaryNode generateBoundaryState(LexiconItem lexiconItem) {
-        BoundaryNode boundaryNode = new BoundaryNode(lexiconItem.primaryPos, calculateRootAttributes(lexiconItem));
-        return createIfNotExist(boundaryNode);
-    }
-
-    private BoundaryNode createIfNotExist(BoundaryNode boundaryNode) {
-        // weird. but i needed to do this.
-        if (!boundaryStateMap.containsKey(boundaryNode)) {
-            boundaryStateMap.put(boundaryNode, boundaryNode);
-        } else boundaryNode = boundaryStateMap.get(boundaryNode);
-        return boundaryNode;
+    private Stem generateRootState(LexiconItem lexiconItem) {
+        SuffixFormSet set = suffixes.getRootSuffixFormSet(lexiconItem.primaryPos);
+        AttributeSet<PhonAttr> phoneticAttrs = calculateRootAttributes(lexiconItem);
+        SuffixForm form = formGenerator.getForm(phoneticAttrs, set.generation);
+        form = set.addOrReturnExisting(form);
+        return new Stem(lexiconItem.lemma, lexiconItem, form, true);
     }
 
     public boolean hasModifierAttribute(LexiconItem item) {
-        for (RootAttr attribute : item.attrs.getAsList(RootAttr.class))
-            if (modifiers.contains(attribute))
-                return true;
-        return false;
+        return item.attrs.containsAny(modifiers);
     }
 
-    Set<RootAttr> modifiers = Sets.newHashSet(
+    AttributeSet<RootAttr> modifiers = new AttributeSet<RootAttr>(
             Doubling,
             LastVowelDrop,
             ProgressiveVowelDrop,
@@ -76,112 +64,120 @@ public class LexiconGraphGenerator {
             CompoundP3sg
     );
 
-    private List<PhonAttr> calculateRootAttributes(LexiconItem lexiconItem) {
-        List<PhonAttr> attributesList = new ArrayList<PhonAttr>();
-        TurkicSeq sequence = new TurkicSeq(lexiconItem.root, alphabet);
+    private AttributeSet<PhonAttr> calculateRootAttributes(LexiconItem lexiconItem) {
+        AttributeSet<PhonAttr> attrs = new AttributeSet<PhonAttr>();
+        TurkicSeq sequence = new TurkicSeq(lexiconItem.clean(), alphabet);
         // general phonetic attributes.
         if (sequence.lastVowel().isRounded())
-            attributesList.add(PhonAttr.LastVowelRounded);
+            attrs.add(PhonAttr.LastVowelRounded);
         else
-            attributesList.add(PhonAttr.LastVowelUnrounded);
+            attrs.add(PhonAttr.LastVowelUnrounded);
         if (sequence.lastVowel().isFrontal()) {
-            attributesList.add(PhonAttr.LastVowelFrontal);
+            attrs.add(PhonAttr.LastVowelFrontal);
         } else if (lexiconItem.hasAttribute(RootAttr.InverseHarmony)) {
             // saat, takat
-            attributesList.add(PhonAttr.LastVowelFrontal);
+            attrs.add(PhonAttr.LastVowelFrontal);
         } else
-            attributesList.add(PhonAttr.LastVowelBack);
+            attrs.add(PhonAttr.LastVowelBack);
         if (sequence.lastLetter().isVowel()) {
             // elma
-            attributesList.add(PhonAttr.LastLetterVowel);
+            attrs.add(PhonAttr.LastLetterVowel);
         } else
-            attributesList.add(PhonAttr.LastLetterConsonant);
+            attrs.add(PhonAttr.LastLetterConsonant);
         if (sequence.lastLetter().isVoiceless() && sequence.lastLetter().isStopConsonant()) {
             // kitap
-            attributesList.add(PhonAttr.LastLetterVoicelessStop);
+            attrs.add(PhonAttr.LastLetterVoicelessStop);
         } else
-            attributesList.add(PhonAttr.LastLetterNotVoicelessStop);
-        return attributesList;
+            attrs.add(PhonAttr.LastLetterNotVoicelessStop);
+        return attrs;
     }
 
 
-    private RootNode[] generateModifiedRootStates(LexiconItem lexiconItem) {
+    private Stem[] generateModifiedRootStates(LexiconItem lexItem) {
 
-        BoundaryNode modifiedNode = new BoundaryNode(lexiconItem.primaryPos, calculateRootAttributes(lexiconItem));
-        BoundaryNode originalNode = new BoundaryNode(lexiconItem.primaryPos, calculateRootAttributes(lexiconItem));
+        TurkicSeq modifiedSeq = new TurkicSeq(lexItem.clean(), alphabet);
+        AttributeSet<PhonAttr> originalAttrs = calculateRootAttributes(lexItem);
+        AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
 
-        TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
-
-        for (RootAttr attribute : lexiconItem.attrs.getAsList(RootAttr.class)) {
+        for (RootAttr attribute : lexItem.attrs.getAsList(RootAttr.class)) {
 
             // generate other boundary attributes and modified root state.
             switch (attribute) {
-
                 case Voicing:
-                    if(lexiconItem.hasAttribute(RootAttr.CompoundP3sg))
+                    if (lexItem.hasAttribute(RootAttr.CompoundP3sg))
                         break;
                     TurkicLetter last = modifiedSeq.lastLetter();
                     TurkicLetter modifiedLetter = alphabet.voice(last);
                     if (modifiedLetter == null) {
-                        throw new LexiconGenerationException("Voicing letter is not proper in:" + lexiconItem);
+                        throw new LexiconGenerationException("Voicing letter is not proper in:" + lexItem);
                     }
-                    if (lexiconItem.root.endsWith("nk"))
+                    if (lexItem.lemma.endsWith("nk"))
                         modifiedLetter = TurkishAlphabet.L_g;
                     modifiedSeq.changeLetter(modifiedSeq.length() - 1, modifiedLetter);
-                    modifiedNode.getExpectations().add(PhonAttr.FirstLetterVowel);
-                    modifiedNode.getAttributes().remove(PhonAttr.LastLetterVoicelessStop);
-                    originalNode.getExpectations().add(PhonAttr.FirstLetterConsonant);
-
                     break;
                 case Doubling:
-                    modifiedNode.getExpectations().add(PhonAttr.FirstLetterVowel);
-                    originalNode.getExpectations().add(PhonAttr.FirstLetterConsonant);
                     modifiedSeq.append(modifiedSeq.lastLetter());
                     break;
                 case LastVowelDrop:
-                    modifiedNode.getExpectations().add(PhonAttr.FirstLetterVowel);
-                    originalNode.getExpectations().add(PhonAttr.FirstLetterConsonant);
-                    if (lexiconItem.primaryPos == Verb) {
-                        modifiedNode.addExclusiveSuffix(TurkishSuffixes.Pass);
-                        originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog);
-                    }
                     modifiedSeq.delete(modifiedSeq.length() - 2);
                     break;
                 case ProgressiveVowelDrop:
-                    modifiedNode.addExclusiveSuffix(TurkishSuffixes.Prog);
-                    originalNode.addRestrictedsuffixes(TurkishSuffixes.Prog);
                     modifiedSeq.delete(modifiedSeq.length() - 1);
                     break;
                 case StemChange:
-                    return handleSpecialStems(lexiconItem);
+                    return handleSpecialStems(lexItem);
                 case CompoundP3sg:
-                    return handleP3sgCompounds(lexiconItem);
+                    return handleP3sgCompounds(lexItem);
                 default:
                     break;
             }
-
         }
-        originalNode = createIfNotExist(originalNode);
-        modifiedNode = createIfNotExist(modifiedNode);
+        SuffixFormSet origSet = null;
+        SuffixFormSet modSet = null;
+        switch (lexItem.primaryPos) {
+            case Noun:
+                if (lexItem.attrs.containsAny(Voicing, Doubling, LastVowelDrop)) {
+                    origSet = TurkishSuffixes.Noun_Exp_C;
+                    modSet = TurkishSuffixes.Noun_Exp_V;
+                }
+                if (lexItem.attrs.contains(Voicing)) {
+                    modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);
+                }
+            case Verb:
+                if (lexItem.attrs.contains(LastVowelDrop)) {
+                    origSet = TurkishSuffixes.Verb_Vow_NotDrop;
+                    modSet = TurkishSuffixes.Verb_Vow_Drop;
+                } else if (lexItem.attrs.contains(ProgressiveVowelDrop)) {
+                    origSet = TurkishSuffixes.Verb_Prog_NotDrop;
+                    modSet = TurkishSuffixes.Verb_Prog_Drop;
+                }
+        }
+        if (origSet == null || modSet == null) {
+            throw new IllegalStateException("Cannot find suffix root form to connect for lexicon item:" + lexItem);
+        }
 
-        RootNode[] nodes = new RootNode[2];
-        nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
-        nodes[1] = new RootNode(modifiedSeq.toString(), lexiconItem, modifiedNode, false);
-        return nodes;
+        SuffixForm origForm = origSet.addOrReturnExisting(formGenerator.getForm(originalAttrs, origSet.generation));
+        SuffixForm modiForm = modSet.addOrReturnExisting(formGenerator.getForm(modifiedAttrs, modSet.generation));
+
+        return new Stem[]{
+                new Stem(lexItem.clean(), lexItem, origForm, true),
+                new Stem(modifiedSeq.toString(), lexItem, modiForm, false)
+        };
 
     }
 
     // handle stem changes demek-diyecek , beni-bana
-    private RootNode[] handleSpecialStems(LexiconItem lexiconItem) {
-        if ((lexiconItem.root.equals("ye") || lexiconItem.root.equals("de")) && lexiconItem.primaryPos == Verb) {
-            RootNode[] nodes = new RootNode[3];
+    private Stem[] handleSpecialStems(LexiconItem lexiconItem) {
+        return new Stem[0];
+/*        if ((lexiconItem.lemma.equals("yemek") || lexiconItem.lemma.equals("demek")) && lexiconItem.primaryPos == Verb) {
+            Stem[] nodes = new Stem[3];
             BoundaryNode originalNode =
                     new BoundaryNode(Verb, PhonAttr.LastVowelFrontal, PhonAttr.LastLetterVowel)
                             .addRestrictedsuffixes(Prog, Fut, Opt);
-            nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
+            nodes[0] = new Stem(lexiconItem.lemma, lexiconItem, originalNode, true);
 
             BoundaryNode progressiveNode = new BoundaryNode(Verb, PhonAttr.LastVowelFrontal).addExclusiveSuffix(Prog);
-            nodes[1] = new RootNode(lexiconItem.root.substring(0, 1), lexiconItem, progressiveNode, false);
+            nodes[1] = new Stem(lexiconItem.lemma.substring(0, 1), lexiconItem, progressiveNode, false);
 
             BoundaryNode modifiedNode = new BoundaryNode(
                     originalNode.getPrimaryPos(),
@@ -189,42 +185,44 @@ public class LexiconGraphGenerator {
                     originalNode.getExpectations())
                     .addExclusiveSuffix(Fut, Opt);
             // modification rule does not apply for some suffixes for "demek". like deyip, not deyip
-            if (lexiconItem.root.equals("ye")) {
+            if (lexiconItem.lemma.equals("ye")) {
                 modifiedNode.addExclusiveSuffix(AfterDoing);
             }
-            nodes[2] = new RootNode(lexiconItem.root.substring(0, 1) + "i", lexiconItem, modifiedNode, false);
+            nodes[2] = new Stem(lexiconItem.lemma.substring(0, 1) + "i", lexiconItem, modifiedNode, false);
             return nodes;
-        } else if ((lexiconItem.root.equals("ben") || lexiconItem.root.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
-            RootNode[] nodes = new RootNode[2];
+        } else if ((lexiconItem.lemma.equals("ben") || lexiconItem.lemma.equals("sen")) && lexiconItem.primaryPos == Pronoun) {
+            Stem[] nodes = new Stem[2];
 
             BoundaryNode originalNode = new BoundaryNode(Pronoun, PhonAttr.LastVowelFrontal).addRestrictedsuffixes(Dat);
-            nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalNode, true);
+            nodes[0] = new Stem(lexiconItem.lemma, lexiconItem, originalNode, true);
 
             BoundaryNode modifiedNode = new BoundaryNode(
                     originalNode.getPrimaryPos(),
                     originalNode.getAttributes(),
                     originalNode.getExpectations())
                     .addExclusiveSuffix(Dat);
-            if (lexiconItem.root.equals("ben"))
-                nodes[1] = new RootNode("ban", lexiconItem, modifiedNode, false);
+            if (lexiconItem.lemma.equals("ben"))
+                nodes[1] = new Stem("ban", lexiconItem, modifiedNode, false);
             else
-                nodes[1] = new RootNode("san", lexiconItem, modifiedNode, false);
+                nodes[1] = new Stem("san", lexiconItem, modifiedNode, false);
             return nodes;
         }
         throw new IllegalArgumentException("Lexicon Item with special stem change cannot be handled:" + lexiconItem);
+        */
     }
 
-    private RootNode[] handleP3sgCompounds(LexiconItem lexiconItem) {
-
-        RootNode[] nodes = new RootNode[2];
+    private Stem[] handleP3sgCompounds(LexiconItem lexiconItem) {
+        return new Stem[0];
+        /*
+        Stem[] nodes = new Stem[2];
         // atkuyruGu -
         BoundaryNode originalState = new BoundaryNode(lexiconItem.primaryPos, calculateRootAttributes(lexiconItem))
                 .addExclusiveSuffix(TurkishSuffixes.CASE)
                 .addExclusiveSuffix(TurkishSuffixes.COPULAR)
                 .addExclusiveSuffix(TurkishSuffixes.POSSESSIVE);
-        nodes[0] = new RootNode(lexiconItem.root, lexiconItem, originalState, true);
+        nodes[0] = new Stem(lexiconItem.lemma, lexiconItem, originalState, true);
 
-        TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.root, alphabet);
+        TurkicSeq modifiedSeq = new TurkicSeq(lexiconItem.lemma, alphabet);
         // TODO: phonetic properties needs to be found again nicely.
         BoundaryNode modifiedNode = new BoundaryNode(lexiconItem.primaryPos, calculateRootAttributes(lexiconItem)).
                 addExclusiveSuffix(Pl, With, P3pl);
@@ -240,11 +238,12 @@ public class LexiconGraphGenerator {
                 TurkicLetter l = alphabet.devoice(modifiedSeq.lastLetter());
                 modifiedSeq.changeLetter(modifiedSeq.length() - 1, l);
             }
-            nodes[1] = new RootNode(modifiedSeq.toString(), lexiconItem, modifiedNode, false);
+            nodes[1] = new Stem(modifiedSeq.toString(), lexiconItem, modifiedNode, false);
         } else {
-            nodes[1] = new RootNode(modified, lexiconItem, modifiedNode, false);
+            nodes[1] = new Stem(modified, lexiconItem, modifiedNode, false);
         }
         return nodes;
+        */
     }
 
 
@@ -252,9 +251,9 @@ public class LexiconGraphGenerator {
         List<LexiconItem> items = new TurkishLexiconLoader().load(new File("test/data/dev-lexicon.txt"));
         LexiconGraphGenerator generator = new LexiconGraphGenerator(items);
         generator.generate();
-        List<RootNode> rootNodes = generator.getRootNodes();
-        for (RootNode rootNode : rootNodes) {
-            System.out.println(rootNode);
+        List<Stem> stems = generator.getStems();
+        for (Stem stem : stems) {
+            System.out.println(stem);
         }
     }
 

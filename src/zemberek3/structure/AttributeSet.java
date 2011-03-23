@@ -42,6 +42,18 @@ public class AttributeSet<T extends BitEnum> {
         return true;
     }
 
+    public boolean containsAny(BitEnum... bitEnum) {
+        for (BitEnum en : bitEnum) {
+            if (contains(en))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean containsAny(AttributeSet<T> set) {
+        return (this.data & set.data) != 0;
+    }
+
     public boolean containsAll(AttributeSet<T> set) {
         return (this.data & set.data) == set.data;
     }

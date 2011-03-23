@@ -41,7 +41,6 @@ public class TurkishLexiconLoader {
             AttributeSet<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo);
             return new LexiconItem(
                     word,
-                    cleanWord,
                     posInfo.primaryPos,
                     posInfo.secondaryPos,
                     rootAttrs);
@@ -218,6 +217,5 @@ public class TurkishLexiconLoader {
             System.out.println(item);
         }
     }
-
 }
 

@@ -29,13 +29,13 @@ public class TurkishLexiconLoaderTest {
     public void nounInferenceTest() {
         TurkishLexiconLoader loader = new TurkishLexiconLoader();
         LexiconItem item = loader.loadFromString("elma");
-        Assert.assertEquals("elma", item.root);
         Assert.assertEquals("elma", item.lemma);
+        Assert.assertEquals("elma", item.clean());
         Assert.assertEquals(Noun, item.primaryPos);
 
         item = loader.loadFromString("elma [Pos:Noun]");
-        Assert.assertEquals("elma", item.root);
         Assert.assertEquals("elma", item.lemma);
+        Assert.assertEquals("elma", item.clean());
         Assert.assertEquals(Noun, item.primaryPos);
     }
 
@@ -44,7 +44,7 @@ public class TurkishLexiconLoaderTest {
     public void verbInferenceTest() {
         TurkishLexiconLoader loader = new TurkishLexiconLoader();
         LexiconItem item = loader.loadFromString("gelmek");
-        Assert.assertEquals("gel", item.root);
+        Assert.assertEquals("gel", item.clean());
         Assert.assertEquals("gelmek", item.lemma);
         Assert.assertEquals(Verb, item.primaryPos);
 

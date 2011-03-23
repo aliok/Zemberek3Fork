@@ -13,7 +13,7 @@ import static zemberek3.structure.TurkishAlphabet.*;
 
 public class SuffixFormGenerator {
 
-    public SuffixForm suffixNodes(
+    public SuffixForm getForm(
             AttributeSet<PhonAttr> attrs,
             String generationString) {
 
@@ -199,8 +199,8 @@ public class SuffixFormGenerator {
         }
     }
 
-    public SuffixNode[] generateNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... exclusivePredecessors) {
-        return new SuffixNode[0];
+    public SuffixFormSet[] generateNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... exclusivePredecessors) {
+        return new SuffixFormSet[0];
     }
 
 }

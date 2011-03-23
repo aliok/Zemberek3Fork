@@ -7,7 +7,6 @@ import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static zemberek3.lexicon.PhonAttr.*;
 
@@ -18,32 +17,32 @@ public class SuffixFormGeneratorTest {
     @Test
     public void suffixFormAHarmonyTest() {
         SuffixFormGenerator sfg = new SuffixFormGenerator();
-        SuffixForm form = sfg.suffixNodes(set(LastVowelBack), "lAr");
+        SuffixForm form = sfg.getForm(set(LastVowelBack), "lAr");
         Assert.assertEquals("lar", form.surface());
         Assert.assertTrue(form.attributes.containsAll(LastLetterConsonant, LastVowelBack, LastVowelUnrounded));
 
-        form = sfg.suffixNodes(set(LastVowelBack, LastVowelRounded), "lAr");
+        form = sfg.getForm(set(LastVowelBack, LastVowelRounded), "lAr");
         Assert.assertEquals("lar", form.surface());
 
-        form = sfg.suffixNodes(set(LastVowelFrontal, LastVowelRounded), "lAr");
+        form = sfg.getForm(set(LastVowelFrontal, LastVowelRounded), "lAr");
         Assert.assertEquals("ler", form.surface());
     }
 
     @Test
     public void suffixFormIHarmonyTest() {
         SuffixFormGenerator sfg = new SuffixFormGenerator();
-        SuffixForm form = sfg.suffixNodes(set(LastVowelBack, LastVowelUnrounded), "sIn");
+        SuffixForm form = sfg.getForm(set(LastVowelBack, LastVowelUnrounded), "sIn");
         Assert.assertEquals("sın", form.surface());
         Assert.assertTrue(form.attributes.containsAll(LastLetterConsonant, LastVowelBack, LastVowelUnrounded));
 
-        form = sfg.suffixNodes(set(LastVowelBack, LastVowelRounded), "sInIz");
+        form = sfg.getForm(set(LastVowelBack, LastVowelRounded), "sInIz");
         Assert.assertEquals("sunuz", form.surface());
     }
 
     @Test
     public void emptyFormTest() {
         SuffixFormGenerator sfg = new SuffixFormGenerator();
-        SuffixForm form = sfg.suffixNodes(set(LastVowelBack, LastVowelRounded, LastLetterConsonant), "");
+        SuffixForm form = sfg.getForm(set(LastVowelBack, LastVowelRounded, LastLetterConsonant), "");
         Assert.assertEquals("", form.surface());
         Assert.assertTrue(form.attributes.containsAll(LastVowelBack, LastVowelRounded, LastLetterConsonant));
     }
@@ -51,7 +50,7 @@ public class SuffixFormGeneratorTest {
     @Test
     public void novowelFormTest() {
         SuffixFormGenerator sfg = new SuffixFormGenerator();
-        SuffixForm form = sfg.suffixNodes(set(LastVowelBack, LastVowelRounded, LastLetterVowel), "m");
+        SuffixForm form = sfg.getForm(set(LastVowelBack, LastVowelRounded, LastLetterVowel), "m");
         Assert.assertEquals("m", form.surface());
         Assert.assertTrue(form.attributes.containsAll(LastVowelBack, LastVowelRounded, LastLetterConsonant));
     }
@@ -108,7 +107,7 @@ public class SuffixFormGeneratorTest {
         };
         SuffixFormGenerator sfg = new SuffixFormGenerator();
         for (Triple triple : triples) {
-            SuffixForm form = sfg.suffixNodes(
+            SuffixForm form = sfg.getForm(
                     sfg.defineMorphemicAttributes(new TurkicSeq(triple.predecessor, alphabet)),
                     triple.generationWord);
             Assert.assertEquals("Error in:" + triple, triple.expectedSurface, form.surface());
