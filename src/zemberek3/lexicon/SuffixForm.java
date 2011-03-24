@@ -5,24 +5,20 @@ import zemberek3.structure.TurkicSeq;
 
 public class SuffixForm {
 
-    TurkicSeq sequence;
+    String surface;
     AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
 
-    public SuffixForm(TurkicSeq sequence, AttributeSet<PhonAttr> attributes) {
-        this.sequence = sequence;
+    public SuffixForm(String surface, AttributeSet<PhonAttr> attributes) {
+        this.surface = surface;
         this.attributes = attributes;
     }
 
-    public SuffixForm(TurkicSeq sequence) {
-        this.sequence = sequence;
+    public SuffixForm(String surface) {
+        this.surface = surface;
     }
 
     public SuffixForm copy() {
-        return new SuffixForm(new TurkicSeq(sequence), attributes.copy());
-    }
-
-    public String surface() {
-        return sequence.toString();
+        return new SuffixForm(surface, attributes.copy());
     }
 
     @Override
@@ -33,15 +29,19 @@ public class SuffixForm {
         SuffixForm that = (SuffixForm) o;
 
         if (attributes != null ? !attributes.equals(that.attributes) : that.attributes != null) return false;
-        if (sequence != null ? !sequence.equals(that.sequence) : that.sequence != null) return false;
+        if (surface != null ? !surface.equals(that.surface) : that.surface != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = sequence != null ? sequence.hashCode() : 0;
+        int result = surface != null ? surface.hashCode() : 0;
         result = 31 * result + (attributes != null ? attributes.hashCode() : 0);
         return result;
+    }
+
+    public String toString() {
+        return surface + ":"+attributes.getAsList(PhonAttr.class);
     }
 }

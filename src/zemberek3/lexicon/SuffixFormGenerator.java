@@ -21,17 +21,17 @@ public class SuffixFormGenerator {
 
         // zero length token
         if (tokenList.size() == 0) {
-            return new SuffixForm(new TurkicSeq(), attrs.copy());
+            return new SuffixForm("", attrs.copy());
         }
 
         // generation of forms. normally only one form is generated. But in situations like cI~k, two Forms are generated.
-        SuffixForm form = new SuffixForm(new TurkicSeq());
+        TurkicSeq seq = new TurkicSeq();
         int index = 0;
         for (SuffixToken token : tokenList) {
-            AttributeSet<PhonAttr> formAttrs = defineMorphemicAttributes(form.sequence, attrs);
+            AttributeSet<PhonAttr> formAttrs = defineMorphemicAttributes(seq, attrs);
             switch (token.type) {
                 case LETTER:
-                    form.sequence.append(token.letter);
+                    seq.append(token.letter);
                     break;
 
                 case A_WOVEL:
@@ -45,7 +45,7 @@ public class SuffixFormGenerator {
                         lA = L_e;
                     if (lA == TurkicLetter.UNDEFINED)
                         throw new IllegalArgumentException("Cannot generate A form!");
-                    form.sequence.append(lA);
+                    seq.append(lA);
                     break;
 
                 case I_WOVEL:
@@ -62,12 +62,12 @@ public class SuffixFormGenerator {
                         li = L_i;
                     if (li == TurkicLetter.UNDEFINED)
                         throw new IllegalArgumentException("Cannot generate I form!");
-                    form.sequence.append(li);
+                    seq.append(li);
                     break;
 
                 case APPEND:
                     if (formAttrs.contains(LastLetterVowel)) {
-                        form.sequence.append(token.letter);
+                        seq.append(token.letter);
                     }
                     break;
 
@@ -75,17 +75,14 @@ public class SuffixFormGenerator {
                     TurkicLetter ld = token.letter;
                     if (formAttrs.contains(LastLetterVoicelessStop))
                         ld = alphabet.devoice(token.letter);
-                    form.sequence.append(ld);
+                    seq.append(ld);
 
                     break;
             }
             index++;
         }
 
-        // we define attributes
-        form.attributes = defineMorphemicAttributes(form.sequence, attrs);
-
-        return form;
+        return new SuffixForm(seq.toString(),defineMorphemicAttributes(seq, attrs)) ;
     }
 
     // in suffix, defining morphemic attributes is straight forward.

@@ -13,8 +13,8 @@ public class SuffixGraphGenerator {
 
     public void generate() {
         for (SuffixFormSet rootForm : rootForms) {
-            for (SuffixFormSet form : rootForm.getSuccessors()) {
-                // needs some magic to build the suffix forms and connections recursively.
+            for (SuffixFormSet succSet : rootForm.getSuccessors()) {
+
             }
         }
     }
