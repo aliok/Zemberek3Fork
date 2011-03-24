@@ -175,7 +175,7 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix VerbRoot = new TurkishSuffix("VerbRoot");
     public static SuffixFormSet Verb_Main = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Aor_A = new SuffixFormSet(VerbRoot, "");
+    public static SuffixFormSet Verb_Aor_Ar = new SuffixFormSet(VerbRoot, "");
     public static SuffixFormSet Verb_Prog_Drop = new SuffixFormSet(VerbRoot, "");
     public static SuffixFormSet Verb_Prog_NotDrop = new SuffixFormSet(VerbRoot, "");
     public static SuffixFormSet Verb_Vow_Drop = new SuffixFormSet(VerbRoot, "");
@@ -255,7 +255,7 @@ public class TurkishSuffixes {
 
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA);
-        Verb_Aor_A.succ(Verb_Main.getSuccessors()).remove(Aor_Ir).succ(Aor_Ar);
+        Verb_Aor_Ar.succ(Verb_Main.getSuccessors()).remove(Aor_Ir).succ(Aor_Ar);
         Verb_Vow_Drop.succ(Pass_Il);
         Verb_Vow_NotDrop.succ(Verb_Main.getSuccessors()).remove(Pass_Il);
         Verb_Prog_Drop.succ(Prog_Iyor);

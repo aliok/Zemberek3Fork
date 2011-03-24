@@ -11,8 +11,6 @@ import java.util.*;
 
 import static zemberek3.lexicon.RootAttr.*;
 import static zemberek3.lexicon.RootAttr.Voicing;
-import static zemberek3.lexicon.PrimaryPos.*;
-import static zemberek3.lexicon.TurkishSuffixes.*;
 
 /**
  * This class gets a list of Lexicon Items and builds the lexicon part of the main graph.
@@ -144,13 +142,19 @@ public class LexiconGraphGenerator {
                     modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);
                 }
             case Verb:
-                if (lexItem.attrs.contains(LastVowelDrop)) {
+                if (lexItem.attrs.contains(Voicing)) {
+                    origSet = TurkishSuffixes.Verb_Vow_NotDrop;
+                    modSet = TurkishSuffixes.Verb_Vow_Drop;
+                } else if (lexItem.attrs.contains(LastVowelDrop)) {
                     origSet = TurkishSuffixes.Verb_Vow_NotDrop;
                     modSet = TurkishSuffixes.Verb_Vow_Drop;
                 } else if (lexItem.attrs.contains(ProgressiveVowelDrop)) {
                     origSet = TurkishSuffixes.Verb_Prog_NotDrop;
                     modSet = TurkishSuffixes.Verb_Prog_Drop;
+                } else if (lexItem.attrs.contains(Aorist_A)) {
+                    modSet = TurkishSuffixes.Verb_Aor_Ar;
                 }
+
         }
         if (origSet == null || modSet == null) {
             throw new IllegalStateException("Cannot find suffix root form to connect for lexicon item:" + lexItem);
