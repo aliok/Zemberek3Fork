@@ -11,6 +11,7 @@ import java.util.*;
 
 import static zemberek3.lexicon.RootAttr.*;
 import static zemberek3.lexicon.RootAttr.Voicing;
+import static zemberek3.lexicon.TurkishSuffixFormId.*;
 
 /**
  * This class gets a list of Lexicon Items and builds the lexicon part of the main graph.
@@ -19,12 +20,12 @@ public class LexiconGraphGenerator {
     List<LexiconItem> lexicon;
     List<Stem> stems = new ArrayList<Stem>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
-
+    TurkishSuffixes suffixes;
     SuffixFormGenerator formGenerator = new SuffixFormGenerator();
-    TurkishSuffixes suffixes = new TurkishSuffixes();
 
-    public LexiconGraphGenerator(List<LexiconItem> lexicon) {
+    public LexiconGraphGenerator(List<LexiconItem> lexicon, TurkishSuffixes suffixes) {
         this.lexicon = lexicon;
+        this.suffixes = suffixes;
     }
 
     public void generate() {
@@ -135,24 +136,24 @@ public class LexiconGraphGenerator {
         switch (lexItem.primaryPos) {
             case Noun:
                 if (lexItem.attrs.containsAny(Voicing, Doubling, LastVowelDrop)) {
-                    origSet = TurkishSuffixes.Noun_Exp_C;
-                    modSet = TurkishSuffixes.Noun_Exp_V;
+                    origSet = suffixes.getFormSet(Noun_Exp_C);
+                    modSet = suffixes.getFormSet(Noun_Exp_V);
                 }
                 if (lexItem.attrs.contains(Voicing)) {
                     modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);
                 }
             case Verb:
                 if (lexItem.attrs.contains(Voicing)) {
-                    origSet = TurkishSuffixes.Verb_Vow_NotDrop;
-                    modSet = TurkishSuffixes.Verb_Vow_Drop;
+                    origSet = suffixes.getFormSet(Verb_Vow_NotDrop);
+                    modSet = suffixes.getFormSet(Verb_Vow_Drop);
                 } else if (lexItem.attrs.contains(LastVowelDrop)) {
-                    origSet = TurkishSuffixes.Verb_Vow_NotDrop;
-                    modSet = TurkishSuffixes.Verb_Vow_Drop;
+                    origSet = suffixes.getFormSet(Verb_Vow_NotDrop);
+                    modSet = suffixes.getFormSet(Verb_Vow_Drop);
                 } else if (lexItem.attrs.contains(ProgressiveVowelDrop)) {
-                    origSet = TurkishSuffixes.Verb_Prog_NotDrop;
-                    modSet = TurkishSuffixes.Verb_Prog_Drop;
+                    origSet = suffixes.getFormSet(Verb_Prog_NotDrop);
+                    modSet = suffixes.getFormSet(Verb_Prog_Drop);
                 } else if (lexItem.attrs.contains(Aorist_A)) {
-                    modSet = TurkishSuffixes.Verb_Aor_Ar;
+                    modSet = suffixes.getFormSet(Verb_Aor_Ar);
                 }
 
         }
@@ -253,7 +254,7 @@ public class LexiconGraphGenerator {
 
     public static void main(String[] args) throws IOException {
         List<LexiconItem> items = new TurkishLexiconLoader().load(new File("test/data/dev-lexicon.txt"));
-        LexiconGraphGenerator generator = new LexiconGraphGenerator(items);
+        LexiconGraphGenerator generator = new LexiconGraphGenerator(items, new TurkishSuffixes());
         generator.generate();
         List<Stem> stems = generator.getStems();
         for (Stem stem : stems) {
