@@ -243,8 +243,9 @@ public class TurkishSuffixes {
 
     public TurkishSuffixes() {
 
-        Noun_Main.succ(CASE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .succ(Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz);
+     //   Noun_Main.succ(CASE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
+     //           .succ(Pl_lAr, Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz);
+        Noun_Main.succ(Pl_lAr);
         Noun_Exp_C.succ(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr, With_lI, Without_sIz)
                 .succ(COPULAR_FORMS);
         Noun_Exp_V.succ(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);

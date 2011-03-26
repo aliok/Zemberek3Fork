@@ -93,4 +93,8 @@ public class SuffixFormSet {
         }
         throw new IllegalStateException("Cannot be here.");
     }
+
+    public String toString() {
+        return id;
+    }
 }

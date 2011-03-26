@@ -1,12 +1,15 @@
 package zemberek3.lexicon;
 
 import zemberek3.structure.AttributeSet;
-import zemberek3.structure.TurkicSeq;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SuffixForm {
 
     String surface;
     AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
+    List<SuffixForm> succForms = new ArrayList<SuffixForm>();
 
     public SuffixForm(String surface, AttributeSet<PhonAttr> attributes) {
         this.surface = surface;
@@ -19,6 +22,15 @@ public class SuffixForm {
 
     public SuffixForm copy() {
         return new SuffixForm(surface, attributes.copy());
+    }
+
+    public SuffixForm addSuccForm(SuffixForm form) {
+        this.succForms.add(form);
+        return this;
+    }
+
+    public Iterable<SuffixForm> getSuccForms() {
+        return succForms;
     }
 
     @Override
@@ -42,6 +54,6 @@ public class SuffixForm {
     }
 
     public String toString() {
-        return surface + ":"+attributes.getAsList(PhonAttr.class);
+        return surface + ":" + attributes.getAsList(PhonAttr.class);
     }
 }
