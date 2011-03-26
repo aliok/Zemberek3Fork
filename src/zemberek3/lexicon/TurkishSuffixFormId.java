@@ -120,13 +120,11 @@ public enum TurkishSuffixFormId {
 
     AfterDoing_yIncA(AfterDoing, "+yIncA"),
 
-
     Noun_Main(NounRoot, ""),
     Noun_Exp_C(NounRoot, ""),
     Noun_Exp_V(NounRoot, ""),
     Noun_Comp_p3sg(NounRoot, ""),
     Noun_Comp_p3sg_Root(NounRoot, ""),
-
 
     Verb_Main(VerbRoot, ""),
     Verb_Aor_Ar(VerbRoot, ""),

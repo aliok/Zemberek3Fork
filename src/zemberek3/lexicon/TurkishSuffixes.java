@@ -168,6 +168,5 @@ public class TurkishSuffixes {
 
         succ(Prog_Iyor, it(PERSON_FORMS_N, COPULAR_FORMS), it(Cond_ysA));
         succ(Prog_mAktA, it(PERSON_FORMS_N, COPULAR_FORMS), it(Cond_ysA));
-
     }
 }

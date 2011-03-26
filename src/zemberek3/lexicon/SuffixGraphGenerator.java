@@ -19,7 +19,6 @@ public class SuffixGraphGenerator {
     private void generate(Iterable<SuffixFormSet> formSets, Set<SuffixFormSet> finishedSet) {
         List<SuffixFormSet> toProcess = new ArrayList<SuffixFormSet>();
         for (SuffixFormSet rootFormSet : formSets) {
-            System.out.println("Processing:" + rootFormSet);
             for (SuffixFormSet succSet : rootFormSet.getSuccessors()) {
                 if (finishedSet.contains(succSet))
                     continue;
