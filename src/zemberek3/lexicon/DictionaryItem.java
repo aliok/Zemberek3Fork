@@ -33,6 +33,10 @@ public class DictionaryItem {
         return lemma;
     }
 
+    public String getId() {
+        return lemma + "_" + primaryPos.shortForm;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[" + lemma + "]" + " Pos:" + primaryPos.shortForm);

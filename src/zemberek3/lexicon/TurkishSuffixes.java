@@ -6,192 +6,197 @@ import java.util.Map;
 public class TurkishSuffixes {
 
     static TurkishSuffix Pl = new TurkishSuffix("Pl");
-    static SuffixFormSet Pl_lAr = new SuffixFormSet(Pl, "lAr");
+    static SuffixFormSet Pl_lAr = newSet(Pl, "lAr");
 
     static TurkishSuffix Dat = new TurkishSuffix("Dat");
-    static SuffixFormSet Dat_yA = new SuffixFormSet(Dat, "+yA");
-    static SuffixFormSet Dat_nA = new SuffixFormSet(Dat, "nA");
+    static SuffixFormSet Dat_yA = newSet(Dat, "+yA");
+    static SuffixFormSet Dat_nA = newSet(Dat, "nA");
 
     static TurkishSuffix Loc = new TurkishSuffix("Loc");
-    static SuffixFormSet Loc_dA = new SuffixFormSet(Loc, ">dA");
-    static SuffixFormSet Loc_ndA = new SuffixFormSet(Loc, "ndA");
+    static SuffixFormSet Loc_dA = newSet(Loc, ">dA");
+    static SuffixFormSet Loc_ndA = newSet(Loc, "ndA");
 
     static TurkishSuffix Abl = new TurkishSuffix("Abl");
-    static SuffixFormSet Abl_dAn = new SuffixFormSet(Abl, ">dAn");
-    static SuffixFormSet Abl_ndAn = new SuffixFormSet(Abl, "ndAn");
+    static SuffixFormSet Abl_dAn = newSet(Abl, ">dAn");
+    static SuffixFormSet Abl_ndAn = newSet(Abl, "ndAn");
 
     static TurkishSuffix Gen = new TurkishSuffix("Gen");
-    static SuffixFormSet Gen_nIn = new SuffixFormSet(Gen, "+nIn");
+    static SuffixFormSet Gen_nIn = newSet(Gen, "+nIn");
 
     static TurkishSuffix Acc = new TurkishSuffix("Acc");
-    static SuffixFormSet Acc_yI = new SuffixFormSet(Acc, "+yI");
-    static SuffixFormSet Acc_nI = new SuffixFormSet(Acc, "nI");
+    static SuffixFormSet Acc_yI = newSet(Acc, "+yI");
+    static SuffixFormSet Acc_nI = newSet(Acc, "nI");
 
     static TurkishSuffix Inst = new TurkishSuffix("Inst");
-    static SuffixFormSet Inst_ylA = new SuffixFormSet(Inst, "+ylA");
+    static SuffixFormSet Inst_ylA = newSet(Inst, "+ylA");
 
     static TurkishSuffix P1sg = new TurkishSuffix("P1sg");
-    static SuffixFormSet P1sg_Im = new SuffixFormSet(P1sg, "+Im");
+    static SuffixFormSet P1sg_Im = newSet(P1sg, "+Im");
 
     static TurkishSuffix P2sg = new TurkishSuffix("P2sg");
-    static SuffixFormSet P2sg_In = new SuffixFormSet(P2sg, "+In");
+    static SuffixFormSet P2sg_In = newSet(P2sg, "+In");
 
     static TurkishSuffix P3sg = new TurkishSuffix("P3sg");
-    static SuffixFormSet P3sg_sI = new SuffixFormSet(P3sg, "+sI");
+    static SuffixFormSet P3sg_sI = newSet(P3sg, "+sI");
 
     static TurkishSuffix P1pl = new TurkishSuffix("P1pl");
-    static SuffixFormSet P1pl_ImIz = new SuffixFormSet(P1pl, "+ImIz");
+    static SuffixFormSet P1pl_ImIz = newSet(P1pl, "+ImIz");
 
     static TurkishSuffix P2pl = new TurkishSuffix("P2pl");
-    static SuffixFormSet P2pl_InIz = new SuffixFormSet(P2pl, "+InIz");
+    static SuffixFormSet P2pl_InIz = newSet(P2pl, "+InIz");
 
     static TurkishSuffix P3pl = new TurkishSuffix("P3pl");
-    static SuffixFormSet P3pl_lArI = new SuffixFormSet(P3pl, "lArI");
+    static SuffixFormSet P3pl_lArI = newSet(P3pl, "lArI");
 
     static TurkishSuffix Dim = new TurkishSuffix("Dim");
-    static SuffixFormSet Dim_cIk = new SuffixFormSet(Dim, ">cIk");
-    static SuffixFormSet Dim_cIg = new SuffixFormSet(Dim, ">cIğ");
-    static SuffixFormSet Dim_cAgIz = new SuffixFormSet(Dim, "cAğIz");
+    static SuffixFormSet Dim_cIk = newSet(Dim, ">cIk");
+    static SuffixFormSet Dim_cIg = newSet(Dim, ">cIğ");
+    static SuffixFormSet Dim_cAgIz = newSet(Dim, "cAğIz");
 
     static TurkishSuffix With = new TurkishSuffix("With");
-    static SuffixFormSet With_lI = new SuffixFormSet(With, "lI");
+    static SuffixFormSet With_lI = newSet(With, "lI");
 
     static TurkishSuffix Without = new TurkishSuffix("Without");
-    static SuffixFormSet Without_sIz = new SuffixFormSet(Without, "sIz");
+    static SuffixFormSet Without_sIz = newSet(Without, "sIz");
 
     static TurkishSuffix Rel = new TurkishSuffix("Rel");
-    static SuffixFormSet Rel_ki = new SuffixFormSet(Rel, "ki"); // masa-da-ki
+    static SuffixFormSet Rel_ki = newSet(Rel, "ki"); // masa-da-ki
 
     static TurkishSuffix A1sg = new TurkishSuffix("A1sg");
-    static SuffixFormSet A1sg_yIm = new SuffixFormSet(A1sg, "+yIm"); // gel-e-yim
-    static SuffixFormSet A1sg_m = new SuffixFormSet(A1sg, "m"); // gel-se-m
+    static SuffixFormSet A1sg_yIm = newSet(A1sg, "+yIm"); // gel-e-yim
+    static SuffixFormSet A1sg_m = newSet(A1sg, "m"); // gel-se-m
 
     static TurkishSuffix A2sg = new TurkishSuffix("A2sg");
-    static SuffixFormSet A2sg_sIn = new SuffixFormSet(A2sg, "+sIn"); // gel-ecek-sin
-    static SuffixFormSet A2sg_n = new SuffixFormSet(A2sg, "n"); // gel-di-n
-    static SuffixFormSet A2sg_sAnA = new SuffixFormSet(A2sg, "sAnA"); //gel-sene
-    static SuffixFormSet A2sg_EMPTY = new SuffixFormSet(A2sg, ""); // gel-
+    static SuffixFormSet A2sg_sIn = newSet(A2sg, "+sIn"); // gel-ecek-sin
+    static SuffixFormSet A2sg_n = newSet(A2sg, "n"); // gel-di-n
+    static SuffixFormSet A2sg_sAnA = newSet(A2sg, "sAnA"); //gel-sene
+    static SuffixFormSet A2sg_EMPTY = newSet("A2sg_EMPTY", A2sg, ""); // gel-
 
     static TurkishSuffix A3sg = new TurkishSuffix("A3sg");
-    static SuffixFormSet A3sg_EMPTY = new SuffixFormSet(A3sg, ""); // gel-di-
-    static SuffixFormSet A3sg_sIn = new SuffixFormSet(A3sg, "sIn"); // gel-sin
+    static SuffixFormSet A3sg_EMPTY = newSet(A3sg, ""); // gel-di-
+    static SuffixFormSet A3sg_sIn = newSet(A3sg, "sIn"); // gel-sin
 
     static TurkishSuffix A1pl = new TurkishSuffix("A1pl");
-    static SuffixFormSet A1pl_yIz = new SuffixFormSet(A1pl, "+yIz"); // geliyor-uz
-    static SuffixFormSet A1pl_k = new SuffixFormSet(A1pl, "k"); // gel-di-k
-    static SuffixFormSet A1pl_lIm = new SuffixFormSet(A1pl, "lIm"); // gel-e-lim
+    static SuffixFormSet A1pl_yIz = newSet(A1pl, "+yIz"); // geliyor-uz
+    static SuffixFormSet A1pl_k = newSet(A1pl, "k"); // gel-di-k
+    static SuffixFormSet A1pl_lIm = newSet(A1pl, "lIm"); // gel-e-lim
 
     static TurkishSuffix A2pl = new TurkishSuffix("A2pl");
-    static SuffixFormSet A2pl_sInIz = new SuffixFormSet(A2pl, "+sInIz"); // gel-ecek-siniz
-    static SuffixFormSet A2pl_sAnIzA = new SuffixFormSet(A2pl, "sAnIzA"); // gel-senize
-    static SuffixFormSet A2pl_nIz = new SuffixFormSet(A2pl, "nIz"); // gel-di-niz
-    static SuffixFormSet A2pl_yIn = new SuffixFormSet(A2pl, "+yIn"); // gel-me-yin
+    static SuffixFormSet A2pl_sInIz = newSet(A2pl, "+sInIz"); // gel-ecek-siniz
+    static SuffixFormSet A2pl_sAnIzA = newSet(A2pl, "sAnIzA"); // gel-senize
+    static SuffixFormSet A2pl_nIz = newSet(A2pl, "nIz"); // gel-di-niz
+    static SuffixFormSet A2pl_yIn = newSet(A2pl, "+yIn"); // gel-me-yin
 
     static TurkishSuffix A3pl = new TurkishSuffix("A3pl");
-    static SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
-    static SuffixFormSet A3pl_sInlAr = new SuffixFormSet(A3pl, "sInlAr"); // gel-sinler
+    static SuffixFormSet A3pl_lAr = newSet(A3pl, "lAr"); // gel-ecek-ler
+    static SuffixFormSet A3pl_sInlAr = newSet(A3pl, "sInlAr"); // gel-sinler
 
     static TurkishSuffix Become = new TurkishSuffix("Become");
-    static SuffixFormSet Become_lAs = new SuffixFormSet(Become, "lAş");
+    static SuffixFormSet Become_lAs = newSet(Become, "lAş");
 
     static TurkishSuffix Aor = new TurkishSuffix("Aor");
-    static SuffixFormSet Aor_Ir = new SuffixFormSet(Aor, "+Ir"); //gel-ir
-    static SuffixFormSet Aor_Ar = new SuffixFormSet(Aor, "+Ar"); //ser-er
-    static SuffixFormSet Aor_z = new SuffixFormSet(Aor, "z"); // gel-me-z
-    static SuffixFormSet Aor_EMPTY = new SuffixFormSet(Aor, ""); // gel-me--yiz
+    static SuffixFormSet Aor_Ir = newSet(Aor, "+Ir"); //gel-ir
+    static SuffixFormSet Aor_Ar = newSet(Aor, "+Ar"); //ser-er
+    static SuffixFormSet Aor_z = newSet(Aor, "z"); // gel-me-z
+    static SuffixFormSet Aor_EMPTY = newSet("Aor_EMPTY", Aor, ""); // gel-me--yiz
 
     static TurkishSuffix Prog = new TurkishSuffix("Prog");
-    static SuffixFormSet Prog_Iyor = new SuffixFormSet(Prog, "+Iyor");
-    static SuffixFormSet Prog_mAktA = new SuffixFormSet(Prog, "mAktA");
+    static SuffixFormSet Prog_Iyor = newSet(Prog, "+Iyor");
+    static SuffixFormSet Prog_mAktA = newSet(Prog, "mAktA");
 
     static TurkishSuffix Fut = new TurkishSuffix("Fut");
-    static SuffixFormSet Fut_yAcAk = new SuffixFormSet(Fut, "+yAcAk");
-    static SuffixFormSet Fut_yAcAg = new SuffixFormSet(Fut, "+yAcAğ");
+    static SuffixFormSet Fut_yAcAk = newSet(Fut, "+yAcAk");
+    static SuffixFormSet Fut_yAcAg = newSet(Fut, "+yAcAğ");
 
     static TurkishSuffix Past = new TurkishSuffix("Past");
-    static SuffixFormSet Past_dI = new SuffixFormSet(Past, ">dI");
+    static SuffixFormSet Past_dI = newSet(Past, ">dI");
 
     static TurkishSuffix Evid = new TurkishSuffix("Evid");
-    static SuffixFormSet Evid_mIs = new SuffixFormSet(Evid, "mIş");
+    static SuffixFormSet Evid_mIs = newSet(Evid, "mIş");
 
     static TurkishSuffix Neg = new TurkishSuffix("Neg");
-    static SuffixFormSet Neg_mA = new SuffixFormSet(Neg, "mA"); //gel-me
-    static SuffixFormSet Neg_m = new SuffixFormSet(Neg, "m"); // gel-m-iyor
+    static SuffixFormSet Neg_mA = newSet(Neg, "mA"); //gel-me
+    static SuffixFormSet Neg_m = newSet(Neg, "m"); // gel-m-iyor
 
     static TurkishSuffix Cond = new TurkishSuffix("Cond");
-    static SuffixFormSet Cond_ysA = new SuffixFormSet(Cond, "+ysA");
+    static SuffixFormSet Cond_ysA = newSet(Cond, "+ysA");
 
     static TurkishSuffix Necess = new TurkishSuffix("Necess");
-    static SuffixFormSet Necess_mAlI = new SuffixFormSet(Necess, "mAlI");
+    static SuffixFormSet Necess_mAlI = newSet(Necess, "mAlI");
 
     static TurkishSuffix Opt = new TurkishSuffix("Opt");
-    static SuffixFormSet Opt_yA = new SuffixFormSet(Opt, "+yA");
+    static SuffixFormSet Opt_yA = newSet(Opt, "+yA");
 
     static TurkishSuffix Pass = new TurkishSuffix("Pass");
-    static SuffixFormSet Pass_In = new SuffixFormSet(Pass, "+In");
-    static SuffixFormSet Pass_nIl = new SuffixFormSet(Pass, "+nIl");
-    static SuffixFormSet Pass_Il = new SuffixFormSet(Pass, "Il");
+    static SuffixFormSet Pass_In = newSet(Pass, "+In");
+    static SuffixFormSet Pass_nIl = newSet(Pass, "+nIl");
+    static SuffixFormSet Pass_Il = newSet(Pass, "Il");
 
     static TurkishSuffix Caus = new TurkishSuffix("Caus");
-    static SuffixFormSet Caus_t = new SuffixFormSet(Caus, "t");
-    static SuffixFormSet Caus_tIr = new SuffixFormSet(Pass, ">dIr");
+    static SuffixFormSet Caus_t = newSet(Caus, "t");
+    static SuffixFormSet Caus_tIr = newSet(Pass, ">dIr");
 
     static TurkishSuffix Recip = new TurkishSuffix("Recip");
-    static SuffixFormSet Recip_yIs = new SuffixFormSet(Recip, "+yIş");
-    static SuffixFormSet Recip_Is = new SuffixFormSet(Recip, "+Iş");
+    static SuffixFormSet Recip_yIs = newSet(Recip, "+yIş");
+    static SuffixFormSet Recip_Is = newSet(Recip, "+Iş");
 
     static TurkishSuffix Reflex = new TurkishSuffix("Reflex");
-    static SuffixFormSet Reflex_In = new SuffixFormSet(Reflex, "+In");
+    static SuffixFormSet Reflex_In = newSet(Reflex, "+In");
 
     static TurkishSuffix Abil = new TurkishSuffix("Abil");
-    static SuffixFormSet Abil_yAbil = new SuffixFormSet(Abil, "+yAbil");
-    static SuffixFormSet Abil_yA = new SuffixFormSet(Abil, "+yA");
+    static SuffixFormSet Abil_yAbil = newSet(Abil, "+yAbil");
+    static SuffixFormSet Abil_yA = newSet(Abil, "+yA");
 
     static TurkishSuffix Cop = new TurkishSuffix("Cop");
-    static SuffixFormSet Cop_dIr = new SuffixFormSet(Cop, ">dIr");
+    static SuffixFormSet Cop_dIr = newSet(Cop, ">dIr");
 
     static TurkishSuffix PastCop = new TurkishSuffix("PastCop");
-    static SuffixFormSet PastCop_ydI = new SuffixFormSet(PastCop, "+ydI");
+    static SuffixFormSet PastCop_ydI = newSet(PastCop, "+ydI");
 
     static TurkishSuffix EvidCop = new TurkishSuffix("EvidCop");
-    static SuffixFormSet EvidCop_ymIs = new SuffixFormSet(EvidCop, "+ymIş");
+    static SuffixFormSet EvidCop_ymIs = newSet(EvidCop, "+ymIş");
 
     static TurkishSuffix CondCop = new TurkishSuffix("CondCop");
-    static SuffixFormSet CondCop_ysA = new SuffixFormSet(CondCop, "+ysA");
+    static SuffixFormSet CondCop_ysA = newSet(CondCop, "+ysA");
 
     static TurkishSuffix While = new TurkishSuffix("While");
-    static SuffixFormSet While_ken = new SuffixFormSet(While, "+yken");
+    static SuffixFormSet While_ken = newSet(While, "+yken");
 
     static TurkishSuffix AfterDoing = new TurkishSuffix("AfterDoing");
-    static SuffixFormSet AfterDoing_yIncA = new SuffixFormSet(AfterDoing, "+yIncA");
+    static SuffixFormSet AfterDoing_yIncA = newSet(AfterDoing, "+yIncA");
 
 
     public static TurkishSuffix NounRoot = new TurkishSuffix("NounRoot");
-    public static SuffixFormSet Noun_Main = new SuffixFormSet(NounRoot, "");
-    public static SuffixFormSet Noun_Exp_C = new SuffixFormSet(NounRoot, "");
-    public static SuffixFormSet Noun_Exp_V = new SuffixFormSet(NounRoot, "");
-    public static SuffixFormSet Noun_Comp_p3sg = new SuffixFormSet(NounRoot, "");
-    public static SuffixFormSet Noun_Comp_p3sg_Root = new SuffixFormSet(NounRoot, "");
+    public static SuffixFormSet Noun_Main = newSet("Noun_Main", NounRoot, "");
+    public static SuffixFormSet Noun_Exp_C = newSet("Noun_Exp_C", NounRoot, "");
+    public static SuffixFormSet Noun_Exp_V = newSet("Noun_Exp_V", NounRoot, "");
+    public static SuffixFormSet Noun_Comp_P3sg = newSet("Noun_Comp_P3sg", NounRoot, "");
+    public static SuffixFormSet Noun_Comp_P3sg_Root = newSet("Noun_Comp_P3sg_Root", NounRoot, "");
 
 
     public static TurkishSuffix VerbRoot = new TurkishSuffix("VerbRoot");
-    public static SuffixFormSet Verb_Main = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Aor_Ar = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Prog_Drop = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Prog_NotDrop = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Vow_Drop = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Vow_NotDrop = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Exp_C = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Exp_V = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_De = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Ye = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Di = new SuffixFormSet(VerbRoot, "");
-    public static SuffixFormSet Verb_Yi = new SuffixFormSet(VerbRoot, "");
+    public static SuffixFormSet Verb_Main = newSet("Verb_Main", VerbRoot, "");
+    public static SuffixFormSet Verb_Aor_Ar = newSet("Verb_Aor_Ar", VerbRoot, "");
+    public static SuffixFormSet Verb_Prog_Drop = newSet("Verb_Prog_Drop", VerbRoot, "");
+    public static SuffixFormSet Verb_Prog_NotDrop = newSet("Verb_Prog_NotDrop", VerbRoot, "");
+    public static SuffixFormSet Verb_Vow_Drop = newSet("Verb_Vow_Drop", VerbRoot, "");
+    public static SuffixFormSet Verb_Vow_NotDrop = newSet("Verb_Vow_NotDrop", VerbRoot, "");
+    public static SuffixFormSet Verb_Exp_C = newSet("Verb_Exp_C", VerbRoot, "");
+    public static SuffixFormSet Verb_Exp_V = newSet("Verb_Exp_V", VerbRoot, "");
+
+    public static SuffixFormSet Verb_Ye = newSet("Verb_Ye", VerbRoot, "");
+    public static SuffixFormSet Verb_Yi = newSet("Verb_Yi", VerbRoot, "");
+
+
+    public static SuffixFormSet Verb_De = newSet("Verb_De", VerbRoot, "");
+    public static SuffixFormSet Verb_Di = newSet("Verb_Di", VerbRoot, "");
+
 
     public static TurkishSuffix PronounRoot = new TurkishSuffix("Pronoun");
-    public static SuffixFormSet Pronoun_Main = new SuffixFormSet(PronounRoot, "");
-    public static SuffixFormSet Pronoun_BenSen = new SuffixFormSet(PronounRoot, "");
-    public static SuffixFormSet Pronoun_BanSan = new SuffixFormSet(PronounRoot, "");
+    public static SuffixFormSet Pron_Main = newSet(PronounRoot, "");
+    public static SuffixFormSet Pron_BenSen = newSet("Pron_BenSen", PronounRoot, "");
+    public static SuffixFormSet Pron_BanSan = newSet("Pron_BanSan", PronounRoot, "");
+
 
     public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_nI, Inst_ylA};
     public static final SuffixFormSet[] POSSESSIVE_FORMS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
@@ -199,14 +204,19 @@ public class TurkishSuffixes {
     public static final SuffixFormSet[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
     public static final SuffixFormSet[] TENSE_DEFAULT_FORMS = {Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir};
 
-    static Map<String, SuffixFormSet> nodeMap = new HashMap<String, SuffixFormSet>();
+    static Map<String, SuffixFormSet> suffixSets = new HashMap<String, SuffixFormSet>();
 
-    static void add(SuffixFormSet... sets) {
-        for (SuffixFormSet set : sets) {
-            if (nodeMap.containsKey(set.id))
-                throw new IllegalArgumentException("There is already a suffix set with same id:" + set.id);
-            nodeMap.put(set.id, set);
-        }
+    static SuffixFormSet newSet(TurkishSuffix suffix, String generation) {
+        String id = suffix + "_" + generation;
+        return newSet(id, suffix, generation);
+    }
+
+    static SuffixFormSet newSet(String id, TurkishSuffix suffix, String generation) {
+        if (suffixSets.containsKey(id))
+            throw new IllegalArgumentException("There is already a suffix set with same id:" + id);
+        SuffixFormSet newSet = new SuffixFormSet(id, suffix, generation);
+        suffixSets.put(id, newSet);
+        return newSet;
     }
 
     public SuffixFormSet getRootSuffixFormSet(PrimaryPos pos) {
@@ -219,6 +229,9 @@ public class TurkishSuffixes {
         return Noun_Main;
     }
 
+    public Iterable<SuffixFormSet> getSets() {
+        return suffixSets.values();
+    }
 
     private static Map<String, TurkishSuffix> suffixMap = new HashMap<String, TurkishSuffix>();
 
@@ -230,10 +243,10 @@ public class TurkishSuffixes {
         Noun_Exp_C.succ(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr, With_lI, Without_sIz)
                 .succ(COPULAR_FORMS);
         Noun_Exp_V.succ(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);
-        Noun_Comp_p3sg.succ(COPULAR_FORMS)
+        Noun_Comp_P3sg.succ(COPULAR_FORMS)
                 .succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
                 .succ(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
-        Noun_Comp_p3sg_Root.succ(With_lI, Without_sIz);
+        Noun_Comp_P3sg_Root.succ(With_lI, Without_sIz);
 
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA);
@@ -242,17 +255,19 @@ public class TurkishSuffixes {
         Verb_Vow_NotDrop.succ(Verb_Main.getSuccessors()).remove(Pass_Il);
         Verb_Prog_Drop.succ(Prog_Iyor);
         Verb_Prog_NotDrop.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor);
+
         Verb_Ye.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
-        Verb_De.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
         Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
+        // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
+        Verb_De.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
         Verb_Di.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk);
+
         Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, Prog_Iyor);
         Verb_Exp_C.succ(Verb_Main.getSuccessors()).remove(Verb_Exp_V.getSuccessors()).remove(Aor_Ir);
 
-        Pronoun_Main.succ(CASE_FORMS);
-        Pronoun_BenSen.succ(CASE_FORMS).remove(Dat_yA);
-        Pronoun_BanSan.succ(Dat_yA);
-
+        Pron_Main.succ(CASE_FORMS);
+        Pron_BenSen.succ(CASE_FORMS).remove(Dat_yA);
+        Pron_BanSan.succ(Dat_yA);
 
         Pl_lAr.succ(CASE_FORMS, COPULAR_FORMS)
                 .succ(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz);
