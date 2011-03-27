@@ -1,27 +1,27 @@
 package zemberek3.lexicon;
 
 /**
- * this is an intermediate object necessary for building the lexicon part of the graph.
+ * This represents a surface form of a DictionaryItem.
  */
 public class Stem {
     // actual form of the root.
     String surfaceForm;
     // lexical Item
-    LexiconItem lexiconItem;
+    DictionaryItem dictionaryItem;
     // Boundary state that this state connects to.
     SuffixForm rootForm;
     // if this state can be a terminal state.
     boolean terminal;
 
-    public Stem(String surfaceForm, LexiconItem lexiconItem, SuffixForm rootForm, boolean terminal) {
+    public Stem(String surfaceForm, DictionaryItem dictionaryItem, SuffixForm rootForm, boolean terminal) {
         this.surfaceForm = surfaceForm;
-        this.lexiconItem = lexiconItem;
+        this.dictionaryItem = dictionaryItem;
         this.rootForm = rootForm;
         this.terminal = terminal;
     }
 
     public String toString() {
-        return surfaceForm + " : " + (terminal ? "terminal " : "non-terminal") + " : " + lexiconItem.toString() + " : " + rootForm;
+        return surfaceForm + " : " + (terminal ? "terminal " : "non-terminal") + " : " + dictionaryItem.toString() + " : " + rootForm;
     }
 
 }

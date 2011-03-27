@@ -5,7 +5,7 @@ import zemberek3.structure.AttributeSet;
 import java.util.List;
 import java.util.Locale;
 
-public class LexiconItem {
+public class DictionaryItem {
     final String lemma;
     final public PrimaryPos primaryPos;
     final public SecondaryPos secondaryPos;
@@ -13,7 +13,7 @@ public class LexiconItem {
 
     static final Locale locale = new Locale("tr");
 
-    public LexiconItem(String lemma, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs) {
+    public DictionaryItem(String lemma, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs) {
         this.lemma = lemma;
         this.primaryPos = primaryPos;
         this.secondaryPos = secondaryPos;

@@ -14,13 +14,13 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TurkishLexiconLoader {
+public class TurkishDictionaryLoader {
 
-    public List<LexiconItem> load(File input) throws IOException {
+    public List<DictionaryItem> load(File input) throws IOException {
         return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor());
     }
 
-    LexiconItem loadFromString(String lexiconItemString) {
+    DictionaryItem loadFromString(String lexiconItemString) {
         return new LexiconItemMaker(lexiconItemString).getItem();
     }
 
@@ -33,13 +33,13 @@ public class TurkishLexiconLoader {
             this.line = line;
         }
 
-        LexiconItem getItem() {
+        DictionaryItem getItem() {
             String word = getWord();
             PosInfo posInfo = getPosData(word);
             String cleanWord = cleanWord(word, posInfo);
 
             AttributeSet<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo);
-            return new LexiconItem(
+            return new DictionaryItem(
                     word,
                     posInfo.primaryPos,
                     posInfo.secondaryPos,
@@ -177,21 +177,21 @@ public class TurkishLexiconLoader {
 
     }
 
-    static class LexiconFileProcessor implements LineProcessor<List<LexiconItem>> {
+    static class LexiconFileProcessor implements LineProcessor<List<DictionaryItem>> {
 
-        List<LexiconItem> lexiconItems = new ArrayList<LexiconItem>();
+        List<DictionaryItem> dictionaryItems = new ArrayList<DictionaryItem>();
 
         public boolean processLine(String line) throws IOException {
             line = line.trim();
             if (line.length() == 0 || line.startsWith("#"))
                 return true;
 
-            lexiconItems.add(new LexiconItemMaker(line).getItem());
+            dictionaryItems.add(new LexiconItemMaker(line).getItem());
             return true;
         }
 
-        public List<LexiconItem> getResult() {
-            return lexiconItems;
+        public List<DictionaryItem> getResult() {
+            return dictionaryItems;
         }
 
     }
@@ -212,8 +212,8 @@ public class TurkishLexiconLoader {
     }
 
     public static void main(String[] args) throws IOException {
-        List<LexiconItem> items = new TurkishLexiconLoader().load(new File("test/data/dev-lexicon.txt"));
-        for (LexiconItem item : items) {
+        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-dictionary.txt"));
+        for (DictionaryItem item : items) {
             System.out.println(item);
         }
     }

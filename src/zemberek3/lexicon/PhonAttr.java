@@ -12,14 +12,7 @@ public enum PhonAttr implements BitEnum {
     LastLetterNotVoicelessStop,
     LastLetterVowel,
     LastLetterConsonant,
-    HasNoVowel,
-    FirstVowelFrontal,
-    FirstVowelBack,
-    FirstVowelRounded,
-    FirstVowelUnrounded,
-    FirstLetterVowel,
-    FirstLetterConsonant;
-
+    HasNoVowel;
     int index;
 
 
