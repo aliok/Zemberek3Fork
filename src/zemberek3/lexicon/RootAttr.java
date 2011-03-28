@@ -1,6 +1,6 @@
 package zemberek3.lexicon;
 
-import zemberek3.structure.BitEnum;
+import zemberek3.structure.IndexedEnum;
 import zemberek3.structure.BitEnumMap;
 import zemberek3.structure.StringEnum;
 import zemberek3.structure.StringEnumMap;
@@ -8,7 +8,7 @@ import zemberek3.structure.StringEnumMap;
 /**
  * These represents attributes of morphemes.
  */
-public enum RootAttr implements StringEnum, BitEnum {
+public enum RootAttr implements StringEnum, IndexedEnum {
     Voicing,
     NoVoicing,
     InverseHarmony,

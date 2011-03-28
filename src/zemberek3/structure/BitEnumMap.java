@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class BitEnumMap<T extends BitEnum> {
+public class BitEnumMap<T extends IndexedEnum> {
     Map<Integer, T> map = new HashMap<Integer, T>();
     Class<T> clazz;
 
@@ -15,7 +15,7 @@ public class BitEnumMap<T extends BitEnum> {
         }
     }
 
-    public static <T extends BitEnum> BitEnumMap<T> get(Class<T> clazz) {
+    public static <T extends IndexedEnum> BitEnumMap<T> get(Class<T> clazz) {
         return new BitEnumMap<T>(clazz);
     }
 

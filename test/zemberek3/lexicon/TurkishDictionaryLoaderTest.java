@@ -17,7 +17,7 @@ public class TurkishDictionaryLoaderTest {
     @Test
     public void loadNounsFromFileTest() throws IOException {
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader();
-        List<DictionaryItem> items = loader.load(new File("test/data/test-dictionary-nouns.txt"));
+        List<DictionaryItem> items = loader.load(new File("test/data/test-lexicon-nouns.txt"));
 
         Assert.assertFalse(items.isEmpty());
         for (DictionaryItem item : items) {

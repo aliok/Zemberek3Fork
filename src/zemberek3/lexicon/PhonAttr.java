@@ -1,9 +1,9 @@
 package zemberek3.lexicon;
 
-import zemberek3.structure.BitEnum;
+import zemberek3.structure.IndexedEnum;
 import zemberek3.structure.BitEnumMap;
 
-public enum PhonAttr implements BitEnum {
+public enum PhonAttr implements IndexedEnum {
     LastVowelFrontal,
     LastVowelBack,
     LastVowelRounded,
@@ -14,7 +14,6 @@ public enum PhonAttr implements BitEnum {
     LastLetterConsonant,
     HasNoVowel;
     int index;
-
 
     PhonAttr() {
         this.index = this.ordinal();

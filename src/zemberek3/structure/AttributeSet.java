@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * A bit set backed by an 32 bit integer.
  */
-public class AttributeSet<T extends BitEnum> {
+public class AttributeSet<T extends IndexedEnum> {
 
     private int data;
 
@@ -26,24 +26,24 @@ public class AttributeSet<T extends BitEnum> {
 
     private static final AttributeSet EMPTY_SET = new AttributeSet();
 
-    public static <T extends BitEnum> AttributeSet<T> emptySet() {
+    public static <T extends IndexedEnum> AttributeSet<T> emptySet() {
         return (AttributeSet<T>) EMPTY_SET;
     }
 
-    public boolean contains(BitEnum bitEnum) {
-        return (data & setMasks[bitEnum.getBitIndex()]) != 0;
+    public boolean contains(IndexedEnum indexedEnum) {
+        return (data & setMasks[indexedEnum.getBitIndex()]) != 0;
     }
 
-    public boolean containsAll(BitEnum... bitEnum) {
-        for (BitEnum en : bitEnum) {
+    public boolean containsAll(IndexedEnum... indexedEnum) {
+        for (IndexedEnum en : indexedEnum) {
             if (!contains(en))
                 return false;
         }
         return true;
     }
 
-    public boolean containsAny(BitEnum... bitEnum) {
-        for (BitEnum en : bitEnum) {
+    public boolean containsAny(IndexedEnum... indexedEnum) {
+        for (IndexedEnum en : indexedEnum) {
             if (contains(en))
                 return true;
         }
@@ -58,8 +58,8 @@ public class AttributeSet<T extends BitEnum> {
         return (this.data & set.data) == set.data;
     }
 
-    public boolean containsNone(BitEnum... bitEnum) {
-        for (BitEnum en : bitEnum) {
+    public boolean containsNone(IndexedEnum... indexedEnum) {
+        for (IndexedEnum en : indexedEnum) {
             if (contains(en))
                 return false;
         }
@@ -67,7 +67,7 @@ public class AttributeSet<T extends BitEnum> {
     }
 
     public AttributeSet add(T... enums) {
-        for (BitEnum en : enums) {
+        for (IndexedEnum en : enums) {
             data |= setMasks[en.getBitIndex()];
         }
         return this;
@@ -90,14 +90,14 @@ public class AttributeSet<T extends BitEnum> {
     }
 
     public AttributeSet add(Iterable<T> enumIt) {
-        for (BitEnum bitEnum : enumIt) {
-            data |= setMasks[bitEnum.getBitIndex()];
+        for (IndexedEnum indexedEnum : enumIt) {
+            data |= setMasks[indexedEnum.getBitIndex()];
         }
         return this;
     }
 
     public AttributeSet remove(T... enums) {
-        for (BitEnum anEnum : enums) {
+        for (IndexedEnum anEnum : enums) {
             data &= resetMasks[anEnum.getBitIndex()];
         }
         return this;

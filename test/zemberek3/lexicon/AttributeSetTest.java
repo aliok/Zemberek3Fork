@@ -3,7 +3,7 @@ package zemberek3.lexicon;
 import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.structure.AttributeSet;
-import zemberek3.structure.BitEnum;
+import zemberek3.structure.IndexedEnum;
 
 import static zemberek3.lexicon.AttributeSetTest.TestAttr.Apple;
 import static zemberek3.lexicon.AttributeSetTest.TestAttr.Orange;
@@ -11,7 +11,7 @@ import static zemberek3.lexicon.AttributeSetTest.TestAttr.Radish;
 
 public class AttributeSetTest {
 
-    enum TestAttr implements BitEnum {
+    enum TestAttr implements IndexedEnum {
 
         Apple(0), Orange(1), Radish(3);
 

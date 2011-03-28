@@ -92,6 +92,11 @@ public class SuffixFormGeneratorTest {
                 new Triple("kale", "+yIr", "yir"),
                 new Triple("kale", "+yAr", "yer"),
 
+                new Triple("kale", "+In", "n"),
+                new Triple("kale", "+An", "n"),
+                new Triple("kalem", "InA", "ine"),
+                new Triple("kale", "InI", "ni"),
+
                 new Triple("kitap", ">cA", "ça"),
                 new Triple("gitar", ">cA", "ca"),
                 new Triple("kalem", ">cA", "ce"),
