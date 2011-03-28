@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class TurkishSuffixes {
 
+    static Map<String, SuffixFormSet> suffixSets = new HashMap<String, SuffixFormSet>();
+
     static TurkishSuffix Pl = new TurkishSuffix("Pl");
     static SuffixFormSet Pl_lAr = newSet(Pl, "lAr");
 
@@ -203,8 +205,6 @@ public class TurkishSuffixes {
     public static final SuffixFormSet[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final SuffixFormSet[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
     public static final SuffixFormSet[] TENSE_DEFAULT_FORMS = {Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir};
-
-    static Map<String, SuffixFormSet> suffixSets = new HashMap<String, SuffixFormSet>();
 
     static SuffixFormSet newSet(TurkishSuffix suffix, String generation) {
         String id = suffix + "_" + generation;

@@ -267,7 +267,7 @@ public class LexiconGraphGenerator {
     }
 
     public static void main(String[] args) throws IOException {
-        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-dictionary.txt"));
+        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();
         LexiconGraphGenerator generator = new LexiconGraphGenerator(items, suffixes);
         generator.generate();
@@ -275,7 +275,7 @@ public class LexiconGraphGenerator {
         for (Stem stem : stems) {
             System.out.println(stem);
         }
-        List<SuffixFormSet> sets = Arrays.asList(TurkishSuffixes.Noun_Main, TurkishSuffixes.Verb_Main);
+        List<SuffixFormSet> sets = Arrays.asList(Noun_Main, Verb_Main);
         generator.generateSuffixForms(sets);
         SuffixFormSet set = TurkishSuffixes.Pl_lAr;
         System.out.println("Form Set:" + set.generation);
