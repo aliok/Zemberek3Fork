@@ -28,6 +28,7 @@ public class LexiconGraphGenerator {
     }
 
     public void generate() {
+        // generate stems.
         for (DictionaryItem dictionaryItem : dictionary) {
             if (hasModifierAttribute(dictionaryItem)) {
                 stems.addAll(Arrays.asList(generateModifiedRootStates(dictionaryItem)));
@@ -35,6 +36,9 @@ public class LexiconGraphGenerator {
                 stems.add(generateRootState(dictionaryItem));
             }
         }
+        // generate suffix form graph
+        List<SuffixFormSet> sets = Arrays.asList(ROOT_FORMS);
+        generateSuffixForms(sets);
     }
 
     public List<Stem> getStems() {
@@ -270,13 +274,13 @@ public class LexiconGraphGenerator {
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();
         LexiconGraphGenerator generator = new LexiconGraphGenerator(items, suffixes);
+        System.out.println(System.currentTimeMillis());
         generator.generate();
+        System.out.println(System.currentTimeMillis());
         List<Stem> stems = generator.getStems();
         for (Stem stem : stems) {
             System.out.println(stem);
         }
-        List<SuffixFormSet> sets = Arrays.asList(Noun_Main, Verb_Main);
-        generator.generateSuffixForms(sets);
         SuffixFormSet set = TurkishSuffixes.Pl_lAr;
         System.out.println("Form Set:" + set.generation);
         for (SuffixForm form : set.getFormIterator()) {

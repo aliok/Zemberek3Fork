@@ -189,7 +189,6 @@ public class TurkishSuffixes {
     public static SuffixFormSet Verb_Ye = newSet("Verb_Ye", VerbRoot, "");
     public static SuffixFormSet Verb_Yi = newSet("Verb_Yi", VerbRoot, "");
 
-
     public static SuffixFormSet Verb_De = newSet("Verb_De", VerbRoot, "");
     public static SuffixFormSet Verb_Di = newSet("Verb_Di", VerbRoot, "");
 
@@ -205,6 +204,10 @@ public class TurkishSuffixes {
     public static final SuffixFormSet[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final SuffixFormSet[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
     public static final SuffixFormSet[] TENSE_DEFAULT_FORMS = {Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir};
+    public static final SuffixFormSet[] ROOT_FORMS = {
+            Noun_Main, Noun_Exp_C, Noun_Exp_V, Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
+            Verb_Main, Verb_Aor_Ar, Verb_Prog_Drop, Verb_Prog_NotDrop, Verb_Vow_Drop, Verb_Vow_NotDrop, Verb_Exp_C, Verb_Exp_V,
+    Verb_Ye, Verb_Yi, Verb_De, Verb_Di, Pron_Main, Pron_BenSen, Pron_BanSan };
 
     static SuffixFormSet newSet(TurkishSuffix suffix, String generation) {
         String id = suffix + "_" + generation;
