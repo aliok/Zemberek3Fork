@@ -1,5 +1,7 @@
 package zemberek3.lexicon;
 
+import zemberek3.parser.morphology.SuffixForm;
+
 /**
  * This represents a surface form of a DictionaryItem.
  */

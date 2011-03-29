@@ -1,6 +1,7 @@
 package zemberek3.lexicon;
 
 import com.google.common.collect.Lists;
+import zemberek3.parser.morphology.SuffixForm;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;

@@ -1,5 +1,6 @@
-package zemberek3.lexicon;
+package zemberek3.parser.morphology;
 
+import zemberek3.lexicon.PhonAttr;
 import zemberek3.structure.AttributeSet;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.List;
 
 public class SuffixForm {
 
-    String surface;
+    public final String surface;
     AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
     List<SuffixForm> succForms = new ArrayList<SuffixForm>();
 
@@ -31,6 +32,14 @@ public class SuffixForm {
 
     public Iterable<SuffixForm> getSuccForms() {
         return succForms;
+    }
+
+    public AttributeSet<PhonAttr> getAttributes() {
+        return attributes;
+    }
+
+    public String getSurface() {
+        return surface;
     }
 
     @Override

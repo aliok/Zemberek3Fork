@@ -1,5 +1,7 @@
-package zemberek3.lexicon;
+package zemberek3.parser.morphology;
 
+import com.google.common.collect.Maps;
+import zemberek3.lexicon.*;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
@@ -22,9 +24,14 @@ public class LexiconGraphGenerator {
     TurkishSuffixes suffixes;
     SuffixFormGenerator formGenerator = new SuffixFormGenerator();
 
+    private Map<SuffixFormSet, Set<SuffixForm>> suffixFormMap = Maps.newHashMap();
+
     public LexiconGraphGenerator(List<DictionaryItem> dictionary, TurkishSuffixes suffixes) {
         this.dictionary = dictionary;
         this.suffixes = suffixes;
+        for (SuffixFormSet set : suffixes.getSets()) {
+            suffixFormMap.put(set.remove() , new HashSet<SuffixForm>());
+        }
     }
 
     public void generate() {
@@ -178,6 +185,11 @@ public class LexiconGraphGenerator {
                 new Stem(modifiedSeq.toString(), lexItem, modiForm, false)
         };
 
+    }
+
+    private SuffixNode addForm(SuffixFormSet set, SuffixForm form) {
+        suffixFormMap.get(set).add(form);
+        return new SuffixNode(set.suffix, form.surface, TerminationType.TERMINAL);
     }
 
     // handle stem changes demek-diyecek , beni-bana

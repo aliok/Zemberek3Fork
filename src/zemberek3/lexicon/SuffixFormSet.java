@@ -1,8 +1,9 @@
 package zemberek3.lexicon;
 
+import zemberek3.parser.morphology.SuffixForm;
+
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -10,11 +11,11 @@ import java.util.Set;
  */
 public class SuffixFormSet {
     // an id that defines the node
-    String id;
+    public final String id;
     // parent suffix
-    TurkishSuffix suffix;
+    public final TurkishSuffix suffix;
     // generation word.
-    String generation;
+    public final String generation;
 
     private Set<SuffixFormSet> successors = new HashSet<SuffixFormSet>();
     private Set<SuffixForm> forms = new HashSet<SuffixForm>();

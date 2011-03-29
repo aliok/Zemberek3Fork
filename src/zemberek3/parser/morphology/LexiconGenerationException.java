@@ -1,4 +1,4 @@
-package zemberek3.lexicon;
+package zemberek3.parser.morphology;
 
 public class LexiconGenerationException extends RuntimeException {
     public LexiconGenerationException(String message) {

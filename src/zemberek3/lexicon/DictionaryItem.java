@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class DictionaryItem {
-    final String lemma;
-    final public PrimaryPos primaryPos;
-    final public SecondaryPos secondaryPos;
-    AttributeSet<RootAttr> attrs;
+    public final String lemma;
+    public final PrimaryPos primaryPos;
+    public final SecondaryPos secondaryPos;
+    public final AttributeSet<RootAttr> attrs;
 
     static final Locale locale = new Locale("tr");
 

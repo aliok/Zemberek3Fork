@@ -78,14 +78,14 @@ public class TurkishDictionaryLoader {
                     s = s.trim();
                     if (PrimaryPos.converter().enumExists(s)) {
                         if (primaryPos != null)
-                            throw new LexiconGenerationException("Multiple primary pos in :" + line);
+                            throw new RuntimeException("Multiple primary pos in :" + line);
                         else primaryPos = PrimaryPos.converter().getEnum(s);
                     } else if (SecondaryPos.converter().enumExists(s)) {
                         if (secondaryPos != null)
-                            throw new LexiconGenerationException("Multiple secondary pos in :" + line);
+                            throw new RuntimeException("Multiple secondary pos in :" + line);
                         else secondaryPos = SecondaryPos.converter().getEnum(s);
                     } else
-                        throw new LexiconGenerationException("Unrecognized pos data [" + s + "] in :" + line);
+                        throw new RuntimeException("Unrecognized pos data [" + s + "] in :" + line);
                 }
                 if (primaryPos == null) {
                     primaryPos = inferPrimaryPos(word);
@@ -123,7 +123,7 @@ public class TurkishDictionaryLoader {
                 for (String s : Splitter.on(",").split(attributeStr)) {
                     s = s.trim();
                     if (!RootAttr.converter().enumExists(s))
-                        throw new LexiconGenerationException("Unrecognized attribute data [" + s + "] in :" + line);
+                        throw new RuntimeException("Unrecognized attribute data [" + s + "] in :" + line);
                     RootAttr rootAttr = RootAttr.converter().getEnum(s);
                     attributesList.add(rootAttr);
                 }
