@@ -9,29 +9,15 @@ import java.util.List;
 public class SuffixForm {
 
     public final String surface;
-    AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
-    List<SuffixForm> succForms = new ArrayList<SuffixForm>();
+    final AttributeSet<PhonAttr> attributes;
 
     public SuffixForm(String surface, AttributeSet<PhonAttr> attributes) {
         this.surface = surface;
         this.attributes = attributes;
     }
 
-    public SuffixForm(String surface) {
-        this.surface = surface;
-    }
-
     public SuffixForm copy() {
         return new SuffixForm(surface, attributes.copy());
-    }
-
-    public SuffixForm addSuccForm(SuffixForm form) {
-        this.succForms.add(form);
-        return this;
-    }
-
-    public Iterable<SuffixForm> getSuccForms() {
-        return succForms;
     }
 
     public AttributeSet<PhonAttr> getAttributes() {

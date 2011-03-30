@@ -1,18 +1,12 @@
 package zemberek3.parser.morphology;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class MorphNode {
-    String form;
+    public final String surfaceForm;
+    public final TerminationType termination;
 
-    protected MorphNode(String form, TerminationType termination) {
-        this.form = form;
+    protected MorphNode(String surfaceForm, TerminationType termination) {
+        this.surfaceForm = surfaceForm;
         this.termination = termination;
     }
-
-    TerminationType termination;
-    List<MorphNode> connections = new ArrayList<MorphNode>(1);
-
 
 }

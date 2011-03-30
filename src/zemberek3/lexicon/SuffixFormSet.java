@@ -18,7 +18,6 @@ public class SuffixFormSet {
     public final String generation;
 
     private Set<SuffixFormSet> successors = new HashSet<SuffixFormSet>();
-    private Set<SuffixForm> forms = new HashSet<SuffixForm>();
 
     public SuffixFormSet(String id, TurkishSuffix suffix, String generation) {
         this.id = id;
@@ -34,10 +33,6 @@ public class SuffixFormSet {
 
     public Iterable<SuffixFormSet> getSuccessors() {
         return successors;
-    }
-
-    public boolean containsForm(SuffixForm form) {
-        return forms.contains(form);
     }
 
     public SuffixFormSet succ(SuffixFormSet... sets) {
@@ -73,26 +68,6 @@ public class SuffixFormSet {
 
     public String getId() {
         return id;
-    }
-
-    public void addForm(SuffixForm form) {
-        forms.add(form);
-    }
-
-    public Iterable<SuffixForm> getFormIterator() {
-        return forms;
-    }
-
-    public SuffixForm addOrReturnExisting(SuffixForm form) {
-        if (!forms.contains(form)) {
-            forms.add(form);
-            return form;
-        }
-        for (SuffixForm suffixForm : forms) {
-            if (suffixForm.equals(form))
-                return suffixForm;
-        }
-        throw new IllegalStateException("Cannot be here.");
     }
 
     public String toString() {

@@ -19,19 +19,23 @@ import static zemberek3.lexicon.TurkishSuffixes.*;
  */
 public class LexiconGraphGenerator {
     List<DictionaryItem> dictionary;
-    List<Stem> stems = new ArrayList<Stem>();
+    List<StemNode> stems = new ArrayList<StemNode>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
     TurkishSuffixes suffixes;
     SuffixFormGenerator formGenerator = new SuffixFormGenerator();
 
-    private Map<SuffixFormSet, Set<SuffixForm>> suffixFormMap = Maps.newHashMap();
+    private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newHashMap();
 
     public LexiconGraphGenerator(List<DictionaryItem> dictionary, TurkishSuffixes suffixes) {
         this.dictionary = dictionary;
         this.suffixes = suffixes;
         for (SuffixFormSet set : suffixes.getSets()) {
-            suffixFormMap.put(set.remove() , new HashSet<SuffixForm>());
+            suffixFormMap.put(set.remove(), new HashSet<SuffixNode>());
         }
+    }
+
+    public Iterable<SuffixNode> getNodes(SuffixFormSet set) {
+        return suffixFormMap.get(set);
     }
 
     public void generate() {
@@ -48,16 +52,15 @@ public class LexiconGraphGenerator {
         generateSuffixForms(sets);
     }
 
-    public List<Stem> getStems() {
+    public List<StemNode> getStems() {
         return stems;
     }
 
-    private Stem generateRootState(DictionaryItem dictionaryItem) {
+    private StemNode generateRootState(DictionaryItem dictionaryItem) {
         SuffixFormSet set = suffixes.getRootSuffixFormSet(dictionaryItem.primaryPos);
         AttributeSet<PhonAttr> phoneticAttrs = calculateRootAttributes(dictionaryItem);
-        SuffixForm form = formGenerator.getForm(phoneticAttrs, set.generation);
-        form = set.addOrReturnExisting(form);
-        return new Stem(dictionaryItem.lemma, dictionaryItem, form, true);
+        SuffixNode node = addOrReturnExisting(set, formGenerator.getNode(phoneticAttrs, set));
+        return new StemNode(dictionaryItem.clean(), dictionaryItem, node, TerminationType.TERMINAL);
     }
 
     public boolean hasModifierAttribute(DictionaryItem item) {
@@ -108,7 +111,7 @@ public class LexiconGraphGenerator {
     }
 
 
-    private Stem[] generateModifiedRootStates(DictionaryItem lexItem) {
+    private StemNode[] generateModifiedRootStates(DictionaryItem lexItem) {
 
         TurkicSeq modifiedSeq = new TurkicSeq(lexItem.clean(), alphabet);
         AttributeSet<PhonAttr> originalAttrs = calculateRootAttributes(lexItem);
@@ -177,64 +180,76 @@ public class LexiconGraphGenerator {
             throw new IllegalStateException("Cannot find suffix root form to connect for dictionary item:" + lexItem);
         }
 
-        SuffixForm origForm = origSet.addOrReturnExisting(formGenerator.getForm(originalAttrs, origSet.generation));
-        SuffixForm modiForm = modSet.addOrReturnExisting(formGenerator.getForm(modifiedAttrs, modSet.generation));
+        SuffixNode origForm = addOrReturnExisting(origSet, formGenerator.getNode(originalAttrs, origSet));
+        SuffixNode modiForm = addOrReturnExisting(modSet, formGenerator.getNode(modifiedAttrs, modSet));
 
-        return new Stem[]{
-                new Stem(lexItem.clean(), lexItem, origForm, true),
-                new Stem(modifiedSeq.toString(), lexItem, modiForm, false)
+        return new StemNode[]{
+                new StemNode(lexItem.clean(), lexItem, origForm, TerminationType.TERMINAL),
+                new StemNode(modifiedSeq.toString(), lexItem, modiForm, TerminationType.NON_TERMINAL)
         };
-
     }
 
-    private SuffixNode addForm(SuffixFormSet set, SuffixForm form) {
-        suffixFormMap.get(set).add(form);
-        return new SuffixNode(set.suffix, form.surface, TerminationType.TERMINAL);
+    public SuffixNode addOrReturnExisting(SuffixFormSet set, SuffixNode newNode) {
+        Set<SuffixNode> nodes = suffixFormMap.get(set);
+        if (!nodes.contains(newNode)) {
+            nodes.add(newNode);
+            return newNode;
+        }
+        for (SuffixNode node : nodes) {
+            if (node.equals(newNode))
+                return node;
+        }
+        throw new IllegalStateException("Cannot be here.");
+    }
+
+    public SuffixNode getSuffixRootNode(DictionaryItem item, SuffixFormSet set) {
+        return addOrReturnExisting(set, formGenerator.getNode(calculateRootAttributes(item), set));
     }
 
     // handle stem changes demek-diyecek , beni-bana
-    private Stem[] handleSpecialStems(DictionaryItem item) {
+    private StemNode[] handleSpecialStems(DictionaryItem item) {
 
         if (item.getId().equals("yemek_Verb")) {
-            Stem[] stems = new Stem[3];
-            SuffixForm formYe = Verb_Ye.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-            stems[0] = new Stem(item.clean(), item, formYe, true);
-            SuffixForm formProg = Verb_Prog_Drop.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-            stems[1] = new Stem(item.lemma.substring(0, 1), item, formProg, false);
-            SuffixForm formYi = Verb_Yi.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-            stems[2] = new Stem("yi", item, formYi, false);
+            StemNode[] stems = new StemNode[3];
+            SuffixNode formYe = getSuffixRootNode(item, Verb_Ye);
+            stems[0] = new StemNode(item.clean(), item, formYe, TerminationType.TERMINAL);
+            SuffixNode formProg = getSuffixRootNode(item, Verb_Prog_Drop);
+            stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
+            SuffixNode formYi = getSuffixRootNode(item, Verb_Yi);
+            stems[2] = new StemNode("yi", item, formYi, TerminationType.NON_TERMINAL);
             return stems;
         }
         if (item.getId().equals("demek_Verb")) {
-            Stem[] stems = new Stem[3];
-            SuffixForm formDe = Verb_De.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-            stems[0] = new Stem(item.clean(), item, formDe, true);
-            SuffixForm formProg = Verb_Prog_Drop.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-            stems[1] = new Stem(item.lemma.substring(0, 1), item, formProg, false);
-            SuffixForm formDi = Verb_Di.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-            stems[2] = new Stem("di", item, formDi, false);
+            StemNode[] stems = new StemNode[3];
+            SuffixNode formDe = getSuffixRootNode(item, Verb_De);
+            stems[0] = new StemNode(item.clean(), item, formDe, TerminationType.TERMINAL);
+            SuffixNode formProg = getSuffixRootNode(item, Verb_Prog_Drop);
+            stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
+            SuffixNode formDi = getSuffixRootNode(item, Verb_Di);
+            stems[2] = new StemNode("di", item, formDi, TerminationType.NON_TERMINAL);
             return stems;
         }
         if (item.getId().equals("ben_Pron") || item.getId().equals("sen_Pron")) {
-            Stem[] stems = new Stem[2];
-            SuffixForm formBenSen = Pron_BenSen.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-            stems[0] = new Stem(item.clean(), item, formBenSen, true);
-            SuffixForm formBanSan = Pron_BanSan.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
+            StemNode[] stems = new StemNode[2];
+            SuffixNode formBenSen = getSuffixRootNode(item, Pron_BenSen);
+            stems[0] = new StemNode(item.clean(), item, formBenSen, TerminationType.TERMINAL);
+            SuffixNode formBanSan = getSuffixRootNode(item, Pron_BanSan);
             if (item.lemma.equals("ben"))
-                stems[1] = new Stem("ban", item, formBanSan, false);
+                stems[1] = new StemNode("ban", item, formBanSan, TerminationType.NON_TERMINAL);
             else
-                stems[1] = new Stem("san", item, formBanSan, false);
+                stems[1] = new StemNode("san", item, formBanSan, TerminationType.NON_TERMINAL);
             return stems;
         }
         throw new IllegalArgumentException("Lexicon Item with special stem change cannot be handled:" + item);
     }
 
-    private Stem[] handleP3sgCompounds(DictionaryItem item) {
 
-        Stem[] nodes = new Stem[2];
+    private StemNode[] handleP3sgCompounds(DictionaryItem item) {
+
+        StemNode[] nodes = new StemNode[2];
         // atkuyruGu -
-        SuffixForm original = Noun_Comp_P3sg.addOrReturnExisting(formGenerator.getForm(calculateRootAttributes(item), ""));
-        nodes[0] = new Stem(item.clean(), item, original, true);
+        SuffixNode original = getSuffixRootNode(item, Noun_Comp_P3sg);
+        nodes[0] = new StemNode(item.clean(), item, original, TerminationType.TERMINAL);
 
         TurkicSeq modifiedSeq = new TurkicSeq(item.lemma, alphabet);
         String modified = modifiedSeq.eraseLast().toString();
@@ -247,15 +262,14 @@ public class LexiconGraphGenerator {
                 TurkicLetter l = alphabet.devoice(modifiedSeq.lastLetter());
                 modifiedSeq.changeLetter(modifiedSeq.length() - 1, l);
             }
-            SuffixForm mod = Noun_Comp_P3sg_Root.addOrReturnExisting(formGenerator.getForm(calculateAttributes(modifiedSeq), ""));
-            nodes[1] = new Stem(modifiedSeq.toString(), item, mod, false);
+            SuffixNode mod = getSuffixRootNode(item, Noun_Comp_P3sg_Root);
+            nodes[1] = new StemNode(modifiedSeq.toString(), item, mod, TerminationType.NON_TERMINAL);
         } else {
-            SuffixForm mod = Noun_Comp_P3sg_Root.addOrReturnExisting(formGenerator.getForm(calculateAttributes(modifiedSeq), ""));
-            nodes[1] = new Stem(modified, item, mod, false);
+            SuffixNode mod = getSuffixRootNode(item, Noun_Comp_P3sg_Root);
+            nodes[1] = new StemNode(modified, item, mod, TerminationType.NON_TERMINAL);
         }
         return nodes;
     }
-
 
     public void generateSuffixForms(Iterable<SuffixFormSet> startForms) {
         generateSuffixForms(startForms, new HashSet<SuffixFormSet>());
@@ -269,10 +283,10 @@ public class LexiconGraphGenerator {
                     continue;
                 else
                     toProcess.add(succSet);
-                for (SuffixForm form : rootFormSet.getFormIterator()) {
-                    SuffixForm formInSuccessor = formGenerator.getForm(form.attributes, succSet.generation);
-                    formInSuccessor = succSet.addOrReturnExisting(formInSuccessor);
-                    form.addSuccForm(formInSuccessor);
+                for (SuffixNode node : suffixFormMap.get(rootFormSet)) {
+                    SuffixNode nodeInSuccessor = formGenerator.getNode(node.attributes, succSet);
+                    nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
+                    node.addSuccNode(nodeInSuccessor);
                 }
             }
             finishedSet.add(rootFormSet);
@@ -289,16 +303,16 @@ public class LexiconGraphGenerator {
         System.out.println(System.currentTimeMillis());
         generator.generate();
         System.out.println(System.currentTimeMillis());
-        List<Stem> stems = generator.getStems();
-        for (Stem stem : stems) {
+        List<StemNode> stems = generator.getStems();
+        for (StemNode stem : stems) {
             System.out.println(stem);
         }
         SuffixFormSet set = TurkishSuffixes.Pl_lAr;
         System.out.println("Form Set:" + set.generation);
-        for (SuffixForm form : set.getFormIterator()) {
-            System.out.println("   Form: " + form.surface);
-            for (SuffixForm sform : form.getSuccForms()) {
-                System.out.println("        -" + sform.surface);
+        for (SuffixNode node : generator.getNodes(set)) {
+            System.out.println("   Form: " + node.surfaceForm);
+            for (MorphNode n : node.successors) {
+                System.out.println("        -" + n.surfaceForm);
             }
         }
         System.out.println("----");

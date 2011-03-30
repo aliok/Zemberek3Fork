@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TurkishSuffix {
 
-    String id;
+    public final String id;
     List<SuffixFormSet> formSets = new ArrayList<SuffixFormSet>();
     Map<String, SuffixFormSet> nodeMap = new HashMap<String, SuffixFormSet>();
 

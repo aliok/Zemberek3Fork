@@ -2,6 +2,8 @@ package zemberek3.lexicon;
 
 import com.google.common.collect.Lists;
 import zemberek3.parser.morphology.SuffixForm;
+import zemberek3.parser.morphology.SuffixNode;
+import zemberek3.parser.morphology.TerminationType;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
@@ -14,9 +16,15 @@ import static zemberek3.structure.TurkishAlphabet.*;
 
 public class SuffixFormGenerator {
 
-    public SuffixForm getForm(
-            AttributeSet<PhonAttr> attrs,
-            String generationString) {
+    public SuffixNode getNode(AttributeSet<PhonAttr> attrs, SuffixFormSet set) {
+        SuffixForm form = getForm(attrs, set.generation);
+        if (set.generation.length() == 0) {
+            return new SuffixNode(set.suffix, form.getSurface(), form.getAttributes(), TerminationType.TRANSFER);
+        } else
+            return new SuffixNode(set.suffix, form.getSurface(), form.getAttributes(), TerminationType.TERMINAL);
+    }
+
+    public SuffixForm getForm(AttributeSet<PhonAttr> attrs, String generationString) {
 
         List<SuffixToken> tokenList = Lists.newArrayList(new SuffixStringTokenizer(generationString));
 
@@ -82,8 +90,7 @@ public class SuffixFormGenerator {
             }
             index++;
         }
-
-        return new SuffixForm(seq.toString(),defineMorphemicAttributes(seq, attrs)) ;
+        return new SuffixForm(seq.toString(), defineMorphemicAttributes(seq, attrs));
     }
 
     // in suffix, defining morphemic attributes is straight forward.
