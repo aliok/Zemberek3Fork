@@ -2,13 +2,11 @@ package zemberek3.parser.morphology;
 
 import com.google.common.collect.ArrayListMultimap;
 import zemberek3.lexicon.DictionaryItem;
-import zemberek3.lexicon.SuffixFormSet;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.MorphNode;
 import zemberek3.lexicon.graph.StemNode;
-import zemberek3.lexicon.graph.SuffixNode;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,7 +45,7 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
-        List<MorphNode> result = parser.parse("elmalara");
+        List<MorphNode> result = parser.parse("kapağa");
         System.out.println("result = " + result);
     }
 }

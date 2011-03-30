@@ -7,8 +7,6 @@ import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 import static zemberek3.lexicon.RootAttr.*;
@@ -294,27 +292,5 @@ public class LexiconGraph {
         if (toProcess.size() == 0)
             return;
         generateSuffixForms(toProcess, finishedSet);
-    }
-
-    public static void main(String[] args) throws IOException {
-        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
-        TurkishSuffixes suffixes = new TurkishSuffixes();
-        LexiconGraph generator = new LexiconGraph(items, suffixes);
-        System.out.println(System.currentTimeMillis());
-        generator.generate();
-        System.out.println(System.currentTimeMillis());
-        List<StemNode> stems = generator.getStems();
-        for (StemNode stem : stems) {
-            System.out.println(stem);
-        }
-        SuffixFormSet set = TurkishSuffixes.Pl_lAr;
-        System.out.println("Form Set:" + set.generation);
-        for (SuffixNode node : generator.getNodes(set)) {
-            System.out.println("   Form: " + node.surfaceForm);
-            for (MorphNode n : node.successors) {
-                System.out.println("        -" + n.surfaceForm);
-            }
-        }
-        System.out.println("----");
     }
 }
