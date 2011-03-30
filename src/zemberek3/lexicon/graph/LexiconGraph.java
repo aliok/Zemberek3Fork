@@ -1,4 +1,4 @@
-package zemberek3.parser.morphology;
+package zemberek3.lexicon.graph;
 
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.*;
@@ -17,7 +17,7 @@ import static zemberek3.lexicon.TurkishSuffixes.*;
 /**
  * This class gets a list of Lexicon Items and builds the dictionary part of the main graph.
  */
-public class LexiconGraphGenerator {
+public class LexiconGraph {
     List<DictionaryItem> dictionary;
     List<StemNode> stems = new ArrayList<StemNode>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
@@ -26,7 +26,7 @@ public class LexiconGraphGenerator {
 
     private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newHashMap();
 
-    public LexiconGraphGenerator(List<DictionaryItem> dictionary, TurkishSuffixes suffixes) {
+    public LexiconGraph(List<DictionaryItem> dictionary, TurkishSuffixes suffixes) {
         this.dictionary = dictionary;
         this.suffixes = suffixes;
         for (SuffixFormSet set : suffixes.getSets()) {
@@ -127,7 +127,7 @@ public class LexiconGraphGenerator {
                     TurkicLetter last = modifiedSeq.lastLetter();
                     TurkicLetter modifiedLetter = alphabet.voice(last);
                     if (modifiedLetter == null) {
-                        throw new LexiconGenerationException("Voicing letter is not proper in:" + lexItem);
+                        throw new LexiconException("Voicing letter is not proper in:" + lexItem);
                     }
                     if (lexItem.lemma.endsWith("nk"))
                         modifiedLetter = TurkishAlphabet.L_g;
@@ -299,7 +299,7 @@ public class LexiconGraphGenerator {
     public static void main(String[] args) throws IOException {
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();
-        LexiconGraphGenerator generator = new LexiconGraphGenerator(items, suffixes);
+        LexiconGraph generator = new LexiconGraph(items, suffixes);
         System.out.println(System.currentTimeMillis());
         generator.generate();
         System.out.println(System.currentTimeMillis());

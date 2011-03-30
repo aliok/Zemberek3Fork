@@ -1,4 +1,4 @@
-package zemberek3.parser.morphology;
+package zemberek3.lexicon.graph;
 
 public abstract class MorphNode {
     public final String surfaceForm;

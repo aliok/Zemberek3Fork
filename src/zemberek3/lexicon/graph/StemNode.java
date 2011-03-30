@@ -1,4 +1,4 @@
-package zemberek3.parser.morphology;
+package zemberek3.lexicon.graph;
 
 import zemberek3.lexicon.DictionaryItem;
 
@@ -10,5 +10,10 @@ public class StemNode extends MorphNode {
         super(form, termination);
         this.dictionaryItem = dictionaryItem;
         this.suffixRootNode = suffixRootNode;
+    }
+
+    @Override
+    public String toString() {
+        return surfaceForm + ":" + dictionaryItem;
     }
 }

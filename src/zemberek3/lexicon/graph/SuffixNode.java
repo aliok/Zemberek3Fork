@@ -1,4 +1,4 @@
-package zemberek3.parser.morphology;
+package zemberek3.lexicon.graph;
 
 import zemberek3.lexicon.PhonAttr;
 import zemberek3.lexicon.TurkishSuffix;
@@ -22,6 +22,10 @@ public class SuffixNode extends MorphNode {
     public SuffixNode addSuccNode(MorphNode form) {
         this.successors.add(form);
         return this;
+    }
+
+    public List<MorphNode> getSuccessors() {
+        return successors;
     }
 
     @Override

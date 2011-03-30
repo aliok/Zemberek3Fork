@@ -2,7 +2,6 @@ package zemberek3.lexicon;
 
 import org.junit.Assert;
 import org.junit.Test;
-import zemberek3.parser.morphology.SuffixForm;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;

@@ -1,10 +1,6 @@
-package zemberek3.parser.morphology;
+package zemberek3.lexicon;
 
-import zemberek3.lexicon.PhonAttr;
 import zemberek3.structure.AttributeSet;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SuffixForm {
 

@@ -207,7 +207,7 @@ public class TurkishSuffixes {
     public static final SuffixFormSet[] ROOT_FORMS = {
             Noun_Main, Noun_Exp_C, Noun_Exp_V, Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
             Verb_Main, Verb_Aor_Ar, Verb_Prog_Drop, Verb_Prog_NotDrop, Verb_Vow_Drop, Verb_Vow_NotDrop, Verb_Exp_C, Verb_Exp_V,
-    Verb_Ye, Verb_Yi, Verb_De, Verb_Di, Pron_Main, Pron_BenSen, Pron_BanSan };
+            Verb_Ye, Verb_Yi, Verb_De, Verb_Di, Pron_Main, Pron_BenSen, Pron_BanSan};
 
     static SuffixFormSet newSet(TurkishSuffix suffix, String generation) {
         String id = suffix + "_" + generation;

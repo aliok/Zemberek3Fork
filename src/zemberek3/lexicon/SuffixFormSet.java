@@ -1,7 +1,5 @@
 package zemberek3.lexicon;
 
-import zemberek3.parser.morphology.SuffixForm;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
