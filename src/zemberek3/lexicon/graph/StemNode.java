@@ -12,6 +12,10 @@ public class StemNode extends MorphNode {
         this.suffixRootNode = suffixRootNode;
     }
 
+    public SuffixNode getSuffixRootNode() {
+        return suffixRootNode;
+    }
+
     @Override
     public String toString() {
         return surfaceForm + ":" + dictionaryItem;

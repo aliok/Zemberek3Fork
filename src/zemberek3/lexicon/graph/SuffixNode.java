@@ -11,7 +11,7 @@ public class SuffixNode extends MorphNode {
 
     TurkishSuffix suffix;
     AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
-    List<MorphNode> successors = new ArrayList<MorphNode>(1);
+    List<SuffixNode> successors = new ArrayList<SuffixNode>(1);
 
     public SuffixNode(TurkishSuffix suffix, String form, AttributeSet<PhonAttr> attributes, TerminationType termination) {
         super(form, termination);
@@ -19,12 +19,12 @@ public class SuffixNode extends MorphNode {
         this.attributes = attributes;
     }
 
-    public SuffixNode addSuccNode(MorphNode form) {
+    public SuffixNode addSuccNode(SuffixNode form) {
         this.successors.add(form);
         return this;
     }
 
-    public List<MorphNode> getSuccessors() {
+    public List<SuffixNode> getSuccessors() {
         return successors;
     }
 
