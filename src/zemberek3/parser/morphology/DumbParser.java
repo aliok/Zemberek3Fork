@@ -129,9 +129,9 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
-        String[] kelimeler = {"kitabımızın", "elmalarda", "kepekçiğin", "arının", "elmalardakinden","kaba","lütfu","nakde"};
+        String[] kelimeler = {"saate"};
         long start = System.currentTimeMillis();
-        final long iteration = 10000;
+        final long iteration = 100000;
         for (int i = 0; i < iteration; i++) {
             for (String s : kelimeler) {
                 List<ParseToken> results = parser.parse(s);

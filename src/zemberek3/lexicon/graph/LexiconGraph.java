@@ -80,6 +80,7 @@ public class LexiconGraph {
         if (dictionaryItem.hasAttribute(RootAttr.InverseHarmony)) {
             // saat, takat
             attrs.add(PhonAttr.LastVowelFrontal);
+            attrs.remove(PhonAttr.LastVowelBack);
         }
         return attrs;
     }
