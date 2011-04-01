@@ -79,7 +79,14 @@ public class DumbParser {
                     t = false;
                     break;
             }
-            return new ParseToken(stemNode, node, new ArrayList<SuffixNode>(nodeHistory), rest.substring(node.surfaceForm.length()), t);
+            ArrayList<SuffixNode> hist = new ArrayList<SuffixNode>(nodeHistory);
+            hist.add(node);
+            return new ParseToken(stemNode, node, hist, rest.substring(node.surfaceForm.length()), t);
+        }
+
+        @Override
+        public String toString() {
+            return stemNode.surfaceForm + ":" + nodeHistory;
         }
     }
 
@@ -93,7 +100,7 @@ public class DumbParser {
                 }
             }
             if (matches.size() == 0) {
-                if (token.terminal)
+                if (token.rest.length() == 0 && token.terminal)
                     finished.add(token);
             }
             for (SuffixNode match : matches) {
@@ -112,9 +119,13 @@ public class DumbParser {
         DumbParser parser = new DumbParser(graph);
 
         long start = System.currentTimeMillis();
-        List<ParseToken> results = parser.parse("kapağımıza");
-        for (ParseToken result : results) {
-            System.out.println(result.stemNode + ":" + result.nodeHistory);
+        for (int i = 0; i < 10000; i++) {
+            List<ParseToken> results = parser.parse("kepeğimize");
+            if (i == 0) {
+                for (ParseToken result : results) {
+                    System.out.println(result.stemNode + ":" + result.nodeHistory);
+                }
+            }
         }
         System.out.println("Elapsed:" + (System.currentTimeMillis() - start));
     }

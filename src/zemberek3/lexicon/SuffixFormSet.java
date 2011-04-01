@@ -29,7 +29,11 @@ public class SuffixFormSet {
         this.id = suffix.id + "_" + generation;
     }
 
-    public Iterable<SuffixFormSet> getSuccessors() {
+    public Iterable<SuffixFormSet> getSuccessorsIterable() {
+        return successors;
+    }
+
+    public Set<SuffixFormSet> getSuccessors() {
         return successors;
     }
 

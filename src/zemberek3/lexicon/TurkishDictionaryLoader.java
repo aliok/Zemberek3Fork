@@ -20,7 +20,7 @@ public class TurkishDictionaryLoader {
         return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor());
     }
 
-    DictionaryItem loadFromString(String lexiconItemString) {
+    public DictionaryItem loadFromString(String lexiconItemString) {
         return new LexiconItemMaker(lexiconItemString).getItem();
     }
 

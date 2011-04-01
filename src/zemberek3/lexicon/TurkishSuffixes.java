@@ -199,7 +199,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet Pron_BanSan = newSet("Pron_BanSan", PronounRoot, "");
 
 
-    public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_nI, Inst_ylA};
+    public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA};
     public static final SuffixFormSet[] POSSESSIVE_FORMS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
     public static final SuffixFormSet[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final SuffixFormSet[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
@@ -253,20 +253,20 @@ public class TurkishSuffixes {
 
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA);
-        Verb_Aor_Ar.succ(Verb_Main.getSuccessors()).remove(Aor_Ir).succ(Aor_Ar);
+        Verb_Aor_Ar.succ(Verb_Main.getSuccessorsIterable()).remove(Aor_Ir).succ(Aor_Ar);
         Verb_Vow_Drop.succ(Pass_Il);
-        Verb_Vow_NotDrop.succ(Verb_Main.getSuccessors()).remove(Pass_Il);
+        Verb_Vow_NotDrop.succ(Verb_Main.getSuccessorsIterable()).remove(Pass_Il);
         Verb_Prog_Drop.succ(Prog_Iyor);
-        Verb_Prog_NotDrop.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor);
+        Verb_Prog_NotDrop.succ(Verb_Main.getSuccessorsIterable()).remove(Prog_Iyor);
 
-        Verb_Ye.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
+        Verb_Ye.succ(Verb_Main.getSuccessorsIterable()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
         Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
         // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
-        Verb_De.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
+        Verb_De.succ(Verb_Main.getSuccessorsIterable()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
         Verb_Di.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk);
 
         Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, Prog_Iyor);
-        Verb_Exp_C.succ(Verb_Main.getSuccessors()).remove(Verb_Exp_V.getSuccessors()).remove(Aor_Ir);
+        Verb_Exp_C.succ(Verb_Main.getSuccessorsIterable()).remove(Verb_Exp_V.getSuccessorsIterable()).remove(Aor_Ir);
 
         Pron_Main.succ(CASE_FORMS);
         Pron_BenSen.succ(CASE_FORMS).remove(Dat_yA);
@@ -280,7 +280,9 @@ public class TurkishSuffixes {
         P3sg_sI.succ(COPULAR_FORMS)
                 .succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
                 .succ(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
-        P3pl_lArI.succ(P3sg_sI.getSuccessors());
+        P1pl_ImIz.succ(CASE_FORMS, COPULAR_FORMS);
+        P2pl_InIz.succ(CASE_FORMS, COPULAR_FORMS);
+        P3pl_lArI.succ(P3sg_sI.getSuccessorsIterable());
 
         Rel_ki.succ(COPULAR_FORMS, PERSON_FORMS_N).succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA);
         Dat_yA.succ(COPULAR_FORMS);

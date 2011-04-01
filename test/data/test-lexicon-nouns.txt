@@ -1,5 +1,2 @@
 elma
 armut
-dondurma [Pos: Noun]
-nohut [Pos: Noun ; A:Voicing]
-kek [A:NoVoicing]

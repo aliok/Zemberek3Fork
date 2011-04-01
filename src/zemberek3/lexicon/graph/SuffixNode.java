@@ -1,21 +1,22 @@
 package zemberek3.lexicon.graph;
 
 import zemberek3.lexicon.PhonAttr;
-import zemberek3.lexicon.TurkishSuffix;
+import zemberek3.lexicon.SuffixFormSet;
 import zemberek3.structure.AttributeSet;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SuffixNode extends MorphNode {
 
-    TurkishSuffix suffix;
+    SuffixFormSet suffixSet;
     AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
-    List<SuffixNode> successors = new ArrayList<SuffixNode>(1);
+    Set<SuffixNode> successors = new HashSet<SuffixNode>(1);
 
-    public SuffixNode(TurkishSuffix suffix, String form, AttributeSet<PhonAttr> attributes, TerminationType termination) {
+    public SuffixNode(SuffixFormSet suffixSet, String form, AttributeSet<PhonAttr> attributes, TerminationType termination) {
         super(form, termination);
-        this.suffix = suffix;
+        this.suffixSet = suffixSet;
         this.attributes = attributes;
     }
 
@@ -24,7 +25,7 @@ public class SuffixNode extends MorphNode {
         return this;
     }
 
-    public List<SuffixNode> getSuccessors() {
+    public Set<SuffixNode> getSuccessors() {
         return successors;
     }
 
@@ -36,14 +37,14 @@ public class SuffixNode extends MorphNode {
         SuffixNode that = (SuffixNode) o;
         if (!surfaceForm.equals(that.surfaceForm)) return false;
         if (!attributes.equals(that.attributes)) return false;
-        if (!suffix.equals(that.suffix)) return false;
+        if (!suffixSet.equals(that.suffixSet)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = suffix.hashCode();
+        int result = suffixSet.hashCode();
         result = 31 * result + attributes.hashCode();
         result = 31 * result + surfaceForm.hashCode();
         return result;
@@ -51,6 +52,6 @@ public class SuffixNode extends MorphNode {
 
     @Override
     public String toString() {
-        return suffix.id + ":" + this.surfaceForm;
+        return suffixSet.id + ":" + this.surfaceForm;
     }
 }

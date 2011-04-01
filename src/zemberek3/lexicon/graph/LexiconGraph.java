@@ -202,6 +202,11 @@ public class LexiconGraph {
         throw new IllegalStateException("Cannot be here.");
     }
 
+    private boolean nodeExists(SuffixFormSet set, SuffixNode newNode) {
+        Set<SuffixNode> nodes = suffixFormMap.get(set);
+        return nodes.contains(newNode);
+    }
+
     public SuffixNode getSuffixRootNode(DictionaryItem item, SuffixFormSet set) {
         return addOrReturnExisting(set, formGenerator.getNode(calculateRootAttributes(item), set));
     }
@@ -272,27 +277,21 @@ public class LexiconGraph {
     }
 
     public void generateSuffixForms(Iterable<SuffixFormSet> startForms) {
-        generateSuffixForms(startForms, new HashSet<SuffixFormSet>());
-    }
-
-    private void generateSuffixForms(Iterable<SuffixFormSet> formSets, Set<SuffixFormSet> finishedSet) {
-        List<SuffixFormSet> toProcess = new ArrayList<SuffixFormSet>();
-        for (SuffixFormSet rootFormSet : formSets) {
-            for (SuffixFormSet succSet : rootFormSet.getSuccessors()) {
-                if (finishedSet.contains(succSet))
-                    continue;
-                else
-                    toProcess.add(succSet);
+        Set<SuffixFormSet> toProcess = new HashSet<SuffixFormSet>();
+        for (SuffixFormSet rootFormSet : startForms) {
+            for (SuffixFormSet succSet : rootFormSet.getSuccessorsIterable()) {
                 for (SuffixNode node : suffixFormMap.get(rootFormSet)) {
                     SuffixNode nodeInSuccessor = formGenerator.getNode(node.attributes, succSet);
+                    if (!nodeExists(succSet, nodeInSuccessor)) {
+                        toProcess.add(succSet);
+                    }
                     nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
                     node.addSuccNode(nodeInSuccessor);
                 }
             }
-            finishedSet.add(rootFormSet);
         }
         if (toProcess.size() == 0)
             return;
-        generateSuffixForms(toProcess, finishedSet);
+        generateSuffixForms(toProcess);
     }
 }
