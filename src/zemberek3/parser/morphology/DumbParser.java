@@ -10,7 +10,6 @@ import zemberek3.lexicon.graph.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DumbParser {
@@ -130,18 +129,21 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
-        String[] kelimeler = {"kitabımızın", "kepeğe", "elmalarda","kepekçiğin","arının","elmalardakinden"};
+        String[] kelimeler = {"kitabımızın", "elmalarda", "kepekçiğin", "arının", "elmalardakinden","kaba","lütfu","nakde"};
         long start = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++) {
+        final long iteration = 10000;
+        for (int i = 0; i < iteration; i++) {
             for (String s : kelimeler) {
                 List<ParseToken> results = parser.parse(s);
                 if (i == 0) {
                     for (ParseToken result : results) {
-                        System.out.println(result.asParseString());
+                        System.out.println(s + " = " + result.asParseString());
                     }
                 }
             }
         }
-        System.out.println("Elapsed:" + (System.currentTimeMillis() - start));
+        long elapsed= System.currentTimeMillis() - start;
+        System.out.println("Elapsed:" + elapsed);
+        System.out.println("Speed:" + (iteration*1000*kelimeler.length/elapsed));
     }
 }
