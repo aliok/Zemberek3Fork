@@ -90,12 +90,12 @@ public class DumbParser {
         }
 
         public String asParseString() {
-            StringBuilder sb = new StringBuilder("["+stemNode.surfaceForm + ":" + stemNode.getDictionaryItem().lemma + "-" + stemNode.getDictionaryItem().primaryPos + "]");
+            StringBuilder sb = new StringBuilder("[" + stemNode.surfaceForm + ":" + stemNode.getDictionaryItem().lemma + "-" + stemNode.getDictionaryItem().primaryPos + "]");
             sb.append("[");
             int i = 0;
             for (SuffixNode suffixNode : nodeHistory) {
                 sb.append(suffixNode.getSuffixSet().getSuffix()).append(":").append(suffixNode.surfaceForm);
-                if(i++<nodeHistory.size()-1)
+                if (i++ < nodeHistory.size() - 1)
                     sb.append(" + ");
             }
             sb.append("]");
@@ -130,13 +130,15 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
-
+        String[] kelimeler = {"kitabımızın", "kepeğe", "elmalarda","kepekçiğin"};
         long start = System.currentTimeMillis();
         for (int i = 0; i < 100000; i++) {
-            List<ParseToken> results = parser.parse("kitabımızın");
-            if (i == 0) {
-                for (ParseToken result : results) {
-                    System.out.println(result.asParseString());
+            for (String s : kelimeler) {
+                List<ParseToken> results = parser.parse(s);
+                if (i == 0) {
+                    for (ParseToken result : results) {
+                        System.out.println(result.asParseString());
+                    }
                 }
             }
         }
