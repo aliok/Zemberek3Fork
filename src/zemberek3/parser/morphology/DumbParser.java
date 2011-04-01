@@ -40,8 +40,9 @@ public class DumbParser {
             String rest = input.substring(candidate.surfaceForm.length());
             parseTokens.add(new ParseToken(candidate, Lists.<SuffixNode>newArrayList(candidate.getSuffixRootNode()), rest));
         }
-
-        return Collections.emptyList();
+        List<ParseToken> result = new ArrayList<ParseToken>();
+        matchingSuccessors(parseTokens, result);
+        return result;
     }
 
     class ParseToken {
@@ -82,20 +83,25 @@ public class DumbParser {
         }
     }
 
-    List<ParseToken> matchingSuccessors(List<ParseToken> tokens, List<ParseToken> finished) {
+    void matchingSuccessors(List<ParseToken> tokens, List<ParseToken> finished) {
+        List<ParseToken> newtokens = new ArrayList<ParseToken>();
         for (ParseToken token : tokens) {
-            List<ParseToken> newtokens= new ArrayList<ParseToken>();
             List<SuffixNode> matches = new ArrayList<SuffixNode>();
             for (SuffixNode successor : token.currentNode.getSuccessors()) {
                 if (token.rest.startsWith(successor.surfaceForm)) {
                     matches.add(successor);
                 }
             }
+            if (matches.size() == 0) {
+                if (token.terminal)
+                    finished.add(token);
+            }
             for (SuffixNode match : matches) {
                 newtokens.add(token.getCopy(match));
             }
         }
-        return null;
+        if (newtokens.size() > 0)
+            matchingSuccessors(newtokens, finished);
     }
 
     public static void main(String[] args) throws IOException {
@@ -104,5 +110,12 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
+
+        long start = System.currentTimeMillis();
+        List<ParseToken> results = parser.parse("kapağımıza");
+        for (ParseToken result : results) {
+            System.out.println(result.stemNode + ":" + result.nodeHistory);
+        }
+        System.out.println("Elapsed:" + (System.currentTimeMillis() - start));
     }
 }

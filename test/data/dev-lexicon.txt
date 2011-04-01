@@ -116,6 +116,7 @@ yemek [A:StemChange]
 
 gelmek [A:NonTransitive]
 pişmek [A:NonTransitive]
+kapmak
 
 # ------------------------------------------------------------------------------------------
 # Interjection

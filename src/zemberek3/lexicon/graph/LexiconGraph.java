@@ -159,6 +159,7 @@ public class LexiconGraph {
                 if (lexItem.attrs.contains(Voicing)) {
                     modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);
                 }
+                break;
             case Verb:
                 if (lexItem.attrs.contains(Voicing)) {
                     origSet = TurkishSuffixes.Verb_Vow_NotDrop;
@@ -172,6 +173,7 @@ public class LexiconGraph {
                 } else if (lexItem.attrs.contains(Aorist_A)) {
                     modSet = TurkishSuffixes.Verb_Aor_Ar;
                 }
+                break;
 
         }
         if (origSet == null || modSet == null) {
