@@ -138,6 +138,10 @@ public class TurkishSuffixes {
     public static SuffixFormSet Caus_t = newSet(Caus, "t");
     public static SuffixFormSet Caus_tIr = newSet(Pass, ">dIr");
 
+    public static TurkishSuffix Imp = new TurkishSuffix("Imp");
+    public static SuffixFormSet Imp_EMPTY = newSet(Imp, "");
+
+
     public static TurkishSuffix Recip = new TurkishSuffix("Recip");
     public static SuffixFormSet Recip_yIs = newSet(Recip, "+yIş");
     public static SuffixFormSet Recip_Is = newSet(Recip, "+Iş");
@@ -241,7 +245,7 @@ public class TurkishSuffixes {
     public TurkishSuffixes() {
 
         Noun_Main.succ(CASE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .succ(Pl_lAr, Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz);
+                .succ(Pl_lAr, Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz, A3sg_EMPTY);
         Noun_Exp_C.succ(Pl_lAr, Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr,
                 Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz)
                 .succ(COPULAR_FORMS);
@@ -252,7 +256,7 @@ public class TurkishSuffixes {
         Noun_Comp_P3sg_Root.succ(With_lI, Without_sIz);
 
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir)
-                .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA);
+                .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA, Imp_EMPTY);
         Verb_Aor_Ar.succ(Verb_Main.getSuccessorsIterable()).remove(Aor_Ir).succ(Aor_Ar);
         Verb_Vow_Drop.succ(Pass_Il);
         Verb_Vow_NotDrop.succ(Verb_Main.getSuccessorsIterable()).remove(Pass_Il);
@@ -317,6 +321,8 @@ public class TurkishSuffixes {
 
         Prog_Iyor.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
         Prog_mAktA.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
+
+        Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A3sg_sIn);
 
     }
 }

@@ -27,7 +27,7 @@ public class DumbParser {
 
     public List<ParseToken> parse(String input) {
         List<StemNode> candidates = new ArrayList<StemNode>();
-        for (int i = 1; i < input.length(); i++) {
+        for (int i = 1; i <= input.length(); i++) {
             String stem = input.substring(0, i);
             if (stemNodes.containsKey(stem)) {
                 candidates.addAll(stemNodes.get(stem));
@@ -129,9 +129,9 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
-        String[] kelimeler = {"saate"};
+        String[] kelimeler = {"gel", "kitabımızın", "elmalarda", "kepekçiğin", "saate", "arının", "elmalardakinden", "kaba", "lütfu", "nakde"};
         long start = System.currentTimeMillis();
-        final long iteration = 100000;
+        final long iteration = 10000;
         for (int i = 0; i < iteration; i++) {
             for (String s : kelimeler) {
                 List<ParseToken> results = parser.parse(s);
@@ -142,8 +142,8 @@ public class DumbParser {
                 }
             }
         }
-        long elapsed= System.currentTimeMillis() - start;
+        long elapsed = System.currentTimeMillis() - start;
         System.out.println("Elapsed:" + elapsed);
-        System.out.println("Speed:" + (iteration*1000*kelimeler.length/elapsed));
+        System.out.println("Speed:" + (iteration * 1000 * kelimeler.length / elapsed)+ " words/second");
     }
 }
