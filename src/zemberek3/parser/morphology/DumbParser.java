@@ -130,7 +130,7 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
-        String[] kelimeler = {"kitabımızın", "kepeğe", "elmalarda","kepekçiğin"};
+        String[] kelimeler = {"kitabımızın", "kepeğe", "elmalarda","kepekçiğin","arının","elmalardakinden"};
         long start = System.currentTimeMillis();
         for (int i = 0; i < 100000; i++) {
             for (String s : kelimeler) {

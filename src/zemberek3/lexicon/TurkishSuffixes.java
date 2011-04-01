@@ -288,7 +288,7 @@ public class TurkishSuffixes {
         Dat_yA.succ(COPULAR_FORMS);
         Dat_nA.succ(COPULAR_FORMS);
 
-        Loc_dA.succ(COPULAR_FORMS);
+        Loc_dA.succ(COPULAR_FORMS).succ(Rel_ki);
         Loc_ndA.succ(COPULAR_FORMS);
 
         Abl_dAn.succ(COPULAR_FORMS);
