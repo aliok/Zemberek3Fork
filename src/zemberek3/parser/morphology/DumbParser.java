@@ -88,6 +88,19 @@ public class DumbParser {
         public String toString() {
             return stemNode.surfaceForm + ":" + nodeHistory;
         }
+
+        public String asParseString() {
+            StringBuilder sb = new StringBuilder("["+stemNode.surfaceForm + ":" + stemNode.getDictionaryItem().lemma + "-" + stemNode.getDictionaryItem().primaryPos + "]");
+            sb.append("[");
+            int i = 0;
+            for (SuffixNode suffixNode : nodeHistory) {
+                sb.append(suffixNode.getSuffixSet().getSuffix()).append(":").append(suffixNode.surfaceForm);
+                if(i++<nodeHistory.size()-1)
+                    sb.append(" + ");
+            }
+            sb.append("]");
+            return sb.toString();
+        }
     }
 
     void matchingSuccessors(List<ParseToken> tokens, List<ParseToken> finished) {
@@ -119,11 +132,11 @@ public class DumbParser {
         DumbParser parser = new DumbParser(graph);
 
         long start = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            List<ParseToken> results = parser.parse("kepeğimize");
+        for (int i = 0; i < 100000; i++) {
+            List<ParseToken> results = parser.parse("kitabımızın");
             if (i == 0) {
                 for (ParseToken result : results) {
-                    System.out.println(result.stemNode + ":" + result.nodeHistory);
+                    System.out.println(result.asParseString());
                 }
             }
         }

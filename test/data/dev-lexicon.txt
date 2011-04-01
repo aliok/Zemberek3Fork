@@ -12,6 +12,7 @@ elma
 
 # infer Pos, Voicing Attribute. k->ğ
 kapak
+kitap
 
 # Fully written form.
 kepek [Pos: Noun; A: Voicing]

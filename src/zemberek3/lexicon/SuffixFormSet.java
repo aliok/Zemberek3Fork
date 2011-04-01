@@ -68,6 +68,10 @@ public class SuffixFormSet {
         return this;
     }
 
+    public TurkishSuffix getSuffix() {
+        return suffix;
+    }
+
     public String getId() {
         return id;
     }

@@ -20,6 +20,10 @@ public class SuffixNode extends MorphNode {
         this.attributes = attributes;
     }
 
+    public SuffixFormSet getSuffixSet() {
+        return suffixSet;
+    }
+
     public SuffixNode addSuccNode(SuffixNode form) {
         this.successors.add(form);
         return this;
