@@ -9,10 +9,26 @@
 
 # Main Pos info is optional.
 elma
+kahve [Pos: Noun]
+yapı
+gemi
+kano
+menü
+
+ay
+kemer
+ikiz
+katır
+balon
+köz
+kurum
+üzüm
 
 # infer Pos, Voicing Attribute. k->ğ
 kapak
 kitap
+tıkaç
+yakıt
 
 # Fully written form.
 kepek [Pos: Noun; A: Voicing]
@@ -85,7 +101,10 @@ atkuyruğu [A:CompoundP3sg, Voicing]
 # Adjectives
 # Pos info needs to be written, allways.
 
+kırmızı [Pos:Adj]
 arı [Pos:Adj]
+yavaş [Pos:Adj]
+temiz [Pos:Adj]
 
 # secondary pos. both are required.
 çıtır [Pos:Adj,Dup]

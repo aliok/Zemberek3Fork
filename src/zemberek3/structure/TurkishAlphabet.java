@@ -60,7 +60,7 @@ public class TurkishAlphabet {
     public static final TurkicLetter L_oo = builder(C_oo, 19).vowel().frontalVowel().roundedVowel().notInAscii().similarAscii('o').build();
     public static final TurkicLetter L_p = builder('p', 20).voiceless().stopConsosnant().build();
     public static final TurkicLetter L_r = builder('r', 21).build();
-    public static final TurkicLetter L_s = builder('s', 22).build();
+    public static final TurkicLetter L_s = builder('s', 22).voiceless().build();
     public static final TurkicLetter L_ss = builder(C_ss, 23).notInAscii().voiceless().similarAscii('s').build();
     public static final TurkicLetter L_t = builder('t', 24).voiceless().stopConsosnant().build();
     public static final TurkicLetter L_u = builder('u', 25).vowel().roundedVowel().build();

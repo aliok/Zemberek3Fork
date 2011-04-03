@@ -8,8 +8,9 @@ public enum PhonAttr implements IndexedEnum {
     LastVowelBack,
     LastVowelRounded,
     LastVowelUnrounded,
+    LastLetterVoiceless,
+    LastLetterNotVoiceless,
     LastLetterVoicelessStop,
-    LastLetterNotVoicelessStop,
     LastLetterVowel,
     LastLetterConsonant,
     HasNoVowel;

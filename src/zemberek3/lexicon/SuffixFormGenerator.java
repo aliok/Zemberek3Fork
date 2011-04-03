@@ -83,7 +83,7 @@ public class SuffixFormGenerator {
 
                 case DEVOICE_FIRST:
                     TurkicLetter ld = token.letter;
-                    if (formAttrs.contains(LastLetterVoicelessStop))
+                    if (formAttrs.contains(LastLetterVoiceless))
                         ld = alphabet.devoice(token.letter);
                     seq.append(ld);
 
@@ -118,10 +118,14 @@ public class SuffixFormGenerator {
             attrs.add(LastLetterConsonant, HasNoVowel);
             attrs.remove(LastLetterVowel);
         }
-        if (seq.lastLetter().isStopConsonant()) {
-            attrs.add(LastLetterVoicelessStop);
+        if (seq.lastLetter().isVoiceless()) {
+            attrs.add(PhonAttr.LastLetterVoiceless);
+            if (seq.lastLetter().isStopConsonant()) {
+                // kitap
+                attrs.add(PhonAttr.LastLetterVoicelessStop);
+            }
         } else
-            attrs.add(LastLetterNotVoicelessStop);
+            attrs.add(PhonAttr.LastLetterNotVoiceless);
         return attrs;
     }
 

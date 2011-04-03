@@ -98,6 +98,11 @@ public class SuffixFormGeneratorTest {
                 new Triple("kale", "InI", "ni"),
 
                 new Triple("kitap", ">cA", "ça"),
+                new Triple("sarraf", ">cA", "ça"),
+                new Triple("makas", ">cA", "ça"),
+                new Triple("tokat", ">cA", "ça"),
+                new Triple("kaş", ">cA", "ça"),
+                new Triple("fok", ">cA", "ça"),
                 new Triple("gitar", ">cA", "ca"),
                 new Triple("kalem", ">cA", "ce"),
                 new Triple("kale", ">cA", "ce"),

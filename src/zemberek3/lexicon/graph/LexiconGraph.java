@@ -101,11 +101,14 @@ public class LexiconGraph {
             attrs.add(PhonAttr.LastLetterVowel);
         } else
             attrs.add(PhonAttr.LastLetterConsonant);
-        if (sequence.lastLetter().isVoiceless() && sequence.lastLetter().isStopConsonant()) {
-            // kitap
-            attrs.add(PhonAttr.LastLetterVoicelessStop);
+        if (sequence.lastLetter().isVoiceless()) {
+            attrs.add(PhonAttr.LastLetterVoiceless);
+            if (sequence.lastLetter().isStopConsonant()) {
+                // kitap
+                attrs.add(PhonAttr.LastLetterVoicelessStop);
+            }
         } else
-            attrs.add(PhonAttr.LastLetterNotVoicelessStop);
+            attrs.add(PhonAttr.LastLetterNotVoiceless);
         return attrs;
     }
 
@@ -154,8 +157,14 @@ public class LexiconGraph {
         switch (lexItem.primaryPos) {
             case Noun:
                 if (lexItem.attrs.containsAny(Voicing, Doubling, LastVowelDrop)) {
-                    origSet = TurkishSuffixes.Noun_Exp_C;
-                    modSet = TurkishSuffixes.Noun_Exp_V;
+                    if (lexItem.primaryPos == PrimaryPos.Noun) {
+                        origSet = TurkishSuffixes.Noun_Exp_C;
+                        modSet = TurkishSuffixes.Noun_Exp_V;
+                    }
+                    if (lexItem.primaryPos == PrimaryPos.Adjective) {
+                        origSet = TurkishSuffixes.Adj_Exp_C;
+                        modSet = TurkishSuffixes.Adj_Exp_V;
+                    }
                 }
                 if (lexItem.attrs.contains(Voicing)) {
                     modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);

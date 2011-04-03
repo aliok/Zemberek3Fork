@@ -40,7 +40,7 @@ public class DumbParser {
             parseTokens.add(new ParseToken(candidate, Lists.<SuffixNode>newArrayList(candidate.getSuffixRootNode()), rest));
         }
         List<ParseToken> result = new ArrayList<ParseToken>();
-        matchingSuccessors(parseTokens, result);
+        traverseSuffixes(parseTokens, result);
         return result;
     }
 
@@ -102,9 +102,9 @@ public class DumbParser {
         }
     }
 
-    void matchingSuccessors(List<ParseToken> tokens, List<ParseToken> finished) {
+    void traverseSuffixes(List<ParseToken> current, List<ParseToken> completed) {
         List<ParseToken> newtokens = new ArrayList<ParseToken>();
-        for (ParseToken token : tokens) {
+        for (ParseToken token : current) {
             List<SuffixNode> matches = new ArrayList<SuffixNode>();
             for (SuffixNode successor : token.currentNode.getSuccessors()) {
                 if (token.rest.startsWith(successor.surfaceForm)) {
@@ -113,14 +113,14 @@ public class DumbParser {
             }
             if (matches.size() == 0) {
                 if (token.rest.length() == 0 && token.terminal)
-                    finished.add(token);
+                    completed.add(token);
             }
             for (SuffixNode match : matches) {
                 newtokens.add(token.getCopy(match));
             }
         }
         if (newtokens.size() > 0)
-            matchingSuccessors(newtokens, finished);
+            traverseSuffixes(newtokens, completed);
     }
 
     public static void main(String[] args) throws IOException {
@@ -129,9 +129,11 @@ public class DumbParser {
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         DumbParser parser = new DumbParser(graph);
-        String[] kelimeler = {"gel", "kitabımızın", "elmalarda", "kepekçiğin", "saate", "arının", "elmalardakinden", "kaba", "lütfu", "nakde"};
+        String[] kelimeler = {"yavaşça","gel", "kitabımızın", "elmalarda", "kap", "elmacık",
+                "kepekçiğin", "saate", "arının", "elmalardakinden", "kaba", "lütfu", "nakde"
+        };
         long start = System.currentTimeMillis();
-        final long iteration = 10000;
+        final long iteration = 20000;
         for (int i = 0; i < iteration; i++) {
             for (String s : kelimeler) {
                 List<ParseToken> results = parser.parse(s);
@@ -143,7 +145,7 @@ public class DumbParser {
             }
         }
         long elapsed = System.currentTimeMillis() - start;
-        System.out.println("Elapsed:" + elapsed);
-        System.out.println("Speed:" + (iteration * 1000 * kelimeler.length / elapsed)+ " words/second");
+        System.out.println("Elapsed:" + elapsed + " ms.");
+        System.out.println("Speed:" + (iteration * 1000 * kelimeler.length / elapsed) + " words/second");
     }
 }
