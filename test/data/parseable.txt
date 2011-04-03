@@ -11,3 +11,11 @@ geleceksin
 gelemeyeceksin
 gelebilecek
 gelemez
+gele
+geleyim
+gelesin
+gelmeyeyim
+gelmeyesin
+gelelim
+gelmeyelim
+gelemeyelim
