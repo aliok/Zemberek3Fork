@@ -19,7 +19,9 @@ public class SuffixFormGenerator {
 
     public SuffixNode getNode(AttributeSet<PhonAttr> attrs, SuffixFormSet set) {
         SuffixForm form = getForm(attrs, set.generation);
-        if (set.generation.length() == 0) {
+        if (!set.isTerminal()) {
+            return new SuffixNode(set, form.getSurface(), form.getAttributes(), TerminationType.NON_TERMINAL);
+        } else if (set.generation.length() == 0) {
             return new SuffixNode(set, form.getSurface(), form.getAttributes(), TerminationType.TRANSFER);
         } else
             return new SuffixNode(set, form.getSurface(), form.getAttributes(), TerminationType.TERMINAL);

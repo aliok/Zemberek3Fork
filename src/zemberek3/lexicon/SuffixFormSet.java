@@ -14,6 +14,8 @@ public class SuffixFormSet {
     public final TurkishSuffix suffix;
     // generation word.
     public final String generation;
+    // can be an end suffix.
+    boolean terminal;
 
     private Set<SuffixFormSet> successors = new HashSet<SuffixFormSet>();
 
@@ -21,6 +23,13 @@ public class SuffixFormSet {
         this.id = id;
         this.suffix = suffix;
         this.generation = generation;
+    }
+
+    public SuffixFormSet(String id, TurkishSuffix suffix, String generation, boolean terminal) {
+        this.id = id;
+        this.suffix = suffix;
+        this.generation = generation;
+        this.terminal = terminal;
     }
 
     public SuffixFormSet(TurkishSuffix suffix, String generation) {
@@ -35,6 +44,10 @@ public class SuffixFormSet {
 
     public Set<SuffixFormSet> getSuccessors() {
         return successors;
+    }
+
+    public boolean isTerminal() {
+        return terminal;
     }
 
     public SuffixFormSet succ(SuffixFormSet... sets) {

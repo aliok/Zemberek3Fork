@@ -133,7 +133,7 @@ public class DumbParser {
                 "kepekçiğin", "saate", "arının", "elmalardakinden", "kaba", "lütfu", "nakde"
         };
         long start = System.currentTimeMillis();
-        final long iteration = 20000;
+        final long iteration = 5000;
         for (int i = 0; i < iteration; i++) {
             for (String s : kelimeler) {
                 List<ParseToken> results = parser.parse(s);

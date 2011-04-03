@@ -69,7 +69,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet A1sg_m = newSet(A1sg, "m"); // gel-se-m
 
     public static TurkishSuffix A2sg = new TurkishSuffix("A2sg");
-    public static SuffixFormSet A2sg_sIn = newSet(A2sg, "+sIn"); // gel-ecek-sin
+    public static SuffixFormSet A2sg_sIn = newSet(A2sg, "sIn"); // gel-ecek-sin
     public static SuffixFormSet A2sg_n = newSet(A2sg, "n"); // gel-di-n
     public static SuffixFormSet A2sg_sAnA = newSet(A2sg, "sAnA"); //gel-sene
     public static SuffixFormSet A2sg_EMPTY = newSet("A2sg_EMPTY", A2sg, ""); // gel-
@@ -126,7 +126,7 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix Neg = new TurkishSuffix("Neg");
     public static SuffixFormSet Neg_mA = newSet(Neg, "mA"); //gel-me
-    public static SuffixFormSet Neg_m = newSet(Neg, "m"); // gel-m-iyor
+    public static SuffixFormSet Neg_m = newSet(Neg, "m", false); // gel-m-iyor
 
     public static TurkishSuffix Cond = new TurkishSuffix("Cond");
     public static SuffixFormSet Cond_ysA = newSet(Cond, "+ysA");
@@ -233,15 +233,25 @@ public class TurkishSuffixes {
 
     static SuffixFormSet newSet(TurkishSuffix suffix, String generation) {
         String id = suffix + "_" + generation;
-        return newSet(id, suffix, generation);
+        return newSet(id, suffix, generation, true);
+    }
+
+    static SuffixFormSet newSet(TurkishSuffix suffix, String generation, boolean endSuffix) {
+        String id = suffix + "_" + generation;
+        return newSet(id, suffix, generation, endSuffix);
+    }
+
+    static SuffixFormSet newSet(String id, TurkishSuffix suffix, String generation, boolean endSuffix) {
+        if (suffixSets.containsKey(id))
+            throw new IllegalArgumentException("There is already a suffix set with same id:" + id);
+        SuffixFormSet newSet = new SuffixFormSet(id, suffix, generation, endSuffix);
+        suffixSets.put(id, newSet);
+        return newSet;
+
     }
 
     static SuffixFormSet newSet(String id, TurkishSuffix suffix, String generation) {
-        if (suffixSets.containsKey(id))
-            throw new IllegalArgumentException("There is already a suffix set with same id:" + id);
-        SuffixFormSet newSet = new SuffixFormSet(id, suffix, generation);
-        suffixSets.put(id, newSet);
-        return newSet;
+        return newSet(id, suffix, generation, true);
     }
 
     public SuffixFormSet getRootSuffixFormSet(PrimaryPos pos) {
@@ -337,7 +347,7 @@ public class TurkishSuffixes {
         EvidCop_ymIs.succ(PERSON_FORMS_N);
         CondCop_ysA.succ(PERSON_FORMS_N);
 
-        Neg_mA.succ(Aor_z, Aor_EMPTY, Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI);
+        Neg_mA.succ(Aor_z, Aor_EMPTY, Imp_EMPTY, Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI);
         Neg_m.succ(Prog_Iyor);
 
         Aor_Ar.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
@@ -348,11 +358,14 @@ public class TurkishSuffixes {
         Prog_Iyor.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
         Prog_mAktA.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
 
+        Fut_yAcAg.succ(A1sg_yIm, A1pl_yIz);
+        Fut_yAcAk.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA).remove(Fut_yAcAg.getSuccessors());
+
         Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A3sg_sIn);
         Agt_cI.succ(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr, Become_lAs, With_lI, Without_sIz);
         Agt_yIcI.succ(Agt_cI.getSuccessors());
 
-        
-
+        Abil_yAbil.succ(Verb_Main.getSuccessors()).remove(Abil_yAbil, Abil_yA);
+        Abil_yA.succ(Neg_mA, Neg_m);
     }
 }
