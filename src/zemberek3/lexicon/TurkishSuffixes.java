@@ -33,19 +33,19 @@ public class TurkishSuffixes {
     public static SuffixFormSet Inst_ylA = newSet(Inst, "+ylA");
 
     public static TurkishSuffix P1sg = new TurkishSuffix("P1sg");
-    public static SuffixFormSet P1sg_Im = newSet(P1sg, "+Im");
+    public static SuffixFormSet P1sg_Im = newSet(P1sg, "Im");
 
     public static TurkishSuffix P2sg = new TurkishSuffix("P2sg");
-    public static SuffixFormSet P2sg_In = newSet(P2sg, "+In");
+    public static SuffixFormSet P2sg_In = newSet(P2sg, "In");
 
     public static TurkishSuffix P3sg = new TurkishSuffix("P3sg");
     public static SuffixFormSet P3sg_sI = newSet(P3sg, "+sI");
 
     public static TurkishSuffix P1pl = new TurkishSuffix("P1pl");
-    public static SuffixFormSet P1pl_ImIz = newSet(P1pl, "+ImIz");
+    public static SuffixFormSet P1pl_ImIz = newSet(P1pl, "ImIz");
 
     public static TurkishSuffix P2pl = new TurkishSuffix("P2pl");
-    public static SuffixFormSet P2pl_InIz = newSet(P2pl, "+InIz");
+    public static SuffixFormSet P2pl_InIz = newSet(P2pl, "InIz");
 
     public static TurkishSuffix P3pl = new TurkishSuffix("P3pl");
     public static SuffixFormSet P3pl_lArI = newSet(P3pl, "lArI");
@@ -117,7 +117,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet AorPart_z = newSet(AorPart, "z"); // gel-me-z
 
     public static TurkishSuffix Prog = new TurkishSuffix("Prog");
-    public static SuffixFormSet Prog_Iyor = newSet(Prog, "+Iyor");
+    public static SuffixFormSet Prog_Iyor = newSet(Prog, "Iyor");
     public static SuffixFormSet Prog_mAktA = newSet(Prog, "mAktA");
 
     public static TurkishSuffix Fut = new TurkishSuffix("Fut");
@@ -281,13 +281,13 @@ public class TurkishSuffixes {
 
     public TurkishSuffixes() {
 
-        Noun_Main.succ(CASE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
+        Noun_Main.succ(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
                 .succ(Pl_lAr, Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Resemb_msI, Resemb_ImsI);
         Noun_Exp_C.succ(Pl_lAr, Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr,
                 Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI)
                 .succ(COPULAR_FORMS);
         Noun_Exp_V.succ(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz, Resemb_ImsI);
-        Noun_Comp_P3sg.succ(COPULAR_FORMS)
+        Noun_Comp_P3sg.succ(COPULAR_FORMS, POSSESSIVE_FORMS)
                 .succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
                 .succ(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
         Noun_Comp_P3sg_Root.succ(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI);
