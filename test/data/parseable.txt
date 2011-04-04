@@ -7,6 +7,10 @@ gelmesene
 gelemesene
 gelsenize
 gelmesenize
+gelsin
+gelsinler
+gelmesinler
+gelmesin
 gelin
 gelmeyin
 geliniz

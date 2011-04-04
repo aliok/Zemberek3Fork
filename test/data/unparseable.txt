@@ -2,6 +2,8 @@ gelm
 gelem
 gelmer
 geldiz
+gelmeyim
+gelseyiz
 kitapa
 kitab
 kitablar

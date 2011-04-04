@@ -377,7 +377,7 @@ public class TurkishSuffixes {
 
         Cond_ysA.succ(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr);
         
-        Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A2sg_yInIz, A2pl_sAnIzA, A2pl_yIn, A3sg_sIn);
+        Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A2sg_yInIz, A2pl_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
         Agt_cI.succ(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr, Become_lAs, With_lI, Without_sIz);
         Agt_yIcI.succ(Agt_cI.getSuccessors());
 
