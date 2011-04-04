@@ -24,6 +24,15 @@ public class DumbParserTest {
         }
     }
 
+    @Test
+    public void unparseableTest() throws IOException {
+        DumbParser parser = getParser();
+        List<String> unparseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/unparseable.txt")).asStringList();
+        for (String wrong : unparseables) {
+            Assert.assertTrue("Parses invalid word:" + wrong, parser.parse(wrong).size() == 0);
+        }
+    }
+
     private DumbParser getParser() throws IOException {
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();

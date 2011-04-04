@@ -72,6 +72,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet A2sg_sIn = newSet(A2sg, "sIn"); // gel-ecek-sin
     public static SuffixFormSet A2sg_n = newSet(A2sg, "n"); // gel-di-n
     public static SuffixFormSet A2sg_sAnA = newSet(A2sg, "sAnA"); //gel-sene
+    public static SuffixFormSet A2sg_yInIz = newSet(A2sg, "+yInIz"); //gel-iniz
     public static SuffixFormSet A2sg_EMPTY = newSet("A2sg_EMPTY", A2sg, ""); // gel-
 
     public static TurkishSuffix A3sg = new TurkishSuffix("A3sg");
@@ -84,7 +85,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet A1pl_lIm = newSet(A1pl, "lIm"); // gel-e-lim
 
     public static TurkishSuffix A2pl = new TurkishSuffix("A2pl");
-    public static SuffixFormSet A2pl_sInIz = newSet(A2pl, "+sInIz"); // gel-ecek-siniz
+    public static SuffixFormSet A2pl_sInIz = newSet(A2pl, "sInIz"); // gel-ecek-siniz
     public static SuffixFormSet A2pl_sAnIzA = newSet(A2pl, "sAnIzA"); // gel-senize
     public static SuffixFormSet A2pl_nIz = newSet(A2pl, "nIz"); // gel-di-niz
     public static SuffixFormSet A2pl_yIn = newSet(A2pl, "+yIn"); // gel-me-yin
@@ -109,6 +110,11 @@ public class TurkishSuffixes {
     public static SuffixFormSet Aor_Ar = newSet(Aor, "+Ar"); //ser-er
     public static SuffixFormSet Aor_z = newSet(Aor, "z"); // gel-me-z
     public static SuffixFormSet Aor_EMPTY = newSet("Aor_EMPTY", Aor, ""); // gel-me--yiz
+
+    public static TurkishSuffix AorPart = new TurkishSuffix("AorPart"); // convert to an Adjective
+    public static SuffixFormSet AorPart_Ir = newSet(AorPart, "+Ir"); //gel-ir
+    public static SuffixFormSet AorPart_Ar = newSet(AorPart, "+Ar"); //ser-er
+    public static SuffixFormSet AorPart_z = newSet(AorPart, "z"); // gel-me-z
 
     public static TurkishSuffix Prog = new TurkishSuffix("Prog");
     public static SuffixFormSet Prog_Iyor = newSet(Prog, "+Iyor");
@@ -286,22 +292,22 @@ public class TurkishSuffixes {
                 .succ(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
         Noun_Comp_P3sg_Root.succ(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI);
 
-        Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir)
+        Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI);
-        Verb_Aor_Ar.succ(Verb_Main.getSuccessorsIterable()).remove(Aor_Ir).succ(Aor_Ar);
+        Verb_Aor_Ar.succ(Verb_Main.getSuccessors()).remove(Aor_Ir, AorPart_Ir).succ(Aor_Ar, AorPart_Ar);
         Verb_Vow_Drop.succ(Pass_Il);
-        Verb_Vow_NotDrop.succ(Verb_Main.getSuccessorsIterable()).remove(Pass_Il);
+        Verb_Vow_NotDrop.succ(Verb_Main.getSuccessors()).remove(Pass_Il);
         Verb_Prog_Drop.succ(Prog_Iyor);
-        Verb_Prog_NotDrop.succ(Verb_Main.getSuccessorsIterable()).remove(Prog_Iyor);
+        Verb_Prog_NotDrop.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor);
 
-        Verb_Ye.succ(Verb_Main.getSuccessorsIterable()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
+        Verb_Ye.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
         Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
         // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
-        Verb_De.succ(Verb_Main.getSuccessorsIterable()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
+        Verb_De.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
         Verb_Di.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk);
 
-        Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, Prog_Iyor);
-        Verb_Exp_C.succ(Verb_Main.getSuccessorsIterable()).remove(Verb_Exp_V.getSuccessorsIterable()).remove(Aor_Ir);
+        Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
+        Verb_Exp_C.succ(Verb_Main.getSuccessors()).remove(Verb_Exp_V.getSuccessors()).remove(Aor_Ir, AorPart_Ir);
 
         Pron_Main.succ(CASE_FORMS);
         Pron_BenSen.succ(CASE_FORMS).remove(Dat_yA);
@@ -348,13 +354,17 @@ public class TurkishSuffixes {
         EvidCop_ymIs.succ(PERSON_FORMS_COP);
         CondCop_ysA.succ(PERSON_FORMS_COP);
 
-        Neg_mA.succ(Aor_z, Aor_EMPTY, Imp_EMPTY, Opt_yA, Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI);
+        Neg_mA.succ(Aor_z, AorPart_z, Aor_EMPTY, Prog_mAktA, Imp_EMPTY, Opt_yA, Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI);
         Neg_m.succ(Prog_Iyor);
 
         Aor_Ar.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
         Aor_Ir.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
         Aor_z.succ(COPULAR_FORMS).succ(A3sg_sIn, Cond_ysA);
-        Aor_EMPTY.succ(A1sg_m, A3sg_EMPTY).succ(Cond_ysA);
+        Aor_EMPTY.succ(A1sg_m, A1pl_yIz);
+
+        AorPart_Ar.succ(Adj_Main.getSuccessors()).remove(Become_lAs);
+        AorPart_Ir.succ(AorPart_Ar.getSuccessors());
+        AorPart_z.succ(AorPart_Ar.getSuccessors());
 
         Prog_Iyor.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
         Prog_mAktA.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
@@ -362,7 +372,12 @@ public class TurkishSuffixes {
         Fut_yAcAg.succ(A1sg_yIm, A1pl_yIz);
         Fut_yAcAk.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA).remove(Fut_yAcAg.getSuccessors());
 
-        Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A2pl_sAnIzA, A3sg_sIn);
+        Past_dI.succ(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr, CondCop_ysA, PastCop_ydI);
+        Evid_mIs.succ(PERSON_FORMS_N).succ(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken,Cop_dIr);
+
+        Cond_ysA.succ(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr);
+        
+        Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A2sg_yInIz, A2pl_sAnIzA, A2pl_yIn, A3sg_sIn);
         Agt_cI.succ(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr, Become_lAs, With_lI, Without_sIz);
         Agt_yIcI.succ(Agt_cI.getSuccessors());
 
@@ -370,5 +385,6 @@ public class TurkishSuffixes {
         Abil_yA.succ(Neg_mA, Neg_m);
 
         Opt_yA.succ(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_lIm, A2pl_sInIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs );
+        
     }
 }
