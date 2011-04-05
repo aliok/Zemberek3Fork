@@ -109,7 +109,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet Aor_Ir = newSet(Aor, "+Ir"); //gel-ir
     public static SuffixFormSet Aor_Ar = newSet(Aor, "+Ar"); //ser-er
     public static SuffixFormSet Aor_z = newSet(Aor, "z"); // gel-me-z
-    public static SuffixFormSet Aor_EMPTY = newSet("Aor_EMPTY", Aor, ""); // gel-me--yiz
+    public static SuffixFormSet Aor_EMPTY = newSet("Aor_EMPTY", Aor, "", false); // gel-me--yiz
 
     public static TurkishSuffix AorPart = new TurkishSuffix("AorPart"); // convert to an Adjective
     public static SuffixFormSet AorPart_Ir = newSet(AorPart, "+Ir"); //gel-ir
@@ -224,7 +224,6 @@ public class TurkishSuffixes {
     public static SuffixFormSet Pron_Main = newSet(PronounRoot, "");
     public static SuffixFormSet Pron_BenSen = newSet("Pron_BenSen", PronounRoot, "");
     public static SuffixFormSet Pron_BanSan = newSet("Pron_BanSan", PronounRoot, "");
-
 
     public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA};
     public static final SuffixFormSet[] POSSESSIVE_FORMS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};

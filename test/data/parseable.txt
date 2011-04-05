@@ -2,6 +2,7 @@ elmamıza
 gelmiyorsunuz
 gel
 gelme
+gelmem
 geleme
 gelsene
 gelmesene
