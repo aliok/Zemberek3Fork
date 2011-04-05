@@ -150,7 +150,7 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix Caus = new TurkishSuffix("Caus");
     public static SuffixFormSet Caus_t = newSet(Caus, "t");
-    public static SuffixFormSet Caus_tIr = newSet(Pass, ">dIr");
+    public static SuffixFormSet Caus_tIr = newSet(Caus, ">dIr");
 
     public static TurkishSuffix Imp = new TurkishSuffix("Imp");
     public static SuffixFormSet Imp_EMPTY = newSet(Imp, "");
