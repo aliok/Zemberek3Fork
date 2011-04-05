@@ -126,6 +126,9 @@ bugün [Pos:Adv, Time]
 # Pos:Verb info is inferred from -mek -mak suffix. So it is optional.
 
 atmak
+yapmak
+aramak
+etmek [Voicing]
 
 # Aor-I is required here. because normally Aorist suffix is generated as -Ar if verb is single syllable. but not in this case.
 almak [A:Aorist_I]

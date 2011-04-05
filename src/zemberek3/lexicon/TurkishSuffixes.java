@@ -205,9 +205,10 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix VerbRoot = new TurkishSuffix("VerbRoot");
     public static SuffixFormSet Verb_Main = newSet("Verb_Main", VerbRoot, "");
+    public static SuffixFormSet Verb_Pass_Il = newSet("Verb_Pass_Il", VerbRoot, "");
     public static SuffixFormSet Verb_Aor_Ar = newSet("Verb_Aor_Ar", VerbRoot, "");
     public static SuffixFormSet Verb_Prog_Drop = newSet("Verb_Prog_Drop", VerbRoot, "");
-    public static SuffixFormSet Verb_Prog_NotDrop = newSet("Verb_Prog_NotDrop", VerbRoot, "");
+    public static SuffixFormSet Verb_Last_Letter_Vowel = newSet("Verb_Last_Letter_Vowel", VerbRoot, "");
     public static SuffixFormSet Verb_Vow_Drop = newSet("Verb_Vow_Drop", VerbRoot, "");
     public static SuffixFormSet Verb_Vow_NotDrop = newSet("Verb_Vow_NotDrop", VerbRoot, "");
     public static SuffixFormSet Verb_Exp_C = newSet("Verb_Exp_C", VerbRoot, "");
@@ -234,7 +235,8 @@ public class TurkishSuffixes {
     public static final SuffixFormSet[] ROOT_FORMS = {
             Noun_Main, Noun_Exp_C, Noun_Exp_V, Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
             Adj_Main, Adj_Exp_C, Adj_Exp_V,
-            Verb_Main, Verb_Aor_Ar, Verb_Prog_Drop, Verb_Prog_NotDrop, Verb_Vow_Drop, Verb_Vow_NotDrop, Verb_Exp_C, Verb_Exp_V,
+            Verb_Main, Verb_Aor_Ar, Verb_Prog_Drop, Verb_Last_Letter_Vowel, Verb_Vow_Drop, Verb_Vow_NotDrop, Verb_Exp_C,
+            Verb_Exp_V, Verb_Pass_Il,
             Verb_Ye, Verb_Yi, Verb_De, Verb_Di, Pron_Main, Pron_BenSen, Pron_BanSan};
 
     static SuffixFormSet newSet(TurkishSuffix suffix, String generation) {
@@ -292,12 +294,14 @@ public class TurkishSuffixes {
         Noun_Comp_P3sg_Root.succ(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI);
 
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
-                .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Pass_In, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI);
+                .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
+                .succ(Pass_In);
+        Verb_Pass_Il.succ(Verb_Main.getSuccessors()).remove(Pass_In);
         Verb_Aor_Ar.succ(Verb_Main.getSuccessors()).remove(Aor_Ir, AorPart_Ir).succ(Aor_Ar, AorPart_Ar);
         Verb_Vow_Drop.succ(Pass_Il);
         Verb_Vow_NotDrop.succ(Verb_Main.getSuccessors()).remove(Pass_Il);
         Verb_Prog_Drop.succ(Prog_Iyor);
-        Verb_Prog_NotDrop.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor);
+        Verb_Last_Letter_Vowel.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Caus_tIr).succ(Caus_t, Pass_nIl);
 
         Verb_Ye.succ(Verb_Main.getSuccessors()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
         Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
@@ -316,7 +320,6 @@ public class TurkishSuffixes {
         Adj_Exp_C.succ(Noun_Exp_C.getSuccessors()).succ(Ly_cA, Become_lAs, Quite_cA);
         Adj_Exp_V.succ(Noun_Exp_V.getSuccessors());
         Become_lAs.succ(Verb_Main.getSuccessors());
-
 
         Pl_lAr.succ(CASE_FORMS, COPULAR_FORMS)
                 .succ(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz);
@@ -372,10 +375,10 @@ public class TurkishSuffixes {
         Fut_yAcAk.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA).remove(Fut_yAcAg.getSuccessors());
 
         Past_dI.succ(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr, CondCop_ysA, PastCop_ydI);
-        Evid_mIs.succ(PERSON_FORMS_N).succ(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken,Cop_dIr);
+        Evid_mIs.succ(PERSON_FORMS_N).succ(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
 
         Cond_ysA.succ(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr);
-        
+
         Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A2sg_yInIz, A2pl_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
         Agt_cI.succ(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr, Become_lAs, With_lI, Without_sIz);
         Agt_yIcI.succ(Agt_cI.getSuccessors());
@@ -383,7 +386,13 @@ public class TurkishSuffixes {
         Abil_yAbil.succ(Verb_Main.getSuccessors()).remove(Abil_yAbil, Abil_yA);
         Abil_yA.succ(Neg_mA, Neg_m);
 
-        Opt_yA.succ(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_lIm, A2pl_sInIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs );
-        
+        Opt_yA.succ(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_lIm, A2pl_sInIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
+
+        Caus_t.succ(Verb_Main.getSuccessors());
+        Caus_tIr.succ(Verb_Main.getSuccessors()).remove(Caus_tIr).succ(Caus_t);
+
+        Pass_Il.succ(Verb_Main).remove(Pass_In, Pass_nIl);
+        Pass_In.succ(Verb_Main).remove(Pass_Il, Pass_nIl);
+
     }
 }

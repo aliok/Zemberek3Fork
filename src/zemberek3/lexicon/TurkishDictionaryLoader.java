@@ -14,6 +14,10 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static zemberek3.structure.TurkishAlphabet.L_n;
+import static zemberek3.structure.TurkishAlphabet.L_p;
+import static zemberek3.structure.TurkishAlphabet.L_r;
+
 public class TurkishDictionaryLoader {
 
     public List<DictionaryItem> load(File input) throws IOException {
@@ -142,14 +146,18 @@ public class TurkishDictionaryLoader {
             switch (posData.primaryPos) {
                 case Verb:
                     // if a verb ends with a wovel, and -Iyor suffix is appended, last vowel drops.
-                    if (sequence.lastLetter().isVowel())
+                    if (sequence.lastLetter().isVowel()) {
                         attributesList.add(RootAttr.ProgressiveVowelDrop);
+                    }
                     // if verb has more than 1 syllable and there is no Aorist_A label, add Aorist_I.
                     if (sequence.vowelCount() > 1 && !attributesList.contains(RootAttr.Aorist_A))
                         attributesList.add(RootAttr.Aorist_I);
                     // if verb has 1 syllable and there is no Aorist_I label, add Aorist_A
                     if (sequence.vowelCount() == 1 && !attributesList.contains(RootAttr.Aorist_I)) {
                         attributesList.add(RootAttr.Aorist_A);
+                    }
+                    if (sequence.lastLetter() == L_r || sequence.lastLetter() == L_p || sequence.lastLetter() == L_n) {
+                        attributesList.add(RootAttr.Passive_Il);
                     }
                     break;
                 case Noun:

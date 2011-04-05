@@ -10,6 +10,7 @@ import zemberek3.structure.TurkishAlphabet;
 import java.util.*;
 
 import static zemberek3.lexicon.RootAttr.*;
+import static zemberek3.lexicon.RootAttr.Passive_Il;
 import static zemberek3.lexicon.TurkishSuffixes.*;
 
 /**
@@ -55,10 +56,24 @@ public class LexiconGraph {
     }
 
     private StemNode generateRootState(DictionaryItem dictionaryItem) {
-        SuffixFormSet set = suffixes.getRootSuffixFormSet(dictionaryItem.primaryPos);
+        SuffixFormSet set = defineRootSet(dictionaryItem);
         AttributeSet<PhonAttr> phoneticAttrs = calculateRootAttributes(dictionaryItem);
         SuffixNode node = addOrReturnExisting(set, formGenerator.getNode(phoneticAttrs, set));
         return new StemNode(dictionaryItem.clean(), dictionaryItem, node, TerminationType.TERMINAL);
+    }
+
+    //TODO: appears like we need to define most of the sets dynamically because there are too many combinations.. Code below is not finished.
+    private SuffixFormSet defineRootSet(DictionaryItem item) {
+        switch (item.primaryPos) {
+            case Verb:
+                if(item.hasAttribute(Passive_Il)) {
+                    return TurkishSuffixes.Verb_Pass_Il;
+                } else
+                    return TurkishSuffixes.Verb_Main;
+
+            default:
+                return suffixes.getRootSuffixFormSet(item.primaryPos);
+        }
     }
 
     public boolean hasModifierAttribute(DictionaryItem item) {
@@ -178,7 +193,7 @@ public class LexiconGraph {
                     origSet = TurkishSuffixes.Verb_Vow_NotDrop;
                     modSet = TurkishSuffixes.Verb_Vow_Drop;
                 } else if (lexItem.attrs.contains(ProgressiveVowelDrop)) {
-                    origSet = TurkishSuffixes.Verb_Prog_NotDrop;
+                    origSet = TurkishSuffixes.Verb_Last_Letter_Vowel;
                     modSet = TurkishSuffixes.Verb_Prog_Drop;
                 } else if (lexItem.attrs.contains(Aorist_A)) {
                     modSet = TurkishSuffixes.Verb_Aor_Ar;
