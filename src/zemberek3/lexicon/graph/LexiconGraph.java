@@ -66,7 +66,7 @@ public class LexiconGraph {
     private SuffixFormSet defineRootSet(DictionaryItem item) {
         switch (item.primaryPos) {
             case Verb:
-                if(item.hasAttribute(Passive_Il)) {
+                if (item.hasAttribute(Passive_Il)) {
                     return TurkishSuffixes.Verb_Pass_Il;
                 } else
                     return TurkishSuffixes.Verb_Main;
@@ -152,6 +152,7 @@ public class LexiconGraph {
                     break;
                 case Doubling:
                     modifiedSeq.append(modifiedSeq.lastLetter());
+
                     break;
                 case LastVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 2);
@@ -318,5 +319,89 @@ public class LexiconGraph {
         if (toProcess.size() == 0)
             return;
         generateSuffixForms(toProcess);
+    }
+
+    
+
+    static class RootSuffixSetBuilder {
+        SuffixFormSet setOrig;
+        SuffixFormSet setModif;
+
+        RootSuffixSetBuilder(DictionaryItem item) {
+            switch (item.primaryPos) {
+                case Noun:
+                    getForNoun(item);
+                    break;
+                case Verb:
+                    getForVerb(item);
+                    break;
+            }
+        }
+
+        private void getForVerb(DictionaryItem item) {
+            setOrig = new SuffixFormSet("Verb-orig", TurkishSuffixes.VerbRoot, "");
+            setModif = new SuffixFormSet("verb-modif", TurkishSuffixes.VerbRoot, "");
+            setOrig.succ(Verb_Main.getSuccSetCopy());
+            setModif.succ(Verb_Main.getSuccSetCopy());
+            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+                switch (attribute) {
+                    case Aorist_A:
+                        setOrig.succ(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
+                        setModif.succ(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
+                        break;
+                    case Aorist_I:
+                        setOrig.succ(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
+                        setModif.succ(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
+                        break;
+                    case Passive_Il:
+                        setOrig.remove(Pass_In, Pass_nIl).succ(Pass_Il);
+                        setModif.remove(Pass_In, Pass_nIl).succ(Pass_Il);
+                        break;
+                    case LastVowelDrop:
+                        setOrig.remove(Pass_Il);
+                        setModif.clear().succ(Pass_Il);
+                        break;
+                    case Voicing:
+                        setOrig.remove(Verb_Exp_V);
+                        setModif.remove(Verb_Exp_C);
+                        break;
+                    case ProgressiveVowelDrop:
+                        setOrig.remove(Prog_Iyor);
+                        setModif.clear().succ(Prog_Iyor);
+                        break;
+                    case NonTransitive:
+                        setOrig.remove(Caus_t, Caus_tIr);
+                        setModif.remove(Caus_t, Caus_tIr);
+                        break;
+                    case Causative_t:
+                        setOrig.remove(Caus_tIr).succ(Caus_t);
+                        setModif.remove(Caus_tIr).succ(Caus_t);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        void getForNoun(DictionaryItem item) {
+            setOrig = new SuffixFormSet("Noun-orig", TurkishSuffixes.NounRoot, "");
+            setModif = new SuffixFormSet("Noun-modif", TurkishSuffixes.NounRoot, "");
+            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+                switch (attribute) {
+                    case Voicing:
+                    case Doubling:
+                    case LastVowelDrop:
+                        setOrig.succ(TurkishSuffixes.Noun_Exp_C.getSuccSetCopy());
+                        setModif.succ(TurkishSuffixes.Noun_Exp_V.getSuccSetCopy());
+                        break;
+                    case CompoundP3sg:
+                        setOrig.clear().succ(TurkishSuffixes.Noun_Comp_P3sg.getSuccSetCopy());
+                        setModif.clear().succ(TurkishSuffixes.Noun_Comp_P3sg_Root.getSuccSetCopy());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

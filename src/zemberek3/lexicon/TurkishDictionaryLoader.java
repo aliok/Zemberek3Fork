@@ -159,6 +159,8 @@ public class TurkishDictionaryLoader {
                     if (sequence.lastLetter() == L_r || sequence.lastLetter() == L_p || sequence.lastLetter() == L_n) {
                         attributesList.add(RootAttr.Passive_Il);
                     }
+                    if(sequence.lastLetter().isVowel())
+                        attributesList.add(RootAttr.Causative_t);
                     break;
                 case Noun:
                 case Adjective:

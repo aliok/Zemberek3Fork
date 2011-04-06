@@ -1,6 +1,5 @@
 package zemberek3.lexicon.graph;
 
-import com.google.common.collect.Sets;
 import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.DictionaryItem;
@@ -24,7 +23,7 @@ public class LexiconGraphTest {
         Assert.assertNotNull(nodeArmud);
         Assert.assertEquals("armud", nodeArmud.surfaceForm);
         Assert.assertEquals(TurkishSuffixes.Noun_Exp_V, nodeArmud.getSuffixRootNode().suffixSet);
-        Set<SuffixFormSet> sets = nodeArmud.getSuffixRootNode().suffixSet.getSuccessors();
+        Set<SuffixFormSet> sets = nodeArmud.getSuffixRootNode().suffixSet.getSuccSetCopy();
         Assert.assertTrue(Collections.disjoint(sets, Arrays.asList(TurkishSuffixes.Pl_lAr, TurkishSuffixes.A2sg_sIn)));
     }
 

@@ -20,7 +20,8 @@ public enum RootAttr implements StringEnum, IndexedEnum {
     Aorist_A,
     NonTransitive,
     Passive_Il,
-    CompoundP3sg;
+    CompoundP3sg,
+    Causative_t;
 
     int index;
 
