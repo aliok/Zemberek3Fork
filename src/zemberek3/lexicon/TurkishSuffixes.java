@@ -192,8 +192,11 @@ public class TurkishSuffixes {
     public static SuffixFormSet AfterDoing_yIncA = newSet(AfterDoing, "+yIncA");
 
     public static TurkishSuffix NotState = new TurkishSuffix("NotState");
-    public static SuffixFormSet NotState_mAzlIk = newSet(Ness, "mAzlIk");
-    public static SuffixFormSet NotState_mAzlIg = newSet(Ness, "mAzlIğ");
+    public static SuffixFormSet NotState_mAzlIk = newSet(NotState, "mAzlIk");
+    public static SuffixFormSet NotState_mAzlIg = newSet(NotState, "mAzlIğ");
+
+    public static TurkishSuffix ActOf = new TurkishSuffix("ActOf");
+    public static SuffixFormSet ActOf_mAcA = newSet(ActOf, "mAcA");
 
     public static TurkishSuffix Ly = new TurkishSuffix("Ly");
     public static SuffixFormSet Ly_cA = newSet(Ly, ">cA");
@@ -277,7 +280,7 @@ public class TurkishSuffixes {
 
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
-                .succ(Pass_In, NotState_mAzlIk, NotState_mAzlIg);
+                .succ(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA);
 
         Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
         Verb_Exp_C.succ(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);
@@ -335,7 +338,8 @@ public class TurkishSuffixes {
         CondCop_ysA.succ(PERSON_FORMS_COP);
 
         Neg_mA.succ(Aor_z, AorPart_z, Aor_EMPTY, Prog_mAktA, Imp_EMPTY, Opt_yA,
-                Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI, NotState_mAzlIg, NotState_mAzlIk);
+                Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI, NotState_mAzlIg, NotState_mAzlIk,
+                ActOf_mAcA);
         Neg_m.succ(Prog_Iyor);
 
         Aor_Ar.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
