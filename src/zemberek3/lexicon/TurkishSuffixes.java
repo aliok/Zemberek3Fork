@@ -203,6 +203,12 @@ public class TurkishSuffixes {
     public static SuffixFormSet Adj_Exp_C = newSet("Adj_Exp_C", AdjRoot, "");
     public static SuffixFormSet Adj_Exp_V = newSet("Adj_Exp_V", AdjRoot, "");
 
+    public static TurkishSuffix AdvRoot = new TurkishSuffix("AdvRoot");
+    public static SuffixFormSet Adv_Main = newSet("Adv_Main", AdvRoot, "");
+
+    public static TurkishSuffix InterjRoot = new TurkishSuffix("InterjRoot");
+    public static SuffixFormSet Interj_Main = newSet("Interj_Main", InterjRoot, "");
+
     public static TurkishSuffix VerbRoot = new TurkishSuffix("VerbRoot");
     public static SuffixFormSet Verb_Main = newSet("Verb_Main", VerbRoot, "");
     public static SuffixFormSet Verb_Pass_Il = newSet("Verb_Pass_Il", VerbRoot, "");
@@ -231,13 +237,6 @@ public class TurkishSuffixes {
     public static final SuffixFormSet[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final SuffixFormSet[] PERSON_FORMS_COP = {A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr};
     public static final SuffixFormSet[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
-    public static final SuffixFormSet[] TENSE_DEFAULT_FORMS = {Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir};
-    public static final SuffixFormSet[] ROOT_FORMS = {
-            Noun_Main, Noun_Exp_C, Noun_Exp_V, Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
-            Adj_Main, Adj_Exp_C, Adj_Exp_V,
-            Verb_Main, Verb_Aor_Ar, Verb_Prog_Drop, Verb_Last_Letter_Vowel, Verb_Vow_Drop, Verb_Vow_NotDrop, Verb_Exp_C,
-            Verb_Exp_V, Verb_Pass_Il,
-            Verb_Ye, Verb_Yi, Verb_De, Verb_Di, Pron_Main, Pron_BenSen, Pron_BanSan};
 
     static SuffixFormSet newSet(TurkishSuffix suffix, String generation) {
         String id = suffix + "_" + generation;
@@ -296,12 +295,6 @@ public class TurkishSuffixes {
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
                 .succ(Pass_In);
-        Verb_Pass_Il.succ(Verb_Main.getSuccSetCopy()).remove(Pass_In);
-        Verb_Aor_Ar.succ(Verb_Main.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir).succ(Aor_Ar, AorPart_Ar);
-        Verb_Vow_Drop.succ(Pass_Il);
-        Verb_Vow_NotDrop.succ(Verb_Main.getSuccSetCopy()).remove(Pass_Il);
-        Verb_Prog_Drop.succ(Prog_Iyor);
-        Verb_Last_Letter_Vowel.succ(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Caus_tIr).succ(Caus_t, Pass_nIl);
 
         Verb_Ye.succ(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
         Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);

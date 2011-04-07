@@ -46,6 +46,10 @@ public class SuffixFormSet {
         return new HashSet<SuffixFormSet>(successors);
     }
 
+    public Set<SuffixFormSet> getSuccessors() {
+        return successors;
+    }
+
     public boolean isTerminal() {
         return terminal;
     }
@@ -96,31 +100,5 @@ public class SuffixFormSet {
 
     public String toString() {
         return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        SuffixFormSet that = (SuffixFormSet) o;
-
-        if (terminal != that.terminal) return false;
-        if (!generation.equals(that.generation)) return false;
-        if (!id.equals(that.id)) return false;
-        if (!successors.equals(that.successors)) return false;
-        if (!suffix.equals(that.suffix)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + suffix.hashCode();
-        result = 31 * result + generation.hashCode();
-        result = 31 * result + (terminal ? 1 : 0);
-        result = 31 * result + successors.hashCode();
-        return result;
     }
 }

@@ -138,7 +138,7 @@ kavurmak [A:LastVowelDrop]
 demek [A:StemChange]
 yemek [A:StemChange]
 
-gelmek [A:NonTransitive]
+gelmek [A:NonTransitive, Aorist_I]
 pişmek [A:NonTransitive]
 kapmak
 
