@@ -1,6 +1,7 @@
 package zemberek3.lexicon;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -87,6 +88,11 @@ public class SuffixFormSet {
     public SuffixFormSet remove(Iterable<SuffixFormSet> it) {
         for (SuffixFormSet suff : it)
             successors.remove(suff);
+        return this;
+    }
+
+    public SuffixFormSet retain(Collection<SuffixFormSet> coll) {
+        successors.retainAll(coll);
         return this;
     }
 
