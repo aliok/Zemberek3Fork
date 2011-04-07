@@ -211,21 +211,9 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix VerbRoot = new TurkishSuffix("VerbRoot");
     public static SuffixFormSet Verb_Main = newSet("Verb_Main", VerbRoot, "");
-    public static SuffixFormSet Verb_Pass_Il = newSet("Verb_Pass_Il", VerbRoot, "");
-    public static SuffixFormSet Verb_Aor_Ar = newSet("Verb_Aor_Ar", VerbRoot, "");
     public static SuffixFormSet Verb_Prog_Drop = newSet("Verb_Prog_Drop", VerbRoot, "");
-    public static SuffixFormSet Verb_Last_Letter_Vowel = newSet("Verb_Last_Letter_Vowel", VerbRoot, "");
-    public static SuffixFormSet Verb_Vow_Drop = newSet("Verb_Vow_Drop", VerbRoot, "");
-    public static SuffixFormSet Verb_Vow_NotDrop = newSet("Verb_Vow_NotDrop", VerbRoot, "");
     public static SuffixFormSet Verb_Exp_C = newSet("Verb_Exp_C", VerbRoot, "");
     public static SuffixFormSet Verb_Exp_V = newSet("Verb_Exp_V", VerbRoot, "");
-
-    public static SuffixFormSet Verb_Ye = newSet("Verb_Ye", VerbRoot, "");
-    public static SuffixFormSet Verb_Yi = newSet("Verb_Yi", VerbRoot, "");
-
-    public static SuffixFormSet Verb_De = newSet("Verb_De", VerbRoot, "");
-    public static SuffixFormSet Verb_Di = newSet("Verb_Di", VerbRoot, "");
-
 
     public static TurkishSuffix PronounRoot = new TurkishSuffix("Pronoun");
     public static SuffixFormSet Pron_Main = newSet(PronounRoot, "");
@@ -261,23 +249,9 @@ public class TurkishSuffixes {
         return newSet(id, suffix, generation, true);
     }
 
-    public SuffixFormSet getRootSuffixFormSet(PrimaryPos pos) {
-        switch (pos) {
-            case Noun:
-                return Noun_Main;
-            case Adjective:
-                return Adj_Main;
-            case Verb:
-                return Verb_Main;
-        }
-        return Noun_Main;
-    }
-
     public Iterable<SuffixFormSet> getSets() {
         return suffixSets.values();
     }
-
-    private static Map<String, TurkishSuffix> suffixMap = new HashMap<String, TurkishSuffix>();
 
     public TurkishSuffixes() {
 
@@ -295,12 +269,6 @@ public class TurkishSuffixes {
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
                 .succ(Pass_In);
-
-        Verb_Ye.succ(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
-        Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
-        // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
-        Verb_De.succ(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
-        Verb_Di.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk);
 
         Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
         Verb_Exp_C.succ(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);

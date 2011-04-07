@@ -191,6 +191,10 @@ public class LexiconGraph {
     private StemNode[] handleSpecialStems(DictionaryItem item) {
 
         if (item.getId().equals("yemek_Verb")) {
+            SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
+            SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
+            Verb_Ye.succ(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
+            Verb_Yi.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
             StemNode[] stems = new StemNode[3];
             SuffixNode formYe = getSuffixRootNode(item, Verb_Ye);
             stems[0] = new StemNode(item.clean(), item, formYe, TerminationType.TERMINAL);
@@ -201,6 +205,11 @@ public class LexiconGraph {
             return stems;
         }
         if (item.getId().equals("demek_Verb")) {
+            SuffixFormSet Verb_De = new SuffixFormSet("Verb_De", VerbRoot, "");
+            SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
+            // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
+            Verb_De.succ(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
+            Verb_Di.succ(Opt_yA, Fut_yAcAg, Fut_yAcAk);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(item, Verb_De);
             stems[0] = new StemNode(item.clean(), item, formDe, TerminationType.TERMINAL);
@@ -272,12 +281,12 @@ public class LexiconGraph {
     }
 
 
-    static class Keyz {
+    static class RootSuffixKey {
         PrimaryPos pos;
         AttributeSet<RootAttr> attrs;
         Set<SuffixFormSet> sets;
 
-        Keyz(DictionaryItem item, Set<SuffixFormSet> sets) {
+        RootSuffixKey(DictionaryItem item, Set<SuffixFormSet> sets) {
             this.pos = item.primaryPos;
             this.attrs = item.attrs;
             this.sets = sets;
@@ -288,11 +297,11 @@ public class LexiconGraph {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            Keyz keyz = (Keyz) o;
+            RootSuffixKey rootSuffixKey = (RootSuffixKey) o;
 
-            if (!attrs.equals(keyz.attrs)) return false;
-            if (pos != keyz.pos) return false;
-            if (!sets.equals(keyz.sets)) return false;
+            if (!attrs.equals(rootSuffixKey.attrs)) return false;
+            if (pos != rootSuffixKey.pos) return false;
+            if (!sets.equals(rootSuffixKey.sets)) return false;
 
             return true;
         }
@@ -306,7 +315,7 @@ public class LexiconGraph {
         }
     }
 
-    static Map<Keyz, SuffixFormSet> dynamicFormSetMap = new HashMap<Keyz, SuffixFormSet>();
+    static Map<RootSuffixKey, SuffixFormSet> dynamicFormSetMap = new HashMap<RootSuffixKey, SuffixFormSet>();
 
     static class RootSuffixSetBuilder {
         SuffixFormSet original;
@@ -342,7 +351,7 @@ public class LexiconGraph {
         }
 
         private SuffixFormSet addOrReturnExisting(DictionaryItem item, SuffixFormSet set) {
-            Keyz key = new Keyz(item, set.getSuccessors());
+            RootSuffixKey key = new RootSuffixKey(item, set.getSuccessors());
             if (dynamicFormSetMap.containsKey(key)) {
                 return dynamicFormSetMap.get(key);
             } else {
@@ -455,8 +464,4 @@ public class LexiconGraph {
 
     }
 
-    public static void main(String[] args) {
-        HashSet h = new HashSet();
-        h.hashCode();
-    }
 }

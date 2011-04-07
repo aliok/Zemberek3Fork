@@ -22,7 +22,6 @@ public class LexiconGraphTest {
         StemNode nodeArmud = getNode("armud", graph);
         Assert.assertNotNull(nodeArmud);
         Assert.assertEquals("armud", nodeArmud.surfaceForm);
-        Assert.assertEquals(TurkishSuffixes.Noun_Exp_V, nodeArmud.getSuffixRootNode().suffixSet);
         Set<SuffixFormSet> sets = nodeArmud.getSuffixRootNode().suffixSet.getSuccSetCopy();
         Assert.assertTrue(Collections.disjoint(sets, Arrays.asList(TurkishSuffixes.Pl_lAr, TurkishSuffixes.A2sg_sIn)));
     }
