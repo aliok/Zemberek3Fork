@@ -2,6 +2,7 @@ package zemberek3.lexicon;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class TurkishSuffixes {
 
@@ -131,11 +132,22 @@ public class TurkishSuffixes {
     public static SuffixFormSet Fut_yAcAk = newSet(Fut, "+yAcAk");
     public static SuffixFormSet Fut_yAcAg = newSet(Fut, "+yAcAğ");
 
+    public static TurkishSuffix FutPart = new TurkishSuffix("FutPart");
+    public static SuffixFormSet FutPart_yAcAk = newSet(FutPart, "+yAcAk");
+    public static SuffixFormSet FutPart_yAcAg = newSet(FutPart, "+yAcAğ");
+
     public static TurkishSuffix Past = new TurkishSuffix("Past");
     public static SuffixFormSet Past_dI = newSet(Past, ">dI");
 
+    public static TurkishSuffix PastPart = new TurkishSuffix("PastPart");
+    public static SuffixFormSet PastPart_dIk = newSet(Past, ">dIk");
+    public static SuffixFormSet PastPart_dIg = newSet(Past, ">dIğ");
+
     public static TurkishSuffix Evid = new TurkishSuffix("Evid");
     public static SuffixFormSet Evid_mIs = newSet(Evid, "mIş");
+
+    public static TurkishSuffix EvidPart = new TurkishSuffix("EvidPart");
+    public static SuffixFormSet EvidPart_mIs = newSet(EvidPart, "mIş");
 
     public static TurkishSuffix Neg = new TurkishSuffix("Neg");
     public static SuffixFormSet Neg_mA = newSet(Neg, "mA"); //gel-me
@@ -280,7 +292,8 @@ public class TurkishSuffixes {
 
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
-                .succ(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA);
+                .succ(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA, PastPart_dIg, PastPart_dIk, EvidPart_mIs)
+                .succ(FutPart_yAcAg, FutPart_yAcAk);
 
         Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
         Verb_Exp_C.succ(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);
@@ -329,7 +342,7 @@ public class TurkishSuffixes {
                 .succ(Pl_lAr, Ness_lIg, Ness_lIk, With_lI, Without_sIz);
         Resemb_msI.succ(Resemb_ImsI.getSuccSetCopy());
 
-        Ness_lIk.succ(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr,Agt_cI);
+        Ness_lIk.succ(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr, Agt_cI);
         Ness_lIg.succ(Ness_lIk).retain(Noun_Exp_V.getSuccSetCopy());
         Ness_lIk.remove(Ness_lIg.getSuccSetCopy());
 
@@ -339,7 +352,7 @@ public class TurkishSuffixes {
 
         Neg_mA.succ(Aor_z, AorPart_z, Aor_EMPTY, Prog_mAktA, Imp_EMPTY, Opt_yA,
                 Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI, NotState_mAzlIg, NotState_mAzlIk,
-                ActOf_mAcA);
+                ActOf_mAcA, PastPart_dIg, PastPart_dIk, FutPart_yAcAg, Fut_yAcAk, EvidPart_mIs);
         Neg_m.succ(Prog_Iyor);
 
         Aor_Ar.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
@@ -350,6 +363,14 @@ public class TurkishSuffixes {
         AorPart_Ar.succ(Adj_Main.getSuccSetCopy()).remove(Become_lAs);
         AorPart_Ir.succ(AorPart_Ar.getSuccSetCopy());
         AorPart_z.succ(AorPart_Ar.getSuccSetCopy());
+
+        FutPart_yAcAg.succ(AorPart_Ar.getSuccSetCopy());
+        FutPart_yAcAk.succ(AorPart_Ar.getSuccSetCopy());
+
+        EvidPart_mIs.succ(AorPart_Ar.getSuccSetCopy());
+
+        PastPart_dIk.succ(AorPart_Ar.getSuccSetCopy());
+        PastPart_dIg.succ(AorPart_Ar.getSuccSetCopy());
 
         Prog_Iyor.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
         Prog_mAktA.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
