@@ -149,6 +149,9 @@ public class TurkishSuffixes {
     public static TurkishSuffix EvidPart = new TurkishSuffix("EvidPart");
     public static SuffixFormSet EvidPart_mIs = newSet(EvidPart, "mIş");
 
+    public static TurkishSuffix PresPart = new TurkishSuffix("PresPart");
+    public static SuffixFormSet PresPart_yAn = newSet(PresPart, "+yAn");
+
     public static TurkishSuffix Neg = new TurkishSuffix("Neg");
     public static SuffixFormSet Neg_mA = newSet(Neg, "mA"); //gel-me
     public static SuffixFormSet Neg_m = newSet(Neg, "m", false); // gel-m-iyor
@@ -209,6 +212,21 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix ActOf = new TurkishSuffix("ActOf");
     public static SuffixFormSet ActOf_mAcA = newSet(ActOf, "mAcA");
+
+    public static TurkishSuffix AsIf = new TurkishSuffix("AsIf");
+    public static SuffixFormSet AsIf_cAsInA = newSet(AsIf, ">cAsInA");
+
+    public static TurkishSuffix AsLongAs = new TurkishSuffix("AsLongAs");
+    public static SuffixFormSet AsLongAs_dIkcA = newSet(AsLongAs, ">dIkçA");
+
+    public static TurkishSuffix Inf1 = new TurkishSuffix("Inf1");
+    public static SuffixFormSet Inf1_mAk = newSet(Inf1, "mak");
+
+    public static TurkishSuffix Inf2 = new TurkishSuffix("Inf2");
+    public static SuffixFormSet Inf2_mA = newSet(Inf2, "ma");
+
+    public static TurkishSuffix Inf3 = new TurkishSuffix("Inf3");
+    public static SuffixFormSet Inf3_yIs = newSet(Inf3, "+yIş");
 
     public static TurkishSuffix Ly = new TurkishSuffix("Ly");
     public static SuffixFormSet Ly_cA = newSet(Ly, ">cA");
@@ -293,7 +311,8 @@ public class TurkishSuffixes {
         Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
                 .succ(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA, PastPart_dIg, PastPart_dIk, EvidPart_mIs)
-                .succ(FutPart_yAcAg, FutPart_yAcAk);
+                .succ(FutPart_yAcAg, FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
+                .succ(Inf1_mAk, Inf2_mA, Inf3_yIs);
 
         Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
         Verb_Exp_C.succ(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);
@@ -352,7 +371,9 @@ public class TurkishSuffixes {
 
         Neg_mA.succ(Aor_z, AorPart_z, Aor_EMPTY, Prog_mAktA, Imp_EMPTY, Opt_yA,
                 Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI, NotState_mAzlIg, NotState_mAzlIk,
-                ActOf_mAcA, PastPart_dIg, PastPart_dIk, FutPart_yAcAg, Fut_yAcAk, EvidPart_mIs);
+                ActOf_mAcA, PastPart_dIg, PastPart_dIk, FutPart_yAcAg, Fut_yAcAk, EvidPart_mIs)
+                .succ(AsLongAs_dIkcA, PresPart_yAn)
+                .succ(Inf1_mAk, Inf2_mA, Inf3_yIs);
         Neg_m.succ(Prog_Iyor);
 
         Aor_Ar.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
@@ -360,17 +381,17 @@ public class TurkishSuffixes {
         Aor_z.succ(COPULAR_FORMS).succ(A3sg_sIn, Cond_ysA);
         Aor_EMPTY.succ(A1sg_m, A1pl_yIz);
 
-        AorPart_Ar.succ(Adj_Main.getSuccSetCopy()).remove(Become_lAs);
+        AorPart_Ar.succ(Adj_Main.getSuccSetCopy()).remove(Become_lAs).succ(AsIf_cAsInA);
         AorPart_Ir.succ(AorPart_Ar.getSuccSetCopy());
         AorPart_z.succ(AorPart_Ar.getSuccSetCopy());
 
-        FutPart_yAcAg.succ(AorPart_Ar.getSuccSetCopy());
         FutPart_yAcAk.succ(AorPart_Ar.getSuccSetCopy());
+        FutPart_yAcAg.succ(AorPart_Ar.getSuccSetCopy());
 
         EvidPart_mIs.succ(AorPart_Ar.getSuccSetCopy());
 
-        PastPart_dIk.succ(AorPart_Ar.getSuccSetCopy());
-        PastPart_dIg.succ(AorPart_Ar.getSuccSetCopy());
+        PastPart_dIk.succ(AorPart_Ar.getSuccSetCopy()).remove(AsIf_cAsInA);
+        PastPart_dIg.succ(PastPart_dIk.getSuccSetCopy());
 
         Prog_Iyor.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
         Prog_mAktA.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
