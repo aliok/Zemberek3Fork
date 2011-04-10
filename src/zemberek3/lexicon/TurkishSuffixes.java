@@ -2,7 +2,6 @@ package zemberek3.lexicon;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class TurkishSuffixes {
 
@@ -140,8 +139,8 @@ public class TurkishSuffixes {
     public static SuffixFormSet Past_dI = newSet(Past, ">dI");
 
     public static TurkishSuffix PastPart = new TurkishSuffix("PastPart");
-    public static SuffixFormSet PastPart_dIk = newSet(Past, ">dIk");
-    public static SuffixFormSet PastPart_dIg = newSet(Past, ">dIğ");
+    public static SuffixFormSet PastPart_dIk = newSet(PastPart, ">dIk");
+    public static SuffixFormSet PastPart_dIg = newSet(PastPart, ">dIğ");
 
     public static TurkishSuffix Evid = new TurkishSuffix("Evid");
     public static SuffixFormSet Evid_mIs = newSet(Evid, "mIş");
@@ -178,7 +177,6 @@ public class TurkishSuffixes {
     public static SuffixFormSet Imp_EMPTY = newSet(Imp, "");
 
     public static TurkishSuffix Recip = new TurkishSuffix("Recip");
-    public static SuffixFormSet Recip_yIs = newSet(Recip, "+yIş");
     public static SuffixFormSet Recip_Is = newSet(Recip, "+Iş");
 
     public static TurkishSuffix Reflex = new TurkishSuffix("Reflex");
@@ -220,10 +218,10 @@ public class TurkishSuffixes {
     public static SuffixFormSet AsLongAs_dIkcA = newSet(AsLongAs, ">dIkçA");
 
     public static TurkishSuffix Inf1 = new TurkishSuffix("Inf1");
-    public static SuffixFormSet Inf1_mAk = newSet(Inf1, "mak");
+    public static SuffixFormSet Inf1_mAk = newSet(Inf1, "mAk");
 
     public static TurkishSuffix Inf2 = new TurkishSuffix("Inf2");
-    public static SuffixFormSet Inf2_mA = newSet(Inf2, "ma");
+    public static SuffixFormSet Inf2_mA = newSet(Inf2, "mA");
 
     public static TurkishSuffix Inf3 = new TurkishSuffix("Inf3");
     public static SuffixFormSet Inf3_yIs = newSet(Inf3, "+yIş");
@@ -298,126 +296,132 @@ public class TurkishSuffixes {
 
     public TurkishSuffixes() {
 
-        Noun_Main.succ(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .succ(Pl_lAr, Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Resemb_msI,
+        Noun_Main.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
+                .add(Pl_lAr, Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Resemb_msI,
                         Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl);
-        Noun_Exp_V.succ(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz, Resemb_ImsI);
-        Noun_Exp_C.succ(Noun_Main.getSuccSetCopy()).remove(Noun_Exp_V.getSuccSetCopy());
-        Noun_Comp_P3sg.succ(COPULAR_FORMS, POSSESSIVE_FORMS)
-                .succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
-                .succ(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
-        Noun_Comp_P3sg_Root.succ(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl);
+        Noun_Exp_V.add(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz, Resemb_ImsI);
+        Noun_Exp_C.add(Noun_Main.getSuccSetCopy()).remove(Noun_Exp_V.getSuccSetCopy());
+        Noun_Comp_P3sg.add(COPULAR_FORMS, POSSESSIVE_FORMS)
+                .add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
+                .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
+        Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl);
 
-        Verb_Main.succ(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
-                .succ(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
-                .succ(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA, PastPart_dIg, PastPart_dIk, EvidPart_mIs)
-                .succ(FutPart_yAcAg, FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
-                .succ(Inf1_mAk, Inf2_mA, Inf3_yIs);
+        Verb_Main.add(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
+                .add(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
+                .add(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA, PastPart_dIg, PastPart_dIk, EvidPart_mIs)
+                .add(FutPart_yAcAg, FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
+                .add(Inf1_mAk, Inf2_mA, Inf3_yIs);
 
-        Verb_Exp_V.succ(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
-        Verb_Exp_C.succ(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);
+        Verb_Exp_V.add(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
+        Verb_Exp_C.add(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);
 
-        Pron_Main.succ(CASE_FORMS);
-        Pron_BenSen.succ(CASE_FORMS).remove(Dat_yA);
-        Pron_BanSan.succ(Dat_yA);
+        Pron_Main.add(CASE_FORMS);
+        Pron_BenSen.add(CASE_FORMS).remove(Dat_yA);
+        Pron_BanSan.add(Dat_yA);
 
-        Adj_Main.succ(Noun_Main.getSuccSetCopy()).succ(Ly_cA, Become_lAs, Quite_cA);
-        Adj_Exp_C.succ(Noun_Exp_C.getSuccSetCopy()).succ(Ly_cA, Become_lAs, Quite_cA);
-        Adj_Exp_V.succ(Noun_Exp_V.getSuccSetCopy());
-        Become_lAs.succ(Verb_Main.getSuccSetCopy());
+        Adj_Main.add(Noun_Main.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);
+        Adj_Exp_C.add(Noun_Exp_C.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);
+        Adj_Exp_V.add(Noun_Exp_V.getSuccSetCopy());
+        Become_lAs.add(Verb_Main.getSuccSetCopy());
 
-        Pl_lAr.succ(CASE_FORMS, COPULAR_FORMS)
-                .succ(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz);
+        Pl_lAr.add(CASE_FORMS, COPULAR_FORMS)
+                .add(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz);
 
-        P1sg_Im.succ(CASE_FORMS, COPULAR_FORMS).succ(A2sg_sIn, A2pl_sInIz);
-        P2sg_In.succ(CASE_FORMS, COPULAR_FORMS).succ(A1sg_yIm, A1pl_yIz);
-        P3sg_sI.succ(COPULAR_FORMS)
-                .succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
-                .succ(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
-        P1pl_ImIz.succ(CASE_FORMS, COPULAR_FORMS);
-        P2pl_InIz.succ(CASE_FORMS, COPULAR_FORMS);
-        P3pl_lArI.succ(P3sg_sI.getSuccessorsIterable());
+        P1sg_Im.add(CASE_FORMS, COPULAR_FORMS).add(A2sg_sIn, A2pl_sInIz);
+        P2sg_In.add(CASE_FORMS, COPULAR_FORMS).add(A1sg_yIm, A1pl_yIz);
+        P3sg_sI.add(COPULAR_FORMS)
+                .add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
+                .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
+        P1pl_ImIz.add(CASE_FORMS, COPULAR_FORMS);
+        P2pl_InIz.add(CASE_FORMS, COPULAR_FORMS);
+        P3pl_lArI.add(P3sg_sI.getSuccessorsIterable());
 
-        Rel_ki.succ(COPULAR_FORMS, PERSON_FORMS_N).succ(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA);
-        Dat_yA.succ(COPULAR_FORMS);
-        Dat_nA.succ(COPULAR_FORMS);
+        Rel_ki.add(COPULAR_FORMS, PERSON_FORMS_N).add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA);
+        Dat_yA.add(COPULAR_FORMS);
+        Dat_nA.add(COPULAR_FORMS);
 
-        Loc_dA.succ(COPULAR_FORMS).succ(Rel_ki);
-        Loc_ndA.succ(COPULAR_FORMS);
+        Loc_dA.add(COPULAR_FORMS).add(Rel_ki);
+        Loc_ndA.add(COPULAR_FORMS);
 
-        Abl_dAn.succ(COPULAR_FORMS);
-        Abl_ndAn.succ(COPULAR_FORMS);
+        Abl_dAn.add(COPULAR_FORMS);
+        Abl_ndAn.add(COPULAR_FORMS);
 
-        Gen_nIn.succ(COPULAR_FORMS).succ(Rel_ki);
+        Gen_nIn.add(COPULAR_FORMS).add(Rel_ki);
 
-        Dim_cIg.succ(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);
-        Dim_cIk.succ(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr).succ(COPULAR_FORMS);
-        Dim_cAgIz.succ(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N);
+        Dim_cIg.add(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);
+        Dim_cIk.add(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr).add(COPULAR_FORMS);
+        Dim_cAgIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N);
 
-        With_lI.succ(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).succ(Pl_lAr);
-        Without_sIz.succ(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).succ(Pl_lAr);
+        With_lI.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr);
+        Without_sIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr);
 
-        Resemb_msI.succ(CASE_FORMS, PERSON_FORMS_N, COPULAR_FORMS, POSSESSIVE_FORMS)
-                .succ(Pl_lAr, Ness_lIg, Ness_lIk, With_lI, Without_sIz);
-        Resemb_msI.succ(Resemb_ImsI.getSuccSetCopy());
+        Resemb_msI.add(CASE_FORMS, PERSON_FORMS_N, COPULAR_FORMS, POSSESSIVE_FORMS)
+                .add(Pl_lAr, Ness_lIg, Ness_lIk, With_lI, Without_sIz);
+        Resemb_msI.add(Resemb_ImsI.getSuccSetCopy());
 
-        Ness_lIk.succ(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr, Agt_cI);
-        Ness_lIg.succ(Ness_lIk).retain(Noun_Exp_V.getSuccSetCopy());
+        Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Agt_cI);
+        Ness_lIg.add(Ness_lIk).retain(Noun_Exp_V.getSuccSetCopy());
         Ness_lIk.remove(Ness_lIg.getSuccSetCopy());
 
-        PastCop_ydI.succ(PERSON_FORMS_COP);
-        EvidCop_ymIs.succ(PERSON_FORMS_COP);
-        CondCop_ysA.succ(PERSON_FORMS_COP);
+        PastCop_ydI.add(PERSON_FORMS_COP);
+        EvidCop_ymIs.add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr, AsIf_cAsInA);
+        CondCop_ysA.add(PERSON_FORMS_COP);
 
-        Neg_mA.succ(Aor_z, AorPart_z, Aor_EMPTY, Prog_mAktA, Imp_EMPTY, Opt_yA,
+        Neg_mA.add(Aor_z, AorPart_z, Aor_EMPTY, Prog_mAktA, Imp_EMPTY, Opt_yA,
                 Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI, NotState_mAzlIg, NotState_mAzlIk,
                 ActOf_mAcA, PastPart_dIg, PastPart_dIk, FutPart_yAcAg, Fut_yAcAk, EvidPart_mIs)
-                .succ(AsLongAs_dIkcA, PresPart_yAn)
-                .succ(Inf1_mAk, Inf2_mA, Inf3_yIs);
-        Neg_m.succ(Prog_Iyor);
+                .add(AsLongAs_dIkcA, PresPart_yAn)
+                .add(Inf1_mAk, Inf2_mA, Inf3_yIs);
+        Neg_m.add(Prog_Iyor);
 
-        Aor_Ar.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
-        Aor_Ir.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
-        Aor_z.succ(COPULAR_FORMS).succ(A3sg_sIn, Cond_ysA);
-        Aor_EMPTY.succ(A1sg_m, A1pl_yIz);
+        Aor_Ar.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
+        Aor_Ir.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
+        Aor_z.add(COPULAR_FORMS).add(A3sg_sIn, Cond_ysA);
+        Aor_EMPTY.add(A1sg_m, A1pl_yIz);
 
-        AorPart_Ar.succ(Adj_Main.getSuccSetCopy()).remove(Become_lAs).succ(AsIf_cAsInA);
-        AorPart_Ir.succ(AorPart_Ar.getSuccSetCopy());
-        AorPart_z.succ(AorPart_Ar.getSuccSetCopy());
+        AorPart_Ar.add(Adj_Main.getSuccSetCopy()).remove(Become_lAs).add(AsIf_cAsInA);
+        AorPart_Ir.add(AorPart_Ar.getSuccSetCopy());
+        AorPart_z.add(AorPart_Ar.getSuccSetCopy());
 
-        FutPart_yAcAk.succ(AorPart_Ar.getSuccSetCopy());
-        FutPart_yAcAg.succ(AorPart_Ar.getSuccSetCopy());
+        FutPart_yAcAk.add(AorPart_Ar.getSuccSetCopy());
+        FutPart_yAcAg.add(AorPart_Ar.getSuccSetCopy());
 
-        EvidPart_mIs.succ(AorPart_Ar.getSuccSetCopy());
+        EvidPart_mIs.add(AorPart_Ar.getSuccSetCopy());
 
-        PastPart_dIk.succ(AorPart_Ar.getSuccSetCopy()).remove(AsIf_cAsInA);
-        PastPart_dIg.succ(PastPart_dIk.getSuccSetCopy());
+        PastPart_dIk.add(AorPart_Ar.getSuccSetCopy()).remove(AsIf_cAsInA);
+        PastPart_dIg.add(PastPart_dIk.getSuccSetCopy());
 
-        Prog_Iyor.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
-        Prog_mAktA.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA);
+        Prog_Iyor.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
+        Prog_mAktA.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
 
-        Fut_yAcAg.succ(A1sg_yIm, A1pl_yIz);
-        Fut_yAcAk.succ(PERSON_FORMS_N, COPULAR_FORMS).succ(Cond_ysA).remove(Fut_yAcAg.getSuccSetCopy());
+        Fut_yAcAg.add(A1sg_yIm, A1pl_yIz);
+        Fut_yAcAk.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA, AsIf_cAsInA).remove(Fut_yAcAg.getSuccSetCopy());
 
-        Past_dI.succ(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr, CondCop_ysA, PastCop_ydI);
-        Evid_mIs.succ(PERSON_FORMS_N).succ(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
+        Past_dI.add(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr, CondCop_ysA, PastCop_ydI);
+        Evid_mIs.add(PERSON_FORMS_N).add(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
 
-        Cond_ysA.succ(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr);
+        Cond_ysA.add(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr);
 
-        Imp_EMPTY.succ(A2sg_EMPTY, A2sg_sAnA, A2sg_yInIz, A2pl_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
-        Agt_cI.succ(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).succ(Pl_lAr, Become_lAs, With_lI, Without_sIz);
-        Agt_yIcI.succ(Agt_cI.getSuccSetCopy());
+        Imp_EMPTY.add(A2sg_EMPTY, A2sg_sAnA, A2sg_yInIz, A2pl_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
+        Agt_cI.add(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Become_lAs, With_lI, Without_sIz);
+        Agt_yIcI.add(Agt_cI.getSuccSetCopy());
 
-        Abil_yAbil.succ(Verb_Main.getSuccSetCopy()).remove(Abil_yAbil, Abil_yA);
-        Abil_yA.succ(Neg_mA, Neg_m);
+        Abil_yAbil.add(Verb_Main.getSuccSetCopy()).remove(Abil_yAbil, Abil_yA);
+        Abil_yA.add(Neg_mA, Neg_m);
 
-        Opt_yA.succ(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_lIm, A2pl_sInIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
+        Opt_yA.add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_lIm, A2pl_sInIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
 
-        Caus_t.succ(Verb_Main.getSuccSetCopy());
-        Caus_tIr.succ(Verb_Main.getSuccSetCopy()).remove(Caus_tIr).succ(Caus_t);
+        Caus_t.add(Verb_Main.getSuccSetCopy());
+        Caus_tIr.add(Verb_Main.getSuccSetCopy()).remove(Caus_tIr).add(Caus_t);
 
-        Pass_Il.succ(Verb_Main).remove(Pass_In, Pass_nIl);
-        Pass_In.succ(Verb_Main).remove(Pass_Il, Pass_nIl);
+        Pass_Il.add(Verb_Main).remove(Pass_In, Pass_nIl);
+        Pass_In.add(Verb_Main).remove(Pass_Il, Pass_nIl);
 
+        Reflex_In.add(Verb_Main);
+        Recip_Is.add(Verb_Main);
+
+        Inf1_mAk.add(COPULAR_FORMS).add(Abl_dAn, Loc_dA, Inst_ylA);
+        Inf2_mA.add(Noun_Main.getSuccessors());
+        Inf3_yIs.add(Noun_Main.getSuccessors());
     }
 }

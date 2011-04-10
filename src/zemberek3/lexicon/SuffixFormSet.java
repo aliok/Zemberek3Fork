@@ -60,18 +60,18 @@ public class SuffixFormSet {
         return this;
     }
 
-    public SuffixFormSet succ(SuffixFormSet... sets) {
+    public SuffixFormSet add(SuffixFormSet... sets) {
         this.successors.addAll(Arrays.asList(sets));
         return this;
     }
 
-    public SuffixFormSet succ(Iterable<SuffixFormSet> it) {
+    public SuffixFormSet add(Iterable<SuffixFormSet> it) {
         for (SuffixFormSet suff : it)
             successors.add(suff);
         return this;
     }
 
-    public SuffixFormSet succ(SuffixFormSet[]... sets) {
+    public SuffixFormSet add(SuffixFormSet[]... sets) {
         for (SuffixFormSet[] suffixArray : sets) {
             this.successors.addAll(Arrays.asList(suffixArray));
         }

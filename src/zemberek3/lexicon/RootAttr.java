@@ -21,7 +21,9 @@ public enum RootAttr implements StringEnum, IndexedEnum {
     NonTransitive,
     Passive_Il,
     CompoundP3sg,
-    Causative_t;
+    Causative_t,
+    Reflexive,
+    Reciprocal;
 
     int index;
 

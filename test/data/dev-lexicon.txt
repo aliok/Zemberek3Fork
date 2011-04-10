@@ -125,10 +125,12 @@ bugün [Pos:Adv, Time]
 # Verbs
 # Pos:Verb info is inferred from -mek -mak suffix. So it is optional.
 
-atmak
+atmak [A:Reciprocal]
+bakmak [A:Reciprocal]
 yapmak
 aramak
-etmek [Voicing]
+etmek [A:Voicing]
+yıkanmak [A:Reflexive]
 
 # Aor-I is required here. because normally Aorist suffix is generated as -Ar if verb is single syllable. but not in this case.
 almak [A:Aorist_I]
@@ -140,7 +142,7 @@ yemek [A:StemChange]
 
 gelmek [A:NonTransitive, Aorist_I]
 pişmek [A:NonTransitive]
-kapmak
+kapmak [A:Reciprocal]
 
 # ------------------------------------------------------------------------------------------
 # Interjection

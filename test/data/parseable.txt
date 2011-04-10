@@ -46,6 +46,11 @@ gelmiyormuş
 gelmiyordular
 gelmezsin
 gelirsin
+gelmişçesine
+
+gelmekten
+gelmeye
+gelmek
 
 kavurduk
 kavrulduk
@@ -55,6 +60,19 @@ kavrulma
 kavrul
 kavuruyoruz
 kavruluyoruz
+kavrulmuşçasına
+kavrulmamışçasına
+
+kabalaşmayacakmışsınız
+kabalaşamayacakçasına
+kabalaşamayacakmışçasına
+
+bakıştık
+bakışacağız
+bakışacaklarsa
+yıkandım
+yıkanabilirim
+yıkanacak
 
 yaptır
 yaptıracak
