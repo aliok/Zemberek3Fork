@@ -74,6 +74,14 @@ yıkandım
 yıkanabilirim
 yıkanacak
 
+dedi
+diyecek
+deyince
+deyip
+yiyip
+yiyince
+yiyecek
+
 yaptır
 yaptıracak
 arat

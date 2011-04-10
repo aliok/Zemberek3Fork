@@ -193,8 +193,8 @@ public class LexiconGraph {
         if (item.getId().equals("yemek_Verb")) {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
-            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
-            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, AfterDoing_yIncA);
+            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, JustAfter_yIncA, AfterDoing_yIp);
+            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, JustAfter_yIncA, AfterDoing_yIp);
             StemNode[] stems = new StemNode[3];
             SuffixNode formYe = getSuffixRootNode(item, Verb_Ye);
             stems[0] = new StemNode(item.clean(), item, formYe, TerminationType.TERMINAL);
@@ -208,7 +208,7 @@ public class LexiconGraph {
             SuffixFormSet Verb_De = new SuffixFormSet("Verb_De", VerbRoot, "");
             SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
-            Verb_De.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, AfterDoing_yIncA);
+            Verb_De.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA);
             Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(item, Verb_De);

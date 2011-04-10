@@ -23,7 +23,8 @@ public class DumbParser {
     }
 
     public List<ParseToken> parse(String input) {
-        List<StemNode> candidates = new ArrayList<StemNode>();
+        // get stem candidates.
+        List<StemNode> candidates = Lists.newArrayList();
         for (int i = 1; i <= input.length(); i++) {
             String stem = input.substring(0, i);
             if (stemNodes.containsKey(stem)) {
@@ -31,20 +32,23 @@ public class DumbParser {
             }
         }
 
-        List<ParseToken> parseTokens = new ArrayList<ParseToken>();
+        // generate starting tokens with suffix root nodes.
+        List<ParseToken> initialTokens = Lists.newArrayList();
         for (StemNode candidate : candidates) {
             String rest = input.substring(candidate.surfaceForm.length());
-            parseTokens.add(new ParseToken(candidate, Lists.<SuffixNode>newArrayList(candidate.getSuffixRootNode()), rest));
+            initialTokens.add(new ParseToken(candidate, Lists.<SuffixNode>newArrayList(candidate.getSuffixRootNode()), rest));
         }
-        List<ParseToken> result = new ArrayList<ParseToken>();
-        traverseSuffixes(parseTokens, result);
+
+        // traverse suffix graph.
+        List<ParseToken> result = Lists.newArrayList();
+        traverseSuffixes(initialTokens, result);
         return result;
     }
 
-    void traverseSuffixes(List<ParseToken> current, List<ParseToken> completed) {
-        List<ParseToken> newtokens = new ArrayList<ParseToken>();
+    private void traverseSuffixes(List<ParseToken> current, List<ParseToken> completed) {
+        List<ParseToken> newtokens = Lists.newArrayList();
         for (ParseToken token : current) {
-            List<SuffixNode> matches = new ArrayList<SuffixNode>();
+            List<SuffixNode> matches = Lists.newArrayList();
             for (SuffixNode successor : token.currentNode.getSuccessors()) {
                 if (token.rest.startsWith(successor.surfaceForm)) {
                     matches.add(successor);

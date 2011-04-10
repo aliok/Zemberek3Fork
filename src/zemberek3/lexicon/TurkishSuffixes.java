@@ -95,8 +95,8 @@ public class TurkishSuffixes {
     public static SuffixFormSet A3pl_sInlAr = newSet(A3pl, "sInlAr"); // gel-sinler
 
     public static TurkishSuffix Agt = new TurkishSuffix("Agt");
-    public static SuffixFormSet Agt_cI = newSet(Agt, ">cI"); // araba-cı
-    public static SuffixFormSet Agt_yIcI = newSet(Agt, "+yIcI"); // otur-ucu
+    public static SuffixFormSet Agt_cI = newSet(Agt, ">cI"); // araba-cı. Converts to another Noun.
+    public static SuffixFormSet Agt_yIcI = newSet(Agt, "+yIcI"); // otur-ucu. converts to both Noun and Adj
 
     public static TurkishSuffix Ness = new TurkishSuffix("Ness");
     public static SuffixFormSet Ness_lIk = newSet(Ness, "lIk");
@@ -201,9 +201,6 @@ public class TurkishSuffixes {
     public static TurkishSuffix While = new TurkishSuffix("While");
     public static SuffixFormSet While_ken = newSet(While, "+yken");
 
-    public static TurkishSuffix AfterDoing = new TurkishSuffix("AfterDoing");
-    public static SuffixFormSet AfterDoing_yIncA = newSet(AfterDoing, "+yIncA");
-
     public static TurkishSuffix NotState = new TurkishSuffix("NotState");
     public static SuffixFormSet NotState_mAzlIk = newSet(NotState, "mAzlIk");
     public static SuffixFormSet NotState_mAzlIg = newSet(NotState, "mAzlIğ");
@@ -214,8 +211,57 @@ public class TurkishSuffixes {
     public static TurkishSuffix AsIf = new TurkishSuffix("AsIf");
     public static SuffixFormSet AsIf_cAsInA = newSet(AsIf, ">cAsInA");
 
+    // Converts to an Adverb.
     public static TurkishSuffix AsLongAs = new TurkishSuffix("AsLongAs");
     public static SuffixFormSet AsLongAs_dIkcA = newSet(AsLongAs, ">dIkçA");
+
+    // Converts to an Adverb. Oflazer calls this "When"
+    public static TurkishSuffix JustAfter = new TurkishSuffix("JustAfter");
+    public static SuffixFormSet JustAfter_yIncA = newSet(JustAfter, "+yIncA");
+
+    // It also may have "worthy of doing" meaning after passive. Converts to an Adjective.
+    public static TurkishSuffix FeelLike = new TurkishSuffix("FeelLike");
+    public static SuffixFormSet FeelLike_yAsI = newSet(FeelLike, "+yAsI");
+
+    // Converts to an Adverb.
+    public static TurkishSuffix SinceDoing = new TurkishSuffix("SinceDoing");
+    public static SuffixFormSet SinceDoing_yAlI = newSet(SinceDoing, "+yAlI");
+
+    // Converts to an Adverb.
+    public static TurkishSuffix ByDoing = new TurkishSuffix("ByDoing");
+    public static SuffixFormSet ByDoing_yArAk = newSet(ByDoing, "+yArAk");
+
+    // Converts to an Adverb.
+    public static TurkishSuffix WithoutDoing = new TurkishSuffix("WithoutDoing");
+    public static SuffixFormSet WithoutDoing_mAdAn = newSet(WithoutDoing, "mAdAn");
+    public static SuffixFormSet WithoutDoing_mAksIzIn = newSet(WithoutDoing, "mAksIzIn");
+
+    // Converts to an Adverb.
+    public static TurkishSuffix AfterDoing = new TurkishSuffix("AfterDoing");
+    public static SuffixFormSet AfterDoing_yIp = newSet(AfterDoing, "+yIp");
+
+    public static TurkishSuffix UnableToDo = new TurkishSuffix("UnableToDo");
+    public static SuffixFormSet UnableToDo_yAmAdAn = newSet(UnableToDo, "+yAmAdAn");
+
+    public static TurkishSuffix InsteadOfDoing = new TurkishSuffix("InsteadOfDoing");
+    public static SuffixFormSet InsteadOfDoing_mAktAnsA = newSet(InsteadOfDoing, "mAktAnsA");
+
+    // Converts to an Adverb.
+    public static TurkishSuffix KeepDoing = new TurkishSuffix("KeepDoing");
+    public static SuffixFormSet KeepDoing_yAgor = newSet(KeepDoing, "+yAgör");
+    public static SuffixFormSet KeepDoing_yAdur = newSet(KeepDoing, "+yAdur");
+
+    public static TurkishSuffix EverSince = new TurkishSuffix("EverSince");
+    public static SuffixFormSet EverSince_yAdur = newSet(EverSince, "+yAgel");
+
+    public static TurkishSuffix Almost = new TurkishSuffix("Almost");
+    public static SuffixFormSet Almost_yAyAz = newSet(Almost, "+yAyAz");
+
+    public static TurkishSuffix Hastily = new TurkishSuffix("Hastily");
+    public static SuffixFormSet Hastily_yIver = newSet(Hastily, "+yIver");
+
+    public static TurkishSuffix Stay = new TurkishSuffix("Stay");
+    public static SuffixFormSet Stay_yAkal = newSet(Stay, "+yAkal");
 
     public static TurkishSuffix Inf1 = new TurkishSuffix("Inf1");
     public static SuffixFormSet Inf1_mAk = newSet(Inf1, "mAk");
@@ -307,13 +353,18 @@ public class TurkishSuffixes {
         Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl);
 
         Verb_Main.add(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
-                .add(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, AfterDoing_yIncA, Opt_yA, Imp_EMPTY, Agt_yIcI)
+                .add(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_EMPTY, Agt_yIcI)
                 .add(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA, PastPart_dIg, PastPart_dIk, EvidPart_mIs)
                 .add(FutPart_yAcAg, FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
-                .add(Inf1_mAk, Inf2_mA, Inf3_yIs);
+                .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
+                .add(JustAfter_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing_mAksIzIn)
+                .add(AfterDoing_yIp, JustAfter_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
+                .add(KeepDoing_yAdur, KeepDoing_yAgor, EverSince_yAdur, Almost_yAyAz, Hastily_yIver, Stay_yAkal);
 
         Verb_Exp_V.add(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
         Verb_Exp_C.add(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);
+
+        Verb_Prog_Drop.add(Prog_Iyor);
 
         Pron_Main.add(CASE_FORMS);
         Pron_BenSen.add(CASE_FORMS).remove(Dat_yA);
