@@ -6,19 +6,28 @@ import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DumbParser {
 
     LexiconGraph graph;
-    ArrayListMultimap<String, StemNode> stemNodes = ArrayListMultimap.create();
+    ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create();
+    Map<String, StemNode> singeStems = new HashMap<String, StemNode>();
 
     public DumbParser(LexiconGraph graph) {
         this.graph = graph;
-        List<StemNode> stems = graph.getStems();
-        for (StemNode stem : stems) {
-            stemNodes.put(stem.surfaceForm, stem);
+        for (StemNode stemNode : graph.getStems()) {
+            final String surfaceForm = stemNode.surfaceForm;
+            if (multiStems.containsKey(stemNode)) {
+                multiStems.put(surfaceForm, stemNode);
+            }
+            if (singeStems.containsKey(surfaceForm)) {
+                singeStems.remove(surfaceForm);
+                multiStems.put(surfaceForm, stemNode);
+            } else
+                singeStems.put(surfaceForm, stemNode);
         }
     }
 
@@ -27,8 +36,10 @@ public class DumbParser {
         List<StemNode> candidates = Lists.newArrayList();
         for (int i = 1; i <= input.length(); i++) {
             String stem = input.substring(0, i);
-            if (stemNodes.containsKey(stem)) {
-                candidates.addAll(stemNodes.get(stem));
+            if (singeStems.containsKey(stem)) {
+                candidates.add(singeStems.get(stem));
+            } else if(multiStems.containsKey(stem)) {
+                candidates.addAll(multiStems.get(stem));
             }
         }
 
