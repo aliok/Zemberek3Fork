@@ -96,7 +96,7 @@ public class TurkceEkAdlari {
     public static final String Aor = "Aor";
     public static final String Prog = "Prog";
     public static final String Prog2 = "Prog2";
-    public static final String JustAfter = "JustAfter";
+    public static final String JustAfter = "When";
     public static final String AfterDoing = "AfterDoing";
     public static final String Recip = "Recip";
     public static final String FIIL_ISTEK_E = "FIIL_ISTEK_E";

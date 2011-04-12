@@ -193,8 +193,8 @@ public class LexiconGraph {
         if (item.getId().equals("yemek_Verb")) {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
-            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, JustAfter_yIncA, AfterDoing_yIp);
-            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, JustAfter_yIncA, AfterDoing_yIp);
+            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, Opt_yA, When_yIncA, AfterDoing_yIp);
+            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, When_yIncA, AfterDoing_yIp);
             StemNode[] stems = new StemNode[3];
             SuffixNode formYe = getSuffixRootNode(item, Verb_Ye);
             stems[0] = new StemNode(item.clean(), item, formYe, TerminationType.TERMINAL);
