@@ -62,4 +62,26 @@ public class DictionaryItem {
         }
         sb.append("]");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DictionaryItem that = (DictionaryItem) o;
+
+        if (!attrs.equals(that.attrs)) return false;
+        if (!lemma.equals(that.lemma)) return false;
+        if (primaryPos != that.primaryPos) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = lemma.hashCode();
+        result = 31 * result + primaryPos.hashCode();
+        result = 31 * result + attrs.hashCode();
+        return result;
+    }
 }

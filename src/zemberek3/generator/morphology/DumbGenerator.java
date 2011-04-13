@@ -4,14 +4,16 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.DictionaryItem;
+import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffix;
+import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class DumbGenerator {
 
@@ -26,8 +28,8 @@ public class DumbGenerator {
             final DictionaryItem item = stemNode.getDictionaryItem();
             if (multiStems.containsKey(item)) {
                 multiStems.put(item, stemNode);
-            }
-            if (singeStems.containsKey(item)) {
+            } else if (singeStems.containsKey(item)) {
+                multiStems.put(item, singeStems.get(item));
                 singeStems.remove(item);
                 multiStems.put(item, stemNode);
             } else
@@ -35,8 +37,25 @@ public class DumbGenerator {
         }
     }
 
-    public List<String> generate(DictionaryItem item, List<TurkishSuffix> suffixes) {
+    public List<String[]> generateMorphemes(DictionaryItem item, List<TurkishSuffix> suffixes) {
+        List<GenerationToken> tokens = getTokens(item, suffixes);
+        List<String[]> results = new ArrayList<String[]>(tokens.size());
+        for (GenerationToken token : tokens) {
+            results.add(token.getAsMorphemes());
+        }
+        return results;
+    }
 
+    public List<String> generate(DictionaryItem item, List<TurkishSuffix> suffixes) {
+        List<GenerationToken> tokens = getTokens(item, suffixes);
+        List<String> results = new ArrayList<String>(tokens.size());
+        for (GenerationToken token : tokens) {
+            results.add(token.getAsString());
+        }
+        return results;
+    }
+
+    private List<GenerationToken> getTokens(DictionaryItem item, List<TurkishSuffix> suffixes) {
         // find nodes for the dictionary item.
         List<StemNode> nodeList = new ArrayList<StemNode>();
         if (singeStems.containsKey(item))
@@ -45,36 +64,32 @@ public class DumbGenerator {
             nodeList.addAll(multiStems.get(item));
 
         // generate starting tokens with suffix root nodes.
-        List<GenerationToken> initialTokens = Lists.newArrayList();
+        List<GenerationToken> initialTokens = new ArrayList<GenerationToken>(2);
         for (StemNode candidate : nodeList) {
-            String current = candidate.surfaceForm;
-            initialTokens.add(new GenerationToken(candidate, Lists.<SuffixNode>newArrayList(candidate.getSuffixRootNode())));
+            initialTokens.add(new GenerationToken(candidate, suffixes));
         }
 
         // traverse suffix graph.
-        List<GenerationToken> result = Lists.newArrayList();
+        List<GenerationToken> result = new ArrayList<GenerationToken>(2);
         traverseSuffixes(initialTokens, result);
-        return Lists.newArrayList();
+        return result;
     }
 
-   private void traverseSuffixes(List<GenerationToken> current, List<GenerationToken> completed) {
-       /* List<GenerationToken> newtokens = Lists.newArrayList();
+    private void traverseSuffixes(List<GenerationToken> current, List<GenerationToken> completed) {
+        List<GenerationToken> newtokens = Lists.newArrayList();
         for (GenerationToken token : current) {
-            List<SuffixNode> matches = Lists.newArrayList();
-            for (SuffixNode successor : token.currentNode.getSuccessors()) {
-                if (successor.getSuffixSet().getSuffix()==)) {
-                    matches.add(successor);
-                }
-            }
-            if (matches.size() == 0) {
-                if (token.rest.length() == 0 && token.terminal)
+            if (token.nodesLeft.size() == 0) {
+                if (token.terminal)
                     completed.add(token);
+                continue;
             }
-            for (SuffixNode match : matches) {
-                newtokens.add(token.getCopy(match));
+            for (SuffixNode successor : token.currentNode.getSuccessors()) {
+                if (successor.getSuffixSet().getSuffix() == token.getSuffix()) {
+                    newtokens.add(token.getCopy(successor));
+                }
             }
         }
         if (newtokens.size() > 0)
-            traverseSuffixes(newtokens, completed);*/
+            traverseSuffixes(newtokens, completed);
     }
 }

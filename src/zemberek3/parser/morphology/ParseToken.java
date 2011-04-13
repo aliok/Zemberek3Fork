@@ -1,5 +1,7 @@
 package zemberek3.parser.morphology;
 
+import zemberek3.lexicon.DictionaryItem;
+import zemberek3.lexicon.TurkishSuffix;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
 import zemberek3.lexicon.graph.TerminationType;
@@ -20,6 +22,23 @@ public class ParseToken {
         this.nodeHistory = nodeHistory;
         this.rest = rest;
         this.terminal = stemNode.termination == TerminationType.TERMINAL;
+    }
+
+    public DictionaryItem getDictionaryItem() {
+        return stemNode.getDictionaryItem();
+    }
+
+    public List<TurkishSuffix> getSuffixes() {
+        List<TurkishSuffix> res = new ArrayList<TurkishSuffix>(nodeHistory.size());
+        int i = 0;
+        for (SuffixNode suffixNode : nodeHistory) {
+            if(i==0) {
+                i++;
+                continue;
+            }
+            res.add(suffixNode.getSuffixSet().getSuffix());
+        }
+        return res;
     }
 
     ParseToken(StemNode stemNode, SuffixNode suffixNode, List<SuffixNode> nodeHistory, String rest, boolean terminal) {

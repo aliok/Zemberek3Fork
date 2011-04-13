@@ -20,6 +20,10 @@ public class StemNode extends MorphNode {
         return dictionaryItem;
     }
 
+    public boolean isTerminal() {
+        return termination == TerminationType.TERMINAL;
+    }
+
     @Override
     public String toString() {
         return surfaceForm + ":" + dictionaryItem;

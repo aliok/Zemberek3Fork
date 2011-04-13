@@ -13,7 +13,7 @@ import java.util.Map;
 public class DumbParser {
 
     LexiconGraph graph;
-    ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create(1000,2);
+    ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<String, StemNode> singeStems = new HashMap<String, StemNode>();
 
     public DumbParser(LexiconGraph graph) {
@@ -22,8 +22,8 @@ public class DumbParser {
             final String surfaceForm = stemNode.surfaceForm;
             if (multiStems.containsKey(stemNode)) {
                 multiStems.put(surfaceForm, stemNode);
-            }
-            if (singeStems.containsKey(surfaceForm)) {
+            } else if (singeStems.containsKey(surfaceForm)) {
+                multiStems.put(surfaceForm, singeStems.get(surfaceForm));
                 singeStems.remove(surfaceForm);
                 multiStems.put(surfaceForm, stemNode);
             } else
@@ -38,7 +38,7 @@ public class DumbParser {
             String stem = input.substring(0, i);
             if (singeStems.containsKey(stem)) {
                 candidates.add(singeStems.get(stem));
-            } else if(multiStems.containsKey(stem)) {
+            } else if (multiStems.containsKey(stem)) {
                 candidates.addAll(multiStems.get(stem));
             }
         }

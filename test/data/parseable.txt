@@ -1,3 +1,5 @@
+dedi
+
 gelmiyorsunuz
 gel
 gelme
@@ -85,7 +87,6 @@ yıkandım
 yıkanabilirim
 yıkanacak
 
-dedi
 diyecek
 deyince
 deyip
