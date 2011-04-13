@@ -14,7 +14,7 @@ public class ParseToken {
     String rest;
     boolean terminal = false;
 
-    ParseToken(StemNode stemNode, List<SuffixNode> nodeHistory, String rest) {
+    public ParseToken(StemNode stemNode, List<SuffixNode> nodeHistory, String rest) {
         this.stemNode = stemNode;
         this.currentNode = stemNode.getSuffixRootNode();
         this.nodeHistory = nodeHistory;
@@ -29,6 +29,14 @@ public class ParseToken {
         this.rest = rest;
         this.terminal = terminal;
         this.currentNode = suffixNode;
+    }
+
+    public String getRest() {
+        return rest;
+    }
+
+    public SuffixNode getCurrentNode() {
+        return currentNode;
     }
 
     ParseToken getCopy(SuffixNode node) {

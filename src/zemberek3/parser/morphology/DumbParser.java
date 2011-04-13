@@ -13,7 +13,7 @@ import java.util.Map;
 public class DumbParser {
 
     LexiconGraph graph;
-    ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create();
+    ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create(1000,2);
     Map<String, StemNode> singeStems = new HashMap<String, StemNode>();
 
     public DumbParser(LexiconGraph graph) {

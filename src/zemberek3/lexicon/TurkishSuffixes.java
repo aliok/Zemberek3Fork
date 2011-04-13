@@ -1,7 +1,10 @@
 package zemberek3.lexicon;
 
+import com.google.common.collect.Sets;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class TurkishSuffixes {
 
@@ -433,8 +436,11 @@ public class TurkishSuffixes {
         Aor_z.add(COPULAR_FORMS).add(A3sg_sIn, Cond_ysA);
         Aor_EMPTY.add(A1sg_m, A1pl_yIz);
 
-        // TODO: remove some generative noun suffixes below. -cik, -sal etc.
-        AorPart_Ar.add(Adj_Main.getSuccSetCopy()).remove(Become_lAs).add(AsIf_cAsInA);
+        Set<SuffixFormSet> noParticipleSuff =
+                Sets.newHashSet(Become_lAs, Ness_lIk, Dim_cIg, Dim_cIg, Dim_cAgIz, With_lI, Without_sIz, Related_sAl,
+                        Resemb_msI, Resemb_msI);
+
+        AorPart_Ar.add(Adj_Main.getSuccSetCopy()).remove(noParticipleSuff).add(AsIf_cAsInA);
         AorPart_Ir.add(AorPart_Ar.getSuccSetCopy());
         AorPart_z.add(AorPart_Ar.getSuccSetCopy());
 
@@ -443,8 +449,8 @@ public class TurkishSuffixes {
 
         EvidPart_mIs.add(AorPart_Ar.getSuccSetCopy());
 
-        PastPart_dIk.add(Adj_Exp_C.getSuccSetCopy()).remove(AsIf_cAsInA);
-        PastPart_dIg.add(Adj_Exp_V.getSuccSetCopy());
+        PastPart_dIk.add(Adj_Exp_C.getSuccSetCopy()).remove(AsIf_cAsInA).remove(noParticipleSuff);
+        PastPart_dIg.add(Adj_Exp_V.getSuccSetCopy()).remove(noParticipleSuff);
 
         Prog_Iyor.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
         Prog_mAktA.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
