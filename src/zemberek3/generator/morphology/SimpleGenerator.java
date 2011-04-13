@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class DumbGenerator {
+public class SimpleGenerator {
 
     LexiconGraph graph;
 
     ArrayListMultimap<DictionaryItem, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<DictionaryItem, StemNode> singeStems = Maps.newHashMap();
 
-    public DumbGenerator(LexiconGraph graph) {
+    public SimpleGenerator(LexiconGraph graph) {
         this.graph = graph;
         for (StemNode stemNode : graph.getStems()) {
             final DictionaryItem item = stemNode.getDictionaryItem();

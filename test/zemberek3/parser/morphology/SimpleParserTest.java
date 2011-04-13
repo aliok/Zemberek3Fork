@@ -1,4 +1,4 @@
-package zemberek3.parser;
+package zemberek3.parser.morphology;
 
 import junit.framework.Assert;
 import org.jcaki.SimpleTextReader;
@@ -8,18 +8,16 @@ import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.LexiconGraph;
-import zemberek3.parser.morphology.DumbParser;
-import zemberek3.parser.morphology.ParseToken;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class DumbParserTest {
+public class SimpleParserTest {
 
     @Test
     public void parseableTest() throws IOException {
-        DumbParser parser = getParser();
+        SimpleParser parser = getParser();
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         for (String parseable : parseables) {
             Assert.assertTrue("Could not parse valid word:" + parseable, parser.parse(parseable).size() > 0);
@@ -28,7 +26,7 @@ public class DumbParserTest {
 
     @Test
     public void unparseableTest() throws IOException {
-        DumbParser parser = getParser();
+        SimpleParser parser = getParser();
         List<String> unparseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/unparseable.txt")).asStringList();
         for (String wrong : unparseables) {
             Assert.assertTrue("Parses invalid word:" + wrong, parser.parse(wrong).size() == 0);
@@ -38,7 +36,7 @@ public class DumbParserTest {
     @Test
     @Ignore("Performance Test")
     public void speedTest() throws IOException {
-        DumbParser parser = getParser();
+        SimpleParser parser = getParser();
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         long start = System.currentTimeMillis();
         final long iteration = 1000;
@@ -57,11 +55,11 @@ public class DumbParserTest {
         System.out.println("Speed:" + (iteration * 1000 * parseables.size() / elapsed) + " words/second");
     }
 
-    private DumbParser getParser() throws IOException {
+    private SimpleParser getParser() throws IOException {
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();
         LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
-        return new DumbParser(graph);
+        return new SimpleParser(graph);
     }
 }

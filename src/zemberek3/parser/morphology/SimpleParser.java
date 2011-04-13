@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DumbParser {
+public class SimpleParser {
 
     LexiconGraph graph;
     ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<String, StemNode> singeStems = new HashMap<String, StemNode>();
 
-    public DumbParser(LexiconGraph graph) {
+    public SimpleParser(LexiconGraph graph) {
         this.graph = graph;
         for (StemNode stemNode : graph.getStems()) {
             final String surfaceForm = stemNode.surfaceForm;
