@@ -376,7 +376,9 @@ public class LexiconGraph {
                         modified.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
                         break;
                     case Passive_Il:
-                        original.remove(Pass_In, Pass_nIl).add(Pass_Il);
+                        original.remove(Pass_In, Pass_nIl);
+                        if (!item.attrs.contains(LastVowelDrop))
+                            original.add(Pass_Il);
                         modified.remove(Pass_In, Pass_nIl).add(Pass_Il);
                         break;
                     case LastVowelDrop:

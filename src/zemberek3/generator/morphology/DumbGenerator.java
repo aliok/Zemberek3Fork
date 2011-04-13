@@ -4,16 +4,14 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.DictionaryItem;
-import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffix;
-import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DumbGenerator {
 
@@ -37,22 +35,18 @@ public class DumbGenerator {
         }
     }
 
-    public List<String[]> generateMorphemes(DictionaryItem item, List<TurkishSuffix> suffixes) {
+    public String[] generateMorphemes(DictionaryItem item, List<TurkishSuffix> suffixes) {
         List<GenerationToken> tokens = getTokens(item, suffixes);
-        List<String[]> results = new ArrayList<String[]>(tokens.size());
-        for (GenerationToken token : tokens) {
-            results.add(token.getAsMorphemes());
-        }
-        return results;
+        if (tokens.size() == 0)
+            return new String[0];
+        else return tokens.get(0).getAsMorphemes();
     }
 
-    public List<String> generate(DictionaryItem item, List<TurkishSuffix> suffixes) {
-        List<GenerationToken> tokens = getTokens(item, suffixes);
-        List<String> results = new ArrayList<String>(tokens.size());
-        for (GenerationToken token : tokens) {
-            results.add(token.getAsString());
-        }
-        return results;
+    public String generate(DictionaryItem item, List<TurkishSuffix> suffixes) {
+               List<GenerationToken> tokens = getTokens(item, suffixes);
+        if (tokens.size() == 0)
+            return "";
+        else return tokens.get(0).getAsString();
     }
 
     private List<GenerationToken> getTokens(DictionaryItem item, List<TurkishSuffix> suffixes) {

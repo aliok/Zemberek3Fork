@@ -55,8 +55,10 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix Dim = new TurkishSuffix("Dim");
     public static SuffixFormSet Dim_cIk = newSet(Dim, ">cIk");
-    public static SuffixFormSet Dim_cIg = newSet(Dim, ">cIğ");
-    public static SuffixFormSet Dim_cAgIz = newSet(Dim, "cAğIz");
+    public static SuffixFormSet Dim_cIg = newSet(Dim, ">cIğ", false);
+
+    public static TurkishSuffix Dim2 = new TurkishSuffix("Dim2");
+    public static SuffixFormSet Dim2_cAgIz = newSet(Dim2, "cAğIz");
 
     public static TurkishSuffix With = new TurkishSuffix("With");
     public static SuffixFormSet With_lI = newSet(With, "lI");
@@ -74,9 +76,13 @@ public class TurkishSuffixes {
     public static TurkishSuffix A2sg = new TurkishSuffix("A2sg");
     public static SuffixFormSet A2sg_sIn = newSet(A2sg, "sIn"); // gel-ecek-sin
     public static SuffixFormSet A2sg_n = newSet(A2sg, "n"); // gel-di-n
-    public static SuffixFormSet A2sg_sAnA = newSet(A2sg, "sAnA"); //gel-sene
-    public static SuffixFormSet A2sg_yInIz = newSet(A2sg, "+yInIz"); //gel-iniz
     public static SuffixFormSet A2sg_EMPTY = newSet("A2sg_EMPTY", A2sg, ""); // gel-
+
+    public static TurkishSuffix A2sg2 = new TurkishSuffix("A2sg2");
+    public static SuffixFormSet A2sg2_sAnA = newSet(A2sg2, "sAnA"); //gel-sene
+
+    public static TurkishSuffix A2sg3 = new TurkishSuffix("A2sg3");
+    public static SuffixFormSet A2sg3_yInIz = newSet(A2sg3, "+yInIz"); //gel-iniz
 
     public static TurkishSuffix A3sg = new TurkishSuffix("A3sg");
     public static SuffixFormSet A3sg_EMPTY = newSet(A3sg, ""); // gel-di-
@@ -89,9 +95,11 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix A2pl = new TurkishSuffix("A2pl");
     public static SuffixFormSet A2pl_sInIz = newSet(A2pl, "sInIz"); // gel-ecek-siniz
-    public static SuffixFormSet A2pl_sAnIzA = newSet(A2pl, "sAnIzA"); // gel-senize
     public static SuffixFormSet A2pl_nIz = newSet(A2pl, "nIz"); // gel-di-niz
     public static SuffixFormSet A2pl_yIn = newSet(A2pl, "+yIn"); // gel-me-yin
+
+    public static TurkishSuffix A2pl2 = new TurkishSuffix("A2pl2");
+    public static SuffixFormSet A2pl2_sAnIzA = newSet(A2pl2, "sAnIzA"); // gel-senize
 
     public static TurkishSuffix A3pl = new TurkishSuffix("A3pl");
     public static SuffixFormSet A3pl_lAr = newSet(A3pl, "lAr"); // gel-ecek-ler
@@ -103,7 +111,7 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix Ness = new TurkishSuffix("Ness");
     public static SuffixFormSet Ness_lIk = newSet(Ness, "lIk");
-    public static SuffixFormSet Ness_lIg = newSet(Ness, "lIğ");
+    public static SuffixFormSet Ness_lIg = newSet(Ness, "lIğ", false);
 
     public static TurkishSuffix Become = new TurkishSuffix("Become");
     public static SuffixFormSet Become_lAs = newSet(Become, "lAş");
@@ -128,22 +136,24 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix Prog = new TurkishSuffix("Prog");
     public static SuffixFormSet Prog_Iyor = newSet(Prog, "Iyor");
-    public static SuffixFormSet Prog_mAktA = newSet(Prog, "mAktA");
+
+    public static TurkishSuffix Prog2 = new TurkishSuffix("Prog2");
+    public static SuffixFormSet Prog2_mAktA = newSet(Prog2, "mAktA");
 
     public static TurkishSuffix Fut = new TurkishSuffix("Fut");
     public static SuffixFormSet Fut_yAcAk = newSet(Fut, "+yAcAk");
-    public static SuffixFormSet Fut_yAcAg = newSet(Fut, "+yAcAğ");
+    public static SuffixFormSet Fut_yAcAg = newSet(Fut, "+yAcAğ", false);
 
     public static TurkishSuffix FutPart = new TurkishSuffix("FutPart");
     public static SuffixFormSet FutPart_yAcAk = newSet(FutPart, "+yAcAk");
-    public static SuffixFormSet FutPart_yAcAg = newSet(FutPart, "+yAcAğ");
+    public static SuffixFormSet FutPart_yAcAg = newSet(FutPart, "+yAcAğ", false);
 
     public static TurkishSuffix Past = new TurkishSuffix("Past");
     public static SuffixFormSet Past_dI = newSet(Past, ">dI");
 
     public static TurkishSuffix PastPart = new TurkishSuffix("PastPart");
     public static SuffixFormSet PastPart_dIk = newSet(PastPart, ">dIk");
-    public static SuffixFormSet PastPart_dIg = newSet(PastPart, ">dIğ");
+    public static SuffixFormSet PastPart_dIg = newSet(PastPart, ">dIğ", false);
 
     public static TurkishSuffix Evid = new TurkishSuffix("Evid");
     public static SuffixFormSet Evid_mIs = newSet(Evid, "mIş");
@@ -206,7 +216,7 @@ public class TurkishSuffixes {
 
     public static TurkishSuffix NotState = new TurkishSuffix("NotState");
     public static SuffixFormSet NotState_mAzlIk = newSet(NotState, "mAzlIk");
-    public static SuffixFormSet NotState_mAzlIg = newSet(NotState, "mAzlIğ");
+    public static SuffixFormSet NotState_mAzlIg = newSet(NotState, "mAzlIğ", false);
 
     public static TurkishSuffix ActOf = new TurkishSuffix("ActOf");
     public static SuffixFormSet ActOf_mAcA = newSet(ActOf, "mAcA");
@@ -236,7 +246,9 @@ public class TurkishSuffixes {
     // Converts to an Adverb.
     public static TurkishSuffix WithoutDoing = new TurkishSuffix("WithoutDoing");
     public static SuffixFormSet WithoutDoing_mAdAn = newSet(WithoutDoing, "mAdAn");
-    public static SuffixFormSet WithoutDoing_mAksIzIn = newSet(WithoutDoing, "mAksIzIn");
+
+    public static TurkishSuffix WithoutDoing2 = new TurkishSuffix("WithoutDoing2");
+    public static SuffixFormSet WithoutDoing2_mAksIzIn = newSet(WithoutDoing2, "mAksIzIn");
 
     // Converts to an Adverb.
     public static TurkishSuffix AfterDoing = new TurkishSuffix("AfterDoing");
@@ -251,7 +263,9 @@ public class TurkishSuffixes {
     // Converts to an Adverb.
     public static TurkishSuffix KeepDoing = new TurkishSuffix("KeepDoing");
     public static SuffixFormSet KeepDoing_yAgor = newSet(KeepDoing, "+yAgör");
-    public static SuffixFormSet KeepDoing_yAdur = newSet(KeepDoing, "+yAdur");
+
+    public static TurkishSuffix KeepDoing2 = new TurkishSuffix("KeepDoing2");
+    public static SuffixFormSet KeepDoing2_yAdur = newSet(KeepDoing2, "+yAdur");
 
     public static TurkishSuffix EverSince = new TurkishSuffix("EverSince");
     public static SuffixFormSet EverSince_yAlI = newSet(EverSince, "+yAlI");
@@ -345,7 +359,7 @@ public class TurkishSuffixes {
     public TurkishSuffixes() {
 
         Noun_Main.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .add(Pl_lAr, Dim_cIg, Dim_cIk, Dim_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Resemb_msI,
+                .add(Pl_lAr, Dim_cIg, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Resemb_msI,
                         Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl);
         Noun_Exp_V.add(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz, Resemb_ImsI);
         Noun_Exp_C.add(Noun_Main.getSuccSetCopy()).remove(Noun_Exp_V.getSuccSetCopy());
@@ -354,14 +368,14 @@ public class TurkishSuffixes {
                 .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
         Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl);
 
-        Verb_Main.add(Prog_Iyor, Prog_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
+        Verb_Main.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .add(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_EMPTY, Agt_yIcI)
                 .add(Pass_In, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA, PastPart_dIg, PastPart_dIk, EvidPart_mIs)
                 .add(FutPart_yAcAg, FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
                 .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
-                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing_mAksIzIn)
+                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
                 .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
-                .add(KeepDoing_yAdur, KeepDoing_yAgor, EverSince_yAlI, Almost_yAyAz, Hastily_yIver, Stay_yAkal);
+                .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAlI, Almost_yAyAz, Hastily_yIver, Stay_yAkal);
 
         Verb_Exp_V.add(Opt_yA, Fut_yAcAg, Fut_yAcAg, Aor_Ar, AorPart_Ar, Prog_Iyor);
         Verb_Exp_C.add(Verb_Main.getSuccSetCopy()).remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir);
@@ -403,7 +417,7 @@ public class TurkishSuffixes {
 
         Dim_cIg.add(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);
         Dim_cIk.add(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr).add(COPULAR_FORMS);
-        Dim_cAgIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N);
+        Dim2_cAgIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N);
 
         With_lI.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr);
         Without_sIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr);
@@ -420,14 +434,14 @@ public class TurkishSuffixes {
         EvidCop_ymIs.add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr, AsIf_cAsInA);
         CondCop_ysA.add(PERSON_FORMS_COP);
 
-        Neg_mA.add(Aor_z, AorPart_z, Aor_EMPTY, Prog_mAktA, Imp_EMPTY, Opt_yA,
+        Neg_mA.add(Aor_z, AorPart_z, Aor_EMPTY, Prog2_mAktA, Imp_EMPTY, Opt_yA,
                 Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_ysA, Abil_yAbil, Necess_mAlI, NotState_mAzlIg, NotState_mAzlIk,
                 ActOf_mAcA, PastPart_dIg, PastPart_dIk, FutPart_yAcAg, FutPart_yAcAk, EvidPart_mIs)
                 .add(AsLongAs_dIkcA, PresPart_yAn)
                 .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
-                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAksIzIn)
+                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing2_mAksIzIn)
                 .add(AfterDoing_yIp, When_yIncA, InsteadOfDoing_mAktAnsA)
-                .add(KeepDoing_yAdur, KeepDoing_yAgor, EverSince_yAlI, Hastily_yIver);
+                .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAlI, Hastily_yIver);
 
         Neg_m.add(Prog_Iyor);
 
@@ -437,7 +451,7 @@ public class TurkishSuffixes {
         Aor_EMPTY.add(A1sg_m, A1pl_yIz);
 
         Set<SuffixFormSet> noParticipleSuff =
-                Sets.newHashSet(Become_lAs, Ness_lIk, Dim_cIg, Dim_cIg, Dim_cAgIz, With_lI, Without_sIz, Related_sAl,
+                Sets.newHashSet(Become_lAs, Ness_lIk, Dim_cIg, Dim_cIg, Dim2_cAgIz, With_lI, Without_sIz, Related_sAl,
                         Resemb_msI, Resemb_msI);
 
         AorPart_Ar.add(Adj_Main.getSuccSetCopy()).remove(noParticipleSuff).add(AsIf_cAsInA);
@@ -453,7 +467,7 @@ public class TurkishSuffixes {
         PastPart_dIg.add(Adj_Exp_V.getSuccSetCopy()).remove(noParticipleSuff);
 
         Prog_Iyor.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
-        Prog_mAktA.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
+        Prog2_mAktA.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA);
 
         Fut_yAcAg.add(A1sg_yIm, A1pl_yIz);
         Fut_yAcAk.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_ysA, AsIf_cAsInA).remove(Fut_yAcAg.getSuccSetCopy());
@@ -463,11 +477,11 @@ public class TurkishSuffixes {
 
         Cond_ysA.add(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr);
 
-        Imp_EMPTY.add(A2sg_EMPTY, A2sg_sAnA, A2sg_yInIz, A2pl_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
+        Imp_EMPTY.add(A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
         Agt_cI.add(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Become_lAs, With_lI, Without_sIz);
         Agt_yIcI.add(Agt_cI.getSuccSetCopy());
 
-        Abil_yAbil.add(Verb_Main.getSuccSetCopy()).remove(Abil_yAbil, Abil_yA);
+        Abil_yAbil.add(Verb_Main.getSuccSetCopy()).remove(Abil_yAbil, Abil_yA, Neg_mA);
         Abil_yA.add(Neg_mA, Neg_m);
 
         Opt_yA.add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_lIm, A2pl_sInIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);

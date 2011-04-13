@@ -26,8 +26,8 @@ public class DumbGeneratorTest {
         for (String parseable : parseables) {
             List<ParseToken> parseResults = parser.parse(parseable);
             for (ParseToken parseResult : parseResults) {
-                List<String> res = generator.generate(parseResult.getDictionaryItem(), parseResult.getSuffixes());
-                Assert.assertTrue("Error in:" + parseable, res.contains(parseable));
+                String res = generator.generate(parseResult.getDictionaryItem(), parseResult.getSuffixes());
+                Assert.assertEquals("Error in:" + parseable, parseable, res);
             }
         }
     }
