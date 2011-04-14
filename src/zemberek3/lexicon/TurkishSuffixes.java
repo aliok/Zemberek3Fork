@@ -73,11 +73,12 @@ public class TurkishSuffixes {
     public static TurkishSuffix A1sg = new TurkishSuffix("A1sg");
     public static SuffixFormSet A1sg_yIm = newSet(A1sg, "+yIm"); // gel-e-yim
     public static SuffixFormSet A1sg_m = newSet(A1sg, "m"); // gel-se-m
+    public static SuffixFormSet A1sg_EMPTY = newSet("A1sg_EMPTY", A1sg, ""); // ben
 
     public static TurkishSuffix A2sg = new TurkishSuffix("A2sg");
     public static SuffixFormSet A2sg_sIn = newSet(A2sg, "sIn"); // gel-ecek-sin
     public static SuffixFormSet A2sg_n = newSet(A2sg, "n"); // gel-di-n
-    public static SuffixFormSet A2sg_EMPTY = newSet("A2sg_EMPTY", A2sg, ""); // gel-
+    public static SuffixFormSet A2sg_EMPTY = newSet("A2sg_EMPTY", A2sg, ""); // gel, sen,..
 
     public static TurkishSuffix A2sg2 = new TurkishSuffix("A2sg2");
     public static SuffixFormSet A2sg2_sAnA = newSet(A2sg2, "sAnA"); //gel-sene
@@ -86,18 +87,20 @@ public class TurkishSuffixes {
     public static SuffixFormSet A2sg3_yInIz = newSet(A2sg3, "+yInIz"); //gel-iniz
 
     public static TurkishSuffix A3sg = new TurkishSuffix("A3sg");
-    public static SuffixFormSet A3sg_EMPTY = newSet(A3sg, ""); // gel-di-
+    public static SuffixFormSet A3sg_EMPTY = newSet(A3sg, ""); // gel-di-, o-
     public static SuffixFormSet A3sg_sIn = newSet(A3sg, "sIn"); // gel-sin
 
     public static TurkishSuffix A1pl = new TurkishSuffix("A1pl");
     public static SuffixFormSet A1pl_yIz = newSet(A1pl, "+yIz"); // geliyor-uz
     public static SuffixFormSet A1pl_k = newSet(A1pl, "k"); // gel-di-k
     public static SuffixFormSet A1pl_lIm = newSet(A1pl, "lIm"); // gel-e-lim
+    public static SuffixFormSet A1pl_EMPTY = newSet("A1pl_EMPTY", A1pl, ""); // biz
 
     public static TurkishSuffix A2pl = new TurkishSuffix("A2pl");
     public static SuffixFormSet A2pl_sInIz = newSet(A2pl, "sInIz"); // gel-ecek-siniz
     public static SuffixFormSet A2pl_nIz = newSet(A2pl, "nIz"); // gel-di-niz
     public static SuffixFormSet A2pl_yIn = newSet(A2pl, "+yIn"); // gel-me-yin
+    public static SuffixFormSet A2pl_EMPTY = newSet("A2pl_EMPTY", A2pl, ""); // gel-e-lim
 
     public static TurkishSuffix A2pl2 = new TurkishSuffix("A2pl2");
     public static SuffixFormSet A2pl2_sAnIzA = newSet(A2pl2, "sAnIzA"); // gel-senize
@@ -319,10 +322,10 @@ public class TurkishSuffixes {
     public static SuffixFormSet Verb_Exp_C = newSet("Verb_Exp_C", VerbRoot, "");
     public static SuffixFormSet Verb_Exp_V = newSet("Verb_Exp_V", VerbRoot, "");
 
-    public static TurkishSuffix PronounRoot = new TurkishSuffix("Pronoun");
-    public static SuffixFormSet Pron_Main = newSet(PronounRoot, "");
-    public static SuffixFormSet Pron_BenSen = newSet("Pron_BenSen", PronounRoot, "");
-    public static SuffixFormSet Pron_BanSan = newSet("Pron_BanSan", PronounRoot, "");
+    public static TurkishSuffix PersPronRoot = new TurkishSuffix("PersPronRoot");
+    public static SuffixFormSet PersPron_Main = newSet(PersPronRoot, "");
+    public static SuffixFormSet PersPron_BenSen = newSet("PersPron_BenSen", PersPronRoot, "");
+    public static SuffixFormSet PersPron_BanSan = newSet("PersPron_BanSan", PersPronRoot, "");
 
     public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA};
     public static final SuffixFormSet[] POSSESSIVE_FORMS = {P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
@@ -383,9 +386,9 @@ public class TurkishSuffixes {
 
         Verb_Prog_Drop.add(Prog_Iyor);
 
-        Pron_Main.add(CASE_FORMS);
-        Pron_BenSen.add(CASE_FORMS).remove(Dat_yA);
-        Pron_BanSan.add(Dat_yA);
+        PersPron_Main.add(CASE_FORMS);
+        PersPron_BenSen.add(CASE_FORMS).remove(Dat_yA);
+        PersPron_BanSan.add(Dat_yA);
 
         Adj_Main.add(Noun_Main.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);
         Adj_Exp_C.add(Noun_Exp_C.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);

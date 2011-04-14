@@ -221,9 +221,9 @@ public class LexiconGraph {
         }
         if (item.getId().equals("ben_Pron") || item.getId().equals("sen_Pron")) {
             StemNode[] stems = new StemNode[2];
-            SuffixNode formBenSen = getSuffixRootNode(item, Pron_BenSen);
+            SuffixNode formBenSen = getSuffixRootNode(item, PersPron_BenSen);
             stems[0] = new StemNode(item.clean(), item, formBenSen, TerminationType.TERMINAL);
-            SuffixNode formBanSan = getSuffixRootNode(item, Pron_BanSan);
+            SuffixNode formBanSan = getSuffixRootNode(item, PersPron_BanSan);
             if (item.lemma.equals("ben"))
                 stems[1] = new StemNode("ban", item, formBanSan, TerminationType.NON_TERMINAL);
             else
@@ -464,10 +464,10 @@ public class LexiconGraph {
         }
 
         void getForPronoun(DictionaryItem item) {
-            original = new SuffixFormSet("Pronoun", TurkishSuffixes.PronounRoot, "");
-            modified = new SuffixFormSet("Pronoun-Mod", TurkishSuffixes.PronounRoot, "");
-            original.add(Pron_Main.getSuccSetCopy());
-            modified.add(Pron_Main.getSuccSetCopy());
+            original = new SuffixFormSet("Pronoun", TurkishSuffixes.PersPronRoot, "");
+            modified = new SuffixFormSet("Pronoun-Mod", TurkishSuffixes.PersPronRoot, "");
+            original.add(PersPron_Main.getSuccSetCopy());
+            modified.add(PersPron_Main.getSuccSetCopy());
             original = addOrReturnExisting(item, original);
             modified = addOrReturnExisting(item, modified);
         }
