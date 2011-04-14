@@ -43,11 +43,13 @@ public class TurkishDictionaryLoader {
             String cleanWord = cleanWord(word, posInfo);
 
             AttributeSet<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo);
+            ExclusiveSuffixData suffixData = getSuffixData();
             return new DictionaryItem(
                     word,
                     posInfo.primaryPos,
                     posInfo.secondaryPos,
-                    rootAttrs);
+                    rootAttrs,
+                    suffixData);
         }
 
         static Pattern wordPattern = Pattern.compile("(?:^)(.+?)(?:$|\\[)");
@@ -159,7 +161,7 @@ public class TurkishDictionaryLoader {
                     if (sequence.lastLetter() == L_r || sequence.lastLetter() == L_p || sequence.lastLetter() == L_n) {
                         attributesList.add(RootAttr.Passive_Il);
                     }
-                    if(sequence.lastLetter().isVowel() && sequence.vowelCount() > 1)
+                    if (sequence.lastLetter().isVowel() && sequence.vowelCount() > 1)
                         attributesList.add(RootAttr.Causative_t);
                     break;
                 case Noun:
@@ -178,13 +180,20 @@ public class TurkishDictionaryLoader {
             }
         }
 
+        //TODO: continue
+        static Pattern suffixPattern = Pattern.compile("(?:S:)(.+?)(?:;|\\])");
+
+        private ExclusiveSuffixData getSuffixData() {
+            String attributeStr = getGroup1Match(suffixPattern).trim();
+            return null;
+        }
+
         private String getGroup1Match(Pattern pattern) {
             Matcher m = pattern.matcher(line);
             if (m.find()) {
                 return m.group(1);
             } else return "";
         }
-
     }
 
     static class LexiconFileProcessor implements LineProcessor<List<DictionaryItem>> {

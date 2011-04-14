@@ -20,7 +20,7 @@ public class SimpleParser {
         this.graph = graph;
         for (StemNode stemNode : graph.getStems()) {
             final String surfaceForm = stemNode.surfaceForm;
-            if (multiStems.containsKey(stemNode)) {
+            if (multiStems.containsKey(surfaceForm)) {
                 multiStems.put(surfaceForm, stemNode);
             } else if (singeStems.containsKey(surfaceForm)) {
                 multiStems.put(surfaceForm, singeStems.get(surfaceForm));
@@ -59,21 +59,19 @@ public class SimpleParser {
     private void traverseSuffixes(List<ParseToken> current, List<ParseToken> completed) {
         List<ParseToken> newtokens = Lists.newArrayList();
         for (ParseToken token : current) {
-            List<SuffixNode> matches = Lists.newArrayList();
+            boolean matchFound = false;
             for (SuffixNode successor : token.currentNode.getSuccessors()) {
                 if (token.rest.startsWith(successor.surfaceForm)) {
-                    matches.add(successor);
+                    matchFound = true;
+                    newtokens.add(token.getCopy(successor));
                 }
             }
-            if (matches.size() == 0) {
+            if (!matchFound) {
                 if (token.rest.length() == 0 && token.terminal)
                     completed.add(token);
             }
-            for (SuffixNode match : matches) {
-                newtokens.add(token.getCopy(match));
-            }
         }
-        if (newtokens.size() > 0)
+        if (!newtokens.isEmpty())
             traverseSuffixes(newtokens, completed);
     }
 }

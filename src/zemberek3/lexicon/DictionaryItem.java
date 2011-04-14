@@ -10,14 +10,16 @@ public class DictionaryItem {
     public final PrimaryPos primaryPos;
     public final SecondaryPos secondaryPos;
     public final AttributeSet<RootAttr> attrs;
+    public final ExclusiveSuffixData suffixData;
 
     static final Locale locale = new Locale("tr");
 
-    public DictionaryItem(String lemma, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs) {
+    public DictionaryItem(String lemma, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs, ExclusiveSuffixData suffixData) {
         this.lemma = lemma;
         this.primaryPos = primaryPos;
         this.secondaryPos = secondaryPos;
         this.attrs = attrs;
+        this.suffixData = suffixData;
     }
 
     public boolean hasAttribute(RootAttr attribute) {

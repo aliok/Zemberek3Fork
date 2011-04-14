@@ -27,7 +27,7 @@ kurum
 # infer Pos, Voicing Attribute. k->ğ
 kapak
 kitap
-tıkaç
+ağaç
 yakıt
 
 # Fully written form.
@@ -153,7 +153,7 @@ a [Pos:Interj]
 # ------------------------------------------------------------------------------------------
 # Pronoun
 
-ben [Pos:Pron; A:StemChange]
+ben [Pos:Pron; A:StemChange; S:+A1sg]
 o [Pos:Pron]
 şu [Pos:Pron,Demons]
 
