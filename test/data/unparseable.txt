@@ -9,8 +9,14 @@ yapır
 geldir
 gelmer
 geldiz
-gelmeyim
 gelseyiz
+deyor
+deyecek
+yeyor
+yidim
+yeyecek
+yeyip
+diyip
 kitab
 kitapcık
 kitabcık

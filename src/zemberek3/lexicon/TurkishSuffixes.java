@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class TurkishSuffixes {
 
+    //TODO: should make this non static
     static Map<String, SuffixFormSet> suffixSets = new HashMap<String, SuffixFormSet>();
 
     public static TurkishSuffix Pl = new TurkishSuffix("Pl");
