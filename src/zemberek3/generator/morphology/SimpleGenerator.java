@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This is a deterministic word generator. It would return a single solution for a given [Dictionary Item + Suffix List]
+ * parameter.
+ */
 public class SimpleGenerator {
 
     LexiconGraph graph;
@@ -43,7 +47,7 @@ public class SimpleGenerator {
     }
 
     public String generate(DictionaryItem item, List<TurkishSuffix> suffixes) {
-               List<GenerationToken> tokens = getTokens(item, suffixes);
+        List<GenerationToken> tokens = getTokens(item, suffixes);
         if (tokens.size() == 0)
             return "";
         else return tokens.get(0).getAsString();
