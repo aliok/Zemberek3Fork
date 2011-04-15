@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class SimpleGeneratorTest {
     @Test
     public void regenerateTest() throws IOException {
