@@ -20,21 +20,29 @@ import static zemberek3.structure.TurkishAlphabet.L_r;
 
 public class TurkishDictionaryLoader {
 
+    SuffixProvider suffixProvider;
+
+    public TurkishDictionaryLoader(SuffixProvider suffixProvider) {
+        this.suffixProvider = suffixProvider;
+    }
+
     public List<DictionaryItem> load(File input) throws IOException {
-        return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor());
+        return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor(suffixProvider));
     }
 
     public DictionaryItem loadFromString(String lexiconItemString) {
-        return new LexiconItemMaker(lexiconItemString).getItem();
+        return new LexiconItemMaker(lexiconItemString, suffixProvider).getItem();
     }
 
     static class LexiconItemMaker {
         final String line;
+        SuffixProvider suffixProvider;
 
         static final TurkishAlphabet alphabet = new TurkishAlphabet();
 
-        LexiconItemMaker(String line) {
+        LexiconItemMaker(String line, SuffixProvider suffixProvider) {
             this.line = line;
+            this.suffixProvider = suffixProvider;
         }
 
         DictionaryItem getItem() {
@@ -180,12 +188,38 @@ public class TurkishDictionaryLoader {
             }
         }
 
-        //TODO: continue
         static Pattern suffixPattern = Pattern.compile("(?:S:)(.+?)(?:;|\\])");
 
         private ExclusiveSuffixData getSuffixData() {
             String attributeStr = getGroup1Match(suffixPattern).trim();
-            return null;
+            ExclusiveSuffixData esd = new ExclusiveSuffixData();
+            if (attributeStr.length() == 0)
+                return null;
+            for (String token : Splitter.on(',').omitEmptyStrings().trimResults().split(attributeStr)) {
+                if (token.length() < 2)
+                    throw new LexiconException("Unexepected Suffix token in line: " + line);
+                String suffixOrFormId = token.substring(1);
+                List<SuffixFormSet> sets = new ArrayList<SuffixFormSet>();
+                SuffixFormSet set = suffixProvider.getSuffixFormSetById(suffixOrFormId);
+                if (set == null) {
+                    List<SuffixFormSet> ss = suffixProvider.getFormsBySuffixId(suffixOrFormId);
+                    if (ss == null)
+                        throw new LexiconException("Cannot identify Suffix or SuffixFormSet Id:" + suffixOrFormId + " in line:" + line);
+                    sets.addAll(ss);
+                } else sets.add(set);
+                switch (token.charAt(0)) {
+                    case '+':
+                        esd.accepts.addAll(sets);
+                        break;
+                    case '-':
+                        esd.rejects.addAll(sets);
+                        break;
+                    case '*':
+                        esd.onlyAccepts.addAll(sets);
+                        break;
+                }
+            }
+            return esd;
         }
 
         private String getGroup1Match(Pattern pattern) {
@@ -199,13 +233,18 @@ public class TurkishDictionaryLoader {
     static class LexiconFileProcessor implements LineProcessor<List<DictionaryItem>> {
 
         List<DictionaryItem> dictionaryItems = new ArrayList<DictionaryItem>();
+        SuffixProvider suffixProvider;
+
+        LexiconFileProcessor(SuffixProvider suffixProvider) {
+            this.suffixProvider = suffixProvider;
+        }
 
         public boolean processLine(String line) throws IOException {
             line = line.trim();
             if (line.length() == 0 || line.startsWith("#"))
                 return true;
 
-            dictionaryItems.add(new LexiconItemMaker(line).getItem());
+            dictionaryItems.add(new LexiconItemMaker(line, suffixProvider).getItem());
             return true;
         }
 
@@ -231,7 +270,7 @@ public class TurkishDictionaryLoader {
     }
 
     public static void main(String[] args) throws IOException {
-        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-dictionary.txt"));
+        List<DictionaryItem> items = new TurkishDictionaryLoader(new TurkishSuffixes().getSuffixProvider()).load(new File("test/data/dev-dictionary.txt"));
         for (DictionaryItem item : items) {
             System.out.println(item);
         }

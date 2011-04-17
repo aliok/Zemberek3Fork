@@ -11,6 +11,8 @@ public enum PrimaryPos implements StringEnum<PrimaryPos> {
     Interjection("Interj"),
     Verb("Verb"),
     Pronoun("Pron"),
+    Numeral("Num"),
+    Determiner("Det"),
     Particle("Part");
 
     String shortForm;

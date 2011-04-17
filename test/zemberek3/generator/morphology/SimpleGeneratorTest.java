@@ -9,6 +9,7 @@ import org.jcaki.Strings;
 import org.junit.Ignore;
 import org.junit.Test;
 import zemberek3.lexicon.DictionaryItem;
+import zemberek3.lexicon.SuffixProvider;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.LexiconGraph;
@@ -84,9 +85,9 @@ public class SimpleGeneratorTest {
     }
 
     private LexiconGraph getLexicon() throws IOException {
-        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
-        TurkishSuffixes suffixes = new TurkishSuffixes();
-        LexiconGraph graph = new LexiconGraph(items, suffixes);
+        SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
+        List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(new File("test/data/dev-lexicon.txt"));
+        LexiconGraph graph = new LexiconGraph(items, suffixProvider);
         graph.generate();
         return graph;
     }

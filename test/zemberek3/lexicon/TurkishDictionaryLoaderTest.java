@@ -10,13 +10,17 @@ import java.io.IOException;
 import java.util.List;
 
 import static zemberek3.lexicon.PrimaryPos.Noun;
+import static zemberek3.lexicon.PrimaryPos.Pronoun;
 import static zemberek3.lexicon.PrimaryPos.Verb;
 import static zemberek3.lexicon.RootAttr.*;
 
 public class TurkishDictionaryLoaderTest {
+
+    SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
+
     @Test
     public void loadNounsFromFileTest() throws IOException {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader();
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
         List<DictionaryItem> items = loader.load(new File("test/data/test-lexicon-nouns.txt"));
 
         Assert.assertFalse(items.isEmpty());
@@ -27,7 +31,7 @@ public class TurkishDictionaryLoaderTest {
 
     @Test
     public void nounInferenceTest() {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader();
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
         DictionaryItem item = loader.loadFromString("elma");
         Assert.assertEquals("elma", item.lemma);
         Assert.assertEquals("elma", item.clean());
@@ -42,7 +46,7 @@ public class TurkishDictionaryLoaderTest {
 
     @Test
     public void verbInferenceTest() {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader();
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
         DictionaryItem item = loader.loadFromString("gelmek");
         Assert.assertEquals("gel", item.clean());
         Assert.assertEquals("gelmek", item.lemma);
@@ -56,8 +60,27 @@ public class TurkishDictionaryLoaderTest {
     }
 
     @Test
+    public void suffixDataTest() {
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
+        DictionaryItem item = loader.loadFromString("ben [Pos:Pron; S: +A1sg_EMPTY]");
+        Assert.assertEquals(Pronoun, item.primaryPos);
+        Assert.assertNotNull(item.suffixData);
+        Assert.assertTrue(!item.suffixData.accepts.isEmpty());
+        Assert.assertTrue(item.suffixData.rejects.isEmpty());
+        Assert.assertTrue(item.suffixData.onlyAccepts.isEmpty());
+
+        item = loader.loadFromString("ben [Pos:Pron; S: -A1sg, +A1sg_EMPTY, +Dim]");
+        Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_m));
+        Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_yIm));
+        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.A1sg_EMPTY));
+        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.Dim_cIg));
+        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.Dim_cIk));
+    }
+
+
+    @Test
     public void nounVoicingTest() {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader();
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
         String[] voicing = {"kabak", "kabak [A:Voicing]", "psikolog", "havuç", "turp [A:Voicing]", "galip", "nohut", "cenk"};
         for (String s : voicing) {
             DictionaryItem item = loader.loadFromString(s);
@@ -75,7 +98,7 @@ public class TurkishDictionaryLoaderTest {
 
     @Test
     public void nounAttributesTest() {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader();
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
 
         List<ItemAttrPair> testList = Lists.newArrayList(
                 testPair("takat [A:NoVoicing, InverseHarmony]", NoVoicing, InverseHarmony),

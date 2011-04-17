@@ -109,9 +109,12 @@ temiz [Pos:Adj]
 # secondary pos. both are required.
 çıtır [Pos:Adj,Dup]
 
-iki [Pos:Adj, Num]
 şu [Pos:Adj,Demons]
 kaba [Pos:Adj]
+
+# ------------------------------------------------------------------------------------------
+# Numeral
+iki [Pos:Num]
 
 # ------------------------------------------------------------------------------------------
 # Adverbs
@@ -149,11 +152,32 @@ kapmak [A:Reciprocal]
 behey [Pos:Interj]
 a [Pos:Interj]
 
-
 # ------------------------------------------------------------------------------------------
 # Pronoun
 
-ben [Pos:Pron; A:StemChange; S:+A1sg]
+ben [Pos:Pron; A:StemChange]
 o [Pos:Pron]
 şu [Pos:Pron,Demons]
+
+# ------------------------------------------------------------------------------------------
+# Conjuction
+
+ama [Pos:Conj]
+fakat [Pos:Conj]
+ve [Pos:Conj]
+veya [Pos:Conj]
+ya [Pos:Conj]
+da [Pos:Conj]
+
+# ------------------------------------------------------------------------------------------
+# Determiner
+
+bir [Pos:Det]
+
+# ------------------------------------------------------------------------------------------
+# Post Positive
+
+rağmen [Pos:Postp]
+birlikte [Pos:Postp]
+
 

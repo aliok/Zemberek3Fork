@@ -19,15 +19,15 @@ public class LexiconGraph {
     List<DictionaryItem> dictionary;
     List<StemNode> stems = new ArrayList<StemNode>();
     TurkishAlphabet alphabet = new TurkishAlphabet();
-    TurkishSuffixes suffixes;
+    final SuffixProvider suffixes;
     SuffixFormGenerator formGenerator = new SuffixFormGenerator();
 
     private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newHashMap();
 
-    public LexiconGraph(List<DictionaryItem> dictionary, TurkishSuffixes suffixes) {
+    public LexiconGraph(List<DictionaryItem> dictionary, SuffixProvider suffixProvider) {
+        this.suffixes = suffixProvider;
         this.dictionary = dictionary;
-        this.suffixes = suffixes;
-        for (SuffixFormSet set : suffixes.getSets()) {
+        for (SuffixFormSet set : suffixes.getAllFormSets()) {
             suffixFormMap.put(set.remove(), new HashSet<SuffixNode>());
         }
     }
@@ -324,7 +324,15 @@ public class LexiconGraph {
         RootSuffixSetBuilder(DictionaryItem item) {
             switch (item.primaryPos) {
                 case Noun:
-                    getForNoun(item);
+                    if (item.secondaryPos == SecondaryPos.ProperNoun) {
+                        original = ProperNoun_Main;
+                        modified = ProperNoun_Main;
+                    } else {
+                        getForNoun(item);
+                        if (item.secondaryPos == SecondaryPos.Time) {
+                            original.add(Rel_ki);
+                        }
+                    }
                     break;
                 case Verb:
                     getForVerb(item);
@@ -342,6 +350,18 @@ public class LexiconGraph {
                 case Interjection:
                     original = Interj_Main;
                     modified = Interj_Main;
+                    break;
+                case Numeral:
+                    original = Numeral_Main;
+                    modified = Numeral_Main;
+                    break;
+                case Determiner:
+                    original = Det_Main;
+                    modified = Det_Main;
+                    break;
+                case Conjunction:
+                    original = Conj_Main;
+                    modified = Conj_Main;
                     break;
                 default:
                     original = Noun_Main;

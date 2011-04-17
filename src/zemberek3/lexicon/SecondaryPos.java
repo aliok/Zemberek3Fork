@@ -5,11 +5,9 @@ import zemberek3.structure.StringEnumMap;
 
 public enum SecondaryPos implements StringEnum<SecondaryPos> {
     Duplicator("Dup"),
-    Determiner("Det"),
-    PostPositive("Post"),
+    PostPositive("Postp"),
     Question("Ques"),
     Demonstrative("Demons"),
-    Numeral("Num"),
     Time("Time"),
     ProperNoun("Prop"),
     None("None");

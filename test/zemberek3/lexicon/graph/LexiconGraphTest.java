@@ -2,21 +2,20 @@ package zemberek3.lexicon.graph;
 
 import junit.framework.Assert;
 import org.junit.Test;
-import zemberek3.lexicon.DictionaryItem;
-import zemberek3.lexicon.SuffixFormSet;
-import zemberek3.lexicon.TurkishDictionaryLoader;
-import zemberek3.lexicon.TurkishSuffixes;
+import zemberek3.lexicon.*;
 
 import java.io.IOException;
 import java.util.*;
 
 public class LexiconGraphTest {
 
+    SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
+
     @Test
     public void testSimpleNouns() throws IOException {
         String[] nouns = {"elma", "armut"};
         List<DictionaryItem> items = getItems(nouns);
-        LexiconGraph graph = new LexiconGraph(items, new TurkishSuffixes());
+        LexiconGraph graph = new LexiconGraph(items, suffixProvider);
         graph.generate();
         Assert.assertEquals(3, graph.getStems().size());
         StemNode nodeArmud = getNode("armud", graph);
@@ -27,7 +26,7 @@ public class LexiconGraphTest {
     }
 
     private List<DictionaryItem> getItems(String[] lines) {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader();
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
         List<DictionaryItem> items = new ArrayList<DictionaryItem>();
         for (String line : lines) {
             items.add(loader.loadFromString(line));

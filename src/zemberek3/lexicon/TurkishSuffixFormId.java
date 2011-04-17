@@ -1,8 +1,6 @@
 package zemberek3.lexicon;
 
 public enum TurkishSuffixFormId {
-
-
     Pl_lAr,
     Dat_yA,
     Dat_nA,
