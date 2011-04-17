@@ -26,6 +26,10 @@ public class TurkishDictionaryLoader {
         this.suffixProvider = suffixProvider;
     }
 
+    public TurkishDictionaryLoader() {
+        this.suffixProvider = new TurkishSuffixes().getSuffixProvider();
+    }
+
     public List<DictionaryItem> load(File input) throws IOException {
         return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor(suffixProvider));
     }

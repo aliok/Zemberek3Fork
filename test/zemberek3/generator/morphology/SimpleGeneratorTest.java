@@ -86,7 +86,7 @@ public class SimpleGeneratorTest {
 
     private LexiconGraph getLexicon() throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
-        List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(new File("test/data/dev-lexicon.txt"));
+        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         LexiconGraph graph = new LexiconGraph(items, suffixProvider);
         graph.generate();
         return graph;
