@@ -27,7 +27,7 @@ public class LexiconGraph {
     public LexiconGraph(List<DictionaryItem> dictionary, SuffixProvider suffixProvider) {
         this.suffixes = suffixProvider;
         this.dictionary = dictionary;
-        for (SuffixFormSet set : suffixes.getAllFormSets()) {
+        for (SuffixFormSet set : suffixes.getAllForms()) {
             suffixFormMap.put(set.remove(), new HashSet<SuffixNode>());
         }
     }

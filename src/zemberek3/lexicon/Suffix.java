@@ -1,10 +1,10 @@
 package zemberek3.lexicon;
 
-public class TurkishSuffix {
+public class Suffix {
 
     public final String id;
 
-    public TurkishSuffix(String id) {
+    public Suffix(String id) {
         this.id = id;
     }
 

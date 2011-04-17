@@ -4,7 +4,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.DictionaryItem;
-import zemberek3.lexicon.TurkishSuffix;
+import zemberek3.lexicon.Suffix;
 import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
@@ -39,21 +39,21 @@ public class SimpleGenerator {
         }
     }
 
-    public String[] generateMorphemes(DictionaryItem item, List<TurkishSuffix> suffixes) {
+    public String[] generateMorphemes(DictionaryItem item, List<Suffix> suffixes) {
         List<GenerationToken> tokens = getTokens(item, suffixes);
         if (tokens.size() == 0)
             return new String[0];
         else return tokens.get(0).getAsMorphemes();
     }
 
-    public String generate(DictionaryItem item, List<TurkishSuffix> suffixes) {
+    public String generate(DictionaryItem item, List<Suffix> suffixes) {
         List<GenerationToken> tokens = getTokens(item, suffixes);
         if (tokens.size() == 0)
             return "";
         else return tokens.get(0).getAsString();
     }
 
-    private List<GenerationToken> getTokens(DictionaryItem item, List<TurkishSuffix> suffixes) {
+    private List<GenerationToken> getTokens(DictionaryItem item, List<Suffix> suffixes) {
         // find nodes for the dictionary item.
         List<StemNode> nodeList = new ArrayList<StemNode>();
         if (singeStems.containsKey(item))

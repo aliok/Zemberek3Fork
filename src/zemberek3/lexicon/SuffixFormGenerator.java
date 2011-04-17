@@ -210,9 +210,4 @@ public class SuffixFormGenerator {
         public void remove() {
         }
     }
-
-    public SuffixFormSet[] generateNodes(TurkishSuffix suffix, String generationWord, TurkishSuffix... exclusivePredecessors) {
-        return new SuffixFormSet[0];
-    }
-
 }

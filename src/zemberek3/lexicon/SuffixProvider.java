@@ -4,12 +4,12 @@ import java.util.List;
 
 public interface SuffixProvider {
 
-    TurkishSuffix getSuffixById(String suffixId);
+    Suffix getSuffixById(String suffixId);
 
     List<SuffixFormSet> getFormsBySuffixId(String suffixId);
 
-    SuffixFormSet getSuffixFormSetById(String suffixSetId);
+    SuffixFormSet getFormById(String suffixSetId);
 
-    Iterable<SuffixFormSet> getAllFormSets();
+    Iterable<SuffixFormSet> getAllForms();
 
 }
