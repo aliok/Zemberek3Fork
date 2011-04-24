@@ -82,7 +82,7 @@ public class TurkishDictionaryLoader {
             return word;
         }
 
-        static Pattern posPattern = Pattern.compile("(?:Pos:)(.+?)(?:;|\\])");
+        static Pattern posPattern = Pattern.compile("(?:P:)(.+?)(?:;|\\])");
 
         PosInfo getPosData(String word) {
             String posString = getGroup1Match(posPattern).trim();

@@ -1,0 +1,10 @@
+- Dup's are tagged as [P:Adj,Dup] however, some Dup's are actually adverbs. Also some cannot get any suffix (abuk)
+- [NoVoicing] nouns and adjectives must be hand tagged for multi-syllable words (takat).
+- Also single syllable words must be tagged [Voicing] when necessary (yurt).
+- Single syllable Aorist_I verbs must be tagged.
+- Reciprocal and Reflexive verbs must be tagged.
+- Nouns ending [-mek -mak] must be explicitly tagged as [P:Noun]  --- Done
+- CompoundP3sg can be a secondary pos instead of an Attribute.
+- Compounds must be written in their original form.
+- Add [Compound] tag for compound words.
+

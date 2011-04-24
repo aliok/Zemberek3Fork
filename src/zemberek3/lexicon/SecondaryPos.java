@@ -10,6 +10,7 @@ public enum SecondaryPos implements StringEnum<SecondaryPos> {
     Demonstrative("Demons"),
     Time("Time"),
     ProperNoun("Prop"),
+    Compound("Compound"),
     None("None");
 
     String shortForm;

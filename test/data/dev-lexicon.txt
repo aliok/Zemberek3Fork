@@ -2,14 +2,14 @@
 # it includes actual lemmas with all possible POS types with tag sequences and corner cases.
 
 # Usage
-# lemma [Pos: pos1,pos2 ; A: attribute1, attribute2]
+# lemma [P: pos1,pos2 ; A: attribute1, attribute2]
 
 # ------------------------------------------------------------------------------------------
 # Nouns.
 
 # Main Pos info is optional.
 elma
-kahve [Pos: Noun]
+kahve [P: Noun]
 yapı
 gemi
 kano
@@ -31,13 +31,13 @@ ağaç
 yakıt
 
 # Fully written form.
-kepek [Pos: Noun; A: Voicing]
+kepek [P: Noun; A: Voicing]
 
 # NoVoicing attribute is inferred because it is single syllable.
 küp
 
 # Fully written form.
-kek [Pos: Noun; A: NoVoicing]
+kek [P: Noun; A: NoVoicing]
 
 kap [A:Voicing]
 
@@ -68,14 +68,14 @@ lütuf [A: LastVowelDrop]
 
 # these words are also adjectives.
 arı
-iki [Pos:Num]
+iki [P:Num]
 
 # use of a secondary Pos. Noun pos was optional actually.
-çıtır [Pos:Noun,Dup]
+çıtır [P:Noun,Dup]
 
 # because verbs are also inferred from -mek -mak, here Pos info is required. But Voicing Attribute is optional
-sumak [Pos: Noun]
-yemek [Pos: Noun]
+sumak [P: Noun]
+yemek [P: Noun]
 
 # Proper nouns. both noun and Prop tags are optional.Prop attribute is inferred from first letter.
 Ankara
@@ -83,14 +83,14 @@ Adana
 Ağrı
 ağrı
 
-adem [Pos:Noun]
-âdem [Pos:Noun]
-Âdem [Pos:Prop]
+adem [P:Noun]
+âdem [P:Noun]
+Âdem [P:Prop]
 
 ad
 ad [A: Doubling, InverseHarmony]
 
-bugün [Pos:Time]
+bugün [P:Time]
 ben
 hükûmet [A:NoVoicing]
 
@@ -101,32 +101,32 @@ atkuyruğu [A:CompoundP3sg, Voicing]
 # Adjectives
 # Pos info needs to be written, allways.
 
-kırmızı [Pos:Adj]
-arı [Pos:Adj]
-yavaş [Pos:Adj]
-temiz [Pos:Adj]
+kırmızı [P:Adj]
+arı [P:Adj]
+yavaş [P:Adj]
+temiz [P:Adj]
 
 # secondary pos. both are required.
-çıtır [Pos:Adj,Dup]
+çıtır [P:Adj,Dup]
 
-şu [Pos:Adj,Demons]
-kaba [Pos:Adj]
+şu [P:Adj,Demons]
+kaba [P:Adj]
 
 # ------------------------------------------------------------------------------------------
 # Numeral
-iki [Pos:Num]
+iki [P:Num]
 
 # ------------------------------------------------------------------------------------------
 # Adverbs
 # Pos info needs to be written, allways.
 
-ayrı [Pos:Adv]
-behemehâl [Pos:Adv]
-bugün [Pos:Adv, Time]
+ayrı [P:Adv]
+behemehâl [P:Adv]
+bugün [P:Adv, Time]
 
 # ------------------------------------------------------------------------------------------
 # Verbs
-# Pos:Verb info is inferred from -mek -mak suffix. So it is optional.
+# P:Verb info is inferred from -mek -mak suffix. So it is optional.
 
 atmak [A:Reciprocal]
 bakmak [A:Reciprocal]
@@ -149,35 +149,35 @@ kapmak [A:Reciprocal]
 
 # ------------------------------------------------------------------------------------------
 # Interjection
-behey [Pos:Interj]
-a [Pos:Interj]
+behey [P:Interj]
+a [P:Interj]
 
 # ------------------------------------------------------------------------------------------
 # Pronoun
 
-ben [Pos:Pron; A:StemChange]
-o [Pos:Pron]
-şu [Pos:Pron,Demons]
+ben [P:Pron; A:StemChange]
+o [P:Pron]
+şu [P:Pron,Demons]
 
 # ------------------------------------------------------------------------------------------
 # Conjuction
 
-ama [Pos:Conj]
-fakat [Pos:Conj]
-ve [Pos:Conj]
-veya [Pos:Conj]
-ya [Pos:Conj]
-da [Pos:Conj]
+ama [P:Conj]
+fakat [P:Conj]
+ve [P:Conj]
+veya [P:Conj]
+ya [P:Conj]
+da [P:Conj]
 
 # ------------------------------------------------------------------------------------------
 # Determiner
 
-bir [Pos:Det]
+bir [P:Det]
 
 # ------------------------------------------------------------------------------------------
 # Post Positive
 
-rağmen [Pos:Postp]
-birlikte [Pos:Postp]
+rağmen [P:Postp]
+birlikte [P:Postp]
 
 
