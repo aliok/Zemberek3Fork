@@ -2,7 +2,7 @@
 - [NoVoicing] nouns and adjectives must be hand tagged for multi-syllable words (takat).
 - Also single syllable words must be tagged [Voicing] when necessary (yurt).
 - Single syllable Aorist_I verbs must be tagged. --- Done
-- Multi syllable Aorist_A verbs must be tagged.
+- Multi syllable Aorist_A verbs must be tagged. --- Done
 - Reciprocal and Reflexive verbs must be tagged.
 - Nouns ending [-mek -mak] must be explicitly tagged as [P:Noun]  --- Done
 - CompoundP3sg can be a secondary pos instead of an Attribute.

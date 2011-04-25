@@ -185,7 +185,7 @@ adavet
 aday
 adayavru [P:Noun; A:CompoundP3sg]
 adcı [P:Adj]
-addetmek [Verb Aor2 Vo]
+addetmek [A:Voicing, Aorist_A]
 addolmak
 adedî [P:Adv]
 adedimürettep
@@ -239,7 +239,7 @@ aferist
 afet
 afet [P:Adj]
 afetzede
-affetmek [Verb Aor2 Vo]
+affetmek [A:Voicing, Aorist_A]
 affettuoso [P:Adv]
 affeyleme
 affeylemek
@@ -2497,7 +2497,6 @@ basın
 basınç
 basınçölçer
 basıölçer
-basırganmak
 basil
 basiret
 basit
@@ -21422,7 +21421,7 @@ süreduran
 süredurum
 süregelen
 süregelmek
-süregitmek
+süregitmek [A:Aorist_A]
 süreğen
 sürek
 sürekli
@@ -24255,7 +24254,7 @@ varoluşçu
 varoş
 varsağı
 varsayım
-varsaymak
+varsaymak [A:Aorist_A]
 varsıl
 varta
 Varto
@@ -24291,7 +24290,7 @@ vazelin
 vazelinlemek
 vazetmek [A:Voicing, Aorist_A]
 vazgeçirmek
-vazgeçmek
+vazgeçmek [A:Aorist_A]
 vazı
 vazı
 vazıh
