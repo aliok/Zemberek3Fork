@@ -5769,7 +5769,7 @@ dekor
 dekorasyon
 dekoratif [P:Adj]
 dekoratör
-dekore [P:Adj, A:NoSuffix]
+dekore [P:Adj; A:NoSuffix]
 dekovil
 dekreşendo [P:Adv]
 dekstrin
@@ -6324,9 +6324,9 @@ dirsek
 dirseklemek
 disimilasyon
 disiplin
-disipline [P:Adj, A:NoSuffix]
+disipline [P:Adj; A:NoSuffix]
 disk
-diskalifiye [P:Adj, A:NoSuffix]
+diskalifiye [P:Adj; A:NoSuffix]
 diskçalar
 disket
 disket [P:Adv]
@@ -7287,7 +7287,7 @@ elifba
 elik
 elim [P:Adj]
 eliminasyon
-elimine [P:Adj, A:NoSuffix]
+elimine [P:Adj; A:NoSuffix]
 elips
 elipsoidal [P:Adj; A:InverseHarmony]
 elipsoit [P:Adj]
@@ -7372,7 +7372,7 @@ empermeabl
 empermeabl [P:Adj]
 emperyalist [P:Adj]
 emperyalizm
-empoze [P:Adj, A:NoSuffix]
+empoze [P:Adj; A:NoSuffix]
 empresyonist [P:Adj]
 empresyonizm
 emprezaryo

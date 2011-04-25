@@ -2,6 +2,7 @@ package zemberek3.lexicon;
 
 import com.google.common.collect.Lists;
 import junit.framework.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import zemberek3.structure.AttributeSet;
 
@@ -110,6 +111,17 @@ public class TurkishDictionaryLoaderTest {
             Assert.assertEquals(Noun, item.primaryPos);
             Assert.assertEquals("error in:" + pair.str, pair.attrs, item.attrs);
         }
+    }
+
+    @Test
+    @Ignore("Not a unit Test. Only loads the master dictionary.")
+    public void masterDictionaryLoadTest() throws IOException {
+        SuffixProvider sp = new TurkishSuffixes().getSuffixProvider();
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(sp);
+
+        List<DictionaryItem> items = loader.load(new File("src/resources/tr/master-dictionary.txt"));
+        System.out.println(items.size());
+
     }
 
     private static ItemAttrPair testPair(String s, RootAttr... attrs) {
