@@ -79,7 +79,7 @@ public class TurkishDictionaryLoader {
             if (posInfo.secondaryPos == SecondaryPos.ProperNoun) {
                 word = word.toLowerCase(locale);
             }
-            return word.replaceAll("[\\-']","");
+            return word.replaceAll("[\\-']", "");
         }
 
         static Pattern posPattern = Pattern.compile("(?:P:)(.+?)(?:;|\\])");
@@ -117,7 +117,9 @@ public class TurkishDictionaryLoader {
         }
 
         private PrimaryPos inferPrimaryPos(String word) {
-            if (word.endsWith("mek") || word.endsWith("mak")) {
+            if (Character.isUpperCase(word.charAt(0)))
+                return PrimaryPos.Noun;
+            else if (word.endsWith("mek") || word.endsWith("mak")) {
                 return PrimaryPos.Verb;
             } else {
                 return PrimaryPos.Noun;

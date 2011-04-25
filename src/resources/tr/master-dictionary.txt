@@ -867,7 +867,7 @@ allegro [P:Adv]
 allem
 allık
 almaç
-almak
+almak [A:Aorist_I]
 Alman
 almanak
 Almanca
@@ -3304,7 +3304,7 @@ billuriye [P:Adj]
 billursu
 billursu [P:Adj]
 bilmece
-bilmek
+bilmek [A:Aorist_I]
 bilmezlemek
 bilmukabele [P:Adv]
 bilmünasebe [P:Adv]
@@ -3842,7 +3842,7 @@ bulgur
 bullak [P:Adj]
 bulmaca
 bultak
-bulmak
+bulmak [A:Aorist_I]
 bulûğ
 bulundurmak
 bulunmak
@@ -4575,7 +4575,7 @@ cüzzam
 çakkal
 çakma
 çakma [P:Adj]
-çakmak
+çakmak [P:Noun]
 çakmak
 çakşır
 çaktırmak
@@ -6750,7 +6750,7 @@ duralamak
 durdurmak
 durgu
 durgun [P:Adj]
-durmak
+durmak [A:Aorist_I]
 Dursunbey
 duru [P:Adj]
 durulamak
@@ -8886,7 +8886,7 @@ gelişim
 gelişkin [P:Adj]
 gelişmek
 geliştirmek
-gelmek
+gelmek [A:Aorist_I]
 gem
 Gemerek
 gemi
@@ -9226,7 +9226,7 @@ görgü
 görgülenmek
 görk
 görkem
-görmek
+görmek [A:Aorist_I]
 görsel
 görsel-işitsel
 görü
@@ -12051,7 +12051,7 @@ kalkojen
 kalkolitik
 kallavi [P:Adj]
 kalleş
-kalmak
+kalmak [A:Aorist_I]
 kalori
 kalorifer
 kalorimetre
@@ -17659,7 +17659,7 @@ olimpik
 olimpiyat
 olivin
 olmadık [P:Adj]
-olmak
+olmak [A:Aorist_I]
 olta
 Oltu
 oluk
@@ -18009,7 +18009,7 @@ ozuga
 öldürmek
 ölet
 ölgün [P:Adj]
-ölmek
+ölmek [A:Aorist_I]
 ölü
 ölüm
 ölümcül [P:Adj]
@@ -18386,7 +18386,6 @@ paşa
 paşababa
 paşaçadır [P:Noun; A:CompoundP3sg]
 paşazade
-paşmak
 pat
 pat [P:Adj, Dup]
 pata
@@ -24250,7 +24249,7 @@ vâris
 varit [A:Voicing, LastVowelDrop]
 variyet
 varlık
-varmak
+varmak [A:Aorist_I]
 varoluş
 varoluşçu
 varoş
@@ -24367,7 +24366,7 @@ verici
 verim
 verit
 verkaç
-vermek
+vermek [A:Aorist_I]
 vermut
 vernik
 verniklemek
@@ -24514,7 +24513,7 @@ vurdumduymaz [P:Adj]
 vurgu
 vurgulamak
 vurgun
-vurmak
+vurmak [A:Aorist_I]
 vurtut
 vuru
 vuruşkan
