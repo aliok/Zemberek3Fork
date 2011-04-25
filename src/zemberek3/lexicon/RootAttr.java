@@ -15,6 +15,9 @@ public enum RootAttr implements StringEnum, IndexedEnum {
     LastVowelDrop,
     Doubling,
     StemChange,
+    NounConsInsert,
+    NounConsInsert_n,
+    NoQuote,
     ProgressiveVowelDrop,
     Aorist_I,
     Aorist_A,
@@ -23,7 +26,8 @@ public enum RootAttr implements StringEnum, IndexedEnum {
     CompoundP3sg,
     Causative_t,
     Reflexive,
-    Reciprocal;
+    Reciprocal,
+    NoSuffix;
 
     int index;
 

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This is a deterministic word generator. It would return a single solution for a given [Dictionary Item + Suffix List]
+ * This is a deterministic word generator. It returns a single solution for a given [Dictionary Item + Suffix List]
  * parameter.
  */
 public class SimpleGenerator {
