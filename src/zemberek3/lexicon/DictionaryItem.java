@@ -15,7 +15,7 @@ public class DictionaryItem {
     static final Locale locale = new Locale("tr");
 
     public DictionaryItem(String lemma, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs, ExclusiveSuffixData suffixData) {
-        this.lemma = lemma;
+        this.lemma = lemma.toLowerCase();
         this.primaryPos = primaryPos;
         this.secondaryPos = secondaryPos;
         this.attrs = attrs;

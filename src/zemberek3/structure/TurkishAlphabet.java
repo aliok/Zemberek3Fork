@@ -109,11 +109,11 @@ public class TurkishAlphabet {
     private static Map<TurkicLetter, TurkicLetter> devoicingMap = new HashMap<TurkicLetter, TurkicLetter>();
 
     static {
-        devoicingMap.put(TurkishAlphabet.L_b, TurkishAlphabet.L_p);
-        devoicingMap.put(TurkishAlphabet.L_c, TurkishAlphabet.L_cc);
-        devoicingMap.put(TurkishAlphabet.L_d, TurkishAlphabet.L_t);
-        devoicingMap.put(TurkishAlphabet.L_g, TurkishAlphabet.L_k);
-        devoicingMap.put(TurkishAlphabet.L_gg, TurkishAlphabet.L_k);
+        devoicingMap.put(L_b, L_p);
+        devoicingMap.put(L_c, L_cc);
+        devoicingMap.put(L_d, L_t);
+        devoicingMap.put(L_g, L_k);
+        devoicingMap.put(L_gg, L_k);
     }
 
     public TurkicLetter devoice(TurkicLetter l) {
