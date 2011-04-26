@@ -86,7 +86,7 @@ aceleten [P:Adv]
 acem
 Acem
 acemaşiran
-acemborusu [P:Noun; A:CompoundP3sg]
+acemborusu [A:CompoundP3sg; R:acemboru]
 acembuselik
 Acemce
 acemi
@@ -172,8 +172,8 @@ adamcasına [P:Adv]
 adamak
 adamakıllı
 adamcıl
-adamkökü [P:Noun; A:CompoundP3sg]
-adamotu [P:Noun; A:CompoundP3sg]
+adamkökü [A:CompoundP3sg; R:adamkök]
+adamotu [A:CompoundP3sg; R:adamot]
 Adana
 adap
 Adapazarı
@@ -183,7 +183,7 @@ adaptör
 adaş
 adavet
 aday
-adayavru [P:Noun; A:CompoundP3sg]
+adayavrusu [A:CompoundP3sg; R:adayavru]
 adcı [P:Adj]
 addetmek [A:Voicing, Aorist_A]
 addolmak
@@ -193,7 +193,7 @@ adem
 âdem
 Âdem
 Âdemcilik
-âdemelma [P:Noun; A:CompoundP3sg]
+âdemelması [A:CompoundP3sg; R:âdemelma ]
 ademimerkeziyet
 ademiyet
 âdemiyet
@@ -626,9 +626,9 @@ akşam [P:Noun, Time]
 akşamki
 akşamlamak
 akşamleyin
-akşamsefa [P:Noun; A:CompoundP3sg]
-akşamüst [P:Noun, Time; A:CompoundP3sg]
-akşamüzer [P:Noun, Time; A:CompoundP3sg]
+akşamsefası [A:CompoundP3sg; R:akşamsefa]
+akşamüstü [P:Noun, Time; A:CompoundP3sg; R:akşamüst]
+akşamüzeri [P:Noun, Time; A:CompoundP3sg; R:akşamüzer]
 Akşehir
 akşın
 aktar
@@ -998,7 +998,7 @@ amerikan
 amerikan [P:Adj]
 Amerikanca
 Amerikanist
-Amerikanvari [P:Noun, Prop; A:NoQuote]
+Amerikanvari [A:NoQuote]
 amerikyum
 ametal [A:InverseHarmony]
 ametist
@@ -1371,8 +1371,8 @@ Araban
 arabanbuselik
 arabankürdi
 arabesk
-Arabî [P:Noun, Prop; A:NoQuote]
-Arabist [P:Noun, Prop; A:NoQuote]
+Arabî [A:NoQuote]
+Arabist [A:NoQuote]
 Arabistan
 arabozan
 aracı
@@ -1400,13 +1400,13 @@ aranjör
 aranmak
 arap
 arap [P:Adj]
-Arap [P:Noun, Prop; A:NoQuote]
+Arap [A:NoQuote]
 Arapça
 Arapkir
-arapsaç [P:Noun; A:CompoundP3sg]
+arapsaçı [A:CompoundP3sg; R:arapsaç]
 Arapsun
 ararot
-Arasat [P:Noun, Prop; A:NoQuote]
+Arasat [A:NoQuote]
 arasta
 araşit
 araştırı
@@ -1457,7 +1457,7 @@ Arıcak
 arık
 arık [P:Adj]
 arıklamak
-Arıkovanı [P:Noun, Prop; A:NoQuote]
+Arıkovanı [A:NoQuote]
 arılamak
 arınmak
 arış
@@ -1532,7 +1532,7 @@ armut [P:Adj]
 Armutlu
 armuz
 Arnavut
-arnavutciğer [P:Noun; A:CompoundP3sg]
+arnavutciğeri [A:CompoundP3sg; arnavutciğer]
 Arnavutça
 Arnavutluk
 arnika
@@ -1724,7 +1724,7 @@ astsubay
 asude [P:Adj]
 asuman
 Asurca
-Asurî [P:Noun, Prop; A:NoQuote]
+Asurî [A:NoQuote]
 Asya
 asyön
 aş
@@ -1739,7 +1739,7 @@ aşçı
 aşçıbaşı
 aşerat
 aşermek
-aşev [P:Noun; A:CompoundP3sg]
+aşevi [A:CompoundP3sg; R:aşev]
 aşhane
 aşı
 aşı [P:Adj]
@@ -1794,11 +1794,11 @@ ataraksiya
 atardamar
 atari
 atarkanal
-atasöz [P:Noun; A:CompoundP3sg]
+atasözü [A:CompoundP3sg; R:atasöz]
 ataş
 ataşe
 Atatürk
-Atatürkçü [P:Noun, Prop; A:NoQuote]
+Atatürkçü [A:NoQuote]
 atavik [P:Adj]
 atavizm
 atbalığı
@@ -1834,7 +1834,7 @@ atkı
 atkılamak
 atkuyruğu
 atkuyruğugiller
-atkuyruk [P:Noun; A:CompoundP3sg, Voicing]
+atkuyruğu [A:CompoundP3sg, Voicing; R:atkuruk]
 atlamak
 atlambaç
 atlangıç
@@ -1902,7 +1902,7 @@ avret
 avro
 avrovil
 Avrupa
-Avrupaî [P:Noun, Prop; A:NoQuote]
+Avrupaî [A:NoQuote]
 avşar
 avuç
 avuçlamak
@@ -1927,12 +1927,12 @@ ayakçak
 ayakçın
 ayakkabı
 ayaklamak
-ayaktakım [P:Noun; A:CompoundP3sg]
+ayaktakımı [A:CompoundP3sg; R:ayaktakım]
 ayaktaş
 ayakucu
 ayaküstü [P:Adv]
 ayaküzeri [P:Adv]
-ayakyol [P:Noun; A:CompoundP3sg]
+ayakyolu [A:CompoundP3sg; R:ayakyolu]
 ayal [A:InverseHarmony]
 ayan [P:Adj]
 âyan
@@ -1950,8 +1950,8 @@ Aybastı
 aybaşı
 aybeay [P:Adv]
 ayça
-ayçiçek [P:Noun; A:CompoundP3sg, Voicing]
-ayçörek [P:Noun; A:CompoundP3sg, Voicing]
+ayçiçeği [A:CompoundP3sg, Voicing; R:ayçiçek]
+ayçöreği [A:CompoundP3sg, Voicing; R:ayçörek]
 aydemir
 aydın [P:Adj]
 Aydın
@@ -1968,7 +1968,7 @@ aygır
 aygıt
 ayı
 ayı [P:Interj]
-ayıbacak [P:Noun; A:CompoundP3sg, Voicing]
+ayıbacağı [A:CompoundP3sg, Voicing; R:ayıbacak]
 ayıboğan
 ayıgiller
 ayık [P:Adj]
@@ -2063,7 +2063,7 @@ azat [P:Adj]
 Azdavay
 azelya
 Azerbaycan
-Azerî [P:Noun, Prop; A:NoQuote]
+Azerî [A:NoQuote]
 Azerîce
 azgın [P:Adj]
 azgınlaşmak
@@ -2111,7 +2111,7 @@ babaç
 babaçko
 Babadağ
 Babaeski
-babaev [P:Noun; A:CompoundP3sg]
+babaevi [A:CompoundP3sg; R:babaev]
 babafingo
 Babaî
 babaköş
@@ -2120,9 +2120,9 @@ babayani [P:Adj]
 babayiğit
 Babıâli
 baca
-bacabaş [P:Noun; A:CompoundP3sg]
+bacabaşı [A:CompoundP3sg; R:bacabaş]
 bacak
-bacakkalem [P:Noun; A:CompoundP3sg]
+bacakkalemi [A:CompoundP3sg; R:bacakkalem]
 bacakkıran
 bacanak
 bacı
@@ -2202,7 +2202,7 @@ bağrış
 bağrışmak
 baha
 bahadır
-Bahaî [P:Noun, Prop; A:NoQuote]
+Bahaî [A:NoQuote]
 bahane
 bahar
 baharat
@@ -2254,7 +2254,7 @@ bakkal
 bakkaliye
 bakkam
 bakla
-baklaçiçek [Noun Compound Vo]
+baklaçiçeği [A:CompoundP3sg, Voicing; R:baklaçiçek]
 baklagiller
 baklan
 Baklan
@@ -2330,16 +2330,16 @@ balistik
 balkan
 Balkan
 Balkanlar
-Balkanolog [PropNoun NoQuote Vo]
-Balkanoloji [P:Noun, Prop; A:NoQuote]
+Balkanolog [A:NoQuote]
+Balkanoloji [A:NoQuote]
 Balkar
 Balkarca
 balkı
 balkı [P:Adj]
 balkır
 balkon
-balköpük [Noun Compound Vo]
-balköpüğü [P:Adj]
+balköpüğü [A:CompoundP3sg, Voicing; R:balköpük]
+balköpüğü [P:Adj; A:CompoundP3sg, Voicing; R:balköpük]
 ballanmak
 ballıbaba
 ballıbabagiller
@@ -2370,7 +2370,7 @@ bambu
 bambu [P:Adj]
 bambul
 bamya
-bamyatarla [P:Noun; A:CompoundP3sg]
+bamyatarlası [A:CompoundP3sg; R:bamyatarlası]
 ban
 banak
 banal [P:Adj; A:InverseHarmony]
@@ -2420,7 +2420,7 @@ barba
 barbakan
 barbar [P:Adj]
 barbarizm
-barbaş [P:Noun; A:CompoundP3sg]
+barbaşı [A:CompoundP3sg; R:barbaş]
 barbata
 barbekü
 barbun
@@ -2492,7 +2492,7 @@ bası
 basık [P:Adj]
 basıla
 basım
-basımev [P:Noun; A:CompoundP3sg]
+basımevi [A:CompoundP3sg; R:basımev]
 basın
 basınç
 basınçölçer
@@ -2534,7 +2534,7 @@ basya
 baş
 başağaç
 başağırlık
-başağrı [P:Noun; A:CompoundP3sg]
+başağrısı [A:CompoundP3sg; R:başağrı]
 başak
 Başak
 başaklamak
@@ -2880,7 +2880,7 @@ belge
 belgegeçer
 belgelemek
 belgesel
-belgevşeklik [Noun Compound Vo]
+belgevşekliği [A:CompoundP3sg, Voicing; R:belgevşeklik]
 belgi
 belgilemek
 belgin [P:Adj]
@@ -3052,7 +3052,7 @@ beşibirarada
 beşibirlik
 beşibiryerde
 beşik
-Beşikdüzü [PropNoun ConsInsert_N]
+Beşikdüzü [A:CompoundP3sg; R:Beşikdüz]
 beşikörtüsü
 Beşiktaş
 beşinci [P:Adj]
@@ -3116,15 +3116,15 @@ beyinsiz
 beyit [A:LastVowelDrop]
 beyiye
 Beykoz
-beylerbeyi [P:Noun; A:CompoundP3sg]
-Beylerbeyi [PropNoun ConsInsert_N]
+beylerbeyi [A:CompoundP3sg; R:beylerbey]
+Beylerbeyi [A:CompoundP3sg; R:Beylerbey]
 beylik
 beylik [P:Adj]
 Beylikova
 beynamaz [P:Adj]
 beynelmilel [P:Adj]
-Beyoğlu [PropNoun ConsInsert_N]
-Beypazarı [PropNoun ConsInsert_N]
+Beyoğlu [A:CompoundP3sg; R:Beyoğul]
+Beypazarı [A:CompoundP3sg; R:Beypazar]
 beysbol
 Beyşehir
 beytülmal [A:InverseHarmony]
@@ -3347,7 +3347,7 @@ biraz [P:Adv]
 birazcık [P:Adj]
 birazcık [P:Adv]
 birazdan [P:Adv]
-birbiri [Pron Compound]
+birbiri [P:Pron]
 birçok
 birdenbire [P:Adv]
 birdirbir
@@ -3422,7 +3422,7 @@ bitlemek
 Bitlis
 bitmek
 bitnik
-bitpazar [P:Noun; A:CompoundP3sg]
+bitpazarı [A:CompoundP3sg; R:bitpazar]
 bittabi [P:Adv]
 bitter
 bitüm
@@ -3572,7 +3572,7 @@ borani
 borasit
 borat
 borazan
-borazancıbaşı [P:Noun; A:CompoundP3sg]
+borazancıbaşı [A:CompoundP3sg; R:borazancıbaş]
 borç
 Borçka
 borçlanmak
@@ -3678,7 +3678,7 @@ böbürlenmek
 böbürtü
 böce
 böcek
-böcekbaş [P:Noun; A:CompoundP3sg]
+böcekbaşı [A:CompoundP3sg; R:böcekbaş]
 böcekçil [P:Adj]
 böcekçiller
 böcekkapan
@@ -3702,7 +3702,7 @@ bölmek
 bölü
 bölücü [P:Adj]
 bölük
-bölükbaş [P:Noun; A:CompoundP3sg]
+bölükbaşı [A:CompoundP3sg; R:bölükbaş]
 bölüm
 bölümlemek
 bölünen
@@ -3962,8 +3962,8 @@ bükün
 bükünmek
 büküntü
 bülbül
-bülbülkonak [P:Noun; A:CompoundP3sg, Voicing]
-bülbülyuva [P:Noun; A:CompoundP3sg]
+bülbülkonağı [A:CompoundP3sg, Voicing; R:bülbülkonak]
+bülbülyuvası [A:CompoundP3sg; R:bülbülyuva]
 bülten
 büluğ
 Bünyan
@@ -4043,8 +4043,8 @@ cambaz
 cambazhane
 cambul [P:Adj, Dup]
 camekân
-camgöbek [Noun Compound Vo]
-camgöbek [Adj Compound Vo]
+camgöbeği [A:CompoundP3sg, Voicing; R:camgöbek]
+camgöbeği [P:Adj; A:CompoundP3sg, Voicing; R:camgöbek]
 camgöz
 camgüzeli
 camız
@@ -4063,7 +4063,7 @@ canciğer [P:Adj]
 candan [P:Adj]
 candan [P:Adv]
 candaş
-canev [P:Noun; A:CompoundP3sg]
+canevi [A:CompoundP3sg; R:canev]
 canfes
 canfes [P:Adj]
 canfeza
@@ -4075,7 +4075,7 @@ cani
 cani [P:Adj]
 canip
 caniyane [P:Adv]
-cankulak [P:Noun; A:CompoundP3sg]
+cankulağı [A:CompoundP3sg; R:cankulak]
 cankurtaran
 canlanmak
 canlı
@@ -4175,7 +4175,7 @@ cemaziyülâhır
 cemaziyülevvel
 cembiye
 cemetmek [A:Voicing, Aorist_A]
-cemev [P:Noun; A:CompoundP3sg]
+cemevi [A:CompoundP3sg; R:cemev]
 cemi [P:Adj]
 cemil [P:Adj]
 cemile
@@ -4259,7 +4259,7 @@ Ceyhan
 ceylan
 Ceylânpınar
 ceza
-cezaev [P:Noun; A:CompoundP3sg]
+cezaevi [A:CompoundP3sg; R:cezaev]
 cezai [P:Adj]
 cezalamak
 Cezayir
@@ -4410,7 +4410,7 @@ cinsaçı
 cinsel [P:Adj]
 cinsî [P:Adj]
 cinsiyet
-cinyolu [P:Noun; A:CompoundP3sg]
+cinyolu [A:CompoundP3sg; R:cinyol]
 cip
 cips
 ciranta
@@ -4424,9 +4424,9 @@ cismen
 cismen [P:Adv]
 civan
 civan [P:Adj]
-civankaş [P:Noun; A:CompoundP3sg]
+civankaşı [A:CompoundP3sg; R:civankaş]
 civanmert
-civanperçem [P:Noun; A:CompoundP3sg]
+civanperçemi [A:CompoundP3sg; R:civanperçem]
 civar
 civar [P:Adj]
 civciv
@@ -4467,7 +4467,7 @@ cumburdamak
 cumburlop
 cumburtu
 cumhur
-cumhurbaşkan [P:Noun; A:CompoundP3sg]
+cumhurbaşkanı [A:CompoundP3sg; R:cumhurbaşkan]
 cumhurbaşkanlığı
 cumhurca [P:Adv]
 cumhuriyet
@@ -4778,10 +4778,10 @@ cüzzam
 çayhane
 çayır
 Çayıralan
-çayırgüzel [P:Noun; A:CompoundP3sg]
+çayırgüzeli [A:CompoundP3sg; R:çayırgüzel]
 çayırlamak
 Çayırlı
-çayırsedef [P:Noun; A:CompoundP3sg]
+çayırsedefi [A:CompoundP3sg; R:çayırsedef]
 çaykara
 Çaykara
 çaylak
@@ -4928,7 +4928,7 @@ cüzzam
 Çeşme
 çeşmibülbül
 çeşni
-çeşnicibaşı [P:Noun; A:CompoundP3sg]
+çeşnicibaşı [A:CompoundP3sg; R:çeşnicibaş]
 çeşnilemek
 çete
 çetele
@@ -5199,17 +5199,17 @@ cüzzam
 çoban
 çobanaldatan
 çobanaldatangiller
-çobançantası [P:Noun; A:CompoundP3sg]
-çobandağarcık [P:Noun; A:CompoundP3sg, Voicing]
-çobandeğnek [P:Noun; A:CompoundP3sg, Voicing]
-çobandüdük [P:Noun; A:CompoundP3sg, Voicing]
-çobaniğne [P:Noun; A:CompoundP3sg]
+çobançantası [A:CompoundP3sg; R:çobançanta]
+çobandağarcığı [A:CompoundP3sg, Voicing; R:çobandağarcık]
+çobandeğneği [A:CompoundP3sg, Voicing; R:çobandeğnek]
+çobandüdüğü [A:CompoundP3sg, Voicing; R:çobandüdük]
+çobaniğnesi [A:CompoundP3sg; R:çobaniğne]
 Çobanlar
-çobanpüskül [P:Noun; A:CompoundP3sg]
+çobanpüskülü [A:CompoundP3sg; R:çobanpüskül]
 çobanpüskülügiller
-çobansüzgeç [P:Noun; A:CompoundP3sg, Voicing]
-çobantarak [P:Noun; A:CompoundP3sg, Voicing]
-çobantuzluk [P:Noun; A:CompoundP3sg, Voicing]
+çobansüzgeci [A:CompoundP3sg, Voicing; R:çobansüzgeç]
+çobantarağı [A:CompoundP3sg, Voicing; R:çobantarak]
+çobantuzluğu [A:CompoundP3sg, Voicing; R:çobantuzluk]
 çocuk
 çocukça [P:Adj]
 çocukça [P:Adv]
@@ -5373,7 +5373,7 @@ dadı
 dağ
 dağar
 dağarcık
-dağbaş [P:Noun; A:CompoundP3sg]
+dağbaşı [A:CompoundP3sg; R:dağbaş]
 dağcı
 dağcıl [P:Adj]
 dağdağa
@@ -5504,7 +5504,7 @@ damping
 dan [P:Noun, Dup; A:NoSuffix]
 damsız [P:Adv]
 dana
-danaayak [Noun Compound Vo]
+danaayağı [A:CompoundP3sg, Voicing; R:danaayak]
 danaburnu
 Danca
 dandik [P:Adj]
@@ -5542,7 +5542,7 @@ dara
 daraban
 daracık [P:Adj]
 daraç [P:Adj]
-darağaç [P:Noun; A:CompoundP3sg]
+darağacı [A:CompoundP3sg; R:darağaç]
 daralmak
 daraş [P:Adj]
 darbe
@@ -5576,7 +5576,7 @@ darülbedayi
 darüleytam
 darülfünun
 darüşşifa
-Darvinci [P:Noun, Prop; A:NoQuote]
+Darvinci [A:NoQuote]
 dasdaracık [P:Adj]
 dasit
 dasnik
@@ -5604,7 +5604,7 @@ davranım
 davudi [P:Adj]
 davul
 davya
-davultoz [P:Noun; A:CompoundP3sg]
+davultozu [A:CompoundP3sg; R:davultoz]
 dayak
 dayaklık
 dayaklık [P:Adj]
@@ -5675,7 +5675,7 @@ deflemek
 defne
 defnegiller
 defnetmek [A:Voicing, Aorist_A]
-defneyaprak [P:Noun; A:CompoundP3sg, Voicing]
+defneyaprağı [A:CompoundP3sg, Voicing; R:defneyaprak]
 defo
 defolmak
 deformasyon
@@ -5753,7 +5753,7 @@ dekalitre
 dekametre
 dekan
 dekar
-Dekartçı [PropNoun NoQuote Vo]
+Dekartçı [A:NoQuote]
 dekaster
 dekatlon
 dekatloncu
@@ -5820,7 +5820,7 @@ demirbaş
 demirbaş [P:Adj]
 Demirci
 demirhane
-demirhint [P:Noun; A:CompoundP3sg, Voicing]
+demirhintdi [A:CompoundP3sg, Voicing; R:demirhint]
 demirî
 demirî [P:Adj]
 demirkapan
@@ -5858,44 +5858,44 @@ deney
 deneyim
 deneyimlemek
 deneylemek
-deneyüst [P:Noun; A:CompoundP3sg]
+deneyüstü [A:CompoundP3sg; R:deneyüst]
 denge
 dengelemek
 dengeşik
 deni [P:Adj]
 denim
 deniz
-denizala [P:Noun; A:CompoundP3sg]
+denizalası [A:CompoundP3sg; R:denizala]
 denizaltı
-denizana [P:Noun; A:CompoundP3sg]
-denizaslan [P:Noun; A:CompoundP3sg]
+denizanası [A:CompoundP3sg; R:denizana]
+denizaslanı [A:CompoundP3sg; R:denizaslan]
 denizaşırı
-denizat [P:Noun; A:CompoundP3sg]
-denizçakı [P:Noun; A:CompoundP3sg]
-denizdantel [P:Noun; A:CompoundP3sg]
-denizgergedan [P:Noun; A:CompoundP3sg]
-denizgül [P:Noun; A:CompoundP3sg]
-denizgüzel [P:Noun; A:CompoundP3sg]
-denizhıyar [P:Noun; A:CompoundP3sg]
-denizibik [P:Noun; A:CompoundP3sg, Voicing]
-deniziğne [P:Noun; A:CompoundP3sg]
-denizinek [P:Noun; A:CompoundP3sg, Voicing]
-denizkadayıf [P:Noun; A:CompoundP3sg]
-denizkedi [P:Noun; A:CompoundP3sg]
-denizkestane [P:Noun; A:CompoundP3sg]
-denizkız [P:Noun; A:CompoundP3sg]
-denizkozalak [P:Noun; A:CompoundP3sg, Voicing]
-denizköpük [P:Noun; A:CompoundP3sg, Voicing]
-denizlâle [P:Noun; A:CompoundP3sg]
+denizatı [A:CompoundP3sg; R:denizat]
+denizçakısı [A:CompoundP3sg; R:denizçakı]
+denizdanteli [A:CompoundP3sg; R:denizdantel]
+denizgergedanı [A:CompoundP3sg; R:denizgergedan]
+denizgülü [A:CompoundP3sg; R:denizgül]
+denizgüzeli [A:CompoundP3sg; R:denizgüzel]
+denizhıyarı [A:CompoundP3sg; R:denizhıyar]
+denizibiği [A:CompoundP3sg, Voicing; R:denizibik]
+deniziğnesi [A:CompoundP3sg; R:deniziğne]
+denizineği [A:CompoundP3sg, Voicing; R:denizinek]
+denizkadayıfı [A:CompoundP3sg; R:denizkadayıf]
+denizkedisi [A:CompoundP3sg; R:denizkedi]
+denizkestanesi [A:CompoundP3sg; R:denizkestane]
+denizkızı [A:CompoundP3sg; R:denizkız]
+denizkozalağı [A:CompoundP3sg, Voicing; R:denizkozalak]
+denizköpüğü [A:CompoundP3sg, Voicing; R:denizköpük]
+denizlâlesi [A:CompoundP3sg; R:denizlâle]
 Denizli
-denizmaymun [P:Noun; A:CompoundP3sg]
-denizpalamut [P:Noun; A:CompoundP3sg, Voicing]
-denizpelit [P:Noun; A:CompoundP3sg, Voicing]
-denizşakayık [P:Noun; A:CompoundP3sg, Voicing]
-deniztarak [P:Noun; A:CompoundP3sg, Voicing]
-deniztavşan [P:Noun; A:CompoundP3sg]
-deniztilki [P:Noun; A:CompoundP3sg]
-denizyıldız [P:Noun; A:CompoundP3sg]
+denizmaymunu [A:CompoundP3sg; R:denizmaymun]
+denizpalamudu [A:CompoundP3sg, Voicing; R:denizpalamut]
+denizpelidi [A:CompoundP3sg, Voicing; R:denizpelit]
+denizşakayığı [A:CompoundP3sg, Voicing; R:denizşakayık]
+deniztarağı [A:CompoundP3sg, Voicing; R:deniztarak]
+deniztavşanı [A:CompoundP3sg; R:deniztavşan]
+deniztilkisi [A:CompoundP3sg; R:deniztilki]
+denizyıldızı [A:CompoundP3sg; R:denizyıldız]
 denk [Noun Vo2]
 denklem
 denklik
@@ -5936,7 +5936,7 @@ derç
 derdest
 derdest [P:Adj]
 dere
-derebeyi [P:Noun; A:CompoundP3sg]
+derebeyi [A:CompoundP3sg; R:derebey]
 Derebucak
 derece
 derece [P:Part]
@@ -6055,19 +6055,19 @@ devam
 devam [P:Interj]
 devasa [P:Adj]
 deve
-deveboyun [Noun VowDrop Compound]
-deveelma [P:Noun; A:CompoundP3sg]
-devegöz [P:Noun; A:CompoundP3sg]
+deveboynu [A:CompoundP3sg, LastVowelDrop; R:deveboyun]
+deveelması [A:CompoundP3sg; R:deveelma]
+devegözü [A:CompoundP3sg; R:devegöz]
 Develi
 develik
 developman
 deveran
 deveranıdem
 devetabanı
-devetüy [P:Noun; A:CompoundP3sg]
+devetüyü [A:CompoundP3sg; R:devetüy]
 devetüyü [P:Adj]
 devim
-devingen [P:Adj]
+devingen [P:Adj; A:CompoundP3sg; R:devetüy]
 devinim
 devinmek
 devir [A:LastVowelDrop]
@@ -6211,7 +6211,7 @@ diktatör
 diktatör [P:Adj]
 dikte
 dil
-dilalt [P:Noun; A:CompoundP3sg]
+dilaltı [A:CompoundP3sg; R:dilalt]
 dilatometre
 dilaver
 dilbaz [P:Adj]
@@ -6478,7 +6478,7 @@ doğrusuz [P:Adj]
 doğu
 Doğubayazıt
 doğum
-doğumev [P:Noun; A:CompoundP3sg]
+doğumevi [A:CompoundP3sg; R:doğumev]
 doğumhane
 doğurgan [P:Adj]
 doğurmak
@@ -6555,9 +6555,9 @@ domino
 dominyon
 domur
 domuz
-domuzayağ [P:Noun; A:CompoundP3sg]
-domuzdam [P:Noun; A:CompoundP3sg]
-domuzayak [P:Noun; A:CompoundP3sg, Voicing]
+domuzayağı [A:CompoundP3sg; R:domuzayağ]
+domuzdamı [A:CompoundP3sg; R:domuzdam]
+domuzayağı [A:CompoundP3sg, Voicing; R:domuzayak]
 domuzgiller
 domuzlanmak
 domuzluk
@@ -6674,7 +6674,7 @@ döşem
 döşeme
 döşemelik [P:Adj]
 döşemek
-döşgöm [P:Noun; A:CompoundP3sg]
+döşgömü [A:CompoundP3sg; R:döşgöm]
 döteryum
 döveç
 döviz
@@ -6858,7 +6858,7 @@ düşey [P:Adj]
 düşeyazmak
 düşkü
 düşkün [P:Adj]
-düşkünlerev [P:Noun; A:CompoundP3sg]
+düşkünlerevi [A:CompoundP3sg; R:düşkünlerev]
 düşlemek
 düşman
 düşman [P:Adj]
@@ -7214,7 +7214,7 @@ elde
 elden [P:Adv]
 Eldivan
 eldiven
-elebaş [P:Noun; A:CompoundP3sg]
+elebaşı [A:CompoundP3sg; R:elebaş]
 eleğimsağma
 eleji
 elek
@@ -7523,7 +7523,7 @@ epigrafi
 epigram
 epik [P:Adj]
 epikerem
-Epikürcü [P:Noun, Prop; A:NoQuote]
+Epikürcü [A:NoQuote]
 epilasyon
 epilepsi
 epilog
@@ -7600,7 +7600,7 @@ erkânıharbiyeiumumiye
 erkânıharp
 erke
 erkeç
-erkeçsakal [P:Noun; A:CompoundP3sg]
+erkeçsakalı [A:CompoundP3sg; R:erkeçsakal]
 erkek
 erkek [P:Adj]
 erkekçil [P:Adj]
@@ -7721,8 +7721,8 @@ eşek
 eşekçe [P:Adj]
 eşekçe [P:Adv]
 eşekbaşı
-eşekkulak [P:Noun; A:CompoundP3sg]
-eşeksırt [P:Noun; A:CompoundP3sg]
+eşekkulağı [A:CompoundP3sg, Voicing; R:eşekkulak]
+eşeksırtı [A:CompoundP3sg; R:eşeksırt]
 eşelek
 eşelemek
 eşelmobil
@@ -7977,7 +7977,7 @@ faraziye
 farba
 farbala
 fare
-farekulak [P:Noun; A:CompoundP3sg]
+farekulağı [A:CompoundP3sg; R:farekulak]
 farenjit
 farfara
 farımak
@@ -8187,7 +8187,7 @@ fındık
 fındıkî
 fındıkkıran
 Fındıklı
-fındıkyuva [P:Noun; A:CompoundP3sg]
+fındıkyuvası [A:CompoundP3sg; R:fındıkyuva]
 fır [P:Adv]
 fır
 Fırat
@@ -8277,7 +8277,7 @@ filârmonik
 filbahar
 filbahri
 fildekoz
-fildiş [P:Noun; A:CompoundP3sg]
+fildiş [A:CompoundP3sg; R:fildişi]
 file
 filenk [Noun Vo2]
 filet
@@ -8296,7 +8296,7 @@ filiz
 filizî
 filizkıran
 filizlemek
-filkulak [P:Noun; A:CompoundP3sg, Voicing]
+filkulağı [A:CompoundP3sg, Voicing; R:filkulak]
 film
 filo
 filojenez
@@ -8876,9 +8876,9 @@ gelin
 gelinboğan
 gelincik
 gelincikgiller
-gelinfeneri [P:Noun; A:CompoundP3sg]
+gelinfeneri [A:CompoundP3sg; R:gelinfener]
 gelinlik
-gelinparmağı [P:Noun; A:CompoundP3sg, Voicing]
+gelinparmağı [A:CompoundP3sg, Voicing; R:gelinparmak]
 gelir
 gelişigüzel
 gelişim
@@ -8963,7 +8963,7 @@ gerinmek
 gerisingeri
 geriz
 Germanist
-Germanistik [PropNoun NoQuote Vo]
+Germanistik [A:NoQuote]
 Germanofil
 germanyum
 germek
@@ -8990,7 +8990,7 @@ gevremek
 gevşek [P:Adj]
 gevşemek
 geyik
-geyikdil [P:Noun; A:CompoundP3sg]
+geyikdili [A:CompoundP3sg; R:geyikdil]
 geyikgiller
 geyşa
 Geyve
@@ -9164,11 +9164,11 @@ Göksu
 Göksun
 Göktürk
 Göktürkçe
-gökyol [P:Noun; A:CompoundP3sg]
-gökyüzü
+gökyolu [A:CompoundP3sg; R:gökyol]
+gökyüzü [A:CompoundP3sg; R:gökyüz]
 göl
-gölala [P:Noun; A:CompoundP3sg]
-Gölbaşı [P:Noun, Prop; A:NounConsInsert_n]
+gölalası [A:CompoundP3sg; R:gölala]
+Gölbaşı [P:Noun, Prop; A:NounConsInsert_n, CompoundP3sg; R:Gölbaş]
 Gölcük
 gölcül
 Göle
@@ -9182,7 +9182,7 @@ Gölköy
 göllemek
 Gölmarmara
 Gölova
-Gölpazarı [P:Noun, Prop; A:NounConsInsert_n]
+Gölpazarı [P:Noun, Prop; A:NounConsInsert_n, CompoundP3sg; R:Gölpazar]
 Gölyaka
 Gömeç
 gömgök [P:Adj]
@@ -9279,7 +9279,7 @@ gözlemek
 gözlemlemek
 gözlük
 gözükmek
-gözyaş [P:Noun; A:CompoundP3sg]
+gözyaşı [A:CompoundP3sg; R:gözyaş]
 grado
 grafik
 grafit
@@ -9393,7 +9393,7 @@ gülfidan
 gülgiller
 gülhatmi
 gülistan
-gülkuru [P:Noun; A:CompoundP3sg]
+gülkurusu [A:CompoundP3sg; R:gülkuru]
 güllâbi
 güllâç
 gülle
@@ -9452,7 +9452,7 @@ güneğik
 güneş
 Güneş
 güneşlemek
-güneştop [P:Noun; A:CompoundP3sg]
+güneştopu [A:CompoundP3sg; R:güneştop]
 güney
 Güney
 Güneybalığı
@@ -9507,12 +9507,12 @@ güvenirlik
 güvenmek
 güvenoyu
 güvercin
-güvercinboyun [P:Noun; A:CompoundP3sg, LastVowelDrop]
+güvercinboynu [A:CompoundP3sg, LastVowelDrop; R:güvercinboyun]
 güvercingiller
 güvercingöğsü [P:Adj]
 güverte
 güvey
-güveyfener [P:Noun; A:CompoundP3sg]
+güveyfeneri [A:CompoundP3sg; R:güveyfener]
 güvez
 güya [P:Adv]
 güz
@@ -9552,9 +9552,9 @@ hacı
 hacıağa
 Hacıbektaş
 Hacılar
-hacılaryol [P:Noun; A:CompoundP3sg]
+hacılaryolu [A:CompoundP3sg; R:hacılaryol]
 hacıyatmaz
-hacıyol [P:Noun; A:CompoundP3sg]
+hacıyolu [A:CompoundP3sg; R:hacıyol]
 hacim [A:LastVowelDrop]
 hacir [A:LastVowelDrop]
 Hacivat
@@ -9737,7 +9737,7 @@ hamletmek [A:Voicing, Aorist_A]
 hamse
 hamsi
 hamsigiller
-hamsikuş [P:Noun; A:CompoundP3sg]
+hamsikuşu [A:CompoundP3sg; R:hamsikuş]
 hamsin
 hamt
 hamur
@@ -9764,11 +9764,11 @@ hangi
 hanım
 hanımanne
 hanımefendi
-hanımel [P:Noun; A:CompoundP3sg]
+hanımel [A:CompoundP3sg; R:hanımeli]
 hanımeligiller
-hanımgöbek [P:Noun; A:CompoundP3sg, Voicing]
+hanımgöbeği [A:CompoundP3sg, Voicing; R:hanımgöbek]
 hanımnine
-hanımparmağı [P:Noun; A:CompoundP3sg, Voicing]
+hanımparmağı [A:CompoundP3sg, Voicing; R:hanımparmak]
 hani
 Hani
 hanigiller
@@ -9849,7 +9849,7 @@ harlak
 harlamak
 harman
 Harmancık
-harmandal [P:Noun; A:CompoundP3sg]
+harmandalı [A:CompoundP3sg; R:harmandal]
 harmani
 harmaniye
 harmanlamak
@@ -9874,7 +9874,7 @@ hasbetenlillâh
 hasbıhâl [A:InverseHarmony]
 hasbî
 haseki
-hasekiküpe [P:Noun; A:CompoundP3sg]
+hasekiküpesi [A:CompoundP3sg; R:hasekiküpe]
 hasenat
 hasep
 haset
@@ -9978,7 +9978,7 @@ havut
 havuz
 havuzlamak
 Havva
-havvaanael [P:Noun; A:CompoundP3sg]
+havvaanaeli [A:CompoundP3sg; R:havvaanael]
 havya
 havyar
 havza
@@ -10096,10 +10096,10 @@ helâlzade
 hele [Conj]
 helecan
 helecanlanmak
-Helen [P:Noun, Prop; A:NoQuote]
-Helenist [P:Noun, Prop; A:NoQuote]
-Helenistik [PropNoun NoQuote Vo]
-Helenizm [P:Noun, Prop; A:NoQuote]
+Helen [A:NoQuote]
+Helenist [A:NoQuote]
+Helenistik [A:NoQuote]
+Helenizm [A:NoQuote]
 helezon
 helezonî
 helik
@@ -10166,7 +10166,7 @@ hergele
 herhâlde [P:Adv]
 herhangi [P:Adv]
 herif
-herifçioğul [P:Noun; A:CompoundP3sg, LastVowelDrop]
+herifçioğlu [A:CompoundP3sg, LastVowelDrop; A:herifçioğul]
 herk
 herkes [Pron ZAMIR_IN]
 hertz
@@ -10250,8 +10250,7 @@ hışlamak
 hıyaban
 hıyanet
 hıyar
-hıyarağa
-hıyarağa [P:Noun; A:CompoundP3sg]
+hıyarağası [P:Adj; A:CompoundP3sg; R:hıyarağa]
 hıyarcıl
 hıyarşembe
 hız
@@ -10342,10 +10341,10 @@ hin
 hindi
 hindiba
 Hindistan
-Hindolog [PropNoun NoQuote Vo]
-Hindoloji [P:Noun, Prop; A:NoQuote]
+Hindolog [A:NoQuote]
+Hindoloji [A:NoQuote]
 Hindu
-Hinduizm [P:Noun, Prop; A:NoQuote]
+Hinduizm [A:NoQuote]
 hinoğlu
 hinoğluhin
 Hint
@@ -10399,8 +10398,8 @@ hitan
 hitap
 Hitit
 Hititçe
-Hititolog [P:Noun, Prop; A:NoQuote]
-Hititoloji [P:Noun, Prop; A:NoQuote]
+Hititolog [A:NoQuote]
+Hititoloji [A:NoQuote]
 hiyerarşi
 hiyerarşik [P:Adj]
 hiyeroglif
@@ -10466,12 +10465,12 @@ hormonal [P:Adj; A:InverseHarmony]
 hornblent
 horon
 horoz
-horozayak [P:Noun; A:CompoundP3sg, Voicing]
+horozayağı [A:CompoundP3sg, Voicing; R:horozayak]
 horozbina
 horozbinagiller
-horozgöz [P:Noun; A:CompoundP3sg]
+horozgözü [A:CompoundP3sg; R:horozgöz]
 horozibiğigiller
-horozibik [P:Noun; A:CompoundP3sg, Voicing]
+horozibiği [A:CompoundP3sg, Voicing; R:horozibik]
 horozlanmak
 hortlak
 hortlamak
@@ -10776,7 +10775,7 @@ ibra
 İbradı
 ibraname
 İbranca
-İbranî [P:Noun, Prop; A:NoQuote]
+İbranî [A:NoQuote]
 İbranîce
 ibraz
 ibre
@@ -10830,7 +10829,7 @@ içtima
 içtimaî
 içtimaiyat
 içtinap
-içyağ [P:Noun; A:CompoundP3sg]
+içyağı [A:CompoundP3sg; R:içyağ]
 idadî
 idam
 idare
@@ -11305,7 +11304,7 @@ iptida
 iptidaî [P:Adj]
 iptilâ
 iptizal [A:InverseHarmony]
-ipuç [P:Noun; A:CompoundP3sg, Voicing]
+ipucu [A:CompoundP3sg, Voicing; R:ipuç]
 irade
 iradımesel
 iradî
@@ -11361,7 +11360,7 @@ isal [A:InverseHarmony]
 isale
 İscehisar
 ise [P:Part]
-İsevî [P:Noun, Prop; A:NoQuote]
+İsevî [A:NoQuote]
 isfendan
 ishal [A:InverseHarmony]
 isilik
@@ -11392,13 +11391,13 @@ iskorpit
 iskorpitgiller
 iskota
 İslâhiye
-İslâm [P:Noun, Prop; A:NoQuote]
-İslâmî [P:Noun, Prop; A:NoQuote]
-İslâmiyet [P:Noun, Prop; A:NoQuote]
+İslâm [A:NoQuote]
+İslâmî [A:NoQuote]
+İslâmiyet [A:NoQuote]
 İslâv
 İslâvca
-İslâvist [P:Noun, Prop; A:NoQuote]
-İslâvistik [PropNoun NoQuote Vo]
+İslâvist [A:NoQuote]
+İslâvistik [A:NoQuote]
 islemek
 islim
 ismen
@@ -11408,7 +11407,7 @@ isnat
 ispalya
 ispanya
 İspanya
-İspanyol [P:Noun, Prop; A:NoQuote]
+İspanyol [A:NoQuote]
 İspanyolca
 ispanyolet
 ispat
@@ -11591,7 +11590,7 @@ itaat [A:InverseHarmony]
 itaatkâr
 italik
 İtalya
-İtalyan [P:Noun, Prop; A:NoQuote]
+İtalyan [A:NoQuote]
 İtalyanca
 itap
 itboğan
@@ -11867,7 +11866,7 @@ kadıncıl
 kadıngöbeği
 Kadınhanı [P:Noun, Prop; A:NounConsInsert_n]
 kadınnine
-kadıntuzluk [P:Noun; A:CompoundP3sg, Voicing]
+kadıntuzluğu [A:CompoundP3sg, Voicing; R:kadıntuzluk]
 kadırga
 Kadışehri [P:Noun, Prop; A:NounConsInsert_n]
 kadife
@@ -11890,7 +11889,7 @@ kadük
 kafa
 kafadar
 kafakol
-kafatas [P:Noun; A:CompoundP3sg]
+kafatası [A:CompoundP3sg; R:kafatas]
 Kafdağı [P:Noun, Prop; A:NounConsInsert_n]
 kafe
 kafein
@@ -11995,7 +11994,7 @@ kalbî
 kalbur
 kalburabastı
 kalburlamak
-kalburüstü [P:Noun; A:CompoundP3sg]
+kalburüstü [A:CompoundP3sg; R:kalburüst]
 kalça
 kalçete
 kaldıraç
@@ -12065,8 +12064,8 @@ kalsiyum
 kaltaban
 kaltak
 kalubelâ
-Kalvenci [P:Noun, Prop; A:NoQuote]
-Kalvenizm [P:Noun, Prop; A:NoQuote]
+Kalvenci [A:NoQuote]
+Kalvenizm [A:NoQuote]
 kalya
 kalyon
 kam
@@ -12083,7 +12082,7 @@ kambiyo
 kambriyen
 kambur
 kamçı
-kamçıbaş [P:Noun; A:CompoundP3sg]
+kamçıbaşı [A:CompoundP3sg; R:kamçıbaş]
 kamçıkuyruk
 kamçılamak
 kamelya
@@ -12402,7 +12401,7 @@ karbüratör
 karcığar
 kardelen
 kardeş
-kardeşkan [P:Noun; A:CompoundP3sg]
+kardeşkanı [A:CompoundP3sg; R:kardeşkan]
 kardeşlenmek
 kardinal [A:InverseHarmony]
 kardiyak
@@ -12420,7 +12419,7 @@ karekök
 karelemek
 karfiçe
 karga
-kargabeyin [P:Noun; A:CompoundP3sg, LastVowelDrop]
+kargabeyni [A:CompoundP3sg, LastVowelDrop; R:kargabeyin]
 kargaburnu
 kargabüken
 kargadelen
@@ -12512,8 +12511,8 @@ kartalmak
 kartaloş
 kartaloz
 kartel
-Kartezyen [P:Noun, Prop; A:NoQuote]
-Kartezyenizm [P:Noun, Prop; A:NoQuote]
+Kartezyen [A:NoQuote]
+Kartezyenizm [A:NoQuote]
 kartograf
 kartografi
 kartografik
@@ -12636,8 +12635,8 @@ katıklamak
 katılım
 katılmak
 katır
-katırkuyruk [P:Noun; A:CompoundP3sg, Voicing]
-katırtırnak [P:Noun; A:CompoundP3sg, Voicing]
+katırkuyruğu [A:CompoundP3sg, Voicing; R:katırkuyruk]
+katırtırnağı [A:CompoundP3sg, Voicing; R:katırtırnak]
 katışık
 katışmak
 kâtibe
@@ -12658,7 +12657,7 @@ Katolik
 katot
 katrak
 katran
-katranköpük [P:Noun; A:CompoundP3sg, Voicing]
+katranköpüğü [A:CompoundP3sg, Voicing; R:katranköpük]
 katranlamak
 katre
 katrilyon [Num]
@@ -12700,7 +12699,7 @@ kavruk
 kavşak
 kavuk
 kavun
-kavuniç [Adj Compound]
+kavuniçi [P:Adj; A:CompoundP3sg; R:kavuniç]
 kavurga
 kavurma
 kavurmaç
@@ -12792,7 +12791,7 @@ kazamat
 kazan
 Kazan
 kazanç
-kazandip [P:Noun; A:CompoundP3sg, Voicing]
+kazandibi [A:CompoundP3sg, Voicing; R:kazandip]
 kazanmak
 kazara
 kazaratar
@@ -12801,7 +12800,7 @@ kazasker
 kazayağı
 kazaz
 kazazede
-kazbok [P:Noun; A:CompoundP3sg]
+kazboku [A:CompoundP3sg; R:kazbok]
 kazein
 kazevi
 kazgıç
@@ -12815,7 +12814,7 @@ kazımık
 Kâzımkarabekir
 kazıntı
 kaziye
-kazkanat [P:Noun; A:CompoundP3sg, Voicing]
+kazkanadı [A:CompoundP3sg, Voicing; R:kazkanat]
 kazmaç
 kazmak
 kazolit
@@ -12831,16 +12830,16 @@ keçe
 keçelemek
 keçi
 Keçiborlu
-keçiboynuz [P:Noun; A:CompoundP3sg]
-keçimeme [P:Noun; A:CompoundP3sg]
+keçiboynuzu [A:CompoundP3sg; R:keçiboynuz]
+keçimemesi [A:CompoundP3sg; R:keçimeme]
 Keçiören
 keçisakalı
-keçisedef [P:Noun; A:CompoundP3sg]
+keçisedefi [A:CompoundP3sg; R:keçisedef]
 keçitırnağı
 keder
 kederlenmek
 kedi
-kediayak [P:Noun; A:CompoundP3sg, Voicing]
+kediayaği [A:CompoundP3sg, Voicing; R:kediayak]
 kedibastı
 kedidili
 kedigiller
@@ -12909,7 +12908,7 @@ Kemah
 kemal [A:InverseHarmony]
 Kemalist
 Kemaliye
-Kemalizm [P:Noun, Prop; A:NoQuote]
+Kemalizm [A:NoQuote]
 Kemalpaşa
 keman
 kemane
@@ -13002,7 +13001,7 @@ kertik
 kertiklemek
 kertmek
 kervan
-kervanbaşı [P:Noun; A:CompoundP3sg]
+kervanbaşı [A:CompoundP3sg; R:kervanbaş]
 Kervankıran
 kervansaray
 kes
@@ -13209,7 +13208,7 @@ kırkmerdiven
 Kırkpınar
 kırlangıç
 kırlangıçgiller
-kırlangıçkuyruk [P:Noun; A:CompoundP3sg, Voicing]
+kırlangıçkuyruğu [A:CompoundP3sg, Voicing; R:kırlangıçkuyruk]
 kırlent
 kırma
 kırmak
@@ -13349,7 +13348,7 @@ Kızılcahamam
 kızılcık
 kızılcıkgiller
 kızılçam
-Kızılderili [P:Noun, Prop; A:NoQuote]
+Kızılderili [A:NoQuote]
 Kızılelma
 Kızılırmak
 kızılkanat
@@ -13365,7 +13364,7 @@ kızışmak
 kızkalbi
 kızmabirader
 kızmak
-kızmeme [P:Noun; A:CompoundP3sg]
+kızmemesi [A:CompoundP3sg; R:kızmeme]
 ki [Conj]
 kibar [P:Adj]
 kibarzade
@@ -13550,9 +13549,9 @@ kobragiller
 koca
 Kocaali
 kocabaş
-kocabaş [P:Noun; A:CompoundP3sg]
+kocabaş [A:Compound; R:kocabaş]
 Kocaeli [P:Noun, Prop; A:NounConsInsert_n]
-kocakarı
+kocakarı [A:Compound]
 Kocaköy
 kocalak
 kocalmak
@@ -13615,7 +13614,7 @@ kol
 kola
 kolaçan
 kolagiller
-kolağa [P:Noun; A:CompoundP3sg]
+kolağası [A:CompoundP3sg; R:kolağa]
 kolâj
 kolalamak
 kolan
@@ -13966,8 +13965,8 @@ Koyulhisar
 koyultmak
 koyun
 koyun [A:LastVowelDrop]
-koyungöbek [P:Noun; A:CompoundP3sg, Voicing]
-koyungöz [P:Noun; A:CompoundP3sg]
+koyungöbeği [A:CompoundP3sg, Voicing; R:koyungöbek]
+koyungözü [A:CompoundP3sg; R:koyungöz]
 koyuntu
 koyut
 koyuvermek
@@ -13999,7 +13998,7 @@ köftün
 köhne
 köhnemek
 kök
-kökboyası [P:Noun; A:CompoundP3sg]
+kökboyası [A:CompoundP3sg; R:kökboya]
 köken
 kökenlenmek
 köklemek
@@ -14015,12 +14014,12 @@ kömeç
 kömür
 kömüş
 köpek
-köpekaya [P:Noun; A:CompoundP3sg]
+köpekayası [A:CompoundP3sg; R:köpekaya]
 köpekgiller
-köpekkuyruk [P:Noun; A:CompoundP3sg, Voicing]
+köpekkuyruğu [A:CompoundP3sg, Voicing; R:köpekkuyruk]
 köpeklemek
-köpekoğul [P:Noun; A:CompoundP3sg, LastVowelDrop]
-köpoğlu
+köpekoğlu [A:CompoundP3sg, LastVowelDrop; R:köpekoğul]
+köpoğlu [A:CompoundP3sg, LastVowelDrop; R:köpoğul]
 köprü
 Köprübaşı [P:Noun, Prop; A:NounConsInsert_n]
 Köprüköy
@@ -14191,7 +14190,7 @@ kulaçlamak
 kulağakaçan
 kulak
 kulakçık
-kulaktoz [P:Noun; A:CompoundP3sg]
+kulaktozu [A:CompoundP3sg; R:kulaktoz]
 kulampara
 kule
 kulis
@@ -14224,7 +14223,7 @@ kumarhane
 kumaş
 kumbara
 kumbarahane
-kumbaş [P:Noun; A:CompoundP3sg]
+kumbaşı [A:CompoundP3sg; R:kumbaş]
 kumcul
 kumkazan
 kumkuma
@@ -14296,15 +14295,15 @@ kurt
 kurtağzı
 Kurtalan
 kurtarmak
-kurtayağ [P:Noun; A:CompoundP3sg]
-kurtbağır [P:Noun; A:CompoundP3sg, LastVowelDrop]
+kurtayağı [A:CompoundP3sg; R:kurtayağ]
+kurtbağrı [A:CompoundP3sg, LastVowelDrop; R:kurtbağır]
 kurtboğan
 kurtçul
 kurtkıyan
 Kurtköy
 kurtlanmak
-kurtpençe [P:Noun; A:CompoundP3sg]
-kurttırnak [P:Noun; A:CompoundP3sg, Voicing]
+kurtpençesi [A:CompoundP3sg; R:kurtpençe]
+kurttırnağı [A:CompoundP3sg, Voicing; R:kurttırnak]
 kurtulmak
 kuru [P:Adj]
 Kurucaşile
@@ -14336,21 +14335,21 @@ kuşatmak
 kuşbaşı
 kuşbaz
 kuşburnu
-kuşçubaş [P:Noun; A:CompoundP3sg]
+kuşçubaşı [A:CompoundP3sg; R:kuşçubaş]
 kuşdili
 kuşe
-kuşekmek [P:Noun; A:CompoundP3sg, Voicing]
+kuşekmeği [A:CompoundP3sg, Voicing; R:kuşekmek]
 kuşet
-kuşgöm [P:Noun; A:CompoundP3sg]
+kuşgömü [A:CompoundP3sg; R:kuşgöm]
 kuşhane
-kuşkanat [P:Noun; A:CompoundP3sg, Voicing]
+kuşkanadı [A:CompoundP3sg, Voicing; R:kuşkanat]
 kuşkonmaz
 kuşku
 kuşkulanmak
-kuşlokum [P:Noun; A:CompoundP3sg]
+kuşlokumu [A:CompoundP3sg; R:kuşlokum]
 kuşmar
-kuşpalaz [P:Noun; A:CompoundP3sg]
-kuşyem [P:Noun; A:CompoundP3sg]
+kuşpalazı [A:CompoundP3sg; R:kuşpalaz]
+kuşyemi [A:CompoundP3sg; R:kuşyem]
 kut
 kutan
 kutlamak
@@ -14395,11 +14394,11 @@ kuzeydoğu
 kuzgun
 Kuzguncuk
 kuzgunî
-kuzgunkılıç [P:Noun; A:CompoundP3sg, Voicing]
+kuzgunkılıcı [A:CompoundP3sg, Voicing; R:kuzgunkılıç]
 kuzine
 kuzu
-kuzugöbek [P:Noun; A:CompoundP3sg, Voicing]
-kuzukulak [P:Noun; A:CompoundP3sg, Voicing]
+kuzugöbeği [A:CompoundP3sg, Voicing; R:kuzugöbek]
+kuzukulağı [A:CompoundP3sg, Voicing; R:kuzukulak]
 kuzulamak
 Küba
 kübik
@@ -14436,7 +14435,7 @@ küldür [P:Adj, Dup]
 külek
 külfet
 külhan
-külhanbey [P:Noun; A:CompoundP3sg]
+külhanbeyi [A:CompoundP3sg; R:külhanbey]
 külhani
 külkedisi
 küllemek
@@ -14603,8 +14602,8 @@ lâlezar
 lâlüebkem
 lâm
 lâma
-Lâmaist [P:Noun, Prop; A:NoQuote]
-Lâmaizm [P:Noun, Prop; A:NoQuote]
+Lâmaist [A:NoQuote]
+Lâmaizm [A:NoQuote]
 lâmba
 lâmbalamak
 lâmbri
@@ -14756,7 +14755,7 @@ ley
 leylâk
 leylâkî
 leylek
-leylekayağ [P:Noun; A:CompoundP3sg]
+leylekayağı [A:CompoundP3sg; R:leylekayak]
 leylekgiller
 leylî
 lezar
@@ -14913,7 +14912,7 @@ lüle
 Lüleburgaz
 lümen
 lüp
-Lüterci [P:Noun, Prop; A:NoQuote]
+Lüterci [A:NoQuote]
 lütesyum
 lütfen
 lütfetmek [A:Voicing, Aorist_A]
@@ -15122,8 +15121,8 @@ makul [P:Adj; A:InverseHarmony]
 makule
 makûs
 makyaj
-Makyavelci [P:Noun, Prop; A:NoQuote]
-Makyavelizm [P:Noun, Prop; A:NoQuote]
+Makyavelci [A:NoQuote]
+Makyavelizm [A:NoQuote]
 mal
 mala
 malafa
@@ -15191,7 +15190,7 @@ mancınık
 Mançu
 Mançuca
 manda
-mandagöz [P:Noun; A:CompoundP3sg]
+mandagözü [A:CompoundP3sg; R:mandagöz]
 mandal
 mandalina
 mandallamak
@@ -15302,9 +15301,9 @@ market
 marki
 markiz
 markizet
-Marksçı [P:Noun, Prop; A:NoQuote]
-Marksist [P:Noun, Prop; A:NoQuote]
-Marksizm [P:Noun, Prop; A:NoQuote]
+Marksçı [A:NoQuote]
+Marksist [A:NoQuote]
+Marksizm [A:NoQuote]
 marley
 Marmara
 Marmaris
@@ -15554,7 +15553,7 @@ mehdî
 mehel
 mehil
 mehle
-Mehmetçik [PropNoun NoQuote Vo]
+Mehmetçik [A:NoQuote]
 mehtap
 mehter
 mehteran
@@ -15573,7 +15572,7 @@ mekruh
 Meksika
 mektep
 mektup
-mektupüst [P:Noun; A:CompoundP3sg]
+mektupüstü [A:CompoundP3sg; R:mektupüstü]
 mel [P:Adj, Dup]
 melanet
 melun
@@ -16055,7 +16054,7 @@ militarist
 militarizm
 millenmek
 millet
-milletvekil [P:Noun; A:CompoundP3sg]
+milletvekili [A:CompoundP3sg; R:milletvekil]
 millî [P:Adj]
 milliyet
 milliyetperver
@@ -16066,7 +16065,7 @@ milyoner
 milyonlarca [P:Adj]
 mim
 mimar
-mimarbaşı [P:Noun; A:CompoundP3sg]
+mimarbaşı [A:CompoundP3sg; R:mimarbaş]
 mimarî
 mimik
 mimlemek
@@ -16075,7 +16074,7 @@ minakop
 minare
 minber
 minder
-minderalt [P:Noun; A:CompoundP3sg]
+minderaltı [A:CompoundP3sg; R:minderalt]
 mine
 minelemek
 mineral [A:InverseHarmony]
@@ -16201,8 +16200,8 @@ monarşizm
 monat
 monden
 Mondros
-Mongolist [PropNoun NoQuote Vo]
-Mongolistik [PropNoun NoQuote Vo]
+Mongolist [A:NoQuote]
+Mongolistik [A:NoQuote]
 monist
 monitör
 monizm
@@ -16352,7 +16351,7 @@ muhalefet
 muhalif
 muhallebi
 Muhammed
-Muhammedî [P:Noun, Prop; A:NoQuote]
+Muhammedî [A:NoQuote]
 muhammen
 muhammes
 muhammin
@@ -16510,7 +16509,7 @@ musanna
 musannif
 musap
 musavver
-Musevî [P:Noun, Prop; A:NoQuote]
+Musevî [A:NoQuote]
 Mushaf
 musır [A:Doubling]
 musibet
@@ -16870,8 +16869,8 @@ müsemmen
 müsevvit
 müshil
 müskirat
-Müslim [P:Noun, Prop; A:NoQuote]
-Müslüman [P:Noun, Prop; A:NoQuote]
+Müslim [A:NoQuote]
+Müslüman [A:NoQuote]
 müsmir
 müspet [P:Adj]
 müsrif
@@ -17134,7 +17133,7 @@ naklî
 nakliyat
 nakliye
 nakşetmek [A:Voicing, Aorist_A]
-Nakşibendî [P:Noun, Prop; A:NoQuote]
+Nakşibendî [A:NoQuote]
 nakşolmak
 nakzen
 nakzetmek [A:Voicing, Aorist_A]
@@ -17174,7 +17173,7 @@ nar
 nâr
 nara
 narcıl
-narçiçek [P:Noun; A:CompoundP3sg, Voicing]
+narçiçeği [A:CompoundP3sg, Voicing; R:narçiçek]
 nardenk [Noun Vo2]
 nardin
 narenciye
@@ -17202,7 +17201,7 @@ nasip
 nasiplenmek
 nasir
 naspetmek [A:Voicing, Aorist_A]
-Nasranî [P:Noun, Prop; A:NoQuote]
+Nasranî [A:NoQuote]
 nasyonalist
 nasyonalizm
 naşi
@@ -17233,14 +17232,14 @@ nâzım
 nazım [A:LastVowelDrop]
 Nazımiye
 nazır
-Nazi [P:Noun, Prop; A:NoQuote]
+Nazi [A:NoQuote]
 nazik [P:Adj]
 nazikâne
 nazil
 Nazilli
 nazir
 nazire
-Nazizm [P:Noun, Prop; A:NoQuote]
+Nazizm [A:NoQuote]
 nazlanmak
 ne [P:Adj]
 ne [P:Adv]
@@ -17296,7 +17295,7 @@ nem
 nema
 nemalanmak
 nemcil
-Nemçe [P:Noun, Prop; A:NoQuote]
+Nemçe [A:NoQuote]
 nemçeker
 nemdenetir
 nemf
@@ -17326,7 +17325,7 @@ nesil [A:LastVowelDrop]
 nesir [A:LastVowelDrop]
 nesne
 nesnel
-Nesturî [P:Noun, Prop; A:NoQuote]
+Nesturî [A:NoQuote]
 neşe
 neşelenmek
 neşet
@@ -17471,7 +17470,7 @@ nobelyum
 nobran
 nodul
 nodullamak
-Noel [P:Noun, Prop; A:NoQuote]
+Noel [A:NoQuote]
 Nogay
 Nogayca
 nohudî
@@ -17488,8 +17487,8 @@ nonfigüratif
 nonoş
 norm
 normal [A:InverseHarmony]
-normalalt [P:Noun; A:CompoundP3sg]
-normalüst [P:Noun; A:CompoundP3sg]
+normalaltı [A:CompoundP3sg; R:normalalt]
+normalüstü [A:CompoundP3sg; R:normalüst]
 normatif
 Norveç
 Norveççe
@@ -17522,7 +17521,7 @@ nuruaynım
 nuruçeşmim
 nurudidem
 Nusaybin
-Nusayrî [P:Noun, Prop; A:NoQuote]
+Nusayrî [A:NoQuote]
 nutuk [A:LastVowelDrop]
 nü
 nüans
@@ -17698,7 +17697,7 @@ Ondokuzmayıs
 ondüle
 onejit
 ongun
-onikiparmak [P:Noun, Compound]
+onikiparmak [P:Noun; A:Compound]
 oniks
 onkoloji
 onlar [P:Pron]
@@ -17753,7 +17752,7 @@ ordövr
 ordu
 Ordu
 ordubozan
-orduev [P:Noun; A:CompoundP3sg]
+orduevi [A:CompoundP3sg; R:orduev]
 ordugâh
 orfoz
 org
@@ -17909,7 +17908,7 @@ oylum
 oylumlamak
 oymak
 oymak [P:Noun]
-oymakbaş [P:Noun; A:CompoundP3sg]
+oymakbaşı [A:CompoundP3sg; R:oymakbaş]
 oynak
 oynamak
 oynaş
@@ -17997,9 +17996,9 @@ ozuga
 öksüzdoyuran
 öksüzsevindiren
 öküz
-öküzburun [P:Noun; A:CompoundP3sg, LastVowelDrop]
-öküzdil [P:Noun; A:CompoundP3sg]
-öküzgöz [P:Noun; A:CompoundP3sg]
+öküzburnu [A:CompoundP3sg, LastVowelDrop; R:öküzburun]
+öküzdili [A:CompoundP3sg; R:öküzdil]
+öküzgözü [A:CompoundP3sg; R:öküzgöz]
 ölçek
 ölçmek
 ölçü
@@ -18040,8 +18039,8 @@ ozuga
 öpücük
 örcin
 ördek
-ördekbaş [P:Noun; A:CompoundP3sg]
-ördekgaga [P:Noun; A:CompoundP3sg]
+ördekbaşı [A:CompoundP3sg; R:ördekbaş]
+ördekgagası [A:CompoundP3sg; R:ördekgaga]
 ördekgiller
 ördürmek
 örek
@@ -18253,7 +18252,7 @@ papara
 papatya
 papaz
 papazkaçtı
-papazkarası [P:Noun; A:CompoundP3sg]
+papazkarası [A:CompoundP3sg; R:papazkara]
 papel
 papikçi
 papirüs
@@ -18383,7 +18382,7 @@ pastörize
 pastra
 paşa
 paşababa
-paşaçadır [P:Noun; A:CompoundP3sg]
+paşaçadırı [A:CompoundP3sg; R:paşaçadır]
 paşazade
 pat
 pat [P:Adj, Dup]
@@ -18635,7 +18634,7 @@ pey
 peydahlamak
 peyderpey [P:Adv]
 peygamber
-peygamberdeve [P:Noun; A:CompoundP3sg]
+peygamberdevesi [A:CompoundP3sg; R:peygamberdeve]
 peyk
 peyke
 peylemek
@@ -18803,10 +18802,10 @@ plâtform
 plâtika
 plâtin
 plâto
-Plâtoncu [P:Noun, Prop; A:NoQuote]
+Plâtoncu [A:NoQuote]
 plâtonik
-Plâtonik [PropNoun NoQuote Vo]
-Plâtonizm [P:Noun, Prop; A:NoQuote]
+Plâtonik [A:NoQuote]
+Plâtonizm [A:NoQuote]
 plâzma
 plebisit
 pleistosen
@@ -19202,7 +19201,7 @@ radyoterapi
 radyum
 raf
 rafadan
-Rafızî [P:Noun, Prop; A:NoQuote]
+Rafızî [A:NoQuote]
 rafinaj
 rafine [P:Adj]
 rafineri
@@ -19508,8 +19507,8 @@ rom
 Roma
 roman
 romanesk
-Romanolog [PropNoun NoQuote Vo]
-Romanoloji [P:Noun, Prop; A:NoQuote]
+Romanolog [A:NoQuote]
+Romanoloji [A:NoQuote]
 romans
 romantik
 romantizm
@@ -19555,7 +19554,7 @@ rubidyum
 ruble
 rubu
 ruf
-Rufaî [P:Noun, Prop; A:NoQuote]
+Rufaî [A:NoQuote]
 rugan
 rugbi
 ruh
@@ -20015,8 +20014,7 @@ Sarıkamış
 sarıkanat
 Sarıkaya
 sarıkız
-sarıkulak [P:Noun; A:CompoundP3sg, Voicing]
-sarıkuyruk [P:Noun; A:CompoundP3sg, Voicing]
+sarıkuyruk [A:Compound]
 sarılgan [P:Adj]
 sarılık
 sarımercimek
@@ -20160,7 +20158,7 @@ Sazak
 sazan
 sazangiller
 sazende
-sazkaya [P:Noun; A:CompoundP3sg]
+sazkayası [A:CompoundP3sg; R:sazkaya]
 seans
 sebat
 sebatkâr
@@ -20259,9 +20257,9 @@ selâmünaleyküm [P:Interj]
 selâset
 selâtin
 Selçuk
-Selçukî [P:Noun, Prop; A:NoQuote]
+Selçukî [A:NoQuote]
 Selçuklu
-Selçuklu [P:Noun, Prop; A:NoQuote]
+Selçuklu [A:NoQuote]
 sele
 selef
 selek
@@ -20302,7 +20300,7 @@ semaver
 semavi
 semavî
 semazen
-semazenbaşı [P:Noun; A:CompoundP3sg]
+semazenbaşı [A:CompoundP3sg; R:semazenbaş]
 sembol [A:InverseHarmony]
 sembolik
 sembolist
@@ -20321,7 +20319,7 @@ semiyoloji
 semiyotik
 semiz
 semizlemek
-semizot [P:Noun; A:CompoundP3sg]
+semizotu [A:CompoundP3sg; R:semizot]
 semizotugiller
 sempati
 sempatik
@@ -20369,7 +20367,7 @@ senyör
 sepek
 sepelemek
 sepet
-sepetkulp [P:Noun; A:CompoundP3sg]
+sepetkulpu [A:CompoundP3sg; R:sepetkulp]
 sepetlemek
 sepi
 sepilemek
@@ -20539,10 +20537,10 @@ sıcak [P:Adj]
 sıcakkanlı
 sıcaklık
 sıçan
-sıçandiş [P:Noun; A:CompoundP3sg]
+sıçandişi [A:CompoundP3sg; R:sıçandiş]
 sıçangiller
-sıçankulak [P:Noun; A:CompoundP3sg, Voicing]
-sıçankuyruk [P:Noun; A:CompoundP3sg, Voicing]
+sıçankulağı [A:CompoundP3sg, Voicing; R:sıçankulak]
+sıçankuyruğu [A:CompoundP3sg, Voicing; R:sıçankuyruk]
 sıçanotu
 sıçırgan
 sıçmak
@@ -20562,11 +20560,11 @@ sığınmak
 sığıntı
 sığır
 sığırcık
-sığırdil [P:Noun; A:CompoundP3sg]
+sığırdili [A:CompoundP3sg; R:sığırdil]
 sığırdiligiller
-sığırgöz [P:Noun; A:CompoundP3sg]
-sığırkuyruk [P:Noun; A:CompoundP3sg]
-sığıröd [P:Noun; A:CompoundP3sg]
+sığırgözü [A:CompoundP3sg; R:sığırgöz]
+sığırkuyruğu [A:CompoundP3sg; R:sığırkuyruk]
+sığırödü [A:CompoundP3sg; R:sığıröd]
 sığışmak
 sığla
 sığmak
@@ -20801,8 +20799,8 @@ sinirlemek
 sinirlenmek
 sinirli
 sinmek
-Sinolog [PropNoun NoQuote Vo]
-Sinoloji [P:Noun, Prop; A:NoQuote]
+Sinolog [A:NoQuote]
+Sinoloji [A:NoQuote]
 sinonim
 Sinop
 sinsi
@@ -21051,7 +21049,7 @@ sote
 sovhoz
 soy
 soya
-soyad [P:Noun; A:CompoundP3sg]
+soyadı [A:CompoundP3sg; R:soyad]
 soydaş
 soygun
 soyguncu
@@ -21246,7 +21244,7 @@ suflör
 sugeçirmez
 suhulet
 suibriğigiller
-suibrik [P:Noun; A:CompoundP3sg, Voicing]
+suibriği [A:CompoundP3sg, Voicing; R:suibrik]
 suikast [A:InverseHarmony]
 suiniyet
 suistimal [A:InverseHarmony]
@@ -21270,7 +21268,7 @@ sultanî
 sultanîbuselik
 sultanîhüzzam
 sultanîyegâh
-sultanoğul [P:Noun; A:CompoundP3sg, LastVowelDrop]
+sultanoğlu [A:CompoundP3sg, LastVowelDrop; R:sultanoğul]
 sulu
 Suluova
 Sulusaray
@@ -21278,8 +21276,8 @@ sumak [P:Noun]
 sumen
 Sumer
 Sumerce
-Sumerolog [PropNoun NoQuote Vo]
-Sumeroloji [P:Noun, Prop; A:NoQuote]
+Sümerolog [A:NoQuote]
+Sumeroloji [A:NoQuote]
 sumo
 sumsuk
 sumsuklamak
@@ -21299,7 +21297,7 @@ sunu
 sunucu
 sunum
 sunuş
-suok [P:Noun; A:CompoundP3sg]
+suoku [A:CompoundP3sg; R:suok]
 suokugiller
 suölçer
 sup
@@ -21326,13 +21324,13 @@ Susurluk
 susuz
 Susuz
 Suşehri [P:Noun, Prop; A:NounConsInsert_n]
-suşerit [P:Noun; A:CompoundP3sg, Voicing]
+suşeridi [A:CompoundP3sg, Voicing; R:suşerit]
 sut
-sutaş [P:Noun; A:CompoundP3sg]
+sutaşı [A:CompoundP3sg; R:sutaş]
 sutyen
 suvarmak
 suvat
-suyol [P:Noun; A:CompoundP3sg]
+suyolu [A:CompoundP3sg; R:suyol]
 suyuk
 suzidil
 suzidilâra
@@ -21402,7 +21400,7 @@ süngülemek
 sünmek
 sünnet
 sünnetlemek
-Sünnî [P:Noun, Prop; A:NoQuote]
+Sünnî [A:NoQuote]
 süper
 süpermarket
 süprüntü
@@ -21578,9 +21576,9 @@ süzülmek
 şama
 şaman
 şamandıra
-Şamanî [P:Noun, Prop; A:NoQuote]
-Şamanist [P:Noun, Prop; A:NoQuote]
-Şamanizm [P:Noun, Prop; A:NoQuote]
+Şamanî [A:NoQuote]
+Şamanist [A:NoQuote]
+Şamanizm [A:NoQuote]
 şamar
 şamarlamak
 şamata
@@ -21713,7 +21711,7 @@ süzülmek
 şehname
 şehnaz
 şehnazbuselik
-şehremanet [P:Noun; A:CompoundP3sg]
+şehremaneti [A:CompoundP3sg; R:şehremanet]
 şehremini
 şehriye
 şehvanî
@@ -21800,15 +21798,15 @@ süzülmek
 şeyh
 şeyhülislâm
 şeytan
-şeytanaraba [P:Noun; A:CompoundP3sg]
+şeytanarabası [A:CompoundP3sg; R:şeytanaraba]
 şeytanet
-şeytanfener [P:Noun; A:CompoundP3sg]
+şeytanfeneri [A:CompoundP3sg; R:şeytanfener]
 şeytanî
-şeytaniğne [P:Noun; A:CompoundP3sg]
+şeytaniğnesi [A:CompoundP3sg; R:şeytaniğne]
 şeytaniğnesigiller
-şeytanminare [P:Noun; A:CompoundP3sg]
-şeytanters [P:Noun; A:CompoundP3sg]
-şeytantırnak [P:Noun; A:CompoundP3sg, Voicing]
+şeytanminaresi [A:CompoundP3sg; R:şeytanminare]
+şeytantersi [A:CompoundP3sg; R:şeytanters]
+şeytantırnağı [A:CompoundP3sg, Voicing; R:şeytantırnak]
 şezlong
 şık
 şık [A:Doubling]
@@ -21844,7 +21842,7 @@ süzülmek
 şırlamak
 Şırnak
 şıvgın
-Şia [P:Noun, Prop; A:NoQuote]
+Şia [A:NoQuote]
 şiar
 şiddet
 şiddetlenmek
@@ -21858,7 +21856,7 @@ süzülmek
 şifoniyer
 şifre
 şifrelemek
-Şiî [P:Noun, Prop; A:NoQuote]
+Şiî [A:NoQuote]
 şiir
 şikâr
 şikâyet
@@ -21887,8 +21885,8 @@ süzülmek
 şinanay
 şinik
 şiniklemek
-Şintocu [P:Noun, Prop; A:NoQuote]
-Şintoizm [P:Noun, Prop; A:NoQuote]
+Şintocu [A:NoQuote]
+Şintoizm [A:NoQuote]
 şip
 şipşak
 şipşirin [P:Adj]
@@ -21975,7 +21973,7 @@ süzülmek
 şurup
 şut
 şuur
-şuuralt [P:Noun; A:CompoundP3sg]
+şuuraltı [A:CompoundP3sg; R:şuuralt]
 şüheda
 şükran
 şükretmek [A:Voicing, Aorist_A]
@@ -22133,7 +22131,7 @@ tahşiye
 taht
 tahta
 tahtaboş
-tahtakurusu [P:Noun; A:CompoundP3sg]
+tahtakurusu [A:CompoundP3sg; R:tahtakuru]
 tahtalıköy
 tahtelbahir [A:LastVowelDrop]
 tahterevalli
@@ -22301,7 +22299,7 @@ tanker
 tanksavar
 tanlamak
 tanrı
-Tanrı [P:Noun, Prop; A:NoQuote]
+Tanrı [A:NoQuote]
 tanrıça
 tanrıtanımaz
 tansık
@@ -22483,24 +22481,24 @@ tavsif
 tavsiye
 tavsiyename
 tavşan
-tavşanağız [P:Noun; A:CompoundP3sg, LastVowelDrop]
-tavşanayak [P:Noun; A:CompoundP3sg, Voicing]
-tavşanbıyık [P:Noun; A:CompoundP3sg, Voicing]
+tavşanağzı [A:CompoundP3sg, LastVowelDrop; R:tavşanağız]
+tavşanayağı [A:CompoundP3sg, Voicing; R:tavşanayak]
+tavşanbıyığı [A:CompoundP3sg, Voicing; R:tavşanbıyık]
 tavşancıl
 tavşangiller
-tavşankan [P:Noun; A:CompoundP3sg]
-tavşankulak [P:Noun; A:CompoundP3sg, Voicing]
+tavşankanı [A:CompoundP3sg; R:tavşankan]
+tavşankulağı [A:CompoundP3sg, Voicing; R:tavşankulak]
 Tavşanlı
-tavşanmeme [P:Noun; A:CompoundP3sg]
+tavşanmemesi [A:CompoundP3sg; R:]
 tavuk
 tavukgiller
-tavukgöğüs [P:Noun; A:CompoundP3sg, LastVowelDrop]
-tavukgöt [P:Noun; A:CompoundP3sg]
-tavukkara [P:Noun; A:CompoundP3sg]
-tavukpençe [P:Noun; A:CompoundP3sg]
+tavukgöğsü [A:CompoundP3sg, LastVowelDrop; R:tavukgöğüs]
+tavukgötü [A:CompoundP3sg; R:tavukgöt]
+tavukkarası [A:CompoundP3sg; R:tavukkara]
+tavukpençesi [A:CompoundP3sg; R:tavukpençe]
 tavulga
 tavus
-tavuskuyruk [P:Noun; A:CompoundP3sg, Voicing]
+tavuskuyruğu [A:CompoundP3sg, Voicing; R:tavuskuyruk]
 tavzif
 tavzih
 tay
@@ -22517,7 +22515,7 @@ tayın
 tayin
 tayip
 taylak
-Taylorcu [P:Noun, Prop; A:NoQuote]
+Taylorcu [A:NoQuote]
 Tayvan
 tayyar
 tayyare
@@ -22702,7 +22700,7 @@ tekerlek
 tekerleme
 tekerlemek
 tekerrür
-tekesakal [P:Noun; A:CompoundP3sg]
+tekesakalı [A:CompoundP3sg; R:tekesakal]
 tekessür
 tekevvün
 tekfin
@@ -22967,7 +22965,7 @@ terennüm
 teres
 teressüp
 terettüp
-tereyağ [P:Noun; A:CompoundP3sg]
+tereyağı [A:CompoundP3sg; R:tereyağ]
 terfi
 terfian
 terfih
@@ -23137,7 +23135,7 @@ tevkifhane
 tevkil
 tevlit
 tevliyet
-Tevrat [P:Noun, Prop; A:NoQuote]
+Tevrat [A:NoQuote]
 tevriye
 tevsi
 tevzi
@@ -23253,7 +23251,7 @@ tıynet
 ti
 Tibet
 Tibetçe
-Ticanî [P:Noun, Prop; A:NoQuote]
+Ticanî [A:NoQuote]
 ticaret
 ticaretgâh
 ticarethane
@@ -23270,7 +23268,7 @@ tiksinmek
 tiksinti
 tilâvet
 tilki
-tilkikuyruk [P:Noun; A:CompoundP3sg, Voicing]
+tilkikuyruğu [A:CompoundP3sg, Voicing; R:tilkikuyruk]
 tilmiz
 tim
 timbal [A:InverseHarmony]
@@ -23639,7 +23637,7 @@ tura
 turaç
 turalamak
 Turan
-Turanî [P:Noun, Prop; A:NoQuote]
+Turanî [A:NoQuote]
 turba
 turfalamak
 turfanda
@@ -23653,11 +23651,11 @@ turizm
 turkuaz
 turlamak
 turna
-turnaayak [P:Noun; A:CompoundP3sg, Voicing]
-turnagaga [P:Noun; A:CompoundP3sg]
-turnageçit [P:Noun; A:CompoundP3sg, Voicing]
+turnaayağı [A:CompoundP3sg, Voicing; R:turnaayak]
+turnagagası [A:CompoundP3sg; R:turnagaga]
+turnageçidi [A:CompoundP3sg, Voicing; R:turnageçit]
 turnagiller
-turnagöz [P:Noun; A:CompoundP3sg]
+turnagözü [A:CompoundP3sg; R:turnagöz]
 turne
 turnike
 turnusol [A:InverseHarmony]
@@ -23758,13 +23756,13 @@ türev
 Türk
 Türkçe
 Türkistan
-Türkiyat [P:Noun, Prop; A:NoQuote]
+Türkiyat [A:NoQuote]
 Türkiye
 Türkmen
 Türkmence
 Türkmenistan
 Türkoğlu [P:Noun, Prop; A:NounConsInsert_n]
-Türkolog [PropNoun NoQuote Vo]
+Türkolog [A:NoQuote]
 Türkoloji
 türkuaz
 türkü
@@ -24061,7 +24059,6 @@ uzviyet
 ünlemek
 ünlenmek
 ünlü
-ünlüişleme [P:Noun; A:CompoundP3sg]
 ünsüz
 Ünye
 ürat
@@ -24224,7 +24221,8 @@ vantilâtör
 vantrilok
 vantuz
 vapur
-vapurduman [P:Noun; A:CompoundP3sg]
+vapurdumanı [A:CompoundP3sg; R:vapurduman]
+vapurdumanı [P:Adj; A:CompoundP3sg; R:vapurduman]
 var
 varagele
 varak
@@ -24350,7 +24348,7 @@ velût
 velvele
 Venezuelâ
 Venüs
-venüsçarık [P:Noun; A:CompoundP3sg, Voicing]
+venüsçarığı [A:CompoundP3sg, Voicing; R:venüsçarık]
 veranda
 veraset
 vere
@@ -24391,7 +24389,7 @@ vezin [A:LastVowelDrop]
 vezir
 veziriazam
 Vezirköprü
-vezirparmağı [P:Noun; A:CompoundP3sg, Voicing]
+vezirparmağı [A:CompoundP3sg, Voicing; R:vezirparmak]
 vezne
 veznedar
 vıcık
@@ -24458,7 +24456,7 @@ viskoz
 viskozite
 vişnap
 vişne
-vişneçürük [P:Noun; A:CompoundP3sg, Voicing]
+vişneçürüğü [A:CompoundP3sg, Voicing; R:vişneçürük]
 vitamin
 vitellüs
 vites
@@ -24619,7 +24617,7 @@ yaldızlamak
 yalelli
 yalgın
 yalı
-yalıçapkın [P:Noun; A:CompoundP3sg]
+yalıçapkın [A:CompoundP3sg; R:yalıçapkını]
 yalıçapkınıgiller
 Yalıhüyük
 yalım
@@ -24724,7 +24722,7 @@ yar
 yâr [A:InverseHarmony]
 yara
 yarabbi
-Yaradan [P:Noun, Prop; A:NoQuote]
+Yaradan [A:NoQuote]
 yaradılış
 yarak
 yaralamak
@@ -24746,7 +24744,7 @@ yardak
 yardım
 yardımsever
 yâren
-yârenbaş [P:Noun; A:CompoundP3sg]
+yârenbaşı [A:CompoundP3sg; R:yârenbaş]
 yargı
 yargıç
 yargılamak
@@ -24853,7 +24851,7 @@ yayınlamak
 yayla
 Yayladağı [P:Noun, Prop; A:NounConsInsert_n]
 Yayladere
-yaylagüzel [P:Noun; A:CompoundP3sg]
+yaylagüzeli [A:CompoundP3sg; R:yaylagüzel]
 yaylak
 yaylamak
 yaylım
@@ -24962,7 +24960,7 @@ yenmek
 yepelek
 yepyeni [P:Adj]
 yer
-yeralt [P:Noun; A:CompoundP3sg]
+yeraltı [A:CompoundP3sg; R:yeralt]
 yerberi
 yerdegezen
 yeregeçen
@@ -25022,7 +25020,7 @@ yetmiş [Num]
 yevmî
 yevmiye
 yeygi
-Yezidî [P:Noun, Prop; A:NoQuote]
+Yezidî [A:NoQuote]
 yezit [P:Adj]
 Yığılca
 yığın
@@ -25039,12 +25037,12 @@ yıkmak
 yıl [P:Noun, Time]
 yılan
 yılancıl
-yılandil [P:Noun; A:CompoundP3sg]
+yılandili [A:CompoundP3sg; R:yılandil]
 yılangiller
 yılaniğnesi
 yılankavi
 yılanyastığıgiller
-yılanyastık [P:Noun; A:CompoundP3sg, Voicing]
+yılanyastığı [A:CompoundP3sg, Voicing; R:yılanyastık]
 yılbaşı
 yıldırak
 Yıldırak
@@ -25052,7 +25050,7 @@ yıldırım
 Yıldırım
 yıldırımsavar
 yıldız
-Yıldızeli [P:Noun, Prop; A:NounConsInsert_n]
+Yıldızeli [A:CompoundP3sg, NounConsInsert_n; R:Yıldızel]
 yıldızlamak
 yılgı
 yılgın [P:Adj]
@@ -25077,7 +25075,7 @@ yırtmak
 yısa
 yıvışmak
 yiğit [P:Adj]
-yiğitbaş [P:Noun; A:CompoundP3sg]
+yiğitbaşı [A:CompoundP3sg; R:yiğitbaş]
 yiğitlenmek
 yine [P:Adv]
 yinelemek
@@ -25126,7 +25124,7 @@ yolluk
 yolmak
 yolsuz [P:Adj]
 yoluk
-yolüst [P:Noun; A:CompoundP3sg]
+yolüstü [A:CompoundP3sg; R:yolüst]
 yom
 yoma
 Yomra
@@ -25169,7 +25167,7 @@ yöneylem
 yönlenmek
 yöntem
 yöre
-Yörük [P:Noun, Prop; A:NoQuote]
+Yörük [A:NoQuote]
 yörünge
 yudum [P:Adj]
 yudumlamak
@@ -25452,7 +25450,7 @@ zeyrek
 zeytin
 Zeytinburnu [P:Noun, Prop; A:NounConsInsert_n]
 zeytinlik
-zeytinyağı [P:Noun; A:CompoundP3sg]
+zeytinyağı [A:CompoundP3sg; R:zeytinyağ]
 zeytunî [P:Adj]
 zıbarmak
 zıbın

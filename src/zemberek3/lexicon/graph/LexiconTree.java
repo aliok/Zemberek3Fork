@@ -312,7 +312,7 @@ public class LexiconTree {
 	
 	public static void main(String[] args) throws IOException {
 		LexiconTree lexicon = new LexiconTree();
-		List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/test-lexicon"));
+		List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("src/resources/tr/master-dictionary.txt"));
 		TurkishSuffixes suffixes = new TurkishSuffixes();
 		LexiconGraph graph = new LexiconGraph(items, suffixes.getSuffixProvider());
 		graph.generate();

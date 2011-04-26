@@ -58,6 +58,7 @@ public class TurkishDictionaryLoader {
             ExclusiveSuffixData suffixData = getSuffixData();
             return new DictionaryItem(
                     word,
+                    cleanWord,
                     posInfo.primaryPos,
                     posInfo.secondaryPos,
                     rootAttrs,

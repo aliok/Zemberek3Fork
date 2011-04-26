@@ -35,12 +35,12 @@ public class TurkishDictionaryLoaderTest {
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
         DictionaryItem item = loader.loadFromString("elma");
         Assert.assertEquals("elma", item.lemma);
-        Assert.assertEquals("elma", item.clean());
+        Assert.assertEquals("elma", item.root);
         Assert.assertEquals(Noun, item.primaryPos);
 
         item = loader.loadFromString("elma [Pos:Noun]");
         Assert.assertEquals("elma", item.lemma);
-        Assert.assertEquals("elma", item.clean());
+        Assert.assertEquals("elma", item.root);
         Assert.assertEquals(Noun, item.primaryPos);
     }
 
@@ -49,7 +49,7 @@ public class TurkishDictionaryLoaderTest {
     public void verbInferenceTest() {
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
         DictionaryItem item = loader.loadFromString("gelmek");
-        Assert.assertEquals("gel", item.clean());
+        Assert.assertEquals("gel", item.root);
         Assert.assertEquals("gelmek", item.lemma);
         Assert.assertEquals(Verb, item.primaryPos);
 

@@ -7,32 +7,23 @@ import java.util.Locale;
 
 public class DictionaryItem {
     public final String lemma;
+    public final String root;
     public final PrimaryPos primaryPos;
     public final SecondaryPos secondaryPos;
     public final AttributeSet<RootAttr> attrs;
     public final ExclusiveSuffixData suffixData;
 
-    static final Locale locale = new Locale("tr");
-
-    public DictionaryItem(String lemma, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs, ExclusiveSuffixData suffixData) {
+    public DictionaryItem(String lemma, String root, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs, ExclusiveSuffixData suffixData) {
         this.lemma = lemma.toLowerCase();
         this.primaryPos = primaryPos;
         this.secondaryPos = secondaryPos;
         this.attrs = attrs;
         this.suffixData = suffixData;
+        this.root = root;
     }
 
     public boolean hasAttribute(RootAttr attribute) {
         return attrs.contains(attribute);
-    }
-
-    public String clean() {
-        if (primaryPos == PrimaryPos.Verb)
-            return lemma.substring(0, lemma.length() - 3);
-        if (secondaryPos == SecondaryPos.ProperNoun) {
-            return lemma.toLowerCase(locale);
-        }
-        return lemma;
     }
 
     public String getId() {

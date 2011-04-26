@@ -55,7 +55,7 @@ public class LexiconGraph {
         SuffixFormSet set = rsb.original;
         AttributeSet<PhonAttr> phoneticAttrs = calculateRootAttributes(dictionaryItem);
         SuffixNode node = addOrReturnExisting(set, formGenerator.getNode(phoneticAttrs, set));
-        return new StemNode(dictionaryItem.clean(), dictionaryItem, node, TerminationType.TERMINAL);
+        return new StemNode(dictionaryItem.root, dictionaryItem, node, TerminationType.TERMINAL);
     }
 
     public boolean hasModifierAttribute(DictionaryItem item) {
@@ -72,7 +72,7 @@ public class LexiconGraph {
     );
 
     private AttributeSet<PhonAttr> calculateRootAttributes(DictionaryItem dictionaryItem) {
-        TurkicSeq sequence = new TurkicSeq(dictionaryItem.clean(), alphabet);
+        TurkicSeq sequence = new TurkicSeq(dictionaryItem.root, alphabet);
         AttributeSet<PhonAttr> attrs = calculateAttributes(sequence);
         if (dictionaryItem.hasAttribute(RootAttr.InverseHarmony)) {
             // saat, takat
@@ -112,7 +112,7 @@ public class LexiconGraph {
 
     private StemNode[] generateModifiedRootNodes(DictionaryItem lexItem) {
 
-        TurkicSeq modifiedSeq = new TurkicSeq(lexItem.clean(), alphabet);
+        TurkicSeq modifiedSeq = new TurkicSeq(lexItem.root, alphabet);
         AttributeSet<PhonAttr> originalAttrs = calculateRootAttributes(lexItem);
         AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
 
@@ -156,7 +156,7 @@ public class LexiconGraph {
         SuffixNode modiForm = addOrReturnExisting(rssb.modified, formGenerator.getNode(modifiedAttrs, rssb.modified));
 
         return new StemNode[]{
-                new StemNode(lexItem.clean(), lexItem, origForm, TerminationType.TERMINAL),
+                new StemNode(lexItem.root, lexItem, origForm, TerminationType.TERMINAL),
                 new StemNode(modifiedSeq.toString(), lexItem, modiForm, TerminationType.NON_TERMINAL)
         };
     }
@@ -197,7 +197,7 @@ public class LexiconGraph {
             Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, When_yIncA, AfterDoing_yIp);
             StemNode[] stems = new StemNode[3];
             SuffixNode formYe = getSuffixRootNode(item, Verb_Ye);
-            stems[0] = new StemNode(item.clean(), item, formYe, TerminationType.TERMINAL);
+            stems[0] = new StemNode(item.root, item, formYe, TerminationType.TERMINAL);
             SuffixNode formProg = getSuffixRootNode(item, Verb_Prog_Drop);
             stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
             SuffixNode formYi = getSuffixRootNode(item, Verb_Yi);
@@ -212,7 +212,7 @@ public class LexiconGraph {
             Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(item, Verb_De);
-            stems[0] = new StemNode(item.clean(), item, formDe, TerminationType.TERMINAL);
+            stems[0] = new StemNode(item.root, item, formDe, TerminationType.TERMINAL);
             SuffixNode formProg = getSuffixRootNode(item, Verb_Prog_Drop);
             stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
             SuffixNode formDi = getSuffixRootNode(item, Verb_Di);
@@ -222,7 +222,7 @@ public class LexiconGraph {
         if (item.getId().equals("ben_Pron") || item.getId().equals("sen_Pron")) {
             StemNode[] stems = new StemNode[2];
             SuffixNode formBenSen = getSuffixRootNode(item, PersPron_BenSen);
-            stems[0] = new StemNode(item.clean(), item, formBenSen, TerminationType.TERMINAL);
+            stems[0] = new StemNode(item.root, item, formBenSen, TerminationType.TERMINAL);
             SuffixNode formBanSan = getSuffixRootNode(item, PersPron_BanSan);
             if (item.lemma.equals("ben"))
                 stems[1] = new StemNode("ban", item, formBanSan, TerminationType.NON_TERMINAL);
@@ -239,7 +239,7 @@ public class LexiconGraph {
         StemNode[] nodes = new StemNode[2];
         // atkuyruGu -
         SuffixNode original = getSuffixRootNode(item, Noun_Comp_P3sg);
-        nodes[0] = new StemNode(item.clean(), item, original, TerminationType.TERMINAL);
+        nodes[0] = new StemNode(item.root, item, original, TerminationType.TERMINAL);
 
         TurkicSeq modifiedSeq = new TurkicSeq(item.lemma, alphabet);
         String modified = modifiedSeq.eraseLast().toString();
