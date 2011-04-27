@@ -121,6 +121,24 @@ public class LexiconTree {
 	public String toString() {
 		return root != null ? root.dump(false) : "";
 	}
+	
+	public List<StemNode> getMatchingstems(String input) {
+		Node node = root;
+		int index = 0;
+		String s = "";
+		List<StemNode> objects = new ArrayList<StemNode>();
+		while (index < input.length()) {
+			node = node.getChildNode(input.charAt(index));
+			if (node == null) break;
+			String nodeString = node.getString();
+			s += nodeString;
+			if (input.startsWith(s) && node.hasObject()) {
+				objects.addAll(node.stems);
+			}
+			index += nodeString.length();
+		}
+		return objects;
+	}
 
 	public static class Node {
 		private char[] fragment;
@@ -170,10 +188,10 @@ public class LexiconTree {
 			int size = children.size();
 			
 			// Linear search if element count is smaller than a threshold.
-			if(size < 6) {
+			if(size < 7) {
 				int i = 0;
 				for (; i < size && children.get(i).index < index; i++);
-				if (i == size) return -size;
+				if (i == size) return -(size + 1);
 				return children.get(i).index == index ? i : -(i + 1);
 			}
 			
@@ -313,12 +331,21 @@ public class LexiconTree {
 	public static void main(String[] args) throws IOException {
 		LexiconTree lexicon = new LexiconTree();
 		List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("src/resources/tr/master-dictionary.txt"));
+//		List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/test-lexicon"));
 		TurkishSuffixes suffixes = new TurkishSuffixes();
 		LexiconGraph graph = new LexiconGraph(items, suffixes.getSuffixProvider());
 		graph.generate();
+		long st = System.currentTimeMillis();
+		int i = 0;
 		for(StemNode s : graph.getStems()) {
 			lexicon.add(s);
+			i++;
 		}
 		System.out.println(lexicon.toString());
+		System.out.println("Time: " + (System.currentTimeMillis() - st) + " Total: " + i);
+		List<StemNode> stems = lexicon.getMatchingstems("elmaslar");
+		for (StemNode s : stems) {
+			System.out.println("stem: " + s.surfaceForm);
+		}
 	}
 }
