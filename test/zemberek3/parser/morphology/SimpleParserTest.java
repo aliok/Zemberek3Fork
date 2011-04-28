@@ -73,7 +73,7 @@ public class SimpleParserTest {
         return new SimpleParser(graph);
     }
 
-    private MorphParser trieParser() throws IOException {
+    private TrieBasedParser trieParser() throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
         List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(new File("test/data/dev-lexicon.txt"));
         LexiconGraph graph = new LexiconGraph(items, suffixProvider);

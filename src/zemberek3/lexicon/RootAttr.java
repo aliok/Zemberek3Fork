@@ -18,6 +18,7 @@ public enum RootAttr implements StringEnum, IndexedEnum {
     NounConsInsert,
     NounConsInsert_n,
     NoQuote,
+    Plural,
     ProgressiveVowelDrop,
     Aorist_I,
     Aorist_A,
