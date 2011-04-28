@@ -31,12 +31,12 @@ public class SimpleParserTest {
 
     @Test
     public void simpleParserParseable() throws IOException {
-        parseableTest(simpleParser());
+        parseableTest(simpleParser(new File("test/data/dev-lexicon.txt")));
     }
 
     @Test
     public void unparseableTest() throws IOException {
-        SimpleParser parser = simpleParser();
+        SimpleParser parser = simpleParser(new File("test/data/dev-lexicon.txt"));
         List<String> unparseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/unparseable.txt")).asStringList();
         for (String wrong : unparseables) {
             Assert.assertTrue("Parses invalid word:" + wrong, parser.parse(wrong).size() == 0);
@@ -46,7 +46,7 @@ public class SimpleParserTest {
     @Test
     @Ignore("Performance Test")
     public void speedTest() throws IOException {
-        SimpleParser parser = simpleParser();
+        SimpleParser parser = simpleParser(new File("test/data/dev-lexicon.txt"));
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         long start = System.currentTimeMillis();
         final long iteration = 1000;
@@ -65,9 +65,37 @@ public class SimpleParserTest {
         System.out.println("Speed:" + (iteration * 1000 * parseables.size() / elapsed) + " words/second");
     }
 
-    private SimpleParser simpleParser() throws IOException {
+    @Test
+    @Ignore("Not a unit Test")
+    public void z2Comparison() throws IOException {
+/*       List<String> allWords = SimpleTextReader.trimmingUTF8Reader(
+                new File("/home/kodlab/data/lm/turkish-news/all-turkish-noproper.txt.tr")).asStringList();
+        SimpleTextWriter stw = SimpleTextWriter.keepOpenUTF8Writer(new File("test/data/z2-vocab.tr"));
+        for (String allWord : allWords) {
+            stw.writeLine(allWord.replaceAll("[ @0-9]+",""));
+        }
+        stw.close();*/
+
+        List<String> allWords = SimpleTextReader.trimmingUTF8Reader(
+                new File("test/data/z2-vocab.tr")).asStringList();
+        SimpleParser parser = simpleParser(new File("src/resources/tr/master-dictionary.txt"));
+        int pass = 0;
+        for (String word : allWords) {
+            if (parser.parse(word).size() > 0)
+                pass++;
+            else
+                System.out.println(word);
+        }
+        System.out.println("Total words:" + allWords.size());
+        System.out.println("Passed words:" + pass);
+        System.out.println("Ratio=%" + ((double)pass*100/allWords.size()));
+
+
+    }
+
+    private SimpleParser simpleParser(File dictionary) throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
-        List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(new File("test/data/dev-lexicon.txt"));
+        List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(dictionary);
         LexiconGraph graph = new LexiconGraph(items, suffixProvider);
         graph.generate();
         return new SimpleParser(graph);
@@ -80,4 +108,6 @@ public class SimpleParserTest {
         graph.generate();
         return new TrieBasedParser(graph);
     }
+
+
 }
