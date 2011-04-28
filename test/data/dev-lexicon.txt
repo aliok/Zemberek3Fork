@@ -94,8 +94,8 @@ bugün [P:Time]
 ben
 hükûmet [A:NoVoicing]
 
-zeytinyağı [A:CompoundP3sg]
-atkuyruğu [A:CompoundP3sg, Voicing]
+zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]
+atkuyruğu [A:CompoundP3sg, Voicing ; R:atkurkuk]
 
 # ------------------------------------------------------------------------------------------
 # Adjectives

@@ -16,18 +16,27 @@ import java.util.List;
 
 public class SimpleParserTest {
 
-    @Test
-    public void parseableTest() throws IOException {
-        SimpleParser parser = getParser();
+    public void parseableTest(MorphParser parser) throws IOException {
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         for (String parseable : parseables) {
             Assert.assertTrue("Could not parse valid word:" + parseable, parser.parse(parseable).size() > 0);
         }
     }
 
+
+    @Test
+    public void trieBasedParseable() throws IOException {
+        parseableTest(trieParser());
+    }
+
+    @Test
+    public void simpleParserParseable() throws IOException {
+        parseableTest(simpleParser());
+    }
+
     @Test
     public void unparseableTest() throws IOException {
-        SimpleParser parser = getParser();
+        SimpleParser parser = simpleParser();
         List<String> unparseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/unparseable.txt")).asStringList();
         for (String wrong : unparseables) {
             Assert.assertTrue("Parses invalid word:" + wrong, parser.parse(wrong).size() == 0);
@@ -37,7 +46,7 @@ public class SimpleParserTest {
     @Test
     @Ignore("Performance Test")
     public void speedTest() throws IOException {
-        SimpleParser parser = getParser();
+        SimpleParser parser = simpleParser();
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         long start = System.currentTimeMillis();
         final long iteration = 1000;
@@ -56,11 +65,19 @@ public class SimpleParserTest {
         System.out.println("Speed:" + (iteration * 1000 * parseables.size() / elapsed) + " words/second");
     }
 
-    private SimpleParser getParser() throws IOException {
+    private SimpleParser simpleParser() throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
         List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(new File("test/data/dev-lexicon.txt"));
         LexiconGraph graph = new LexiconGraph(items, suffixProvider);
         graph.generate();
         return new SimpleParser(graph);
+    }
+
+    private MorphParser trieParser() throws IOException {
+        SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
+        List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(new File("test/data/dev-lexicon.txt"));
+        LexiconGraph graph = new LexiconGraph(items, suffixProvider);
+        graph.generate();
+        return new TrieBasedParser(graph);
     }
 }

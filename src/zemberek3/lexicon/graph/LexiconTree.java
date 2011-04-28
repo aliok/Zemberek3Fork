@@ -330,8 +330,8 @@ public class LexiconTree {
 	
 	public static void main(String[] args) throws IOException {
 		LexiconTree lexicon = new LexiconTree();
-		List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("src/resources/tr/master-dictionary.txt"));
-//		List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/test-lexicon"));
+		//List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/resources/tr/master-dictionary.txt"));
+		List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
 		TurkishSuffixes suffixes = new TurkishSuffixes();
 		LexiconGraph graph = new LexiconGraph(items, suffixes.getSuffixProvider());
 		graph.generate();
@@ -343,7 +343,7 @@ public class LexiconTree {
 		}
 		System.out.println(lexicon.toString());
 		System.out.println("Time: " + (System.currentTimeMillis() - st) + " Total: " + i);
-		List<StemNode> stems = lexicon.getMatchingstems("elmaslar");
+		List<StemNode> stems = lexicon.getMatchingstems("dedi");
 		for (StemNode s : stems) {
 			System.out.println("stem: " + s.surfaceForm);
 		}

@@ -1,49 +1,27 @@
 package zemberek3.parser.morphology;
 
-import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.LexiconTree;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class SimpleParser implements MorphParser {
-
+public class TrieBasedParser implements MorphParser {
     LexiconGraph graph;
-    ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
-    Map<String, StemNode> singeStems = new HashMap<String, StemNode>();
+    LexiconTree lexicon = new LexiconTree();
 
-    public SimpleParser(LexiconGraph graph) {
+    public TrieBasedParser(LexiconGraph graph) {
         this.graph = graph;
         for (StemNode stemNode : graph.getStems()) {
-            final String surfaceForm = stemNode.surfaceForm;
-            if (multiStems.containsKey(surfaceForm)) {
-                multiStems.put(surfaceForm, stemNode);
-            } else if (singeStems.containsKey(surfaceForm)) {
-                multiStems.put(surfaceForm, singeStems.get(surfaceForm));
-                singeStems.remove(surfaceForm);
-                multiStems.put(surfaceForm, stemNode);
-            } else
-                singeStems.put(surfaceForm, stemNode);
+            lexicon.add(stemNode);
         }
     }
 
     public List<ParseToken> parse(String input) {
         // get stem candidates.
-        List<StemNode> candidates = Lists.newArrayList();
-        for (int i = 1; i <= input.length(); i++) {
-            String stem = input.substring(0, i);
-            if (singeStems.containsKey(stem)) {
-                candidates.add(singeStems.get(stem));
-            } else if (multiStems.containsKey(stem)) {
-                candidates.addAll(multiStems.get(stem));
-            }
-        }
-
+        List<StemNode> candidates = lexicon.getMatchingstems(input);
         // generate starting tokens with suffix root nodes.
         List<ParseToken> initialTokens = Lists.newArrayList();
         for (StemNode candidate : candidates) {

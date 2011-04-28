@@ -77,9 +77,7 @@ public class TurkishDictionaryLoader {
         String cleanWord(String word, PosInfo posInfo) {
             if (posInfo.primaryPos == PrimaryPos.Verb)
                 word = word.substring(0, word.length() - 3);
-            if (posInfo.secondaryPos == SecondaryPos.ProperNoun) {
-                word = word.toLowerCase(locale);
-            }
+            word = word.toLowerCase(locale);
             return word.replaceAll("[\\-']", "");
         }
 

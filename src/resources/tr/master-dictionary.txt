@@ -15569,7 +15569,7 @@ mekruh
 Meksika
 mektep
 mektup
-mektupüstü [A:CompoundP3sg; R:mektupüstü]
+mektupüstü [A:CompoundP3sg; R:mektupüst]
 mel [P:Adj, Dup]
 melanet [A:NoVoicing]
 melun
