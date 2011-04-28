@@ -2,13 +2,21 @@ package zemberek3.lexicon;
 
 import com.google.common.collect.Lists;
 import junit.framework.Assert;
+import org.jcaki.SimpleTextReader;
+import org.jcaki.Strings;
 import org.junit.Ignore;
 import org.junit.Test;
 import zemberek3.structure.AttributeSet;
+import zemberek3.structure.TurkicSeq;
+import zemberek3.structure.TurkishAlphabet;
+import zemberek3.structure.TurkishAlphabetTest;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 import static zemberek3.lexicon.PrimaryPos.Noun;
 import static zemberek3.lexicon.PrimaryPos.Pronoun;
@@ -120,6 +128,35 @@ public class TurkishDictionaryLoaderTest {
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader(sp);
 
         List<DictionaryItem> items = loader.load(new File("src/resources/tr/master-dictionary.txt"));
+        TurkishAlphabet alphabet = new TurkishAlphabet();
+
+        Set<String> novoicingStuff = new HashSet<String>();
+        Locale tr = new Locale("tr");
+        List<String> allZ2 = SimpleTextReader.trimmingUTF8Reader(new File("/home/afsina/projects/zemberek3/src/resources/tr/master-dictionary.txt")).asStringList();
+        for (String s : allZ2) {
+            if (s.startsWith("#"))
+                continue;
+            String clean = Strings.subStringUntilFirst(s.trim(), " ").toLowerCase(tr).replaceAll("[\\-']", "");
+            if (s.contains("Noun") && !s.contains("Compound") && !s.contains("PropNoun")
+                    && !clean.endsWith("et") && !clean.endsWith("ist") && !clean.endsWith("lik")
+                    && !clean.endsWith("lık") && !clean.endsWith("lük") && !clean.endsWith("luk")
+                    && !clean.endsWith("ot")) {
+                TurkicSeq seq = new TurkicSeq(clean, alphabet);
+                if (seq.vowelCount() > 1 && seq.lastLetter().isStopConsonant() && !s.contains("Vo")) {
+                    novoicingStuff.add(s);
+                    System.out.println(clean);
+                }
+            }
+        }
+
+
+        for (DictionaryItem item : items) {
+            if ((item.primaryPos == PrimaryPos.Noun || item.primaryPos == PrimaryPos.Adjective) && item.secondaryPos != SecondaryPos.ProperNoun &&
+                    item.hasAttribute(RootAttr.Voicing)) {
+
+            }
+        }
+
         System.out.println(items.size());
 
     }

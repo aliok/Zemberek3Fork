@@ -2051,6 +2051,7 @@ aza
 azade [P:Adj]
 azade [P:Adv]
 azalmak
+azaltmak
 azamet [A:NoVoicing]
 azami [P:Adj]
 azap
@@ -7585,6 +7586,7 @@ eril [P:Adj]
 erillik
 erim
 erimek
+eritmek
 erinç
 erinmek
 eristik
@@ -13480,6 +13482,7 @@ kitabet [A:NoVoicing]
 kitabevi
 kitabî
 kitap
+kitaplaşmak
 kitapsever
 kitin
 kitle
@@ -13612,7 +13615,7 @@ kolağası [A:CompoundP3sg; R:kolağa]
 kolâj
 kolalamak
 kolan
-kolay
+kolay [P:Adj]
 kolaycacık [P:Adj]
 kolaylamak
 kolbastı
@@ -14031,6 +14034,7 @@ körfez
 Körfez
 körkütük
 körlemek
+körleşmek
 Köroğlu
 körpe [P:Adj]
 körük
@@ -14157,6 +14161,7 @@ Kubbealtı [P:Noun, Prop; A:NounConsInsert_n]
 kubur
 kucak
 kucaklamak
+kucaklaşmak
 kuçukuçu
 kudas
 kudret [A:NoVoicing]
@@ -14762,7 +14767,7 @@ lıkır [P:Adj, Dup]
 lıkırdamak
 lıkırtı
 libas
-liberal [A:InverseHarmony]
+liberal [P:Adj; A:InverseHarmony]
 liberalizm
 liberasyon
 libero

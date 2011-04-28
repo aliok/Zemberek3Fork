@@ -132,6 +132,7 @@ atmak [A:Reciprocal]
 bakmak [A:Reciprocal]
 yapmak
 aramak
+abartmak
 etmek [A:Voicing]
 yıkanmak [A:Reflexive]
 

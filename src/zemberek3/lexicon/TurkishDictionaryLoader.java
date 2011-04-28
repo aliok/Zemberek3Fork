@@ -14,9 +14,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static zemberek3.structure.TurkishAlphabet.L_n;
-import static zemberek3.structure.TurkishAlphabet.L_p;
-import static zemberek3.structure.TurkishAlphabet.L_r;
+import static zemberek3.structure.TurkishAlphabet.*;
 
 public class TurkishDictionaryLoader {
 
@@ -77,7 +75,7 @@ public class TurkishDictionaryLoader {
         String cleanWord(String word, PosInfo posInfo) {
             if (posInfo.primaryPos == PrimaryPos.Verb)
                 word = word.substring(0, word.length() - 3);
-            word = word.toLowerCase(locale);
+            word = word.toLowerCase(locale).replaceAll("â","a").replaceAll("î","i").replaceAll("\u00e2","ü");
             return word.replaceAll("[\\-']", "");
         }
 
@@ -171,7 +169,11 @@ public class TurkishDictionaryLoader {
                     if (sequence.vowelCount() == 1 && !attributesList.contains(RootAttr.Aorist_I)) {
                         attributesList.add(RootAttr.Aorist_A);
                     }
-                    if (sequence.lastLetter() == L_r || sequence.lastLetter() == L_p || sequence.lastLetter() == L_n) {
+                    if (sequence.lastLetter() == L_r ||
+                            sequence.lastLetter() == L_p ||
+                            sequence.lastLetter() == L_n ||
+                            sequence.lastLetter() == L_ss ||
+                            sequence.lastLetter() == L_t ) {
                         attributesList.add(RootAttr.Passive_Il);
                     }
                     if (sequence.lastLetter().isVowel() && sequence.vowelCount() > 1)

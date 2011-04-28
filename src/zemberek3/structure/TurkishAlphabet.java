@@ -48,7 +48,7 @@ public class TurkishAlphabet {
     public static final TurkicLetter L_f = builder('f', 7).voiceless().build();
     public static final TurkicLetter L_g = builder('g', 8).build();
     public static final TurkicLetter L_gg = builder(C_gg, 9).notInAscii().similarAscii('g').build();
-    public static final TurkicLetter L_h = builder('h', 10).build();
+    public static final TurkicLetter L_h = builder('h', 10).voiceless().build();
     public static final TurkicLetter L_ii = builder(C_ii, 11).vowel().notInAscii().similarAscii('i').build();
     public static final TurkicLetter L_i = builder('i', 12).vowel().frontalVowel().build();
     public static final TurkicLetter L_j = builder('j', 13).build();

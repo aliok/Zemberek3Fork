@@ -2,6 +2,7 @@ package zemberek3.parser.morphology;
 
 import junit.framework.Assert;
 import org.jcaki.SimpleTextReader;
+import org.jcaki.SimpleTextWriter;
 import org.junit.Ignore;
 import org.junit.Test;
 import zemberek3.lexicon.DictionaryItem;
@@ -68,24 +69,18 @@ public class SimpleParserTest {
     @Test
     @Ignore("Not a unit Test")
     public void z2Comparison() throws IOException {
-/*       List<String> allWords = SimpleTextReader.trimmingUTF8Reader(
-                new File("/home/kodlab/data/lm/turkish-news/all-turkish-noproper.txt.tr")).asStringList();
-        SimpleTextWriter stw = SimpleTextWriter.keepOpenUTF8Writer(new File("test/data/z2-vocab.tr"));
-        for (String allWord : allWords) {
-            stw.writeLine(allWord.replaceAll("[ @0-9]+",""));
-        }
-        stw.close();*/
-
         List<String> allWords = SimpleTextReader.trimmingUTF8Reader(
                 new File("test/data/z2-vocab.tr")).asStringList();
+        SimpleTextWriter stw = SimpleTextWriter.keepOpenUTF8Writer(new File("test/data/unknowns.txt"));
         SimpleParser parser = simpleParser(new File("src/resources/tr/master-dictionary.txt"));
         int pass = 0;
         for (String word : allWords) {
             if (parser.parse(word).size() > 0)
                 pass++;
             else
-                System.out.println(word);
+                stw.writeLine(word);
         }
+        stw.close();
         System.out.println("Total words:" + allWords.size());
         System.out.println("Passed words:" + pass);
         System.out.println("Ratio=%" + ((double)pass*100/allWords.size()));
