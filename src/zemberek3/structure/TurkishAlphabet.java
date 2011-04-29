@@ -73,9 +73,9 @@ public class TurkishAlphabet {
     public static final TurkicLetter L_w = builder('w', 31).foreign().build();
     public static final TurkicLetter L_x = builder('x', 32).foreign().build();
     // Circumflexed letters
-    public static final TurkicLetter L_ac = builder(a_CIRC, 33).vowel().frontalVowel().similarAscii('a').notInAscii().build();
+    public static final TurkicLetter L_ac = builder(a_CIRC, 33).vowel().similarAscii('a').notInAscii().build();
     public static final TurkicLetter L_ic = builder(i_CIRC, 34).vowel().frontalVowel().similarAscii('i').notInAscii().build();
-    public static final TurkicLetter L_uc = builder(u_CIRC, 35).vowel().foreign().frontalVowel().similarAscii('u').roundedVowel().notInAscii().build();
+    public static final TurkicLetter L_uc = builder(u_CIRC, 35).vowel().frontalVowel().similarAscii('u').roundedVowel().notInAscii().build();
 
     private static final TurkicLetter[] TURKISH_LETTERS = {
             L_a, L_b, L_c, L_cc, L_d, L_e, L_f, L_g,

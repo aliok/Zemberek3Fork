@@ -75,7 +75,7 @@ public class TurkishDictionaryLoader {
         String cleanWord(String word, PosInfo posInfo) {
             if (posInfo.primaryPos == PrimaryPos.Verb)
                 word = word.substring(0, word.length() - 3);
-            word = word.toLowerCase(locale).replaceAll("â","a").replaceAll("î","i").replaceAll("\u00e2","ü");
+            word = word.toLowerCase(locale).replaceAll("â","a").replaceAll("î","i").replaceAll("\u00e2", "ü");
             return word.replaceAll("[\\-']", "");
         }
 
@@ -161,6 +161,7 @@ public class TurkishDictionaryLoader {
                     // if a verb ends with a wovel, and -Iyor suffix is appended, last vowel drops.
                     if (sequence.lastLetter().isVowel()) {
                         attributesList.add(RootAttr.ProgressiveVowelDrop);
+                        attributesList.add(RootAttr.Passive_nIl);
                     }
                     // if verb has more than 1 syllable and there is no Aorist_A label, add Aorist_I.
                     if (sequence.vowelCount() > 1 && !attributesList.contains(RootAttr.Aorist_A))
@@ -172,12 +173,19 @@ public class TurkishDictionaryLoader {
                     if (sequence.lastLetter() == L_r ||
                             sequence.lastLetter() == L_p ||
                             sequence.lastLetter() == L_n ||
+                            sequence.lastLetter() == L_cc ||
+                            sequence.lastLetter() == L_k ||
+                            sequence.lastLetter() == L_v ||
+                            sequence.lastLetter() == L_y ||
                             sequence.lastLetter() == L_ss ||
                             sequence.lastLetter() == L_t ) {
-                        attributesList.add(RootAttr.Passive_Il);
+                        attributesList.add(RootAttr.Passive_nIl);
                     }
                     if (sequence.lastLetter().isVowel() && sequence.vowelCount() > 1)
                         attributesList.add(RootAttr.Causative_t);
+                    if (sequence.lastLetter() == L_r) {
+                        attributesList.add(RootAttr.Causative_t);
+                    }
                     break;
                 case Noun:
                 case Adjective:

@@ -109,6 +109,10 @@ public class LexiconGraph {
         return attrs;
     }
 
+    private void changeVowelAttrs(TurkicLetter letter, AttributeSet<PhonAttr> attrs) {
+        attrs.remove(PhonAttr.LastLetterConsonant, PhonAttr.LastLetterVowel);
+    }
+
 
     private StemNode[] generateModifiedRootNodes(DictionaryItem lexItem) {
 
@@ -193,8 +197,8 @@ public class LexiconGraph {
         if (item.getId().equals("yemek_Verb")) {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
-            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA, When_yIncA, AfterDoing_yIp);
-            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, When_yIncA, AfterDoing_yIp);
+            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA, When_yIncA, AfterDoing_yIp);
+            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, When_yIncA, AfterDoing_yIp, Abil_yA, Abil_yAbil);
             StemNode[] stems = new StemNode[3];
             SuffixNode formYe = getSuffixRootNode(item, Verb_Ye);
             stems[0] = new StemNode(item.root, item, formYe, TerminationType.TERMINAL);
@@ -208,8 +212,8 @@ public class LexiconGraph {
             SuffixFormSet Verb_De = new SuffixFormSet("Verb_De", VerbRoot, "");
             SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
-            Verb_De.add(Verb_Main.getSuccSetCopy()).remove(Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA);
-            Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg);
+            Verb_De.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA);
+            Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Abil_yA, Abil_yAbil);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(item, Verb_De);
             stems[0] = new StemNode(item.root, item, formDe, TerminationType.TERMINAL);
@@ -395,15 +399,15 @@ public class LexiconGraph {
                         original.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
                         modified.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
                         break;
-                    case Passive_Il:
+                    case Passive_nIl:
                         original.remove(Pass_In, Pass_nIl);
                         if (!item.attrs.contains(LastVowelDrop))
-                            original.add(Pass_Il);
-                        modified.remove(Pass_In, Pass_nIl).add(Pass_Il);
+                            original.add(Pass_nIl, Pass_In);
+                        modified.remove(Pass_In).add(Pass_nIl);
                         break;
                     case LastVowelDrop:
-                        original.remove(Pass_Il);
-                        modified.clear().add(Pass_Il);
+                        original.remove(Pass_nIl);
+                        modified.clear().add(Pass_nIl);
                         break;
                     case Voicing:
                         original.remove(Verb_Exp_V.getSuccessors());

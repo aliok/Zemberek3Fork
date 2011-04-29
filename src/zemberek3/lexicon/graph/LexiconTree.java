@@ -249,9 +249,9 @@ public class LexiconTree {
 				s += ".";
 			}
 			if (stems != null) {
-				for(int i=0; i<stems.size(); i++) {
-					s += " * ";
-				}
+                for (StemNode stem : stems) {
+                    s += " [" + stem.dictionaryItem.lemma + "]";
+                }
 			}
 			return s;
 		}

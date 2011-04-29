@@ -105,6 +105,8 @@ kırmızı [P:Adj]
 arı [P:Adj]
 yavaş [P:Adj]
 temiz [P:Adj]
+acımasız [P:Adj]
+acımasız [P:Adv]
 
 # secondary pos. both are required.
 çıtır [P:Adj,Dup]
@@ -132,6 +134,7 @@ atmak [A:Reciprocal]
 bakmak [A:Reciprocal]
 yapmak
 aramak
+acımak
 abartmak
 etmek [A:Voicing]
 yıkanmak [A:Reflexive]
