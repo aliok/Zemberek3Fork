@@ -138,11 +138,11 @@ public class TurkishDictionaryLoaderTest {
                 continue;
             String clean = Strings.subStringUntilFirst(s.trim(), " ").toLowerCase(tr).replaceAll("[\\-']", "");
             if (s.contains("Noun") && !s.contains("Compound") && !s.contains("PropNoun")
-                    && !clean.endsWith("et") && !clean.endsWith("ist") && !clean.endsWith("lik")
+                  /*  && !clean.endsWith("et") && !clean.endsWith("ist") && !clean.endsWith("lik")
                     && !clean.endsWith("lık") && !clean.endsWith("lük") && !clean.endsWith("luk")
-                    && !clean.endsWith("ot")) {
+                    && !clean.endsWith("ot")*/) {
                 TurkicSeq seq = new TurkicSeq(clean, alphabet);
-                if (seq.vowelCount() > 1 && seq.lastLetter().isStopConsonant() && !s.contains("Vo")) {
+                if (seq.vowelCount() ==1 && seq.lastLetter().isStopConsonant() && s.contains("Vo")) {
                     novoicingStuff.add(s);
                     System.out.println(clean);
                 }
