@@ -11,7 +11,7 @@
 - [Pron ZAMIR_IM], [Pron ZAMIR_IN], [ZAMIR_SESLI_OZEL]
 - minik->minicik, ufak->ufacık, yürek, küçük.. is not handled.
 - birbiri -> compound
-- Causative_t must be added as a tag for some verbs.
+
 
 
 
