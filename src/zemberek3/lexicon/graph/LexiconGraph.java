@@ -145,6 +145,9 @@ public class LexiconGraph {
                     break;
                 case ProgressiveVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 1);
+                    if(modifiedSeq.hasVowel()) {
+                        modifiedAttrs = calculateAttributes(modifiedSeq);
+                    }
                     break;
                 case StemChange:
                     return handleSpecialStems(lexItem);
@@ -399,11 +402,8 @@ public class LexiconGraph {
                         original.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
                         modified.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
                         break;
-                    case Passive_nIl:
-                        original.remove(Pass_In, Pass_nIl);
-                        if (!item.attrs.contains(LastVowelDrop))
-                            original.add(Pass_nIl, Pass_In);
-                        modified.remove(Pass_In).add(Pass_nIl);
+                    case Passive_In:
+                        original.remove(Pass_nIl).add(Pass_In);
                         break;
                     case LastVowelDrop:
                         original.remove(Pass_nIl);

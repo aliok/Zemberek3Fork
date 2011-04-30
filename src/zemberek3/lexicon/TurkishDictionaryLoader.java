@@ -5,6 +5,7 @@ import com.google.common.base.Splitter;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
 import zemberek3.structure.AttributeSet;
+import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
@@ -75,7 +76,7 @@ public class TurkishDictionaryLoader {
         String cleanWord(String word, PosInfo posInfo) {
             if (posInfo.primaryPos == PrimaryPos.Verb)
                 word = word.substring(0, word.length() - 3);
-            word = word.toLowerCase(locale).replaceAll("â","a").replaceAll("î","i").replaceAll("\u00e2", "ü");
+            word = word.toLowerCase(locale).replaceAll("â", "a").replaceAll("î", "i").replaceAll("\u00e2", "ü");
             return word.replaceAll("[\\-']", "");
         }
 
@@ -156,12 +157,13 @@ public class TurkishDictionaryLoader {
                 PosInfo posData,
                 Set<RootAttr> attributesList) {
             TurkicSeq sequence = new TurkicSeq(word.toLowerCase(locale), alphabet);
+            final TurkicLetter last = sequence.lastLetter();
             switch (posData.primaryPos) {
                 case Verb:
                     // if a verb ends with a wovel, and -Iyor suffix is appended, last vowel drops.
-                    if (sequence.lastLetter().isVowel()) {
+                    if (last.isVowel()) {
                         attributesList.add(RootAttr.ProgressiveVowelDrop);
-                        attributesList.add(RootAttr.Passive_nIl);
+                        attributesList.add(RootAttr.Passive_In);
                     }
                     // if verb has more than 1 syllable and there is no Aorist_A label, add Aorist_I.
                     if (sequence.vowelCount() > 1 && !attributesList.contains(RootAttr.Aorist_A))
@@ -170,25 +172,17 @@ public class TurkishDictionaryLoader {
                     if (sequence.vowelCount() == 1 && !attributesList.contains(RootAttr.Aorist_I)) {
                         attributesList.add(RootAttr.Aorist_A);
                     }
-                    if (sequence.lastLetter() == L_r ||
-                            sequence.lastLetter() == L_p ||
-                            sequence.lastLetter() == L_n ||
-                            sequence.lastLetter() == L_cc ||
-                            sequence.lastLetter() == L_k ||
-                            sequence.lastLetter() == L_v ||
-                            sequence.lastLetter() == L_y ||
-                            sequence.lastLetter() == L_ss ||
-                            sequence.lastLetter() == L_t ) {
-                        attributesList.add(RootAttr.Passive_nIl);
+                    if (last == L_l) {
+                        attributesList.add(RootAttr.Passive_In);
                     }
-                    if (sequence.lastLetter().isVowel() && sequence.vowelCount() > 1)
+                    if (last.isVowel() || (last == L_l || last == L_r) && sequence.vowelCount() > 1)
                         attributesList.add(RootAttr.Causative_t);
                     break;
                 case Noun:
                 case Adjective:
                     // if a noun or adjective has more than one syllable and last letter is a stop consonant, add voicing.
                     if (sequence.vowelCount() > 1
-                            && sequence.lastLetter().isStopConsonant()
+                            && last.isStopConsonant()
                             && !attributesList.contains(RootAttr.NoVoicing)
                             && !attributesList.contains(RootAttr.InverseHarmony))
                         attributesList.add(RootAttr.Voicing);

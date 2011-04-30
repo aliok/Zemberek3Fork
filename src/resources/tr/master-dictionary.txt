@@ -1322,7 +1322,7 @@ apansızın [P:Adv]
 aparat [A:NoVoicing]
 aparey
 aparkat [A:NoVoicing]
-aparmak [A:Causative_t]
+aparmak
 apartman
 apaş
 apatit
@@ -3521,6 +3521,7 @@ boğmak
 boğuk [P:Adj]
 boğum
 boğumlamak
+boğuşmak [A:Reciprocal]
 bohça
 bohçalamak
 bohem [P:Adj]
@@ -17895,7 +17896,7 @@ otsul
 otugiller
 oturacak
 oturak
-oturmak [A:Causative_t]
+oturmak
 oturum
 otuz [Num]
 otyiyenler
@@ -20128,9 +20129,9 @@ savunma
 savunmak
 Savur
 savurgan
-savurmak [A:LastVowelDrop, Causative_t]
+savurmak [A:LastVowelDrop]
 savuşmak
-savuşturmak [A: Causative_t]
+savuşturmak
 say
 saya
 sayaç
@@ -20951,7 +20952,7 @@ soğuk
 soğukkanlı
 soğuklamak
 soğumak
-soğurmak [A:LastVowelDrop, Causative_t]
+soğurmak [A:LastVowelDrop]
 soğutmak
 sohbet [A:NoVoicing]
 sokak
@@ -20963,7 +20964,7 @@ sokulgan
 sokulmak
 sokulu
 sokur
-sokuşturmak [A: Causative_t]
+sokuşturmak
 sol
 solak
 solaryum
@@ -20996,7 +20997,7 @@ Somali
 somon
 somun
 somurdanmak
-somurmak[A:Causative_t]
+somurmak
 somurtkan
 somurtmak
 somut
@@ -21038,7 +21039,7 @@ sorti
 soru
 sorumsuz
 sorun
-soruşturmak [A: Causative_t]
+soruşturmak
 sorutkan
 sos
 sosis
@@ -21327,7 +21328,7 @@ suskun
 susmak
 suspus
 susta
-susturmak [A: Causative_t]
+susturmak
 susturucu
 Susurluk
 susuz
@@ -23379,7 +23380,7 @@ tomruk
 tomruklamak
 tomurcuk
 tomurcuklanmak
-tomurmak [A:Causative_t]
+tomurmak
 ton
 tonaj
 tonga
@@ -23810,7 +23811,7 @@ uçmak
 uçmak [P:Noun]
 uçuk
 uçuklamak
-uçurmak [A: Causative_t]
+uçurmak
 uçurtmak
 uçurum
 uçuşmak
@@ -23972,10 +23973,12 @@ uyarlamak
 uyarmak
 uydu
 uydurma [P:Adj]
-uydurmak [A: Causative_t]
+uydurmaca [P:Adj]
+uydurmak
 uydurmasyon
 uyduruk
 uygar [P:Adj]
+uygarlık
 uygulamak
 uygun
 Uygur
@@ -23991,13 +23994,14 @@ uyum
 uyumak
 uyurgezer
 uyuşmak
-uyuşturmak [A: Causative_t]
+uyuşturmak
 uyuşuk [P:Adj]
 uyuz
 uz
 uzadıya [P:Adv]
 uzak [P:Adj]
 uzaklanmak
+uzaklaşmak
 uzaksamak
 uzamak
 uzanmak
@@ -25108,7 +25112,7 @@ yoğrulmak
 yoğrum
 yoğun [P:Adj]
 yoğunlaç
-yoğurmak [A: Causative_t]
+yoğurmak
 yoğurt
 yoğurthane
 yoğurtlamak
@@ -25232,7 +25236,7 @@ yusyuvarlak
 yutak
 yutkunmak
 yutmak
-yutturmak [A: Causative_t]
+yutturmak
 yuva
 yuvak
 yuvalamak
@@ -25615,7 +25619,7 @@ züğürtlemek
 Zühal
 Zühre
 zührevî
-züht
+züht [A:Voicing]
 zühul [A:InverseHarmony]
 zükâm
 zül [A:Doubling]
