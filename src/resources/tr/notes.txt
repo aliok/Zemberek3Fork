@@ -11,6 +11,8 @@
 - [Pron ZAMIR_IM], [Pron ZAMIR_IN], [ZAMIR_SESLI_OZEL]
 - minik->minicik, ufak->ufacık, yürek, küçük.. is not handled.
 - birbiri -> compound
+- zero surface verb suffixes may cause trouble for voicing.
+
 
 
 

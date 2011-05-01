@@ -347,6 +347,7 @@ ağırelli [P:Adj]
 ağırkanlı
 ağırkanlı [P:Adj]
 ağırlamak
+ağırlık
 ağırsamak
 ağırşak
 ağırşaklanmak
@@ -637,6 +638,7 @@ akşamüzeri [P:Noun, Time; A:CompoundP3sg; R:akşamüzer]
 Akşehir
 akşın
 aktar
+aktarım
 aktariye
 aktarmak
 aktavşan
@@ -5501,6 +5503,7 @@ damdazlak [P:Adj]
 damga
 damgalamak
 damıtık [P:Adj]
+damıtım
 damıtmak
 damızlık
 damızlık [P:Adj]
@@ -5624,11 +5627,13 @@ dayama
 dayamak
 dayanak
 dayanç
-dayanıklı
+dayanıklı [P:Adj]
+dayanım
 dayanıksız [P:Adj]
 dayanmak
 dayanışık [P:Adj]
 dayanışma
+dayanışmak
 dayantı
 daye
 dayı
@@ -5703,6 +5708,7 @@ değerbilir [P:Adj]
 değerbilmez
 değerlemek
 değerlenmek
+değerlendirmek
 değerli [P:Adj]
 değersiz [P:Adj]
 değgin [P:Adj]
@@ -5849,7 +5855,7 @@ demograf
 demografi
 demografik [P:Adj]
 demokrasi
-demokrat [P:Adj]
+demokrat [P:Adj; A:NoVoicing]
 demokratik [P:Adj]
 demonstrasyon
 demoralizasyon
@@ -7308,7 +7314,7 @@ elips
 elipsoidal [P:Adj; A:InverseHarmony]
 elipsoit [P:Adj]
 eliptik [P:Adj]
-elit [P:Adj]
+elit [P:Adj; A:NoVoicing]
 ellemek
 elli [Num]
 ellik
@@ -8343,6 +8349,7 @@ fincan
 Fince
 fingir [P:Adj, Dup]
 fingirdek [P:Adj]
+fingirdemek
 fingirdeşmek
 Finike
 finiş
@@ -10604,7 +10611,7 @@ hükmen
 hükmetmek [A:Voicing, Aorist_A]
 hükmî
 hükmolmak
-hükûmet [A:NoVoicing]
+hükümet [A:NoVoicing]
 hüküm [A:LastVowelDrop]
 hükümdar
 hükümran
@@ -13137,6 +13144,7 @@ kığılamak
 kıh
 kıkır [P:Adj, Dup]
 kıkırdamak
+kıkırdaşmak
 kıkırtı
 kıkırdak
 kıkırtı
@@ -13220,6 +13228,7 @@ Kırıkhan
 Kırıkkale
 kırıklamak
 kırılgan [P:Adj]
+kırılım
 kırım
 Kırım
 Kırımlı
@@ -13272,6 +13281,7 @@ kısa
 kısalmak
 kısarak [P:Adj]
 kısas
+kısayol
 kısık
 kısım [A:LastVowelDrop]
 kısımlamak
@@ -18043,6 +18053,7 @@ ozuga
 ölçümlemek
 ölçüt [A:NoVoicing]
 öldürmek
+öldürüm
 ölet [A:NoVoicing]
 ölgün [P:Adj]
 ölmek [A:Aorist_I]
@@ -18057,6 +18068,7 @@ ozuga
 önayak
 önce [P:Noun, Time]
 öncelemek
+öncelik
 öncü
 öncül
 önder
@@ -18109,6 +18121,7 @@ ozuga
 örtünmek
 örtüşmek
 örü
+örüntü
 örük
 örüklemek
 örümcek
@@ -18124,9 +18137,12 @@ ozuga
 ötleği
 ötmek
 ötre
+ötümlü
+ötümsüz
 ötürmek
 ötürü [P:Adv]
 ötürük
+ötüşmek
 öveç
 övgü
 övmek
@@ -18152,6 +18168,8 @@ ozuga
 öze
 özek
 özel
+özellik
+özellikle [P:Adv]
 özemek
 özen
 özenç
@@ -18159,6 +18177,7 @@ ozuga
 özenmek
 özenti
 özerk [A:NoVoicing]
+özerklik
 özet [A:NoVoicing]
 özetlemek
 özge
@@ -18168,6 +18187,7 @@ ozuga
 özgülemek
 özgün [P:Adj]
 özgür
+özgürlük
 özlem
 özlemek
 özlenti
@@ -18198,7 +18218,7 @@ pahal
 pahalanmak
 pahalı [P:Adj]
 pahlamak
-pak [A:InverseHarmony]
+pak
 paket [A:NoVoicing]
 paketlemek
 Pakistan
@@ -23852,7 +23872,7 @@ ufarak [P:Adj]
 ufkî
 ufkuiş
 uflamak
-ufuk [A:LastVowelDrop]
+ufuk [A:LastVowelDrop, NoVoicing]
 ufunet [A:NoVoicing]
 ufunetlenmek
 Uganda
@@ -23892,6 +23912,7 @@ ulam
 ulamak
 ulan [P:Interj]
 Ulaş
+ulaşım
 ulaşmak
 ulema [Noun Pl]
 ultramodern
@@ -24131,7 +24152,7 @@ uzviyet [A:NoVoicing]
 üsküf
 üsküre
 üslenmek
-üslûp
+üslup
 üst
 üstat
 üstçavuş
@@ -24553,6 +24574,7 @@ vurmak [A:Aorist_I]
 vurtut
 vuru
 vuruşkan
+vuruşmak
 vuslat [A:NoVoicing]
 vusul [A:InverseHarmony]
 vuzuh
@@ -24904,6 +24926,7 @@ yazgı
 yazı
 Yazıhan
 yazıhane
+yazışmak [Reciprocal]
 yazık
 yazıklanmak
 yazılamak
