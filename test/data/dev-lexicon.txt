@@ -63,7 +63,8 @@ psikolog
 harp [A: Voicing]
 
 # Tag required.
-nakit [A: LastVowelDrop]
+nakit [A:LastVowelDrop]
+vakit [A:LastVowelDrop, NoVoicing]
 lütuf [A: LastVowelDrop]
 
 # these words are also adjectives.

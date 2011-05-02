@@ -20784,11 +20784,13 @@ silâhtar
 silecek
 silgi
 Silifke
+silik
 silikat [A:NoVoicing]
 silikon
 silindir
 silindiraj
 silindirik
+silinti
 silis
 silisyum
 Silivri
@@ -20822,7 +20824,7 @@ simültane
 simya
 sin
 sin [A:Doubling]
-sinagog
+sinagog [A:NoVoicing]
 sinameki
 sinara
 sinarit
@@ -20866,7 +20868,7 @@ sinsin
 sintigrafi
 sintine
 sinüs
-sinüzit
+sinüzit [NoVoicing]
 sinüzoidal [A:InverseHarmony]
 sinüzoit
 sinyal [A:InverseHarmony]
@@ -21011,6 +21013,7 @@ sokra
 sokulgan
 sokulmak
 sokulu
+sokum
 sokur
 sokuşturmak
 sol
@@ -21085,7 +21088,9 @@ sormak
 sormuk
 sorti
 soru
-sorumsuz
+sorumlu [P:Adj]
+sorumsuz [P:Adj]
+sorumluluk
 sorun
 soruşturmak
 sorutkan
@@ -21134,6 +21139,7 @@ sökmek
 sökük [P:Adj]
 sökük [P:Adj]
 sökülmek
+söküm
 sölom
 sölpük
 sölpümek
@@ -21158,6 +21164,7 @@ söylemek
 söylenmek
 söylenti
 söyleşi
+söyleşmek
 söylev
 söz
 sözcü
@@ -21165,6 +21172,7 @@ sözcük
 sözde
 sözel
 sözlenmek
+sözleşme
 sözleşmek
 sözlü
 sözlük
@@ -21328,6 +21336,7 @@ sultanîhüzzam
 sultanîyegâh
 sultanoğlu [A:CompoundP3sg, LastVowelDrop; R:sultanoğul]
 sulu
+suluk
 Suluova
 Sulusaray
 sumak [P:Noun]
@@ -21815,7 +21824,7 @@ süzülmek
 şer [A:Doubling]
 şeran [P:Adv]
 şerî [P:Adj]
-şerait
+şerait [A:NoVoicing, Plural]
 şerare
 şerbet [A:NoVoicing]
 şerbetlemek
@@ -22169,7 +22178,7 @@ tahra
 tahribat [A:NoVoicing]
 tahrif
 tahrifat [A:NoVoicing]
-tahrik
+tahrik [A:NoVoicing]
 tahrikât [A:NoVoicing]
 tahril
 tahrip
@@ -22260,7 +22269,7 @@ taksimat [A:NoVoicing]
 taksimetre
 taksir
 taksirat [A:NoVoicing]
-taksit
+taksit [A:NoVoicing]
 taksitlemek
 taksonomi
 takt
@@ -22348,10 +22357,11 @@ tanış
 tanışık [P:Adj]
 tanışmak
 tanıt [A:NoVoicing]
+tanıtım
 tanıtlamak
 tanin
 tanjant [A:NoVoicing]
-tank
+tank [A:NoVoicing]
 tanker
 tanksavar
 tanlamak
@@ -22447,7 +22457,7 @@ tarziye
 tas
 tasa
 tasalanmak
-tasallut
+tasallut [A:NoVoicing]
 tasallüp
 tasannu
 tasarı
@@ -22976,6 +22986,7 @@ tepiklemek
 tepinmek
 tepir
 tepirlemek
+tepişmek
 tepke
 tepki
 tepkimek
@@ -23771,6 +23782,7 @@ tüh
 tük
 tükenmek
 tüketmek
+tüketim
 tükürmek
 tükürük
 tükürüklemek
@@ -23807,6 +23819,7 @@ türdeş
 türe
 türel
 türemek
+türetim
 türev
 Türk
 Türkçe
@@ -23930,6 +23943,7 @@ ulus
 Ulus
 uluslararası
 ulussever
+uluşmak
 ulvî
 ulviyet [A:NoVoicing]
 umacı
@@ -23952,6 +23966,7 @@ unsur
 unutkan [P:Adj]
 unutmabeni
 unutmak
+unutulmaz [P:Adj]
 unvan
 upuslu
 upuygun
@@ -24252,7 +24267,7 @@ vakıf [A:LastVowelDrop]
 vâkıf [A:LastVowelDrop]
 vakıfname
 vaki
-vakit [A:LastVowelDrop]
+vakit [A:LastVowelDrop, NoVoicing]
 vaklamak
 vaktaki
 vaktizamanında [P:Adv]
@@ -24421,6 +24436,7 @@ vergilemek
 veri
 verici
 verim
+veriştirmek
 verit
 verkaç
 vermek [A:Aorist_I]
@@ -24678,7 +24694,7 @@ yaldızlamak
 yalelli
 yalgın
 yalı
-yalıçapkın [A:CompoundP3sg; R:yalıçapkını]
+yalıçapkını [A:CompoundP3sg; R:yalıçapkın]
 yalıçapkınıgiller
 Yalıhüyük
 yalım

@@ -501,7 +501,7 @@ public class TurkishSuffixes {
 
         Resemb_msI.add(CASE_FORMS, PERSON_FORMS_N, COPULAR_FORMS, POSSESSIVE_FORMS)
                 .add(Pl_lAr, Ness_lIg, Ness_lIk, With_lI, Without_sIz, Become_lAs);
-        Resemb_msI.add(Resemb_ImsI.getSuccSetCopy());
+        Resemb_ImsI.add(Resemb_ImsI.getSuccSetCopy());
 
         Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Agt_cI);
         Ness_lIg.add(Ness_lIk.getSuccSetCopy()).retain(Noun_Exp_V.getSuccSetCopy());
@@ -540,6 +540,9 @@ public class TurkishSuffixes {
 
         FutPart_yAcAk.add(Adj_Exp_C.getSuccSetCopy());
         FutPart_yAcAg.add(Adj_Exp_V.getSuccSetCopy());
+        NotState_mAzlIk.add(Adj_Exp_C.getSuccSetCopy());
+        NotState_mAzlIg.add(Adj_Exp_V.getSuccSetCopy());
+
         PresPart_yAn.add(AorPart_Ar.getSuccSetCopy());
 
         EvidPart_mIs.add(AorPart_Ar.getSuccSetCopy());
