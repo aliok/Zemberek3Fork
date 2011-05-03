@@ -3,20 +3,17 @@ package zemberek3.lexicon;
 import com.google.common.collect.Lists;
 import junit.framework.Assert;
 import org.jcaki.SimpleTextReader;
+import org.jcaki.SimpleTextWriter;
 import org.jcaki.Strings;
 import org.junit.Ignore;
 import org.junit.Test;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
-import zemberek3.structure.TurkishAlphabetTest;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 import static zemberek3.lexicon.PrimaryPos.Noun;
 import static zemberek3.lexicon.PrimaryPos.Pronoun;
@@ -138,11 +135,11 @@ public class TurkishDictionaryLoaderTest {
                 continue;
             String clean = Strings.subStringUntilFirst(s.trim(), " ").toLowerCase(tr).replaceAll("[\\-']", "");
             if (s.contains("Noun") && !s.contains("Compound") && !s.contains("PropNoun")
-                  /*  && !clean.endsWith("et") && !clean.endsWith("ist") && !clean.endsWith("lik")
-                    && !clean.endsWith("lık") && !clean.endsWith("lük") && !clean.endsWith("luk")
-                    && !clean.endsWith("ot")*/) {
+                /*  && !clean.endsWith("et") && !clean.endsWith("ist") && !clean.endsWith("lik")
+               && !clean.endsWith("lık") && !clean.endsWith("lük") && !clean.endsWith("luk")
+               && !clean.endsWith("ot")*/) {
                 TurkicSeq seq = new TurkicSeq(clean, alphabet);
-                if (seq.vowelCount() ==1 && seq.lastLetter().isStopConsonant() && s.contains("Vo")) {
+                if (seq.vowelCount() == 1 && seq.lastLetter().isStopConsonant() && s.contains("Vo")) {
                     novoicingStuff.add(s);
                     System.out.println(clean);
                 }
@@ -159,6 +156,17 @@ public class TurkishDictionaryLoaderTest {
 
         System.out.println(items.size());
 
+    }
+
+    @Test
+    @Ignore("Not a unit Test. Converts word histogram to word list")
+    public void prepareWordListFromHistogram() throws IOException {
+        List<String> hist = SimpleTextReader.trimmingUTF8Reader(new File("test/data/all-turkish-noproper.txt.tr")).asStringList();
+        List<String> all = new ArrayList<String>();
+        for (String s : hist) {
+            all.add(Strings.subStringUntilFirst(s, " ").trim());
+        }
+        SimpleTextWriter.oneShotUTF8Writer(new File("test/data/z2-vocab.tr")).writeLines(all);
     }
 
     private static ItemAttrPair testPair(String s, RootAttr... attrs) {

@@ -27,7 +27,7 @@ public class SimpleParserTest {
 
     @Test
     public void trieBasedParseable() throws IOException {
-        parseableTest(trieParser());
+        parseableTest(trieParser(new File("test/data/dev-lexicon.txt")));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class SimpleParserTest {
     @Test
     @Ignore("Performance Test")
     public void speedTest() throws IOException {
-        SimpleParser parser = simpleParser(new File("test/data/dev-lexicon.txt"));
+        MorphParser parser = simpleParser(new File("test/data/dev-lexicon.txt"));
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         long start = System.currentTimeMillis();
         final long iteration = 1000;
@@ -84,24 +84,24 @@ public class SimpleParserTest {
         System.out.println("Total words:" + allWords.size());
         System.out.println("Passed words:" + pass);
         System.out.println("Ratio=%" + ((double)pass*100/allWords.size()));
-
-
     }
 
     private SimpleParser simpleParser(File dictionary) throws IOException {
+        LexiconGraph graph = getLexiconGraph(dictionary);
+        return new SimpleParser(graph);
+    }
+
+    private TrieBasedParser trieParser(File dictionary) throws IOException {
+        LexiconGraph graph = getLexiconGraph(dictionary);
+        return new TrieBasedParser(graph);
+    }
+
+    private LexiconGraph getLexiconGraph(File dictionary) throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
         List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(dictionary);
         LexiconGraph graph = new LexiconGraph(items, suffixProvider);
         graph.generate();
-        return new SimpleParser(graph);
-    }
-
-    private TrieBasedParser trieParser() throws IOException {
-        SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
-        List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(new File("test/data/dev-lexicon.txt"));
-        LexiconGraph graph = new LexiconGraph(items, suffixProvider);
-        graph.generate();
-        return new TrieBasedParser(graph);
+        return graph;
     }
 
 

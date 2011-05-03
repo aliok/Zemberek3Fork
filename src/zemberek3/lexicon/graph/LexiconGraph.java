@@ -22,7 +22,7 @@ public class LexiconGraph {
     final SuffixProvider suffixes;
     SuffixFormGenerator formGenerator = new SuffixFormGenerator();
 
-    private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newHashMap();
+    private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newConcurrentMap();
 
     public LexiconGraph(List<DictionaryItem> dictionary, SuffixProvider suffixProvider) {
         this.suffixes = suffixProvider;

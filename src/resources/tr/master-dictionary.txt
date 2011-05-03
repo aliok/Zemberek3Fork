@@ -146,6 +146,7 @@ açıklamak
 açıklıkölçer
 açıktan [P:Adv]
 açılamak
+açılım
 açım
 açımlamak
 açınım
@@ -155,7 +156,7 @@ açıortay
 açıölçer
 açıt [A:NoVoicing]
 açkı
-açkıla
+açkılamak
 açlık
 açma
 açmak
@@ -224,6 +225,7 @@ adli [P:Adj]
 adliye
 adrenalin
 adres
+adreslemek
 aerobik
 aerodinamik
 aerodinamik [P:Adj]
@@ -325,6 +327,7 @@ Ağaçören
 ağalanmak
 ağarık [P:Adj]
 ağarma
+ağarmak
 ağartı
 ağbenek
 ağda
@@ -535,6 +538,7 @@ akilane [P:Adv]
 akim [P:Adj]
 akis [A:LastVowelDrop]
 âkit [P:Adj]
+akit [A:LastVowelDrop]
 akkaraman
 akkarınca
 akkavak
@@ -662,7 +666,7 @@ aktüeryal [P:Adj]
 akupunktur
 akur [P:Adj]
 akustik
-akut [P:Adj]
+akut [P:Adj ; A:NoVoicing]
 akuzatif
 akü
 akümülatör
@@ -811,11 +815,12 @@ alıcı
 alıç
 alık [P:Adj]
 alıkonulmak
-alıkoymak
+alıkoymak [A:Aorist_A]
 alım
 alın [A:LastVowelDrop]
 alındı
 alıngan
+alınım
 alınmak
 alıntı
 alıntılamak
@@ -1480,7 +1485,7 @@ arifane [P:Adv]
 arife
 arioso
 aristokrasi
-aristokrat [P:Adj]
+aristokrat [P:Adj; A:NoVoicing]
 aristokratik [P:Adj]
 aritmetik [P:Adj]
 aritmetik
@@ -1715,7 +1720,7 @@ astat [A:NoVoicing]
 astatin
 asteğmen
 astım
-astigmat [P:Adj]
+astigmat [P:Adj; A:NoVoicing]
 astigmatizm
 astik
 astragan
@@ -1982,7 +1987,7 @@ ayıboğan
 ayıgiller
 ayık [P:Adj]
 ayık [P:Adv]
-ayıkla
+ayıklamak
 ayıkulağı
 ayılmak
 ayıltı
@@ -2009,6 +2014,7 @@ aylık
 aylık [P:Adj]
 aylık [P:Adv]
 aymak
+aymaz [P:Adj]
 ayn
 ayna
 ayna [P:Adj]
