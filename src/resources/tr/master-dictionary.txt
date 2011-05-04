@@ -2935,7 +2935,7 @@ bembeyaz [P:Adj]
 bembeyaz [P:Adv]
 bemol
 ben
-ben [Pron PronDeformation ZAMIR_IM]
+ben [P:Pron ;A:StemChange]
 benbenci [P:Adj]
 bence [P:Adv]
 benci [P:Adj]
@@ -5828,7 +5828,7 @@ demagojik [P:Adj]
 dembedem [P:Adv]
 deme
 demeç
-demek [Verb VerbDeformation]
+demek [A:StemChange]
 demet [A:NoVoicing]
 demetlemek
 demevi [P:Adj]
@@ -20391,7 +20391,7 @@ sempatizan
 sempozyum
 semptom
 semt
-sen [Pron PronDeformation ZAMIR_IN]
+sen [P:Pron ;A:StemChange]
 sena
 senarist [A:NoVoicing]
 senaryo
@@ -25023,7 +25023,7 @@ yeltenmek
 yelve
 yelyazar
 yem
-yemek [Verb VerbDeformation]
+yemek [A:StemChange]
 yemek [P:Noun]
 yemekhane
 Yemen

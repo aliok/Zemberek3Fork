@@ -42,8 +42,7 @@ public class LexiconGraph {
             }
         }
         // generate suffix form graph
-        List<SuffixFormSet> sets = new ArrayList<SuffixFormSet>(suffixFormMap.keySet());
-        generateSuffixForms(sets);
+        generateSuffixForms(suffixFormMap.keySet());
     }
 
     public List<StemNode> getStems() {
@@ -108,11 +107,6 @@ public class LexiconGraph {
             attrs.add(PhonAttr.LastLetterNotVoiceless);
         return attrs;
     }
-
-    private void changeVowelAttrs(TurkicLetter letter, AttributeSet<PhonAttr> attrs) {
-        attrs.remove(PhonAttr.LastLetterConsonant, PhonAttr.LastLetterVowel);
-    }
-
 
     private StemNode[] generateModifiedRootNodes(DictionaryItem lexItem) {
 
@@ -268,7 +262,7 @@ public class LexiconGraph {
         return nodes;
     }
 
-    public void generateSuffixForms(Iterable<SuffixFormSet> startForms) {
+    public void generateSuffixForms(Set<SuffixFormSet> startForms) {
         Set<SuffixFormSet> toProcess = new HashSet<SuffixFormSet>();
         for (SuffixFormSet rootFormSet : startForms) {
             for (SuffixFormSet succSet : rootFormSet.getSuccessorsIterable()) {
