@@ -912,7 +912,7 @@ alternatif [P:Adj]
 alternatör
 altes
 altı
-altı [Num]
+altı [P:Num]
 altıgen
 altıgen [P:Adj]
 altık
@@ -938,7 +938,7 @@ altışar [P:Adj]
 altız [P:Adj]
 altimetre
 altlamak
-altmış [Num]
+altmış [P:Num]
 altmışaltı
 altmışar [P:Adj]
 altmışıncı [P:Adj]
@@ -3053,7 +3053,7 @@ beste
 bestekâr
 bestelemek
 bestenigâr
-beş [Num]
+beş [P:Num]
 beş [P:Adj]
 beşamel
 beşaret [A:NoVoicing]
@@ -3329,7 +3329,7 @@ bilvasıta [P:Adv]
 bilye
 bilyon
 bin
-bin [Num]
+bin [P:Num]
 bina
 binaen [P:Adv]
 binaenaleyh [P:Adv]
@@ -6511,7 +6511,7 @@ doğuştan [P:Adj]
 doğuştan [P:Adv]
 dok
 doksan
-doksan [Num]
+doksan [P:Num]
 doktor
 doktora
 doktrin
@@ -6526,8 +6526,9 @@ dokunmabana
 dokurcuk
 dokurcun
 dokunmak
-dokuz [Num]
+dokuz [P:Num]
 dokuz
+dokuzgen
 dokuzlu
 dokuzlu [P:Adj]
 dokuztaş
@@ -6683,6 +6684,7 @@ dört [P:Num; A:Voicing]
 dört [A:Voicing]
 dörtcihar
 Dörtdivan
+dörtgen
 dörtkenar
 dörtköşe [P:Adj]
 dörtlemek
@@ -7322,7 +7324,7 @@ elipsoit [P:Adj]
 eliptik [P:Adj]
 elit [P:Adj; A:NoVoicing]
 ellemek
-elli [Num]
+elli [P:Num]
 ellik
 ellilik
 ellilik [P:Adj]
@@ -10993,14 +10995,14 @@ ikaz
 ikbal [A:InverseHarmony]
 ikdam
 ikebana
-iki [Num]
+iki [P:Num]
 ikilem
 ikilemek
 ikincil
 ikindi
 ikindiüstü
 ikindiüzeri
-ikindiyin
+ikindiyin [A:NoSuffix]
 ikircik
 ikirciklenmek
 ikircil
@@ -11877,7 +11879,7 @@ kâbus
 kabza
 kabzetmek [A:Voicing, Aorist_A]
 kabzımal
-kaç [Num]
+kaç [P:Num]
 kaçak
 kaçakçı
 kaçamak [P:Noun]
@@ -12707,7 +12709,7 @@ katran
 katranköpüğü [A:CompoundP3sg, Voicing; R:katranköpük]
 katranlamak
 katre
-katrilyon [Num]
+katrilyon [P:Num]
 katsayı
 katur [P:Adj, Dup]
 katyon
@@ -12998,7 +13000,7 @@ kenger
 kent
 kental [A:InverseHarmony]
 kentet [A:NoVoicing]
-kentilyon [Num]
+kentilyon [P:Num]
 Kenya
 kep
 kepaze [P:Adj]
@@ -13245,7 +13247,7 @@ kırışık
 kırışmak
 kırıtkan
 kırıtmak
-kırk [Num]
+kırk [P:Num]
 Kırkağaç
 kırkambar
 kırkayak
@@ -16114,9 +16116,9 @@ milletvekili [A:CompoundP3sg; R:milletvekil]
 millî [P:Adj]
 milliyet [A:NoVoicing]
 milliyetperver
-milyar [Num]
+milyar [P:Num]
 milyarder [P:Adj]
-milyon [Num]
+milyon [P:Num]
 milyoner
 milyonlarca [P:Adj]
 mim
@@ -17737,7 +17739,7 @@ omurilik
 omuz [A:LastVowelDrop]
 omuzdaş
 omuzlamak
-on [Num]
+on [P:Num]
 onamak
 onanizm
 onarmak
@@ -17750,6 +17752,7 @@ onca [P:Adj]
 Ondokuzmayıs
 ondüle
 onejit
+ongen
 ongun
 onikiparmak [P:Noun; A:Compound]
 oniks
@@ -17942,7 +17945,7 @@ oturacak
 oturak
 oturmak
 oturum
-otuz [Num]
+otuz [P:Num]
 otyiyenler
 ova
 Ovacık
@@ -20288,7 +20291,7 @@ sekbanbaşı
 Sekendiz
 seki
 sekilemek
-sekiz [Num]
+sekiz [P:Num]
 sekizgen
 seklem
 sekmek
@@ -20300,7 +20303,7 @@ sekreterya
 seks
 seksapel
 seksek
-seksen [Num]
+seksen [P:Num]
 seksiyon
 seksolog
 seksoloji
@@ -20612,7 +20615,7 @@ sıçramak
 sıdk
 sıfat [A:NoVoicing]
 sıfat-fiil
-sıfır [Num]
+sıfır [P:Num]
 sıfırlamak
 sığ [P:Adj]
 sığa
@@ -21059,7 +21062,7 @@ somurtkan
 somurtmak
 somut [A:NoVoicing]
 somya
-son [Num]
+son [P:Num]
 sonar
 sonat [A:NoVoicing]
 sonbahar
@@ -22748,7 +22751,7 @@ tehyiç
 tehzil
 tein
 teizm
-tek [Num]
+tek [P:Num]
 tekabül
 tekâlif
 tekâmül
@@ -23631,7 +23634,7 @@ triko
 trikosefal [A:InverseHarmony]
 trikotaj
 triloji
-trilyon [Num]
+trilyon [P:Num]
 trilyoner
 trinketa
 trio
@@ -24104,8 +24107,9 @@ uzviyet [A:NoVoicing]
 ücra [P:Adj]
 ücret [A:NoVoicing]
 ücretlemek
-üç [Num]
+üç [P:Num]
 üçayak
+üçgen
 üçgül
 üçkâğıt
 Üçkardeş
@@ -24975,8 +24979,9 @@ yazmak
 yazman
 yedek
 yedeklemek
-yedi [Num]
+yedi [P:Num]
 yediemin
+yedigen
 Yedigir
 Yedikardeş
 Yedisu
@@ -25115,7 +25120,7 @@ yetki
 yetkilemek
 yetkin
 yetmek
-yetmiş [Num]
+yetmiş [P:Num]
 yevmî
 yevmiye
 yeygi
@@ -25180,7 +25185,8 @@ yiğitlenmek
 yine [P:Adv]
 yinelemek
 yirik
-yirmi [Num]
+yirmi [P:Num]
+yirmigen
 yitik [P:Adj]
 yitim
 yitirmek
@@ -25363,7 +25369,7 @@ yürürlük
 yürüteç
 yürütmek
 yüsrü
-yüz [Num]
+yüz [P:Num]
 yüzbaşı
 yüzbeyüz [P:Adv]
 yüzde
