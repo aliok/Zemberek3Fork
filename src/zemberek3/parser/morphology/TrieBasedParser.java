@@ -21,7 +21,7 @@ public class TrieBasedParser implements MorphParser {
 
     public List<ParseToken> parse(String input) {
         // get stem candidates.
-        List<StemNode> candidates = lexicon.getMatchingstems(input);
+        List<StemNode> candidates = lexicon.getMatchingStems(input);
         // generate starting tokens with suffix root nodes.
         List<ParseToken> initialTokens = Lists.newArrayList();
         for (StemNode candidate : candidates) {
