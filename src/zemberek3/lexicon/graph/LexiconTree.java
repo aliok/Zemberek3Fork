@@ -28,11 +28,11 @@ public class LexiconTree {
         }
         char[] chars = stem.surfaceForm.toCharArray();
         Node node = root;
-        Node previousNode = null;
+        Node previousNode;
         // i holds the char index for input
         int i = 0;
         // fragmentSplitIndex is the index of the last fragment
-        int fragmentSplitIndex = 0;
+        int fragmentSplitIndex;
         // While we still have chars left on the input, or no child marked with s[i]
         // is found in subnodes
         while (node != null) {
@@ -89,9 +89,9 @@ public class LexiconTree {
 
     /**
      * Finds the last position of common chars for 2 char arrays relative to a given index.
-     * @param input
-     * @param start
-     * @param fragment
+     * @param input input char array to look in the fragment
+     * @param start start index where method starts looking the input in the fragment
+     * @param fragment the char array to look input array.
      * @return 
      *   for input: "foo" fragment = "foobar" index = 0, returns 3
      *   for input: "fool" fragment = "foobar" index = 0, returns 3
@@ -260,8 +260,8 @@ public class LexiconTree {
                 s += ".";
             }
             if (stems != null) {
-                for(int i=0; i<stems.size(); i++) {
-                    s += " [" + stems.get(i).surfaceForm + "]";
+                for (StemNode stem : stems) {
+                    s += " [" + stem.surfaceForm + "]";
                 }
             }
             return s;
@@ -296,10 +296,7 @@ public class LexiconTree {
         /**
          * Returns string representation of Node (and subnodes) for testing.
          *
-         * @param flat : if true, returns a flat version of node and all sub nodes
-         * using a depth first traversal. if false, returns multiline, indented
-         * version of node tree.
-         * @return a flat or tree string representation of trie.
+         * @return String representation of trie.
          */
         public final String dump() {
             StringBuffer b = new StringBuffer();
