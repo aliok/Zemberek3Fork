@@ -29,7 +29,6 @@ public class LexiconTree {
         char[] chars = stem.surfaceForm.toCharArray();
         Node node = root;
         Node previousNode = null;
-
         // i holds the char index for input
         int i = 0;
         // fragmentSplitIndex is the index of the last fragment
@@ -119,10 +118,10 @@ public class LexiconTree {
     }
     
     public String toString() {
-        return root != null ? root.dump(false) : "";
+        return root != null ? root.dump() : "";
     }
     
-    public List<StemNode> getMatchingstems(String input) {
+    public List<StemNode> getMatchingStems(String input) {
         Node node = root;
         int index = 0;
         String s = "";
@@ -206,7 +205,6 @@ public class LexiconTree {
                 return -1;
             }
             int size = children.size();
-            
             // Linear search if element count is smaller than a threshold.
             if(size < 7) {
                 int i = 0;
@@ -214,7 +212,6 @@ public class LexiconTree {
                 if (i == size) return -(size + 1);
                 return children.get(i).index == index ? i : -(i + 1);
             }
-            
             // Apply binary search if child count is big.
             int low = 0;
             int high = size - 1;
@@ -297,31 +294,6 @@ public class LexiconTree {
         }
 
         /**
-         * Flat string representation of node and all child nodes.
-         * Used for testing purposes only. Given a tree like this:
-         *
-         *      a
-         *     / \
-         *    ba  c*
-         *   /
-         *  e*
-         * 
-         * This method returns: a:(bc)|ba:(e)|e:(.)*|c:(.)*
-         *
-         * @param b stringbuffer to append.
-         */
-        public final void toFlatString(StringBuffer b) {
-            b.append(this.toString().replaceAll(" ", "")).append("|");
-            if (children != null) {
-                for (Node subNode : this.children) {
-                    if (subNode != null) {
-                        subNode.toFlatString(b);
-                    }
-                }
-            }
-        }
-
-        /**
          * Returns string representation of Node (and subnodes) for testing.
          *
          * @param flat : if true, returns a flat version of node and all sub nodes
@@ -329,10 +301,9 @@ public class LexiconTree {
          * version of node tree.
          * @return a flat or tree string representation of trie.
          */
-        public final String dump(boolean flat) {
+        public final String dump() {
             StringBuffer b = new StringBuffer();
-            if (flat) toFlatString(b);
-            else toDeepString(b, 0);
+            toDeepString(b, 0);
             return b.toString();
         }
 
@@ -357,7 +328,7 @@ public class LexiconTree {
         }
         System.out.println(lexicon.toString());
         System.out.println("Time: " + (System.currentTimeMillis() - st) + " Total: " + i);
-        List<StemNode> stems = lexicon.getMatchingstems("elmas");
+        List<StemNode> stems = lexicon.getMatchingStems("elmas");
         for (StemNode s : stems) {
             System.out.println("stem: " + s.surfaceForm);
         }

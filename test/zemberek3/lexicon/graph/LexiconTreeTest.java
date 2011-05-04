@@ -21,7 +21,7 @@ public class LexiconTreeTest {
 	@Test
 	public void empty(){
 		LexiconTree lt = new LexiconTree();
-		List<StemNode> stems = lt.getMatchingstems("foo");
+		List<StemNode> stems = lt.getMatchingStems("foo");
 		assertEquals(stems.size(), 0);
 	}
 	
@@ -30,7 +30,7 @@ public class LexiconTreeTest {
 		LexiconTree lt = new LexiconTree();
 		StemNode sn = createStemNode("elma");
 		lt.add(sn);
-		List<StemNode> stems = lt.getMatchingstems("elma");
+		List<StemNode> stems = lt.getMatchingStems("elma");
 		assertEquals(1, stems.size());
 		assertTrue(stems.contains(sn));
 	}
@@ -42,10 +42,10 @@ public class LexiconTreeTest {
 		StemNode sn2 = createStemNode("armut");
 		lt.add(sn);
 		lt.add(sn2);
-		List<StemNode> stems = lt.getMatchingstems("elma");
+		List<StemNode> stems = lt.getMatchingStems("elma");
 		assertEquals(1, stems.size());
 		assertTrue(stems.contains(sn));
-		stems = lt.getMatchingstems("armut");
+		stems = lt.getMatchingStems("armut");
 		assertEquals(1, stems.size());
 		assertTrue(stems.contains(sn2));
 	}
@@ -58,10 +58,10 @@ public class LexiconTreeTest {
 		lt.add(sn);
 		lt.add(sn2);
 		System.out.println(lt);
-		List<StemNode> stems = lt.getMatchingstems("elma");
+		List<StemNode> stems = lt.getMatchingStems("elma");
 		assertEquals(1, stems.size());
 		assertTrue(stems.contains(sn));
-		stems = lt.getMatchingstems("elmas");
+		stems = lt.getMatchingStems("elmas");
 		assertEquals(2, stems.size());
 		assertTrue(stems.contains(sn));
 		assertTrue(stems.contains(sn2));
@@ -75,10 +75,10 @@ public class LexiconTreeTest {
 		lt.add(sn);
 		lt.add(sn2);
 		System.out.println(lt);
-		List<StemNode> stems = lt.getMatchingstems("elma");
+		List<StemNode> stems = lt.getMatchingStems("elma");
 		assertEquals(1, stems.size());
 		assertTrue(stems.contains(sn2));
-		stems = lt.getMatchingstems("elmas");
+		stems = lt.getMatchingStems("elmas");
 		assertEquals(2, stems.size());
 		assertTrue(stems.contains(sn));
 		assertTrue(stems.contains(sn2));
@@ -94,17 +94,17 @@ public class LexiconTreeTest {
 		lt.add(sn2);
 		lt.add(sn3);
 		System.out.println(lt);
-		List<StemNode> stems = lt.getMatchingstems("elma");
+		List<StemNode> stems = lt.getMatchingStems("elma");
 		assertEquals(2, stems.size());
 		assertTrue(stems.contains(sn3));
 		assertTrue(stems.contains(sn2));
 		assertFalse(stems.contains(sn));
-		stems = lt.getMatchingstems("el");
+		stems = lt.getMatchingStems("el");
 		assertEquals(1, stems.size());
 		assertTrue(stems.contains(sn2));
 		assertFalse(stems.contains(sn));
 		assertFalse(stems.contains(sn3));
-		stems = lt.getMatchingstems("elmas");
+		stems = lt.getMatchingStems("elmas");
 		assertEquals(3, stems.size());
 		assertTrue(stems.contains(sn));
 		assertTrue(stems.contains(sn2));
