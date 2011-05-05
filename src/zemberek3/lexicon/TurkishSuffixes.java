@@ -351,6 +351,12 @@ public class TurkishSuffixes {
     public static SuffixFormSet PersPron_BenSen = new SuffixFormSet("PersPron_BenSen", PersPronRoot, "");
     public static SuffixFormSet PersPron_BanSan = new SuffixFormSet("PersPron_BanSan", PersPronRoot, "");
 
+    public static Suffix QuesRoot = new Suffix("QuesRoot");
+    public static SuffixFormSet Ques_mI  = new SuffixFormSet("Ques_mI", QuesRoot, "");
+
+    public static Suffix ParticleRoot = new Suffix("ParticleRoot");
+    public static SuffixFormSet Particle_Main  = new SuffixFormSet("Particle_Main", ParticleRoot, "");
+
     public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA};
     public static final SuffixFormSet[] POSSESSIVE_FORMS = {P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
     public static final SuffixFormSet[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
@@ -382,7 +388,7 @@ public class TurkishSuffixes {
                 Noun_Main, Noun_Exp_C, Noun_Exp_V, Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
                 Adj_Main, Adj_Exp_C, Adj_Exp_V,
                 Adv_Main, Interj_Main, Verb_Main, Verb_Prog_Drop, Verb_Exp_C, Verb_Exp_V, PersPron_Main, PersPron_BenSen, PersPron_BanSan,
-                Numeral_Main, Ordinal_IncI, Grouping_sAr );
+                Numeral_Main, Ordinal_IncI, Grouping_sAr, Ques_mI, Particle_Main );
         return provider;
     }
 
@@ -462,6 +468,8 @@ public class TurkishSuffixes {
         PersPron_BenSen.add(CASE_FORMS).remove(Dat_yA);
         PersPron_BanSan.add(Dat_yA);
 
+        Ques_mI.add(PERSON_FORMS_N).add(Cop_dIr, EvidCop_ymIs, PastCop_ydI);
+
         Adj_Main.add(Noun_Main.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);
         Adj_Exp_C.add(Noun_Exp_C.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);
         Adj_Exp_V.add(Noun_Exp_V.getSuccSetCopy());
@@ -517,7 +525,7 @@ public class TurkishSuffixes {
                 .add(Pl_lAr, Ness_lIg, Ness_lIk, With_lI, Without_sIz, Become_lAs);
         Resemb_ImsI.add(Resemb_ImsI.getSuccSetCopy());
 
-        Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Agt_cI);
+        Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Agt_cI, With_lI, Without_sIz);
         Ness_lIg.add(Ness_lIk.getSuccSetCopy()).retain(Noun_Exp_V.getSuccSetCopy());
         Ness_lIk.remove(Ness_lIg.getSuccSetCopy());
 

@@ -139,7 +139,7 @@ public class LexiconGraph {
                     break;
                 case ProgressiveVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 1);
-                    if(modifiedSeq.hasVowel()) {
+                    if (modifiedSeq.hasVowel()) {
                         modifiedAttrs = calculateAttributes(modifiedSeq);
                     }
                     break;
@@ -363,6 +363,15 @@ public class LexiconGraph {
                 case Conjunction:
                     original = Conj_Main;
                     modified = Conj_Main;
+                    break;
+                case Particle:
+                    if (item.secondaryPos == SecondaryPos.Question) {
+                        original = Ques_mI;
+                        modified = Ques_mI;
+                    } else {
+                        original = Particle_Main;
+                        modified = Particle_Main;
+                    }
                     break;
                 default:
                     original = Noun_Main;

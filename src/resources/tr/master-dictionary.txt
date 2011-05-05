@@ -5001,6 +5001,7 @@ cüzzam
 çıkarma
 çıkarsama
 çıkarmak
+çıkarım
 çıkartmak
 çıkı
 çıkık
@@ -5065,6 +5066,7 @@ cüzzam
 çırpı
 çırpıcı
 çırpınmak
+çırpışmak
 çırpıntı
 çırpma
 çırpmak
@@ -5147,6 +5149,7 @@ cüzzam
 çinçilya
 çinçilyagiller
 Çine
+çinakop [A:NoVoicing]
 çinekop [A:NoVoicing]
 Çingen
 çingene
@@ -15994,7 +15997,7 @@ mezuniyet [A:NoVoicing]
 mezura
 mezür
 mezzosoprano
-mı [SO]
+mı [P:Ques]
 mıh
 mıhlamak
 mık [P:Adj, Dup]
@@ -16035,7 +16038,8 @@ mızmız [P:Adj]
 mızmızlanmak
 mızrak
 mızrap
-mi [SO]
+mi
+mi [P:Ques]
 miat
 mibzer
 miço
@@ -16324,7 +16328,7 @@ Mozambik
 mozole
 möble
 mösyö
-mu [SO]
+mu [P:Part, Ques]
 muaccel
 muaddel
 muadele
@@ -16663,7 +16667,7 @@ muzip
 muzlim
 muzmahil [A:Doubling]
 muztar
-mü [SO]
+mü [P:Part, Ques]
 mübadele
 mübadil
 mübahase
