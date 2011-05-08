@@ -51,7 +51,7 @@ public class TurkishDictionaryLoader {
         DictionaryItem getItem() {
             String word = getWord();
             PosInfo posInfo = getPosData(word);
-            String cleanWord = cleanWord(word, posInfo);
+            String cleanWord = generateRoot(word, posInfo);
 
             AttributeSet<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo);
             ExclusiveSuffixData suffixData = getSuffixData();
@@ -73,7 +73,14 @@ public class TurkishDictionaryLoader {
             return word;
         }
 
-        String cleanWord(String word, PosInfo posInfo) {
+        static Pattern rootPattern = Pattern.compile("(?:R:)(.+?)(?:;|\\])");
+
+        String generateRoot(String word, PosInfo posInfo) {
+            // if root is explicitly set, use it.
+            String rootStr = getGroup1Match(rootPattern).trim();
+            if (rootStr.length() > 0) {
+                word = rootStr;
+            }
             if (posInfo.primaryPos == PrimaryPos.Verb)
                 word = word.substring(0, word.length() - 3);
             word = word.toLowerCase(locale).replaceAll("â", "a").replaceAll("î", "i").replaceAll("\u00e2", "u");

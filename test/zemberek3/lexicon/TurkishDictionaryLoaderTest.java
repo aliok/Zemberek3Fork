@@ -126,22 +126,43 @@ public class TurkishDictionaryLoaderTest {
 
         List<DictionaryItem> items = loader.load(new File("src/resources/tr/master-dictionary.txt"));
         TurkishAlphabet alphabet = new TurkishAlphabet();
+        Set<String> masterVoicing = new HashSet<String>();
+        for (DictionaryItem item : items) {
+            if (item.attrs.contains(NoVoicing))
+                masterVoicing.add(item.lemma);
+        }
 
-        Set<String> novoicingStuff = new HashSet<String>();
         Locale tr = new Locale("tr");
         List<String> allZ2 = SimpleTextReader.trimmingUTF8Reader(new File("/home/afsina/projects/zemberek3/src/resources/tr/master-dictionary.txt")).asStringList();
         for (String s : allZ2) {
             if (s.startsWith("#"))
                 continue;
             String clean = Strings.subStringUntilFirst(s.trim(), " ").toLowerCase(tr).replaceAll("[\\-']", "");
-            if (s.contains("Noun") && !s.contains("Compound") && !s.contains("PropNoun")
-                /*  && !clean.endsWith("et") && !clean.endsWith("ist") && !clean.endsWith("lik")
-               && !clean.endsWith("lık") && !clean.endsWith("lük") && !clean.endsWith("luk")
-               && !clean.endsWith("ot")*/) {
+            if (s.contains("Adj") && !s.contains("Compound") && !s.contains("PropNoun")) {
                 TurkicSeq seq = new TurkicSeq(clean, alphabet);
-                if (seq.vowelCount() == 1 && seq.lastLetter().isStopConsonant() && s.contains("Vo")) {
-                    novoicingStuff.add(s);
-                    System.out.println(clean);
+                if (seq.vowelCount() > 1 && seq.lastLetter().isStopConsonant() && !s.contains("Vo") && !s.contains("VowDrop")) {
+                    if (!masterVoicing.contains(clean)) {
+                        File f = new File("/home/afsina/data/tdk/html", clean + ".html");
+                        if (!f.exists())
+                            f = new File("/home/afsina/data/tdk/html", clean.replaceAll("â", "a").replaceAll("\\u00ee", "i") + ".html");
+                        if (!f.exists()) {
+                            System.out.println("Cannot find:" + s);
+                            continue;
+                        }
+                        char c = clean.charAt(clean.length()-1);
+                        char vv = c;
+                        switch (c) {
+                            case 'k': vv = 'ğ'; break;
+                            case 'p': vv = 'b'; break;
+                            case 'ç': vv = 'c'; break;
+                            case 't': vv = 'd'; break;
+                            default:
+                                System.out.println("crap:" + s);
+                        }
+                        String content = SimpleTextReader.trimmingUTF8Reader(f).asString();
+                        if(!content.contains("color=DarkBlue>-"+String.valueOf(vv)))
+                            System.out.println(s);
+                    }
                 }
             }
         }

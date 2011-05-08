@@ -96,7 +96,7 @@ ben
 hükûmet [A:NoVoicing]
 
 zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]
-atkuyruğu [A:CompoundP3sg, Voicing ; R:atkurkuk]
+atkuyruğu [A:CompoundP3sg, Voicing ; R:atkuyruk]
 
 # ------------------------------------------------------------------------------------------
 # Adjectives
@@ -118,6 +118,7 @@ kaba [P:Adj]
 # ------------------------------------------------------------------------------------------
 # Numeral
 iki [P:Num]
+üç [P:Num]
 
 # ------------------------------------------------------------------------------------------
 # Adverbs

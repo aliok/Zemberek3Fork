@@ -52,7 +52,7 @@ public class LexiconGraph {
     private StemNode generateRootNode(DictionaryItem dictionaryItem) {
         RootSuffixSetBuilder rsb = new RootSuffixSetBuilder(dictionaryItem);
         SuffixFormSet set = rsb.original;
-        AttributeSet<PhonAttr> phoneticAttrs = calculateRootAttributes(dictionaryItem);
+        AttributeSet<PhonAttr> phoneticAttrs = calculateAttributes(dictionaryItem.root);
         SuffixNode node = addOrReturnExisting(set, formGenerator.getNode(phoneticAttrs, set));
         return new StemNode(dictionaryItem.root, dictionaryItem, node, TerminationType.TERMINAL);
     }
@@ -65,20 +65,14 @@ public class LexiconGraph {
             Doubling,
             LastVowelDrop,
             ProgressiveVowelDrop,
+            InverseHarmony,
             Voicing,
             StemChange,
             CompoundP3sg
     );
 
-    private AttributeSet<PhonAttr> calculateRootAttributes(DictionaryItem dictionaryItem) {
-        TurkicSeq sequence = new TurkicSeq(dictionaryItem.root, alphabet);
-        AttributeSet<PhonAttr> attrs = calculateAttributes(sequence);
-        if (dictionaryItem.hasAttribute(RootAttr.InverseHarmony)) {
-            // saat, takat
-            attrs.add(PhonAttr.LastVowelFrontal);
-            attrs.remove(PhonAttr.LastVowelBack);
-        }
-        return attrs;
+    private AttributeSet<PhonAttr> calculateAttributes(String input) {
+        return calculateAttributes(new TurkicSeq(input, alphabet));
     }
 
     private AttributeSet<PhonAttr> calculateAttributes(TurkicSeq sequence) {
@@ -108,25 +102,30 @@ public class LexiconGraph {
         return attrs;
     }
 
-    private StemNode[] generateModifiedRootNodes(DictionaryItem lexItem) {
+    private StemNode[] generateModifiedRootNodes(DictionaryItem dicItem) {
 
-        TurkicSeq modifiedSeq = new TurkicSeq(lexItem.root, alphabet);
-        AttributeSet<PhonAttr> originalAttrs = calculateRootAttributes(lexItem);
+        if (dicItem.hasAttribute(CompoundP3sg))
+            return handleP3sgCompounds(dicItem);
+        if (dicItem.hasAttribute(StemChange))
+            return handleSpecialStems(dicItem);
+
+        TurkicSeq modifiedSeq = new TurkicSeq(dicItem.root, alphabet);
+        AttributeSet<PhonAttr> originalAttrs = calculateAttributes(dicItem.root);
         AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
 
-        for (RootAttr attribute : lexItem.attrs.getAsList(RootAttr.class)) {
+        for (RootAttr attribute : dicItem.attrs.getAsList(RootAttr.class)) {
 
             // generate other boundary attributes and modified root state.
             switch (attribute) {
                 case Voicing:
-                    if (lexItem.hasAttribute(RootAttr.CompoundP3sg))
+                    if (dicItem.hasAttribute(RootAttr.CompoundP3sg))
                         break;
                     TurkicLetter last = modifiedSeq.lastLetter();
                     TurkicLetter modifiedLetter = alphabet.voice(last);
                     if (modifiedLetter == null) {
-                        throw new LexiconException("Voicing letter is not proper in:" + lexItem);
+                        throw new LexiconException("Voicing letter is not proper in:" + dicItem);
                     }
-                    if (lexItem.lemma.endsWith("nk"))
+                    if (dicItem.lemma.endsWith("nk"))
                         modifiedLetter = TurkishAlphabet.L_g;
                     modifiedSeq.changeLetter(modifiedSeq.length() - 1, modifiedLetter);
                     modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);
@@ -137,28 +136,30 @@ public class LexiconGraph {
                 case LastVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 2);
                     break;
+                case InverseHarmony:
+                    originalAttrs.add(PhonAttr.LastVowelFrontal);
+                    originalAttrs.remove(PhonAttr.LastVowelBack);
+                    modifiedAttrs.add(PhonAttr.LastVowelFrontal);
+                    modifiedAttrs.remove(PhonAttr.LastVowelBack);
+                    break;
                 case ProgressiveVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 1);
                     if (modifiedSeq.hasVowel()) {
                         modifiedAttrs = calculateAttributes(modifiedSeq);
                     }
                     break;
-                case StemChange:
-                    return handleSpecialStems(lexItem);
-                case CompoundP3sg:
-                    return handleP3sgCompounds(lexItem);
                 default:
                     break;
             }
         }
-        RootSuffixSetBuilder rssb = new RootSuffixSetBuilder(lexItem);
+        RootSuffixSetBuilder rssb = new RootSuffixSetBuilder(dicItem);
 
         SuffixNode origForm = addOrReturnExisting(rssb.original, formGenerator.getNode(originalAttrs, rssb.original));
         SuffixNode modiForm = addOrReturnExisting(rssb.modified, formGenerator.getNode(modifiedAttrs, rssb.modified));
 
         return new StemNode[]{
-                new StemNode(lexItem.root, lexItem, origForm, TerminationType.TERMINAL),
-                new StemNode(modifiedSeq.toString(), lexItem, modiForm, TerminationType.NON_TERMINAL)
+                new StemNode(dicItem.root, dicItem, origForm, TerminationType.TERMINAL),
+                new StemNode(modifiedSeq.toString(), dicItem, modiForm, TerminationType.NON_TERMINAL)
         };
     }
 
@@ -184,8 +185,8 @@ public class LexiconGraph {
         return nodes.contains(newNode);
     }
 
-    public SuffixNode getSuffixRootNode(DictionaryItem item, SuffixFormSet set) {
-        return addOrReturnExisting(set, formGenerator.getNode(calculateRootAttributes(item), set));
+    public SuffixNode getSuffixRootNode(AttributeSet<PhonAttr> attrs, SuffixFormSet set) {
+        return addOrReturnExisting(set, formGenerator.getNode(attrs, set));
     }
 
     // handle stem changes demek-diyecek , beni-bana
@@ -194,14 +195,15 @@ public class LexiconGraph {
         if (item.getId().equals("yemek_Verb")) {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
-            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA, When_yIncA, AfterDoing_yIp);
+            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA, When_yIncA, AfterDoing_yIp)
+                    .add(Pass_In);
             Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, When_yIncA, AfterDoing_yIp, Abil_yA, Abil_yAbil);
             StemNode[] stems = new StemNode[3];
-            SuffixNode formYe = getSuffixRootNode(item, Verb_Ye);
+            SuffixNode formYe = getSuffixRootNode(calculateAttributes(item.root), Verb_Ye);
             stems[0] = new StemNode(item.root, item, formYe, TerminationType.TERMINAL);
-            SuffixNode formProg = getSuffixRootNode(item, Verb_Prog_Drop);
+            SuffixNode formProg = getSuffixRootNode(calculateAttributes(item.root), Verb_Prog_Drop);
             stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
-            SuffixNode formYi = getSuffixRootNode(item, Verb_Yi);
+            SuffixNode formYi = getSuffixRootNode(calculateAttributes(item.root), Verb_Yi);
             stems[2] = new StemNode("yi", item, formYi, TerminationType.NON_TERMINAL);
             return stems;
         }
@@ -209,22 +211,24 @@ public class LexiconGraph {
             SuffixFormSet Verb_De = new SuffixFormSet("Verb_De", VerbRoot, "");
             SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
-            Verb_De.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA);
+            Verb_De.add(Verb_Main.getSuccSetCopy())
+                    .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA)
+                    .add(Pass_In);
             Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Abil_yA, Abil_yAbil);
             StemNode[] stems = new StemNode[3];
-            SuffixNode formDe = getSuffixRootNode(item, Verb_De);
+            SuffixNode formDe = getSuffixRootNode(calculateAttributes(item.root), Verb_De);
             stems[0] = new StemNode(item.root, item, formDe, TerminationType.TERMINAL);
-            SuffixNode formProg = getSuffixRootNode(item, Verb_Prog_Drop);
+            SuffixNode formProg = getSuffixRootNode(calculateAttributes(item.root), Verb_Prog_Drop);
             stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
-            SuffixNode formDi = getSuffixRootNode(item, Verb_Di);
+            SuffixNode formDi = getSuffixRootNode(calculateAttributes(item.root), Verb_Di);
             stems[2] = new StemNode("di", item, formDi, TerminationType.NON_TERMINAL);
             return stems;
         }
         if (item.getId().equals("ben_Pron") || item.getId().equals("sen_Pron")) {
             StemNode[] stems = new StemNode[2];
-            SuffixNode formBenSen = getSuffixRootNode(item, PersPron_BenSen);
+            SuffixNode formBenSen = getSuffixRootNode(calculateAttributes(item.root), PersPron_BenSen);
             stems[0] = new StemNode(item.root, item, formBenSen, TerminationType.TERMINAL);
-            SuffixNode formBanSan = getSuffixRootNode(item, PersPron_BanSan);
+            SuffixNode formBanSan = getSuffixRootNode(calculateAttributes(item.root), PersPron_BanSan);
             if (item.lemma.equals("ben"))
                 stems[1] = new StemNode("ban", item, formBanSan, TerminationType.NON_TERMINAL);
             else
@@ -236,29 +240,12 @@ public class LexiconGraph {
 
 
     private StemNode[] handleP3sgCompounds(DictionaryItem item) {
-
         StemNode[] nodes = new StemNode[2];
-        // atkuyruGu -
-        SuffixNode original = getSuffixRootNode(item, Noun_Comp_P3sg);
-        nodes[0] = new StemNode(item.root, item, original, TerminationType.TERMINAL);
-
-        TurkicSeq modifiedSeq = new TurkicSeq(item.lemma, alphabet);
-        String modified = modifiedSeq.eraseLast().toString();
-        // for cases compund's last word has voicing. atkuruGu
-        if (item.hasAttribute(Voicing)) {
-            // hack for cases denizbiyoloGu - denizbiyologlari
-            if (modified.endsWith("o" + String.valueOf(TurkishAlphabet.C_gg)))
-                modifiedSeq.eraseLast().append(TurkishAlphabet.L_g);
-            else {
-                TurkicLetter l = alphabet.devoice(modifiedSeq.lastLetter());
-                modifiedSeq.changeLetter(modifiedSeq.length() - 1, l);
-            }
-            SuffixNode mod = getSuffixRootNode(item, Noun_Comp_P3sg_Root);
-            nodes[1] = new StemNode(modifiedSeq.toString(), item, mod, TerminationType.NON_TERMINAL);
-        } else {
-            SuffixNode mod = getSuffixRootNode(item, Noun_Comp_P3sg_Root);
-            nodes[1] = new StemNode(modified, item, mod, TerminationType.NON_TERMINAL);
-        }
+        SuffixNode original = getSuffixRootNode(calculateAttributes(item.lemma), Noun_Comp_P3sg);
+        nodes[0] = new StemNode(item.lemma, item, original, TerminationType.TERMINAL);
+        TurkicSeq modifiedSeq = new TurkicSeq(item.root, alphabet);
+        SuffixNode mod = getSuffixRootNode(calculateAttributes(item.root), Noun_Comp_P3sg_Root);
+        nodes[1] = new StemNode(modifiedSeq.toString(), item, mod, TerminationType.NON_TERMINAL);
         return nodes;
     }
 

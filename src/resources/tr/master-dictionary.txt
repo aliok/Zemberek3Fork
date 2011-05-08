@@ -5262,7 +5262,7 @@ cüzzam
 çolak [P:Adj]
 çolpa [P:Adj]
 Çolpan
-çoluk [Dup Bound Vo]
+çoluk [P:Dup]
 çomak [P:Noun]
 çomaklamak
 çomar
@@ -5276,7 +5276,7 @@ cüzzam
 çorba
 çorlu [P:Adj]
 Çorlu
-çorman [Dup Bound]
+çorman [P:Dup]
 Çoruh
 Çorum
 çotanak
@@ -5358,12 +5358,12 @@ cüzzam
 çulsuz [P:Adj]
 çultar
 Çumra
-çungul [Dup Bound]
-çungur [Dup Bound]
+çungul [P:Dup]
+çungur [P:Dup]
 çupra
 çurçur
 çurçur [P:Adj]
-çurpuk [Dup Bound]
+çurpuk [P:Dup]
 çuşka
 çutur [P:Adj, Dup]
 çuval
@@ -6091,7 +6091,7 @@ devetabanı
 devetüyü [A:CompoundP3sg; R:devetüy]
 devetüyü [P:Adj]
 devim
-devingen [P:Adj; A:CompoundP3sg; R:devetüy]
+devingen [P:Adj]
 devinim
 devinmek
 devir [A:LastVowelDrop]
