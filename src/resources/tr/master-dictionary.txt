@@ -975,6 +975,7 @@ aman [P:Interj]
 aman [P:Part]
 amanın [P:Interj]
 amanname
+amansız [P:Adj]
 Amasra
 Amasya
 amatör [P:Adj]
@@ -1504,6 +1505,7 @@ arka [P:Adj]
 arkabahçe
 arkaç
 arkadaş
+arkadaşça [P:Adv]
 arkaik [P:Adj]
 arkaizm
 arkalamak
@@ -1848,7 +1850,7 @@ atkı
 atkılamak
 atkuyruğu
 atkuyruğugiller
-atkuyruğu [A:CompoundP3sg, Voicing; R:atkuruk]
+atkuyruğu [A:CompoundP3sg, Voicing; R:atkuyruk]
 atlamak
 atlambaç
 atlangıç
@@ -3391,6 +3393,7 @@ birkaçı [P:Pron]
 birlemek
 birler
 birleşik [P:Adj]
+birleşim
 birleşmek
 birlik
 birlikte
