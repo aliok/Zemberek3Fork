@@ -91,7 +91,8 @@ adem [P:Noun]
 ad
 ad [A: Doubling, InverseHarmony]
 
-bugün [P:Time]
+bugün [P:Time;S:+Rel_kI]
+bugün [P:Adv]
 ben
 hükûmet [A:NoVoicing]
 

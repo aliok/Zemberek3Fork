@@ -310,6 +310,7 @@ public class LexiconGraph {
         SuffixFormSet modified;
 
         RootSuffixSetBuilder(DictionaryItem item) {
+
             switch (item.primaryPos) {
                 case Noun:
                     if (item.secondaryPos == SecondaryPos.ProperNoun) {
@@ -364,6 +365,12 @@ public class LexiconGraph {
                     original = Noun_Main;
                     modified = Noun_Main;
                     break;
+            }
+            if (item.suffixData != null) {
+                original.remove(item.suffixData.rejects);
+                original.add(item.suffixData.accepts);
+                modified.remove(item.suffixData.rejects);
+                modified.add(item.suffixData.accepts);
             }
         }
 

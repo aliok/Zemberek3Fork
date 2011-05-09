@@ -632,7 +632,7 @@ Aksu
 aksuna
 aksungur
 aksülamel
-akşam [P:Noun, Time]
+akşam [P:Noun, Time; S:+Rel_ki]
 akşamki
 akşamlamak
 akşamleyin
@@ -1065,7 +1065,7 @@ amudi [P:Adj]
 amudufıkari
 amut
 amyant [A:Compound]
-an [P:Noun, Time]
+an [P:Noun, Time; S:+Rel_ki]
 ana
 ana [P:Adj]
 ana [P:Interj]
@@ -1932,7 +1932,7 @@ Avustralya
 Avusturya
 avutmak
 ay
-ay [P:Noun, Time]
+ay [P:Noun, Time; S:+Rel_ki]
 ay [P:Interj]
 Ay
 aya
@@ -3075,7 +3075,7 @@ beşikörtüsü
 Beşiktaş
 beşinci [P:Adj]
 Beşiri
-beşiz
+beşiz [P:Adj]
 beşkardeş
 beşlemek
 beşme
@@ -3798,7 +3798,7 @@ budamak
 Budist [A:NoVoicing]
 Budizm
 budun
-bugün [P:Noun, Time]
+bugün [P:Noun, Time; S:+Rel_kI]
 bugün [P:Adv]
 bugünlük [P:Adv]
 Buğdan
@@ -5414,7 +5414,7 @@ dağlamak
 dağlı [P:Adj]
 dağlıç
 dağlık [P:Adj]
-daha [P:Noun, Time]
+daha [P:Noun, Time; S:+Rel_ki]
 daha [P:Adv]
 dahası
 dâhi
@@ -5847,7 +5847,7 @@ demirbaş
 demirbaş [P:Adj]
 Demirci
 demirhane
-demirhintdi [A:CompoundP3sg, Voicing; R:demirhint]
+demirhindi [A:CompoundP3sg, Voicing; R:demirhint]
 demirî
 demirî [P:Adj]
 demirkapan
@@ -6538,6 +6538,7 @@ dokuzgen
 dokuzlu
 dokuzlu [P:Adj]
 dokuztaş
+dokuzuz [P:Adj]
 doküman
 dokümantasyon
 dokümanter [P:Adj]
@@ -6665,7 +6666,7 @@ dönek [P:Adj]
 dönel [P:Adj]
 dönelemek
 dönelmek
-dönem [P:Noun, Time]
+dönem [P:Noun, Time; S:+Rel_ki]
 dönemeç
 dönence
 dönencel [P:Adj]
@@ -6688,6 +6689,7 @@ döpiyes
 dördül
 dört [P:Num; A:Voicing]
 dört [A:Voicing]
+dördüz [P:Adj]
 dörtcihar
 Dörtdivan
 dörtgen
@@ -6857,7 +6859,7 @@ dümdar
 dümdüz [P:Adj]
 dümen
 dümtek [A:NoVoicing]
-dün [P:Noun, Time]
+dün [P:Noun, Time; S:+Rel_kI]
 dün [P:Adv]
 dünden [P:Adv]
 dünit [A:NoVoicing]
@@ -7190,6 +7192,7 @@ ekselâns
 eksen
 ekser
 ekseri [P:Adv]
+ekseri [P:Adj]
 ekseriya [P:Adv]
 ekseriyet [A:NoVoicing]
 eksi
@@ -7353,6 +7356,7 @@ eltieltiyeküstü
 elvan
 elvan [P:Adj]
 elveda [P:Interj]
+elveda
 elverişli [P:Adj]
 elverişsiz [P:Adj]
 elvermek
@@ -7647,7 +7651,7 @@ erkekçil [P:Adj]
 erkekevi
 erkeklenmek
 erkeklik
-erken [P:Noun, Time]
+erken [P:Noun, Time; S:+Rel_ki]
 erkence [P:Adv]
 erken [P:Adv]
 erkete
@@ -7813,7 +7817,7 @@ etiketlemek
 etil
 etilalkol [A:InverseHarmony]
 etilen
-Etimesğut
+Etimesgut
 etimolog
 etimoloji
 etimolojik [P:Adj]
@@ -7897,7 +7901,7 @@ evrişik
 evropiyum
 evsaf
 evsemek
-evvel [P:Noun, Time]
+evvel [P:Noun, Time; S:+Rel_ki]
 evvelâ [P:Adj]
 evveliyat [A:NoVoicing]
 evvelsi [P:Adj]
@@ -8867,7 +8871,7 @@ gebeş
 gebre
 gebrelemek
 Gebze
-gece [P:Noun, Time]
+gece [P:Noun, Time; S:+Rel_ki]
 gececi
 gecekondu
 gecelemek
@@ -9476,7 +9480,7 @@ Gümüşhane
 gümüşî
 gümüşlemek
 Gümüşova
-gün [P:Noun, Time]
+gün [P:Noun, Time; S:+Rel_kI]
 günah
 günahkâr [P:Adj]
 günaşırı [P:Adv]
@@ -18030,7 +18034,7 @@ ozuga
 öglena
 öglenagiller
 öğle
-öğlen [P:Noun, Time]
+öğlen [P:Noun, Time; S:+Rel_ki]
 öğleüstü
 öğleüzeri
 öğleyin
@@ -18082,7 +18086,7 @@ ozuga
 ömür [A:LastVowelDrop]
 ön
 önayak
-önce [P:Noun, Time]
+önce [P:Noun, Time; S:+Rel_ki]
 öncelemek
 öncelik
 öncü
@@ -19696,9 +19700,9 @@ saadet [A:NoVoicing]
 saadethane
 saat [A:InverseHarmony, NoVoicing]
 saba
-sabah [P:Noun, Time]
+sabah [P:Noun, Time; S:+Rel_ki]
 sabahlamak
-sabahleyin [P:Noun, Time]
+sabahleyin [P:Noun, Time; S:+Rel_ki]
 saban
 sabık
 sabıka
@@ -20271,7 +20275,8 @@ sefahat [A:InverseHarmony]
 sefalet [A:NoVoicing]
 sefaret [A:NoVoicing]
 sefarethane
-sefer [P:Noun, Time]
+sefer [P:Noun, Time; S:+Rel_ki]
+sefer
 seferber
 seferî
 Seferihisar
@@ -20300,6 +20305,7 @@ seki
 sekilemek
 sekiz [P:Num]
 sekizgen
+sekiziz [P:Adj]
 seklem
 sekmek
 sekmen
@@ -20414,7 +20420,7 @@ sendikal
 sendikalist [A:NoVoicing]
 sendikalizm
 sendrom
-sene [P:Noun, Time]
+sene [P:Noun, Time; S:+Rel_ki]
 Senegal
 senek
 senet
@@ -20601,7 +20607,7 @@ sezinlemek
 sezinmek
 seziş
 sezmek
-sezon [P:Noun, Time]
+sezon [P:Noun, Time; S:+Rel_ki]
 sezü
 sezyum
 sfagnum
@@ -21081,7 +21087,7 @@ sondör
 sone
 sonlanmak
 sonlu
-sonra [P:Noun, Time]
+sonra [P:Noun, Time; S:+Rel_ki]
 sonsuz
 sonuç
 sonuçlamak
@@ -21956,7 +21962,7 @@ süzülmek
 şilte
 şimal [A:InverseHarmony]
 şimalî
-şimdi [P:Noun, Time]
+şimdi [P:Noun, Time; S:+Rel_ki]
 şimendifer
 şimiotaksi
 şimiotropizm
@@ -24865,7 +24871,7 @@ yarımada
 Yarımca
 yarımlamak
 yarımşar
-yarın [P:Noun, Time]
+yarın [P:Noun, Time; S:+Rel_ki]
 yarış
 yarışmak
 yarıyıl
@@ -24964,7 +24970,7 @@ yaylamak
 yaylım
 yaymak
 yayvan [P:Adj]
-yaz [P:Noun, Time]
+yaz [P:Noun, Time; S:+Rel_ki]
 yazanak
 yazar
 yazboz
@@ -24993,6 +24999,7 @@ Yedigir
 Yedikardeş
 Yedisu
 yediveren
+yediz [P:Adj]
 yedmek
 yegâh
 yegâne [P:Adj]
@@ -25146,7 +25153,7 @@ yıkım
 yıkıntı
 yıkışmak
 yıkmak
-yıl [P:Noun, Time]
+yıl [P:Noun, Time; S:+Rel_ki]
 yılan
 yılancıl
 yılandili [A:CompoundP3sg; R:yılandil]
@@ -25427,7 +25434,7 @@ zakkumgiller
 zalim
 zalimane [P:Adv]
 zam [A:Doubling]
-zaman [P:Noun, Time]
+zaman [P:Noun, Time; S:+Rel_ki]
 zamane
 zamanlamak
 zamazingo

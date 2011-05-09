@@ -257,6 +257,11 @@ public class TurkishSuffixes {
     public static Suffix WithoutDoing = new Suffix("WithoutDoing");
     public static SuffixFormSet WithoutDoing_mAdAn = new SuffixFormSet(WithoutDoing, "mAdAn");
 
+    // Converts to an Adverb.
+    public static Suffix UntilDoing = new Suffix("UntilDoing");
+    public static SuffixFormSet UntilDoing_yAsIyA = new SuffixFormSet(UntilDoing, "+yAsIyA");
+
+
     public static Suffix WithoutDoing2 = new Suffix("WithoutDoing2");
     public static SuffixFormSet WithoutDoing2_mAksIzIn = new SuffixFormSet(WithoutDoing2, "mAksIzIn");
 
@@ -372,7 +377,7 @@ public class TurkishSuffixes {
                 Pl_lAr, Dat_yA, Dat_nA, Loc_dA, Loc_ndA, Abl_dAn, Abl_ndAn, Gen_nIn,
                 Acc_yI, Acc_nI, Inst_ylA, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz,
                 P2pl_InIz, P3pl_lArI, Dim_cIk, Dim_cIg, Dim2_cAgIz, With_lI,
-                Without_sIz, Rel_ki, A1sg_yIm, A1sg_m, A1sg_EMPTY, A2sg_sIn,
+                Without_sIz, Rel_ki, Rel_kI, A1sg_yIm, A1sg_m, A1sg_EMPTY, A2sg_sIn,
                 A2sg_n, A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A3sg_EMPTY, A3sg_sIn, A1pl_yIz,
                 A1pl_k, A1pl_lIm, A1pl_EMPTY, A2pl_sInIz, A2pl_nIz, A2pl_yIn, A2pl_EMPTY,
                 A2pl2_sAnIzA, A3pl_lAr, A3pl_sInlAr, Agt_cI, Agt_yIcI, Ness_lIk, Ness_lIg,
@@ -387,7 +392,7 @@ public class TurkishSuffixes {
                 WithoutDoing2_mAksIzIn, AfterDoing_yIp, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA,
                 KeepDoing_yAgor, KeepDoing2_yAdur, EverSince_yAgel,
                 Almost_yAyAz, Hastily_yIver, Stay_yAkal, Inf1_mAk, Inf2_mA, Inf3_yIs, Ly_cA,
-                Quite_cA, Equ_cA, Equ_ncA,
+                Quite_cA, Equ_cA, Equ_ncA, UntilDoing_yAsIyA,
                 Noun_Main, Noun_Exp_C, Noun_Exp_V, Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
                 Adj_Main, Adj_Exp_C, Adj_Exp_V,
                 Adv_Main, Interj_Main, Verb_Main, Verb_Prog_Drop, Verb_Exp_C, Verb_Exp_V, PersPron_Main, PersPron_BenSen, PersPron_BanSan,
@@ -456,7 +461,7 @@ public class TurkishSuffixes {
                 .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
                 .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
-                .add(NounDeriv_nIm);
+                .add(NounDeriv_nIm, UntilDoing_yAsIyA);
 
         Verb_Exp_V.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, Aor_Ar, AorPart_Ar, Prog_Iyor, PresPart_yAn, Pass_nIl,
                 KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal,
@@ -480,11 +485,11 @@ public class TurkishSuffixes {
         Become_lAs.add(Verb_Main.getSuccSetCopy());
         Quite_cA.add(Noun_Main.getSuccSetCopy()).remove(Related_sAl);
 
-        Numeral_Main.add(COPULAR_FORMS, CASE_FORMS, POSSESSIVE_FORMS)
+        Numeral_Main.add(COPULAR_FORMS, CASE_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N)
                 .add(Ordinal_IncI, Grouping_sAr, With_lI, Without_sIz, Ness_lIg, Ness_lIk, Pl_lAr);
 
         Ordinal_IncI.add(Numeral_Main.getSuccSetCopy()).remove(Ordinal_IncI, Grouping_sAr);
-        Grouping_sAr.add(With_lI);
+        Grouping_sAr.add(With_lI, Ness_lIg, Ness_lIk);
 
         Pl_lAr.add(CASE_FORMS, COPULAR_FORMS)
                 .add(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, Equ_cA);
@@ -499,6 +504,7 @@ public class TurkishSuffixes {
         P3pl_lArI.add(P3sg_sI.getSuccSetCopy()).add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, Equ_ncA);
 
         Rel_ki.add(COPULAR_FORMS, PERSON_FORMS_N).add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Pl_lAr);
+        Rel_kI.add(Rel_ki.getSuccSetCopy());
         Dat_yA.add(COPULAR_FORMS);
         Dat_nA.add(COPULAR_FORMS);
 
@@ -530,7 +536,7 @@ public class TurkishSuffixes {
                 .add(Pl_lAr, Ness_lIg, Ness_lIk, With_lI, Without_sIz, Become_lAs);
         Resemb_ImsI.add(Resemb_ImsI.getSuccSetCopy());
 
-        Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Agt_cI, With_lI, Without_sIz);
+        Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, CASE_FORMS).add(Pl_lAr, Agt_cI, With_lI, Without_sIz);
         Ness_lIg.add(Ness_lIk.getSuccSetCopy()).retain(Noun_Exp_V.getSuccSetCopy());
         Ness_lIk.remove(Ness_lIg.getSuccSetCopy());
 
