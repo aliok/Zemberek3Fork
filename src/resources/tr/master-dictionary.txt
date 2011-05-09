@@ -13479,7 +13479,7 @@ kilovat [A:NoVoicing]
 kilovolt [A:NoVoicing]
 kils
 kilüs
-kim [P:Pron]
+kim [P:Pron ;S:+A3pl]
 kim [P:Conj]
 kimi [P:Adj]
 kimi [P:Pron]
@@ -13640,6 +13640,7 @@ koçlanmak
 koçmak
 koçsamak
 koçu
+kod
 kodaman
 kodein
 kodeks
@@ -14476,6 +14477,7 @@ kübik
 kübist [A:NoVoicing]
 kübizm
 küçük [P:Adj]
+küçücük [P:Adj]
 Küçükaslan
 Küçükayı
 küçükbaş
@@ -16150,6 +16152,7 @@ mineral [A:InverseHarmony]
 mineralog
 mineraloji
 mini
+minicik [P:Adj]
 minibüs
 minik [P:Adj; A:Voicing]
 minimal [A:InverseHarmony]

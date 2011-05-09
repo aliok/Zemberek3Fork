@@ -141,6 +141,7 @@ acımak
 abartmak
 etmek [A:Voicing]
 yıkanmak [A:Reflexive]
+küfretmek [A:Voicing, Aorist_A]
 
 # Aor-I is required here. because normally Aorist suffix is generated as -Ar if verb is single syllable. but not in this case.
 almak [A:Aorist_I]
