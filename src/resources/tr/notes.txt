@@ -5,6 +5,7 @@
 - minik->minicik, ufak->ufacık, yürek, küçük.. is not handled.
 - birbiri -> compound
 - zero surface verb suffixes may cause trouble for voicing.
+- yok -> optional Voicing.
 
 
 

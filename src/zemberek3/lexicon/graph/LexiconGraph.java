@@ -67,6 +67,7 @@ public class LexiconGraph {
             ProgressiveVowelDrop,
             InverseHarmony,
             Voicing,
+            VoicingOpt,
             StemChange,
             CompoundP3sg
     );
@@ -118,8 +119,7 @@ public class LexiconGraph {
             // generate other boundary attributes and modified root state.
             switch (attribute) {
                 case Voicing:
-                    if (dicItem.hasAttribute(RootAttr.CompoundP3sg))
-                        break;
+                case VoicingOpt:
                     TurkicLetter last = modifiedSeq.lastLetter();
                     TurkicLetter modifiedLetter = alphabet.voice(last);
                     if (modifiedLetter == null) {
@@ -195,14 +195,18 @@ public class LexiconGraph {
         if (item.getId().equals("yemek_Verb")) {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
-            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA, When_yIncA, AfterDoing_yIp)
-                    .add(Pass_In);
-            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, When_yIncA, AfterDoing_yIp, Abil_yA, Abil_yAbil);
+            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk,
+                    FutPart_yAcAk, FutPart_yAcAg, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
+                    KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
+            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, When_yIncA, AfterDoing_yIp, Abil_yA,
+                    Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
+                    FeelLike_yAsI, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
             SuffixNode formYe = getSuffixRootNode(calculateAttributes(item.root), Verb_Ye);
             stems[0] = new StemNode(item.root, item, formYe, TerminationType.TERMINAL);
-            SuffixNode formProg = getSuffixRootNode(calculateAttributes(item.root), Verb_Prog_Drop);
-            stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
+            AttributeSet<PhonAttr> attrs = calculateAttributes(item.root).remove(PhonAttr.LastLetterVowel).add(PhonAttr.LastLetterConsonant);
+            SuffixNode formProg = getSuffixRootNode(attrs, Verb_Prog_Drop);
+            stems[1] = new StemNode("y", item, formProg, TerminationType.NON_TERMINAL);
             SuffixNode formYi = getSuffixRootNode(calculateAttributes(item.root), Verb_Yi);
             stems[2] = new StemNode("yi", item, formYi, TerminationType.NON_TERMINAL);
             return stems;
@@ -212,14 +216,17 @@ public class LexiconGraph {
             SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
             Verb_De.add(Verb_Main.getSuccSetCopy())
-                    .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA)
+                    .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA,
+                            PresPart_yAn, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn)
                     .add(Pass_In);
-            Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Abil_yA, Abil_yAbil);
+            Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Abil_yA, Abil_yAbil, PresPart_yAn,
+                     PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(calculateAttributes(item.root), Verb_De);
             stems[0] = new StemNode(item.root, item, formDe, TerminationType.TERMINAL);
-            SuffixNode formProg = getSuffixRootNode(calculateAttributes(item.root), Verb_Prog_Drop);
-            stems[1] = new StemNode(item.lemma.substring(0, 1), item, formProg, TerminationType.NON_TERMINAL);
+            AttributeSet<PhonAttr> attrs = calculateAttributes(item.root).remove(PhonAttr.LastLetterVowel).add(PhonAttr.LastLetterConsonant);
+            SuffixNode formProg = getSuffixRootNode(attrs, Verb_Prog_Drop);
+            stems[1] = new StemNode("d", item, formProg, TerminationType.NON_TERMINAL);
             SuffixNode formDi = getSuffixRootNode(calculateAttributes(item.root), Verb_Di);
             stems[2] = new StemNode("di", item, formDi, TerminationType.NON_TERMINAL);
             return stems;
@@ -406,6 +413,9 @@ public class LexiconGraph {
                         original.remove(Pass_nIl);
                         modified.clear().add(Pass_nIl);
                         break;
+                    case VoicingOpt:
+                        modified.remove(Verb_Exp_C.getSuccessors());
+                        break;
                     case Voicing:
                         original.remove(Verb_Exp_V.getSuccessors());
                         modified.remove(Verb_Exp_C.getSuccessors());
@@ -445,6 +455,9 @@ public class LexiconGraph {
             modified.add(Noun_Main.getSuccSetCopy());
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
+                    case VoicingOpt:
+                        modified.remove(Noun_Exp_C.getSuccessors());
+                        break;
                     case Voicing:
                     case Doubling:
                     case LastVowelDrop:

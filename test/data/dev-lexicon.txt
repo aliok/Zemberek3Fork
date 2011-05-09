@@ -6,7 +6,7 @@
 
 # ------------------------------------------------------------------------------------------
 # Nouns.
-
+yok [A:VoicingOpt]
 # Main Pos info is optional.
 elma
 kahve [P: Noun]

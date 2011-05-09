@@ -25226,8 +25226,7 @@ yoğurt
 yoğurthane
 yoğurtlamak
 yoğuşmak
-yok [A:Voicing]
-yok [P:Adj; A:Voicing]
+yok [P:Adj; A:VoicingOpt]
 yok [P:Conj]
 yok [P:Part]
 yoklamak

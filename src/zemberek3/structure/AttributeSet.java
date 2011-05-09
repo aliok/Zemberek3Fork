@@ -66,7 +66,7 @@ public class AttributeSet<T extends IndexedEnum> {
         return true;
     }
 
-    public AttributeSet add(T... enums) {
+    public AttributeSet<T> add(T... enums) {
         for (IndexedEnum en : enums) {
             data |= setMasks[en.getBitIndex()];
         }
@@ -89,14 +89,14 @@ public class AttributeSet<T extends IndexedEnum> {
         this.data = 0;
     }
 
-    public AttributeSet add(Iterable<T> enumIt) {
+    public AttributeSet<T> add(Iterable<T> enumIt) {
         for (IndexedEnum indexedEnum : enumIt) {
             data |= setMasks[indexedEnum.getBitIndex()];
         }
         return this;
     }
 
-    public AttributeSet remove(T... enums) {
+    public AttributeSet<T> remove(T... enums) {
         for (IndexedEnum anEnum : enums) {
             data &= resetMasks[anEnum.getBitIndex()];
         }

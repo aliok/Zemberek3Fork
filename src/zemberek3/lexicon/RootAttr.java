@@ -10,6 +10,7 @@ import zemberek3.structure.StringEnumMap;
  */
 public enum RootAttr implements StringEnum, IndexedEnum {
     Voicing,
+    VoicingOpt,
     NoVoicing,
     InverseHarmony,
     LastVowelDrop,

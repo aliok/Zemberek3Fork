@@ -187,6 +187,11 @@ public class TurkishDictionaryLoader {
                     break;
                 case Noun:
                 case Adjective:
+                    if (attributesList.contains(RootAttr.VoicingOpt)) {
+                        attributesList.remove(RootAttr.Voicing);
+                        attributesList.remove(RootAttr.NoVoicing);
+                        break;
+                    }
                     // if a noun or adjective has more than one syllable and last letter is a stop consonant, add voicing.
                     if (sequence.vowelCount() > 1
                             && last.isStopConsonant()

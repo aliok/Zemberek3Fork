@@ -200,6 +200,7 @@ public class TurkishSuffixes {
 
     public static Suffix Recip = new Suffix("Recip");
     public static SuffixFormSet Recip_Is = new SuffixFormSet(Recip, "+Iş");
+    public static SuffixFormSet Recip_yIs = new SuffixFormSet(Recip, "+yIş");
 
     public static Suffix Reflex = new Suffix("Reflex");
     public static SuffixFormSet Reflex_In = new SuffixFormSet(Reflex, "+In");
@@ -389,7 +390,7 @@ public class TurkishSuffixes {
                 Fut_yAcAg, FutPart_yAcAk, FutPart_yAcAg, Past_dI, PastPart_dIk, PastPart_dIg,
                 Evid_mIs, EvidPart_mIs, PresPart_yAn, Neg_mA, Neg_m, Cond_sA,
                 Necess_mAlI, Opt_yA, Pass_In, Pass_nIl, Caus_t,
-                Caus_tIr, Imp_EMPTY, Imp_EMPTY_V, Imp_EMPTY_C, Recip_Is, Reflex_In, Abil_yAbil, Abil_yA, Cop_dIr,
+                Caus_tIr, Imp_EMPTY, Imp_EMPTY_V, Imp_EMPTY_C, Recip_Is, Recip_yIs, Reflex_In, Abil_yAbil, Abil_yA, Cop_dIr,
                 PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA,
                 AsIf_cAsInA, AsLongAs_dIkcA, When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn,
                 WithoutDoing2_mAksIzIn, AfterDoing_yIp, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA,
@@ -494,7 +495,7 @@ public class TurkishSuffixes {
                 .add(Ordinal_IncI, Grouping_sAr, With_lI, Without_sIz, Ness_lIg, Ness_lIk, Pl_lAr);
 
         Ordinal_IncI.add(Numeral_Main.getSuccSetCopy()).remove(Ordinal_IncI, Grouping_sAr);
-        Grouping_sAr.add(With_lI, Ness_lIg, Ness_lIk);
+        Grouping_sAr.add(With_lI, Ness_lIg, Ness_lIk, Abl_dAn).add(COPULAR_FORMS);
 
         Pl_lAr.add(CASE_FORMS, COPULAR_FORMS)
                 .add(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, Equ_cA);
@@ -620,6 +621,7 @@ public class TurkishSuffixes {
 
         Reflex_In.add(Verb_Main.getSuccSetCopy());
         Recip_Is.add(Verb_Main.getSuccSetCopy()).remove(Recip_Is);
+        Recip_yIs.add(Verb_Main.getSuccSetCopy()).remove(Recip_Is);
 
         Inf1_mAk.add(COPULAR_FORMS).add(Abl_dAn, Loc_dA, Inst_ylA);
         Inf2_mA.add(Noun_Main.getSuccessors());
