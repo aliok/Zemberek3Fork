@@ -32,7 +32,7 @@ public class SimpleParser implements MorphParser {
         }
     }
 
-    public List<ParseToken> parse(String input) {
+    public List<ParseResult> parse(String input) {
         // get stem candidates.
         List<StemNode> candidates = Lists.newArrayList();
         for (int i = 1; i <= input.length(); i++) {
@@ -52,12 +52,12 @@ public class SimpleParser implements MorphParser {
         }
 
         // traverse suffix graph.
-        List<ParseToken> result = Lists.newArrayList();
+        List<ParseResult> result = Lists.newArrayList();
         traverseSuffixes(initialTokens, result);
         return result;
     }
 
-    private void traverseSuffixes(List<ParseToken> current, List<ParseToken> completed) {
+    private void traverseSuffixes(List<ParseToken> current, List<ParseResult> completed) {
         List<ParseToken> newtokens = Lists.newArrayList();
         for (ParseToken token : current) {
             boolean matchFound = false;
@@ -69,7 +69,7 @@ public class SimpleParser implements MorphParser {
             }
             if (!matchFound) {
                 if (token.rest.length() == 0 && token.terminal)
-                    completed.add(token);
+                    completed.add(token.getResult());
             }
         }
         if (!newtokens.isEmpty())

@@ -1,8 +1,14 @@
-package zemberek3.service;
+package zemberek3.parser.syllable;
 
 import java.util.List;
 
-public abstract class BaseSyllableService implements SyllableService {
+public abstract class TurkishHyphenator implements Hyphenator {
+
+    SyllableParser parser;
+
+    protected TurkishHyphenator(SyllableParser parser) {
+        this.parser = parser;
+    }
 
     public int splitIndex(String input, int spaceAvailable) {
 
@@ -10,7 +16,7 @@ public abstract class BaseSyllableService implements SyllableService {
         if (spaceAvailable >= input.length())
             return input.length();
 
-        List<String> pieces = this.syllables(input);
+        List<String> pieces = parser.parse(input);
 
         // handle no syllable.
         if (pieces.isEmpty())

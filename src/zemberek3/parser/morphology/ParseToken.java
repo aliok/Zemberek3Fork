@@ -9,7 +9,7 @@ import zemberek3.lexicon.graph.TerminationType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParseToken {
+class ParseToken {
     StemNode stemNode;
     SuffixNode currentNode;
     List<SuffixNode> nodeHistory;
@@ -28,19 +28,6 @@ public class ParseToken {
         return stemNode.getDictionaryItem();
     }
 
-    public List<Suffix> getSuffixes() {
-        List<Suffix> res = new ArrayList<Suffix>(nodeHistory.size());
-        int i = 0;
-        for (SuffixNode suffixNode : nodeHistory) {
-            if(i==0) {
-                i++;
-                continue;
-            }
-            res.add(suffixNode.getSuffixSet().getSuffix());
-        }
-        return res;
-    }
-
     ParseToken(StemNode stemNode, SuffixNode suffixNode, List<SuffixNode> nodeHistory, String rest, boolean terminal) {
         this.stemNode = stemNode;
         this.currentNode = stemNode.getSuffixRootNode();
@@ -56,6 +43,10 @@ public class ParseToken {
 
     public SuffixNode getCurrentNode() {
         return currentNode;
+    }
+
+    public ParseResult getResult() {
+        return new ParseResult(stemNode, nodeHistory);
     }
 
     ParseToken getCopy(SuffixNode node) {

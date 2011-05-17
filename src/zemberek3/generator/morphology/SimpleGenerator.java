@@ -13,14 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * This is a deterministic word generator. It returns a single solution for a given [Dictionary Item + Suffix List]
- * parameter.
- */
 public class SimpleGenerator {
 
     LexiconGraph graph;
-
     ArrayListMultimap<DictionaryItem, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<DictionaryItem, StemNode> singeStems = Maps.newHashMap();
 

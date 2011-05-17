@@ -13,7 +13,7 @@ import zemberek3.lexicon.SuffixProvider;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.LexiconGraph;
-import zemberek3.parser.morphology.ParseToken;
+import zemberek3.parser.morphology.ParseResult;
 import zemberek3.parser.morphology.SimpleParser;
 
 import java.io.File;
@@ -29,9 +29,9 @@ public class SimpleGeneratorTest {
         SimpleGenerator generator = new SimpleGenerator(graph);
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         for (String parseable : parseables) {
-            List<ParseToken> parseResults = parser.parse(parseable);
-            for (ParseToken parseResult : parseResults) {
-                String res = generator.generate(parseResult.getDictionaryItem(), parseResult.getSuffixes());
+            List<ParseResult> parseResults = parser.parse(parseable);
+            for (ParseResult parseResult : parseResults) {
+                String res = generator.generate(parseResult.getDictionaryItem(), parseResult.getSuffixNodes());
                 Assert.assertEquals("Error in:" + parseable, parseable, res);
             }
         }
@@ -49,9 +49,9 @@ public class SimpleGeneratorTest {
                 results.put(Strings.subStringUntilFirst(testLine, "=").trim(), s);
         }
         for (String parseable : results.keySet()) {
-            List<ParseToken> parseResults = parser.parse(parseable);
-            for (ParseToken parseResult : parseResults) {
-                String[] res = generator.generateMorphemes(parseResult.getDictionaryItem(), parseResult.getSuffixes());
+            List<ParseResult> parseResults = parser.parse(parseable);
+            for (ParseResult parseResult : parseResults) {
+                String[] res = generator.generateMorphemes(parseResult.getDictionaryItem(), parseResult.getSuffixNodes());
                 String s = Joiner.on("-").join(res);
                 Assert.assertTrue("Error in:" + parseable, results.get(parseable).contains(s));
             }
@@ -65,15 +65,15 @@ public class SimpleGeneratorTest {
         SimpleParser parser = new SimpleParser(graph);
         SimpleGenerator generator = new SimpleGenerator(graph);
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
-        List<ParseToken> parses = new ArrayList<ParseToken>();
+        List<ParseResult> parses = new ArrayList<ParseResult>();
         for (String word : parseables) {
             parses.addAll(parser.parse(word));
         }
         long start = System.currentTimeMillis();
         final long iteration = 1000;
         for (int i = 0; i < iteration; i++) {
-            for (ParseToken parseToken : parses) {
-                String result = generator.generate(parseToken.getDictionaryItem(), parseToken.getSuffixes());
+            for (ParseResult parseToken : parses) {
+                String result = generator.generate(parseToken.getDictionaryItem(), parseToken.getSuffixNodes());
                 if (i == 0) {
                     System.out.println(parseToken + " = " + result);
                 }

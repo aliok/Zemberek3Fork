@@ -53,9 +53,9 @@ public class SimpleParserTest {
         final long iteration = 1000;
         for (int i = 0; i < iteration; i++) {
             for (String s : parseables) {
-                List<ParseToken> results = parser.parse(s);
+                List<ParseResult> results = parser.parse(s);
                 if (i == 0) {
-                    for (ParseToken result : results) {
+                    for (ParseResult result : results) {
                         System.out.println(s + " = " + result.asParseString());
                     }
                 }

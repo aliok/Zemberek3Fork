@@ -1,23 +1,9 @@
-package zemberek3.service;
-
-import java.util.List;
+package zemberek3.parser.syllable;
 
 /**
  * Provides syllable related operations.
  */
-public interface SyllableService {
-
-    /**
-     * Returns the syllables as a String List. if word cannot be parsed, an empty list is returned.
-     * <p>Example for Turkish:
-     * <p><code>("merhaba") -> ["mer","ha","ba"]</code>
-     * <p><code>("mr") -> []</code>
-     * <p><code>("al") -> ["al"]</code>
-     *
-     * @param input input string.
-     * @return syllables as string list. if there is no syllables, an empty list.
-     */
-    List<String> syllables(String input);
+public interface Hyphenator {
 
     /**
      * Finds the splitting index of a word for a space constraint.
