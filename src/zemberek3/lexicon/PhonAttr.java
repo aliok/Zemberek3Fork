@@ -13,6 +13,8 @@ public enum PhonAttr implements IndexedEnum {
     LastLetterVoicelessStop,
     LastLetterVowel,
     LastLetterConsonant,
+    FirstLetterVowel,
+    FirstLetterConsonant,
     HasNoVowel;
     int index;
 

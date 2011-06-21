@@ -14,8 +14,13 @@ public class SuffixNode extends MorphNode {
     AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
     Set<SuffixNode> successors = new HashSet<SuffixNode>(1);
 
-    public SuffixNode(SuffixFormSet suffixSet, String form, AttributeSet<PhonAttr> attributes, TerminationType termination) {
-        super(form, termination);
+    public SuffixNode(
+            SuffixFormSet suffixSet,
+            String form,
+            AttributeSet<PhonAttr> attributes,
+            AttributeSet<PhoneticExpectation> expectations,
+            TerminationType termination) {
+        super(form, termination, expectations);
         this.suffixSet = suffixSet;
         this.attributes = attributes;
     }
@@ -41,8 +46,8 @@ public class SuffixNode extends MorphNode {
         SuffixNode that = (SuffixNode) o;
         if (!surfaceForm.equals(that.surfaceForm)) return false;
         if (!attributes.equals(that.attributes)) return false;
+        if (!expectations.equals(that.expectations)) return false;
         if (!suffixSet.equals(that.suffixSet)) return false;
-
         return true;
     }
 
@@ -50,6 +55,7 @@ public class SuffixNode extends MorphNode {
     public int hashCode() {
         int result = suffixSet.hashCode();
         result = 31 * result + attributes.hashCode();
+        result = 31 * result + expectations.hashCode();
         result = 31 * result + surfaceForm.hashCode();
         return result;
     }

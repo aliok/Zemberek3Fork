@@ -54,8 +54,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet P3pl_lArI = new SuffixFormSet(P3pl, "lArI");
 
     public static Suffix Dim = new Suffix("Dim");
-    public static SuffixFormSet Dim_cIk = new SuffixFormSet(Dim, ">cIk");
-    public static SuffixFormSet Dim_cIg = new SuffixFormSet(Dim, ">cIğ", false);
+    public static SuffixFormSet Dim_cIk = new SuffixFormSet(Dim, ">cI~k");
 
     public static Suffix Dim2 = new Suffix("Dim2");
     public static SuffixFormSet Dim2_cAgIz = new SuffixFormSet(Dim2, "cAğIz");
@@ -115,8 +114,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet Agt_yIcI = new SuffixFormSet(Agt, "+yIcI"); // otur-ucu. converts to both Noun and Adj
 
     public static Suffix Ness = new Suffix("Ness");
-    public static SuffixFormSet Ness_lIk = new SuffixFormSet(Ness, "lIk");
-    public static SuffixFormSet Ness_lIg = new SuffixFormSet(Ness, "lIğ", false);
+    public static SuffixFormSet Ness_lIk = new SuffixFormSet(Ness, "lI~k");
 
     public static Suffix Become = new Suffix("Become");
     public static SuffixFormSet Become_lAs = new SuffixFormSet(Become, "lAş");
@@ -146,19 +144,16 @@ public class TurkishSuffixes {
     public static SuffixFormSet Prog2_mAktA = new SuffixFormSet(Prog2, "mAktA");
 
     public static Suffix Fut = new Suffix("Fut");
-    public static SuffixFormSet Fut_yAcAk = new SuffixFormSet(Fut, "+yAcAk");
-    public static SuffixFormSet Fut_yAcAg = new SuffixFormSet(Fut, "+yAcAğ", false);
+    public static SuffixFormSet Fut_yAcAk = new SuffixFormSet(Fut, "+yAcA~k");
 
     public static Suffix FutPart = new Suffix("FutPart");
-    public static SuffixFormSet FutPart_yAcAk = new SuffixFormSet(FutPart, "+yAcAk");
-    public static SuffixFormSet FutPart_yAcAg = new SuffixFormSet(FutPart, "+yAcAğ", false);
+    public static SuffixFormSet FutPart_yAcAk = new SuffixFormSet(FutPart, "+yAcA~k");
 
     public static Suffix Past = new Suffix("Past");
     public static SuffixFormSet Past_dI = new SuffixFormSet(Past, ">dI");
 
     public static Suffix PastPart = new Suffix("PastPart");
-    public static SuffixFormSet PastPart_dIk = new SuffixFormSet(PastPart, ">dIk");
-    public static SuffixFormSet PastPart_dIg = new SuffixFormSet(PastPart, ">dIğ", false);
+    public static SuffixFormSet PastPart_dIk = new SuffixFormSet(PastPart, ">dI~k");
 
     public static Suffix Evid = new Suffix("Evid");
     public static SuffixFormSet Evid_mIs = new SuffixFormSet(Evid, "mIş");
@@ -229,8 +224,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet Equ_ncA = new SuffixFormSet(Equ, "ncA");
 
     public static Suffix NotState = new Suffix("NotState");
-    public static SuffixFormSet NotState_mAzlIk = new SuffixFormSet(NotState, "mAzlIk");
-    public static SuffixFormSet NotState_mAzlIg = new SuffixFormSet(NotState, "mAzlIğ", false);
+    public static SuffixFormSet NotState_mAzlIk = new SuffixFormSet(NotState, "mAzlI~k");
 
     public static Suffix ActOf = new Suffix("ActOf");
     public static SuffixFormSet ActOf_mAcA = new SuffixFormSet(ActOf, "mAcA");
@@ -380,18 +374,18 @@ public class TurkishSuffixes {
         provider.addForms(
                 Pl_lAr, Dat_yA, Dat_nA, Loc_dA, Loc_ndA, Abl_dAn, Abl_ndAn, Gen_nIn,
                 Acc_yI, Acc_nI, Inst_ylA, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz,
-                P2pl_InIz, P3pl_lArI, Dim_cIk, Dim_cIg, Dim2_cAgIz, With_lI,
+                P2pl_InIz, P3pl_lArI, Dim_cIk, Dim2_cAgIz, With_lI,
                 Without_sIz, Rel_ki, Rel_kI, A1sg_yIm, A1sg_m, A1sg_EMPTY, A2sg_sIn,
                 A2sg_n, A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A3sg_EMPTY, A3sg_sIn, A1pl_yIz,
                 A1pl_k, A1pl_lIm, A1pl_EMPTY, A2pl_sInIz, A2pl_nIz, A2pl_yIn, A2pl_EMPTY,
-                A2pl2_sAnIzA, A3pl_lAr, A3pl_sInlAr, Agt_cI, Agt_yIcI, Ness_lIk, Ness_lIg,
+                A2pl2_sAnIzA, A3pl_lAr, A3pl_sInlAr, Agt_cI, Agt_yIcI, Ness_lIk,
                 Become_lAs, Resemb_ImsI, Resemb_msI, Related_sAl, Aor_Ir, Aor_Ar, Aor_z, Des_sA,
                 Aor_EMPTY, AorPart_Ir, AorPart_Ar, AorPart_z, Prog_Iyor, Prog2_mAktA, Fut_yAcAk,
-                Fut_yAcAg, FutPart_yAcAk, FutPart_yAcAg, Past_dI, PastPart_dIk, PastPart_dIg,
+                FutPart_yAcAk, Past_dI, PastPart_dIk,
                 Evid_mIs, EvidPart_mIs, PresPart_yAn, Neg_mA, Neg_m, Cond_sA,
                 Necess_mAlI, Opt_yA, Pass_In, Pass_nIl, Caus_t,
                 Caus_tIr, Imp_EMPTY, Imp_EMPTY_V, Imp_EMPTY_C, Recip_Is, Recip_yIs, Reflex_In, Abil_yAbil, Abil_yA, Cop_dIr,
-                PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA,
+                PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, NotState_mAzlIk, ActOf_mAcA,
                 AsIf_cAsInA, AsLongAs_dIkcA, When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn,
                 WithoutDoing2_mAksIzIn, AfterDoing_yIp, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA,
                 KeepDoing_yAgor, KeepDoing2_yAdur, EverSince_yAgel,
@@ -443,34 +437,34 @@ public class TurkishSuffixes {
     public TurkishSuffixes() {
 
         Noun_Main.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .add(Pl_lAr, Dim_cIg, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI,
-                        Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl, Become_lAs, Equ_cA);
+                .add(Pl_lAr, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI,
+                        Resemb_ImsI, Ness_lIk, Related_sAl, Become_lAs, Equ_cA);
         Noun_Exp_V.add(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz, Resemb_ImsI);
         Noun_Exp_C.add(Noun_Main.getSuccSetCopy()).remove(Noun_Exp_V.getSuccSetCopy());
         Noun_Comp_P3sg.add(COPULAR_FORMS, POSSESSIVE_FORMS)
                 .add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
                 .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
-        Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIg, Ness_lIk, Related_sAl,
+        Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl,
                 P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI, A3pl_Comp_lAr);
 
         ProperNoun_Main
                 .add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .add(Pl_lAr, Dim_cIg, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Ness_lIk, Ness_lIg);
+                .add(Pl_lAr, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Ness_lIk);
 
-        Verb_Main.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAg, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
+        Verb_Main.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .add(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_EMPTY, Agt_yIcI, Des_sA)
-                .add(Pass_nIl, NotState_mAzlIk, NotState_mAzlIg, ActOf_mAcA, PastPart_dIg, PastPart_dIk, EvidPart_mIs)
-                .add(FutPart_yAcAg, FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
+                .add(Pass_nIl, NotState_mAzlIk, ActOf_mAcA, PastPart_dIk, EvidPart_mIs)
+                .add(FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
                 .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
                 .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
                 .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
                 .add(NounDeriv_nIm, UntilDoing_yAsIyA);
 
-        Verb_Exp_V.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, Aor_Ar, AorPart_Ar, Prog_Iyor, PresPart_yAn, Pass_nIl,
+        Verb_Exp_V.add(Opt_yA, Fut_yAcAk, Aor_Ar, AorPart_Ar, Prog_Iyor, PresPart_yAn, Pass_nIl,
                 KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal,
                 When_yIncA, UnableToDo_yAmAdAn, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, Inf3_yIs, Abil_yA,
-                Abil_yAbil, AfterDoing_yIp, Agt_yIcI, FutPart_yAcAg, FutPart_yAcAk, Imp_EMPTY_V).remove(Imp_EMPTY);
+                Abil_yAbil, AfterDoing_yIp, Agt_yIcI, FutPart_yAcAk, Imp_EMPTY_V).remove(Imp_EMPTY);
         Verb_Exp_C.add(Verb_Main.getSuccSetCopy())
                 .remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir, Imp_EMPTY)
                 .add(Imp_EMPTY_V);
@@ -492,10 +486,10 @@ public class TurkishSuffixes {
         Quite_cA.add(Noun_Main.getSuccSetCopy()).remove(Related_sAl);
 
         Numeral_Main.add(COPULAR_FORMS, CASE_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N)
-                .add(Ordinal_IncI, Grouping_sAr, With_lI, Without_sIz, Ness_lIg, Ness_lIk, Pl_lAr);
+                .add(Ordinal_IncI, Grouping_sAr, With_lI, Without_sIz, Ness_lIk, Pl_lAr);
 
         Ordinal_IncI.add(Numeral_Main.getSuccSetCopy()).remove(Ordinal_IncI, Grouping_sAr);
-        Grouping_sAr.add(With_lI, Ness_lIg, Ness_lIk, Abl_dAn).add(COPULAR_FORMS);
+        Grouping_sAr.add(With_lI, Ness_lIk, Abl_dAn).add(COPULAR_FORMS);
 
         Pl_lAr.add(CASE_FORMS, COPULAR_FORMS)
                 .add(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, Equ_cA);
@@ -532,22 +526,19 @@ public class TurkishSuffixes {
         A3pl_lAr.add(Pl_lAr.getSuccSetCopy());
         A3pl_Comp_lAr.add(Pl_lAr.getSuccSetCopy());
 
-        Dim_cIg.add(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz);
         Dim_cIk.add(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr, Pl_lAr, Inst_ylA).add(COPULAR_FORMS);
         Dim2_cAgIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr);
 
-        With_lI.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr, Ness_lIg, Ness_lIk, Become_lAs, Ly_cA);
-        Without_sIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr, Ness_lIg, Ness_lIk, Become_lAs, Ly_cA);
+        With_lI.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr, Ness_lIk, Become_lAs, Ly_cA);
+        Without_sIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr, Ness_lIk, Become_lAs, Ly_cA);
 
         Resemb_msI.add(CASE_FORMS, PERSON_FORMS_N, COPULAR_FORMS, POSSESSIVE_FORMS)
-                .add(Pl_lAr, Ness_lIg, Ness_lIk, With_lI, Without_sIz, Become_lAs);
+                .add(Pl_lAr, Ness_lIk, With_lI, Without_sIz, Become_lAs);
         Resemb_ImsI.add(Resemb_ImsI.getSuccSetCopy());
 
         Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, CASE_FORMS).add(Pl_lAr, Agt_cI, With_lI, Without_sIz, Equ_cA);
-        Ness_lIg.add(Ness_lIk.getSuccSetCopy()).retain(Noun_Exp_V.getSuccSetCopy());
-        Ness_lIk.remove(Ness_lIg.getSuccSetCopy());
 
-        Related_sAl.add(Adj_Main.getSuccSetCopy()).remove(Dim_cIg, Dim_cIg, Dim2_cAgIz, With_lI, Without_sIz, Related_sAl,
+        Related_sAl.add(Adj_Main.getSuccSetCopy()).remove(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Related_sAl,
                 Resemb_msI, Resemb_msI);
         PastCop_ydI.add(PERSON_FORMS_COP);
         EvidCop_ymIs.add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr, AsIf_cAsInA);
@@ -555,8 +546,8 @@ public class TurkishSuffixes {
         Cop_dIr.add(A3pl_lAr);
 
         Neg_mA.add(Aor_z, AorPart_z, Aor_EMPTY, Prog2_mAktA, Imp_EMPTY, Opt_yA, Des_sA,
-                Fut_yAcAk, Fut_yAcAg, Past_dI, Evid_mIs, Cond_sA, Abil_yAbil, Necess_mAlI, NotState_mAzlIg, NotState_mAzlIk,
-                ActOf_mAcA, PastPart_dIg, PastPart_dIk, FutPart_yAcAg, FutPart_yAcAk, EvidPart_mIs, Agt_yIcI)
+                Fut_yAcAk, Past_dI, Evid_mIs, Cond_sA, Abil_yAbil, Necess_mAlI, NotState_mAzlIk,
+                ActOf_mAcA, PastPart_dIk, FutPart_yAcAk, EvidPart_mIs, Agt_yIcI)
                 .add(AsLongAs_dIkcA, PresPart_yAn)
                 .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
                 .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing2_mAksIzIn)
@@ -571,7 +562,7 @@ public class TurkishSuffixes {
         Aor_EMPTY.add(A1sg_m, A1pl_yIz);
 
         Set<SuffixFormSet> noParticipleSuff =
-                Sets.newHashSet(Become_lAs, Dim_cIg, Dim_cIg, Dim2_cAgIz, With_lI, Without_sIz, Related_sAl,
+                Sets.newHashSet(Become_lAs, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Related_sAl,
                         Resemb_msI, Resemb_msI);
 
         AorPart_Ar.add(Adj_Main.getSuccSetCopy()).remove(noParticipleSuff).add(AsIf_cAsInA);
@@ -579,22 +570,18 @@ public class TurkishSuffixes {
         AorPart_z.add(AorPart_Ar.getSuccSetCopy());
 
         FutPart_yAcAk.add(Adj_Exp_C.getSuccSetCopy());
-        FutPart_yAcAg.add(Adj_Exp_V.getSuccSetCopy());
         NotState_mAzlIk.add(Adj_Exp_C.getSuccSetCopy());
-        NotState_mAzlIg.add(Adj_Exp_V.getSuccSetCopy());
 
         PresPart_yAn.add(AorPart_Ar.getSuccSetCopy());
 
         EvidPart_mIs.add(AorPart_Ar.getSuccSetCopy());
 
         PastPart_dIk.add(Adj_Exp_C.getSuccSetCopy()).remove(AsIf_cAsInA).remove(noParticipleSuff);
-        PastPart_dIg.add(Adj_Exp_V.getSuccSetCopy()).remove(noParticipleSuff);
 
         Prog_Iyor.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA);
         Prog2_mAktA.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA);
 
-        Fut_yAcAg.add(A1sg_yIm, A1pl_yIz);
-        Fut_yAcAk.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA, AsIf_cAsInA).remove(Fut_yAcAg.getSuccSetCopy());
+        Fut_yAcAk.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA, AsIf_cAsInA);
 
         Past_dI.add(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr, CondCop_ysA, PastCop_ydI);
         Evid_mIs.add(PERSON_FORMS_N).add(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
@@ -604,7 +591,7 @@ public class TurkishSuffixes {
         Imp_EMPTY.add(A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
         Imp_EMPTY_C.add(A2sg_EMPTY, A2sg2_sAnA, A2pl2_sAnIzA, A3sg_sIn, A3pl_sInlAr);
         Imp_EMPTY_V.add(A2sg3_yInIz, A2pl_yIn);
-        Agt_cI.add(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Become_lAs, With_lI, Without_sIz, Ness_lIg, Ness_lIk);
+        Agt_cI.add(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Become_lAs, With_lI, Without_sIz, Ness_lIk);
         Agt_yIcI.add(Agt_cI.getSuccSetCopy());
 
         Abil_yAbil.add(Verb_Main.getSuccSetCopy()).remove(Abil_yAbil, Abil_yA, Neg_mA, Pass_nIl).add(Cond_sA, Pass_In);

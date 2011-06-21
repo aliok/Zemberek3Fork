@@ -313,13 +313,25 @@ public class TurkicSeq implements CharSequence, Comparable<TurkicSeq> {
     /**
      * istenen noktadaki harfi giris parametresi olan TurkicLetter ile degistirir.
      *
-     * @param index degistirilecek indeks.
-     * @param harf  kullanilacak harf
+     * @param index  degistirilecek indeks.
+     * @param letter kullanilacak harf
      * @throws ArrayIndexOutOfBoundsException
      */
-    public void changeLetter(int index, TurkicLetter harf) {
+    public void changeLetter(int index, TurkicLetter letter) {
         validateIndex(index);
-        letters[index] = harf;
+        letters[index] = letter;
+    }
+
+    /**
+     * istenen noktadaki harfi giris parametresi olan TurkicLetter ile degistirir.
+     *
+     * @param letter kullanilacak harf
+     * @throws ArrayIndexOutOfBoundsException
+     */
+    public void changeLast(TurkicLetter letter) {
+        if (size < 1)
+            throw new IllegalStateException("Letter sequence is empty");
+        letters[size - 1] = letter;
     }
 
     private void validateIndex(int index) {

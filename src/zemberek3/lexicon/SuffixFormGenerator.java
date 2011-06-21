@@ -1,6 +1,7 @@
 package zemberek3.lexicon;
 
 import com.google.common.collect.Lists;
+import zemberek3.lexicon.graph.PhoneticExpectation;
 import zemberek3.lexicon.graph.SuffixNode;
 import zemberek3.lexicon.graph.TerminationType;
 import zemberek3.structure.AttributeSet;
@@ -8,6 +9,7 @@ import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -17,24 +19,40 @@ import static zemberek3.structure.TurkishAlphabet.*;
 
 public class SuffixFormGenerator {
 
-    public SuffixNode getNode(AttributeSet<PhonAttr> attrs, SuffixFormSet set) {
-        SuffixForm form = getForm(attrs, set.generation);
+    public SuffixNode getEmptyNode(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
+        SuffixForm form = getForms(attrs, expectations, set.generation).get(0);
         if (!set.isTerminal()) {
-            return new SuffixNode(set, form.getSurface(), form.getAttributes(), TerminationType.NON_TERMINAL);
+            return new SuffixNode(set, form.getSurface(), form.getAttributes(), form.getExpectations(), TerminationType.NON_TERMINAL);
         } else if (set.generation.length() == 0) {
-            return new SuffixNode(set, form.getSurface(), form.getAttributes(), TerminationType.TRANSFER);
+            return new SuffixNode(set, form.getSurface(), form.getAttributes(), form.getExpectations(), TerminationType.TRANSFER);
         } else
-            return new SuffixNode(set, form.getSurface(), form.getAttributes(), TerminationType.TERMINAL);
+            return new SuffixNode(set, form.getSurface(), form.getAttributes(), form.getExpectations(), TerminationType.TERMINAL);
     }
 
-    public SuffixForm getForm(AttributeSet<PhonAttr> attrs, String generationString) {
+    public List<SuffixNode> getNodes(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
+        List<SuffixForm> forms = getForms(attrs, expectations, set.generation);
+        List<SuffixNode> nodes = new ArrayList<SuffixNode>();
+        for (SuffixForm form : forms) {
+            if (!set.isTerminal()) {
+                nodes.add(new SuffixNode(set, form.getSurface(), form.getAttributes(), form.getExpectations(), TerminationType.NON_TERMINAL));
+            } else if (set.generation.length() == 0) {
+                nodes.add(new SuffixNode(set, form.getSurface(), form.getAttributes(), form.getExpectations(), TerminationType.TRANSFER));
+            } else
+                nodes.add(new SuffixNode(set, form.getSurface(), form.getAttributes(), form.getExpectations(), TerminationType.TERMINAL));
+        }
+        return nodes;
+    }
+
+    public List<SuffixForm> getForms(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, String generationString) {
 
         List<SuffixToken> tokenList = Lists.newArrayList(new SuffixStringTokenizer(generationString));
 
         // zero length token
         if (tokenList.size() == 0) {
-            return new SuffixForm("", attrs.copy());
+            return Lists.newArrayList(new SuffixForm("", attrs.copy(), expectations.copy()));
         }
+
+        List<SuffixForm> forms = new ArrayList<SuffixForm>(1);
 
         // generation of forms. normally only one form is generated. But in situations like cI~k, two Forms are generated.
         TurkicSeq seq = new TurkicSeq();
@@ -44,6 +62,8 @@ public class SuffixFormGenerator {
             switch (token.type) {
                 case LETTER:
                     seq.append(token.letter);
+                    if (index == tokenList.size() - 1)
+                        forms.add(new SuffixForm(seq.toString(), defineMorphemicAttributes(seq, attrs)));
                     break;
 
                 case A_WOVEL:
@@ -58,6 +78,8 @@ public class SuffixFormGenerator {
                     if (lA == TurkicLetter.UNDEFINED)
                         throw new IllegalArgumentException("Cannot generate A form!");
                     seq.append(lA);
+                    if (index == tokenList.size() - 1)
+                        forms.add(new SuffixForm(seq.toString(), defineMorphemicAttributes(seq, attrs)));
                     break;
 
                 case I_WOVEL:
@@ -75,12 +97,16 @@ public class SuffixFormGenerator {
                     if (li == TurkicLetter.UNDEFINED)
                         throw new IllegalArgumentException("Cannot generate I form!");
                     seq.append(li);
+                    if (index == tokenList.size() - 1)
+                        forms.add(new SuffixForm(seq.toString(), defineMorphemicAttributes(seq, attrs)));
                     break;
 
                 case APPEND:
                     if (formAttrs.contains(LastLetterVowel)) {
                         seq.append(token.letter);
                     }
+                    if (index == tokenList.size() - 1)
+                        forms.add(new SuffixForm(seq.toString(), defineMorphemicAttributes(seq, attrs)));
                     break;
 
                 case DEVOICE_FIRST:
@@ -88,12 +114,29 @@ public class SuffixFormGenerator {
                     if (formAttrs.contains(LastLetterVoiceless))
                         ld = alphabet.devoice(token.letter);
                     seq.append(ld);
+                    if (index == tokenList.size() - 1)
+                        forms.add(new SuffixForm(seq.toString(), defineMorphemicAttributes(seq, attrs)));
+                    break;
 
+                case VOICE_LAST:
+                    ld = token.letter;
+                    if (formAttrs.contains(LastLetterVoiceless))
+                        ld = alphabet.voice(token.letter);
+                    seq.append(ld);
+                    if (index == tokenList.size() - 1) {
+                        forms.add(new SuffixForm(seq.toString(),
+                                defineMorphemicAttributes(seq, attrs),
+                                new AttributeSet<PhoneticExpectation>(PhoneticExpectation.VowelStart)));
+                        seq.changeLast(token.letter);
+                        forms.add(new SuffixForm(seq.toString(),
+                                defineMorphemicAttributes(seq, attrs),
+                                new AttributeSet<PhoneticExpectation>(PhoneticExpectation.ConsonantStart)));
+                    }
                     break;
             }
             index++;
         }
-        return new SuffixForm(seq.toString(), defineMorphemicAttributes(seq, attrs));
+        return forms;
     }
 
     // in suffix, defining morphemic attributes is straight forward.
@@ -114,10 +157,14 @@ public class SuffixFormGenerator {
                 attrs.add(LastLetterVowel);
             else
                 attrs.add(LastLetterConsonant);
+            if(seq.firstLetter().isVowel())
+                attrs.add(FirstLetterVowel);
+            else
+                attrs.add(FirstLetterConsonant);
         } else {
             // we transfer vowel attributes from the predecessor attributes.
             attrs = predecessorAttrs.copy();
-            attrs.add(LastLetterConsonant, HasNoVowel);
+            attrs.add(LastLetterConsonant, FirstLetterConsonant, HasNoVowel);
             attrs.remove(LastLetterVowel);
         }
         if (seq.lastLetter().isVoiceless()) {
@@ -141,6 +188,7 @@ public class SuffixFormGenerator {
         I_WOVEL,
         A_WOVEL,
         DEVOICE_FIRST,
+        VOICE_LAST,
         APPEND,
         LETTER
     }
@@ -197,6 +245,9 @@ public class SuffixFormGenerator {
                 case '>':
                     pointer++;
                     return new SuffixToken(TokenType.DEVOICE_FIRST, alphabet.getLetter(cNext));
+                case '~':
+                    pointer++;
+                    return new SuffixToken(TokenType.VOICE_LAST, alphabet.getLetter(cNext));
                 case 'I':
                     return new SuffixToken(TokenType.I_WOVEL, TurkicLetter.UNDEFINED);
                 case 'A':

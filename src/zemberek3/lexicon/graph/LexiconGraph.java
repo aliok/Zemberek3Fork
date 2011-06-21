@@ -7,6 +7,7 @@ import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
+import javax.naming.event.NamingExceptionEvent;
 import java.util.*;
 
 import static zemberek3.lexicon.RootAttr.*;
@@ -53,7 +54,7 @@ public class LexiconGraph {
         RootSuffixSetBuilder rsb = new RootSuffixSetBuilder(dictionaryItem);
         SuffixFormSet set = rsb.original;
         AttributeSet<PhonAttr> phoneticAttrs = calculateAttributes(dictionaryItem.root);
-        SuffixNode node = addOrReturnExisting(set, formGenerator.getNode(phoneticAttrs, set));
+        SuffixNode node = addOrReturnExisting(set, formGenerator.getEmptyNode(phoneticAttrs, AttributeSet.<PhoneticExpectation>emptySet(), set));
         return new StemNode(dictionaryItem.root, dictionaryItem, node, TerminationType.TERMINAL);
     }
 
@@ -113,6 +114,8 @@ public class LexiconGraph {
         TurkicSeq modifiedSeq = new TurkicSeq(dicItem.root, alphabet);
         AttributeSet<PhonAttr> originalAttrs = calculateAttributes(dicItem.root);
         AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
+        AttributeSet<PhoneticExpectation> originalExpectations = new AttributeSet<PhoneticExpectation>();
+        AttributeSet<PhoneticExpectation> modifiedExpectations = new AttributeSet<PhoneticExpectation>();
 
         for (RootAttr attribute : dicItem.attrs.getAsList(RootAttr.class)) {
 
@@ -129,12 +132,18 @@ public class LexiconGraph {
                         modifiedLetter = TurkishAlphabet.L_g;
                     modifiedSeq.changeLetter(modifiedSeq.length() - 1, modifiedLetter);
                     modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);
+                    originalExpectations.add(PhoneticExpectation.ConsonantStart);
+                    modifiedExpectations.add(PhoneticExpectation.VowelStart);
                     break;
                 case Doubling:
                     modifiedSeq.append(modifiedSeq.lastLetter());
+                    originalExpectations.add(PhoneticExpectation.ConsonantStart);
+                    modifiedExpectations.add(PhoneticExpectation.VowelStart);
                     break;
                 case LastVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 2);
+                    originalExpectations.add(PhoneticExpectation.ConsonantStart);
+                    modifiedExpectations.add(PhoneticExpectation.VowelStart);
                     break;
                 case InverseHarmony:
                     originalAttrs.add(PhonAttr.LastVowelFrontal);
@@ -154,8 +163,8 @@ public class LexiconGraph {
         }
         RootSuffixSetBuilder rssb = new RootSuffixSetBuilder(dicItem);
 
-        SuffixNode origForm = addOrReturnExisting(rssb.original, formGenerator.getNode(originalAttrs, rssb.original));
-        SuffixNode modiForm = addOrReturnExisting(rssb.modified, formGenerator.getNode(modifiedAttrs, rssb.modified));
+        SuffixNode origForm = addOrReturnExisting(rssb.original, formGenerator.getEmptyNode(originalAttrs, originalExpectations, rssb.original));
+        SuffixNode modiForm = addOrReturnExisting(rssb.modified, formGenerator.getEmptyNode(modifiedAttrs, modifiedExpectations, rssb.modified));
 
         return new StemNode[]{
                 new StemNode(dicItem.root, dicItem, origForm, TerminationType.TERMINAL),
@@ -185,8 +194,12 @@ public class LexiconGraph {
         return nodes.contains(newNode);
     }
 
+    public SuffixNode getSuffixRootNode(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
+        return addOrReturnExisting(set, formGenerator.getEmptyNode(attrs, expectations, set));
+    }
+
     public SuffixNode getSuffixRootNode(AttributeSet<PhonAttr> attrs, SuffixFormSet set) {
-        return addOrReturnExisting(set, formGenerator.getNode(attrs, set));
+        return addOrReturnExisting(set, formGenerator.getEmptyNode(attrs, AttributeSet.<PhoneticExpectation>emptySet(), set));
     }
 
     // handle stem changes demek-diyecek , beni-bana
@@ -195,10 +208,10 @@ public class LexiconGraph {
         if (item.getId().equals("yemek_Verb")) {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
-            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk,
-                    FutPart_yAcAk, FutPart_yAcAg, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
+            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk,
+                    FutPart_yAcAk, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
                     KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
-            Verb_Yi.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, When_yIncA, AfterDoing_yIp, Abil_yA,
+            Verb_Yi.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, When_yIncA, AfterDoing_yIp, Abil_yA,
                     Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
                     FeelLike_yAsI, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
@@ -216,11 +229,11 @@ public class LexiconGraph {
             SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
             Verb_De.add(Verb_Main.getSuccSetCopy())
-                    .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Opt_yA,
+                    .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, FutPart_yAcAk, Opt_yA,
                             PresPart_yAn, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn)
                     .add(Pass_In);
-            Verb_Di.add(Opt_yA, Fut_yAcAg, Fut_yAcAk, FutPart_yAcAk, FutPart_yAcAg, Abil_yA, Abil_yAbil, PresPart_yAn,
-                     PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn);
+            Verb_Di.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, Abil_yA, Abil_yAbil, PresPart_yAn,
+                    PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(calculateAttributes(item.root), Verb_De);
             stems[0] = new StemNode(item.root, item, formDe, TerminationType.TERMINAL);
@@ -261,12 +274,17 @@ public class LexiconGraph {
         for (SuffixFormSet rootFormSet : startForms) {
             for (SuffixFormSet succSet : rootFormSet.getSuccessorsIterable()) {
                 for (SuffixNode node : suffixFormMap.get(rootFormSet)) {
-                    SuffixNode nodeInSuccessor = formGenerator.getNode(node.attributes, succSet);
-                    if (!nodeExists(succSet, nodeInSuccessor)) {
-                        toProcess.add(succSet);
+                    List<SuffixNode> nodesInSuccessor = formGenerator.getNodes(node.attributes, node.expectations, succSet);
+                    for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
+                        if (!nodeExists(succSet, nodeInSuccessor)) {
+                            toProcess.add(succSet);
+                        }
+                        nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
+                        if (node.expectations.isEmpty() ||
+                                (node.expectations.contains(PhoneticExpectation.ConsonantStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterConsonant)) ||
+                                (node.expectations.contains(PhoneticExpectation.VowelStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterVowel)))
+                            node.addSuccNode(nodeInSuccessor);
                     }
-                    nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
-                    node.addSuccNode(nodeInSuccessor);
                 }
             }
         }

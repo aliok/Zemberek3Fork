@@ -1,15 +1,24 @@
 package zemberek3.lexicon;
 
+import zemberek3.lexicon.graph.PhoneticExpectation;
 import zemberek3.structure.AttributeSet;
 
 public class SuffixForm {
 
     public final String surface;
     final AttributeSet<PhonAttr> attributes;
+    final AttributeSet<PhoneticExpectation> expectations;
 
     public SuffixForm(String surface, AttributeSet<PhonAttr> attributes) {
         this.surface = surface;
         this.attributes = attributes;
+        this.expectations = AttributeSet.emptySet();
+    }
+
+    public SuffixForm(String surface, AttributeSet<PhonAttr> attributes,AttributeSet<PhoneticExpectation> expectations ) {
+        this.surface = surface;
+        this.attributes = attributes;
+        this.expectations = expectations;
     }
 
     public SuffixForm copy() {
@@ -24,6 +33,10 @@ public class SuffixForm {
         return surface;
     }
 
+    public AttributeSet<PhoneticExpectation> getExpectations() {
+        return expectations;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,16 +44,18 @@ public class SuffixForm {
 
         SuffixForm that = (SuffixForm) o;
 
-        if (attributes != null ? !attributes.equals(that.attributes) : that.attributes != null) return false;
-        if (surface != null ? !surface.equals(that.surface) : that.surface != null) return false;
+        if (!attributes.equals(that.attributes)) return false;
+        if (!expectations.equals(that.expectations)) return false;
+        if (!surface.equals(that.surface)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = surface != null ? surface.hashCode() : 0;
-        result = 31 * result + (attributes != null ? attributes.hashCode() : 0);
+        int result = surface.hashCode();
+        result = 31 * result + attributes.hashCode();
+        result = 31 * result + expectations.hashCode();
         return result;
     }
 
