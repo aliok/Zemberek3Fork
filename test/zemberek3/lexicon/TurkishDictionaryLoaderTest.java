@@ -58,7 +58,7 @@ public class TurkishDictionaryLoaderTest {
         Assert.assertEquals("gelmek", item.lemma);
         Assert.assertEquals(Verb, item.primaryPos);
 
-        String[] verbs = {"germek", "yarmak", "salmak", "yermek [Pos:Verb]", "etmek [Pos:Verb; A:Voicing]"};
+        String[] verbs = {"germek", "yarmak", "salmak", "yermek [P:Verb]", "etmek [P:Verb; A:Voicing]"};
         for (String verb : verbs) {
             item = loader.loadFromString(verb);
             Assert.assertEquals(Verb, item.primaryPos);
@@ -68,18 +68,17 @@ public class TurkishDictionaryLoaderTest {
     @Test
     public void suffixDataTest() {
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
-        DictionaryItem item = loader.loadFromString("ben [Pos:Pron; S: +A1sg_EMPTY]");
+        DictionaryItem item = loader.loadFromString("ben [P:Pron; S: +A1sg_EMPTY]");
         Assert.assertEquals(Pronoun, item.primaryPos);
         Assert.assertNotNull(item.suffixData);
         Assert.assertTrue(!item.suffixData.accepts.isEmpty());
         Assert.assertTrue(item.suffixData.rejects.isEmpty());
         Assert.assertTrue(item.suffixData.onlyAccepts.isEmpty());
 
-        item = loader.loadFromString("ben [Pos:Pron; S: -A1sg, +A1sg_EMPTY, +Dim]");
+        item = loader.loadFromString("ben [P:Pron; S: -A1sg, +A1sg_EMPTY, +Dim]");
         Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_m));
         Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_yIm));
         Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.A1sg_EMPTY));
-        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.Dim_cIg));
         Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.Dim_cIk));
     }
 
