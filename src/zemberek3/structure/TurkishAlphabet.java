@@ -84,7 +84,7 @@ public class TurkishAlphabet {
             L_u, L_uu, L_v, L_y, L_z, L_q, L_w, L_x,
             L_ac, L_ic, L_uc};
 
-    private static final int ALPHABET_LETTER_COUNT = TURKISH_LETTERS.length;
+    public static final int ALPHABET_LETTER_COUNT = TURKISH_LETTERS.length;
 
     // 0x15f is the maximum char value in turkish specific characters. It is the size
     // of our lookup tables. This could be done better, but for now it works.

@@ -5,13 +5,31 @@ import java.util.Random;
 
 import static org.junit.Assert.*;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.PrimaryPos;
+import zemberek3.structure.TurkishAlphabet;
 
 public class LexiconTreeTest {
-	
+
+    static Random r = new Random(0xCAFEDEADBEEFL);
+    TurkishAlphabet alphabet = new TurkishAlphabet();
+
+    private List<String> generateRandomWords(int number){
+        List<String> randomWords = Lists.newArrayList();
+        for (int i=0; i<number; i++) {
+            int len = r.nextInt(20) + 1;
+            char[] chars = new char[len];
+            for (int j = 0; j < len ; j++) {
+                chars[j] = alphabet.getCharByAlphabeticIndex(r.nextInt(TurkishAlphabet.ALPHABET_LETTER_COUNT) + 1);
+            }
+            randomWords.add(new String(chars));
+        }
+        return randomWords;
+    }
+
 	private StemNode createStemNode(String surfaceForm) {
 		DictionaryItem di = new DictionaryItem(surfaceForm, surfaceForm, PrimaryPos.Noun, null, null, null);
 		StemNode sn = new StemNode(surfaceForm, di, null, null);
@@ -121,6 +139,22 @@ public class LexiconTreeTest {
         lt.add(sn2);
         lt.add(sn3);
         System.out.println(lt);
-    }     
+    }
+
+    @Test
+    public void testBigNumberOfBigWords() {
+        LexiconTree lt = new LexiconTree();
+        List<String> words = generateRandomWords(10000);
+        List<StemNode> nodes = Lists.newArrayList();
+        for (String s : words) {
+            StemNode n =  createStemNode(s);
+            lt.add(n);
+            nodes.add(n);
+        }
+        for (StemNode n : nodes) {
+            List<StemNode> res = lt.getMatchingStems(n.surfaceForm);
+            assertTrue(res.contains(n));
+        }
+    }
 	
 }
