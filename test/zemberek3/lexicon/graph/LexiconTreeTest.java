@@ -151,9 +151,14 @@ public class LexiconTreeTest {
             lt.add(n);
             nodes.add(n);
         }
-        for (StemNode n : nodes) {
-            List<StemNode> res = lt.getMatchingStems(n.surfaceForm);
-            assertTrue(res.contains(n));
+        for (StemNode node : nodes) {
+            List<StemNode> res = lt.getMatchingStems(node.surfaceForm);
+            assertTrue(res.contains(node));
+            assertTrue(res.get(res.size() - 1).surfaceForm.equals(node.surfaceForm));
+            for (StemNode n : res) {
+                // Check if all stems are a prefix of last one on the tree. 
+                assertTrue(res.get(res.size() - 1).surfaceForm.startsWith(n.surfaceForm));
+            }
         }
     }
 	
