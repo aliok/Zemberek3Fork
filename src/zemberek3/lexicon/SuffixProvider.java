@@ -1,5 +1,7 @@
 package zemberek3.lexicon;
 
+import zemberek3.lexicon.graph.StemNode;
+
 import java.util.List;
 
 public interface SuffixProvider {
@@ -11,5 +13,7 @@ public interface SuffixProvider {
     SuffixFormSet getFormById(String suffixSetId);
 
     Iterable<SuffixFormSet> getAllForms();
+
+    SuffixFormSet getRoot(StemNode stemNode);
 
 }

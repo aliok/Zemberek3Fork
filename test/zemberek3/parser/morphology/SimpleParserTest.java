@@ -83,7 +83,7 @@ public class SimpleParserTest {
         stw.close();
         System.out.println("Total words:" + allWords.size());
         System.out.println("Passed words:" + pass);
-        System.out.println("Ratio=%" + ((double)pass*100/allWords.size()));
+        System.out.println("Ratio=%" + ((double) pass * 100 / allWords.size()));
     }
 
     private SimpleParser simpleParser(File dictionary) throws IOException {

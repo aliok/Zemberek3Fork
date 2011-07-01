@@ -5,15 +5,46 @@ import zemberek3.structure.AttributeSet;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * DictionaryItem represents an entity from a dictionary.
+ */
 public class DictionaryItem {
+    /**
+     * the surface form of the item used in dictionary.
+     */
     public final String lemma;
+
+    /**
+     * Form which will be used during graph generation. Such as, dictionary Item [gelmek Verb]'s root is "gel"
+     */
     public final String root;
+
+    /**
+     * Primary POS information
+     */
     public final PrimaryPos primaryPos;
+
+    /**
+     * Secondary POS information
+     */
     public final SecondaryPos secondaryPos;
+
+    /**
+     * Attributes that this item carries. Such as voicing or vowel drop.
+     */
     public final AttributeSet<RootAttr> attrs;
+
+    /**
+     * If this item has special Suffix information. Such as only a special form of a suffix may follow this Item.
+     */
     public final ExclusiveSuffixData suffixData;
 
-    public DictionaryItem(String lemma, String root, PrimaryPos primaryPos, SecondaryPos secondaryPos, AttributeSet<RootAttr> attrs, ExclusiveSuffixData suffixData) {
+    public DictionaryItem(String lemma,
+                          String root,
+                          PrimaryPos primaryPos,
+                          SecondaryPos secondaryPos,
+                          AttributeSet<RootAttr> attrs,
+                          ExclusiveSuffixData suffixData) {
         this.lemma = lemma.toLowerCase();
         this.primaryPos = primaryPos;
         this.secondaryPos = secondaryPos;
@@ -27,7 +58,10 @@ public class DictionaryItem {
     }
 
     public String getId() {
-        return lemma + "_" + primaryPos.shortForm;
+        String secPosStr = "";
+        if (secondaryPos != SecondaryPos.None)
+            secPosStr = secondaryPos.shortForm;
+        return lemma + "_" + primaryPos.shortForm + (secPosStr.length() == 0 ? "" : secPosStr);
     }
 
     @Override
@@ -66,6 +100,7 @@ public class DictionaryItem {
         if (!attrs.equals(that.attrs)) return false;
         if (!lemma.equals(that.lemma)) return false;
         if (primaryPos != that.primaryPos) return false;
+        if (secondaryPos != that.secondaryPos) return false;
 
         return true;
     }
@@ -74,6 +109,7 @@ public class DictionaryItem {
     public int hashCode() {
         int result = lemma.hashCode();
         result = 31 * result + primaryPos.hashCode();
+        result = 31 * result + secondaryPos.hashCode();
         result = 31 * result + attrs.hashCode();
         return result;
     }

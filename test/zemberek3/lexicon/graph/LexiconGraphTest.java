@@ -120,6 +120,11 @@ public class LexiconGraphTest {
             return forms;
         }
 
+        @Override
+        public SuffixFormSet getRoot(StemNode stemNode) {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
         void addForms(SuffixFormSet... setz) {
 
             for (SuffixFormSet suffixFormSet : setz) {

@@ -3,6 +3,7 @@ package zemberek3.lexicon;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import zemberek3.lexicon.graph.StemNode;
 
 import java.util.List;
 import java.util.Map;
@@ -121,7 +122,8 @@ public class TurkishSuffixes {
     public static SuffixFormSet Agt_yIcI = new SuffixFormSet(Agt, "+yIcI"); // otur-ucu. converts to both Noun and Adj
 
     public static Suffix Ness = new Suffix("Ness");
-    public static SuffixFormSet Ness_lIk = new SuffixFormSet(Ness, "lI~k");
+    public static SuffixFormSet Ness_lIk = new SuffixFormSet(Ness, "lIk");
+    public static SuffixFormSet Ness_lIg = new SuffixFormSet(Ness, "lIğ", false);
 
     public static Suffix Become = new Suffix("Become");
     public static SuffixFormSet Become_lAs = new SuffixFormSet(Become, "lAş");
@@ -429,6 +431,11 @@ public class TurkishSuffixes {
 
         public Iterable<SuffixFormSet> getAllForms() {
             return forms;
+        }
+
+        @Override
+        public SuffixFormSet getRoot(StemNode stemNode) {
+            return null;
         }
 
         void addForms(SuffixFormSet... setz) {

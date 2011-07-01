@@ -1,11 +1,13 @@
 package zemberek3.lexicon.graph;
 
+import zemberek3.lexicon.ExclusiveSuffixData;
 import zemberek3.structure.AttributeSet;
 
 public abstract class MorphNode {
     public final String surfaceForm;
     public final TerminationType termination;
     public AttributeSet<PhoneticExpectation> expectations = new AttributeSet<PhoneticExpectation>();
+    public ExclusiveSuffixData exclusiveSuffixData = new ExclusiveSuffixData();
 
     protected MorphNode(String surfaceForm, TerminationType termination) {
         this.surfaceForm = surfaceForm;
