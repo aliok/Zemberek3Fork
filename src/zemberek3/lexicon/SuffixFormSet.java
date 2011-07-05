@@ -1,5 +1,7 @@
 package zemberek3.lexicon;
 
+import zemberek3.lexicon.graph.TerminationType;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -13,7 +15,7 @@ public class SuffixFormSet {
     // generation word.
     public final String generation;
     // can be an end suffix.
-    boolean terminal = true;
+    TerminationType terminationType;
 
     private Set<SuffixFormSet> successors = new HashSet<SuffixFormSet>();
 
@@ -23,19 +25,19 @@ public class SuffixFormSet {
         this.generation = generation;
     }
 
-    public SuffixFormSet(Suffix suffix, String generation, boolean  terminal) {
+    public SuffixFormSet(Suffix suffix, String generation, TerminationType terminationType) {
         this.id = suffix.id + "_" + generation;
         this.suffix = suffix;
         this.generation = generation;
-        this.terminal = terminal;
+        this.terminationType = terminationType;
     }
 
 
-    public SuffixFormSet(String id, Suffix suffix, String generation, boolean terminal) {
+    public SuffixFormSet(String id, Suffix suffix, String generation,TerminationType terminationType) {
         this.id = id;
         this.suffix = suffix;
         this.generation = generation;
-        this.terminal = terminal;
+        this.terminationType = terminationType;
     }
 
     public SuffixFormSet(Suffix suffix, String generation) {
@@ -57,7 +59,7 @@ public class SuffixFormSet {
     }
 
     public boolean isTerminal() {
-        return terminal;
+        return terminationType == TerminationType.TERMINAL;
     }
 
     public SuffixFormSet clear() {

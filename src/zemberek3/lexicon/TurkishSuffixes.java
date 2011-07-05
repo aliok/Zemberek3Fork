@@ -4,6 +4,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import zemberek3.lexicon.graph.StemNode;
+import zemberek3.lexicon.graph.TerminationType;
 
 import java.util.List;
 import java.util.Map;
@@ -114,7 +115,7 @@ public class TurkishSuffixes {
 
     public static Suffix A3pl = new Suffix("A3pl");
     public static SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
-    public static SuffixFormSet A3pl_Comp_lAr = new SuffixFormSet(A3pl, "lAr", false); //zeytinyağlarımız
+    public static SuffixFormSet A3pl_Comp_lAr = new SuffixFormSet(A3pl, "lAr", TerminationType.NON_TERMINAL); //zeytinyağlarımız
     public static SuffixFormSet A3pl_sInlAr = new SuffixFormSet(A3pl, "sInlAr"); // gel-sinler
 
     public static Suffix Agt = new Suffix("Agt");
@@ -122,8 +123,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet Agt_yIcI = new SuffixFormSet(Agt, "+yIcI"); // otur-ucu. converts to both Noun and Adj
 
     public static Suffix Ness = new Suffix("Ness");
-    public static SuffixFormSet Ness_lIk = new SuffixFormSet(Ness, "lIk");
-    public static SuffixFormSet Ness_lIg = new SuffixFormSet(Ness, "lIğ", false);
+    public static SuffixFormSet Ness_lIk = new SuffixFormSet(Ness, "lI~k");
 
     public static Suffix Become = new Suffix("Become");
     public static SuffixFormSet Become_lAs = new SuffixFormSet(Become, "lAş");
@@ -139,7 +139,7 @@ public class TurkishSuffixes {
     public static SuffixFormSet Aor_Ir = new SuffixFormSet(Aor, "+Ir"); //gel-ir
     public static SuffixFormSet Aor_Ar = new SuffixFormSet(Aor, "+Ar"); //ser-er
     public static SuffixFormSet Aor_z = new SuffixFormSet(Aor, "z"); // gel-me-z
-    public static SuffixFormSet Aor_EMPTY = new SuffixFormSet("Aor_EMPTY", Aor, "", false); // gel-me--yiz
+    public static SuffixFormSet Aor_EMPTY = new SuffixFormSet("Aor_EMPTY", Aor, "", TerminationType.NON_TERMINAL); // gel-me--yiz
 
     public static Suffix AorPart = new Suffix("AorPart"); // convert to an Adjective
     public static SuffixFormSet AorPart_Ir = new SuffixFormSet(AorPart, "+Ir"); //gel-ir
@@ -175,7 +175,7 @@ public class TurkishSuffixes {
 
     public static Suffix Neg = new Suffix("Neg");
     public static SuffixFormSet Neg_mA = new SuffixFormSet(Neg, "mA"); //gel-me
-    public static SuffixFormSet Neg_m = new SuffixFormSet(Neg, "m", false); // gel-m-iyor
+    public static SuffixFormSet Neg_m = new SuffixFormSet(Neg, "m", TerminationType.NON_TERMINAL); // gel-m-iyor
 
     public static Suffix Cond = new Suffix("Cond");
     public static SuffixFormSet Cond_sA = new SuffixFormSet(Cond, "sA");
@@ -211,7 +211,7 @@ public class TurkishSuffixes {
 
     public static Suffix Abil = new Suffix("Abil");
     public static SuffixFormSet Abil_yAbil = new SuffixFormSet(Abil, "+yAbil");
-    public static SuffixFormSet Abil_yA = new SuffixFormSet(Abil, "+yA", false);
+    public static SuffixFormSet Abil_yA = new SuffixFormSet(Abil, "+yA", TerminationType.NON_TERMINAL);
 
     public static Suffix Cop = new Suffix("Cop");
     public static SuffixFormSet Cop_dIr = new SuffixFormSet(Cop, ">dIr");

@@ -25,8 +25,22 @@ public class SuffixNode extends MorphNode {
         this.attributes = attributes;
     }
 
+    public SuffixNode(
+            SuffixFormSet suffixSet,
+            String form,
+            AttributeSet<PhonAttr> attributes,
+            TerminationType termination) {
+        super(form, termination, AttributeSet.<PhoneticExpectation>emptySet());
+        this.suffixSet = suffixSet;
+        this.attributes = attributes;
+    }
+
     public SuffixFormSet getSuffixSet() {
         return suffixSet;
+    }
+
+    public AttributeSet<PhonAttr> getAttributes() {
+        return attributes;
     }
 
     public SuffixNode addSuccNode(SuffixNode form) {
