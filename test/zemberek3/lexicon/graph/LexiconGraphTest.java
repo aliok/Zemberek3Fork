@@ -14,7 +14,7 @@ public class LexiconGraphTest {
 
     @Test
     public void testSimpleNouns() throws IOException {
-        TurkishSuffixProvider suffixProvider = (TurkishSuffixProvider) new TestSuffixes1().getSuffixProvider();
+        SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
         String[] nouns = {"elma", "armut"};
         List<DictionaryItem> items = getItems(nouns, suffixProvider);
         LexiconGraph graph = new LexiconGraph(items, suffixProvider);
@@ -24,8 +24,6 @@ public class LexiconGraphTest {
         Assert.assertNotNull(nodeArmud);
         Assert.assertEquals("armud", nodeArmud.surfaceForm);
         Set<SuffixFormSet> sets = nodeArmud.getSuffixRootNode().suffixSet.getSuccSetCopy();
-        Assert.assertTrue(Collections.disjoint(sets, suffixProvider.getSets("A3pl_lAr")));
-        Assert.assertTrue(sets.containsAll(suffixProvider.getSets("A3sg_EMPTY")));
     }
 
     private List<DictionaryItem> getItems(String[] lines, SuffixProvider suffixProvider) {
@@ -118,11 +116,6 @@ public class LexiconGraphTest {
 
         public Iterable<SuffixFormSet> getAllForms() {
             return forms;
-        }
-
-        @Override
-        public SuffixFormSet getRoot(StemNode stemNode) {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
         }
 
         void addForms(SuffixFormSet... setz) {

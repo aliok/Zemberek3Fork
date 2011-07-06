@@ -29,7 +29,7 @@ public class LexiconGraph {
         this.suffixes = suffixProvider;
         this.dictionary = dictionary;
         for (SuffixFormSet set : suffixes.getAllForms()) {
-            suffixFormMap.put(set.remove(), new HashSet<SuffixNode>());
+            suffixFormMap.put(set, new HashSet<SuffixNode>());
         }
     }
 

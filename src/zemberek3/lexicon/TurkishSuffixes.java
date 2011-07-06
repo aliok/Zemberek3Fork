@@ -12,8 +12,7 @@ import java.util.Set;
 
 public class TurkishSuffixes {
 
-/*    public static Suffix Pl = new Suffix("Pl");
-    public static SuffixFormSet Pl_lAr = new SuffixFormSet(Pl, "lAr");*/
+    // ------------ case suffixes ---------------------------
 
     public static Suffix Dat = new Suffix("Dat");
     public static SuffixFormSet Dat_yA = new SuffixFormSet(Dat, "+yA");
@@ -37,6 +36,14 @@ public class TurkishSuffixes {
     public static Suffix Inst = new Suffix("Inst");
     public static SuffixFormSet Inst_ylA = new SuffixFormSet(Inst, "+ylA");
 
+    public static Suffix Nom = new Suffix("Nom");
+    public static SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_EMPTY", Nom, "");
+
+    // ----------------- possesive ----------------------------
+
+    public static Suffix Pnon = new Suffix("Pnon");
+    public static SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_EMPTY",Pnon, "");
+
     public static Suffix P1sg = new Suffix("P1sg");
     public static SuffixFormSet P1sg_Im = new SuffixFormSet(P1sg, "Im");
 
@@ -49,34 +56,13 @@ public class TurkishSuffixes {
     public static Suffix P1pl = new Suffix("P1pl");
     public static SuffixFormSet P1pl_ImIz = new SuffixFormSet(P1pl, "ImIz");
 
-    public static Suffix Pnon = new Suffix("Pnon");
-    public static SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_EMPTY",Pnon, "");
-
     public static Suffix P2pl = new Suffix("P2pl");
     public static SuffixFormSet P2pl_InIz = new SuffixFormSet(P2pl, "InIz");
 
     public static Suffix P3pl = new Suffix("P3pl");
     public static SuffixFormSet P3pl_lArI = new SuffixFormSet(P3pl, "lArI");
 
-    public static Suffix Dim = new Suffix("Dim");
-    public static SuffixFormSet Dim_cIk = new SuffixFormSet(Dim, ">cI~k");
-
-    public static Suffix Dim2 = new Suffix("Dim2");
-    public static SuffixFormSet Dim2_cAgIz = new SuffixFormSet(Dim2, "cAğIz");
-
-    public static Suffix With = new Suffix("With");
-    public static SuffixFormSet With_lI = new SuffixFormSet(With, "lI");
-
-    public static Suffix Without = new Suffix("Without");
-    public static SuffixFormSet Without_sIz = new SuffixFormSet(Without, "sIz");
-
-    public static Suffix Rel = new Suffix("Rel");
-    public static SuffixFormSet Rel_ki = new SuffixFormSet(Rel, "ki"); // masa-da-ki
-    public static SuffixFormSet Rel_kI = new SuffixFormSet(Rel, "kI"); // dünkü
-
-    public static Suffix Nom = new Suffix("Nom");
-    public static SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_EMPTY", Nom, ""); // ben
-
+    // -------------- Number-Person agreement --------------------
 
     public static Suffix A1sg = new Suffix("A1sg");
     public static SuffixFormSet A1sg_yIm = new SuffixFormSet(A1sg, "+yIm"); // gel-e-yim
@@ -118,6 +104,24 @@ public class TurkishSuffixes {
     public static SuffixFormSet A3pl_Comp_lAr = new SuffixFormSet(A3pl, "lAr", TerminationType.NON_TERMINAL); //zeytinyağlarımız
     public static SuffixFormSet A3pl_sInlAr = new SuffixFormSet(A3pl, "sInlAr"); // gel-sinler
 
+    // ------------ derivatioonal ----------------------
+
+    public static Suffix Dim = new Suffix("Dim");
+    public static SuffixFormSet Dim_cIk = new SuffixFormSet(Dim, ">cI~k");
+
+    public static Suffix Dim2 = new Suffix("Dim2");
+    public static SuffixFormSet Dim2_cAgIz = new SuffixFormSet(Dim2, "cAğIz");
+
+    public static Suffix With = new Suffix("With");
+    public static SuffixFormSet With_lI = new SuffixFormSet(With, "lI");
+
+    public static Suffix Without = new Suffix("Without");
+    public static SuffixFormSet Without_sIz = new SuffixFormSet(Without, "sIz");
+
+    public static Suffix Rel = new Suffix("Rel");
+    public static SuffixFormSet Rel_ki = new SuffixFormSet(Rel, "ki"); // masa-da-ki
+    public static SuffixFormSet Rel_kI = new SuffixFormSet(Rel, "kI"); // dünkü
+
     public static Suffix Agt = new Suffix("Agt");
     public static SuffixFormSet Agt_cI = new SuffixFormSet(Agt, ">cI"); // araba-cı. Converts to another Noun.
     public static SuffixFormSet Agt_yIcI = new SuffixFormSet(Agt, "+yIcI"); // otur-ucu. converts to both Noun and Adj
@@ -135,16 +139,13 @@ public class TurkishSuffixes {
     public static Suffix Related = new Suffix("Related");
     public static SuffixFormSet Related_sAl = new SuffixFormSet(Related, "sAl");
 
+    // ----------------------------  verbal tense --------------------------------
+
     public static Suffix Aor = new Suffix("Aor");
     public static SuffixFormSet Aor_Ir = new SuffixFormSet(Aor, "+Ir"); //gel-ir
     public static SuffixFormSet Aor_Ar = new SuffixFormSet(Aor, "+Ar"); //ser-er
     public static SuffixFormSet Aor_z = new SuffixFormSet(Aor, "z"); // gel-me-z
     public static SuffixFormSet Aor_EMPTY = new SuffixFormSet("Aor_EMPTY", Aor, "", TerminationType.NON_TERMINAL); // gel-me--yiz
-
-    public static Suffix AorPart = new Suffix("AorPart"); // convert to an Adjective
-    public static SuffixFormSet AorPart_Ir = new SuffixFormSet(AorPart, "+Ir"); //gel-ir
-    public static SuffixFormSet AorPart_Ar = new SuffixFormSet(AorPart, "+Ar"); //ser-er
-    public static SuffixFormSet AorPart_z = new SuffixFormSet(AorPart, "z"); // gel-me-z
 
     public static Suffix Prog = new Suffix("Prog");
     public static SuffixFormSet Prog_Iyor = new SuffixFormSet(Prog, "Iyor");
@@ -155,17 +156,24 @@ public class TurkishSuffixes {
     public static Suffix Fut = new Suffix("Fut");
     public static SuffixFormSet Fut_yAcAk = new SuffixFormSet(Fut, "+yAcA~k");
 
-    public static Suffix FutPart = new Suffix("FutPart");
-    public static SuffixFormSet FutPart_yAcAk = new SuffixFormSet(FutPart, "+yAcA~k");
-
     public static Suffix Past = new Suffix("Past");
     public static SuffixFormSet Past_dI = new SuffixFormSet(Past, ">dI");
+
+    public static Suffix Evid = new Suffix("Evid");
+    public static SuffixFormSet Evid_mIs = new SuffixFormSet(Evid, "mIş");
+
+    // ---------------------------------------------------
 
     public static Suffix PastPart = new Suffix("PastPart");
     public static SuffixFormSet PastPart_dIk = new SuffixFormSet(PastPart, ">dI~k");
 
-    public static Suffix Evid = new Suffix("Evid");
-    public static SuffixFormSet Evid_mIs = new SuffixFormSet(Evid, "mIş");
+    public static Suffix AorPart = new Suffix("AorPart"); // convert to an Adjective
+    public static SuffixFormSet AorPart_Ir = new SuffixFormSet(AorPart, "+Ir"); //gel-ir
+    public static SuffixFormSet AorPart_Ar = new SuffixFormSet(AorPart, "+Ar"); //ser-er
+    public static SuffixFormSet AorPart_z = new SuffixFormSet(AorPart, "z"); // gel-me-z
+
+    public static Suffix FutPart = new Suffix("FutPart");
+    public static SuffixFormSet FutPart_yAcAk = new SuffixFormSet(FutPart, "+yAcA~k");
 
     public static Suffix EvidPart = new Suffix("EvidPart");
     public static SuffixFormSet EvidPart_mIs = new SuffixFormSet(EvidPart, "mIş");
@@ -433,11 +441,6 @@ public class TurkishSuffixes {
             return forms;
         }
 
-        @Override
-        public SuffixFormSet getRoot(StemNode stemNode) {
-            return null;
-        }
-
         void addForms(SuffixFormSet... setz) {
 
             for (SuffixFormSet suffixFormSet : setz) {
@@ -453,15 +456,19 @@ public class TurkishSuffixes {
 
     public TurkishSuffixes() {
         Noun_Main.add(A3pl_lAr, A3sg_EMPTY);
+
         A3sg_EMPTY.add(POSSESSIVE_FORMS);
         A3pl_lAr.add(POSSESSIVE_FORMS);
+
+        Pnon_EMPTY.add(CASE_FORMS);
         P1sg_Im.add(CASE_FORMS);
         P2sg_In.add(CASE_FORMS);
         P3sg_sI.add(CASE_FORMS);
         P1pl_ImIz.add(CASE_FORMS);
         P2pl_InIz.add(CASE_FORMS);
         P3pl_lArI.add(CASE_FORMS);
-        
+
+
 
 
 /*

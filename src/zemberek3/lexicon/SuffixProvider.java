@@ -14,6 +14,4 @@ public interface SuffixProvider {
 
     Iterable<SuffixFormSet> getAllForms();
 
-    SuffixFormSet getRoot(StemNode stemNode);
-
 }
