@@ -1,9 +1,25 @@
 package zemberek3.lexicon.graph;
 
-public class DynamicLexiconGraph {
+import zemberek3.lexicon.DictionaryItem;
 
-    public void addStemNode(StemNode stemNode) {
-        
+import java.util.List;
+
+public class DynamicLexiconGraph {
+    
+
+    public void addItem(DictionaryItem item) {
+
+
+    }
+
+
+    /**
+     * Generates StemNode objects from the dictionary item.
+     * <p>Most of the time a single StemNode is generated.
+     * @param item DictionaryItem
+     * @return one or more StemNode objects.
+     */
+    public void a(DictionaryItem item) {
 
     }
 

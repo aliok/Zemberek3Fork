@@ -32,8 +32,7 @@ public class LexiconTreeTest {
 
 	private StemNode createStemNode(String surfaceForm) {
 		DictionaryItem di = new DictionaryItem(surfaceForm, surfaceForm, PrimaryPos.Noun, null, null, null);
-		StemNode sn = new StemNode(surfaceForm, di, null, null);
-		return sn;
+		return new StemNode(surfaceForm, di, TerminationType.TERMINAL);
 	}
 	
 	@Test

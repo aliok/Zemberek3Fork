@@ -1,5 +1,6 @@
 package zemberek3.lexicon;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import zemberek3.structure.AttributeSet;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class DictionaryItem {
     /**
      * If this item has special Suffix information. Such as only a special form of a suffix may follow this Item.
      */
-    public final ExclusiveSuffixData suffixData;
+    public ExclusiveSuffixData suffixData;
 
     public DictionaryItem(String lemma,
                           String root,

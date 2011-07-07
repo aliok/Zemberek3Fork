@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 import static zemberek3.lexicon.PhonAttr.*;
 import static zemberek3.structure.TurkishAlphabet.*;
 
-public class SuffixFormGenerator {
+public class SuffixNodeGenerator {
 
     public SuffixNode getEmptyNode(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
         return getNodes(attrs, expectations, set).get(0);
