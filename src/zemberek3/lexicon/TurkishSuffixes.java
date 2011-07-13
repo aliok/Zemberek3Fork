@@ -380,6 +380,8 @@ public class TurkishSuffixes {
     public static Suffix ParticleRoot = new Suffix("ParticleRoot");
     public static SuffixFormSet Particle_Main = new SuffixFormSet("Particle_Main", ParticleRoot, "");
 
+    // TODO: add time root. (with Rel_ki + Noun)
+
     public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA};
     public static final SuffixFormSet[] POSSESSIVE_FORMS = {Pnon_EMPTY, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
     public static final SuffixFormSet[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};

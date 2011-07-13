@@ -1,15 +1,18 @@
 package zemberek3.lexicon.graph;
 
-import zemberek3.lexicon.DictionaryItem;
-import zemberek3.lexicon.LexiconException;
-import zemberek3.lexicon.PhonAttr;
-import zemberek3.lexicon.RootAttr;
+import zemberek3.lexicon.*;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static zemberek3.lexicon.RootAttr.*;
+import static zemberek3.lexicon.TurkishSuffixes.*;
+import static zemberek3.lexicon.TurkishSuffixes.Adj_Exp_C;
+import static zemberek3.lexicon.TurkishSuffixes.PersPron_Main;
 
 
 /**
@@ -91,6 +94,8 @@ public class StemNodeGenerator {
         AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
         AttributeSet<PhoneticExpectation> originalExpectations = new AttributeSet<PhoneticExpectation>();
         AttributeSet<PhoneticExpectation> modifiedExpectations = new AttributeSet<PhoneticExpectation>();
+        ExclusiveSuffixData originalSuffixData = new ExclusiveSuffixData();
+        ExclusiveSuffixData modifiedSuffixData = new ExclusiveSuffixData();
 
         for (RootAttr attribute : dicItem.attrs.getAsList(RootAttr.class)) {
 
@@ -151,5 +156,93 @@ public class StemNodeGenerator {
         nodes[1] = new StemNode(modifiedSeq.toString(), item, TerminationType.NON_TERMINAL);
         return nodes;
     }
+
+
+    static class RootSuffixSetBuilder {
+        ExclusiveSuffixData original;
+        ExclusiveSuffixData modified;
+
+        RootSuffixSetBuilder(DictionaryItem item) {
+
+            switch (item.primaryPos) {
+                case Noun:
+                    getForNoun(item);
+                    break;
+                case Verb:
+                    getForVerb(item);
+                    break;
+            }
+        }
+
+
+        private void getForVerb(DictionaryItem item) {
+            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+                switch (attribute) {
+                    case Aorist_A:
+                        original.accepts.add(Aor_Ar, AorPart_Ar);
+                        original.rejects.add(Aor_Ir, AorPart_Ir);
+                        modified.accepts.add(Aor_Ar, AorPart_Ar);
+                        modified.rejects.add(Aor_Ir, AorPart_Ir);
+                        break;
+                    case Aorist_I:
+                        original.accepts.add(Aor_Ir, AorPart_Ir);
+                        original.rejects.add(Aor_Ar, AorPart_Ar);
+                        modified.accepts.add(Aor_Ir, AorPart_Ir);
+                        modified.rejects.add(Aor_Ar, AorPart_Ar);
+                        break;
+                    case Passive_In:
+                        original.accepts.add(Pass_In);
+                        original.rejects.add(Pass_nIl);
+                        break;
+                    case LastVowelDrop:
+                        original.rejects.add(Pass_nIl);
+                        modified.onlyAccepts.add(Pass_nIl);
+                        break;
+/*                    case VoicingOpt:
+                        modified.remove(Verb_Exp_C.getSuccessors());
+                        break;*/
+                    case ProgressiveVowelDrop:
+                        original.rejects.add(Prog_Iyor);
+                        modified.onlyAccepts.add(Prog_Iyor);
+                        break;
+                    case NonTransitive:
+                        original.rejects.add(Caus_t, Caus_tIr);
+                        modified.rejects.add(Caus_t, Caus_tIr);
+                        break;
+                    case Reflexive:
+                        original.accepts.add(Reflex_In);
+                        modified.accepts.add(Reflex_In);
+                        break;
+                    case Reciprocal:
+                        original.accepts.add(Recip_Is);
+                        modified.accepts.add(Recip_Is);
+                        break;
+                    case Causative_t:
+                        original.rejects.add(Caus_tIr);
+                        original.accepts.add(Caus_t);
+                        modified.rejects.add(Caus_tIr);
+                        modified.accepts.add(Caus_t);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        void getForNoun(DictionaryItem item) {
+            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+                switch (attribute) {
+                    case CompoundP3sg:
+                        original.accepts.add(TurkishSuffixes.Noun_Comp_P3sg.getSuccSetCopy());
+                        modified.onlyAccepts.add(TurkishSuffixes.Noun_Comp_P3sg_Root.getSuccSetCopy());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+    }
+
 
 }

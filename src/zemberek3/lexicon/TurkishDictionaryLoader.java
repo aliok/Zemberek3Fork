@@ -227,13 +227,13 @@ public class TurkishDictionaryLoader {
                 } else sets.add(set);
                 switch (token.charAt(0)) {
                     case '+':
-                        esd.accepts.addAll(sets);
+                        esd.accepts.add(sets);
                         break;
                     case '-':
-                        esd.rejects.addAll(sets);
+                        esd.rejects.add(sets);
                         break;
                     case '*':
-                        esd.onlyAccepts.addAll(sets);
+                        esd.onlyAccepts.add(sets);
                         break;
                 }
             }

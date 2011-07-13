@@ -391,10 +391,10 @@ public class LexiconGraph {
                     break;
             }
             if (item.suffixData != null) {
-                original.remove(item.suffixData.rejects);
-                original.add(item.suffixData.accepts);
-                modified.remove(item.suffixData.rejects);
-                modified.add(item.suffixData.accepts);
+                original.remove(item.suffixData.rejects.set);
+                original.add(item.suffixData.accepts.set);
+                modified.remove(item.suffixData.rejects.set);
+                modified.add(item.suffixData.accepts.set);
             }
         }
 
