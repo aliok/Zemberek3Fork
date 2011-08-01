@@ -32,7 +32,6 @@ public class SuffixFormSet {
         this.terminationType = terminationType;
     }
 
-
     public SuffixFormSet(String id, Suffix suffix, String generation,TerminationType terminationType) {
         this.id = id;
         this.suffix = suffix;

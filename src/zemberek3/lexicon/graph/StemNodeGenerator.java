@@ -94,8 +94,6 @@ public class StemNodeGenerator {
         AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
         AttributeSet<PhoneticExpectation> originalExpectations = new AttributeSet<PhoneticExpectation>();
         AttributeSet<PhoneticExpectation> modifiedExpectations = new AttributeSet<PhoneticExpectation>();
-        ExclusiveSuffixData originalSuffixData = new ExclusiveSuffixData();
-        ExclusiveSuffixData modifiedSuffixData = new ExclusiveSuffixData();
 
         for (RootAttr attribute : dicItem.attrs.getAsList(RootAttr.class)) {
 
@@ -142,38 +140,48 @@ public class StemNodeGenerator {
             }
         }
 
-        return new StemNode[]{
-                new StemNode(dicItem.root, dicItem, TerminationType.TERMINAL, originalExpectations),
-                new StemNode(modifiedSeq.toString(), dicItem, TerminationType.NON_TERMINAL, modifiedExpectations)
-        };
+        StemNode original = new StemNode(dicItem.root, dicItem, TerminationType.TERMINAL, originalAttrs, originalExpectations);
+        StemNode modified = new StemNode(modifiedSeq.toString(), dicItem, TerminationType.NON_TERMINAL, modifiedAttrs,  modifiedExpectations);
+
+        RootSuffixSetBuilder builder = new RootSuffixSetBuilder(dicItem);
+        original.exclusiveSuffixData = builder.original;
+        modified.exclusiveSuffixData = builder.modified;
+
+        return new StemNode[]{original, modified};
     }
 
 
     private StemNode[] handleP3sgCompounds(DictionaryItem item) {
+        //TODO: phonetic attribute calculation is missing.
         StemNode[] nodes = new StemNode[2];
         nodes[0] = new StemNode(item.lemma, item, TerminationType.TERMINAL);
         TurkicSeq modifiedSeq = new TurkicSeq(item.root, alphabet);
         nodes[1] = new StemNode(modifiedSeq.toString(), item, TerminationType.NON_TERMINAL);
+
+        RootSuffixSetBuilder builder = new RootSuffixSetBuilder(item);
+        nodes[0].exclusiveSuffixData = builder.original;
+        nodes[1].exclusiveSuffixData = builder.modified;
+
         return nodes;
     }
-
 
     static class RootSuffixSetBuilder {
         ExclusiveSuffixData original;
         ExclusiveSuffixData modified;
 
         RootSuffixSetBuilder(DictionaryItem item) {
+            PrimaryPos primaryPos = item.primaryPos;
 
-            switch (item.primaryPos) {
+            switch (primaryPos) {
                 case Noun:
                     getForNoun(item);
                     break;
                 case Verb:
                     getForVerb(item);
                     break;
+
             }
         }
-
 
         private void getForVerb(DictionaryItem item) {
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {

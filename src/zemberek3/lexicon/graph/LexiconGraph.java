@@ -524,5 +524,4 @@ public class LexiconGraph {
         }
 
     }
-
 }

@@ -1,9 +1,11 @@
 package zemberek3.lexicon.graph;
 
 import zemberek3.lexicon.DictionaryItem;
+import zemberek3.lexicon.PhonAttr;
 import zemberek3.structure.AttributeSet;
 
 public class StemNode extends MorphNode {
+
     DictionaryItem dictionaryItem;
     SuffixNode suffixRootNode;
 
@@ -13,13 +15,13 @@ public class StemNode extends MorphNode {
         this.suffixRootNode = suffixRootNode;
     }
 
-    public StemNode(String surfaceForm, DictionaryItem dictionaryItem, TerminationType termination, AttributeSet<PhoneticExpectation> expectations) {
-        super(surfaceForm, termination, expectations);
+    public StemNode(String surfaceForm, DictionaryItem dictionaryItem, TerminationType termination, AttributeSet<PhonAttr> phonAttrs, AttributeSet<PhoneticExpectation> expectations) {
+        super(surfaceForm, termination, phonAttrs, expectations);
         this.dictionaryItem = dictionaryItem;
     }
 
     public StemNode(String surfaceForm, DictionaryItem dictionaryItem, TerminationType termination) {
-        super(surfaceForm, termination, AttributeSet.<PhoneticExpectation>emptySet());
+        super(surfaceForm, termination, AttributeSet.<PhonAttr>emptySet(), AttributeSet.<PhoneticExpectation>emptySet());
         this.dictionaryItem = dictionaryItem;
     }
 

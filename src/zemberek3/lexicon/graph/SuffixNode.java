@@ -11,7 +11,6 @@ import java.util.Set;
 public class SuffixNode extends MorphNode {
 
     SuffixFormSet suffixSet;
-    AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
     Set<SuffixNode> successors = new HashSet<SuffixNode>(1);
 
     public SuffixNode(
@@ -20,9 +19,8 @@ public class SuffixNode extends MorphNode {
             AttributeSet<PhonAttr> attributes,
             AttributeSet<PhoneticExpectation> expectations,
             TerminationType termination) {
-        super(form, termination, expectations);
+        super(form, termination, attributes, expectations);
         this.suffixSet = suffixSet;
-        this.attributes = attributes;
     }
 
     public SuffixNode(
@@ -30,7 +28,7 @@ public class SuffixNode extends MorphNode {
             String form,
             AttributeSet<PhonAttr> attributes,
             TerminationType termination) {
-        super(form, termination, AttributeSet.<PhoneticExpectation>emptySet());
+        super(form, termination, attributes, AttributeSet.<PhoneticExpectation>emptySet());
         this.suffixSet = suffixSet;
         this.attributes = attributes;
     }
