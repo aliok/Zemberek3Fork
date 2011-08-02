@@ -15,7 +15,7 @@ public class SuffixFormSet {
     // generation word.
     public final String generation;
     // can be an end suffix.
-    TerminationType terminationType;
+    TerminationType terminationType = TerminationType.TERMINAL;
 
     private Set<SuffixFormSet> successors = new HashSet<SuffixFormSet>();
 
@@ -112,5 +112,29 @@ public class SuffixFormSet {
 
     public String toString() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SuffixFormSet that = (SuffixFormSet) o;
+
+        if (!generation.equals(that.generation)) return false;
+        if (!successors.equals(that.successors)) return false;
+        if (!suffix.equals(that.suffix)) return false;
+        if (terminationType != that.terminationType) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = suffix.hashCode();
+        result = 31 * result + generation.hashCode();
+        result = 31 * result + terminationType.hashCode();
+        result = 31 * result + successors.hashCode();
+        return result;
     }
 }

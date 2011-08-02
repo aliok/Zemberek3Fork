@@ -60,6 +60,7 @@ public class SuffixNode extends MorphNode {
         if (!attributes.equals(that.attributes)) return false;
         if (!expectations.equals(that.expectations)) return false;
         if (!suffixSet.equals(that.suffixSet)) return false;
+        if (!exclusiveSuffixData .equals(that.exclusiveSuffixData)) return false;
         if (!termination.equals(that.termination)) return false;
         return true;
     }
@@ -70,6 +71,7 @@ public class SuffixNode extends MorphNode {
         result = 31 * result + attributes.hashCode();
         result = 31 * result + expectations.hashCode();
         result = 31 * result + surfaceForm.hashCode();
+        result = 31 * result + exclusiveSuffixData.hashCode();
         result = 31 * result + termination.hashCode();
         return result;
     }

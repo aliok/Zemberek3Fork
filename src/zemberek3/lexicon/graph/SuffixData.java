@@ -59,4 +59,20 @@ public class SuffixData {
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SuffixData that = (SuffixData) o;
+
+        if (!set.equals(that.set)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return set.hashCode();
+    }
 }
