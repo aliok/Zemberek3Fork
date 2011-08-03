@@ -41,4 +41,34 @@ public class StemNode extends MorphNode {
     public String toString() {
         return surfaceForm + ":" + dictionaryItem;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StemNode stemNode = (StemNode) o;
+
+        if (!dictionaryItem.equals(stemNode.dictionaryItem)) return false;
+        if (suffixRootNode != null ? !suffixRootNode.equals(stemNode.suffixRootNode) : stemNode.suffixRootNode != null)
+            return false;
+        if (!attributes.equals(stemNode.attributes)) return false;
+        if (!exclusiveSuffixData.equals(stemNode.exclusiveSuffixData)) return false;
+        if (!expectations.equals(stemNode.expectations)) return false;
+        if (!surfaceForm.equals(stemNode.surfaceForm)) return false;
+        if (termination != stemNode.termination) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = dictionaryItem.hashCode();
+        result = 31 * result + (suffixRootNode != null ? suffixRootNode.hashCode() : 0);
+        result = 31 * result + termination.hashCode();
+        result = 31 * result + expectations.hashCode();
+        result = 31 * result + attributes.hashCode();
+        result = 31 * result + exclusiveSuffixData.hashCode();
+        return result;
+    }
 }
