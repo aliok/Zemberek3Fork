@@ -15,7 +15,11 @@ public class StemNode extends MorphNode {
         this.suffixRootNode = suffixRootNode;
     }
 
-    public StemNode(String surfaceForm, DictionaryItem dictionaryItem, TerminationType termination, AttributeSet<PhonAttr> phonAttrs, AttributeSet<PhoneticExpectation> expectations) {
+    public StemNode(String surfaceForm,
+                    DictionaryItem dictionaryItem,
+                    TerminationType termination,
+                    AttributeSet<PhonAttr> phonAttrs,
+                    AttributeSet<PhoneticExpectation> expectations) {
         super(surfaceForm, termination, phonAttrs, expectations);
         this.dictionaryItem = dictionaryItem;
     }

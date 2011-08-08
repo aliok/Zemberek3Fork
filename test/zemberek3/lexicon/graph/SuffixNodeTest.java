@@ -3,6 +3,7 @@ package zemberek3.lexicon.graph;
 import com.google.common.collect.Sets;
 import org.junit.Assert;
 import org.junit.Test;
+import zemberek3.lexicon.ExclusiveSuffixData;
 import zemberek3.lexicon.PhonAttr;
 import zemberek3.lexicon.Suffix;
 import zemberek3.lexicon.SuffixFormSet;
@@ -36,6 +37,7 @@ public class SuffixNodeTest {
                 "ler",
                 new AttributeSet<PhonAttr>(PhonAttr.LastVowelBack),
                 new AttributeSet<PhoneticExpectation>(PhoneticExpectation.ConsonantStart),
+                new ExclusiveSuffixData(),
                 TerminationType.TERMINAL
         );
 

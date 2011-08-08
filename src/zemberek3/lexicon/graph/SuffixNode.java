@@ -1,5 +1,6 @@
 package zemberek3.lexicon.graph;
 
+import zemberek3.lexicon.ExclusiveSuffixData;
 import zemberek3.lexicon.PhonAttr;
 import zemberek3.lexicon.SuffixFormSet;
 import zemberek3.structure.AttributeSet;
@@ -18,8 +19,9 @@ public class SuffixNode extends MorphNode {
             String form,
             AttributeSet<PhonAttr> attributes,
             AttributeSet<PhoneticExpectation> expectations,
+            ExclusiveSuffixData exclusiveSuffixData,
             TerminationType termination) {
-        super(form, termination, attributes, expectations);
+        super(form, termination, attributes, expectations, exclusiveSuffixData);
         this.suffixSet = suffixSet;
     }
 
@@ -28,7 +30,8 @@ public class SuffixNode extends MorphNode {
             String form,
             AttributeSet<PhonAttr> attributes,
             TerminationType termination) {
-        super(form, termination, attributes, AttributeSet.<PhoneticExpectation>emptySet());
+        // TODO: expectations and exclusive suffix data is empty.
+        super(form, termination, attributes, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData());
         this.suffixSet = suffixSet;
         this.attributes = attributes;
     }
@@ -60,7 +63,7 @@ public class SuffixNode extends MorphNode {
         if (!attributes.equals(that.attributes)) return false;
         if (!expectations.equals(that.expectations)) return false;
         if (!suffixSet.equals(that.suffixSet)) return false;
-        if (!exclusiveSuffixData .equals(that.exclusiveSuffixData)) return false;
+        if (!exclusiveSuffixData.equals(that.exclusiveSuffixData)) return false;
         if (!termination.equals(that.termination)) return false;
         return true;
     }

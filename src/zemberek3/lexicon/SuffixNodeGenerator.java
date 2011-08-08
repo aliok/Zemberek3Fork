@@ -19,17 +19,25 @@ import static zemberek3.structure.TurkishAlphabet.*;
 
 public class SuffixNodeGenerator {
 
-    public SuffixNode getEmptyNode(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
-        return getNodes(attrs, expectations, set).get(0);
+    public SuffixNode getEmptyNode(
+            AttributeSet<PhonAttr> attrs,
+            AttributeSet<PhoneticExpectation> expectations,
+            ExclusiveSuffixData suffixData,
+            SuffixFormSet set) {
+        return getNodes(attrs, expectations, suffixData, set).get(0);
     }
 
-    public List<SuffixNode> getNodes(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
+    public List<SuffixNode> getNodes(
+            AttributeSet<PhonAttr> attrs,
+            AttributeSet<PhoneticExpectation> expectations,
+            ExclusiveSuffixData suffixData,
+            SuffixFormSet set) {
 
         List<SuffixToken> tokenList = Lists.newArrayList(new SuffixStringTokenizer(set.generation));
 
         // zero length token
         if (tokenList.size() == 0) {
-            return Lists.newArrayList(new SuffixNode(set, "", attrs.copy(), expectations.copy(), set.terminationType));
+            return Lists.newArrayList(new SuffixNode(set, "", attrs.copy(), expectations.copy(), suffixData, set.terminationType));
         }
 
         List<SuffixNode> forms = new ArrayList<SuffixNode>(1);
@@ -122,6 +130,7 @@ public class SuffixNodeGenerator {
                                 seq.toString(),
                                 defineMorphemicAttributes(seq, attrs),
                                 new AttributeSet<PhoneticExpectation>(PhoneticExpectation.VowelStart),
+                                suffixData,
                                 set.terminationType));
                         seq.changeLast(token.letter);
                         forms.add(new SuffixNode(
@@ -129,6 +138,7 @@ public class SuffixNodeGenerator {
                                 seq.toString(),
                                 defineMorphemicAttributes(seq, attrs),
                                 new AttributeSet<PhoneticExpectation>(PhoneticExpectation.ConsonantStart),
+                                suffixData,
                                 set.terminationType));
                     }
                     break;

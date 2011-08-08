@@ -133,7 +133,7 @@ public class SuffixNodeGeneratorTest {
 
     private SuffixNode getFirstNodeNoExpectatios(SuffixNodeGenerator sfg, AttributeSet<PhonAttr> attributes, String generation) {
         SuffixFormSet dummySet = new SuffixFormSet("dummy-form", new Suffix("dummy"), generation);
-        return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), dummySet).get(0);
+        return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), dummySet).get(0);
     }
 
     private class Triple {

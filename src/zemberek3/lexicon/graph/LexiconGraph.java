@@ -53,7 +53,9 @@ public class LexiconGraph {
         RootSuffixSetBuilder rsb = new RootSuffixSetBuilder(dictionaryItem);
         SuffixFormSet set = rsb.original;
         AttributeSet<PhonAttr> phoneticAttrs = calculateAttributes(dictionaryItem.root);
-        SuffixNode node = addOrReturnExisting(set, nodeGenerator.getEmptyNode(phoneticAttrs, AttributeSet.<PhoneticExpectation>emptySet(), set));
+        SuffixNode node = addOrReturnExisting(
+                set,
+                nodeGenerator.getEmptyNode(phoneticAttrs, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), set));
         return new StemNode(dictionaryItem.root, dictionaryItem, node, TerminationType.TERMINAL);
     }
 
@@ -162,8 +164,8 @@ public class LexiconGraph {
         }
         RootSuffixSetBuilder rssb = new RootSuffixSetBuilder(dicItem);
 
-        SuffixNode origForm = addOrReturnExisting(rssb.original, nodeGenerator.getEmptyNode(originalAttrs, originalExpectations, rssb.original));
-        SuffixNode modiForm = addOrReturnExisting(rssb.modified, nodeGenerator.getEmptyNode(modifiedAttrs, modifiedExpectations, rssb.modified));
+        SuffixNode origForm = addOrReturnExisting(rssb.original, nodeGenerator.getEmptyNode(originalAttrs, originalExpectations, new ExclusiveSuffixData(), rssb.original));
+        SuffixNode modiForm = addOrReturnExisting(rssb.modified, nodeGenerator.getEmptyNode(modifiedAttrs, modifiedExpectations, new ExclusiveSuffixData(), rssb.modified));
 
         return new StemNode[]{
                 new StemNode(dicItem.root, dicItem, origForm, TerminationType.TERMINAL),
@@ -194,11 +196,11 @@ public class LexiconGraph {
     }
 
     public SuffixNode getSuffixRootNode(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
-        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, expectations, set));
+        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, expectations, new ExclusiveSuffixData(), set));
     }
 
     public SuffixNode getSuffixRootNode(AttributeSet<PhonAttr> attrs, SuffixFormSet set) {
-        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, AttributeSet.<PhoneticExpectation>emptySet(), set));
+        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), set));
     }
 
     // handle stem changes demek-diyecek , beni-bana
@@ -273,7 +275,7 @@ public class LexiconGraph {
         for (SuffixFormSet rootFormSet : startForms) {
             for (SuffixFormSet succSet : rootFormSet.getSuccessorsIterable()) {
                 for (SuffixNode node : suffixFormMap.get(rootFormSet)) {
-                    List<SuffixNode> nodesInSuccessor = nodeGenerator.getNodes(node.attributes, node.expectations, succSet);
+                    List<SuffixNode> nodesInSuccessor = nodeGenerator.getNodes(node.attributes, node.expectations, node.exclusiveSuffixData, succSet);
                     for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
                         if (!nodeExists(succSet, nodeInSuccessor)) {
                             toProcess.add(succSet);

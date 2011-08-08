@@ -3,27 +3,38 @@ package zemberek3.lexicon.graph;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.*;
 
 import java.io.IOException;
 import java.util.*;
 
-public class LexiconGraphTest {
+public class DynamicLexiconGraphTest {
+
+    TestSuffixes1 suffixes = new TestSuffixes1();
+    StemNodeGenerator stemNodeGenerator = new StemNodeGenerator();
+    SuffixNodeGenerator suffixNodeGenerator = new SuffixNodeGenerator();
+    TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixes.getSuffixProvider());
 
     @Test
     public void testSimpleNouns() throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
         String[] nouns = {"elma", "armut"};
         List<DictionaryItem> items = getItems(nouns, suffixProvider);
-        LexiconGraph graph = new LexiconGraph(items, suffixProvider);
-        graph.generate();
-        Assert.assertEquals(3, graph.getStems().size());
-        StemNode nodeArmud = getNode("armud", graph);
-        Assert.assertNotNull(nodeArmud);
-        Assert.assertEquals("armud", nodeArmud.surfaceForm);
-        Set<SuffixFormSet> sets = nodeArmud.getSuffixRootNode().suffixSet.getSuccSetCopy();
+        DynamicLexiconGraph graph = new DynamicLexiconGraph();
+        for (DictionaryItem item : items) {
+            graph.addDictionaryItem(item);
+        }
+        //graph.generate();
+        //Assert.assertEquals(3, graph.getStemNodes().size());
+        //StemNode nodeArmud = getNode("armud", graph);
+        //Assert.assertNotNull(nodeArmud);
+        //Assert.assertEquals("armud", nodeArmud.surfaceForm);
+        //Set<SuffixFormSet> sets = nodeArmud.getRootSuffixNode().suffixSet.getSuccSetCopy();
+    }
+
+    private DictionaryItem getDictionaryItem(String line) {
+        return loader.loadFromString(line);
     }
 
     private List<DictionaryItem> getItems(String[] lines, SuffixProvider suffixProvider) {

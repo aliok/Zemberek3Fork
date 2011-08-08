@@ -16,11 +16,32 @@ public abstract class MorphNode {
         this.termination = termination;
     }
 
-    protected MorphNode(String surfaceForm, TerminationType termination, AttributeSet<PhonAttr> attributes, AttributeSet<PhoneticExpectation> expectations) {
+    protected MorphNode(
+            String surfaceForm,
+            TerminationType termination,
+            AttributeSet<PhonAttr> attributes,
+            AttributeSet<PhoneticExpectation> expectations,
+            ExclusiveSuffixData exclusiveSuffixData
+    ) {
         this.surfaceForm = surfaceForm;
         this.termination = termination;
+        this.attributes = attributes;
+        this.expectations = expectations;
+        this.exclusiveSuffixData = exclusiveSuffixData;
+    }
+
+    protected MorphNode(
+            String surfaceForm,
+            TerminationType termination,
+            AttributeSet<PhonAttr> attributes,
+            AttributeSet<PhoneticExpectation> expectations
+    ) {
+        this.surfaceForm = surfaceForm;
+        this.termination = termination;
+        this.attributes = attributes;
         this.expectations = expectations;
     }
+
 
     public AttributeSet<PhoneticExpectation> getExpectations() {
         return expectations;
