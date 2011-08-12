@@ -16,7 +16,6 @@ public class StemNodeGeneratorTest {
         DictionaryItem odun = getDictionaryItem("odun");
         StemNode[] odunNodes = generator.generate(odun);
         Assert.assertEquals(1, odunNodes.length);
-
 	}
 
     private DictionaryItem getDictionaryItem(String line) {
@@ -44,6 +43,11 @@ public class StemNodeGeneratorTest {
         @Override
         public Iterable<SuffixFormSet> getAllForms() {
             return null;
+        }
+
+        @Override
+        public SuffixFormSet getRootForm(DictionaryItem item) {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
         }
     }
 }

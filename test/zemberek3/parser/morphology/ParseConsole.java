@@ -4,6 +4,7 @@ import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.SuffixProvider;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
+import zemberek3.lexicon.graph.DynamicLexiconGraph;
 import zemberek3.lexicon.graph.LexiconGraph;
 
 import java.io.File;
@@ -33,15 +34,15 @@ public class ParseConsole {
     }
 
     private SimpleParser simpleParser(File dictionary) throws IOException {
-        LexiconGraph graph = getLexiconGraph(dictionary);
+        DynamicLexiconGraph graph = getLexiconGraph(dictionary);
         return new SimpleParser(graph);
     }
 
-    private LexiconGraph getLexiconGraph(File dictionary) throws IOException {
+    private DynamicLexiconGraph getLexiconGraph(File dictionary) throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
         List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(dictionary);
-        LexiconGraph graph = new LexiconGraph(items, suffixProvider);
-        graph.generate();
+        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
+        graph.addDictionaryItems(items);
         return graph;
     }
 

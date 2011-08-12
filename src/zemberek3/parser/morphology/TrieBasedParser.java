@@ -1,20 +1,17 @@
 package zemberek3.parser.morphology;
 
 import com.google.common.collect.Lists;
-import zemberek3.lexicon.graph.LexiconGraph;
-import zemberek3.lexicon.graph.LexiconTree;
-import zemberek3.lexicon.graph.StemNode;
-import zemberek3.lexicon.graph.SuffixNode;
+import zemberek3.lexicon.graph.*;
 
 import java.util.List;
 
 public class TrieBasedParser implements MorphParser {
-    LexiconGraph graph;
+    DynamicLexiconGraph graph;
     LexiconTree lexicon = new LexiconTree();
 
-    public TrieBasedParser(LexiconGraph graph) {
+    public TrieBasedParser(DynamicLexiconGraph graph) {
         this.graph = graph;
-        for (StemNode stemNode : graph.getStems()) {
+        for (StemNode stemNode : graph.getStemNodes()) {
             lexicon.add(stemNode);
         }
     }

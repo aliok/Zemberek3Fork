@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.Suffix;
+import zemberek3.lexicon.graph.DynamicLexiconGraph;
 import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
@@ -15,13 +16,13 @@ import java.util.Map;
 
 public class SimpleGenerator {
 
-    LexiconGraph graph;
+    DynamicLexiconGraph graph;
     ArrayListMultimap<DictionaryItem, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<DictionaryItem, StemNode> singeStems = Maps.newHashMap();
 
-    public SimpleGenerator(LexiconGraph graph) {
+    public SimpleGenerator(DynamicLexiconGraph graph) {
         this.graph = graph;
-        for (StemNode stemNode : graph.getStems()) {
+        for (StemNode stemNode : graph.getStemNodes()) {
             final DictionaryItem item = stemNode.getDictionaryItem();
             if (multiStems.containsKey(item)) {
                 multiStems.put(item, stemNode);

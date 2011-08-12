@@ -2,10 +2,7 @@ package zemberek3.parser.morphology;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
-import zemberek3.lexicon.graph.LexiconGraph;
-import zemberek3.lexicon.graph.LexiconTree;
-import zemberek3.lexicon.graph.StemNode;
-import zemberek3.lexicon.graph.SuffixNode;
+import zemberek3.lexicon.graph.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,13 +10,13 @@ import java.util.Map;
 
 public class SimpleParser implements MorphParser {
 
-    LexiconGraph graph;
+    DynamicLexiconGraph graph;
     ArrayListMultimap<String, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<String, StemNode> singeStems = new HashMap<String, StemNode>();
 
-    public SimpleParser(LexiconGraph graph) {
+    public SimpleParser(DynamicLexiconGraph graph) {
         this.graph = graph;
-        for (StemNode stemNode : graph.getStems()) {
+        for (StemNode stemNode : graph.getStemNodes()) {
             final String surfaceForm = stemNode.surfaceForm;
             if (multiStems.containsKey(surfaceForm)) {
                 multiStems.put(surfaceForm, stemNode);

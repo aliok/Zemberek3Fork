@@ -44,7 +44,13 @@ public class StemNodeGenerator {
         if (hasModifierAttribute(item)) {
             return generateModifiedRootNodes(item);
         } else {
-            return new StemNode[]{new StemNode(item.root, item, TerminationType.TERMINAL)};
+            AttributeSet<PhonAttr> phoneticAttributes = calculateAttributes(item.root);
+            return new StemNode[]{new StemNode(
+                    item.root,
+                    item,
+                    TerminationType.TERMINAL,
+                    phoneticAttributes,
+                    AttributeSet.<PhoneticExpectation>emptySet())};
         }
     }
 
@@ -166,8 +172,8 @@ public class StemNodeGenerator {
     }
 
     static class RootSuffixSetBuilder {
-        ExclusiveSuffixData original;
-        ExclusiveSuffixData modified;
+        ExclusiveSuffixData original = new ExclusiveSuffixData();
+        ExclusiveSuffixData modified = new ExclusiveSuffixData();
 
         RootSuffixSetBuilder(DictionaryItem item) {
             PrimaryPos primaryPos = item.primaryPos;

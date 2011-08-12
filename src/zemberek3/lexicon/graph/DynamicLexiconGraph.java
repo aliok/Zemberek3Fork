@@ -16,7 +16,13 @@ public class DynamicLexiconGraph {
     StemNodeGenerator stemNodeGenerator = new StemNodeGenerator();
     SuffixNodeGenerator suffixNodeGenerator = new SuffixNodeGenerator();
 
+    final SuffixProvider suffixProvider;
+
     private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newConcurrentMap();
+
+    public DynamicLexiconGraph(SuffixProvider suffixProvider) {
+            this.suffixProvider = suffixProvider;
+    }
 
     public void addDictionaryItem(DictionaryItem item) {
 
@@ -24,14 +30,30 @@ public class DynamicLexiconGraph {
         for (StemNode stem : stems) {
             if (!stemNodes.contains(stem)) {
                 SuffixNode rootSuffixNode = getRootSuffixNode(stem);
-                stem.suffixRootNode = rootSuffixNode;
-                if (!rootSuffixNodeMap.containsKey(rootSuffixNode))
+                if (!rootSuffixNodeMap.containsKey(rootSuffixNode)) {
+                    // check if it already exist. If it exists, use the existing one or add the new one.
+                    rootSuffixNode = addOrRetrieveExisting(rootSuffixNode);
                     connectSuffixNodes(rootSuffixNode);
+                }
+                // connect stem to suffix root node.
+                stem.suffixRootNode = rootSuffixNode;
                 stemNodes.add(stem);
             } else {
                 // duplicate stem!
                 System.out.println("Stem Node:" + stem + " already exist.");
             }
+        }
+    }
+
+    public void addDictionaryItems(DictionaryItem... items) {
+        for (DictionaryItem item : items) {
+            addDictionaryItem(item);
+        }
+    }
+
+    public void addDictionaryItems(List<DictionaryItem> items) {
+        for (DictionaryItem item : items) {
+            addDictionaryItem(item);
         }
     }
 
@@ -47,7 +69,7 @@ public class DynamicLexiconGraph {
     }
 
     public SuffixNode getRootSuffixNode(StemNode node) {
-        SuffixFormSet set = getRootForm(node.dictionaryItem);
+        SuffixFormSet set = suffixProvider.getRootForm(node.dictionaryItem);
         // construct a new suffix node.
         SuffixNode suffixNode = new SuffixNode(
                 set,
@@ -56,22 +78,7 @@ public class DynamicLexiconGraph {
                 node.expectations,
                 node.exclusiveSuffixData,
                 node.termination);
-        // check if it already exist. If it exists, use the existing one or add the new one.
-        suffixNode = addOrRetrieveExisting(suffixNode);
-
         return suffixNode;
-    }
-
-    public SuffixFormSet getRootForm(DictionaryItem item) {
-        switch (item.primaryPos) {
-            case Noun:
-                return TurkishSuffixes.Noun_Main;
-            case Verb:
-                return TurkishSuffixes.Verb_Main;
-            default:
-                // TODO: for now return noun for all but verbs.
-                return TurkishSuffixes.Noun_Main;
-        }
     }
 
 

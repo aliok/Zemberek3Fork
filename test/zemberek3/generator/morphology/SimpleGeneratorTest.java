@@ -12,6 +12,7 @@ import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.SuffixProvider;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
+import zemberek3.lexicon.graph.DynamicLexiconGraph;
 import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.parser.morphology.ParseResult;
 import zemberek3.parser.morphology.SimpleParser;
@@ -24,7 +25,7 @@ import java.util.List;
 public class SimpleGeneratorTest {
     @Test
     public void regenerateTest() throws IOException {
-        LexiconGraph graph = getLexicon();
+        DynamicLexiconGraph graph = getLexicon();
         SimpleParser parser = new SimpleParser(graph);
         SimpleGenerator generator = new SimpleGenerator(graph);
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
@@ -39,7 +40,7 @@ public class SimpleGeneratorTest {
 
     @Test
     public void morphemeGenerationTest() throws IOException {
-        LexiconGraph graph = getLexicon();
+        DynamicLexiconGraph graph = getLexicon();
         SimpleParser parser = new SimpleParser(graph);
         SimpleGenerator generator = new SimpleGenerator(graph);
         List<String> testLines = SimpleTextReader.trimmingUTF8Reader(new File("test/data/separate-morphemes.txt")).asStringList();
@@ -61,7 +62,7 @@ public class SimpleGeneratorTest {
     @Test
     @Ignore("Performance Test")
     public void speedTest() throws IOException {
-        LexiconGraph graph = getLexicon();
+        DynamicLexiconGraph graph = getLexicon();
         SimpleParser parser = new SimpleParser(graph);
         SimpleGenerator generator = new SimpleGenerator(graph);
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
@@ -84,11 +85,11 @@ public class SimpleGeneratorTest {
         System.out.println("Speed:" + (iteration * 1000 * parses.size() / elapsed) + " words/second");
     }
 
-    private LexiconGraph getLexicon() throws IOException {
+    private DynamicLexiconGraph getLexicon() throws IOException {
         SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
-        LexiconGraph graph = new LexiconGraph(items, suffixProvider);
-        graph.generate();
+        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
+        graph.addDictionaryItems(items);
         return graph;
     }
 }

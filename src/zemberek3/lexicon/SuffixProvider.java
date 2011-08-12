@@ -14,4 +14,6 @@ public interface SuffixProvider {
 
     Iterable<SuffixFormSet> getAllForms();
 
+    SuffixFormSet getRootForm(DictionaryItem item);
+
 }
