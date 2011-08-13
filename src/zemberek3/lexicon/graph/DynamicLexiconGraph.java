@@ -21,7 +21,7 @@ public class DynamicLexiconGraph {
     private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newConcurrentMap();
 
     public DynamicLexiconGraph(SuffixProvider suffixProvider) {
-            this.suffixProvider = suffixProvider;
+        this.suffixProvider = suffixProvider;
     }
 
     public void addDictionaryItem(DictionaryItem item) {
@@ -83,6 +83,7 @@ public class DynamicLexiconGraph {
 
 
     private void connectSuffixNodes(SuffixNode node) {
+        System.out.println("Processing:" + node);
         // get the successive form sets for this node.
         Set<SuffixFormSet> successors = node.suffixSet.getSuccessors();
         // iterate over form sets.
@@ -90,12 +91,17 @@ public class DynamicLexiconGraph {
             // get the nodes for the  suffix form.
             List<SuffixNode> nodesInSuccessor = suffixNodeGenerator.getNodes(node.attributes, node.expectations, node.exclusiveSuffixData, succSet);
             for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
+                boolean recurse = false;
+                if (!nodeExists(succSet, nodeInSuccessor)) {
+                    recurse = true;
+                }
                 nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
                 if (node.expectations.isEmpty() ||
                         (node.expectations.contains(PhoneticExpectation.ConsonantStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterConsonant)) ||
                         (node.expectations.contains(PhoneticExpectation.VowelStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterVowel)))
                     node.addSuccNode(nodeInSuccessor);
-                if (!nodeExists(succSet, nodeInSuccessor)) {
+                if (recurse) {
+                    System.out.println("recurse:" + nodeInSuccessor);
                     connectSuffixNodes(nodeInSuccessor);
                 }
             }
@@ -104,7 +110,7 @@ public class DynamicLexiconGraph {
 
     private boolean nodeExists(SuffixFormSet set, SuffixNode newNode) {
         Set<SuffixNode> nodes = suffixFormMap.get(set);
-        return nodes.contains(newNode);
+        return nodes!=null && nodes.contains(newNode);
     }
 
     public SuffixNode addOrReturnExisting(SuffixFormSet set, SuffixNode newNode) {

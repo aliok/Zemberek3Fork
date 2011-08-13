@@ -14,7 +14,7 @@ public class DynamicLexiconGraphTest {
     @Test
     public void testSimpleNouns() throws IOException {
         SuffixProvider suffixProvider =getProvider1();
-        String[] nouns = {"elma", "armut"};
+        String[] nouns = {"elma"};
         List<DictionaryItem> items = getItems(nouns, suffixProvider);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         for (DictionaryItem item : items) {
@@ -69,6 +69,7 @@ public class DynamicLexiconGraphTest {
         DynamicSuffixes.Noun_Main.add(A3pl_lAr, A3sg_EMPTY);
         A3sg_EMPTY.add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
         A3pl_lAr.add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
+        Pnon_EMPTY.add(Nom_EMPTY, Dat_yA, Loc_dA);
         P1sg_Im.add(Nom_EMPTY, Dat_yA, Loc_dA);
         P3sg_sI.add(Nom_EMPTY, Dat_yA, Loc_dA);
         P1pl_ImIz.add(Nom_EMPTY, Dat_yA, Loc_dA);

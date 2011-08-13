@@ -58,6 +58,7 @@ public class SimpleParserTest {
         A3sg_EMPTY.add(P1sg_Im, Pnon_EMPTY);
         A3pl_lAr.add(P1sg_Im, Pnon_EMPTY);
         P1sg_Im.add(Nom_EMPTY, Dat_yA);
+        Pnon_EMPTY.add(Nom_EMPTY, Dat_yA);
 
         suffixes.addSuffixForms(
                 DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3pl_lAr,
