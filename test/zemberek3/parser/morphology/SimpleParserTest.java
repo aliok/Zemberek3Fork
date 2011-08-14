@@ -5,6 +5,7 @@ import zemberek3.lexicon.*;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
 import zemberek3.lexicon.graph.DynamicSuffixes;
 import zemberek3.lexicon.graph.Suffixes;
+import zemberek3.lexicon.graph.TerminationType;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,13 +17,13 @@ public class SimpleParserTest {
     public void testSimpleNouns() throws IOException {
         SuffixProvider suffixProvider = getProvider1();
 
-        String[] nouns = {"elma", "armut"};
+        String[] nouns = {"armut"};
         List<DictionaryItem> items = getItems(nouns, suffixProvider);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);
 
         SimpleParser parser = new SimpleParser(graph);
-        List<ParseResult> results = parser.parse("elmalar");
+        List<ParseResult> results = parser.parse("armutlarıma");
         for (ParseResult result : results) {
             System.out.println(result.asParseString());
         }
@@ -44,11 +45,11 @@ public class SimpleParserTest {
         Suffix P1sg = new Suffix("P1sg");
         SuffixFormSet P1sg_Im = new SuffixFormSet(P1sg, "Im");
         Suffix Pnon = new Suffix("Pnon");
-        SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_EMPTY", Pnon, "");
+        SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_EMPTY", Pnon, "", TerminationType.TRANSFER);
         Suffix Nom = new Suffix("Nom");
-        SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_EMPTY", Nom, ""); // ben
+        SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_EMPTY", Nom, "", TerminationType.TRANSFER);
         Suffix A3sg = new Suffix("A3sg");
-        SuffixFormSet A3sg_EMPTY = new SuffixFormSet("A3sg_EMPTY", A3sg, ""); // gel-di-, o-
+        SuffixFormSet A3sg_EMPTY = new SuffixFormSet("A3sg_EMPTY", A3sg, "", TerminationType.TRANSFER);
         Suffix A3pl = new Suffix("A3pl");
         SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
 
@@ -63,6 +64,27 @@ public class SimpleParserTest {
         suffixes.addSuffixForms(
                 DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3pl_lAr,
                 P1sg_Im, Pnon_EMPTY, Nom_EMPTY, Dat_yA);
+
+        return suffixes.getSuffixProvider();
+    }
+
+    public SuffixProvider getProvider2() {
+        Suffix P1sg = new Suffix("P1sg");
+        SuffixFormSet P1sg_Im = new SuffixFormSet(P1sg, "Im");
+        Suffix Pnon = new Suffix("Pnon");
+        SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_EMPTY", Pnon, "", TerminationType.TRANSFER);
+        Suffix A3sg = new Suffix("A3sg");
+        SuffixFormSet A3sg_EMPTY = new SuffixFormSet("A3sg_EMPTY", A3sg, "", TerminationType.TRANSFER);
+        Suffix A3pl = new Suffix("A3pl");
+        SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
+
+        DynamicSuffixes suffixes = new DynamicSuffixes();
+
+        DynamicSuffixes.Noun_Main.add(A3pl_lAr, A3sg_EMPTY);
+        A3sg_EMPTY.add(P1sg_Im, Pnon_EMPTY);
+        A3pl_lAr.add(P1sg_Im, Pnon_EMPTY);
+
+        suffixes.addSuffixForms( DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3pl_lAr,  P1sg_Im, Pnon_EMPTY);
 
         return suffixes.getSuffixProvider();
     }

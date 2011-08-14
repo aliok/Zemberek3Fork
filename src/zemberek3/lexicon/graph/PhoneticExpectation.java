@@ -15,4 +15,5 @@ public enum PhoneticExpectation implements IndexedEnum {
     public int getBitIndex() {
         return index;
     }
+
 }

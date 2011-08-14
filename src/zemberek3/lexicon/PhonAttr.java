@@ -4,25 +4,28 @@ import zemberek3.structure.BitEnumMap;
 import zemberek3.structure.IndexedEnum;
 
 public enum PhonAttr implements IndexedEnum {
-    LastVowelFrontal,
-    LastVowelBack,
-    LastVowelRounded,
-    LastVowelUnrounded,
-    LastLetterVoiceless,
-    LastLetterNotVoiceless,
-    LastLetterVoicelessStop,
-    LastLetterVowel,
-    LastLetterConsonant,
-    FirstLetterVowel,
-    FirstLetterConsonant,
-    HasNoVowel;
-    int index;
+    LastVowelFrontal("LVF"),
+    LastVowelBack("LVB"),
+    LastVowelRounded("LVR"),
+    LastVowelUnrounded("LVuR"),
+    LastLetterVoiceless("LLVless"),
+    LastLetterNotVoiceless("LLNotVless"),
+    LastLetterVoicelessStop("LLStop"),
+    LastLetterVowel("LLV"),
+    LastLetterConsonant("LLC"),
+    FirstLetterVowel("FLV"),
+    FirstLetterConsonant("FLC"),
+    HasNoVowel("NoVow");
 
-    PhonAttr() {
-        this.index = this.ordinal();
-    }
+    int index;
+    String shortForm;
 
     private static BitEnumMap<PhonAttr> indexToEnumMap = BitEnumMap.get(PhonAttr.class);
+
+    PhonAttr(String shortForm) {
+        this.shortForm = shortForm;
+        this.index = this.ordinal();
+    }
 
     public static BitEnumMap<PhonAttr> converter() {
         return indexToEnumMap;
@@ -32,4 +35,7 @@ public enum PhonAttr implements IndexedEnum {
         return index;
     }
 
+    public String getShortForm() {
+        return shortForm;
+    }
 }

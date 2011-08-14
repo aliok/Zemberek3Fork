@@ -1,8 +1,6 @@
 package zemberek3.lexicon.graph;
 
-import zemberek3.lexicon.ExclusiveSuffixData;
-import zemberek3.lexicon.PhonAttr;
-import zemberek3.lexicon.SuffixFormSet;
+import zemberek3.lexicon.*;
 import zemberek3.structure.AttributeSet;
 
 import java.util.HashSet;
@@ -82,5 +80,53 @@ public class SuffixNode extends MorphNode {
     @Override
     public String toString() {
         return suffixSet.id + ":" + this.surfaceForm;
+    }
+
+
+    public String dump() {
+        String surface = surfaceForm.length() == 0 ? "NULL" : surfaceForm;
+        StringBuilder sb = new StringBuilder(" [set:" + suffixSet.id + "|" + surface + "]");
+        if (successors.size() > 0) {
+            sb.append(" [Successors:");
+            int i = 0;
+            for (SuffixNode successor : successors) {
+                sb.append(successor.suffixSet.getId());
+                if (i++ < successors.size() - 1)
+                    sb.append(", ");
+            }
+            sb.append("]");
+        }
+        printAttributes(sb);
+        printExpectations(sb);
+        sb.append(" [T:" + termination.name() + "] ");
+        return sb.toString();
+    }
+
+    private void printAttributes(StringBuilder sb) {
+        if (!attributes.isEmpty())
+            sb.append(" [A:");
+        else return;
+        int i = 0;
+        List<PhonAttr> arr = attributes.getAsList(PhonAttr.class);
+        for (PhonAttr attribute : arr) {
+            sb.append(attribute.getShortForm());
+            if (i++ < arr.size() - 1)
+                sb.append(", ");
+        }
+        sb.append("]");
+    }
+
+    private void printExpectations(StringBuilder sb) {
+        if (!expectations.isEmpty())
+            sb.append(" [E:");
+        else return;
+        int i = 0;
+        List<PhoneticExpectation> arr = expectations.getAsList(PhoneticExpectation.class);
+        for (PhoneticExpectation attribute : arr) {
+            sb.append(attribute.name());
+            if (i++ < arr.size() - 1)
+                sb.append(", ");
+        }
+        sb.append("]");
     }
 }

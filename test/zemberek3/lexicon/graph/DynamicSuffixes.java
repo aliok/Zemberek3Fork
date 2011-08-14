@@ -13,7 +13,7 @@ import java.util.Set;
 public class DynamicSuffixes implements Suffixes {
 
     public static Suffix NounRoot = new Suffix("NounRoot");
-    public static SuffixFormSet Noun_Main = new SuffixFormSet("Noun_Main", NounRoot, "");
+    public static SuffixFormSet Noun_Main = new SuffixFormSet("Noun_Main", NounRoot, "", TerminationType.TRANSFER);
     DynamicSuffixProvider provider = new DynamicSuffixProvider();
 
 

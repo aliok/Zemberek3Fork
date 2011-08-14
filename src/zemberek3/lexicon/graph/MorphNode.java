@@ -46,5 +46,9 @@ public abstract class MorphNode {
     public AttributeSet<PhoneticExpectation> getExpectations() {
         return expectations;
     }
+
+    public boolean isNullMorpheme() {
+        return surfaceForm.length()==0;
+    }
 }
 

@@ -24,6 +24,7 @@ public class AttributeSetTest {
         public int getBitIndex() {
             return index;
         }
+
     }
 
     @Test

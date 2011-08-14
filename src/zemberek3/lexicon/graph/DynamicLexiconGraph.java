@@ -1,8 +1,10 @@
 package zemberek3.lexicon.graph;
 
 import com.google.common.collect.Maps;
+import org.omg.CosNaming.NamingContextPackage.AlreadyBound;
 import zemberek3.lexicon.*;
 
+import javax.naming.CompositeName;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,7 @@ public class DynamicLexiconGraph {
 
         StemNode[] stems = stemNodeGenerator.generate(item);
         for (StemNode stem : stems) {
+            System.out.println(stem);
             if (!stemNodes.contains(stem)) {
                 SuffixNode rootSuffixNode = getRootSuffixNode(stem);
                 if (!rootSuffixNodeMap.containsKey(rootSuffixNode)) {
@@ -83,7 +86,7 @@ public class DynamicLexiconGraph {
 
 
     private void connectSuffixNodes(SuffixNode node) {
-        System.out.println("Processing:" + node);
+        //System.out.println("Processing:" + node);
         // get the successive form sets for this node.
         Set<SuffixFormSet> successors = node.suffixSet.getSuccessors();
         // iterate over form sets.
@@ -91,26 +94,38 @@ public class DynamicLexiconGraph {
             // get the nodes for the  suffix form.
             List<SuffixNode> nodesInSuccessor = suffixNodeGenerator.getNodes(node.attributes, node.expectations, node.exclusiveSuffixData, succSet);
             for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
+                // if there are expectations for the node, check if it matches with the attributes of the node in successor.
+                if (!node.expectations.isEmpty()) {
+                    if (!expectationsMatches(node, nodeInSuccessor))
+                        continue;
+                }
                 boolean recurse = false;
                 if (!nodeExists(succSet, nodeInSuccessor)) {
+                    System.out.println("node will be added:" + nodeInSuccessor.dump());
                     recurse = true;
                 }
                 nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
-                if (node.expectations.isEmpty() ||
-                        (node.expectations.contains(PhoneticExpectation.ConsonantStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterConsonant)) ||
-                        (node.expectations.contains(PhoneticExpectation.VowelStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterVowel)))
-                    node.addSuccNode(nodeInSuccessor);
+                node.addSuccNode(nodeInSuccessor);
                 if (recurse) {
-                    System.out.println("recurse:" + nodeInSuccessor);
                     connectSuffixNodes(nodeInSuccessor);
                 }
             }
         }
     }
 
+    private boolean expectationsMatches(SuffixNode node, SuffixNode nodeInSuccessor) {
+        if (nodeInSuccessor.isNullMorpheme())
+            return true;
+        if ((node.expectations.contains(PhoneticExpectation.ConsonantStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterConsonant)) ||
+                (node.expectations.contains(PhoneticExpectation.VowelStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterVowel)))
+            return true;
+        else return false;
+
+    }
+
     private boolean nodeExists(SuffixFormSet set, SuffixNode newNode) {
         Set<SuffixNode> nodes = suffixFormMap.get(set);
-        return nodes!=null && nodes.contains(newNode);
+        return nodes != null && nodes.contains(newNode);
     }
 
     public SuffixNode addOrReturnExisting(SuffixFormSet set, SuffixNode newNode) {
@@ -129,29 +144,4 @@ public class DynamicLexiconGraph {
         }
         throw new IllegalStateException("Cannot be here.");
     }
-
-/*    public void generate(Set<SuffixFormSet> startForms) {
-    Set<SuffixFormSet> toProcess = new HashSet<SuffixFormSet>();
-    for (SuffixFormSet rootFormSet : startForms) {
-        for (SuffixFormSet succSet : rootFormSet.getSuccessorsIterable()) {
-            for (SuffixNode node : suffixFormMap.get(rootFormSet)) {
-                List<SuffixNode> nodesInSuccessor = nodeGenerator.getNodes(node.attributes, node.expectations, succSet);
-                for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
-                    if (!nodeExists(succSet, nodeInSuccessor)) {
-                        toProcess.add(succSet);
-                    }
-                    nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
-                    if (node.expectations.isEmpty() ||
-                            (node.expectations.contains(PhoneticExpectation.ConsonantStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterConsonant)) ||
-                            (node.expectations.contains(PhoneticExpectation.VowelStart) && nodeInSuccessor.attributes.contains(PhonAttr.FirstLetterVowel)))
-                        node.addSuccNode(nodeInSuccessor);
-                }
-            }
-        }
-    }
-    if (toProcess.size() == 0)
-        return;
-   generate(toProcess);
-}*/
-
 }
