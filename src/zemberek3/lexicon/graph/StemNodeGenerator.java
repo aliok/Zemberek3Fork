@@ -100,6 +100,7 @@ public class StemNodeGenerator {
         AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
         AttributeSet<PhoneticExpectation> originalExpectations = new AttributeSet<PhoneticExpectation>();
         AttributeSet<PhoneticExpectation> modifiedExpectations = new AttributeSet<PhoneticExpectation>();
+        TerminationType modifiedTermination = TerminationType.NON_TERMINAL;
 
         for (RootAttr attribute : dicItem.attrs.getAsList(RootAttr.class)) {
 
@@ -134,6 +135,7 @@ public class StemNodeGenerator {
                     originalAttrs.remove(PhonAttr.LastVowelBack);
                     modifiedAttrs.add(PhonAttr.LastVowelFrontal);
                     modifiedAttrs.remove(PhonAttr.LastVowelBack);
+
                     break;
                 case ProgressiveVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 1);
@@ -146,13 +148,16 @@ public class StemNodeGenerator {
             }
         }
 
-        StemNode original = new StemNode(dicItem.root, dicItem, TerminationType.TERMINAL, originalAttrs, originalExpectations);
-        StemNode modified = new StemNode(modifiedSeq.toString(), dicItem, TerminationType.NON_TERMINAL, modifiedAttrs,  modifiedExpectations);
+        StemNode original = new StemNode(dicItem.root, dicItem, originalAttrs, originalExpectations);
+        StemNode modified = new StemNode(modifiedSeq.toString(), dicItem, modifiedAttrs, modifiedExpectations);
 
         RootSuffixSetBuilder builder = new RootSuffixSetBuilder(dicItem);
         original.exclusiveSuffixData = builder.original;
         modified.exclusiveSuffixData = builder.modified;
+        if (original.equals(modified))
+            return new StemNode[]{original};
 
+        modified.setTermination(TerminationType.NON_TERMINAL);
         return new StemNode[]{original, modified};
     }
 

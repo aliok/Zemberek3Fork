@@ -33,18 +33,33 @@ public class SimpleParserTest {
     @Test
     public void testSuffixNonDeterminism() throws IOException {
         SuffixProvider suffixProvider = getProvider3();
-
-        String[] nouns = {"elma"};
+        String[] nouns = {"elma","saat [A: NoVoicing, InverseHarmony]", "ağız [A:LastVowelDrop]", "nakit [A:LastVowelDrop]"};
         List<DictionaryItem> items = getItems(nouns, suffixProvider);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);
 
-        SimpleParser parser = new SimpleParser(graph);
-        List<ParseResult> results = parser.parse("elmacığlar");
-        for (ParseResult result : results) {
-            System.out.println(result.asParseString());
-        }
+        printParses(graph, "elmacığa", "saate", "saatlere","ağza","nakde");
+    }
 
+    @Test
+    public void testInverseHarmony() throws IOException {
+        SuffixProvider suffixProvider = getProvider3();
+        String[] nouns = {"saat [A: NoVoicing, InverseHarmony]","nakit [A:LastVowelDrop]"};
+        List<DictionaryItem> items = getItems(nouns, suffixProvider);
+        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
+        graph.addDictionaryItems(items);
+
+        printParses(graph, "saate", "nakde","saat","saatler","nakitlere");
+    }
+
+    private void printParses(DynamicLexiconGraph graph, String... words) {
+        SimpleParser parser = new SimpleParser(graph);
+        for (String word : words) {
+            List<ParseResult> results = parser.parse(word);
+            for (ParseResult result : results) {
+                System.out.println(result.asParseString());
+            }
+        }
     }
 
     private List<DictionaryItem> getItems(String[] lines, SuffixProvider suffixProvider) {

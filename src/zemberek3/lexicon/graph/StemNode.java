@@ -24,6 +24,14 @@ public class StemNode extends MorphNode {
         this.dictionaryItem = dictionaryItem;
     }
 
+    public StemNode(String surfaceForm,
+                    DictionaryItem dictionaryItem,
+                    AttributeSet<PhonAttr> phonAttrs,
+                    AttributeSet<PhoneticExpectation> expectations) {
+        super(surfaceForm,  phonAttrs, expectations);
+        this.dictionaryItem = dictionaryItem;
+    }
+
     public StemNode(String surfaceForm, DictionaryItem dictionaryItem, TerminationType termination) {
         super(surfaceForm, termination, AttributeSet.<PhonAttr>emptySet(), AttributeSet.<PhoneticExpectation>emptySet());
         this.dictionaryItem = dictionaryItem;

@@ -6,7 +6,7 @@ import zemberek3.structure.AttributeSet;
 
 public abstract class MorphNode {
     public final String surfaceForm;
-    public final TerminationType termination;
+    public TerminationType termination = TerminationType.TERMINAL;
     public AttributeSet<PhoneticExpectation> expectations = new AttributeSet<PhoneticExpectation>();
     public AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
     public ExclusiveSuffixData exclusiveSuffixData = new ExclusiveSuffixData();
@@ -42,13 +42,27 @@ public abstract class MorphNode {
         this.expectations = expectations;
     }
 
+    protected MorphNode(
+            String surfaceForm,
+            AttributeSet<PhonAttr> attributes,
+            AttributeSet<PhoneticExpectation> expectations
+    ) {
+        this.surfaceForm = surfaceForm;
+        this.attributes = attributes;
+        this.expectations = expectations;
+    }
+
 
     public AttributeSet<PhoneticExpectation> getExpectations() {
         return expectations;
     }
 
     public boolean isNullMorpheme() {
-        return surfaceForm.length()==0;
+        return surfaceForm.length() == 0;
+    }
+
+    public void setTermination(TerminationType termination) {
+        this.termination = termination;
     }
 }
 
