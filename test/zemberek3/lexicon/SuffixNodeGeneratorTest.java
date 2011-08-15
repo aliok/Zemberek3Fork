@@ -9,6 +9,7 @@ import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static zemberek3.lexicon.PhonAttr.*;
 
@@ -55,6 +56,15 @@ public class SuffixNodeGeneratorTest {
         SuffixNode node = getFirstNodeNoExpectatios(sfg, set(LastVowelBack, LastVowelRounded, LastLetterVowel), "m");
         Assert.assertEquals("m", node.surfaceForm);
         Assert.assertTrue(node.getAttributes().containsAll(LastVowelBack, LastVowelRounded, LastLetterConsonant));
+    }
+
+    @Test
+    public void lastDevoicingTest() {
+        SuffixNodeGenerator sfg = new SuffixNodeGenerator();
+        List<SuffixNode> nodes = getNodes(sfg, set(LastVowelBack, LastVowelUnrounded, LastLetterConsonant), ">cI~k");
+        Assert.assertEquals(2, nodes.size());
+        Assert.assertEquals("cık", nodes.get(0).surfaceForm);
+        Assert.assertEquals("cığ", nodes.get(1).surfaceForm);
     }
 
     @Test
@@ -134,6 +144,11 @@ public class SuffixNodeGeneratorTest {
     private SuffixNode getFirstNodeNoExpectatios(SuffixNodeGenerator sfg, AttributeSet<PhonAttr> attributes, String generation) {
         SuffixFormSet dummySet = new SuffixFormSet("dummy-form", new Suffix("dummy"), generation);
         return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), dummySet).get(0);
+    }
+
+    private List<SuffixNode> getNodes(SuffixNodeGenerator sfg, AttributeSet<PhonAttr> attributes, String generation) {
+        SuffixFormSet dummySet = new SuffixFormSet("dummy-form", new Suffix("dummy"), generation);
+        return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), dummySet);
     }
 
     private class Triple {

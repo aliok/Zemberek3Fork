@@ -3,6 +3,7 @@ package zemberek3.lexicon;
 import com.google.common.collect.Lists;
 import zemberek3.lexicon.graph.PhoneticExpectation;
 import zemberek3.lexicon.graph.SuffixNode;
+import zemberek3.lexicon.graph.TerminationType;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
@@ -120,18 +121,8 @@ public class SuffixNodeGenerator {
 
                 case VOICE_LAST:
                     ld = token.letter;
-                    if (formAttrs.contains(LastLetterVoiceless))
-                        ld = alphabet.voice(token.letter);
                     seq.append(ld);
                     if (index == tokenList.size() - 1) {
-                        forms.add(new SuffixNode(
-                                set,
-                                seq.toString(),
-                                defineMorphemicAttributes(seq, attrs),
-                                new AttributeSet<PhoneticExpectation>(PhoneticExpectation.VowelStart),
-                                suffixData,
-                                set.terminationType));
-                        seq.changeLast(token.letter);
                         forms.add(new SuffixNode(
                                 set,
                                 seq.toString(),
@@ -139,6 +130,14 @@ public class SuffixNodeGenerator {
                                 new AttributeSet<PhoneticExpectation>(PhoneticExpectation.ConsonantStart),
                                 suffixData,
                                 set.terminationType));
+                        seq.changeLast(alphabet.voice(token.letter));
+                        forms.add(new SuffixNode(
+                                set,
+                                seq.toString(),
+                                defineMorphemicAttributes(seq, attrs),
+                                new AttributeSet<PhoneticExpectation>(PhoneticExpectation.VowelStart),
+                                suffixData,
+                                TerminationType.NON_TERMINAL));
                     }
                     break;
             }

@@ -134,7 +134,9 @@ public class SuffixFormSet {
         int result = suffix.hashCode();
         result = 31 * result + generation.hashCode();
         result = 31 * result + terminationType.hashCode();
-        result = 31 * result + successors.hashCode();
+        for (SuffixFormSet successor : successors) {
+           result = 31 * result + successor.getId().hashCode();
+        }
         return result;
     }
 }
