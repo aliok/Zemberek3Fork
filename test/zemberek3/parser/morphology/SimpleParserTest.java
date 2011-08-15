@@ -40,7 +40,7 @@ public class SimpleParserTest {
         graph.addDictionaryItems(items);
 
         SimpleParser parser = new SimpleParser(graph);
-        List<ParseResult> results = parser.parse("elmacık");
+        List<ParseResult> results = parser.parse("elmacığlar");
         for (ParseResult result : results) {
             System.out.println(result.asParseString());
         }
@@ -116,25 +116,27 @@ public class SimpleParserTest {
         SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
         SuffixFormSet Dat_yA = getSet("Dat", "+yA");
         SuffixFormSet Pnon_EMPTY = getNullSet("Pnon", "Pnon_EMPTY");
-        SuffixFormSet Pnon_EMPTY_ = getNullSet("Pnon", "Pnon_EMPTY_");
+        SuffixFormSet Pnon_Main_EMPTY = getNullSet("Pnon", "Pnon_Main_EMPTY");
         SuffixFormSet Nom_EMPTY = getNullSet("Nom", "Nom_EMPTY");
-        SuffixFormSet Nom_EMPTY_ = getNullSet("Nom", "Nom_EMPTY_");
+        SuffixFormSet Nom_Main_EMPTY = getNullSet("Nom", "Nom_Main_EMPTY");
         SuffixFormSet A3sg_EMPTY = getNullSet("A3sg", "A3sg_EMPTY");
+        SuffixFormSet A3sg_Main_EMPTY = getNullSet("A3sg", "A3sg_Main_EMPTY");
         SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
 
         DynamicSuffixes suffixes = new DynamicSuffixes();
 
-        DynamicSuffixes.Noun_Main.add(A3pl_lAr, A3sg_EMPTY);
-        A3sg_EMPTY.add(P1sg_Im, Pnon_EMPTY, Pnon_EMPTY_);
-        A3pl_lAr.add(P1sg_Im, Pnon_EMPTY, Pnon_EMPTY_);
-        Pnon_EMPTY.add(Nom_EMPTY, Nom_EMPTY_, Dat_yA);
-        Pnon_EMPTY_.add(Nom_EMPTY_);
-        Nom_EMPTY.add(Dim_CIK);
+        DynamicSuffixes.Noun_Main.add(A3pl_lAr, A3sg_Main_EMPTY);
+        A3sg_EMPTY.add(P1sg_Im, Pnon_EMPTY);
+        A3sg_Main_EMPTY.add(P1sg_Im, Pnon_Main_EMPTY);
+        A3pl_lAr.add(P1sg_Im, Pnon_EMPTY);
+        Pnon_EMPTY.add(Nom_EMPTY, Dat_yA);
+        Pnon_Main_EMPTY.add(Dat_yA, Nom_Main_EMPTY);
+        Nom_Main_EMPTY.add(Dim_CIK);
         Dim_CIK.add(DynamicSuffixes.Noun_Main);
 
         suffixes.addSuffixForms(
-                DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3pl_lAr,
-                P1sg_Im, Pnon_EMPTY,Pnon_EMPTY_, Dat_yA, Dim_CIK, Nom_EMPTY, Nom_EMPTY_);
+                DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3sg_Main_EMPTY, A3pl_lAr,
+                P1sg_Im, Pnon_EMPTY,Pnon_Main_EMPTY, Dat_yA, Dim_CIK, Nom_EMPTY, Nom_Main_EMPTY);
 
         return suffixes.getSuffixProvider();
     }
