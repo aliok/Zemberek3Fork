@@ -100,7 +100,6 @@ public class StemNodeGenerator {
         AttributeSet<PhonAttr> modifiedAttrs = originalAttrs.copy();
         AttributeSet<PhoneticExpectation> originalExpectations = new AttributeSet<PhoneticExpectation>();
         AttributeSet<PhoneticExpectation> modifiedExpectations = new AttributeSet<PhoneticExpectation>();
-        TerminationType modifiedTermination = TerminationType.NON_TERMINAL;
 
         for (RootAttr attribute : dicItem.attrs.getAsList(RootAttr.class)) {
 

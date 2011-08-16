@@ -1,10 +1,10 @@
 package zemberek3.parser.morphology;
 
+import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.*;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
 import zemberek3.lexicon.graph.DynamicSuffixes;
-import zemberek3.lexicon.graph.Suffixes;
 import zemberek3.lexicon.graph.TerminationType;
 
 import java.io.IOException;
@@ -33,32 +33,56 @@ public class SimpleParserTest {
     @Test
     public void testSuffixNonDeterminism() throws IOException {
         SuffixProvider suffixProvider = getProvider3();
-        String[] nouns = {"elma","saat [A: NoVoicing, InverseHarmony]", "ağız [A:LastVowelDrop]", "nakit [A:LastVowelDrop]"};
+        String[] nouns = {"elma"};
         List<DictionaryItem> items = getItems(nouns, suffixProvider);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);
 
-        printParses(graph, "elmacığa", "saate", "saatlere","ağza","nakde");
+        assertParses(graph, "elmacığa", "elmacık");
+        assertUnParseable(graph, "elmacığ", "elmacıka");
     }
 
     @Test
     public void testInverseHarmony() throws IOException {
         SuffixProvider suffixProvider = getProvider3();
-        String[] nouns = {"saat [A: NoVoicing, InverseHarmony]","nakit [A:LastVowelDrop]"};
+        String[] nouns = {"saat [A: NoVoicing, InverseHarmony]"};
         List<DictionaryItem> items = getItems(nouns, suffixProvider);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);
 
-        printParses(graph, "saate", "nakde","saat","saatler","nakitlere");
+        assertParses(graph, "saate", "saat", "saatler", "saatlere");
+        assertUnParseable(graph, "saata", "saatlar", "saada", "saade");
     }
 
-    private void printParses(DynamicLexiconGraph graph, String... words) {
+    @Test
+    public void testVowelDrop() throws IOException {
+        SuffixProvider suffixProvider = getProvider3();
+        String[] nouns = {"ağız [A: LastVowelDrop]", "nakit [A:LastVowelDrop]", "vakit [A:LastVowelDrop, NoVoicing]"};
+        List<DictionaryItem> items = getItems(nouns, suffixProvider);
+        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
+        graph.addDictionaryItems(items);
+
+        assertParses(graph, "vakitlere", "ağza", "ağız", "ağızlar", "nakit", "nakitlere", "nakde", "vakit",  "vakte");
+        assertUnParseable(graph, "ağz", "ağıza", "ağzlar", "nakd", "nakt", "nakite", "nakda", "vakide", "vakda", "vakite", "vakt");
+    }
+
+
+    private void assertParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);
         for (String word : words) {
             List<ParseResult> results = parser.parse(word);
+            Assert.assertTrue("No parse for:" + word, results.size() > 0);
             for (ParseResult result : results) {
-                System.out.println(result.asParseString());
+                System.out.println(word + "= " + result.asParseString());
             }
+        }
+    }
+
+    private void assertUnParseable(DynamicLexiconGraph graph, String... words) {
+        SimpleParser parser = new SimpleParser(graph);
+        for (String word : words) {
+            List<ParseResult> results = parser.parse(word);
+            Assert.assertTrue("Unexpected parse for:" + word + " parse:" + results, results.size() == 0);
         }
     }
 
@@ -151,7 +175,7 @@ public class SimpleParserTest {
 
         suffixes.addSuffixForms(
                 DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3sg_Main_EMPTY, A3pl_lAr,
-                P1sg_Im, Pnon_EMPTY,Pnon_Main_EMPTY, Dat_yA, Dim_CIK, Nom_EMPTY, Nom_Main_EMPTY);
+                P1sg_Im, Pnon_EMPTY, Pnon_Main_EMPTY, Dat_yA, Dim_CIK, Nom_EMPTY, Nom_Main_EMPTY);
 
         return suffixes.getSuffixProvider();
     }

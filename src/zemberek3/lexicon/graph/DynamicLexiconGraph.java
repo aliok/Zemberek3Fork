@@ -34,10 +34,10 @@ public class DynamicLexiconGraph {
             if (!stemNodes.contains(stem)) {
                 SuffixNode rootSuffixNode = getRootSuffixNode(stem);
                 if (!rootSuffixNodeMap.containsKey(rootSuffixNode)) {
-                    // check if it already exist. If it exists, use the existing one or add the new one.
-                    rootSuffixNode = addOrRetrieveExisting(rootSuffixNode);
                     connectSuffixNodes(rootSuffixNode);
                 }
+                // check if it already exist. If it exists, use the existing one or add the new one.
+                rootSuffixNode = addOrRetrieveExisting(rootSuffixNode);
                 // connect stem to suffix root node.
                 stem.suffixRootNode = rootSuffixNode;
                 stemNodes.add(stem);
