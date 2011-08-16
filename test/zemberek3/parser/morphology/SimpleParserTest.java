@@ -14,58 +14,47 @@ import java.util.List;
 public class SimpleParserTest {
 
     @Test
-    public void testSimpleNouns() throws IOException {
-        SuffixProvider suffixProvider = getProvider2();
-
-        String[] nouns = {"armut"};
-        List<DictionaryItem> items = getItems(nouns, suffixProvider);
-        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
-        graph.addDictionaryItems(items);
-
-        SimpleParser parser = new SimpleParser(graph);
-        List<ParseResult> results = parser.parse("armut");
-        for (ParseResult result : results) {
-            System.out.println(result.asParseString());
-        }
-
+    public void testVoicing() {
+        DynamicLexiconGraph graph = getLexiconGraph("armut");
+        assertParses(graph, "armut", "armuda", "armutlar", "armutlara");
+        assertUnParseable(graph, "armud", "armuta", "armudlar");
     }
 
     @Test
-    public void testSuffixNonDeterminism() throws IOException {
-        SuffixProvider suffixProvider = getProvider3();
-        String[] nouns = {"elma"};
-        List<DictionaryItem> items = getItems(nouns, suffixProvider);
-        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
-        graph.addDictionaryItems(items);
-
+    public void testSuffixNonDeterminism() {
+        DynamicLexiconGraph graph = getLexiconGraph("elma");
         assertParses(graph, "elmacığa", "elmacık");
         assertUnParseable(graph, "elmacığ", "elmacıka");
     }
 
     @Test
-    public void testInverseHarmony() throws IOException {
-        SuffixProvider suffixProvider = getProvider3();
-        String[] nouns = {"saat [A: NoVoicing, InverseHarmony]"};
-        List<DictionaryItem> items = getItems(nouns, suffixProvider);
-        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
-        graph.addDictionaryItems(items);
-
+    public void testInverseHarmony() {
+        DynamicLexiconGraph graph = getLexiconGraph("saat [A: NoVoicing, InverseHarmony]");
         assertParses(graph, "saate", "saat", "saatler", "saatlere");
         assertUnParseable(graph, "saata", "saatlar", "saada", "saade");
     }
 
     @Test
-    public void testVowelDrop() throws IOException {
-        SuffixProvider suffixProvider = getProvider3();
-        String[] nouns = {"ağız [A: LastVowelDrop]", "nakit [A:LastVowelDrop]", "vakit [A:LastVowelDrop, NoVoicing]"};
-        List<DictionaryItem> items = getItems(nouns, suffixProvider);
-        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
-        graph.addDictionaryItems(items);
-
-        assertParses(graph, "vakitlere", "ağza", "ağız", "ağızlar", "nakit", "nakitlere", "nakde", "vakit",  "vakte");
+    public void testVowelDrop() {
+        DynamicLexiconGraph graph = getLexiconGraph("ağız [A: LastVowelDrop]", "nakit [A:LastVowelDrop]", "vakit [A:LastVowelDrop, NoVoicing]");
+        assertParses(graph, "vakitlere", "ağza", "ağız", "ağızlar", "nakit", "nakitlere", "nakde", "vakit", "vakte");
         assertUnParseable(graph, "ağz", "ağıza", "ağzlar", "nakd", "nakt", "nakite", "nakda", "vakide", "vakda", "vakite", "vakt");
     }
 
+    @Test
+    public void testDoubling() {
+        DynamicLexiconGraph graph = getLexiconGraph("ret [A:Voicing, Doubling]");
+        assertParses(graph, "ret", "retler", "redde");
+        assertUnParseable(graph, "rede", "rete", "redler", "red");
+    }
+
+    private DynamicLexiconGraph getLexiconGraph(String... words) {
+        SuffixProvider suffixProvider = getProvider3();
+        List<DictionaryItem> items = getItems(words, suffixProvider);
+        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
+        graph.addDictionaryItems(items);
+        return graph;
+    }
 
     private void assertParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);
@@ -95,34 +84,6 @@ public class SimpleParserTest {
         return items;
     }
 
-    public SuffixProvider getProvider1() {
-        Suffix Dat = new Suffix("Dat");
-        SuffixFormSet Dat_yA = new SuffixFormSet(Dat, "+yA");
-        Suffix P1sg = new Suffix("P1sg");
-        SuffixFormSet P1sg_Im = new SuffixFormSet(P1sg, "Im");
-        Suffix Pnon = new Suffix("Pnon");
-        SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_EMPTY", Pnon, "", TerminationType.TRANSFER);
-        Suffix Nom = new Suffix("Nom");
-        SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_EMPTY", Nom, "", TerminationType.TRANSFER);
-        Suffix A3sg = new Suffix("A3sg");
-        SuffixFormSet A3sg_EMPTY = new SuffixFormSet("A3sg_EMPTY", A3sg, "", TerminationType.TRANSFER);
-        Suffix A3pl = new Suffix("A3pl");
-        SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
-
-        DynamicSuffixes suffixes = new DynamicSuffixes();
-
-        DynamicSuffixes.Noun_Main.add(A3pl_lAr, A3sg_EMPTY);
-        A3sg_EMPTY.add(P1sg_Im, Pnon_EMPTY);
-        A3pl_lAr.add(P1sg_Im, Pnon_EMPTY);
-        P1sg_Im.add(Nom_EMPTY, Dat_yA);
-        Pnon_EMPTY.add(Nom_EMPTY, Dat_yA);
-
-        suffixes.addSuffixForms(
-                DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3pl_lAr,
-                P1sg_Im, Pnon_EMPTY, Nom_EMPTY, Dat_yA);
-
-        return suffixes.getSuffixProvider();
-    }
 
     private SuffixFormSet getSet(String suffixId, String generationStr) {
         return new SuffixFormSet(new Suffix(suffixId), generationStr);
@@ -130,24 +91,6 @@ public class SimpleParserTest {
 
     private SuffixFormSet getNullSet(String suffixId, String id) {
         return new SuffixFormSet(id, new Suffix(suffixId), "", TerminationType.TRANSFER);
-    }
-
-
-    public SuffixProvider getProvider2() {
-        SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
-        SuffixFormSet Pnon_EMPTY = getNullSet("Pnon", "Pnon_EMPTY");
-        SuffixFormSet A3sg_EMPTY = getNullSet("A3sg", "A3sg_EMPTY");
-        SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
-
-        DynamicSuffixes suffixes = new DynamicSuffixes();
-
-        DynamicSuffixes.Noun_Main.add(A3pl_lAr, A3sg_EMPTY);
-        A3sg_EMPTY.add(P1sg_Im, Pnon_EMPTY);
-        A3pl_lAr.add(P1sg_Im, Pnon_EMPTY);
-
-        suffixes.addSuffixForms(DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3pl_lAr, P1sg_Im, Pnon_EMPTY);
-
-        return suffixes.getSuffixProvider();
     }
 
     public SuffixProvider getProvider3() {
