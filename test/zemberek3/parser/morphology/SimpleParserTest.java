@@ -107,14 +107,14 @@ public class SimpleParserTest {
 
         DynamicSuffixes suffixes = new DynamicSuffixes();
 
-        DynamicSuffixes.Noun_Main.add(A3pl_lAr, A3sg_Main_EMPTY);
-        A3sg_EMPTY.add(P1sg_Im, Pnon_EMPTY);
-        A3sg_Main_EMPTY.add(P1sg_Im, Pnon_Main_EMPTY);
-        A3pl_lAr.add(P1sg_Im, Pnon_EMPTY);
-        Pnon_EMPTY.add(Nom_EMPTY, Dat_yA);
-        Pnon_Main_EMPTY.add(Dat_yA, Nom_Main_EMPTY);
-        Nom_Main_EMPTY.add(Dim_CIK);
-        Dim_CIK.add(DynamicSuffixes.Noun_Main);
+        DynamicSuffixes.Noun_Main.getSuccessors().add(A3pl_lAr, A3sg_Main_EMPTY);
+        A3sg_EMPTY.getSuccessors().add(P1sg_Im, Pnon_EMPTY);
+        A3sg_Main_EMPTY.getSuccessors().add(P1sg_Im, Pnon_Main_EMPTY);
+        A3pl_lAr.getSuccessors().add(P1sg_Im, Pnon_EMPTY);
+        Pnon_EMPTY.getSuccessors().add(Nom_EMPTY, Dat_yA);
+        Pnon_Main_EMPTY.getSuccessors().add(Dat_yA, Nom_Main_EMPTY);
+        Nom_Main_EMPTY.getSuccessors().add(Dim_CIK);
+        Dim_CIK.getSuccessors().add(DynamicSuffixes.Noun_Main);
 
         suffixes.addSuffixForms(
                 DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3sg_Main_EMPTY, A3pl_lAr,

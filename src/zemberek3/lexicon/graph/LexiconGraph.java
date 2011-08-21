@@ -55,7 +55,7 @@ public class LexiconGraph {
         AttributeSet<PhonAttr> phoneticAttrs = calculateAttributes(dictionaryItem.root);
         SuffixNode node = addOrReturnExisting(
                 set,
-                nodeGenerator.getEmptyNode(phoneticAttrs, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), set));
+                nodeGenerator.getEmptyNode(phoneticAttrs, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData(), set));
         return new StemNode(dictionaryItem.root, dictionaryItem, node, TerminationType.TERMINAL);
     }
 
@@ -164,8 +164,8 @@ public class LexiconGraph {
         }
         RootSuffixSetBuilder rssb = new RootSuffixSetBuilder(dicItem);
 
-        SuffixNode origForm = addOrReturnExisting(rssb.original, nodeGenerator.getEmptyNode(originalAttrs, originalExpectations, new ExclusiveSuffixData(), rssb.original));
-        SuffixNode modiForm = addOrReturnExisting(rssb.modified, nodeGenerator.getEmptyNode(modifiedAttrs, modifiedExpectations, new ExclusiveSuffixData(), rssb.modified));
+        SuffixNode origForm = addOrReturnExisting(rssb.original, nodeGenerator.getEmptyNode(originalAttrs, originalExpectations, new SuffixData(), rssb.original));
+        SuffixNode modiForm = addOrReturnExisting(rssb.modified, nodeGenerator.getEmptyNode(modifiedAttrs, modifiedExpectations, new SuffixData(), rssb.modified));
 
         return new StemNode[]{
                 new StemNode(dicItem.root, dicItem, origForm, TerminationType.TERMINAL),
@@ -196,11 +196,11 @@ public class LexiconGraph {
     }
 
     public SuffixNode getSuffixRootNode(AttributeSet<PhonAttr> attrs, AttributeSet<PhoneticExpectation> expectations, SuffixFormSet set) {
-        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, expectations, new ExclusiveSuffixData(), set));
+        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, expectations, new SuffixData(), set));
     }
 
     public SuffixNode getSuffixRootNode(AttributeSet<PhonAttr> attrs, SuffixFormSet set) {
-        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), set));
+        return addOrReturnExisting(set, nodeGenerator.getEmptyNode(attrs, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData(), set));
     }
 
     // handle stem changes demek-diyecek , beni-bana
@@ -209,10 +209,10 @@ public class LexiconGraph {
         if (item.getId().equals("yemek_Verb")) {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
-            Verb_Ye.add(Verb_Main.getSuccSetCopy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk,
+            Verb_Ye.getSuccessors().add(Verb_Main.getSuccessors().copy()).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk,
                     FutPart_yAcAk, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
                     KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
-            Verb_Yi.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, When_yIncA, AfterDoing_yIp, Abil_yA,
+            Verb_Yi.getSuccessors().add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, When_yIncA, AfterDoing_yIp, Abil_yA,
                     Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
                     FeelLike_yAsI, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
@@ -229,11 +229,11 @@ public class LexiconGraph {
             SuffixFormSet Verb_De = new SuffixFormSet("Verb_De", VerbRoot, "");
             SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
-            Verb_De.add(Verb_Main.getSuccSetCopy())
+            Verb_De.getSuccessors().add(Verb_Main.getSuccessors().copy())
                     .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, FutPart_yAcAk, Opt_yA,
                             PresPart_yAn, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn)
                     .add(Pass_In);
-            Verb_Di.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, Abil_yA, Abil_yAbil, PresPart_yAn,
+            Verb_Di.getSuccessors().add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, Abil_yA, Abil_yAbil, PresPart_yAn,
                     PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(calculateAttributes(item.root), Verb_De);
@@ -273,7 +273,7 @@ public class LexiconGraph {
     public void generateSuffixForms(Set<SuffixFormSet> startForms) {
         Set<SuffixFormSet> toProcess = new HashSet<SuffixFormSet>();
         for (SuffixFormSet rootFormSet : startForms) {
-            for (SuffixFormSet succSet : rootFormSet.getSuccessorsIterable()) {
+            for (SuffixFormSet succSet : rootFormSet.getSuccessors()) {
                 for (SuffixNode node : suffixFormMap.get(rootFormSet)) {
                     List<SuffixNode> nodesInSuccessor = nodeGenerator.getNodes(node.attributes, node.expectations, node.exclusiveSuffixData, succSet);
                     for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
@@ -345,7 +345,7 @@ public class LexiconGraph {
                     } else {
                         getForNoun(item);
                         if (item.secondaryPos == SecondaryPos.Time) {
-                            original.add(Rel_ki);
+                            original.getSuccessors().add(Rel_ki);
                         }
                     }
                     break;
@@ -393,15 +393,15 @@ public class LexiconGraph {
                     break;
             }
             if (item.suffixData != null) {
-                original.remove(item.suffixData.rejects.set);
-                original.add(item.suffixData.accepts.set);
-                modified.remove(item.suffixData.rejects.set);
-                modified.add(item.suffixData.accepts.set);
+                original.getSuccessors().remove(item.suffixData.rejects.set);
+                original.getSuccessors().add(item.suffixData.accepts.set);
+                modified.getSuccessors().remove(item.suffixData.rejects.set);
+                modified.getSuccessors().add(item.suffixData.accepts.set);
             }
         }
 
         private SuffixFormSet addOrReturnExisting(DictionaryItem item, SuffixFormSet set) {
-            RootSuffixKey key = new RootSuffixKey(item, set.getSuccessors());
+            RootSuffixKey key = new RootSuffixKey(item, set.getSuccessors().set);
             if (dynamicFormSetMap.containsKey(key)) {
                 return dynamicFormSetMap.get(key);
             } else {
@@ -413,51 +413,51 @@ public class LexiconGraph {
         private void getForVerb(DictionaryItem item) {
             original = new SuffixFormSet("Verb", TurkishSuffixes.VerbRoot, "");
             modified = new SuffixFormSet("Verb-Mod", TurkishSuffixes.VerbRoot, "");
-            original.add(Verb_Main.getSuccSetCopy());
-            modified.add(Verb_Main.getSuccSetCopy());
+            original.getSuccessors().add(Verb_Main.getSuccessors().copy());
+            modified.getSuccessors().add(Verb_Main.getSuccessors().copy());
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case Aorist_A:
-                        original.add(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
-                        modified.add(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
+                        original.getSuccessors().add(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
+                        modified.getSuccessors().add(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
                         break;
                     case Aorist_I:
-                        original.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
-                        modified.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
+                        original.getSuccessors().add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
+                        modified.getSuccessors().add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
                         break;
                     case Passive_In:
-                        original.remove(Pass_nIl).add(Pass_In);
+                        original.getSuccessors().remove(Pass_nIl).add(Pass_In);
                         break;
                     case LastVowelDrop:
-                        original.remove(Pass_nIl);
-                        modified.clear().add(Pass_nIl);
+                        original.getSuccessors().remove(Pass_nIl);
+                        modified.getSuccessors().clear().add(Pass_nIl);
                         break;
                     case VoicingOpt:
-                        modified.remove(Verb_Exp_C.getSuccessors());
+                        modified.getSuccessors().remove(Verb_Exp_C.getSuccessors());
                         break;
                     case Voicing:
-                        original.remove(Verb_Exp_V.getSuccessors());
-                        modified.remove(Verb_Exp_C.getSuccessors());
+                        original.getSuccessors().remove(Verb_Exp_V.getSuccessors());
+                        modified.getSuccessors().remove(Verb_Exp_C.getSuccessors());
                         break;
                     case ProgressiveVowelDrop:
-                        original.remove(Prog_Iyor);
-                        modified.clear().add(Prog_Iyor);
+                        original.getSuccessors().remove(Prog_Iyor);
+                        modified.getSuccessors().clear().add(Prog_Iyor);
                         break;
                     case NonTransitive:
-                        original.remove(Caus_t, Caus_tIr);
-                        modified.remove(Caus_t, Caus_tIr);
+                        original.getSuccessors().remove(Caus_t, Caus_tIr);
+                        modified.getSuccessors().remove(Caus_t, Caus_tIr);
                         break;
                     case Reflexive:
-                        original.add(Reflex_In);
-                        modified.add(Reflex_In);
+                        original.getSuccessors().add(Reflex_In);
+                        modified.getSuccessors().add(Reflex_In);
                         break;
                     case Reciprocal:
-                        original.add(Recip_Is);
-                        modified.add(Recip_Is);
+                        original.getSuccessors().add(Recip_Is);
+                        modified.getSuccessors().add(Recip_Is);
                         break;
                     case Causative_t:
-                        original.remove(Caus_tIr).add(Caus_t);
-                        modified.remove(Caus_tIr).add(Caus_t);
+                        original.getSuccessors().remove(Caus_tIr).add(Caus_t);
+                        modified.getSuccessors().remove(Caus_tIr).add(Caus_t);
                         break;
                     default:
                         break;
@@ -470,22 +470,22 @@ public class LexiconGraph {
         void getForNoun(DictionaryItem item) {
             original = new SuffixFormSet("Noun", TurkishSuffixes.NounRoot, "");
             modified = new SuffixFormSet("Noun-Mod", TurkishSuffixes.NounRoot, "");
-            original.add(Noun_Main.getSuccSetCopy());
-            modified.add(Noun_Main.getSuccSetCopy());
+            original.getSuccessors().add(Noun_Main.getSuccessors().copy());
+            modified.getSuccessors().add(Noun_Main.getSuccessors().copy());
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case VoicingOpt:
-                        modified.remove(Noun_Exp_C.getSuccessors());
+                        modified.getSuccessors().remove(Noun_Exp_C.getSuccessors());
                         break;
                     case Voicing:
                     case Doubling:
                     case LastVowelDrop:
-                        original.remove(Noun_Exp_V.getSuccessors());
-                        modified.remove(Noun_Exp_C.getSuccessors());
+                        original.getSuccessors().remove(Noun_Exp_V.getSuccessors());
+                        modified.getSuccessors().remove(Noun_Exp_C.getSuccessors());
                         break;
                     case CompoundP3sg:
-                        original.clear().add(TurkishSuffixes.Noun_Comp_P3sg.getSuccSetCopy());
-                        modified.clear().add(TurkishSuffixes.Noun_Comp_P3sg_Root.getSuccSetCopy());
+                        original.getSuccessors().clear().add(TurkishSuffixes.Noun_Comp_P3sg.getSuccessors().copy());
+                        modified.getSuccessors().clear().add(TurkishSuffixes.Noun_Comp_P3sg_Root.getSuccessors().copy());
                         break;
                     default:
                         break;
@@ -498,15 +498,15 @@ public class LexiconGraph {
         void getForAdjective(DictionaryItem item) {
             original = new SuffixFormSet("Adjective", TurkishSuffixes.AdjRoot, "");
             modified = new SuffixFormSet("Adjective-Mod", TurkishSuffixes.AdjRoot, "");
-            original.add(Adj_Main.getSuccSetCopy());
-            modified.add(Adj_Main.getSuccSetCopy());
+            original.getSuccessors().add(Adj_Main.getSuccessors().copy());
+            modified.getSuccessors().add(Adj_Main.getSuccessors().copy());
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case Voicing:
                     case Doubling:
                     case LastVowelDrop:
-                        original.remove(Adj_Exp_V.getSuccessors());
-                        modified.remove(Adj_Exp_C.getSuccessors());
+                        original.getSuccessors().remove(Adj_Exp_V.getSuccessors());
+                        modified.getSuccessors().remove(Adj_Exp_C.getSuccessors());
                         break;
                     default:
                         break;
@@ -519,8 +519,8 @@ public class LexiconGraph {
         void getForPronoun(DictionaryItem item) {
             original = new SuffixFormSet("Pronoun", TurkishSuffixes.PersPronRoot, "");
             modified = new SuffixFormSet("Pronoun-Mod", TurkishSuffixes.PersPronRoot, "");
-            original.add(PersPron_Main.getSuccSetCopy());
-            modified.add(PersPron_Main.getSuccSetCopy());
+            original.getSuccessors().add(PersPron_Main.getSuccessors().copy());
+            modified.getSuccessors().add(PersPron_Main.getSuccessors().copy());
             original = addOrReturnExisting(item, original);
             modified = addOrReturnExisting(item, modified);
         }

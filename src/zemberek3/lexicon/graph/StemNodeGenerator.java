@@ -176,8 +176,8 @@ public class StemNodeGenerator {
     }
 
     static class RootSuffixSetBuilder {
-        ExclusiveSuffixData original = new ExclusiveSuffixData();
-        ExclusiveSuffixData modified = new ExclusiveSuffixData();
+        SuffixData original = new SuffixData();
+        SuffixData modified = new SuffixData();
 
         RootSuffixSetBuilder(DictionaryItem item) {
             PrimaryPos primaryPos = item.primaryPos;
@@ -194,52 +194,53 @@ public class StemNodeGenerator {
         }
 
         private void getForVerb(DictionaryItem item) {
+
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case Aorist_A:
-                        original.accepts.add(Aor_Ar, AorPart_Ar);
-                        original.rejects.add(Aor_Ir, AorPart_Ir);
-                        modified.accepts.add(Aor_Ar, AorPart_Ar);
-                        modified.rejects.add(Aor_Ir, AorPart_Ir);
+                        original.add(Aor_Ar, AorPart_Ar);
+                        original.remove(Aor_Ir, AorPart_Ir);
+                        modified.add(Aor_Ar, AorPart_Ar);
+                        modified.remove(Aor_Ir, AorPart_Ir);
                         break;
                     case Aorist_I:
-                        original.accepts.add(Aor_Ir, AorPart_Ir);
-                        original.rejects.add(Aor_Ar, AorPart_Ar);
-                        modified.accepts.add(Aor_Ir, AorPart_Ir);
-                        modified.rejects.add(Aor_Ar, AorPart_Ar);
+                        original.add(Aor_Ir, AorPart_Ir);
+                        original.remove(Aor_Ar, AorPart_Ar);
+                        modified.add(Aor_Ir, AorPart_Ir);
+                        modified.remove(Aor_Ar, AorPart_Ar);
                         break;
                     case Passive_In:
-                        original.accepts.add(Pass_In);
-                        original.rejects.add(Pass_nIl);
+                        original.add(Pass_In);
+                        original.remove(Pass_nIl);
                         break;
                     case LastVowelDrop:
-                        original.rejects.add(Pass_nIl);
-                        modified.onlyAccepts.add(Pass_nIl);
+                        original.remove(Pass_nIl);
+                        modified.clear().add(Pass_nIl);
                         break;
 /*                    case VoicingOpt:
                         modified.remove(Verb_Exp_C.getSuccessors());
                         break;*/
                     case ProgressiveVowelDrop:
-                        original.rejects.add(Prog_Iyor);
-                        modified.onlyAccepts.add(Prog_Iyor);
+                        original.add(Prog_Iyor);
+                        modified.clear().add(Prog_Iyor);
                         break;
                     case NonTransitive:
-                        original.rejects.add(Caus_t, Caus_tIr);
-                        modified.rejects.add(Caus_t, Caus_tIr);
+                        original.remove(Caus_t, Caus_tIr);
+                        modified.remove(Caus_t, Caus_tIr);
                         break;
                     case Reflexive:
-                        original.accepts.add(Reflex_In);
-                        modified.accepts.add(Reflex_In);
+                        original.add(Reflex_In);
+                        modified.add(Reflex_In);
                         break;
                     case Reciprocal:
-                        original.accepts.add(Recip_Is);
-                        modified.accepts.add(Recip_Is);
+                        original.add(Recip_Is);
+                        modified.add(Recip_Is);
                         break;
                     case Causative_t:
-                        original.rejects.add(Caus_tIr);
-                        original.accepts.add(Caus_t);
-                        modified.rejects.add(Caus_tIr);
-                        modified.accepts.add(Caus_t);
+                        original.remove(Caus_tIr);
+                        original.add(Caus_t);
+                        modified.remove(Caus_tIr);
+                        modified.add(Caus_t);
                         break;
                     default:
                         break;
@@ -251,8 +252,8 @@ public class StemNodeGenerator {
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case CompoundP3sg:
-                        original.accepts.add(TurkishSuffixes.Noun_Comp_P3sg.getSuccSetCopy());
-                        modified.onlyAccepts.add(TurkishSuffixes.Noun_Comp_P3sg_Root.getSuccSetCopy());
+                        original.add(TurkishSuffixes.Noun_Comp_P3sg.getSuccessors().copy());
+                        modified.clear().add(TurkishSuffixes.Noun_Comp_P3sg_Root.getSuccessors().copy());
                         break;
                     default:
                         break;

@@ -9,7 +9,7 @@ public abstract class MorphNode {
     public TerminationType termination = TerminationType.TERMINAL;
     public AttributeSet<PhoneticExpectation> expectations = new AttributeSet<PhoneticExpectation>();
     public AttributeSet<PhonAttr> attributes = new AttributeSet<PhonAttr>();
-    public ExclusiveSuffixData exclusiveSuffixData = new ExclusiveSuffixData();
+    public SuffixData exclusiveSuffixData = new SuffixData();
 
     protected MorphNode(String surfaceForm, TerminationType termination) {
         this.surfaceForm = surfaceForm;
@@ -21,7 +21,7 @@ public abstract class MorphNode {
             TerminationType termination,
             AttributeSet<PhonAttr> attributes,
             AttributeSet<PhoneticExpectation> expectations,
-            ExclusiveSuffixData exclusiveSuffixData
+            SuffixData suffixData
     ) {
         this.surfaceForm = surfaceForm;
         this.termination = termination;

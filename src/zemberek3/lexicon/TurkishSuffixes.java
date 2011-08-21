@@ -471,18 +471,18 @@ public class TurkishSuffixes implements Suffixes {
     }
 
     public TurkishSuffixes() {
-        Noun_Main.add(A3pl_lAr, A3sg_EMPTY);
+        Noun_Main.getSuccessors().add(A3pl_lAr, A3sg_EMPTY);
 
-        A3sg_EMPTY.add(POSSESSIVE_FORMS);
-        A3pl_lAr.add(POSSESSIVE_FORMS);
+        A3sg_EMPTY.getSuccessors().add(POSSESSIVE_FORMS);
+        A3pl_lAr.getSuccessors().add(POSSESSIVE_FORMS);
 
-        Pnon_EMPTY.add(CASE_FORMS);
-        P1sg_Im.add(CASE_FORMS);
-        P2sg_In.add(CASE_FORMS);
-        P3sg_sI.add(CASE_FORMS);
-        P1pl_ImIz.add(CASE_FORMS);
-        P2pl_InIz.add(CASE_FORMS);
-        P3pl_lArI.add(CASE_FORMS);
+        Pnon_EMPTY.getSuccessors().add(CASE_FORMS);
+        P1sg_Im.getSuccessors().add(CASE_FORMS);
+        P2sg_In.getSuccessors().add(CASE_FORMS);
+        P3sg_sI.getSuccessors().add(CASE_FORMS);
+        P1pl_ImIz.getSuccessors().add(CASE_FORMS);
+        P2pl_InIz.getSuccessors().add(CASE_FORMS);
+        P3pl_lArI.getSuccessors().add(CASE_FORMS);
 
 
 /*

@@ -3,6 +3,7 @@ package zemberek3.lexicon;
 import org.junit.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.graph.PhoneticExpectation;
+import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.SuffixNode;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicSeq;
@@ -143,12 +144,12 @@ public class SuffixNodeGeneratorTest {
 
     private SuffixNode getFirstNodeNoExpectatios(SuffixNodeGenerator sfg, AttributeSet<PhonAttr> attributes, String generation) {
         SuffixFormSet dummySet = new SuffixFormSet("dummy-form", new Suffix("dummy"), generation);
-        return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), dummySet).get(0);
+        return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData(), dummySet).get(0);
     }
 
     private List<SuffixNode> getNodes(SuffixNodeGenerator sfg, AttributeSet<PhonAttr> attributes, String generation) {
         SuffixFormSet dummySet = new SuffixFormSet("dummy-form", new Suffix("dummy"), generation);
-        return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData(), dummySet);
+        return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData(), dummySet);
     }
 
     private class Triple {

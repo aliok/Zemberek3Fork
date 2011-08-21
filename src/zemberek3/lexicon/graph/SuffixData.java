@@ -2,12 +2,9 @@ package zemberek3.lexicon.graph;
 
 import zemberek3.lexicon.SuffixFormSet;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class SuffixData {
+public class SuffixData implements Iterable<SuffixFormSet> {
     public Set<SuffixFormSet> set = new HashSet<SuffixFormSet>();
 
     public SuffixData(Set<SuffixFormSet> set) {
@@ -48,6 +45,10 @@ public class SuffixData {
         return this;
     }
 
+    public SuffixData copy() {
+        return new SuffixData(set);
+    }
+
     public SuffixData remove(Iterable<SuffixFormSet> it) {
         for (SuffixFormSet suff : it)
             set.remove(suff);
@@ -74,5 +75,10 @@ public class SuffixData {
     @Override
     public int hashCode() {
         return set.hashCode();
+    }
+
+    @Override
+    public Iterator<SuffixFormSet> iterator() {
+        return set.iterator();
     }
 }

@@ -17,7 +17,7 @@ public class SuffixNode extends MorphNode {
             String form,
             AttributeSet<PhonAttr> attributes,
             AttributeSet<PhoneticExpectation> expectations,
-            ExclusiveSuffixData exclusiveSuffixData,
+            SuffixData exclusiveSuffixData,
             TerminationType termination) {
         super(form, termination, attributes, expectations, exclusiveSuffixData);
         this.suffixSet = suffixSet;
@@ -29,7 +29,7 @@ public class SuffixNode extends MorphNode {
             AttributeSet<PhonAttr> attributes,
             TerminationType termination) {
         // TODO: expectations and exclusive suffix data is empty.
-        super(form, termination, attributes, AttributeSet.<PhoneticExpectation>emptySet(), new ExclusiveSuffixData());
+        super(form, termination, attributes, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData());
         this.suffixSet = suffixSet;
         this.attributes = attributes;
     }

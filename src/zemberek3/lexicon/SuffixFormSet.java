@@ -1,11 +1,7 @@
 package zemberek3.lexicon;
 
+import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.TerminationType;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 public class SuffixFormSet {
     // an id that defines the node
@@ -17,7 +13,8 @@ public class SuffixFormSet {
     // can be an end suffix.
     TerminationType terminationType = TerminationType.TERMINAL;
 
-    private Set<SuffixFormSet> successors = new HashSet<SuffixFormSet>();
+    private SuffixData successors = new SuffixData();
+    private SuffixData directSuccessors = new SuffixData();
 
     public SuffixFormSet(String id, Suffix suffix, String generation) {
         this.id = id;
@@ -45,61 +42,8 @@ public class SuffixFormSet {
         this.id = suffix.id + "_" + generation;
     }
 
-    public Iterable<SuffixFormSet> getSuccessorsIterable() {
-        return successors;
-    }
-
-    public Set<SuffixFormSet> getSuccSetCopy() {
-        return new HashSet<SuffixFormSet>(successors);
-    }
-
-    public Set<SuffixFormSet> getSuccessors() {
-        return successors;
-    }
-
     public boolean isTerminal() {
         return terminationType == TerminationType.TERMINAL;
-    }
-
-    public SuffixFormSet clear() {
-        this.successors.clear();
-        return this;
-    }
-
-    public SuffixFormSet add(SuffixFormSet... sets) {
-        this.successors.addAll(Arrays.asList(sets));
-        return this;
-    }
-
-    public SuffixFormSet add(Iterable<SuffixFormSet> it) {
-        for (SuffixFormSet suff : it)
-            successors.add(suff);
-        return this;
-    }
-
-    public SuffixFormSet add(SuffixFormSet[]... sets) {
-        for (SuffixFormSet[] suffixArray : sets) {
-            this.successors.addAll(Arrays.asList(suffixArray));
-        }
-        return this;
-    }
-
-    public SuffixFormSet remove(SuffixFormSet... sets) {
-        for (SuffixFormSet set : sets) {
-            this.successors.remove(set);
-        }
-        return this;
-    }
-
-    public SuffixFormSet remove(Iterable<SuffixFormSet> it) {
-        for (SuffixFormSet suff : it)
-            successors.remove(suff);
-        return this;
-    }
-
-    public SuffixFormSet retain(Collection<SuffixFormSet> coll) {
-        successors.retainAll(coll);
-        return this;
     }
 
     public Suffix getSuffix() {
@@ -138,5 +82,13 @@ public class SuffixFormSet {
            result = 31 * result + successor.getId().hashCode();
         }
         return result;
+    }
+
+    public SuffixData getSuccessors() {
+        return successors;
+    }
+
+    public SuffixData getDirectSuccessors() {
+        return directSuccessors;
     }
 }

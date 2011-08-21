@@ -37,7 +37,7 @@ public class SuffixNodeTest {
                 "ler",
                 new AttributeSet<PhonAttr>(PhonAttr.LastVowelBack),
                 new AttributeSet<PhoneticExpectation>(PhoneticExpectation.ConsonantStart),
-                new ExclusiveSuffixData(),
+                new SuffixData(),
                 TerminationType.TERMINAL
         );
 

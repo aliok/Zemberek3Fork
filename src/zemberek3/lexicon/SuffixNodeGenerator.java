@@ -2,6 +2,7 @@ package zemberek3.lexicon;
 
 import com.google.common.collect.Lists;
 import zemberek3.lexicon.graph.PhoneticExpectation;
+import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.SuffixNode;
 import zemberek3.lexicon.graph.TerminationType;
 import zemberek3.structure.AttributeSet;
@@ -22,7 +23,7 @@ public class SuffixNodeGenerator {
     public SuffixNode getEmptyNode(
             AttributeSet<PhonAttr> attrs,
             AttributeSet<PhoneticExpectation> expectations,
-            ExclusiveSuffixData suffixData,
+            SuffixData suffixData,
             SuffixFormSet set) {
         return getNodes(attrs, expectations, suffixData, set).get(0);
     }
@@ -30,7 +31,7 @@ public class SuffixNodeGenerator {
     public List<SuffixNode> getNodes(
             AttributeSet<PhonAttr> attrs,
             AttributeSet<PhoneticExpectation> expectations,
-            ExclusiveSuffixData suffixData,
+            SuffixData suffixData,
             SuffixFormSet set) {
 
         List<SuffixToken> tokenList = Lists.newArrayList(new SuffixStringTokenizer(set.generation));
