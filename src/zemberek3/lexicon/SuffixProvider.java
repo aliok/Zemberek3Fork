@@ -1,6 +1,7 @@
 package zemberek3.lexicon;
 
-import zemberek3.lexicon.graph.StemNode;
+import zemberek3.lexicon.graph.RootSuffixSetBuilder;
+import zemberek3.lexicon.graph.SuffixData;
 
 import java.util.List;
 
@@ -10,10 +11,12 @@ public interface SuffixProvider {
 
     List<SuffixFormSet> getFormsBySuffixId(String suffixId);
 
-    SuffixFormSet getFormById(String suffixSetId);
-
     Iterable<SuffixFormSet> getAllForms();
 
-    SuffixFormSet getRootForm(DictionaryItem item);
+    SuffixData[] defineSuccessorSuffixes(DictionaryItem item);
+
+    SuffixFormSet getRootSet(DictionaryItem item);
+
+    SuffixFormSet getSet(SuffixFormSet setToCopy, SuffixData successors);
 
 }

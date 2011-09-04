@@ -216,15 +216,13 @@ public class TurkishDictionaryLoader {
             for (String token : Splitter.on(',').omitEmptyStrings().trimResults().split(attributeStr)) {
                 if (token.length() < 2)
                     throw new LexiconException("Unexepected Suffix token in line: " + line);
-                String suffixOrFormId = token.substring(1);
+                String suffixId = token.substring(1);
                 List<SuffixFormSet> sets = new ArrayList<SuffixFormSet>();
-                SuffixFormSet set = suffixProvider.getFormById(suffixOrFormId);
-                if (set == null) {
-                    List<SuffixFormSet> ss = suffixProvider.getFormsBySuffixId(suffixOrFormId);
-                    if (ss == null)
-                        throw new LexiconException("Cannot identify Suffix or SuffixFormSet Id:" + suffixOrFormId + " in line:" + line);
-                    sets.addAll(ss);
-                } else sets.add(set);
+                List<SuffixFormSet> ss = suffixProvider.getFormsBySuffixId(suffixId);
+                if (ss == null)
+                    throw new LexiconException("Cannot identify Suffix id:" + suffixId + " in line:" + line);
+                sets.addAll(ss);
+
                 switch (token.charAt(0)) {
                     case '+':
                         esd.accepts.add(sets);

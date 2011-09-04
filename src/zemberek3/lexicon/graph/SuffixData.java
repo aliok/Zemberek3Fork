@@ -15,6 +15,10 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         this.set.addAll(Arrays.asList(set));
     }
 
+    public boolean contains(SuffixFormSet suffSet) {
+        return set.contains(suffSet);
+    }
+
     public SuffixData clear() {
         this.set.clear();
         return this;

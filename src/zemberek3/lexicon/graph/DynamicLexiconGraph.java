@@ -1,10 +1,8 @@
 package zemberek3.lexicon.graph;
 
 import com.google.common.collect.Maps;
-import org.omg.CosNaming.NamingContextPackage.AlreadyBound;
 import zemberek3.lexicon.*;
 
-import javax.naming.CompositeName;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +13,7 @@ public class DynamicLexiconGraph {
     private Map<SuffixNode, SuffixNode> rootSuffixNodeMap = Maps.newHashMap();
     Set<StemNode> stemNodes = new HashSet<StemNode>();
 
-    StemNodeGenerator stemNodeGenerator = new StemNodeGenerator();
+    StemNodeGenerator stemNodeGenerator;
     SuffixNodeGenerator suffixNodeGenerator = new SuffixNodeGenerator();
 
     final SuffixProvider suffixProvider;
@@ -24,6 +22,7 @@ public class DynamicLexiconGraph {
 
     public DynamicLexiconGraph(SuffixProvider suffixProvider) {
         this.suffixProvider = suffixProvider;
+        this.stemNodeGenerator = new StemNodeGenerator(suffixProvider);
     }
 
     public void addDictionaryItem(DictionaryItem item) {
@@ -72,7 +71,7 @@ public class DynamicLexiconGraph {
     }
 
     public SuffixNode getRootSuffixNode(StemNode node) {
-        SuffixFormSet set = suffixProvider.getRootForm(node.dictionaryItem);
+        SuffixFormSet set = suffixProvider.getSet(suffixProvider.getRootSet(node.dictionaryItem), node.exclusiveSuffixData);
         // construct a new suffix node.
         SuffixNode suffixNode = new SuffixNode(
                 set,

@@ -6,13 +6,8 @@ import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static zemberek3.lexicon.RootAttr.*;
 import static zemberek3.lexicon.TurkishSuffixes.*;
-import static zemberek3.lexicon.TurkishSuffixes.Adj_Exp_C;
-import static zemberek3.lexicon.TurkishSuffixes.PersPron_Main;
 
 
 /**
@@ -21,6 +16,11 @@ import static zemberek3.lexicon.TurkishSuffixes.PersPron_Main;
 public class StemNodeGenerator {
 
     TurkishAlphabet alphabet = new TurkishAlphabet();
+    SuffixProvider suffixProvider;
+
+    public StemNodeGenerator(SuffixProvider suffixProvider) {
+        this.suffixProvider = suffixProvider;
+    }
 
     AttributeSet<RootAttr> modifiers = new AttributeSet<RootAttr>(
             Doubling,
@@ -150,9 +150,10 @@ public class StemNodeGenerator {
         StemNode original = new StemNode(dicItem.root, dicItem, originalAttrs, originalExpectations);
         StemNode modified = new StemNode(modifiedSeq.toString(), dicItem, modifiedAttrs, modifiedExpectations);
 
-        RootSuffixSetBuilder builder = new RootSuffixSetBuilder(dicItem);
-        original.exclusiveSuffixData = builder.original;
-        modified.exclusiveSuffixData = builder.modified;
+        SuffixData[] roots = suffixProvider.defineSuccessorSuffixes(dicItem);
+
+        original.exclusiveSuffixData = roots[0];
+        modified.exclusiveSuffixData = roots[1];
         if (original.equals(modified))
             return new StemNode[]{original};
 
@@ -168,100 +169,11 @@ public class StemNodeGenerator {
         TurkicSeq modifiedSeq = new TurkicSeq(item.root, alphabet);
         nodes[1] = new StemNode(modifiedSeq.toString(), item, TerminationType.NON_TERMINAL);
 
-        RootSuffixSetBuilder builder = new RootSuffixSetBuilder(item);
-        nodes[0].exclusiveSuffixData = builder.original;
-        nodes[1].exclusiveSuffixData = builder.modified;
+        SuffixData[] roots = suffixProvider.defineSuccessorSuffixes(item);
+        nodes[0].exclusiveSuffixData = roots[0];
+        nodes[1].exclusiveSuffixData = roots[1];
 
         return nodes;
     }
-
-    static class RootSuffixSetBuilder {
-        SuffixData original = new SuffixData();
-        SuffixData modified = new SuffixData();
-
-        RootSuffixSetBuilder(DictionaryItem item) {
-            PrimaryPos primaryPos = item.primaryPos;
-
-            switch (primaryPos) {
-                case Noun:
-                    getForNoun(item);
-                    break;
-                case Verb:
-                    getForVerb(item);
-                    break;
-
-            }
-        }
-
-        private void getForVerb(DictionaryItem item) {
-
-            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
-                switch (attribute) {
-                    case Aorist_A:
-                        original.add(Aor_Ar, AorPart_Ar);
-                        original.remove(Aor_Ir, AorPart_Ir);
-                        modified.add(Aor_Ar, AorPart_Ar);
-                        modified.remove(Aor_Ir, AorPart_Ir);
-                        break;
-                    case Aorist_I:
-                        original.add(Aor_Ir, AorPart_Ir);
-                        original.remove(Aor_Ar, AorPart_Ar);
-                        modified.add(Aor_Ir, AorPart_Ir);
-                        modified.remove(Aor_Ar, AorPart_Ar);
-                        break;
-                    case Passive_In:
-                        original.add(Pass_In);
-                        original.remove(Pass_nIl);
-                        break;
-                    case LastVowelDrop:
-                        original.remove(Pass_nIl);
-                        modified.clear().add(Pass_nIl);
-                        break;
-/*                    case VoicingOpt:
-                        modified.remove(Verb_Exp_C.getSuccessors());
-                        break;*/
-                    case ProgressiveVowelDrop:
-                        original.add(Prog_Iyor);
-                        modified.clear().add(Prog_Iyor);
-                        break;
-                    case NonTransitive:
-                        original.remove(Caus_t, Caus_tIr);
-                        modified.remove(Caus_t, Caus_tIr);
-                        break;
-                    case Reflexive:
-                        original.add(Reflex_In);
-                        modified.add(Reflex_In);
-                        break;
-                    case Reciprocal:
-                        original.add(Recip_Is);
-                        modified.add(Recip_Is);
-                        break;
-                    case Causative_t:
-                        original.remove(Caus_tIr);
-                        original.add(Caus_t);
-                        modified.remove(Caus_tIr);
-                        modified.add(Caus_t);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        void getForNoun(DictionaryItem item) {
-            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
-                switch (attribute) {
-                    case CompoundP3sg:
-                        original.add(TurkishSuffixes.Noun_Comp_P3sg.getSuccessors().copy());
-                        modified.clear().add(TurkishSuffixes.Noun_Comp_P3sg_Root.getSuccessors().copy());
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-    }
-
 
 }

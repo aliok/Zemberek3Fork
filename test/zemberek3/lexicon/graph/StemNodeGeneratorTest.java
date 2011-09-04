@@ -9,7 +9,7 @@ import java.util.List;
 public class StemNodeGeneratorTest {
 	@Test
 	public void empty(){
-		StemNodeGenerator generator = new StemNodeGenerator();
+		StemNodeGenerator generator = new StemNodeGenerator(new DynamicSuffixes().provider);
         DictionaryItem kitap = getDictionaryItem("kitap");
         StemNode[] nodes = generator.generate(kitap);
         Assert.assertEquals(2, nodes.length);
@@ -19,35 +19,8 @@ public class StemNodeGeneratorTest {
 	}
 
     private DictionaryItem getDictionaryItem(String line) {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(new DummySuffixProvider());
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(new DynamicSuffixes().provider);
         return loader.loadFromString(line);
     }
 
-    class DummySuffixProvider implements SuffixProvider {
-
-        @Override
-        public Suffix getSuffixById(String suffixId) {
-            return null;
-        }
-
-        @Override
-        public List<SuffixFormSet> getFormsBySuffixId(String suffixId) {
-            return null;
-        }
-
-        @Override
-        public SuffixFormSet getFormById(String suffixSetId) {
-            return null;
-        }
-
-        @Override
-        public Iterable<SuffixFormSet> getAllForms() {
-            return null;
-        }
-
-        @Override
-        public SuffixFormSet getRootForm(DictionaryItem item) {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
-        }
-    }
 }

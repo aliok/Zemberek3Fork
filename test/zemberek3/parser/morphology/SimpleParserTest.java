@@ -3,11 +3,8 @@ package zemberek3.parser.morphology;
 import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.*;
-import zemberek3.lexicon.graph.DynamicLexiconGraph;
-import zemberek3.lexicon.graph.DynamicSuffixes;
-import zemberek3.lexicon.graph.TerminationType;
+import zemberek3.lexicon.graph.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +46,7 @@ public class SimpleParserTest {
     }
 
     private DynamicLexiconGraph getLexiconGraph(String... words) {
-        SuffixProvider suffixProvider = getProvider3();
+        SuffixProvider suffixProvider = new NounSuffixes();
         List<DictionaryItem> items = getItems(words, suffixProvider);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);
@@ -85,42 +82,112 @@ public class SimpleParserTest {
     }
 
 
-    private SuffixFormSet getSet(String suffixId, String generationStr) {
-        return new SuffixFormSet(new Suffix(suffixId), generationStr);
-    }
+    static class NounSuffixes extends DynamicSuffixProvider {
 
-    private SuffixFormSet getNullSet(String suffixId, String id) {
-        return new SuffixFormSet(id, new Suffix(suffixId), "", TerminationType.TRANSFER);
-    }
+        static SuffixFormSet Dim_CIK = getSet("Dim", ">cI~k");
+        static SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
+        static SuffixFormSet Dat_yA = getSet("Dat", "+yA");
+        static SuffixFormSet Pnon_EMPTY = getNullSet("Pnon", "Pnon_EMPTY");
+        static SuffixFormSet Nom_EMPTY = getNullSet("Nom", "Nom_EMPTY");
+        static SuffixFormSet A3sg_EMPTY = getNullSet("A3sg", "A3sg_EMPTY");
+        static SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
+        static SuffixFormSet Noun_Main = getNullSet("Noun", "Noun_Main");
 
-    public SuffixProvider getProvider3() {
-        SuffixFormSet Dim_CIK = getSet("Dim", ">cI~k");
-        SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
-        SuffixFormSet Dat_yA = getSet("Dat", "+yA");
-        SuffixFormSet Pnon_EMPTY = getNullSet("Pnon", "Pnon_EMPTY");
-        SuffixFormSet Pnon_Main_EMPTY = getNullSet("Pnon", "Pnon_Main_EMPTY");
-        SuffixFormSet Nom_EMPTY = getNullSet("Nom", "Nom_EMPTY");
-        SuffixFormSet Nom_Main_EMPTY = getNullSet("Nom", "Nom_Main_EMPTY");
-        SuffixFormSet A3sg_EMPTY = getNullSet("A3sg", "A3sg_EMPTY");
-        SuffixFormSet A3sg_Main_EMPTY = getNullSet("A3sg", "A3sg_Main_EMPTY");
-        SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
+        private static SuffixFormSet getSet(String suffixId, String generationStr) {
+            return new SuffixFormSet(new Suffix(suffixId), generationStr);
+        }
 
-        DynamicSuffixes suffixes = new DynamicSuffixes();
+        private static SuffixFormSet getNullSet(String suffixId, String id) {
+            return new SuffixFormSet(id, new Suffix(suffixId), "", TerminationType.TRANSFER);
+        }
 
-        DynamicSuffixes.Noun_Main.getSuccessors().add(A3pl_lAr, A3sg_Main_EMPTY);
-        A3sg_EMPTY.getSuccessors().add(P1sg_Im, Pnon_EMPTY);
-        A3sg_Main_EMPTY.getSuccessors().add(P1sg_Im, Pnon_Main_EMPTY);
-        A3pl_lAr.getSuccessors().add(P1sg_Im, Pnon_EMPTY);
-        Pnon_EMPTY.getSuccessors().add(Nom_EMPTY, Dat_yA);
-        Pnon_Main_EMPTY.getSuccessors().add(Dat_yA, Nom_Main_EMPTY);
-        Nom_Main_EMPTY.getSuccessors().add(Dim_CIK);
-        Dim_CIK.getSuccessors().add(DynamicSuffixes.Noun_Main);
+        NounSuffixes() {
+            DynamicSuffixes suffixes = new DynamicSuffixes();
+            suffixes.addRootForPos(PrimaryPos.Noun, Noun_Main);
 
-        suffixes.addSuffixForms(
-                DynamicSuffixes.Noun_Main, A3sg_EMPTY, A3sg_Main_EMPTY, A3pl_lAr,
-                P1sg_Im, Pnon_EMPTY, Pnon_Main_EMPTY, Dat_yA, Dim_CIK, Nom_EMPTY, Nom_Main_EMPTY);
+            Noun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
+            Noun_Main.successors.add(P1sg_Im, Dat_yA, Dim_CIK);
 
-        return suffixes.getSuffixProvider();
+            A3sg_EMPTY.directSuccessors.add(Pnon_EMPTY);
+
+            A3pl_lAr.directSuccessors.add(P1sg_Im, Pnon_EMPTY);
+            A3pl_lAr.successors.add(Dat_yA);
+
+            P1sg_Im.directSuccessors.add(Nom_EMPTY, Dat_yA);
+            Pnon_EMPTY.directSuccessors.add(Nom_EMPTY);
+
+            Dim_CIK.directSuccessors.add(Noun_Main);
+
+            suffixes.addSuffixForms(
+                    Noun_Main, A3sg_EMPTY, A3pl_lAr,
+                    P1sg_Im, Pnon_EMPTY, Dat_yA, Dim_CIK, Nom_EMPTY);
+        }
+
+/*        public SuffixFormSet[] getRootForms(DictionaryItem item) {
+            SuffixData[] datas = defineSuccessorSuffixes(item);
+            SuffixFormSet[] sets = new SuffixFormSet[datas.length];
+            int i = 0;
+            for (SuffixData data : datas) {
+                sets[i++] = getSet(item, data);
+            }
+            return sets;
+        }*/
+
+        public SuffixFormSet getRootSet(DictionaryItem item) {
+            switch (item.primaryPos) {
+                case Noun:
+                    return Noun_Main;
+                default:
+                    return Noun_Main;
+            }
+        }
+
+        public SuffixFormSet getSet(SuffixFormSet setToCopy, SuffixData successors) {
+            SuffixFormSet modified = setToCopy.copy(successors);
+            if (formSetLookup.containsKey(modified))
+                modified = formSetLookup.get(modified);
+            else
+                formSetLookup.put(modified, modified);
+            return modified;
+        }
+
+        public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
+
+            SuffixData original = new SuffixData();
+            SuffixData modified = new SuffixData();
+
+            PrimaryPos primaryPos = item.primaryPos;
+
+            switch (primaryPos) {
+                case Noun:
+                    getForNoun(item, original, modified);
+                    break;
+                case Verb:
+                    getForVerb(item, original, modified);
+                    break;
+            }
+            return new SuffixData[]{original, modified};
+        }
+
+        private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
+
+        }
+
+        void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
+
+            /*   for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+                switch (attribute) {
+                    case CompoundP3sg:
+                        original.add(Noun_Comp_P3sg.getSuccessors().copy());
+                        modified.clear().add(Noun_Comp_P3sg_Root.getSuccessors().copy());
+                        break;
+                    default:
+                        break;
+                }
+            }*/
+        }
+
+
     }
 
 }

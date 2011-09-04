@@ -3,9 +3,7 @@ package zemberek3.lexicon;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import zemberek3.lexicon.graph.StemNode;
-import zemberek3.lexicon.graph.Suffixes;
-import zemberek3.lexicon.graph.TerminationType;
+import zemberek3.lexicon.graph.*;
 
 import java.util.List;
 import java.util.Map;
@@ -445,7 +443,22 @@ public class TurkishSuffixes implements Suffixes {
         }
 
         @Override
-        public SuffixFormSet getRootForm(DictionaryItem item) {
+        public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
+            return new SuffixData[0];  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public SuffixFormSet getRootSet(DictionaryItem item) {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public SuffixFormSet getSet(SuffixFormSet setToCopy, SuffixData successors) {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+
+        public SuffixFormSet getRootForm( DictionaryItem item) {
             switch (item.primaryPos) {
                 case Noun:
                     return TurkishSuffixes.Noun_Main;
@@ -678,5 +691,97 @@ public class TurkishSuffixes implements Suffixes {
         Stay_yAkal.add(KeepDoing_yAgor.getSuccSetCopy());
         Necess_mAlI.add(COPULAR_FORMS, PERSON_FORMS_N);
 */
+    }
+
+    public static class TurkishRootSuffixSetBuilder implements RootSuffixSetBuilder {
+
+
+        public SuffixData[] getRootSuffixSets(DictionaryItem item) {
+
+            SuffixData original = new SuffixData();
+            SuffixData modified = new SuffixData();
+
+            PrimaryPos primaryPos = item.primaryPos;
+
+            switch (primaryPos) {
+                case Noun:
+                    getForNoun(item, original, modified);
+                    break;
+                case Verb:
+                    getForVerb(item, original, modified);
+                    break;
+
+            }
+            return new SuffixData[]{original, modified};
+        }
+
+        private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
+
+            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+                switch (attribute) {
+                    case Aorist_A:
+                        original.add(Aor_Ar, AorPart_Ar);
+                        original.remove(Aor_Ir, AorPart_Ir);
+                        modified.add(Aor_Ar, AorPart_Ar);
+                        modified.remove(Aor_Ir, AorPart_Ir);
+                        break;
+                    case Aorist_I:
+                        original.add(Aor_Ir, AorPart_Ir);
+                        original.remove(Aor_Ar, AorPart_Ar);
+                        modified.add(Aor_Ir, AorPart_Ir);
+                        modified.remove(Aor_Ar, AorPart_Ar);
+                        break;
+                    case Passive_In:
+                        original.add(Pass_In);
+                        original.remove(Pass_nIl);
+                        break;
+                    case LastVowelDrop:
+                        original.remove(Pass_nIl);
+                        modified.clear().add(Pass_nIl);
+                        break;
+/*                    case VoicingOpt:
+                        modified.remove(Verb_Exp_C.getSuccessors());
+                        break;*/
+                    case ProgressiveVowelDrop:
+                        original.add(Prog_Iyor);
+                        modified.clear().add(Prog_Iyor);
+                        break;
+                    case NonTransitive:
+                        original.remove(Caus_t, Caus_tIr);
+                        modified.remove(Caus_t, Caus_tIr);
+                        break;
+                    case Reflexive:
+                        original.add(Reflex_In);
+                        modified.add(Reflex_In);
+                        break;
+                    case Reciprocal:
+                        original.add(Recip_Is);
+                        modified.add(Recip_Is);
+                        break;
+                    case Causative_t:
+                        original.remove(Caus_tIr);
+                        original.add(Caus_t);
+                        modified.remove(Caus_tIr);
+                        modified.add(Caus_t);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
+
+            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+                switch (attribute) {
+                    case CompoundP3sg:
+                        original.add(Noun_Comp_P3sg.getSuccessors().copy());
+                        modified.clear().add(Noun_Comp_P3sg_Root.getSuccessors().copy());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }
