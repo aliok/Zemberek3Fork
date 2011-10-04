@@ -6,42 +6,44 @@ import zemberek3.lexicon.*;
 import zemberek3.lexicon.graph.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SimpleParserTest {
 
     @Test
     public void testVoicing() {
         DynamicLexiconGraph graph = getLexiconGraph("armut");
-        assertParses(graph, "armut", "armuda", "armutlar", "armutlara");
+        assertHasParses(graph, "armutlar", "armuda", "armut", "armutlara");
         assertUnParseable(graph, "armud", "armuta", "armudlar");
     }
 
     @Test
     public void testSuffixNonDeterminism() {
         DynamicLexiconGraph graph = getLexiconGraph("elma");
-        assertParses(graph, "elmacığa", "elmacık");
+        assertHasParses(graph, "elmacığa", "elmacık");
         assertUnParseable(graph, "elmacığ", "elmacıka");
     }
 
     @Test
     public void testInverseHarmony() {
         DynamicLexiconGraph graph = getLexiconGraph("saat [A: NoVoicing, InverseHarmony]");
-        assertParses(graph, "saate", "saat", "saatler", "saatlere");
+        assertHasParses(graph, "saate", "saat", "saatler", "saatlere");
         assertUnParseable(graph, "saata", "saatlar", "saada", "saade");
     }
 
     @Test
     public void testVowelDrop() {
         DynamicLexiconGraph graph = getLexiconGraph("ağız [A: LastVowelDrop]", "nakit [A:LastVowelDrop]", "vakit [A:LastVowelDrop, NoVoicing]");
-        assertParses(graph, "vakitlere", "ağza", "ağız", "ağızlar", "nakit", "nakitlere", "nakde", "vakit", "vakte");
+        assertHasParses(graph, "vakitlere", "ağza", "ağız", "ağızlar", "nakit", "nakitlere", "nakde", "vakit", "vakte");
         assertUnParseable(graph, "ağz", "ağıza", "ağzlar", "nakd", "nakt", "nakite", "nakda", "vakide", "vakda", "vakite", "vakt");
     }
 
     @Test
     public void testDoubling() {
         DynamicLexiconGraph graph = getLexiconGraph("ret [A:Voicing, Doubling]");
-        assertParses(graph, "ret", "retler", "redde");
+        assertHasParses(graph, "ret", "retler", "redde");
         assertUnParseable(graph, "rede", "rete", "redler", "red");
     }
 
@@ -53,7 +55,7 @@ public class SimpleParserTest {
         return graph;
     }
 
-    private void assertParses(DynamicLexiconGraph graph, String... words) {
+    private void assertHasParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);
         for (String word : words) {
             List<ParseResult> results = parser.parse(word);
@@ -61,6 +63,21 @@ public class SimpleParserTest {
             for (ParseResult result : results) {
                 System.out.println(word + "= " + result.asParseString());
             }
+        }
+    }
+
+    private void assertLongParses(DynamicLexiconGraph graph, String word, String... parses) {
+        SimpleParser parser = new SimpleParser(graph);
+
+        List<ParseResult> results = parser.parse(word);
+        Assert.assertTrue("Cannot parse:" + word, results.size() > 0);
+
+        Set<String> parseStrins = new HashSet<String>();
+        for (ParseResult result : results) {
+            parseStrins.add(result.asParseString());
+        }
+        for (String parse : parses) {
+            Assert.assertTrue("Cannot parse: parse for:" + word, parseStrins.contains(parse));
         }
     }
 
@@ -93,6 +110,8 @@ public class SimpleParserTest {
         static SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
         static SuffixFormSet Noun_Main = getNullSet("Noun", "Noun_Main");
 
+        DynamicSuffixes suffixes = new DynamicSuffixes();
+
         private static SuffixFormSet getSet(String suffixId, String generationStr) {
             return new SuffixFormSet(new Suffix(suffixId), generationStr);
         }
@@ -102,7 +121,7 @@ public class SimpleParserTest {
         }
 
         NounSuffixes() {
-            DynamicSuffixes suffixes = new DynamicSuffixes();
+
             suffixes.addRootForPos(PrimaryPos.Noun, Noun_Main);
 
             Noun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
@@ -128,7 +147,7 @@ public class SimpleParserTest {
             SuffixFormSet[] sets = new SuffixFormSet[datas.length];
             int i = 0;
             for (SuffixData data : datas) {
-                sets[i++] = getSet(item, data);
+                sets[i++] = addAndGet(item, data);
             }
             return sets;
         }*/
@@ -142,13 +161,37 @@ public class SimpleParserTest {
             }
         }
 
-        public SuffixFormSet getSet(SuffixFormSet setToCopy, SuffixData successors) {
-            SuffixFormSet modified = setToCopy.copy(successors);
+        public SuffixFormSet addAndGet(SuffixFormSet setToCopy, SuffixData successorConstraint) {
+            SuffixFormSet modified;
+            if (successorConstraint.isEmpty())
+                modified = setToCopy.copy();
+            else
+                modified = setToCopy.copy(successorConstraint);
             if (formSetLookup.containsKey(modified))
                 modified = formSetLookup.get(modified);
-            else
+            else {
                 formSetLookup.put(modified, modified);
+                connect(modified);
+            }
             return modified;
+        }
+
+        public DynamicSuffixes getSuffixes() {
+            return suffixes;
+        }
+
+        private void connect(SuffixFormSet modified) {
+            if (modified.successors.isEmpty())
+                return;
+
+            for (SuffixFormSet set : modified.directSuccessors) {
+                if (set.isNullMorpheme()) {
+                    SuffixFormSet newNull = addAndGet(set, modified.getSuccessors());
+
+
+                }
+            }
+
         }
 
         public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
@@ -170,6 +213,7 @@ public class SimpleParserTest {
         }
 
         private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
+
 
         }
 

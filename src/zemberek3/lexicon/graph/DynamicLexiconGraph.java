@@ -29,7 +29,6 @@ public class DynamicLexiconGraph {
 
         StemNode[] stems = stemNodeGenerator.generate(item);
         for (StemNode stem : stems) {
-            System.out.println(stem);
             if (!stemNodes.contains(stem)) {
                 SuffixNode rootSuffixNode = getRootSuffixNode(stem);
                 if (!rootSuffixNodeMap.containsKey(rootSuffixNode)) {
@@ -71,7 +70,7 @@ public class DynamicLexiconGraph {
     }
 
     public SuffixNode getRootSuffixNode(StemNode node) {
-        SuffixFormSet set = suffixProvider.getSet(suffixProvider.getRootSet(node.dictionaryItem), node.exclusiveSuffixData);
+        SuffixFormSet set = suffixProvider.addAndGet(suffixProvider.getRootSet(node.dictionaryItem), node.exclusiveSuffixData);
         // construct a new suffix node.
         SuffixNode suffixNode = new SuffixNode(
                 set,
@@ -85,9 +84,8 @@ public class DynamicLexiconGraph {
 
 
     private void connectSuffixNodes(SuffixNode node) {
-        //System.out.println("Processing:" + node);
         // get the successive form sets for this node.
-        SuffixData successors = node.suffixSet.getSuccessors();
+        SuffixData successors = node.suffixSet.getDirectSuccessors();
         // iterate over form sets.
         for (SuffixFormSet succSet : successors) {
             // get the nodes for the  suffix form.

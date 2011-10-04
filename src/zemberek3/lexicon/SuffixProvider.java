@@ -17,6 +17,6 @@ public interface SuffixProvider {
 
     SuffixFormSet getRootSet(DictionaryItem item);
 
-    SuffixFormSet getSet(SuffixFormSet setToCopy, SuffixData successors);
+    SuffixFormSet addAndGet(SuffixFormSet setToCopy, SuffixData successors);
 
 }

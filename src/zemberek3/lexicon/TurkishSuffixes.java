@@ -453,7 +453,7 @@ public class TurkishSuffixes implements Suffixes {
         }
 
         @Override
-        public SuffixFormSet getSet(SuffixFormSet setToCopy, SuffixData successors) {
+        public SuffixFormSet addAndGet(SuffixFormSet setToCopy, SuffixData successors) {
             return null;  //To change body of implemented methods use File | Settings | File Templates.
         }
 

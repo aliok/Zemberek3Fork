@@ -16,7 +16,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
     protected Map<SuffixFormSet, SuffixFormSet> formSetLookup = Maps.newHashMap();
     protected Map<String, Suffix> suffixLookup = Maps.newHashMap();
     protected ArrayListMultimap<String, SuffixFormSet> formsPerSuffix = ArrayListMultimap.create(100, 2);
-
+    
     public Suffix getSuffixById(String suffixId) {
         return suffixLookup.get(suffixId);
     }
@@ -40,7 +40,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
     }
 
     @Override
-    public SuffixFormSet getSet(SuffixFormSet setToCopy, SuffixData successors) {
+    public SuffixFormSet addAndGet(SuffixFormSet setToCopy, SuffixData successors) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 

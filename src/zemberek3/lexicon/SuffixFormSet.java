@@ -45,11 +45,11 @@ public class SuffixFormSet {
     /**
      * Generates a copy of this SuffixSet. However, it overwrites successor data using the input SuffixData.
      *
-     * @param allSuccessors all successors to owewrite the copied ones. it eliminates the direct successors which does not
-     *                      exist in allSuccessors, and remaining ones are used as 'successor'
+     * @param allowOnly all successors to owewrite the copied ones. it eliminates the direct successors which does not
+     *                      exist in allowOnly, and remaining ones are used as 'successor'
      * @return copy set.
      */
-    public SuffixFormSet copy(SuffixData allSuccessors) {
+    public SuffixFormSet copy(SuffixData allowOnly) {
         SuffixFormSet copy = new SuffixFormSet(
                 id,
                 suffix,
@@ -57,7 +57,7 @@ public class SuffixFormSet {
                 terminationType
         );
 
-        for (SuffixFormSet successor : allSuccessors) {
+        for (SuffixFormSet successor : allowOnly) {
             if (directSuccessors.contains(successor))
                 copy.directSuccessors.add(successor);
             else
@@ -66,8 +66,28 @@ public class SuffixFormSet {
         return copy;
     }
 
+    /**
+     * Generates a copy of this SuffixSet.
+     * @return copy set.
+     */
+    public SuffixFormSet copy() {
+        SuffixFormSet copy = new SuffixFormSet(
+                id,
+                suffix,
+                generation,
+                terminationType
+        );
+        copy.directSuccessors.add(directSuccessors);
+        copy.successors.add(successors);
+        return copy;
+    }
+
     public boolean isTerminal() {
         return terminationType == TerminationType.TERMINAL;
+    }
+
+    public boolean isNullMorpheme() {
+        return generation==null || generation.length()==0;
     }
 
     public Suffix getSuffix() {

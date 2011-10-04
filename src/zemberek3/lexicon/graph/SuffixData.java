@@ -19,6 +19,10 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         return set.contains(suffSet);
     }
 
+    public boolean isEmpty() {
+        return set.isEmpty();
+    }
+
     public SuffixData clear() {
         this.set.clear();
         return this;
