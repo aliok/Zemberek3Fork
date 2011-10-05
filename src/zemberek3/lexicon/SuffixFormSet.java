@@ -3,6 +3,8 @@ package zemberek3.lexicon;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.TerminationType;
 
+import java.util.Set;
+
 public class SuffixFormSet {
     // an id that defines the node
     public final String id;
@@ -65,6 +67,7 @@ public class SuffixFormSet {
         }
         return copy;
     }
+
 
     /**
      * Generates a copy of this SuffixSet.

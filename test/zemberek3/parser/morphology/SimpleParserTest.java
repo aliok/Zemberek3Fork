@@ -125,17 +125,23 @@ public class SimpleParserTest {
             suffixes.addRootForPos(PrimaryPos.Noun, Noun_Main);
 
             Noun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
-            Noun_Main.successors.add(P1sg_Im, Dat_yA, Dim_CIK);
+            Noun_Main.successors.add(P1sg_Im, Pnon_EMPTY, Nom_EMPTY, Dat_yA, Dim_CIK);
 
-            A3sg_EMPTY.directSuccessors.add(Pnon_EMPTY);
+            A3sg_EMPTY.directSuccessors.add(Pnon_EMPTY, P1sg_Im);
+            A3sg_EMPTY.successors.add(Nom_EMPTY, Dat_yA, Dim_CIK);
 
             A3pl_lAr.directSuccessors.add(P1sg_Im, Pnon_EMPTY);
-            A3pl_lAr.successors.add(Dat_yA);
+            A3pl_lAr.successors.add(Nom_EMPTY, Dat_yA);
 
             P1sg_Im.directSuccessors.add(Nom_EMPTY, Dat_yA);
-            Pnon_EMPTY.directSuccessors.add(Nom_EMPTY);
+            Pnon_EMPTY.directSuccessors.add(Nom_EMPTY, Dat_yA);
+
+            Nom_EMPTY.directSuccessors.add(Dim_CIK);
+            Dat_yA.directSuccessors.add(Dim_CIK);
 
             Dim_CIK.directSuccessors.add(Noun_Main);
+            Dim_CIK.successors.add(Noun_Main.directSuccessors);
+            Dim_CIK.successors.add(Noun_Main.successors.remove(Dim_CIK));
 
             suffixes.addSuffixForms(
                     Noun_Main, A3sg_EMPTY, A3pl_lAr,
@@ -186,9 +192,18 @@ public class SimpleParserTest {
 
             for (SuffixFormSet set : modified.directSuccessors) {
                 if (set.isNullMorpheme()) {
-                    SuffixFormSet newNull = addAndGet(set, modified.getSuccessors());
+                    // get copy of the null morpheme.
+                    SuffixFormSet copy = set.copy();
+                    // check all indirect connections of parent,and keep the ones matching with copy's direct and indirect connections.
+                    copy.successors.retain(modified.successors.set);
+                    copy.directSuccessors.retain(modified.successors.set);
 
-
+                    if (formSetLookup.containsKey(copy))
+                        return;
+                    else {
+                        formSetLookup.put(copy, copy);
+                        connect(copy);
+                    }
                 }
             }
 
