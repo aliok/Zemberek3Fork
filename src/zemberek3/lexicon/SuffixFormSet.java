@@ -3,6 +3,7 @@ package zemberek3.lexicon;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.TerminationType;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class SuffixFormSet {
@@ -22,6 +23,10 @@ public class SuffixFormSet {
         this.id = id;
         this.suffix = suffix;
         this.generation = generation;
+    }
+
+    public SuffixData allSuccessors() {
+        return new SuffixData(successors, directSuccessors);
     }
 
     public SuffixFormSet(Suffix suffix, String generation, TerminationType terminationType) {
@@ -47,13 +52,14 @@ public class SuffixFormSet {
     /**
      * Generates a copy of this SuffixSet. However, it overwrites successor data using the input SuffixData.
      *
+     * @param uniqueId A unique ID for the copy.
      * @param allowOnly all successors to owewrite the copied ones. it eliminates the direct successors which does not
-     *                      exist in allowOnly, and remaining ones are used as 'successor'
+     *                  exist in allowOnly, and remaining ones are used as 'successor'
      * @return copy set.
      */
-    public SuffixFormSet copy(SuffixData allowOnly) {
+    public SuffixFormSet copy(String uniqueId, SuffixData allowOnly) {
         SuffixFormSet copy = new SuffixFormSet(
-                id,
+                uniqueId,
                 suffix,
                 generation,
                 terminationType
@@ -71,11 +77,12 @@ public class SuffixFormSet {
 
     /**
      * Generates a copy of this SuffixSet.
+     *
      * @return copy set.
      */
-    public SuffixFormSet copy() {
+    public SuffixFormSet copy(String uniqueId) {
         SuffixFormSet copy = new SuffixFormSet(
-                id,
+                uniqueId,
                 suffix,
                 generation,
                 terminationType
@@ -90,7 +97,7 @@ public class SuffixFormSet {
     }
 
     public boolean isNullMorpheme() {
-        return generation==null || generation.length()==0;
+        return generation == null || generation.length() == 0;
     }
 
     public Suffix getSuffix() {

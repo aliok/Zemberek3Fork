@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimpleParserTest {
 
@@ -45,6 +46,19 @@ public class SimpleParserTest {
         DynamicLexiconGraph graph = getLexiconGraph("ret [A:Voicing, Doubling]");
         assertHasParses(graph, "ret", "retler", "redde");
         assertUnParseable(graph, "rede", "rete", "redler", "red");
+    }
+
+    @Test
+    public void testCompounds() {
+        DynamicLexiconGraph graph = getLexiconGraph("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
+        assertHasParses(graph, "zeytinyağına", "zeytinyağım", "zeytinyağları");
+        assertUnParseable(graph, "zeytinyağılar", "zeytinyağıcık");
+    }
+
+    @Test
+    public void testMultiWordDictionary() {
+        DynamicLexiconGraph graph = getLexiconGraph("armut", "elma", "kabak", "kek");
+        assertHasParses(graph, "armuda", "armutlara", "elmacığa", "keke", "kekçiklere");
     }
 
     private DynamicLexiconGraph getLexiconGraph(String... words) {
@@ -101,9 +115,12 @@ public class SimpleParserTest {
 
     static class NounSuffixes extends DynamicSuffixProvider {
 
+        AtomicInteger idCounter = new AtomicInteger(0);
+
         static SuffixFormSet Dim_CIK = getSet("Dim", ">cI~k");
         static SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
         static SuffixFormSet Dat_yA = getSet("Dat", "+yA");
+        static SuffixFormSet Dat_nA = getSet("Dat", "nA");
         static SuffixFormSet Pnon_EMPTY = getNullSet("Pnon", "Pnon_EMPTY");
         static SuffixFormSet Nom_EMPTY = getNullSet("Nom", "Nom_EMPTY");
         static SuffixFormSet A3sg_EMPTY = getNullSet("A3sg", "A3sg_EMPTY");
@@ -145,7 +162,7 @@ public class SimpleParserTest {
 
             suffixes.addSuffixForms(
                     Noun_Main, A3sg_EMPTY, A3pl_lAr,
-                    P1sg_Im, Pnon_EMPTY, Dat_yA, Dim_CIK, Nom_EMPTY);
+                    P1sg_Im, Pnon_EMPTY, Dat_yA, Dat_nA, Dim_CIK, Nom_EMPTY);
         }
 
 /*        public SuffixFormSet[] getRootForms(DictionaryItem item) {
@@ -169,13 +186,15 @@ public class SimpleParserTest {
 
         public SuffixFormSet addAndGet(SuffixFormSet setToCopy, SuffixData successorConstraint) {
             SuffixFormSet modified;
+            final String uniqueId = setToCopy.id + String.valueOf(idCounter.incrementAndGet());
             if (successorConstraint.isEmpty())
-                modified = setToCopy.copy();
+                modified = setToCopy.copy(uniqueId);
             else
-                modified = setToCopy.copy(successorConstraint);
-            if (formSetLookup.containsKey(modified))
+                modified = setToCopy.copy(uniqueId, successorConstraint);
+            if (formSetLookup.containsKey(modified)) {
                 modified = formSetLookup.get(modified);
-            else {
+                idCounter.decrementAndGet();
+            } else {
                 formSetLookup.put(modified, modified);
                 connect(modified);
             }
@@ -192,15 +211,17 @@ public class SimpleParserTest {
 
             for (SuffixFormSet set : modified.directSuccessors) {
                 if (set.isNullMorpheme()) {
+                    final String uniqueId = set.id + String.valueOf(idCounter.incrementAndGet());
                     // get copy of the null morpheme.
-                    SuffixFormSet copy = set.copy();
+                    SuffixFormSet copy = set.copy(uniqueId);
                     // check all indirect connections of parent,and keep the ones matching with copy's direct and indirect connections.
                     copy.successors.retain(modified.successors.set);
                     copy.directSuccessors.retain(modified.successors.set);
 
-                    if (formSetLookup.containsKey(copy))
+                    if (formSetLookup.containsKey(copy)) {
+                        idCounter.decrementAndGet();
                         return;
-                    else {
+                    } else {
                         formSetLookup.put(copy, copy);
                         connect(copy);
                     }
@@ -234,16 +255,16 @@ public class SimpleParserTest {
 
         void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
 
-            /*   for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case CompoundP3sg:
-                        original.add(Noun_Comp_P3sg.getSuccessors().copy());
-                        modified.clear().add(Noun_Comp_P3sg_Root.getSuccessors().copy());
+                        original.add(Noun_Main.allSuccessors().remove(Dim_CIK, A3pl_lAr, Dat_yA).add(Dat_nA));
+                        modified.add(Noun_Main.allSuccessors().remove(original));
                         break;
                     default:
                         break;
                 }
-            }*/
+            }
         }
 
 

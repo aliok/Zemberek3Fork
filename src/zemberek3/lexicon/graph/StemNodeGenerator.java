@@ -165,10 +165,10 @@ public class StemNodeGenerator {
     private StemNode[] handleP3sgCompounds(DictionaryItem item) {
         //TODO: phonetic attribute calculation is missing.
         StemNode[] nodes = new StemNode[2];
-        nodes[0] = new StemNode(item.lemma, item, TerminationType.TERMINAL);
+        TurkicSeq originalSeq = new TurkicSeq(item.lemma, alphabet);
+        nodes[0] = new StemNode(item.lemma, item, TerminationType.TERMINAL, calculateAttributes(originalSeq), AttributeSet.<PhoneticExpectation>emptySet());
         TurkicSeq modifiedSeq = new TurkicSeq(item.root, alphabet);
-        nodes[1] = new StemNode(modifiedSeq.toString(), item, TerminationType.NON_TERMINAL);
-
+        nodes[1] = new StemNode(modifiedSeq.toString(), item, TerminationType.NON_TERMINAL, calculateAttributes(modifiedSeq), AttributeSet.<PhoneticExpectation>emptySet());
         SuffixData[] roots = suffixProvider.defineSuccessorSuffixes(item);
         nodes[0].exclusiveSuffixData = roots[0];
         nodes[1].exclusiveSuffixData = roots[1];

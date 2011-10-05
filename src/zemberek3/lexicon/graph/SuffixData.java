@@ -15,6 +15,15 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         this.set.addAll(Arrays.asList(set));
     }
 
+    public SuffixData(SuffixData... suffixDatas) {
+        for (SuffixData suffixData : suffixDatas) {
+            this.set.addAll(suffixData.set);
+        }
+    }
+
+    public SuffixData() {
+    }
+
     public boolean contains(SuffixFormSet suffSet) {
         return set.contains(suffSet);
     }
@@ -30,6 +39,13 @@ public class SuffixData implements Iterable<SuffixFormSet> {
 
     public SuffixData add(SuffixFormSet... sets) {
         this.set.addAll(Arrays.asList(sets));
+        return this;
+    }
+
+    public SuffixData add(SuffixData... datas) {
+        for (SuffixData suffixData : datas) {
+            this.set.addAll(suffixData.set);
+        }
         return this;
     }
 
@@ -49,6 +65,13 @@ public class SuffixData implements Iterable<SuffixFormSet> {
     public SuffixData remove(SuffixFormSet... sets) {
         for (SuffixFormSet set : sets) {
             this.set.remove(set);
+        }
+        return this;
+    }
+
+    public SuffixData remove(SuffixData... datas) {
+        for (SuffixData data : datas) {
+            this.set.removeAll(data.set);
         }
         return this;
     }
