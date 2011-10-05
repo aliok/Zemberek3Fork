@@ -259,7 +259,7 @@ public class SimpleParserTest {
                 switch (attribute) {
                     case CompoundP3sg:
                         original.add(Noun_Main.allSuccessors().remove(Dim_CIK, A3pl_lAr, Dat_yA).add(Dat_nA));
-                        modified.add(Noun_Main.allSuccessors().remove(original));
+                        modified.add(Dim_CIK, A3sg_EMPTY, Pnon_EMPTY, Nom_EMPTY, A3pl_lAr);
                         break;
                     default:
                         break;
