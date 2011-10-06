@@ -105,7 +105,11 @@ public class SuffixData implements Iterable<SuffixFormSet> {
 
     @Override
     public int hashCode() {
-        return set.hashCode();
+        int result = 1;
+        for (SuffixFormSet successor : set) {
+            result = 31 * result + successor.getId().hashCode();
+        }
+        return result;
     }
 
     @Override

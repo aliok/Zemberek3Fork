@@ -44,7 +44,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    void addForms(SuffixFormSet... setz) {
+    protected void addForms(SuffixFormSet... setz) {
         for (SuffixFormSet suffixFormSet : setz) {
             if (formSetLookup.containsKey(suffixFormSet))
                 continue;

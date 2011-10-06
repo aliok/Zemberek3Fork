@@ -52,7 +52,7 @@ public class SuffixFormSet {
     /**
      * Generates a copy of this SuffixSet. However, it overwrites successor data using the input SuffixData.
      *
-     * @param uniqueId A unique ID for the copy.
+     * @param uniqueId  A unique ID for the copy.
      * @param allowOnly all successors to owewrite the copied ones. it eliminates the direct successors which does not
      *                  exist in allowOnly, and remaining ones are used as 'successor'
      * @return copy set.
@@ -66,10 +66,11 @@ public class SuffixFormSet {
         );
 
         for (SuffixFormSet successor : allowOnly) {
-            if (directSuccessors.contains(successor))
+            if (this.directSuccessors.contains(successor)) {
                 copy.directSuccessors.add(successor);
-            else
+            } else {
                 copy.successors.add(successor);
+            }
         }
         return copy;
     }
@@ -133,12 +134,8 @@ public class SuffixFormSet {
         int result = suffix.hashCode();
         result = 31 * result + generation.hashCode();
         result = 31 * result + terminationType.hashCode();
-        for (SuffixFormSet successor : successors) {
-            result = 31 * result + successor.getId().hashCode();
-        }
-        for (SuffixFormSet successor : directSuccessors) {
-            result = 31 * result + successor.getId().hashCode();
-        }
+/*        result = 31 * result + successors.hashCode();
+        result = 31 * result + directSuccessors.hashCode();*/
         return result;
     }
 

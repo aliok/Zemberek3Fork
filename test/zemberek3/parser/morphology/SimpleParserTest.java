@@ -139,8 +139,8 @@ public class SimpleParserTest {
 
         NounSuffixes() {
 
-            suffixes.addRootForPos(PrimaryPos.Noun, Noun_Main);
-
+            // TODO: null morphemes should behvae as contain all possible. then incividual forms should filter them
+            // by copying, them.
             Noun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
             Noun_Main.successors.add(P1sg_Im, Pnon_EMPTY, Nom_EMPTY, Dat_yA, Dim_CIK);
 
@@ -151,7 +151,10 @@ public class SimpleParserTest {
             A3pl_lAr.successors.add(Nom_EMPTY, Dat_yA);
 
             P1sg_Im.directSuccessors.add(Nom_EMPTY, Dat_yA);
+            Pnon_EMPTY.successors.add(Dim_CIK);
+
             Pnon_EMPTY.directSuccessors.add(Nom_EMPTY, Dat_yA);
+            Pnon_EMPTY.successors.add(Dim_CIK);
 
             Nom_EMPTY.directSuccessors.add(Dim_CIK);
             Dat_yA.directSuccessors.add(Dim_CIK);
@@ -160,9 +163,7 @@ public class SimpleParserTest {
             Dim_CIK.successors.add(Noun_Main.directSuccessors);
             Dim_CIK.successors.add(Noun_Main.successors.remove(Dim_CIK));
 
-            suffixes.addSuffixForms(
-                    Noun_Main, A3sg_EMPTY, A3pl_lAr,
-                    P1sg_Im, Pnon_EMPTY, Dat_yA, Dat_nA, Dim_CIK, Nom_EMPTY);
+            addForms( Noun_Main, A3sg_EMPTY, A3pl_lAr, P1sg_Im, Pnon_EMPTY, Dat_yA, Dat_nA, Dim_CIK, Nom_EMPTY);
         }
 
 /*        public SuffixFormSet[] getRootForms(DictionaryItem item) {
