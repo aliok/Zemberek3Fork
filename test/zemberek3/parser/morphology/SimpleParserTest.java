@@ -52,6 +52,13 @@ public class SimpleParserTest {
     }
 
     @Test
+    public void testCompoundsVoicing() {
+        DynamicLexiconGraph graph = getLexiconGraph("atkuyruğu [A:CompoundP3sg, Voicing ; R:atkuyruk]");
+        assertHasParses(graph, "atkuyruğu", "atkuyruklarım", "atkuyrukçuk");
+        assertUnParseable(graph, "atkuyruğlarım", "atkuyruk");
+    }
+
+    @Test
     public void testMultiWordDictionary() {
         DynamicLexiconGraph graph = getLexiconGraph("armut", "elma", "kabak", "kek");
         assertHasParses(graph, "armuda", "armutlara", "elmacığa", "keke", "kekçiklere");

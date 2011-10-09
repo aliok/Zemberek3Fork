@@ -28,7 +28,9 @@ public class DynamicLexiconGraph {
     public void addDictionaryItem(DictionaryItem item) {
 
         StemNode[] stems = stemNodeGenerator.generate(item);
+
         for (StemNode stem : stems) {
+
             if (!stemNodes.contains(stem)) {
                 SuffixNode rootSuffixNode = getRootSuffixNode(stem);
                 if (!rootSuffixNodeMap.containsKey(rootSuffixNode)) {

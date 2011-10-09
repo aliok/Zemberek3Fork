@@ -50,7 +50,7 @@ public class TurkishDictionaryLoader {
 
         DictionaryItem getItem() {
             String word = getWord();
-            PosInfo posInfo = getPosData(line);
+            PosInfo posInfo = getPosData(word);
             String cleanWord = generateRoot(word, posInfo);
 
             AttributeSet<RootAttr> rootAttrs = morphemicAttributes(cleanWord, posInfo);

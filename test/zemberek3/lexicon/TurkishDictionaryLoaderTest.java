@@ -58,11 +58,21 @@ public class TurkishDictionaryLoaderTest {
         Assert.assertEquals("gelmek", item.lemma);
         Assert.assertEquals(Verb, item.primaryPos);
 
-        String[] verbs = {"germek", "yarmak", "salmak", "yermek [P:Verb]", "etmek [P:Verb; A:Voicing]"};
+        String[] verbs = {"germek", "yarmak", "salmak", "yermek [P:Verb]", "etmek [P:Verb; A:Voicing]", "etmek [A:Voicing]",
+                "yıkanmak [A:Reflexive]", "küfretmek [A:Voicing, Aorist_A]"};
         for (String verb : verbs) {
             item = loader.loadFromString(verb);
             Assert.assertEquals(Verb, item.primaryPos);
         }
+    }
+
+    @Test
+    public void compoundTest() {
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
+        DictionaryItem item = loader.loadFromString("atkuyruğu [A:CompoundP3sg, Voicing ; R:atkuyruk]");
+        Assert.assertEquals("atkuyruk", item.root);
+        Assert.assertEquals("atkuyruğu", item.lemma);
+        Assert.assertEquals(Noun, item.primaryPos);
     }
 
     @Test
@@ -148,18 +158,26 @@ public class TurkishDictionaryLoaderTest {
                             System.out.println("Cannot find:" + s);
                             continue;
                         }
-                        char c = clean.charAt(clean.length()-1);
+                        char c = clean.charAt(clean.length() - 1);
                         char vv = c;
                         switch (c) {
-                            case 'k': vv = 'ğ'; break;
-                            case 'p': vv = 'b'; break;
-                            case 'ç': vv = 'c'; break;
-                            case 't': vv = 'd'; break;
+                            case 'k':
+                                vv = 'ğ';
+                                break;
+                            case 'p':
+                                vv = 'b';
+                                break;
+                            case 'ç':
+                                vv = 'c';
+                                break;
+                            case 't':
+                                vv = 'd';
+                                break;
                             default:
                                 System.out.println("crap:" + s);
                         }
                         String content = SimpleTextReader.trimmingUTF8Reader(f).asString();
-                        if(!content.contains("color=DarkBlue>-"+String.valueOf(vv)))
+                        if (!content.contains("color=DarkBlue>-" + String.valueOf(vv)))
                             System.out.println(s);
                     }
                 }

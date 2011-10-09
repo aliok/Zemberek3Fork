@@ -14,6 +14,7 @@ import zemberek3.lexicon.graph.LexiconGraph;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleParserFunctionalTest {
@@ -39,6 +40,63 @@ public class SimpleParserFunctionalTest {
             }
             //Assert.assertTrue("Could not parse valid word:" + parseable, parser.parse(parseable).size() > 0);
         }
+    }
+
+    @Test
+    public void testVoicing() {
+        DynamicLexiconGraph graph = getLexiconGraph("armut");
+        assertHasParses(graph, "armut", "armuda", "armutlar", "armutlara");
+        assertUnParseable(graph, "armud", "armuta", "armudlar");
+    }
+
+    @Test
+    public void testCompounds() {
+        DynamicLexiconGraph graph = getLexiconGraph("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
+        assertHasParses(graph, "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcık", "zeytinyağlarım");
+        assertUnParseable(graph, "zeytinyağılar", "zeytinyağıcık");
+    }
+
+    @Test
+    public void testCompoundsVoicing() {
+        DynamicLexiconGraph graph = getLexiconGraph("atkuyruğu [A:CompoundP3sg, Voicing ; R:atkuyruk]");
+        assertHasParses(graph,  "atkuyrukçuk", "atkuyruğu", "atkuyruklarım");
+        assertUnParseable(graph, "atkuyruğlarım", "atkuyruk");
+    }
+
+    private void assertHasParses(DynamicLexiconGraph graph, String... words) {
+        SimpleParser parser = new SimpleParser(graph);
+        for (String word : words) {
+            List<ParseResult> results = parser.parse(word);
+            Assert.assertTrue("No parse for:" + word, results.size() > 0);
+            for (ParseResult result : results) {
+                System.out.println(word + "= " + result.asParseString());
+            }
+        }
+    }
+
+    private void assertUnParseable(DynamicLexiconGraph graph, String... words) {
+        SimpleParser parser = new SimpleParser(graph);
+        for (String word : words) {
+            List<ParseResult> results = parser.parse(word);
+            Assert.assertTrue("Unexpected parse for:" + word + " parse:" + results, results.size() == 0);
+        }
+    }
+
+    private DynamicLexiconGraph getLexiconGraph(String... words) {
+        SuffixProvider suffixProvider = new TurkishSuffixes();
+        List<DictionaryItem> items = getItems(words, suffixProvider);
+        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
+        graph.addDictionaryItems(items);
+        return graph;
+    }
+
+    private List<DictionaryItem> getItems(String[] lines, SuffixProvider suffixProvider) {
+        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
+        List<DictionaryItem> items = new ArrayList<DictionaryItem>();
+        for (String line : lines) {
+            items.add(loader.loadFromString(line));
+        }
+        return items;
     }
 
     @Test
