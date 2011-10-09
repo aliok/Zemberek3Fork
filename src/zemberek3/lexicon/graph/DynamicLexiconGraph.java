@@ -72,14 +72,13 @@ public class DynamicLexiconGraph {
     public SuffixNode getRootSuffixNode(StemNode node) {
         SuffixFormSet set = suffixProvider.getRootSet(node.dictionaryItem, node.exclusiveSuffixData);
         // construct a new suffix node.
-        SuffixNode suffixNode = new SuffixNode(
+        return new SuffixNode(
                 set,
                 "",
                 node.attributes,
                 node.expectations,
                 node.exclusiveSuffixData,
                 node.termination);
-        return suffixNode;
     }
 
 
@@ -89,7 +88,13 @@ public class DynamicLexiconGraph {
         // iterate over form sets.
         for (SuffixFormSet succSet : successors) {
             // get the nodes for the  suffix form.
-            List<SuffixNode> nodesInSuccessor = suffixNodeGenerator.getNodes(node.attributes, node.expectations, node.exclusiveSuffixData, succSet);
+            if (succSet.isTemplate())
+                continue;
+            List<SuffixNode> nodesInSuccessor = suffixNodeGenerator.getNodes(
+                    node.attributes,
+                    node.expectations,
+                    node.exclusiveSuffixData,
+                    succSet);
             for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
                 // if there are expectations for the node, check if it matches with the attributes of the node in successor.
                 if (!node.expectations.isEmpty()) {
@@ -104,6 +109,7 @@ public class DynamicLexiconGraph {
                 nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
                 node.addSuccNode(nodeInSuccessor);
                 if (recurse) {
+                    System.out.println("recurse for:" + nodeInSuccessor);
                     connectSuffixNodes(nodeInSuccessor);
                 }
             }

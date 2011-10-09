@@ -91,6 +91,11 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         return this;
     }
 
+    public SuffixData retain(SuffixData data) {
+        set.retainAll(data.set);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
