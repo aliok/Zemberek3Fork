@@ -315,7 +315,7 @@ public class LexiconTree {
 //        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("src/resources/tr/master-dictionary.txt"));
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();
-        LexiconGraph graph = new LexiconGraph(items, suffixes.getSuffixProvider());
+        LexiconGraph graph = new LexiconGraph(items, suffixes);
         graph.generate();
         long st = System.currentTimeMillis();
         int i = 0;

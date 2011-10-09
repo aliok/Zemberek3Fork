@@ -433,11 +433,11 @@ public class LexiconGraph {
                         modified.getSuccessors().clear().add(Pass_nIl);
                         break;
                     case VoicingOpt:
-                        modified.getSuccessors().remove(Verb_Exp_C.getSuccessors());
+                    //    modified.getSuccessors().remove(Verb_Exp_C.getSuccessors());
                         break;
                     case Voicing:
-                        original.getSuccessors().remove(Verb_Exp_V.getSuccessors());
-                        modified.getSuccessors().remove(Verb_Exp_C.getSuccessors());
+                     //   original.getSuccessors().remove(Verb_Exp_V.getSuccessors());
+                     //   modified.getSuccessors().remove(Verb_Exp_C.getSuccessors());
                         break;
                     case ProgressiveVowelDrop:
                         original.getSuccessors().remove(Prog_Iyor);
@@ -475,13 +475,13 @@ public class LexiconGraph {
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case VoicingOpt:
-                        modified.getSuccessors().remove(Noun_Exp_C.getSuccessors());
+                       // modified.getSuccessors().remove(Noun_Exp_C.getSuccessors());
                         break;
                     case Voicing:
                     case Doubling:
                     case LastVowelDrop:
-                        original.getSuccessors().remove(Noun_Exp_V.getSuccessors());
-                        modified.getSuccessors().remove(Noun_Exp_C.getSuccessors());
+                      //  original.getSuccessors().remove(Noun_Exp_V.getSuccessors());
+                     //   modified.getSuccessors().remove(Noun_Exp_C.getSuccessors());
                         break;
                     case CompoundP3sg:
                         original.getSuccessors().clear().add(TurkishSuffixes.Noun_Comp_P3sg.getSuccessors().copy());
@@ -505,8 +505,8 @@ public class LexiconGraph {
                     case Voicing:
                     case Doubling:
                     case LastVowelDrop:
-                        original.getSuccessors().remove(Adj_Exp_V.getSuccessors());
-                        modified.getSuccessors().remove(Adj_Exp_C.getSuccessors());
+                      //  original.getSuccessors().remove(Adj_Exp_V.getSuccessors());
+                     //   modified.getSuccessors().remove(Adj_Exp_C.getSuccessors());
                         break;
                     default:
                         break;

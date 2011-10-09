@@ -98,7 +98,7 @@ public class SimpleParserFunctionalTest {
     }
 
     private DynamicLexiconGraph getLexiconGraph(File dictionary) throws IOException {
-        SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
+        SuffixProvider suffixProvider = new TurkishSuffixes();
         List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(dictionary);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);

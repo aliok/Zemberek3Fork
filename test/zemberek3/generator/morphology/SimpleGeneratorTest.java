@@ -86,7 +86,7 @@ public class SimpleGeneratorTest {
     }
 
     private DynamicLexiconGraph getLexicon() throws IOException {
-        SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
+        SuffixProvider suffixProvider = new TurkishSuffixes();
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);

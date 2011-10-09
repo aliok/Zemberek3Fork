@@ -22,7 +22,7 @@ import static zemberek3.lexicon.RootAttr.*;
 
 public class TurkishDictionaryLoaderTest {
 
-    SuffixProvider suffixProvider = new TurkishSuffixes().getSuffixProvider();
+    SuffixProvider suffixProvider = new TurkishSuffixes();
 
     @Test
     public void loadNounsFromFileTest() throws IOException {
@@ -120,7 +120,7 @@ public class TurkishDictionaryLoaderTest {
     @Test
     @Ignore("Not a unit Test. Only loads the master dictionary.")
     public void masterDictionaryLoadTest() throws IOException {
-        SuffixProvider sp = new TurkishSuffixes().getSuffixProvider();
+        SuffixProvider sp = new TurkishSuffixes();
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader(sp);
 
         List<DictionaryItem> items = loader.load(new File("src/resources/tr/master-dictionary.txt"));

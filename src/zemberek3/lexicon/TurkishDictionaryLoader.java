@@ -26,7 +26,7 @@ public class TurkishDictionaryLoader {
     }
 
     public TurkishDictionaryLoader() {
-        this.suffixProvider = new TurkishSuffixes().getSuffixProvider();
+        this.suffixProvider = new TurkishSuffixes();
     }
 
     public List<DictionaryItem> load(File input) throws IOException {
@@ -286,7 +286,7 @@ public class TurkishDictionaryLoader {
     }
 
     public static void main(String[] args) throws IOException {
-        List<DictionaryItem> items = new TurkishDictionaryLoader(new TurkishSuffixes().getSuffixProvider()).load(new File("test/data/dev-dictionary.txt"));
+        List<DictionaryItem> items = new TurkishDictionaryLoader(new TurkishSuffixes()).load(new File("test/data/dev-dictionary.txt"));
         for (DictionaryItem item : items) {
             System.out.println(item);
         }

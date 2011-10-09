@@ -103,13 +103,13 @@ public class DynamicLexiconGraph {
                 }
                 boolean recurse = false;
                 if (!nodeExists(succSet, nodeInSuccessor)) {
-                    System.out.println("node will be added:" + nodeInSuccessor.dump());
+                    //System.out.println("node will be added:" + nodeInSuccessor.dump());
                     recurse = true;
                 }
                 nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
                 node.addSuccNode(nodeInSuccessor);
                 if (recurse) {
-                    System.out.println("recurse for:" + nodeInSuccessor);
+                    //System.out.println("recurse for:" + nodeInSuccessor);
                     connectSuffixNodes(nodeInSuccessor);
                 }
             }

@@ -6,7 +6,6 @@ import zemberek3.lexicon.*;
 import zemberek3.lexicon.graph.*;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimpleParserTest {
 
@@ -109,132 +108,46 @@ public class SimpleParserTest {
         return items;
     }
 
-
-    static class RandomIdMaker {
-        Random random = new Random();
-        Set<String> ids = Collections.synchronizedSet(new HashSet<String>());
-        int letterCount;
-
-        RandomIdMaker(int letterCount) {
-            this.letterCount = letterCount;
-        }
-
-        String getNew() {
-            StringBuilder sb = new StringBuilder(letterCount);
-            for (int i = 0; i < letterCount; i++) {
-                sb.append((char) (random.nextInt(25) + 'A'));
-            }
-            String res = sb.toString();
-            if (!ids.contains(res)) {
-                ids.add(res);
-                return res;
-            }
-            return getNew();
-        }
-
-        String getNew(String toAppend) {
-            return toAppend + "_" + getNew();
-        }
-    }
-
     static class NounSuffixes extends DynamicSuffixProvider {
-
-        RandomIdMaker idMaker = new RandomIdMaker(3);
 
         static SuffixFormSet Dim_CIK = getSet("Dim", ">cI~k");
         static SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
         static SuffixFormSet Dat_yA = getSet("Dat", "+yA");
         static SuffixFormSet Dat_nA = getSet("Dat", "nA");
-        static SuffixFormSet Pnon_EMPTY = getTemplate("Pnon", "Pnon_EMPTY");
-        static SuffixFormSet Nom_EMPTY = getTemplate("Nom", "Nom_EMPTY");
-        static SuffixFormSet A3sg_EMPTY = getTemplate("A3sg", "A3sg_EMPTY");
+        static SuffixFormSet Pnon_TEMPLATE = getTemplate("Pnon", "Pnon_TEMPLATE");
+        static SuffixFormSet Nom_TEMPLATE = getTemplate("Nom", "Nom_TEMPLATE");
+        static SuffixFormSet A3sg_TEMPLATE = getTemplate("A3sg", "A3sg_TEMPLATE");
         static SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
-        static SuffixFormSet Noun_Main = getTemplate("Noun", "Noun_Main");
+        static SuffixFormSet Noun_TEMPLATE = getTemplate("Noun", "Noun_TEMPLATE");
         static SuffixFormSet Noun_Default = getNull("Noun", "Noun_Default");
-
-        private static SuffixFormSet getNull(String suffix, String suffixId) {
-            return new SuffixFormSet(suffixId, new Suffix(suffix), "", TerminationType.TRANSFER);
-        }
-
-        DynamicSuffixes suffixes = new DynamicSuffixes();
-
-        private static SuffixFormSet getSet(String suffixId, String generationStr) {
-            return new SuffixFormSet(new Suffix(suffixId), generationStr);
-        }
-
-        private static SuffixFormSet getTemplate(String suffixId, String id) {
-            return SuffixFormSet.getTemplate(id, new Suffix(suffixId));
-        }
 
         NounSuffixes() {
 
-            Noun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
-            Noun_Main.successors.add(P1sg_Im, Pnon_EMPTY, Nom_EMPTY, Dat_yA, Dat_nA, Dim_CIK);
+            Noun_TEMPLATE.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
+            Noun_TEMPLATE.successors.add(P1sg_Im, Pnon_TEMPLATE, Nom_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK);
 
-            Noun_Default.directSuccessors.add(Noun_Main.getDirectSuccessors());
-            Noun_Default.successors.add(Noun_Main.getSuccessors()).remove(Dat_nA);
+            Noun_Default.directSuccessors.add(Noun_TEMPLATE.getDirectSuccessors());
+            Noun_Default.successors.add(Noun_TEMPLATE.getSuccessors()).remove(Dat_nA);
 
-            A3sg_EMPTY.directSuccessors.add(Pnon_EMPTY, P1sg_Im);
-            A3sg_EMPTY.successors.add(Nom_EMPTY, Dat_yA, Dat_nA, Dim_CIK);
+            A3sg_TEMPLATE.directSuccessors.add(Pnon_TEMPLATE, P1sg_Im);
+            A3sg_TEMPLATE.successors.add(Nom_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK);
 
-            A3pl_lAr.directSuccessors.add(P1sg_Im, Pnon_EMPTY);
-            A3pl_lAr.successors.add(Nom_EMPTY, Dat_yA);
+            A3pl_lAr.directSuccessors.add(P1sg_Im, Pnon_TEMPLATE);
+            A3pl_lAr.successors.add(Nom_TEMPLATE, Dat_yA);
 
-            P1sg_Im.directSuccessors.add(Nom_EMPTY, Dat_yA);
-            Pnon_EMPTY.successors.add(Dim_CIK);
+            P1sg_Im.directSuccessors.add(Nom_TEMPLATE, Dat_yA);
+            Pnon_TEMPLATE.successors.add(Dim_CIK);
 
-            Pnon_EMPTY.directSuccessors.add(Nom_EMPTY, Dat_nA, Dat_yA);
-            Pnon_EMPTY.successors.add(Dim_CIK);
+            Pnon_TEMPLATE.directSuccessors.add(Nom_TEMPLATE, Dat_nA, Dat_yA);
+            Pnon_TEMPLATE.successors.add(Dim_CIK);
 
-            Nom_EMPTY.directSuccessors.add(Dim_CIK);
+            Nom_TEMPLATE.directSuccessors.add(Dim_CIK);
             Dat_yA.directSuccessors.add(Dim_CIK);
 
-            Dim_CIK.directSuccessors.add(Noun_Main);
-            Dim_CIK.successors.add(Noun_Main.directSuccessors);
-            Dim_CIK.successors.add(Noun_Main.successors.remove(Dim_CIK));
+            Dim_CIK.directSuccessors.add(Noun_TEMPLATE);
+            Dim_CIK.successors.add(Noun_TEMPLATE.allSuccessors().remove(Dim_CIK));
 
-            registerForms(Noun_Main, Noun_Default, A3sg_EMPTY, A3pl_lAr, P1sg_Im, Pnon_EMPTY, Dat_yA, Dat_nA, Dim_CIK, Nom_EMPTY);
-        }
-
-        public void registerForms(SuffixFormSet... setz) {
-            for (SuffixFormSet formSet : setz) {
-                registerForm(formSet);
-            }
-        }
-
-        public void registerForm(SuffixFormSet formSet) {
-
-            if (formSet.isTemplate() || formSetLookup.containsKey(formSet)) {
-                return;
-            }
-
-            formSetLookup.put(formSet, formSet);
-
-            Set<SuffixFormSet> allSuccessors = formSet.allSuccessors().set;
-            Set<SuffixFormSet> toRemove = new HashSet<SuffixFormSet>();
-            Set<SuffixFormSet> toAdd = new HashSet<SuffixFormSet>();
-            for (SuffixFormSet directSuccessor : formSet.directSuccessors) {
-                if (directSuccessor.isTemplate()) {
-                    SuffixFormSet copyOfTemplate = directSuccessor.copy(idMaker.getNew(directSuccessor.id));
-                    copyOfTemplate.directSuccessors.retain(allSuccessors);
-                    copyOfTemplate.successors.retain(allSuccessors);
-                    if (formSetLookup.containsKey(copyOfTemplate)) {
-                        copyOfTemplate = formSetLookup.get(copyOfTemplate);
-                    }
-                    toRemove.add(directSuccessor);
-                    toAdd.add(copyOfTemplate);
-                }
-            }
-            for (SuffixFormSet suffixFormSet : formSet.successors) {
-                if (suffixFormSet.template)
-                    toRemove.add(suffixFormSet);
-            }
-            formSet.getDirectSuccessors().remove(toRemove);
-            formSet.getSuccessors().remove(toRemove);
-            formSet.getDirectSuccessors().add(toAdd);
-            for (SuffixFormSet suffixFormSet : toAdd) {
-                registerForm(suffixFormSet);
-            }
+            registerForms(Noun_TEMPLATE, Noun_Default, A3sg_TEMPLATE, A3pl_lAr, P1sg_Im, Pnon_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Nom_TEMPLATE);
         }
 
 
@@ -245,12 +158,12 @@ public class SimpleParserTest {
                     case Noun:
                         return Noun_Default;
                     default:
-                        return Noun_Default;
+                        throw new UnsupportedOperationException("In this class only some noun morphemes exist.");
                 }
             } else {
                 switch (item.primaryPos) {
                     case Noun:
-                        SuffixFormSet copyOfTemplate = Noun_Main.copy(idMaker.getNew(Noun_Main.id));
+                        SuffixFormSet copyOfTemplate = Noun_TEMPLATE.copy(idMaker.getNew(Noun_TEMPLATE.id));
                         copyOfTemplate.directSuccessors.retain(successorConstraint);
                         copyOfTemplate.successors.retain(successorConstraint);
                         if (formSetLookup.containsKey(copyOfTemplate)) {
@@ -260,14 +173,11 @@ public class SimpleParserTest {
                         }
                         return copyOfTemplate;
                     default:
-                        return Noun_Default;
+                        throw new UnsupportedOperationException("In this class only some noun morphemes exist.");
+
                 }
 
             }
-        }
-
-        public DynamicSuffixes getSuffixes() {
-            return suffixes;
         }
 
         public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
@@ -281,16 +191,10 @@ public class SimpleParserTest {
                 case Noun:
                     getForNoun(item, original, modified);
                     break;
-                case Verb:
-                    getForVerb(item, original, modified);
-                    break;
+                default:
+                    throw new UnsupportedOperationException("In this class only some noun morphemes exist.");
             }
             return new SuffixData[]{original, modified};
-        }
-
-        private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
-
-
         }
 
         void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
@@ -299,7 +203,7 @@ public class SimpleParserTest {
                 switch (attribute) {
                     case CompoundP3sg:
                         original.add(Noun_Default.allSuccessors().remove(Dim_CIK, A3pl_lAr, Dat_yA).add(Dat_nA));
-                        modified.add(Dim_CIK, A3sg_EMPTY, Pnon_EMPTY, Nom_EMPTY, A3pl_lAr);
+                        modified.add(Dim_CIK, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE, A3pl_lAr);
                         break;
                     default:
                         break;
