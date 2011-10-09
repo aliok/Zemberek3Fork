@@ -448,9 +448,10 @@ public class TurkishSuffixes implements Suffixes {
         }
 
         @Override
-        public SuffixFormSet getRootSet(DictionaryItem item) {
+        public SuffixFormSet getRootSet(DictionaryItem item, SuffixData successors) {
             return null;  //To change body of implemented methods use File | Settings | File Templates.
         }
+
 
         @Override
         public SuffixFormSet addAndGet(SuffixFormSet setToCopy, SuffixData successors) {

@@ -15,7 +15,7 @@ public interface SuffixProvider {
 
     SuffixData[] defineSuccessorSuffixes(DictionaryItem item);
 
-    SuffixFormSet getRootSet(DictionaryItem item);
+    SuffixFormSet getRootSet(DictionaryItem item, SuffixData successors);
 
     SuffixFormSet addAndGet(SuffixFormSet setToCopy, SuffixData successors);
 

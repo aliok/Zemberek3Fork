@@ -70,7 +70,7 @@ public class DynamicLexiconGraph {
     }
 
     public SuffixNode getRootSuffixNode(StemNode node) {
-        SuffixFormSet set = suffixProvider.addAndGet(suffixProvider.getRootSet(node.dictionaryItem), node.exclusiveSuffixData);
+        SuffixFormSet set = suffixProvider.getRootSet(node.dictionaryItem, node.exclusiveSuffixData);
         // construct a new suffix node.
         SuffixNode suffixNode = new SuffixNode(
                 set,
