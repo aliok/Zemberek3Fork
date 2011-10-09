@@ -1,13 +1,8 @@
 package zemberek3.lexicon;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import zemberek3.lexicon.graph.*;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import zemberek3.lexicon.graph.DynamicSuffixProvider;
+import zemberek3.lexicon.graph.SuffixData;
+import zemberek3.lexicon.graph.TerminationType;
 
 public class TurkishSuffixes extends DynamicSuffixProvider {
 
@@ -338,8 +333,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public static Suffix NounRoot = new Suffix("NounRoot");
     public static SuffixFormSet Noun_Main = new SuffixFormSet("Noun_Main", NounRoot, "");
-    public static SuffixFormSet Noun_Comp_P3sg = new SuffixFormSet("Noun_Comp_P3sg", NounRoot, "");
-    public static SuffixFormSet Noun_Comp_P3sg_Root = new SuffixFormSet("Noun_Comp_P3sg_Root", NounRoot, "");
+    public static SuffixFormSet Noun_Default = getNull("Noun_Default", NounRoot);
+    public static SuffixFormSet Noun_Comp_P3sg = getNull("Noun_Comp_P3sg", NounRoot);
+    public static SuffixFormSet Noun_Comp_P3sg_Root = getNull("Noun_Comp_P3sg_Root", NounRoot);
 
     public static Suffix AdjRoot = new Suffix("AdjRoot");
     public static SuffixFormSet Adj_Main = getTemplate("Adj_Main", AdjRoot);
@@ -379,27 +375,60 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     // TODO: add time root. (with Rel_ki + Noun)
 
-    public static final SuffixFormSet[] CASE_FORMS = {Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA};
+    public static final SuffixFormSet[] CASE_FORMS = {Nom_EMPTY, Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA};
     public static final SuffixFormSet[] POSSESSIVE_FORMS = {Pnon_EMPTY, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
     public static final SuffixFormSet[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final SuffixFormSet[] PERSON_FORMS_COP = {A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr};
     public static final SuffixFormSet[] COPULAR_FORMS = {Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken};
 
     public TurkishSuffixes() {
-        Noun_Main.getSuccessors().add(A3pl_lAr, A3sg_EMPTY);
 
-        A3sg_EMPTY.getSuccessors().add(POSSESSIVE_FORMS);
-        A3pl_lAr.getSuccessors().add(POSSESSIVE_FORMS);
+        // noun template. it has all possible suffix forms that a noun can follow
+        Noun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
+        Noun_Main.successors.add(POSSESSIVE_FORMS, PERSON_FORMS_N, COPULAR_FORMS)
+                .add(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI)
+                .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl)
+                .add(Become_lAs, Equ_cA);
 
-        Pnon_EMPTY.getSuccessors().add(CASE_FORMS);
-        P1sg_Im.getSuccessors().add(CASE_FORMS);
-        P2sg_In.getSuccessors().add(CASE_FORMS);
-        P3sg_sI.getSuccessors().add(CASE_FORMS);
-        P1pl_ImIz.getSuccessors().add(CASE_FORMS);
-        P2pl_InIz.getSuccessors().add(CASE_FORMS);
-        P3pl_lArI.getSuccessors().add(CASE_FORMS);
+        // default noun suffix form. we remove some suffixes so that words like araba-na (dative)
+        Noun_Default.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
+        Noun_Default.successors.add(Noun_Main.successors)
+                .remove(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
+
+        // P3sg compound suffixes. (full form. such as zeytinyağı-na)
+        Noun_Comp_P3sg.directSuccessors.add(A3sg_EMPTY);
+        Noun_Comp_P3sg.successors.add(COPULAR_FORMS, POSSESSIVE_FORMS)
+                .add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
+                .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
+
+        // P3sg compound suffixes. (root form. such as zeytinyağ-lar-ı)
+        Noun_Comp_P3sg_Root.directSuccessors.add(A3pl_Comp_lAr, A3sg_EMPTY); // A3pl_Comp_lAr is used, because zeytinyağ-lar is not allowed.
+        Noun_Comp_P3sg_Root.successors.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl)
+                .add(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI);
+
+        // Proper noun default //TODO: should be a template
+        ProperNoun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
+        ProperNoun_Main.successors.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
+                .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Ness_lIk);
+
+        A3pl_lAr.directSuccessors.add(POSSESSIVE_FORMS).remove(P3pl_lArI);
+        A3pl_lAr.successors.add(CASE_FORMS, COPULAR_FORMS)
+                .add(A1pl_yIz, A2pl_sInIz, Equ_cA);
+
+        A3sg_EMPTY.directSuccessors.add(POSSESSIVE_FORMS);
+        A3sg_EMPTY.successors.add(Noun_Main.successors);
+
+        Pnon_EMPTY.directSuccessors.add(CASE_FORMS)
+                .add(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
+
+        Nom_EMPTY.directSuccessors.add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI)
+                .add(Ness_lIk, Related_sAl, Become_lAs, Equ_cA);
+        
+
+
 
         registerForms(
+                Noun_Default, Nom_EMPTY,
                 Dat_yA, Dat_nA, Loc_dA, Loc_ndA, Abl_dAn, Abl_ndAn, Gen_nIn,
                 Acc_yI, Acc_nI, Inst_ylA, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz,
                 P2pl_InIz, P3pl_lArI, Dim_cIk, Dim2_cAgIz, With_lI,
@@ -620,94 +649,115 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 */
     }
 
-    public static class TurkishRootSuffixSetBuilder implements RootSuffixSetBuilder {
-
-
-        public SuffixData[] getRootSuffixSets(DictionaryItem item) {
-
-            SuffixData original = new SuffixData();
-            SuffixData modified = new SuffixData();
-
-            PrimaryPos primaryPos = item.primaryPos;
-
-            switch (primaryPos) {
+    @Override
+    public SuffixFormSet getRootSet(DictionaryItem item, SuffixData successorConstraint) {
+        if (successorConstraint.isEmpty()) {
+            switch (item.primaryPos) {
                 case Noun:
-                    getForNoun(item, original, modified);
-                    break;
-                case Verb:
-                    getForVerb(item, original, modified);
-                    break;
-
+                    return Noun_Default;
+                default:
+                    return Noun_Default;
             }
-            return new SuffixData[]{original, modified};
+        } else {
+            switch (item.primaryPos) {
+                default:
+                    SuffixFormSet copyOfTemplate = Noun_Main.copy(idMaker.getNew(Noun_Main.id));
+                    copyOfTemplate.directSuccessors.retain(successorConstraint);
+                    copyOfTemplate.successors.retain(successorConstraint);
+                    if (formSetLookup.containsKey(copyOfTemplate)) {
+                        copyOfTemplate = formSetLookup.get(copyOfTemplate);
+                    } else {
+                        registerForm(copyOfTemplate);
+                    }
+                    return copyOfTemplate;
+            }
         }
+    }
 
-        private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
 
-            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
-                switch (attribute) {
-                    case Aorist_A:
-                        original.add(Aor_Ar, AorPart_Ar);
-                        original.remove(Aor_Ir, AorPart_Ir);
-                        modified.add(Aor_Ar, AorPart_Ar);
-                        modified.remove(Aor_Ir, AorPart_Ir);
-                        break;
-                    case Aorist_I:
-                        original.add(Aor_Ir, AorPart_Ir);
-                        original.remove(Aor_Ar, AorPart_Ar);
-                        modified.add(Aor_Ir, AorPart_Ir);
-                        modified.remove(Aor_Ar, AorPart_Ar);
-                        break;
-                    case Passive_In:
-                        original.add(Pass_In);
-                        original.remove(Pass_nIl);
-                        break;
-                    case LastVowelDrop:
-                        original.remove(Pass_nIl);
-                        modified.clear().add(Pass_nIl);
-                        break;
+    @Override
+    public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
+        SuffixData original = new SuffixData();
+        SuffixData modified = new SuffixData();
+
+        PrimaryPos primaryPos = item.primaryPos;
+
+        switch (primaryPos) {
+            case Noun:
+                getForNoun(item, original, modified);
+                break;
+            default:
+                getForNoun(item, original, modified);
+        }
+        return new SuffixData[]{original, modified};
+    }
+
+
+    private void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
+
+        for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+            switch (attribute) {
+                case CompoundP3sg:
+                    original.add(Noun_Comp_P3sg.allSuccessors());
+                    modified.clear().add(Noun_Comp_P3sg_Root.allSuccessors());
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
+
+        for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+            switch (attribute) {
+                case Aorist_A:
+                    original.add(Aor_Ar, AorPart_Ar);
+                    original.remove(Aor_Ir, AorPart_Ir);
+                    modified.add(Aor_Ar, AorPart_Ar);
+                    modified.remove(Aor_Ir, AorPart_Ir);
+                    break;
+                case Aorist_I:
+                    original.add(Aor_Ir, AorPart_Ir);
+                    original.remove(Aor_Ar, AorPart_Ar);
+                    modified.add(Aor_Ir, AorPart_Ir);
+                    modified.remove(Aor_Ar, AorPart_Ar);
+                    break;
+                case Passive_In:
+                    original.add(Pass_In);
+                    original.remove(Pass_nIl);
+                    break;
+                case LastVowelDrop:
+                    original.remove(Pass_nIl);
+                    modified.clear().add(Pass_nIl);
+                    break;
 /*                    case VoicingOpt:
                         modified.remove(Verb_Exp_C.getSuccessors());
                         break;*/
-                    case ProgressiveVowelDrop:
-                        original.add(Prog_Iyor);
-                        modified.clear().add(Prog_Iyor);
-                        break;
-                    case NonTransitive:
-                        original.remove(Caus_t, Caus_tIr);
-                        modified.remove(Caus_t, Caus_tIr);
-                        break;
-                    case Reflexive:
-                        original.add(Reflex_In);
-                        modified.add(Reflex_In);
-                        break;
-                    case Reciprocal:
-                        original.add(Recip_Is);
-                        modified.add(Recip_Is);
-                        break;
-                    case Causative_t:
-                        original.remove(Caus_tIr);
-                        original.add(Caus_t);
-                        modified.remove(Caus_tIr);
-                        modified.add(Caus_t);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
-
-            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
-                switch (attribute) {
-                    case CompoundP3sg:
-                        original.add(Noun_Comp_P3sg.getSuccessors().copy());
-                        modified.clear().add(Noun_Comp_P3sg_Root.getSuccessors().copy());
-                        break;
-                    default:
-                        break;
-                }
+                case ProgressiveVowelDrop:
+                    original.add(Prog_Iyor);
+                    modified.clear().add(Prog_Iyor);
+                    break;
+                case NonTransitive:
+                    original.remove(Caus_t, Caus_tIr);
+                    modified.remove(Caus_t, Caus_tIr);
+                    break;
+                case Reflexive:
+                    original.add(Reflex_In);
+                    modified.add(Reflex_In);
+                    break;
+                case Reciprocal:
+                    original.add(Recip_Is);
+                    modified.add(Recip_Is);
+                    break;
+                case Causative_t:
+                    original.remove(Caus_tIr);
+                    original.add(Caus_t);
+                    modified.remove(Caus_tIr);
+                    modified.add(Caus_t);
+                    break;
+                default:
+                    break;
             }
         }
     }

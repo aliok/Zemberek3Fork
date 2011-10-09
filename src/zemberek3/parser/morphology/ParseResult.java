@@ -50,4 +50,9 @@ public class ParseResult {
         sb.append("]");
         return sb.toString();
     }
+
+    public String toString() {
+        return asParseString();
+    }
+
 }

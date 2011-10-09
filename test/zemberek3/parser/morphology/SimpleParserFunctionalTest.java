@@ -25,6 +25,21 @@ public class SimpleParserFunctionalTest {
         }
     }
 
+    @Test
+    public void simpleParse() throws IOException {
+        DynamicLexiconGraph graph = getLexiconGraph(new File("test/data/dev-lexicon.txt"));
+        SimpleParser simpleParser = new SimpleParser(graph);
+        List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
+        for (String parseable : parseables) {
+            List<ParseResult> result = simpleParser.parse(parseable);
+            if (result.size() > 0) {
+                System.out.println(parseable + ":" + result);
+            } else {
+              //  System.out.println("ERROR:" + parseable);
+            }
+            //Assert.assertTrue("Could not parse valid word:" + parseable, parser.parse(parseable).size() > 0);
+        }
+    }
 
     @Test
     public void trieBasedParseable() throws IOException {
