@@ -10,7 +10,6 @@ import zemberek3.lexicon.SuffixProvider;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
-import zemberek3.lexicon.graph.LexiconGraph;
 
 import java.io.File;
 import java.io.IOException;
@@ -138,12 +137,26 @@ public class SimpleParserFunctionalTest {
     @Test
     public void testNegative() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak", "gel");
-        assertHasParses(graph, "aranıl", "yapıl", "aran");
-        assertUnParseable(graph, "aral", "gelil");
-        // causative and passive
-        assertHasParses(graph, "yaptırıl", "yaptırtıl", "yaptırttırıl", "aratıl", "arattırıl", "arattırtıl");
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gelmek");
+        assertHasParses(graph, "arama", "gelme");
     }
+
+    @Test
+    public void testPrograesive() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gelmek");
+        assertHasParses(graph, "arıyor", "aramıyor", "geliyor", "gelmiyor");
+        assertHasParses(graph, "aramakta", "aramamakta", "gelmekte", "gelmemekte");
+    }
+
+    @Test
+    public void testAorist() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]","gelmek [A:NonTransitive, Aorist_I]");
+        assertHasParses(graph, "arar", "gider", "gelir", "aramaz");
+        assertUnParseable(graph, "geler", "gidir");
+    }
+
 
     private void assertHasParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);

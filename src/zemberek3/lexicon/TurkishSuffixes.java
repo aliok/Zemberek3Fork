@@ -4,6 +4,8 @@ import zemberek3.lexicon.graph.DynamicSuffixProvider;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.TerminationType;
 
+import java.util.List;
+
 public class TurkishSuffixes extends DynamicSuffixProvider {
 
     // ------------ case suffixes ---------------------------
@@ -494,7 +496,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Verb_Main.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl);
 
-        Verb_Main.successors.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
+        Verb_Main.successors.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, Aor_Ar, AorPart_Ir)
                 .add(Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_EMPTY, Agt_yIcI, Des_sA)
                 .add(NotState_mAzlIk, ActOf_mAcA, PastPart_dIk, EvidPart_mIs)
                 .add(FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
@@ -507,7 +509,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Verb_Default.directSuccessors.add(Verb_Main.directSuccessors).remove(Pass_In, Pass_InIl, Caus_t);
         Verb_Default.successors.add(Verb_Main.successors);
 
-        Pos_EMPTY.directSuccessors.add(Imp_EMPTY);
+        Pos_EMPTY.directSuccessors.add(Imp_EMPTY, Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Aor_Ar, Aor_Ir);
         Pos_EMPTY.successors.add(Verb_Default.successors).remove(Neg_m, Neg_mA);
 
         Neg_mA.directSuccessors.add(Aor_z, AorPart_z, Aor_EMPTY, Prog2_mAktA, Imp_EMPTY, Opt_yA, Des_sA,
@@ -536,6 +538,16 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Pass_InIl.directSuccessors.add(Verb_Main);
         Pass_InIl.successors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+
+        Prog_Iyor.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA);
+        Prog2_mAktA.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA);
+
+        Fut_yAcAk.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA);
+
+        Aor_Ar.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr).add(Cond_sA);
+        Aor_Ir.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr).add(Cond_sA);
+        Aor_z.directSuccessors.add(A3sg_EMPTY,A3sg_sIn, Cond_sA);
+        Aor_EMPTY.directSuccessors.add(A1sg_m, A1pl_yIz);
 
         registerForms(
                 Noun_Default, Nom_EMPTY, Verb_Default, Pnon_EMPTY, Pass_InIl,
@@ -842,27 +854,29 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
         original.add(Verb_Default.allSuccessors());
         modified.add(Verb_Default.allSuccessors());
-        for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
+        List<RootAttr> attrList = item.attrs.getAsList(RootAttr.class);
+        for (RootAttr attribute : attrList) {
             switch (attribute) {
                 case Aorist_A:
                     original.add(Aor_Ar, AorPart_Ar);
                     original.remove(Aor_Ir, AorPart_Ir);
-                    modified.add(Aor_Ar, AorPart_Ar);
-                    modified.remove(Aor_Ir, AorPart_Ir);
+                    if (!item.attrs.contains(RootAttr.ProgressiveVowelDrop)) {
+                        modified.add(Aor_Ar, AorPart_Ar);
+                        modified.remove(Aor_Ir, AorPart_Ir);
+                    }
                     break;
                 case Aorist_I:
                     original.add(Aor_Ir, AorPart_Ir);
                     original.remove(Aor_Ar, AorPart_Ar);
-                    modified.add(Aor_Ir, AorPart_Ir);
-                    modified.remove(Aor_Ar, AorPart_Ar);
+                    if (!item.attrs.contains(RootAttr.ProgressiveVowelDrop)) {
+                        modified.add(Aor_Ir, AorPart_Ir);
+                        modified.remove(Aor_Ar, AorPart_Ar);
+                    }
                     break;
                 case Passive_In:
                     original.add(Pass_In);
                     original.add(Pass_InIl);
                     original.remove(Pass_nIl);
-                    modified.add(Pass_In);
-                    modified.add(Pass_InIl);
-                    modified.remove(Pass_nIl);
                     break;
                 case LastVowelDrop:
                     original.remove(Pass_nIl);
@@ -872,8 +886,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                         modified.remove(Verb_Exp_C.getSuccessors());
                         break;*/
                 case ProgressiveVowelDrop:
-                    original.add(Prog_Iyor);
-                    modified.clear().add(Prog_Iyor);
+                    original.remove(Prog_Iyor);
+                    modified.clear().add(Pos_EMPTY, Prog_Iyor);
                     break;
                 case NonTransitive:
                     original.remove(Caus_t, Caus_tIr);
@@ -890,8 +904,10 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 case Causative_t:
                     original.remove(Caus_tIr);
                     original.add(Caus_t);
-                    modified.remove(Caus_tIr);
-                    modified.add(Caus_t);
+                    if (!item.attrs.contains(RootAttr.ProgressiveVowelDrop)) {
+                        modified.remove(Caus_tIr);
+                        modified.add(Caus_t);
+                    }
                     break;
                 default:
                     break;
