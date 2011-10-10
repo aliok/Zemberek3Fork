@@ -503,7 +503,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
                 .add(NounDeriv_nIm, UntilDoing_yAsIyA);
 
-        Verb_Default.directSuccessors.add(Verb_Main.directSuccessors).remove(Pass_nIl);
+        Verb_Default.directSuccessors.add(Verb_Main.directSuccessors);
         Verb_Default.successors.add(Verb_Main.successors);
 
         Pos_EMPTY.directSuccessors.add(Imp_EMPTY);
