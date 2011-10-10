@@ -109,6 +109,23 @@ public class SimpleParserFunctionalTest {
         // TODO: check oflazer parse "babacım = baba+Noun+A3sg+Pnon+Nom^DB+Noun+Dim+A3sg+P1sg+Nom
     }
 
+    @Test
+    public void testResembl() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("armut", "yeşil [P:Adj]");
+        assertHasParses(graph, "armutsu", "armudumsu", "yeşilsi", "yeşilimsi");
+        // TODO: oflazer uses JustLike for this. It parses words like "tuhafsı","arabası" as JustLike
+    }
+
+    @Test
+    public void testCausative() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak");
+        assertHasParses(graph, "yaptır", "yaptırt", "yaptırttır", "arat", "arattır", "arattırt");
+        assertHasParses(graph, "yaptırıl", "yaptırtıl", "yaptırttırıl", "aratıl", "arattırıl", "arattırtıl");
+    }
+
+
     private void assertHasParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);
         for (String word : words) {
