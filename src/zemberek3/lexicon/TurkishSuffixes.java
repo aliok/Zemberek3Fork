@@ -194,6 +194,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public static Suffix Pass = new Suffix("Pass");
     public static SuffixFormSet Pass_In = new SuffixFormSet(Pass, "+In");
+    public static SuffixFormSet Pass_InIl = new SuffixFormSet(Pass, "+InIl");
     public static SuffixFormSet Pass_nIl = new SuffixFormSet(Pass, "+nIl");
 
     public static Suffix Caus = new Suffix("Caus");
@@ -491,7 +492,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         //---------------------------- Verb ----------------------------------------------------------------------------
 
-        Verb_Main.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Caus_t, Caus_tIr, Pass_In, Pass_nIl);
+        Verb_Main.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl);
 
         Verb_Main.successors.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
                 .add(Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_EMPTY, Agt_yIcI, Des_sA)
@@ -503,7 +504,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
                 .add(NounDeriv_nIm, UntilDoing_yAsIyA);
 
-        Verb_Default.directSuccessors.add(Verb_Main.directSuccessors);
+        Verb_Default.directSuccessors.add(Verb_Main.directSuccessors).remove(Pass_In, Pass_InIl, Caus_t);
         Verb_Default.successors.add(Verb_Main.successors);
 
         Pos_EMPTY.directSuccessors.add(Imp_EMPTY);
@@ -518,8 +519,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(AfterDoing_yIp, When_yIncA, InsteadOfDoing_mAktAnsA)
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Hastily_yIver);
 
-        Imp_EMPTY.directSuccessors.add(A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
+        Neg_m.directSuccessors.add(Prog_Iyor);
 
+        Imp_EMPTY.directSuccessors.add(A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
 
         Caus_t.directSuccessors.add(Verb_Main);
         Caus_t.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).remove(Caus_t);
@@ -527,10 +529,16 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Caus_tIr.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).remove(Caus_tIr);
 
         Pass_nIl.directSuccessors.add(Verb_Main);
-        Pass_nIl.directSuccessors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_In);
+        Pass_nIl.successors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+
+        Pass_In.directSuccessors.add(Verb_Main);
+        Pass_In.successors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+
+        Pass_InIl.directSuccessors.add(Verb_Main);
+        Pass_InIl.successors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
         registerForms(
-                Noun_Default, Nom_EMPTY, Verb_Default, Pnon_EMPTY,
+                Noun_Default, Nom_EMPTY, Verb_Default, Pnon_EMPTY, Pass_InIl,
                 Dat_yA, Dat_nA, Loc_dA, Loc_ndA, Abl_dAn, Abl_ndAn, Gen_nIn,
                 Acc_yI, Acc_nI, Inst_ylA, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz,
                 P2pl_InIz, P3pl_lArI, Dim_cIk, Dim2_cAgIz, With_lI,
@@ -832,7 +840,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     }
 
     private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
-
+        original.add(Verb_Default.allSuccessors());
+        modified.add(Verb_Default.allSuccessors());
         for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
             switch (attribute) {
                 case Aorist_A:
@@ -849,7 +858,11 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                     break;
                 case Passive_In:
                     original.add(Pass_In);
+                    original.add(Pass_InIl);
                     original.remove(Pass_nIl);
+                    modified.add(Pass_In);
+                    modified.add(Pass_InIl);
+                    modified.remove(Pass_nIl);
                     break;
                 case LastVowelDrop:
                     original.remove(Pass_nIl);

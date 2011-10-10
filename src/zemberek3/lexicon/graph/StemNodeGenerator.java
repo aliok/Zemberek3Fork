@@ -44,13 +44,16 @@ public class StemNodeGenerator {
         if (hasModifierAttribute(item)) {
             return generateModifiedRootNodes(item);
         } else {
+            SuffixData[] roots = suffixProvider.defineSuccessorSuffixes(item);
             AttributeSet<PhonAttr> phoneticAttributes = calculateAttributes(item.root);
-            return new StemNode[]{new StemNode(
+            StemNode stemNode = new StemNode(
                     item.root,
                     item,
                     TerminationType.TERMINAL,
                     phoneticAttributes,
-                    AttributeSet.<PhoneticExpectation>emptySet())};
+                    AttributeSet.<PhoneticExpectation>emptySet());
+            stemNode.exclusiveSuffixData = roots[0];
+            return new StemNode[]{stemNode};
         }
     }
 

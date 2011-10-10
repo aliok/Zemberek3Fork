@@ -122,9 +122,28 @@ public class SimpleParserFunctionalTest {
         // Noun-Noun
         DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak");
         assertHasParses(graph, "yaptır", "yaptırt", "yaptırttır", "arat", "arattır", "arattırt");
+        assertUnParseable(graph, "yapt", "aratır");
+    }
+
+    @Test
+    public void testPassive() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak", "gelmek");
+        assertHasParses(graph, "aranıl", "yapıl", "aran", "gelin", "gelinil");
+        assertUnParseable(graph, "aral", "gelil");
+        // causative and passive
         assertHasParses(graph, "yaptırıl", "yaptırtıl", "yaptırttırıl", "aratıl", "arattırıl", "arattırtıl");
     }
 
+    @Test
+    public void testNegative() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak", "gel");
+        assertHasParses(graph, "aranıl", "yapıl", "aran");
+        assertUnParseable(graph, "aral", "gelil");
+        // causative and passive
+        assertHasParses(graph, "yaptırıl", "yaptırtıl", "yaptırttırıl", "aratıl", "arattırıl", "arattırtıl");
+    }
 
     private void assertHasParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);
