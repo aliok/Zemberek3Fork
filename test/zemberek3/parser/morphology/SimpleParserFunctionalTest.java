@@ -32,11 +32,16 @@ public class SimpleParserFunctionalTest {
         SimpleParser simpleParser = new SimpleParser(graph);
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         for (String parseable : parseables) {
-            List<ParseResult> result = simpleParser.parse(parseable);
-            if (result.size() > 0) {
-                System.out.println(parseable + ":" + result);
+            List<ParseResult> results = simpleParser.parse(parseable);
+            if (results.size() > 0) {
+                System.out.print(parseable + " : ");
+                for (ParseResult parseResult : results) {
+                    System.out.print(parseResult.asOflazerFormat() + "   ");
+                }
+                System.out.println();
+
             } else {
-              //  System.out.println("ERROR:" + parseable);
+                //  System.out.println("ERROR:" + parseable);
             }
             //Assert.assertTrue("Could not parse valid word:" + parseable, parser.parse(parseable).size() > 0);
         }
@@ -59,8 +64,49 @@ public class SimpleParserFunctionalTest {
     @Test
     public void testCompoundsVoicing() {
         DynamicLexiconGraph graph = getLexiconGraph("atkuyruğu [A:CompoundP3sg, Voicing ; R:atkuyruk]");
-        assertHasParses(graph,  "atkuyrukçuk", "atkuyruğu", "atkuyruklarım");
+        assertHasParses(graph, "atkuyrukçuk", "atkuyruğu", "atkuyruklarım");
         assertUnParseable(graph, "atkuyruğlarım", "atkuyruk");
+    }
+
+    @Test
+    public void testWithAndWithout() {
+        DynamicLexiconGraph graph = getLexiconGraph("elma", "kitap");
+        assertHasParses(graph, "elmalı", "elmasız", "kitaplı", "kitapsız");
+        assertUnParseable(graph, "elmayalı", "elmalarlı", "elmadasız", "elmalarsız");
+    }
+
+    @Test
+    public void testBecome() {
+        // noun
+        DynamicLexiconGraph graph = getLexiconGraph("elma", "mavi [P:Adj]");
+        assertHasParses(graph, "elmalaş");
+        // adj
+        assertHasParses(graph, "mavileş");
+    }
+
+    @Test
+    public void testQuiteAndLy() {
+        // Adj-Adj and Adj-Adv
+        DynamicLexiconGraph graph = getLexiconGraph("hızlı [P:Adj]");
+        assertHasParses(graph, "hızlıca");
+    }
+
+    @Test
+    public void testRelated() {
+        // Noun-Adj
+        DynamicLexiconGraph graph = getLexiconGraph("elma");
+        assertHasParses(graph, "elmadaki");
+        assertUnParseable(graph, "elmaki", "elmayaki");
+        //TODO: add akşamki etc. uses Rel_kI instead of Rel_ki
+    }
+
+    @Test
+    public void testDim() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("armut");
+        assertHasParses(graph, "armutçuk", "armutçuğu", "armutcağız", "armutcağızı");
+        assertUnParseable(graph, "armutçuğ", "armutçukcuk", "armutçukcağız", "armutcağızcık");
+        // TODO: check oflazer parse "babacım = baba+Noun+A3sg+Pnon+Nom^DB+Noun+Dim+A3sg+P1sg+Nom
     }
 
     private void assertHasParses(DynamicLexiconGraph graph, String... words) {

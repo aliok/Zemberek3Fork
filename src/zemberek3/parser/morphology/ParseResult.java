@@ -51,6 +51,17 @@ public class ParseResult {
         return sb.toString();
     }
 
+    public String asOflazerFormat() {
+        StringBuilder sb = new StringBuilder(stem.getDictionaryItem().lemma).append(" ");
+        int i = 0;
+        for (SuffixNode suffixNode : suffixNodes) {
+            sb.append(suffixNode.getSuffixSet().getSuffix());
+            if (i++ < suffixNodes.size() - 1)
+                sb.append("+");
+        }
+        return sb.toString();
+    }
+
     public String toString() {
         return asParseString();
     }

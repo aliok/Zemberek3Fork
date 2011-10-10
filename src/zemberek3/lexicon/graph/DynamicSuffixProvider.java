@@ -29,6 +29,10 @@ public class DynamicSuffixProvider implements SuffixProvider {
         return new SuffixFormSet(suffixId, suffix, "", TerminationType.TRANSFER);
     }
 
+    protected static SuffixFormSet getNull( String suffixId, Suffix suffix, TerminationType type) {
+        return new SuffixFormSet(suffixId, suffix, "", type);
+    }
+
     protected static SuffixFormSet getSet(String suffixId, String generationStr) {
         return new SuffixFormSet(new Suffix(suffixId), generationStr);
     }

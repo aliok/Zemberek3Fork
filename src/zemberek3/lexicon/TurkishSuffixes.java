@@ -331,47 +331,51 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static Suffix Grouping = new Suffix("Grouping");
     public static SuffixFormSet Grouping_sAr = new SuffixFormSet(Grouping, "+şAr");
 
-    public static Suffix NounRoot = new Suffix("NounRoot");
+    public static Suffix NounRoot = new Suffix("Noun");
     public static SuffixFormSet Noun_Main = new SuffixFormSet("Noun_Main", NounRoot, "");
     public static SuffixFormSet Noun_Default = getNull("Noun_Default", NounRoot);
     public static SuffixFormSet Noun_Comp_P3sg = getNull("Noun_Comp_P3sg", NounRoot);
     public static SuffixFormSet Noun_Comp_P3sg_Root = getNull("Noun_Comp_P3sg_Root", NounRoot);
 
-    public static Suffix AdjRoot = new Suffix("AdjRoot");
+    public static Suffix AdjRoot = new Suffix("Adj");
     public static SuffixFormSet Adj_Main = getTemplate("Adj_Main", AdjRoot);
+    public static SuffixFormSet Adj_Main_Rel = getNull("Adj_Main", AdjRoot);
+    public static SuffixFormSet Adj_Default = getNull("Adj_Default", AdjRoot);
 
     public static Suffix AdvRoot = new Suffix("AdvRoot");
     public static SuffixFormSet Adv_Main = getTemplate("Adv_Main", AdvRoot);
+    public static SuffixFormSet Adv_Default = getTemplate("Adv_Default", AdvRoot);
 
-    public static Suffix InterjRoot = new Suffix("InterjRoot");
+    public static Suffix InterjRoot = new Suffix("Interj");
     public static SuffixFormSet Interj_Main = getTemplate("Interj_Main", InterjRoot);
 
-    public static Suffix ConjRoot = new Suffix("ConjRoot");
+    public static Suffix ConjRoot = new Suffix("Conj");
     public static SuffixFormSet Conj_Main = getTemplate("Conj_Main", ConjRoot);
 
-    public static Suffix NumeralRoot = new Suffix("NumeralRoot");
+    public static Suffix NumeralRoot = new Suffix("Numeral");
     public static SuffixFormSet Numeral_Main = getTemplate("Numeral_Main", NumeralRoot);
 
-    public static Suffix DetRoot = new Suffix("DetRoot");
+    public static Suffix DetRoot = new Suffix("Det");
     public static SuffixFormSet Det_Main = getTemplate("Det_Main", DetRoot);
 
     public static Suffix ProperNounRoot = new Suffix("ProperNounRoot");
     public static SuffixFormSet ProperNoun_Main = getTemplate("ProperNoun_Main", ProperNounRoot);
 
-    public static Suffix VerbRoot = new Suffix("VerbRoot");
+    public static Suffix VerbRoot = new Suffix("Verb");
     public static SuffixFormSet Verb_Main = getTemplate("Verb_Main", VerbRoot);
+    public static SuffixFormSet Verb_Zero = getTemplate("Verb_Zero", VerbRoot); // Zero morphem derivation.
     public static SuffixFormSet Verb_Default = getNull("Verb_Default", VerbRoot);
     public static SuffixFormSet Verb_Prog_Drop = new SuffixFormSet("Verb_Prog_Drop", VerbRoot, "");
 
-    public static Suffix PersPronRoot = new Suffix("PersPronRoot");
+    public static Suffix PersPronRoot = new Suffix("PersPron");
     public static SuffixFormSet PersPron_Main = getTemplate("PersPron_Main", PersPronRoot);
     public static SuffixFormSet PersPron_BenSen = getTemplate("PersPron_BenSen", PersPronRoot);
     public static SuffixFormSet PersPron_BanSan = getTemplate("PersPron_BanSan", PersPronRoot);
 
-    public static Suffix QuesRoot = new Suffix("QuesRoot");
+    public static Suffix QuesRoot = new Suffix("Ques");
     public static SuffixFormSet Ques_mI = getTemplate("Ques_mI", QuesRoot);
 
-    public static Suffix ParticleRoot = new Suffix("ParticleRoot");
+    public static Suffix ParticleRoot = new Suffix("Particle");
     public static SuffixFormSet Particle_Main = getTemplate("Particle_Main", ParticleRoot);
 
     // TODO: add time root. (with Rel_ki + Noun)
@@ -430,7 +434,10 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Ness_lIk, Related_sAl, Become_lAs, Equ_cA);
 
         Dim_cIk.directSuccessors.add(Noun_Main);
-        Dim_cIk.successors.add(Noun_Main.allSuccessors().remove(Dim_cIk));
+        Dim_cIk.successors.add(Noun_Main.allSuccessors().remove(Dim_cIk,Dim2_cAgIz));
+
+        Dim2_cAgIz.directSuccessors.add(Noun_Main);
+        Dim2_cAgIz.successors.add(Noun_Main.allSuccessors().remove(Dim_cIk,Dim2_cAgIz));
 
         Pnon_EMPTY.directSuccessors.add(CASE_FORMS)
                 .add(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
@@ -447,6 +454,36 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         P2pl_InIz.directSuccessors.add(CASE_FORMS);
 
         P3pl_lArI.directSuccessors.add(CASE_FORMS);
+
+        With_lI.directSuccessors.add(Adj_Main);
+        With_lI.successors.add(Adj_Main.directSuccessors);
+
+        Without_sIz.directSuccessors.add(Adj_Main);
+        Without_sIz.successors.add(Adj_Main.directSuccessors);
+
+        Loc_dA.directSuccessors.add(Rel_ki);
+
+        Rel_ki.directSuccessors.add(Adj_Main_Rel);
+
+        //---------------------------- Adjective -----------------------------------------------------------------------
+
+        Adj_Main.directSuccessors.add(Ly_cA, Become_lAs, Quite_cA);
+        Adj_Main.successors.add(Noun_Main.allSuccessors().remove(Related_sAl));
+
+        Adj_Default.directSuccessors.add(Adj_Main.directSuccessors);
+        Adj_Default.successors.add(Adj_Main.getSuccessors());
+
+        Adj_Main_Rel.directSuccessors.add(Adj_Main.directSuccessors);
+        Adj_Main_Rel.successors.add(Adj_Main.getSuccessors());
+
+        Become_lAs.directSuccessors.add(Verb_Main);
+        Become_lAs.successors.add(Verb_Main.allSuccessors());
+
+        Quite_cA.directSuccessors.add(Adj_Main);
+
+        Ly_cA.directSuccessors.add(Adv_Main);
+
+        //---------------------------- Verb ----------------------------------------------------------------------------
 
         Verb_Main.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Caus_t, Caus_tIr, Pass_In, Pass_nIl);
 
@@ -706,8 +743,12 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
             switch (item.primaryPos) {
                 case Noun:
                     return Noun_Default;
+                case Adjective:
+                    return Adj_Default;
                 case Verb:
                     return Verb_Default;
+                case Adverb:
+                    return Adv_Default;
                 default:
                     return Noun_Default;
             }
@@ -715,6 +756,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
             switch (item.primaryPos) {
                 case Noun:
                     SuffixFormSet copyOfTemplate = Noun_Main.copy(idMaker.getNew(Noun_Main.id));
+                    return getRootFormSet(successorConstraint, copyOfTemplate);
+                case Adjective:
+                    copyOfTemplate = Adj_Main.copy(idMaker.getNew(Adj_Main.id));
                     return getRootFormSet(successorConstraint, copyOfTemplate);
                 case Verb:
                     copyOfTemplate = Verb_Main.copy(idMaker.getNew(Verb_Main.id));
