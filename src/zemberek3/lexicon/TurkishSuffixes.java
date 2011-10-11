@@ -598,6 +598,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Caus_t.directSuccessors.add(Verb_Main.directSuccessors);
         Caus_t.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).add(Caus_tIr).remove(Caus_t);
+
         Caus_tIr.directSuccessors.add(Verb_Main.directSuccessors);
         Caus_tIr.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).add(Caus_t).remove(Caus_tIr);
 
