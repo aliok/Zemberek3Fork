@@ -56,7 +56,7 @@ public class SimpleParserFunctionalTest {
     @Test
     public void testCompounds() {
         DynamicLexiconGraph graph = getLexiconGraph("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
-        assertHasParses(graph, "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcık", "zeytinyağlarım");
+        assertHasParses(graph,  "zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
         assertUnParseable(graph, "zeytinyağılar", "zeytinyağıcık");
     }
 
@@ -84,6 +84,20 @@ public class SimpleParserFunctionalTest {
     }
 
     @Test
+    public void testAdj2Verb() {
+        DynamicLexiconGraph graph = getLexiconGraph("mavi [P:Adj]");
+        assertHasParses(graph,"mavileşti", "mavileşmiş", "maviydi");
+    }
+
+
+    @Test
+    public void testAdj2Noun() {
+        // noun
+        DynamicLexiconGraph graph = getLexiconGraph("mavi [P:Adj]");
+        assertHasParses(graph, "maviye", "mavilerde");
+    }
+
+    @Test
     public void testQuiteAndLy() {
         // Adj-Adj and Adj-Adv
         DynamicLexiconGraph graph = getLexiconGraph("hızlı [P:Adj]");
@@ -94,8 +108,8 @@ public class SimpleParserFunctionalTest {
     public void testRelated() {
         // Noun-Adj
         DynamicLexiconGraph graph = getLexiconGraph("elma");
-        assertHasParses(graph, "elmadaki");
-        assertUnParseable(graph, "elmaki", "elmayaki");
+        assertHasParses(graph, "elmadaki", "elmadakini");
+        assertUnParseable(graph, "elmaki", "elmayaki", "elmadakiki");
         //TODO: add akşamki etc. uses Rel_kI instead of Rel_ki
     }
 
@@ -121,7 +135,7 @@ public class SimpleParserFunctionalTest {
         // Noun-Noun
         DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak");
         assertHasParses(graph, "yaptır", "yaptırt", "yaptırttır", "arat", "arattır", "arattırt");
-        assertUnParseable(graph, "yapt", "aratır");
+        assertUnParseable(graph, "yapt", "aratt");
     }
 
     @Test
@@ -152,11 +166,24 @@ public class SimpleParserFunctionalTest {
     @Test
     public void testAorist() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]","gelmek [A:NonTransitive, Aorist_I]");
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]", "gelmek [A:NonTransitive, Aorist_I]");
         assertHasParses(graph, "arar", "gider", "gelir", "aramaz");
         assertUnParseable(graph, "geler", "gidir");
     }
 
+    @Test
+    public void testPast() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
+        assertHasParses(graph, "aradı", "gitti");
+    }
+
+    @Test
+    public void testEvid() {
+        // Noun-Noun
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
+        assertHasParses(graph, "aramış", "gitmiş");
+    }
 
     private void assertHasParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);
@@ -223,6 +250,9 @@ public class SimpleParserFunctionalTest {
         for (int i = 0; i < iteration; i++) {
             for (String s : parseables) {
                 List<ParseResult> results = parser.parse(s);
+                for (ParseResult result : results) {
+                    result.asParseString();
+                }
                 if (i == 0) {
                     for (ParseResult result : results) {
                         System.out.println(s + " = " + result.asParseString());
@@ -240,6 +270,7 @@ public class SimpleParserFunctionalTest {
     public void z2Comparison() throws IOException {
         List<String> allWords = SimpleTextReader.trimmingUTF8Reader(
                 new File("test/data/z2-vocab.tr")).asStringList();
+        System.out.println("list loaded");
         SimpleTextWriter stw = SimpleTextWriter.keepOpenUTF8Writer(new File("test/data/unknowns.txt"));
         SimpleParser parser = simpleParser(new File("src/resources/tr/master-dictionary.txt"));
         int pass = 0;

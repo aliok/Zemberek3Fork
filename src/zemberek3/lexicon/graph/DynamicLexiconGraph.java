@@ -86,7 +86,7 @@ public class DynamicLexiconGraph {
 
     private void connectSuffixNodes(SuffixNode node) {
         // get the successive form sets for this node.
-        SuffixData successors = node.suffixSet.getDirectSuccessors();
+        SuffixData successors = node.suffixSet.directSuccessors;
         // iterate over form sets.
         for (SuffixFormSet succSet : successors) {
             // get the nodes for the  suffix form.
@@ -105,13 +105,13 @@ public class DynamicLexiconGraph {
                 }
                 boolean recurse = false;
                 if (!nodeExists(succSet, nodeInSuccessor)) {
-                    //System.out.println("node will be added:" + nodeInSuccessor.dump());
+//                    System.out.println("node will be added:" + nodeInSuccessor.dump());
                     recurse = true;
                 }
                 nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
                 node.addSuccNode(nodeInSuccessor);
                 if (recurse) {
-                    //System.out.println("recurse for:" + nodeInSuccessor);
+//                    System.out.println("recurse for:" + nodeInSuccessor);
                     connectSuffixNodes(nodeInSuccessor);
                 }
             }
@@ -147,6 +147,6 @@ public class DynamicLexiconGraph {
             if (node.equals(newNode))
                 return node;
         }
-        throw new IllegalStateException("Cannot be here.");
+        throw new IllegalStateException("Cannot be here. Set: " + set.id + " Node:" + newNode.dump());
     }
 }

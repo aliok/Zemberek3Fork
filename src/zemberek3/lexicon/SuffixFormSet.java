@@ -51,6 +51,13 @@ public class SuffixFormSet {
         return set;
     }
 
+    public static SuffixFormSet getTemplate(String id, Suffix suffix, TerminationType type) {
+        SuffixFormSet set = new SuffixFormSet(id, suffix, "", type);
+        set.template = true;
+        return set;
+    }
+
+
     public SuffixFormSet(Suffix suffix, String generation) {
         this.suffix = suffix;
         this.generation = generation;
@@ -145,14 +152,6 @@ public class SuffixFormSet {
         result = 31 * result + successors.hashCode();
         result = 31 * result + directSuccessors.hashCode();
         return result;
-    }
-
-    public SuffixData getSuccessors() {
-        return successors;
-    }
-
-    public SuffixData getDirectSuccessors() {
-        return directSuccessors;
     }
 
     public boolean isTemplate() {

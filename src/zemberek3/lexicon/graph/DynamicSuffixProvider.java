@@ -2,10 +2,7 @@ package zemberek3.lexicon.graph;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
-import zemberek3.lexicon.DictionaryItem;
-import zemberek3.lexicon.Suffix;
-import zemberek3.lexicon.SuffixFormSet;
-import zemberek3.lexicon.SuffixProvider;
+import zemberek3.lexicon.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -25,11 +22,11 @@ public class DynamicSuffixProvider implements SuffixProvider {
         return new SuffixFormSet(suffixId, new Suffix(suffix), "", TerminationType.TRANSFER);
     }
 
-    protected static SuffixFormSet getNull( String suffixId, Suffix suffix) {
+    protected static SuffixFormSet getNull(String suffixId, Suffix suffix) {
         return new SuffixFormSet(suffixId, suffix, "", TerminationType.TRANSFER);
     }
 
-    protected static SuffixFormSet getNull( String suffixId, Suffix suffix, TerminationType type) {
+    protected static SuffixFormSet getNull(String suffixId, Suffix suffix, TerminationType type) {
         return new SuffixFormSet(suffixId, suffix, "", type);
     }
 
@@ -45,6 +42,9 @@ public class DynamicSuffixProvider implements SuffixProvider {
         return SuffixFormSet.getTemplate(id, suffix);
     }
 
+    protected static SuffixFormSet getTemplate(String id, Suffix suffix, TerminationType type) {
+        return SuffixFormSet.getTemplate(id, suffix, type);
+    }
 
     public Suffix getSuffixById(String suffixId) {
         return suffixLookup.get(suffixId);
@@ -101,9 +101,9 @@ public class DynamicSuffixProvider implements SuffixProvider {
             if (suffixFormSet.template)
                 toRemove.add(suffixFormSet);
         }
-        formSet.getDirectSuccessors().remove(toRemove);
-        formSet.getSuccessors().remove(toRemove);
-        formSet.getDirectSuccessors().add(toAdd);
+        formSet.directSuccessors.remove(toRemove);
+        formSet.successors.remove(toRemove);
+        formSet.directSuccessors.add(toAdd);
         for (SuffixFormSet suffixFormSet : toAdd) {
             registerForm(suffixFormSet);
         }

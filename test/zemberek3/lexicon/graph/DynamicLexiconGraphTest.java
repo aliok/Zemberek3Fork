@@ -67,12 +67,12 @@ public class DynamicLexiconGraphTest {
         SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
         DynamicSuffixes suffixes = new DynamicSuffixes();
     //    DynamicSuffixes.Noun_Main.getSuccessors().add(A3pl_lAr, A3sg_EMPTY);
-        A3sg_EMPTY.getSuccessors().add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
-        A3pl_lAr.getSuccessors().add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
-        Pnon_EMPTY.getSuccessors().add(Nom_EMPTY, Dat_yA, Loc_dA);
-        P1sg_Im.getSuccessors().add(Nom_EMPTY, Dat_yA, Loc_dA);
-        P3sg_sI.getSuccessors().add(Nom_EMPTY, Dat_yA, Loc_dA);
-        P1pl_ImIz.getSuccessors().add(Nom_EMPTY, Dat_yA, Loc_dA);
+        A3sg_EMPTY.successors.add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
+        A3pl_lAr.successors.add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
+        Pnon_EMPTY.successors.add(Nom_EMPTY, Dat_yA, Loc_dA);
+        P1sg_Im.successors.add(Nom_EMPTY, Dat_yA, Loc_dA);
+        P3sg_sI.successors.add(Nom_EMPTY, Dat_yA, Loc_dA);
+        P1pl_ImIz.successors.add(Nom_EMPTY, Dat_yA, Loc_dA);
         suffixes.addSuffixForms(
                /* DynamicSuffixes.Noun_Main, */A3sg_EMPTY, A3pl_lAr,
                 P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz,

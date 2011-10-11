@@ -33,7 +33,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormSet Inst_ylA = new SuffixFormSet(Inst, "+ylA");
 
     public static Suffix Nom = new Suffix("Nom");
-    public static SuffixFormSet Nom_EMPTY = getTemplate("Nom_EMPTY", Nom);
+    public static SuffixFormSet Nom_EMPTY = getTemplate("Nom_EMPTY", Nom, TerminationType.TRANSFER);
 
     // ----------------- possesive ----------------------------
 
@@ -127,10 +127,14 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public static Suffix Become = new Suffix("Become");
     public static SuffixFormSet Become_lAs = new SuffixFormSet(Become, "lAş");
+    public static SuffixFormSet Become_Adj_lAs = new SuffixFormSet("Become_Adj_lAs", Become, "lAş");
 
     public static Suffix Resemb = new Suffix("Resemb");
     public static SuffixFormSet Resemb_ImsI = new SuffixFormSet(Resemb, "ImsI"); // udunumsu
     public static SuffixFormSet Resemb_msI = new SuffixFormSet(Resemb, "+msI"); // odunsu
+
+    public static SuffixFormSet Resemb_Adj_ImsI = new SuffixFormSet("Resemb_Adj_ImsI", Resemb, "ImsI"); // udunumsu
+    public static SuffixFormSet Resemb_Adj_msI = new SuffixFormSet("Resemb_Adj_msI", Resemb, "+msI"); // odunsu
 
     public static Suffix Related = new Suffix("Related");
     public static SuffixFormSet Related_sAl = new SuffixFormSet(Related, "sAl");
@@ -180,7 +184,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static Suffix Pos = new Suffix("Pos");
     public static SuffixFormSet Pos_EMPTY = getTemplate("Pos_EMPTY", Pos); // gel-m-iyor
 
-
     public static Suffix Neg = new Suffix("Neg");
     public static SuffixFormSet Neg_mA = new SuffixFormSet(Neg, "mA"); //gel-me
     public static SuffixFormSet Neg_m = new SuffixFormSet(Neg, "m", TerminationType.NON_TERMINAL); // gel-m-iyor
@@ -205,8 +208,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public static Suffix Imp = new Suffix("Imp");
     public static SuffixFormSet Imp_EMPTY = new SuffixFormSet(Imp, "");
-    public static SuffixFormSet Imp_EMPTY_C = new SuffixFormSet(Imp, "");
-    public static SuffixFormSet Imp_EMPTY_V = new SuffixFormSet(Imp, "");
 
     public static Suffix Des = new Suffix("Des");
     public static SuffixFormSet Des_sA = new SuffixFormSet(Des, "sA");
@@ -226,16 +227,22 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormSet Cop_dIr = new SuffixFormSet(Cop, ">dIr");
 
     public static Suffix PastCop = new Suffix("PastCop");
-    public static SuffixFormSet PastCop_ydI = new SuffixFormSet(PastCop, "+y>dI");
+    public static SuffixFormSet PastCop_ydI = new SuffixFormSet(Past, "+y>dI");
 
     public static Suffix EvidCop = new Suffix("EvidCop");
-    public static SuffixFormSet EvidCop_ymIs = new SuffixFormSet(EvidCop, "+ymIş");
+    public static SuffixFormSet EvidCop_ymIs = new SuffixFormSet(Evid, "+ymIş");
 
     public static Suffix CondCop = new Suffix("CondCop");
-    public static SuffixFormSet CondCop_ysA = new SuffixFormSet(CondCop, "+ysA");
+    public static SuffixFormSet CondCop_ysA = new SuffixFormSet(Cond, "+ysA");
 
     public static Suffix While = new Suffix("While");
     public static SuffixFormSet While_ken = new SuffixFormSet(While, "+yken");
+
+    public static Suffix Pres = new Suffix("Pres");  // Present tense only appears after a zero morpheme verb derivation such as "kalemdir"
+    public static SuffixFormSet Pres_NULL = getTemplate("Pres_NULL", Pres);
+
+    public static Suffix Zero = new Suffix("Zero");  // For zero morpheme derivation
+    public static SuffixFormSet Zero_EMPTY = getTemplate("Zero_EMPTY", Zero);
 
     public static Suffix Equ = new Suffix("Equ");
     public static SuffixFormSet Equ_cA = new SuffixFormSet(Equ, ">cA");
@@ -319,8 +326,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static Suffix Inf3 = new Suffix("Inf3");
     public static SuffixFormSet Inf3_yIs = new SuffixFormSet(Inf3, "+yIş");
 
-    public static Suffix NounDeriv = new Suffix("NounDeriv");
-    public static SuffixFormSet NounDeriv_nIm = new SuffixFormSet(NounDeriv, "+nIm");
+    // TODO is below a valid morpheme? 
+/*    public static Suffix NounDeriv = new Suffix("NounDeriv");
+    public static SuffixFormSet NounDeriv_nIm = new SuffixFormSet(NounDeriv, "+nIm");*/
 
     public static Suffix Ly = new Suffix("Ly");
     public static SuffixFormSet Ly_cA = new SuffixFormSet(Ly, ">cA");
@@ -335,19 +343,25 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormSet Grouping_sAr = new SuffixFormSet(Grouping, "+şAr");
 
     public static Suffix NounRoot = new Suffix("Noun");
-    public static SuffixFormSet Noun_Main = new SuffixFormSet("Noun_Main", NounRoot, "");
+    public static SuffixFormSet Noun_Main = getTemplate("Noun_Main", NounRoot);
+    public static SuffixFormSet Noun2Noun = getTemplate("Noun2Noun", NounRoot, TerminationType.NON_TERMINAL);
+    public static SuffixFormSet Adj2Noun = getTemplate("Adj2Noun", NounRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormSet Noun_Default = getNull("Noun_Default", NounRoot);
-    public static SuffixFormSet Noun_Comp_P3sg = getNull("Noun_Comp_P3sg", NounRoot);
-    public static SuffixFormSet Noun_Comp_P3sg_Root = getNull("Noun_Comp_P3sg_Root", NounRoot);
+    public static SuffixFormSet Noun_Comp_P3sg = getTemplate("Noun_Comp_P3sg", NounRoot);
+    public static SuffixFormSet Noun_Comp_P3sg_Root = getTemplate("Noun_Comp_P3sg_Root", NounRoot);
 
     public static Suffix AdjRoot = new Suffix("Adj");
     public static SuffixFormSet Adj_Main = getTemplate("Adj_Main", AdjRoot);
+    public static SuffixFormSet Noun2Adj = getTemplate("Noun2Adj", AdjRoot, TerminationType.NON_TERMINAL);
+    public static SuffixFormSet Adj2Adj = getTemplate("Adj2Adj", AdjRoot, TerminationType.NON_TERMINAL);
+    public static SuffixFormSet Verb2Adj = getTemplate("Verb2Adj", AdjRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormSet Adj_Main_Rel = getNull("Adj_Main", AdjRoot);
-    public static SuffixFormSet Adj_Default = getNull("Adj_Default", AdjRoot);
-
+    public static SuffixFormSet Adj_Default = getNull("Adj_Default", AdjRoot, TerminationType.TERMINAL);
     public static Suffix AdvRoot = new Suffix("AdvRoot");
+
     public static SuffixFormSet Adv_Main = getTemplate("Adv_Main", AdvRoot);
-    public static SuffixFormSet Adv_Default = getTemplate("Adv_Default", AdvRoot);
+    public static SuffixFormSet Adj2Adv = getTemplate("Adj2Adv", AdvRoot, TerminationType.NON_TERMINAL);
+    public static SuffixFormSet Adv_Default = getNull("Adv_Default", AdvRoot);
 
     public static Suffix InterjRoot = new Suffix("Interj");
     public static SuffixFormSet Interj_Main = getTemplate("Interj_Main", InterjRoot);
@@ -366,7 +380,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public static Suffix VerbRoot = new Suffix("Verb");
     public static SuffixFormSet Verb_Main = getTemplate("Verb_Main", VerbRoot);
-    public static SuffixFormSet Verb_Zero = getTemplate("Verb_Zero", VerbRoot); // Zero morphem derivation.
+    public static SuffixFormSet Adj2Verb = getTemplate("Adj2Verb", VerbRoot, TerminationType.NON_TERMINAL);
+    public static SuffixFormSet Noun2Verb = getTemplate("Noun2Verb", VerbRoot, TerminationType.NON_TERMINAL);
+    public static SuffixFormSet Verb2Verb = getTemplate("Verb2Verb", VerbRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormSet Verb_Default = getNull("Verb_Default", VerbRoot);
     public static SuffixFormSet Verb_Prog_Drop = new SuffixFormSet("Verb_Prog_Drop", VerbRoot, "");
 
@@ -391,17 +407,49 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public TurkishSuffixes() {
 
-        // noun template. it has all possible suffix forms that a noun can follow
+        //---------------------------- Root and Derivation Morphemes ---------------------------------------------------
+
+        // noun template. it has all possible suffix forms that a noun can have
         Noun_Main.directSuccessors.add(A3pl_lAr, A3pl_Comp_lAr, A3sg_EMPTY);
-        Noun_Main.successors.add(POSSESSIVE_FORMS, CASE_FORMS)
+        Noun_Main.successors
+                .add(POSSESSIVE_FORMS, CASE_FORMS)
                 .add(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI, Equ_ncA)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl)
-                .add(Become_lAs);
+                .add(Become_lAs)
+                .add(Noun2Noun, Noun2Adj, Noun2Verb);
 
         // default noun suffix form. we remove some suffixes so that words like araba-na (dative)
         Noun_Default.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
-        Noun_Default.successors.add(Noun_Main.successors)
+        Noun_Default.successors
+                .add(Noun_Main.successors)
                 .remove(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
+
+        Noun2Noun.directSuccessors.add(Dim_cIk, Dim2_cAgIz, Agt_cI);
+
+        Noun2Adj.directSuccessors.add(With_lI, Without_sIz, Resemb_msI, Resemb_ImsI, Rel_ki, Related_sAl);
+
+        Noun2Verb.directSuccessors.add(Become_lAs).add(COPULAR_FORMS);
+
+        Adj2Noun.directSuccessors.add(Noun_Main.directSuccessors);
+        Adj2Noun.successors.add(Noun_Main.successors).remove(Related_sAl, Become_lAs, Resemb_ImsI, Resemb_msI);
+
+        Adj2Adj.directSuccessors.add(Quite_cA, Resemb_Adj_ImsI, Resemb_Adj_msI);
+
+        Adj2Adv.directSuccessors.add(Ly_cA);
+
+        Adj2Verb.directSuccessors.add(Become_Adj_lAs).add(COPULAR_FORMS);
+
+        Verb2Verb.directSuccessors.add(Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl);
+
+        Adj_Main.directSuccessors.add(Adj2Noun, Adj2Adj, Adj2Adv, Adj2Verb);
+        Adj_Main.successors.add(
+                Adj2Noun.allSuccessors(),
+                Adj2Adj.allSuccessors(),
+                Adj2Adv.allSuccessors(),
+                Adj2Verb.allSuccessors());
+
+        Adj_Default.directSuccessors.add(Adj_Main.directSuccessors);
+        Adj_Default.successors.add(Adj_Main.successors);
 
         // P3sg compound suffixes. (full form. such as zeytinyağı-na)
         Noun_Comp_P3sg.directSuccessors.add(A3sg_EMPTY);
@@ -412,16 +460,40 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         // P3sg compound suffixes. (root form. such as zeytinyağ-lar-ı)
         Noun_Comp_P3sg_Root.directSuccessors.add(A3pl_Comp_lAr, A3sg_EMPTY); // A3pl_Comp_lAr is used, because zeytinyağ-lar is not allowed.
-        Noun_Comp_P3sg_Root.successors.add(Pnon_EMPTY, Nom_EMPTY, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl, Dim_cIk)
-                .add(P3pl_lArI);
+        Noun_Comp_P3sg_Root.successors
+                .add(Pnon_EMPTY, Nom_EMPTY, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl)
+                .add(P3pl_lArI)
+                .add(Noun2Noun.allSuccessors())
+                .add(Noun2Noun)
+                .add(Noun2Adj.allSuccessors())
+                .add(Noun2Adj);
 
         // Proper noun default //TODO: should be a template
         ProperNoun_Main.directSuccessors.add(A3pl_lAr, A3sg_EMPTY);
-        ProperNoun_Main.successors.add(CASE_FORMS, POSSESSIVE_FORMS)
+        ProperNoun_Main.successors
+                .add(CASE_FORMS, POSSESSIVE_FORMS)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_EMPTY, Agt_cI, Ness_lIk);
 
+        Verb_Main.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Verb2Verb);
+        Verb_Main.successors
+                .add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, Aor_Ar, AorPart_Ir)
+                .add(Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_EMPTY, Agt_yIcI, Des_sA)
+                .add(NotState_mAzlIk, ActOf_mAcA, PastPart_dIk, EvidPart_mIs)
+                .add(FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
+                .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
+                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
+                .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
+                .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
+                .add(UntilDoing_yAsIyA);
+
+        Verb_Default.directSuccessors.add(Verb_Main.directSuccessors);
+        Verb_Default.successors.add(Verb_Main.successors);
+
+        //---------------------------- Noun -----------------------------------------------------------------------
+
         A3pl_lAr.directSuccessors.add(POSSESSIVE_FORMS).remove(P3pl_lArI);
-        A3pl_lAr.successors.add(CASE_FORMS)
+        A3pl_lAr.successors
+                .add(CASE_FORMS)
                 .add(A1pl_yIz, A2pl_sInIz);
 
         //TODO: check below.
@@ -429,22 +501,33 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         A3pl_Comp_lAr.successors.add(CASE_FORMS)
                 .add(A1pl_yIz, A2pl_sInIz);
 
-
         A3sg_EMPTY.directSuccessors.add(POSSESSIVE_FORMS);
-        A3sg_EMPTY.successors.add(Noun_Main.successors).remove(POSSESSIVE_FORMS);
+        A3sg_EMPTY.successors
+                .add(Noun_Main.successors).remove(POSSESSIVE_FORMS)
+                .add(Noun2Noun.allSuccessors()).add(Noun2Noun)
+                .add(Noun2Adj.allSuccessors().add(Noun2Adj));
 
-        Nom_EMPTY.directSuccessors.add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI)
-                .add(Ness_lIk, Related_sAl, Become_lAs, Equ_cA);
+        Nom_EMPTY.directSuccessors.add(Noun2Noun, Noun2Adj, Noun2Verb);
 
-        Dim_cIk.directSuccessors.add(Noun_Main);
-        Dim_cIk.successors.add(Noun_Main.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
+        Nom_EMPTY.successors
+                .add(Noun2Noun.allSuccessors())
+                .add(Noun2Adj.allSuccessors())
+                .add(Noun2Verb.allSuccessors());
 
-        Dim2_cAgIz.directSuccessors.add(Noun_Main);
-        Dim2_cAgIz.successors.add(Noun_Main.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
+        Dim_cIk.directSuccessors.add(Noun_Default.directSuccessors);
+        Dim_cIk.successors.add(Noun_Default.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
 
-        Pnon_EMPTY.directSuccessors.add(CASE_FORMS)
+        Dim2_cAgIz.directSuccessors.add(Noun_Default.directSuccessors);
+        Dim2_cAgIz.successors.add(Noun_Default.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
+
+        Pnon_EMPTY.directSuccessors
+                .add(CASE_FORMS)
                 .add(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
-        Pnon_EMPTY.successors.add(Nom_EMPTY.directSuccessors);
+        Pnon_EMPTY.successors
+                .add(Nom_EMPTY.directSuccessors)
+                .add(Noun2Noun.allSuccessors())
+                .add(Noun2Verb.allSuccessors())
+                .add(Noun2Adj.allSuccessors());
 
         P1sg_Im.directSuccessors.add(CASE_FORMS);
 
@@ -458,58 +541,46 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         P3pl_lArI.directSuccessors.add(CASE_FORMS);
 
-        With_lI.directSuccessors.add(Adj_Main);
-        With_lI.successors.add(Adj_Main.directSuccessors);
+        With_lI.directSuccessors.add(Adj_Main.directSuccessors);
+        With_lI.successors.add(Adj_Main.successors);
 
-        Without_sIz.directSuccessors.add(Adj_Main);
-        Without_sIz.successors.add(Adj_Main.directSuccessors);
+        Without_sIz.directSuccessors.add(Adj_Main.directSuccessors);
+        Without_sIz.successors.add(Adj_Main.successors);
 
-        Loc_dA.directSuccessors.add(Rel_ki);
+        // Noun->Adj derivation elmadaki=elma+Loc-Adj+Rel
+        Loc_dA.directSuccessors.add(Noun2Adj);
+        Loc_dA.successors.add(Rel_ki);
 
-        Rel_ki.directSuccessors.add(Adj_Main_Rel);
+        Rel_ki.directSuccessors.add(Adj2Noun);
+        Rel_ki.successors.add(Adj2Noun.successors).add(A3sg_EMPTY, Pnon_EMPTY, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
 
-        Resemb_msI.directSuccessors.add(Adj_Main);
-        Resemb_msI.successors.add(Adj_Main.allSuccessors());
+        Resemb_msI.directSuccessors.add(Adj_Main.directSuccessors);
+        Resemb_msI.successors.add(Adj_Main.successors);
 
-        Resemb_ImsI.directSuccessors.add(Adj_Main);
-        Resemb_ImsI.successors.add(Adj_Main.allSuccessors());
+        Resemb_ImsI.directSuccessors.add(Adj_Main.directSuccessors);
+        Resemb_ImsI.successors.add(Adj_Main.successors);
+
+        Resemb_Adj_msI.directSuccessors.add(Adj_Main.directSuccessors);
+        Resemb_Adj_msI.successors.add(Adj_Main.successors);
+
+        Resemb_Adj_ImsI.directSuccessors.add(Adj_Main.directSuccessors);
+        Resemb_Adj_ImsI.successors.add(Adj_Main.successors);
 
         //---------------------------- Adjective -----------------------------------------------------------------------
 
-        Adj_Main.directSuccessors.add(Ly_cA, Become_lAs, Quite_cA, Resemb_ImsI, Resemb_msI);
-        Adj_Main.successors.add(Noun_Main.allSuccessors().remove(Related_sAl));
+        Become_lAs.directSuccessors.add(Verb_Main.directSuccessors);
+        Become_lAs.successors.add(Verb_Main.successors);
 
-        Adj_Default.directSuccessors.add(Adj_Main.directSuccessors);
-        Adj_Default.successors.add(Adj_Main.getSuccessors());
+        Become_Adj_lAs.directSuccessors.add(Verb_Main.directSuccessors);
+        Become_Adj_lAs.successors.add(Verb_Main.successors);
 
-        Adj_Main_Rel.directSuccessors.add(Adj_Main.directSuccessors);
-        Adj_Main_Rel.successors.add(Adj_Main.getSuccessors());
+        Quite_cA.directSuccessors.add(Adj_Main.directSuccessors);
 
-        Become_lAs.directSuccessors.add(Verb_Main);
-        Become_lAs.successors.add(Verb_Main.allSuccessors());
-
-        Quite_cA.directSuccessors.add(Adj_Main);
-
-        Ly_cA.directSuccessors.add(Adv_Main);
+        Ly_cA.directSuccessors.add(Adv_Main.directSuccessors);
 
         //---------------------------- Verb ----------------------------------------------------------------------------
 
-        Verb_Main.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl);
-
-        Verb_Main.successors.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, Aor_Ar, AorPart_Ir)
-                .add(Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_EMPTY, Agt_yIcI, Des_sA)
-                .add(NotState_mAzlIk, ActOf_mAcA, PastPart_dIk, EvidPart_mIs)
-                .add(FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
-                .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
-                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
-                .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
-                .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
-                .add(NounDeriv_nIm, UntilDoing_yAsIyA);
-
-        Verb_Default.directSuccessors.add(Verb_Main.directSuccessors).remove(Pass_In, Pass_InIl, Caus_t);
-        Verb_Default.successors.add(Verb_Main.successors);
-
-        Pos_EMPTY.directSuccessors.add(Imp_EMPTY, Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Aor_Ar, Aor_Ir);
+        Pos_EMPTY.directSuccessors.add(Imp_EMPTY, Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Aor_Ar, Aor_Ir, Past_dI, Evid_mIs, Cond_sA);
         Pos_EMPTY.successors.add(Verb_Default.successors).remove(Neg_m, Neg_mA);
 
         Neg_mA.directSuccessors.add(Aor_z, AorPart_z, Aor_EMPTY, Prog2_mAktA, Imp_EMPTY, Opt_yA, Des_sA,
@@ -525,55 +596,64 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Imp_EMPTY.directSuccessors.add(A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
 
-        Caus_t.directSuccessors.add(Verb_Main);
-        Caus_t.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).remove(Caus_t);
-        Caus_tIr.directSuccessors.add(Verb_Main);
-        Caus_tIr.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).remove(Caus_tIr);
+        Caus_t.directSuccessors.add(Verb_Main.directSuccessors);
+        Caus_t.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).add(Caus_tIr).remove(Caus_t);
+        Caus_tIr.directSuccessors.add(Verb_Main.directSuccessors);
+        Caus_tIr.successors.add(Verb_Main.allSuccessors()).add(Pass_nIl).add(Caus_t).remove(Caus_tIr);
 
-        Pass_nIl.directSuccessors.add(Verb_Main);
+        Pass_nIl.directSuccessors.add(Verb_Main.directSuccessors);
         Pass_nIl.successors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
-        Pass_In.directSuccessors.add(Verb_Main);
+        Pass_In.directSuccessors.add(Verb_Main.directSuccessors);
         Pass_In.successors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
-        Pass_InIl.directSuccessors.add(Verb_Main);
+        Pass_InIl.directSuccessors.add(Verb_Main.directSuccessors);
         Pass_InIl.successors.add(Verb_Main.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
-        Prog_Iyor.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA);
-        Prog2_mAktA.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA);
+        Prog_Iyor.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA).add(COPULAR_FORMS);
+        Prog2_mAktA.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA).add(COPULAR_FORMS);
 
-        Fut_yAcAk.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA);
+        Fut_yAcAk.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr, Cond_sA).add(COPULAR_FORMS);
 
-        Aor_Ar.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr).add(Cond_sA);
-        Aor_Ir.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr).add(Cond_sA);
-        Aor_z.directSuccessors.add(A3sg_EMPTY,A3sg_sIn, Cond_sA);
+        Aor_Ar.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr).add(Cond_sA).add(COPULAR_FORMS);
+        Aor_Ir.directSuccessors.add(A3sg_EMPTY, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_lAr).add(Cond_sA).add(COPULAR_FORMS);
+        Aor_z.directSuccessors.add(A3sg_EMPTY, A3sg_sIn, Cond_sA).add(COPULAR_FORMS);
         Aor_EMPTY.directSuccessors.add(A1sg_m, A1pl_yIz);
 
+        Past_dI.directSuccessors.add(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr, CondCop_ysA, PastCop_ydI);
+        Evid_mIs.directSuccessors.add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr)
+                .add(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
+        Cond_sA.directSuccessors.add(A1sg_m, A2sg_n, A3sg_EMPTY, A1pl_k, A2pl_nIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
+
+        PastCop_ydI.directSuccessors.add(PERSON_FORMS_COP);
+        EvidCop_ymIs.directSuccessors.add(A1sg_yIm, A2sg_sIn, A3sg_EMPTY, A1pl_yIz, A2pl_sInIz, A3pl_lAr, AsIf_cAsInA);
+        CondCop_ysA.directSuccessors.add(PERSON_FORMS_COP);
+        Cop_dIr.directSuccessors.add(A3pl_lAr);
+
         registerForms(
-                Noun_Default, Nom_EMPTY, Verb_Default, Pnon_EMPTY, Pass_InIl,
+                Noun_Default, Verb_Default, Adj_Default, Resemb_Adj_ImsI, Resemb_msI,
+                Pass_InIl,
                 Dat_yA, Dat_nA, Loc_dA, Loc_ndA, Abl_dAn, Abl_ndAn, Gen_nIn,
                 Acc_yI, Acc_nI, Inst_ylA, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz,
                 P2pl_InIz, P3pl_lArI, Dim_cIk, Dim2_cAgIz, With_lI,
                 Without_sIz, Rel_ki, Rel_kI, A1sg_yIm, A1sg_m, A1sg_EMPTY, A2sg_sIn,
-                A2sg_n, A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A3sg_EMPTY, A3sg_sIn, A1pl_yIz,
+                A2sg_n, A2sg_EMPTY, A2sg2_sAnA, A2sg3_yInIz, A3sg_sIn, A1pl_yIz,
                 A1pl_k, A1pl_lIm, A1pl_EMPTY, A2pl_sInIz, A2pl_nIz, A2pl_yIn, A2pl_EMPTY,
                 A2pl2_sAnIzA, A3pl_lAr, A3pl_sInlAr, Agt_cI, Agt_yIcI, Ness_lIk,
-                Become_lAs, Resemb_ImsI, Resemb_msI, Related_sAl, Aor_Ir, Aor_Ar, Aor_z, Des_sA,
+                Become_lAs, Become_Adj_lAs, Resemb_ImsI, Resemb_msI, Related_sAl, Aor_Ir, Aor_Ar, Aor_z, Des_sA,
                 Aor_EMPTY, AorPart_Ir, AorPart_Ar, AorPart_z, Prog_Iyor, Prog2_mAktA, Fut_yAcAk,
                 FutPart_yAcAk, Past_dI, PastPart_dIk,
                 Evid_mIs, EvidPart_mIs, PresPart_yAn, Neg_mA, Neg_m, Cond_sA,
                 Necess_mAlI, Opt_yA, Pass_In, Pass_nIl, Caus_t,
-                Caus_tIr, Imp_EMPTY, Imp_EMPTY_V, Imp_EMPTY_C, Recip_Is, Recip_yIs, Reflex_In, Abil_yAbil, Abil_yA, Cop_dIr,
+                Caus_tIr, Imp_EMPTY, Recip_Is, Recip_yIs, Reflex_In, Abil_yAbil, Abil_yA, Cop_dIr,
                 PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, NotState_mAzlIk, ActOf_mAcA,
                 AsIf_cAsInA, AsLongAs_dIkcA, When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn,
                 WithoutDoing2_mAksIzIn, AfterDoing_yIp, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA,
                 KeepDoing_yAgor, KeepDoing2_yAdur, EverSince_yAgel,
                 Almost_yAyAz, Hastily_yIver, Stay_yAkal, Inf1_mAk, Inf2_mA, Inf3_yIs, Ly_cA,
                 Quite_cA, Equ_cA, Equ_ncA, UntilDoing_yAsIyA,
-                Noun_Main, Noun_Comp_P3sg, Noun_Comp_P3sg_Root, A3pl_Comp_lAr,
-                Adj_Main,
-                Adv_Main, Adj_Main_Rel, Interj_Main, Verb_Main, Verb_Prog_Drop, PersPron_Main, PersPron_BenSen, PersPron_BanSan,
-                Numeral_Main, Ordinal_IncI, Grouping_sAr, Ques_mI, Particle_Main, NounDeriv_nIm);
+                A3pl_Comp_lAr, Interj_Main, Verb_Prog_Drop, PersPron_BenSen, PersPron_BanSan,
+                Ordinal_IncI, Grouping_sAr);
 
 
 /*
@@ -843,7 +923,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
             switch (attribute) {
                 case CompoundP3sg:
                     original.add(Noun_Comp_P3sg.allSuccessors());
-                    modified.clear().add(Noun_Comp_P3sg_Root.allSuccessors());
+                    modified.add(Noun_Comp_P3sg_Root.allSuccessors());
                     break;
                 default:
                     break;
@@ -852,8 +932,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     }
 
     private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
-        original.add(Verb_Default.allSuccessors());
-        modified.add(Verb_Default.allSuccessors());
+        original.add(Verb_Main.allSuccessors());
+        modified.add(Verb_Main.allSuccessors());
         List<RootAttr> attrList = item.attrs.getAsList(RootAttr.class);
         for (RootAttr attribute : attrList) {
             switch (attribute) {
@@ -902,8 +982,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                     modified.add(Recip_Is);
                     break;
                 case Causative_t:
-                    original.remove(Caus_tIr);
-                    original.add(Caus_t);
+                    // original.remove(Caus_tIr);
+                    // original.add(Caus_t);
                     if (!item.attrs.contains(RootAttr.ProgressiveVowelDrop)) {
                         modified.remove(Caus_tIr);
                         modified.add(Caus_t);
