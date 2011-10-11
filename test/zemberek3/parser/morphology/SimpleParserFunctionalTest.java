@@ -56,7 +56,7 @@ public class SimpleParserFunctionalTest {
     @Test
     public void testCompounds() {
         DynamicLexiconGraph graph = getLexiconGraph("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
-        assertHasParses(graph,  "zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
+        assertHasParses(graph, "zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
         assertUnParseable(graph, "zeytinyağılar", "zeytinyağıcık");
     }
 
@@ -86,7 +86,7 @@ public class SimpleParserFunctionalTest {
     @Test
     public void testAdj2Verb() {
         DynamicLexiconGraph graph = getLexiconGraph("mavi [P:Adj]");
-        assertHasParses(graph,"mavileşti", "mavileşmiş", "maviydi");
+        assertHasParses(graph, "mavileşti", "mavileşmiş", "maviydi");
     }
 
 
@@ -165,25 +165,36 @@ public class SimpleParserFunctionalTest {
 
     @Test
     public void testAorist() {
-        // Noun-Noun
         DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]", "gelmek [A:NonTransitive, Aorist_I]");
-        assertHasParses(graph, "arar", "gider", "gelir", "aramaz");
+        assertHasParses(graph, "arar", "ararsa", "gider", "gelir", "aramaz");
         assertUnParseable(graph, "geler", "gidir");
     }
 
     @Test
     public void testPast() {
-        // Noun-Noun
         DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "aradı", "gitti");
+        assertHasParses(graph, "aradı", "gitti", "gittik", "gittiyse", "gittim", "gittiniz", "gittiydim");
+        assertUnParseable(graph, "gittiz", "gittimiş");
     }
 
     @Test
     public void testEvid() {
-        // Noun-Noun
         DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "aramış", "gitmiş");
+        assertHasParses(graph, "aramış", "gitmiş", "gitmişiz", "aramıştı");
     }
+
+    @Test
+    public void testVerb2Verb2() {
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
+        assertHasParses(graph, "arayıver", "aramayıver", "gidiver", "gitmeyiver");
+    }
+
+    @Test
+    public void testInf() {
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
+        assertHasParses(graph, "aramak", "aramada", "arayışı", "gitmek", "gitmekten","gitmektendi");
+    }
+
 
     private void assertHasParses(DynamicLexiconGraph graph, String... words) {
         SimpleParser parser = new SimpleParser(graph);
@@ -251,7 +262,7 @@ public class SimpleParserFunctionalTest {
             for (String s : parseables) {
                 List<ParseResult> results = parser.parse(s);
                 for (ParseResult result : results) {
-                    result.asParseString();
+                    //result.asParseString();
                 }
                 if (i == 0) {
                     for (ParseResult result : results) {
@@ -273,6 +284,7 @@ public class SimpleParserFunctionalTest {
         System.out.println("list loaded");
         SimpleTextWriter stw = SimpleTextWriter.keepOpenUTF8Writer(new File("test/data/unknowns.txt"));
         SimpleParser parser = simpleParser(new File("src/resources/tr/master-dictionary.txt"));
+        long start = System.currentTimeMillis();
         int pass = 0;
         for (String word : allWords) {
             if (parser.parse(word).size() > 0)
@@ -281,6 +293,8 @@ public class SimpleParserFunctionalTest {
                 stw.writeLine(word);
         }
         stw.close();
+        long elapsed = System.currentTimeMillis() - start;
+        System.out.println("Elapsed:" + elapsed + " ms.");
         System.out.println("Total words:" + allWords.size());
         System.out.println("Passed words:" + pass);
         System.out.println("Ratio=%" + ((double) pass * 100 / allWords.size()));
