@@ -78,17 +78,17 @@ public class TurkishDictionaryLoaderTest {
     @Test
     public void suffixDataTest() {
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
-        DictionaryItem item = loader.loadFromString("ben [P:Pron; S: +A1sg_EMPTY]");
+        DictionaryItem item = loader.loadFromString("ben [P:Pron; S: +A1sg_TEMPLATE]");
         Assert.assertEquals(Pronoun, item.primaryPos);
         Assert.assertNotNull(item.suffixData);
         Assert.assertTrue(!item.suffixData.accepts.set.isEmpty());
         Assert.assertTrue(item.suffixData.rejects.set.isEmpty());
         Assert.assertTrue(item.suffixData.onlyAccepts.set.isEmpty());
 
-        item = loader.loadFromString("ben [P:Pron; S: -A1sg, +A1sg_EMPTY, +Dim]");
+        item = loader.loadFromString("ben [P:Pron; S: -A1sg, +A1sg_TEMPLATE, +Dim]");
         Assert.assertTrue(item.suffixData.rejects.set.contains(TurkishSuffixes.A1sg_m));
         Assert.assertTrue(item.suffixData.rejects.set.contains(TurkishSuffixes.A1sg_yIm));
-        Assert.assertTrue(item.suffixData.accepts.set.contains(TurkishSuffixes.A1sg_EMPTY));
+        Assert.assertTrue(item.suffixData.accepts.set.contains(TurkishSuffixes.A1sg_TEMPLATE));
         Assert.assertTrue(item.suffixData.accepts.set.contains(TurkishSuffixes.Dim_cIk));
     }
 

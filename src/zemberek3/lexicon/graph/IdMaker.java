@@ -4,17 +4,25 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class RandomIdMaker {
+public class IdMaker {
     Random random = new Random();
     Set<String> ids = Collections.synchronizedSet(new HashSet<String>());
+    AtomicInteger counter = new AtomicInteger();
     int letterCount;
 
-    public RandomIdMaker(int letterCount) {
+    public IdMaker(int letterCount) {
         this.letterCount = letterCount;
     }
 
-    public String getNew() {
+    public String get() {
+        String val = String.valueOf(this.counter.incrementAndGet());
+        ids.add(val);
+        return val;
+    }
+
+    public String getRandom() {
         StringBuilder sb = new StringBuilder(letterCount);
         for (int i = 0; i < letterCount; i++) {
             sb.append((char) (random.nextInt(25) + 'A'));
@@ -24,10 +32,10 @@ public class RandomIdMaker {
             ids.add(res);
             return res;
         }
-        return getNew();
+        return getRandom();
     }
 
-    public String getNew(String toAppend) {
-        return toAppend + "_" + getNew();
+    public String get(String toAppend) {
+        return toAppend + "_" + get();
     }
 }

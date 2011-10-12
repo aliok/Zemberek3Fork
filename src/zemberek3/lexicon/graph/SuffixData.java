@@ -80,9 +80,10 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         return new SuffixData(set);
     }
 
-    public SuffixData remove(Iterable<SuffixFormSet> it) {
-        for (SuffixFormSet suff : it)
+    public SuffixData remove(Collection<SuffixFormSet> it) {
+        for (SuffixFormSet suff : it) {
             set.remove(suff);
+        }
         return this;
     }
 

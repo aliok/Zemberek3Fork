@@ -64,50 +64,6 @@ public class SuffixFormSet {
         this.id = suffix.id + "_" + generation;
     }
 
-    /**
-     * Generates a copy of this SuffixSet. However, it overwrites successor data using the input SuffixData.
-     *
-     * @param uniqueId  A unique ID for the copy.
-     * @param allowOnly all successors to owewrite the copied ones. it eliminates the direct successors which does not
-     *                  exist in allowOnly, and remaining ones are used as 'successor'
-     * @return copy set.
-     */
-    public SuffixFormSet copy(String uniqueId, SuffixData allowOnly) {
-        SuffixFormSet copy = new SuffixFormSet(
-                uniqueId,
-                suffix,
-                generation,
-                terminationType
-        );
-
-        for (SuffixFormSet successor : allowOnly) {
-            if (this.directSuccessors.contains(successor)) {
-                copy.directSuccessors.add(successor);
-            } else {
-                copy.successors.add(successor);
-            }
-        }
-        return copy;
-    }
-
-
-    /**
-     * Generates a copy of this SuffixSet.
-     *
-     * @return copy set.
-     */
-    public SuffixFormSet copy(String uniqueId) {
-        SuffixFormSet copy = new SuffixFormSet(
-                uniqueId,
-                suffix,
-                generation,
-                terminationType
-        );
-        copy.directSuccessors.add(directSuccessors);
-        copy.successors.add(successors);
-        return copy;
-    }
-
     public boolean isTerminal() {
         return terminationType == TerminationType.TERMINAL;
     }
@@ -135,10 +91,12 @@ public class SuffixFormSet {
 
         SuffixFormSet that = (SuffixFormSet) o;
 
-        if (!generation.equals(that.generation)) return false;
-        if (!successors.equals(that.successors)) return false;
+        if (template != that.template) return false;
         if (!directSuccessors.equals(that.directSuccessors)) return false;
-        if (!suffix.equals(that.suffix)) return false;
+        if (!generation.equals(that.generation)) return false;
+        if (!id.equals(that.id)) return false;
+/*        if (!successors.equals(that.successors)) return false;
+        if (!suffix.equals(that.suffix)) return false;*/
         if (terminationType != that.terminationType) return false;
 
         return true;
@@ -146,11 +104,13 @@ public class SuffixFormSet {
 
     @Override
     public int hashCode() {
-        int result = suffix.hashCode();
+        int result = id.hashCode();
+        result = 31 * result + suffix.hashCode();
         result = 31 * result + generation.hashCode();
         result = 31 * result + terminationType.hashCode();
-        result = 31 * result + successors.hashCode();
-        result = 31 * result + directSuccessors.hashCode();
+/*        result = 31 * result + successors.hashCode();
+        result = 31 * result + directSuccessors.hashCode();*/
+        result = 31 * result + (template ? 1 : 0);
         return result;
     }
 

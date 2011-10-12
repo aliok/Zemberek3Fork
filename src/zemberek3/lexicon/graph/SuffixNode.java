@@ -60,7 +60,7 @@ public class SuffixNode extends MorphNode {
         if (!surfaceForm.equals(that.surfaceForm)) return false;
         if (!attributes.equals(that.attributes)) return false;
         if (!expectations.equals(that.expectations)) return false;
-        if (!suffixSet.equals(that.suffixSet)) return false;
+        if (!suffixSet.getId().equals(that.suffixSet.getId())) return false;
         if (!exclusiveSuffixData.equals(that.exclusiveSuffixData)) return false;
         if (!termination.equals(that.termination)) return false;
         return true;

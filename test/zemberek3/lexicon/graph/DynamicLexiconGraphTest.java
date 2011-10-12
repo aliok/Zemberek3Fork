@@ -58,15 +58,15 @@ public class DynamicLexiconGraphTest {
         Suffix P1pl = new Suffix("P1pl");
         SuffixFormSet P1pl_ImIz = new SuffixFormSet(P1pl, "ImIz");
         Suffix Pnon = new Suffix("Pnon");
-        SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_EMPTY", Pnon, "");
+        SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_TEMPLATE", Pnon, "");
         Suffix Nom = new Suffix("Nom");
-        SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_EMPTY", Nom, ""); // ben
+        SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_TEMPLATE", Nom, ""); // ben
         Suffix A3sg = new Suffix("A3sg");
-        SuffixFormSet A3sg_EMPTY = new SuffixFormSet("A3sg_EMPTY", A3sg, ""); // gel-di-, o-
+        SuffixFormSet A3sg_EMPTY = new SuffixFormSet("A3sg_TEMPLATE", A3sg, ""); // gel-di-, o-
         Suffix A3pl = new Suffix("A3pl");
         SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
         DynamicSuffixes suffixes = new DynamicSuffixes();
-    //    DynamicSuffixes.Noun_Main.getSuccessors().add(A3pl_lAr, A3sg_EMPTY);
+    //    DynamicSuffixes.Noun_TEMPLATE.getSuccessors().add(A3pl_lAr, A3sg_TEMPLATE);
         A3sg_EMPTY.successors.add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
         A3pl_lAr.successors.add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);
         Pnon_EMPTY.successors.add(Nom_EMPTY, Dat_yA, Loc_dA);
@@ -74,7 +74,7 @@ public class DynamicLexiconGraphTest {
         P3sg_sI.successors.add(Nom_EMPTY, Dat_yA, Loc_dA);
         P1pl_ImIz.successors.add(Nom_EMPTY, Dat_yA, Loc_dA);
         suffixes.addSuffixForms(
-               /* DynamicSuffixes.Noun_Main, */A3sg_EMPTY, A3pl_lAr,
+               /* DynamicSuffixes.Noun_TEMPLATE, */A3sg_EMPTY, A3pl_lAr,
                 P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz,
                 Nom_EMPTY, Dat_yA, Loc_dA);
         return suffixes.getSuffixProvider();

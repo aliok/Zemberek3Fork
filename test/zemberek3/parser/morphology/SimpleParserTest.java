@@ -159,6 +159,8 @@ public class SimpleParserTest {
             Dim_CIK.successors.add(Noun_Default.allSuccessors().remove(Dim_CIK));
 
             registerForms(Noun_TEMPLATE, Noun_Deriv, Noun_Default, A3sg_TEMPLATE, A3pl_lAr, P1sg_Im, Pnon_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Nom_TEMPLATE);
+
+            dumpPath(Dim_CIK,3);
         }
 
 
@@ -174,9 +176,7 @@ public class SimpleParserTest {
             } else {
                 switch (item.primaryPos) {
                     case Noun:
-                        SuffixFormSet copyOfTemplate = Noun_TEMPLATE.copy(idMaker.getNew(Noun_TEMPLATE.id));
-                        copyOfTemplate.directSuccessors.retain(successorConstraint);
-                        copyOfTemplate.successors.retain(successorConstraint);
+                        SuffixFormSet copyOfTemplate = generateSetFromTemplate(Noun_TEMPLATE, successorConstraint);
                         if (formSetLookup.containsKey(copyOfTemplate)) {
                             copyOfTemplate = formSetLookup.get(copyOfTemplate);
                         } else {
@@ -221,118 +221,5 @@ public class SimpleParserTest {
                 }
             }
         }
-
-
     }
-
-   static class VerbSuffixes extends DynamicSuffixProvider {
-
-        static SuffixFormSet Dim_CIK = getSet("Dim", ">cI~k");
-        static SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
-        static SuffixFormSet Dat_yA = getSet("Dat", "+yA");
-        static SuffixFormSet Dat_nA = getSet("Dat", "nA");
-        static SuffixFormSet Pnon_TEMPLATE = getTemplate("Pnon", "Pnon_TEMPLATE");
-        static SuffixFormSet Nom_TEMPLATE = getTemplate("Nom", "Nom_TEMPLATE");
-        static SuffixFormSet A3sg_TEMPLATE = getTemplate("A3sg", "A3sg_TEMPLATE");
-        static SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
-        static Suffix Noun_Root = new Suffix("Noun");
-        static SuffixFormSet Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
-        static SuffixFormSet Noun_Default = getNull("Noun_Default", Noun_Root);
-        static SuffixFormSet Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
-
-        VerbSuffixes() {
-
-            Noun_TEMPLATE.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
-            Noun_TEMPLATE.successors.add(P1sg_Im, Pnon_TEMPLATE, Nom_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Noun_Deriv);
-
-            Noun_Default.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-            Noun_Default.successors.add(Noun_TEMPLATE.successors).remove(Dat_nA);
-
-            Noun_Deriv.directSuccessors.add(Dim_CIK);
-            //Noun2Noun.successors.add(Noun_TEMPLATE.allSuccessors());
-
-            A3sg_TEMPLATE.directSuccessors.add(Pnon_TEMPLATE, P1sg_Im);
-            A3sg_TEMPLATE.successors.add(Nom_TEMPLATE, Dat_yA, Dat_nA, Noun_Deriv).add(Noun_Deriv.allSuccessors());
-
-            A3pl_lAr.directSuccessors.add(P1sg_Im, Pnon_TEMPLATE);
-            A3pl_lAr.successors.add(Nom_TEMPLATE, Dat_yA);
-
-            P1sg_Im.directSuccessors.add(Nom_TEMPLATE, Dat_yA);
-
-            Pnon_TEMPLATE.directSuccessors.add(Nom_TEMPLATE, Dat_nA, Dat_yA);
-            Pnon_TEMPLATE.successors.add(Noun_Deriv).add(Noun_Deriv.allSuccessors());
-
-            Nom_TEMPLATE.directSuccessors.add(Noun_Deriv);
-            Nom_TEMPLATE.successors.add(Noun_Deriv.allSuccessors());
-
-            Dim_CIK.directSuccessors.add(Noun_Default.directSuccessors);
-            Dim_CIK.successors.add(Noun_Default.allSuccessors().remove(Dim_CIK));
-
-            registerForms(Noun_TEMPLATE, Noun_Deriv, Noun_Default, A3sg_TEMPLATE, A3pl_lAr, P1sg_Im, Pnon_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Nom_TEMPLATE);
-        }
-
-
-        public SuffixFormSet getRootSet(DictionaryItem item, SuffixData successorConstraint) {
-
-            if (successorConstraint.isEmpty()) {
-                switch (item.primaryPos) {
-                    case Noun:
-                        return Noun_Default;
-                    default:
-                        throw new UnsupportedOperationException("In this class only some noun morphemes exist.");
-                }
-            } else {
-                switch (item.primaryPos) {
-                    case Noun:
-                        SuffixFormSet copyOfTemplate = Noun_TEMPLATE.copy(idMaker.getNew(Noun_TEMPLATE.id));
-                        copyOfTemplate.directSuccessors.retain(successorConstraint);
-                        copyOfTemplate.successors.retain(successorConstraint);
-                        if (formSetLookup.containsKey(copyOfTemplate)) {
-                            copyOfTemplate = formSetLookup.get(copyOfTemplate);
-                        } else {
-                            registerForm(copyOfTemplate);
-                        }
-                        return copyOfTemplate;
-                    default:
-                        throw new UnsupportedOperationException("In this class only some noun morphemes exist.");
-
-                }
-
-            }
-        }
-
-        public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
-
-            SuffixData original = new SuffixData();
-            SuffixData modified = new SuffixData();
-
-            PrimaryPos primaryPos = item.primaryPos;
-
-            switch (primaryPos) {
-                case Noun:
-                    getForNoun(item, original, modified);
-                    break;
-                default:
-                    throw new UnsupportedOperationException("In this class only some noun morphemes exist.");
-            }
-            return new SuffixData[]{original, modified};
-        }
-
-        void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
-
-            for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
-                switch (attribute) {
-                    case CompoundP3sg:
-                        original.add(Noun_Default.allSuccessors().remove(Dim_CIK, A3pl_lAr, Dat_yA).add(Dat_nA));
-                        modified.add(Dim_CIK, Noun_Deriv, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE, A3pl_lAr);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-
-    }
-
 }

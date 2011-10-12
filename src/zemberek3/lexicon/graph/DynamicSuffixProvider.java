@@ -1,6 +1,7 @@
 package zemberek3.lexicon.graph;
 
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.*;
 
@@ -13,10 +14,12 @@ public class DynamicSuffixProvider implements SuffixProvider {
 
     //Set<SuffixFormSet> forms = Sets.newHashSet();
     protected Map<SuffixFormSet, SuffixFormSet> formSetLookup = Maps.newHashMap();
-    protected Map<String, Suffix> suffixLookup = Maps.newTreeMap();
+    protected Map<String, Suffix> suffixLookup = Maps.newHashMap();
     protected ArrayListMultimap<String, SuffixFormSet> formsPerSuffix = ArrayListMultimap.create(100, 2);
+    private HashMultimap<String, TemplateData> templateData = HashMultimap.create(100, 10);
+    private Map<TemplateData, SuffixFormSet> templateSets = Maps.newHashMap();
 
-    protected RandomIdMaker idMaker = new RandomIdMaker(3);
+    protected IdMaker idMaker = new IdMaker(3);
 
     protected static SuffixFormSet getNull(String suffix, String suffixId) {
         return new SuffixFormSet(suffixId, new Suffix(suffix), "", TerminationType.TRANSFER);
@@ -74,27 +77,85 @@ public class DynamicSuffixProvider implements SuffixProvider {
         }
     }
 
+    class TemplateData {
+        String templateId;
+        SuffixData successors;
+        SuffixData directSuccessors;
+
+        TemplateData(String templateId, SuffixData successors, SuffixData directSuccessors) {
+            this.templateId = templateId;
+            this.successors = successors;
+            this.directSuccessors = directSuccessors;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            TemplateData that = (TemplateData) o;
+
+            return templateId.equals(that.templateId)
+                    && directSuccessors.equals(that.directSuccessors)
+                    && successors.equals(that.successors);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = templateId.hashCode();
+            result = 31 * result + successors.hashCode();
+            result = 31 * result + directSuccessors.hashCode();
+            return result;
+        }
+
+    }
+
+    protected SuffixFormSet generateSetFromTemplate(SuffixFormSet set, SuffixData constraints) {
+        SuffixData d = new SuffixData(set.directSuccessors).retain(constraints);
+        SuffixData s = new SuffixData(set.successors).retain(constraints);
+        TemplateData data = new TemplateData(set.id, s, d);
+        if (templateData.get(set.id).contains(data)) {
+            return templateSets.get(data);
+        } else {
+            SuffixFormSet newSet = new SuffixFormSet(
+                    idMaker.get(set.id),
+                    set.getSuffix(),
+                    set.generation,
+                    set.terminationType);
+            newSet.directSuccessors = d;
+            newSet.successors = s;
+            templateData.put(set.id, data);
+            templateSets.put(data, newSet);
+            return newSet;
+        }
+    }
+
     protected void registerForm(SuffixFormSet formSet) {
 
-        if (formSet.isTemplate() || formSetLookup.containsKey(formSet)) {
+        // if this is a template, we put basic template data to a lookup table. we will use this table later to detect
+        // duplicates of newly generated FormSets.
+        if (formSet.isTemplate()) {
+            if (!templateData.containsKey(formSet.id))
+                templateData.put(formSet.id, new TemplateData(formSet.id, formSet.successors, formSet.directSuccessors));
+            return;
+        }
+
+        if (formSetLookup.containsKey(formSet)) {
             return;
         }
 
         formSetLookup.put(formSet, formSet);
 
-        Set<SuffixFormSet> allSuccessors = formSet.allSuccessors().set;
+        SuffixData allSuccessors = formSet.allSuccessors();
         Set<SuffixFormSet> toRemove = new HashSet<SuffixFormSet>();
         Set<SuffixFormSet> toAdd = new HashSet<SuffixFormSet>();
         for (SuffixFormSet directSuccessor : formSet.directSuccessors) {
             if (directSuccessor.isTemplate()) {
-                SuffixFormSet copyOfTemplate = directSuccessor.copy(idMaker.getNew(directSuccessor.id));
-                copyOfTemplate.directSuccessors.retain(allSuccessors);
-                copyOfTemplate.successors.retain(allSuccessors);
-                if (formSetLookup.containsKey(copyOfTemplate)) {
-                    copyOfTemplate = formSetLookup.get(copyOfTemplate);
-                }
+                SuffixFormSet nullSet = generateSetFromTemplate(directSuccessor, allSuccessors);
+                if (nullSet == null)
+                    System.out.println("crap");
+                toAdd.add(nullSet);
                 toRemove.add(directSuccessor);
-                toAdd.add(copyOfTemplate);
             }
         }
         for (SuffixFormSet suffixFormSet : formSet.successors) {
@@ -105,7 +166,26 @@ public class DynamicSuffixProvider implements SuffixProvider {
         formSet.successors.remove(toRemove);
         formSet.directSuccessors.add(toAdd);
         for (SuffixFormSet suffixFormSet : toAdd) {
+            if (suffixFormSet == null)
+                System.out.println("crap");
             registerForm(suffixFormSet);
+        }
+    }
+
+    public void dumpPath(SuffixFormSet set, int level) {
+        if (level == 0)
+            return;
+        System.out.println("--------------------------SET:" + set.id);
+        System.out.println("D:");
+        for (SuffixFormSet direct : set.directSuccessors) {
+            System.out.println(direct.id);
+        }
+        System.out.println("S:");
+        for (SuffixFormSet sec : set.successors) {
+            System.out.println(sec.id);
+        }
+        for (SuffixFormSet direct : set.directSuccessors) {
+            dumpPath(direct, level - 1);
         }
     }
 
@@ -119,6 +199,4 @@ public class DynamicSuffixProvider implements SuffixProvider {
             formsPerSuffix.put(suffixFormSet.getSuffix().id, suffixFormSet);
         }
     }
-
-
 }

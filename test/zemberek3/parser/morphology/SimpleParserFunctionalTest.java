@@ -33,14 +33,14 @@ public class SimpleParserFunctionalTest {
         for (String parseable : parseables) {
             List<ParseResult> results = simpleParser.parse(parseable);
             if (results.size() > 0) {
-                System.out.print(parseable + " : ");
+                //System.out.print(parseable + " : ");
                 for (ParseResult parseResult : results) {
-                    System.out.print(parseResult.asOflazerFormat() + "   ");
+                    // System.out.print(parseResult.asOflazerFormat() + "   ");
                 }
-                System.out.println();
+                //System.out.println();
 
             } else {
-                //  System.out.println("ERROR:" + parseable);
+                System.out.println("ERROR:" + parseable);
             }
             //Assert.assertTrue("Could not parse valid word:" + parseable, parser.parse(parseable).size() > 0);
         }
@@ -192,7 +192,21 @@ public class SimpleParserFunctionalTest {
     @Test
     public void testInf() {
         DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "aramak", "aramada", "arayışı", "gitmek", "gitmekten","gitmektendi");
+        assertHasParses(graph, "aramak", "aramada", "arayışı", "gitmek", "gitmekten", "gitmektendi");
+    }
+
+    @Test
+    public void testNess() {
+        DynamicLexiconGraph graph = getLexiconGraph("elma", "mavi [P:Adj]");
+        assertHasParses(graph, "elmacıktı", "elmalık", "elmalığı", "elmalıktı", "elmalığa", "mavilik", "maviliği", "mavilikti");
+        assertUnParseable(graph, "elmalıklık", "elmalıka", "maviliklik", "maviliki");
+    }
+
+    @Test
+    public void dumpPath() {
+        DynamicLexiconGraph graph = getLexiconGraph("elma");
+        assertHasParses(graph, "elmacıktı", "elmalık", "elmalığı", "elmalıktı", "elmalığa", "mavilik", "maviliği", "mavilikti");
+        assertUnParseable(graph, "elmalıklık", "elmalıka", "maviliklik", "maviliki");
     }
 
 
