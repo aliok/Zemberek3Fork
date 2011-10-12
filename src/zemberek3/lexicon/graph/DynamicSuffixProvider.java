@@ -136,7 +136,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
         // duplicates of newly generated FormSets.
         if (formSet.isTemplate()) {
             if (!templateData.containsKey(formSet.id))
-                templateData.put(formSet.id, new TemplateData(formSet.id, formSet.successors, formSet.directSuccessors));
+                templateData.put(formSet.id, null);
             return;
         }
 

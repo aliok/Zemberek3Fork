@@ -410,7 +410,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         // noun template. it has all possible suffix forms that a noun can have
         Noun_TEMPLATE.directSuccessors.add(A3pl_lAr, A3pl_Comp_lAr, A3sg_TEMPLATE);
         Noun_TEMPLATE.successors
-                .add(POSSESSIVE_FORMS, CASE_FORMS, COPULAR_FORMS)
+                .add(POSSESSIVE_FORMS, CASE_FORMS)
+                .add(Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken)
+                .add(A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr)
                 .add(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI, Equ_ncA)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl)
                 .add(Become_lAs)
@@ -427,7 +429,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Noun2Adj.directSuccessors.add(With_lI, Without_sIz, Resemb_msI, Resemb_ImsI, Rel_ki, Related_sAl);
 
         Noun2Verb.directSuccessors.add(Become_lAs);
-        Noun2VerbCopular.directSuccessors.add(COPULAR_FORMS); //TODO person successors are missing.
+
+        Noun2VerbCopular.directSuccessors.add(Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken); //TODO person successors are missing.
+        Noun2VerbCopular.successors.add(A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr);
 
         Adj2Noun.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
         Adj2Noun.successors.add(Noun_TEMPLATE.successors).remove(Related_sAl, Become_lAs, Resemb_ImsI, Resemb_msI);
@@ -512,7 +516,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Noun2VerbCopular.allSuccessors())
                 .add(Noun2Adj.allSuccessors().add(Noun2Adj));
 
-        Nom_TEMPLATE.directSuccessors.add(Noun2Noun, Noun2Adj, Noun2Verb);
+        Nom_TEMPLATE.directSuccessors.add(Noun2Noun, Noun2Adj, Noun2Verb, Noun2VerbCopular);
 
         Nom_TEMPLATE.successors
                 .add(Noun2Noun.allSuccessors())
@@ -522,6 +526,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Dim_cIk.directSuccessors.add(Noun_Default.directSuccessors);
         Dim_cIk.successors.add(Noun_Default.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
+        Dim_cIk.successors.add(Noun2VerbCopular);
 
         Dim2_cAgIz.directSuccessors.add(Noun_Default.directSuccessors);
         Dim2_cAgIz.successors.add(Noun_Default.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
@@ -714,7 +719,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 Ordinal_IncI, Grouping_sAr);
 
         System.out.println(formSetLookup.size());
-        dumpPath(Dim_cIk, 3);
+        //  dumpPath(Dim_cIk, 7);
 /*
         Noun_TEMPLATE.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI,

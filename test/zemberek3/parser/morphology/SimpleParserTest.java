@@ -158,7 +158,8 @@ public class SimpleParserTest {
             Dim_CIK.directSuccessors.add(Noun_Default.directSuccessors);
             Dim_CIK.successors.add(Noun_Default.allSuccessors().remove(Dim_CIK));
 
-            registerForms(Noun_TEMPLATE, Noun_Deriv, Noun_Default, A3sg_TEMPLATE, A3pl_lAr, P1sg_Im, Pnon_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Nom_TEMPLATE);
+            registerForms(Noun_TEMPLATE, Noun_Deriv, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE);
+            registerForms(Noun_Default, A3pl_lAr, P1sg_Im, Dat_yA, Dat_nA, Dim_CIK);
 
             dumpPath(Dim_CIK,3);
         }

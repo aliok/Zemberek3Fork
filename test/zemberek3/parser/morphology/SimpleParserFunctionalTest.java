@@ -84,6 +84,12 @@ public class SimpleParserFunctionalTest {
     }
 
     @Test
+    public void testNounToVerbCopular() {
+        DynamicLexiconGraph graph = getLexiconGraph("elma");
+        assertHasParses(graph, "elmaydı");
+    }
+
+    @Test
     public void testAdj2Verb() {
         DynamicLexiconGraph graph = getLexiconGraph("mavi [P:Adj]");
         assertHasParses(graph, "mavileşti", "mavileşmiş", "maviydi");
