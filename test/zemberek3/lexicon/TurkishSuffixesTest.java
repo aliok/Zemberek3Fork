@@ -12,255 +12,287 @@ import java.util.List;
 public class TurkishSuffixesTest {
     @Test
     public void testVoicing() {
-        DynamicLexiconGraph graph = getLexiconGraph("armut");
-        assertHasParses(graph, "armut", "armuda", "armutlar", "armutlara");
-        assertUnParseable(graph, "armud", "armuta", "armudlar");
+        Tester tester = new Tester("armut");
+        tester.assertHasParses("armut", "armuda", "armutlar", "armutlara");
+        tester.assertUnParseable("armud", "armuta", "armudlar");
     }
 
     @Test
     public void testCompounds() {
-        DynamicLexiconGraph graph = getLexiconGraph("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
-        assertHasParses(graph, "zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
-        assertUnParseable(graph, "zeytinyağılar", "zeytinyağıcık");
+        Tester tester = new Tester("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
+        tester.assertHasParses("zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
+        tester.assertUnParseable("zeytinyağılar", "zeytinyağıcık");
     }
 
     @Test
     public void testCompoundsVoicing() {
-        DynamicLexiconGraph graph = getLexiconGraph("atkuyruğu [A:CompoundP3sg, Voicing ; R:atkuyruk]");
-        assertHasParses(graph, "atkuyrukçuk", "atkuyruğu", "atkuyruklarım");
-        assertUnParseable(graph, "atkuyruğlarım", "atkuyruk");
+        Tester tester = new Tester("atkuyruğu [A:CompoundP3sg, Voicing ; R:atkuyruk]");
+        tester.assertHasParses("atkuyrukçuk", "atkuyruğu", "atkuyruklarım");
+        tester.assertUnParseable("atkuyruğlarım", "atkuyruk");
     }
 
     @Test
     public void testWithAndWithout() {
-        DynamicLexiconGraph graph = getLexiconGraph("elma", "kitap");
-        assertHasParses(graph, "elmalı", "elmasız", "kitaplı", "kitapsız");
-        assertUnParseable(graph, "elmayalı", "elmalarlı", "elmadasız", "elmalarsız");
+        Tester tester = new Tester("elma", "kitap");
+        tester.assertHasParses("elmalı", "elmasız", "kitaplı", "kitapsız");
+        tester.assertUnParseable("elmayalı", "elmalarlı", "elmadasız", "elmalarsız");
     }
 
     @Test
     public void testBecome() {
         // noun
-        DynamicLexiconGraph graph = getLexiconGraph("elma", "mavi [P:Adj]");
-        assertHasParses(graph, "elmalaş");
+        Tester tester = new Tester("elma", "mavi [P:Adj]");
+        tester.assertHasParses("elmalaş");
         // adj
-        assertHasParses(graph, "mavileş");
+        tester.assertHasParses("mavileş");
     }
 
     @Test
     public void testNounToVerbCopular() {
-        DynamicLexiconGraph graph = getLexiconGraph("elma");
-        assertHasParses(graph, "elmaydı");
+        Tester tester = new Tester("elma");
+        tester.assertHasParses("elmaydı");
     }
 
     @Test
     public void testAdj2Verb() {
-        DynamicLexiconGraph graph = getLexiconGraph("mavi [P:Adj]");
-        assertHasParses(graph, "mavileşti", "mavileşmiş", "maviydi");
+        Tester tester = new Tester("mavi [P:Adj]");
+        tester.assertHasParses("mavileşti", "mavileşmiş", "maviydi");
     }
 
 
     @Test
     public void testAdj2Noun() {
         // noun
-        DynamicLexiconGraph graph = getLexiconGraph("mavi [P:Adj]");
-        assertHasParses(graph, "maviye", "mavilerde");
+        Tester tester = new Tester("mavi [P:Adj]");
+        tester.assertHasParses("maviye", "mavilerde");
     }
 
     @Test
     public void testQuiteAndLy() {
         // Adj-Adj and Adj-Adv
-        DynamicLexiconGraph graph = getLexiconGraph("hızlı [P:Adj]");
-        assertHasParses(graph, "hızlıca");
+        Tester tester = new Tester("hızlı [P:Adj]");
+        tester.assertHasParses("hızlıca");
     }
 
     @Test
     public void testRelated() {
         // Noun-Adj
-        DynamicLexiconGraph graph = getLexiconGraph("elma");
-        assertHasParses(graph, "elmadaki", "elmadakini");
-        assertUnParseable(graph, "elmaki", "elmayaki", "elmadakiki");
+        Tester tester = new Tester("elma");
+        tester.assertHasParses("elmadaki", "elmadakini");
+        tester.assertUnParseable("elmaki", "elmayaki", "elmadakiki");
         //TODO: add akşamki etc. uses Rel_kI instead of Rel_ki
     }
 
     @Test
     public void testDim() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("armut");
-        assertHasParses(graph, "armutçuk", "armutçuğu", "armutcağız", "armutcağızı");
-        assertUnParseable(graph, "armutçuğ", "armutçukcuk", "armutçukcağız", "armutcağızcık");
+        Tester tester = new Tester("armut");
+        tester.assertHasParses("armutçuk", "armutçuğu", "armutcağız", "armutcağızı");
+        tester.assertUnParseable("armutçuğ", "armutçukcuk", "armutçukcağız", "armutcağızcık");
         // TODO: check oflazer parse "babacım = baba+Noun+A3sg+Pnon+Nom^DB+Noun+Dim+A3sg+P1sg+Nom
     }
 
     @Test
     public void testResembl() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("armut", "yeşil [P:Adj]");
-        assertHasParses(graph, "armutsu", "armudumsu", "yeşilsi", "yeşilimsi");
+        Tester tester = new Tester("armut", "yeşil [P:Adj]");
+        tester.assertHasParses("armutsu", "armudumsu", "yeşilsi", "yeşilimsi");
         // TODO: oflazer uses JustLike for this. It parses words like "tuhafsı","arabası" as JustLike
     }
 
     @Test
     public void testCausative() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak");
-        assertHasParses(graph, "yaptır", "yaptırt", "yaptırttır", "arat", "arattır", "arattırt");
-        assertUnParseable(graph, "yapt", "aratt");
+        Tester tester = new Tester("yapmak", "aramak");
+        tester.assertHasParses("yaptır", "yaptırt", "yaptırttır", "arat", "arattır", "arattırt");
+        tester.assertUnParseable("yapt", "aratt");
     }
 
     @Test
     public void testPassive() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("yapmak", "aramak", "gelmek");
-        assertHasParses(graph, "aranıl", "yapıl", "aran", "gelin", "gelinil");
-        assertUnParseable(graph, "aral", "gelil", "kavurul", "kavurunul");
+        Tester tester = new Tester("yapmak", "aramak", "gelmek");
+        tester.assertHasParses("aranıl", "yapıl", "aran", "gelin", "gelinil");
+        tester.assertUnParseable("aral", "gelil", "kavurul", "kavurunul");
         // causative and passive
-        assertHasParses(graph, "yaptırıl", "yaptırtıl", "yaptırttırıl", "aratıl", "arattırıl", "arattırtıl");
+        tester.assertHasParses("yaptırıl", "yaptırtıl", "yaptırttırıl", "aratıl", "arattırıl", "arattırtıl");
     }
 
     @Test
     public void testNegative() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gelmek");
-        assertHasParses(graph, "arama", "gelme");
+        Tester tester = new Tester("aramak", "gelmek");
+        tester.assertHasParses("arama", "gelme");
     }
 
     @Test
     public void testPrograesive() {
         // Noun-Noun
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gelmek");
-        assertHasParses(graph, "arıyor", "aramıyor", "geliyor", "gelmiyor");
-        assertHasParses(graph, "aramakta", "aramamakta", "gelmekte", "gelmemekte");
+        Tester tester = new Tester("aramak", "gelmek");
+        tester.assertHasParses("arıyor", "aramıyor", "geliyor", "gelmiyor");
+        tester.assertHasParses("aramakta", "aramamakta", "gelmekte", "gelmemekte");
     }
 
     @Test
     public void testAorist() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]", "gelmek [A:NonTransitive, Aorist_I]");
-        assertHasParses(graph, "arar", "ararsa", "gider", "gelir", "aramaz");
-        assertUnParseable(graph, "geler", "gidir");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]", "gelmek [A:NonTransitive, Aorist_I]");
+        tester.assertHasParses("arar", "ararsa", "gider", "gelir", "aramaz");
+        tester.assertUnParseable("geler", "gidir");
     }
 
     @Test
     public void testPast() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "aradı", "gitti", "gittik", "gittiyse", "gittim", "gittiniz", "gittiydim");
-        assertUnParseable(graph, "gittiz", "gittimiş");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("aradı", "gitti", "gittik", "gittiyse", "gittim", "gittiniz", "gittiydim");
+        tester.assertUnParseable("gittiz", "gittimiş");
     }
 
     @Test
     public void testImp() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "ara", "git", "gitme", "gidiniz", "gitsene", "gitsenize", "aramayacak", "aramasın", "gitmesin", "arasınlar", "gitmesinler");
-        assertHasParses(graph, "aramasanıza", "aramayın", "gitmeyin");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("ara", "git", "gitme", "gidiniz", "gitsene", "gitsenize", "aramayacak", "aramasın", "gitmesin", "arasınlar", "gitmesinler");
+        tester.assertHasParses("aramasanıza", "aramayın", "gitmeyin");
     }
 
     @Test
     public void testEvid() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "aramış", "gitmiş", "gitmişiz", "aramıştı");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("aramış", "gitmiş", "gitmişiz", "aramıştı");
     }
 
     @Test
     public void testVerb2Verb2() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "arayıver", "aramayıver", "gidiver", "gitmeyiver");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("arayıver", "aramayıver", "gidiver", "gitmeyiver");
     }
 
     @Test
     public void testInf() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "aramak", "aramada", "arayışı", "gitmek", "gitmekten", "gitmektendi");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("aramak", "aramada", "arayışı", "gitmek", "gitmekten", "gitmektendi");
+        tester.assertHasParses("aramakla", "aramaktı");
     }
 
     @Test
     public void testFuture() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "arayacak", "arayacağız", "aramayacak", "aratacak", "arayacaklar", "arayacaktık");
-        assertHasParses(graph, "gidecek", "gideceğiz", "gitmeyecek", "gidecekler", "gidecektik");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("arayacak", "arayacağız", "aramayacak", "aratacak", "arayacaklar", "arayacaktık");
+        tester.assertHasParses("gidecek", "gideceğiz", "gitmeyecek", "gidecekler", "gidecektik");
     }
 
 
     @Test
     public void testNess() {
-        DynamicLexiconGraph graph = getLexiconGraph("elma", "mavi [P:Adj]");
-        assertHasParses(graph, "elmacıktı", "elmalık", "elmalığı", "elmalıktı", "elmalığa", "mavilik", "maviliği", "mavilikti");
-        assertUnParseable(graph, "elmalıklık", "elmalıka", "maviliklik", "maviliki");
+        Tester tester = new Tester("elma", "mavi [P:Adj]");
+        tester.assertHasParses("elmacıktı", "elmalık", "elmalığı", "elmalıktı", "elmalığa", "mavilik", "maviliği", "mavilikti");
+        tester.assertUnParseable("elmalıklık", "elmalıka", "maviliklik", "maviliki");
     }
 
     @Test
     public void verbVowelDrop() {
-        DynamicLexiconGraph graph = getLexiconGraph("kavurmak [A:LastVowelDrop]");
-        assertHasParses(graph, "kavurdu", "kavuracağız", "kavurur", "kavuruyor", "kavur", "kavrul", "kavrulma", "kavurma", "kavrulacağız", "kavrulmayıver", "kavurtacağız");
-        assertUnParseable(graph, "kavurul", "kavracağız", "kavruyor", "kavrar", "kavrar");
+        Tester tester = new Tester("kavurmak [A:LastVowelDrop]");
+        tester.assertHasParses("kavurdu", "kavuracağız", "kavurur", "kavuruyor", "kavur", "kavrul", "kavrulma", "kavurma", "kavrulacağız", "kavrulmayıver", "kavurtacağız");
+        tester.assertUnParseable("kavurul", "kavracağız", "kavruyor", "kavrar", "kavrar");
     }
 
     @Test
     public void nounVowelDrop() {
-        DynamicLexiconGraph graph = getLexiconGraph("ağız [A:LastVowelDrop]");
-        assertHasParses(graph, "ağız", "ağzı", "ağızlar", "ağza");
-        assertUnParseable(graph, "ağızı", "ağzlar");
+        Tester tester = new Tester("ağız [A:LastVowelDrop]");
+        tester.assertHasParses("ağız", "ağzı", "ağızlar", "ağza");
+        tester.assertUnParseable("ağızı", "ağzlar");
     }
 
     @Test
     public void optative() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "araya", "arayayım", "gide", "gidesin");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("araya", "arayayım", "gide", "gidesin");
+    }
+
+    @Test
+    public void WhileTest() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("ararken", "aramazken", "gidiyorken", "gidecekken");
+        tester.assertHasParses("ararkenki");
+    }
+
+    @Test
+    public void whenTest() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("arayınca", "arayıncaya");
+    }
+
+    @Test
+    public void feelLike() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("arayası", "arayasım", "gidesi", "gitmeyesi");
     }
 
     @Test
     public void necessity() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "gitmeli", "gitmeliyim", "gitmemeli", "gitmemelisiniz", "gitmeliyiz");
-        assertHasParses(graph, "aramalı", "aramamalı", "aramalıyım", "aramamalısın", "aramamalısınız");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("gitmeli", "gitmeliyim", "gitmemeli", "gitmemelisiniz", "gitmeliyiz");
+        tester.assertHasParses("aramalı", "aramamalı", "aramalıyım", "aramamalısın", "aramamalısınız");
     }
 
     @Test
     public void ability() {
-        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
         // abil
-        assertHasParses(graph, "arayabil", "arayabilir", "arayabilecek", "gidebil", "gidebilecek", "gidebiliyor");
+        tester.assertHasParses("arayabil", "arayabilir", "arayabilecek", "gidebil", "gidebilecek", "gidebiliyor");
         // a
-        assertHasParses(graph, "arayama", "arayamayabilir", "gideme", "gidemeyebilir");
-
+        tester.assertHasParses("arayama", "arayamayabilir", "gideme", "gidemeyebilir");
     }
 
+    @Test
+    public void Verb2Adverb() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        // WithoutDoing_mAdAn
+        tester.assertHasParses("aramadan", "arayamadan", "gitmeden", "gidemeden");
+    }
 
+    class Tester {
 
-    private synchronized void assertHasParses(DynamicLexiconGraph graph, String... words) {
-        SimpleParser parser = new SimpleParser(graph);
-        for (String word : words) {
-            List<ParseResult> results = parser.parse(word);
-            if (results.size() == 0)
-                parser.dump(word);
-            Assert.assertTrue("No parse for:" + word, results.size() > 0);
-            for (ParseResult result : results) {
-                System.out.println(word + "= " + result.asParseString());
+        DynamicLexiconGraph graph;
+
+        Tester(String... words) {
+            synchronized (this) {
+                SuffixProvider suffixProvider = new TurkishSuffixes();
+                List<DictionaryItem> items = getItems(words, suffixProvider);
+                graph = new DynamicLexiconGraph(suffixProvider);
+                graph.addDictionaryItems(items);
             }
         }
-    }
 
-    private synchronized void assertUnParseable(DynamicLexiconGraph graph, String... words) {
-        SimpleParser parser = new SimpleParser(graph);
-        for (String word : words) {
-            List<ParseResult> results = parser.parse(word);
-            Assert.assertTrue("Unexpected parse for:" + word + " parse:" + results, results.size() == 0);
+        void assertHasParses(String... words) {
+            SimpleParser parser = new SimpleParser(graph);
+            for (String word : words) {
+                List<ParseResult> results = parser.parse(word);
+                if (results.size() == 0)
+                    parser.dump(word);
+                Assert.assertTrue("No parse for:" + word, results.size() > 0);
+                for (ParseResult result : results) {
+                    System.out.println(word + "= " + result.asParseString());
+                }
+            }
+        }
+
+        void assertUnParseable(String... words) {
+            SimpleParser parser = new SimpleParser(graph);
+            for (String word : words) {
+                List<ParseResult> results = parser.parse(word);
+                Assert.assertTrue("Unexpected parse for:" + word + " parse:" + results, results.size() == 0);
+            }
+        }
+
+        private List<DictionaryItem> getItems(String[] lines, SuffixProvider suffixProvider) {
+            TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
+            List<DictionaryItem> items = new ArrayList<DictionaryItem>();
+            for (String line : lines) {
+                items.add(loader.loadFromString(line));
+            }
+            return items;
         }
     }
 
-    private synchronized DynamicLexiconGraph getLexiconGraph(String... words) {
-        SuffixProvider suffixProvider = new TurkishSuffixes();
-        List<DictionaryItem> items = getItems(words, suffixProvider);
-        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
-        graph.addDictionaryItems(items);
-        return graph;
-    }
 
-    private synchronized List<DictionaryItem> getItems(String[] lines, SuffixProvider suffixProvider) {
-        TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
-        List<DictionaryItem> items = new ArrayList<DictionaryItem>();
-        for (String line : lines) {
-            items.add(loader.loadFromString(line));
-        }
-        return items;
-    }
 }

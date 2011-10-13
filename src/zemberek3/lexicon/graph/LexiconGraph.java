@@ -211,10 +211,10 @@ public class LexiconGraph {
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
             Verb_Ye.successors.add(Verb_TEMPLATE.successors).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk,
                     FutPart_yAcAk, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
-                    KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
+                    KeepDoing2_yAdur,  UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
             Verb_Yi.successors.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, When_yIncA, AfterDoing_yIp, Abil_yA,
-                    Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
-                    FeelLike_yAsI, UnableToDo_yAmAdAn);
+                    Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI_2Adj, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
+                    FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
             SuffixNode formYe = getSuffixRootNode(calculateAttributes(item.root), Verb_Ye);
             stems[0] = new StemNode(item.root, item, formYe, TerminationType.TERMINAL);
@@ -231,10 +231,10 @@ public class LexiconGraph {
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
             Verb_De.successors.add(Verb_TEMPLATE.successors)
                     .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, FutPart_yAcAk, Opt_yA,
-                            PresPart_yAn, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn)
+                            PresPart_yAn, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn)
                     .add(Pass_In);
             Verb_Di.successors.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, Abil_yA, Abil_yAbil, PresPart_yAn,
-                    PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI, UnableToDo_yAmAdAn);
+                    PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(calculateAttributes(item.root), Verb_De);
             stems[0] = new StemNode(item.root, item, formDe, TerminationType.TERMINAL);
