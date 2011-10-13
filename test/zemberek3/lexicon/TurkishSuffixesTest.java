@@ -150,7 +150,8 @@ public class TurkishSuffixesTest {
     @Test
     public void testImp() {
         DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
-        assertHasParses(graph, "ara", "git", "gitme", "gidiniz", "gitsene", "aramayacak", "aramasın", "gitmesin", "arasınlar", "gitmesinler");
+        assertHasParses(graph, "ara", "git", "gitme", "gidiniz", "gitsene", "gitsenize", "aramayacak", "aramasın", "gitmesin", "arasınlar", "gitmesinler");
+        assertHasParses(graph, "aramasanıza", "aramayın", "gitmeyin");
     }
 
     @Test
@@ -204,6 +205,13 @@ public class TurkishSuffixesTest {
     public void optative() {
         DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
         assertHasParses(graph, "araya", "arayayım", "gide", "gidesin");
+    }
+
+    @Test
+    public void necessity() {
+        DynamicLexiconGraph graph = getLexiconGraph("aramak", "gitmek [A:Voicing, Aorist_A]");
+        assertHasParses(graph, "gitmeli", "gitmeliyim", "gitmemeli", "gitmemelisiniz", "gitmeliyiz");
+        assertHasParses(graph, "aramalı", "aramamalı", "aramalıyım", "aramamalısın", "aramamalısınız");
     }
 
     @Test
