@@ -50,13 +50,13 @@ public class TurkishSuffixesTest {
     @Test
     public void testNounToVerbCopular() {
         Tester tester = new Tester("elma");
-        tester.assertHasParses("elmaydı");
+        tester.assertHasParses("elmaydı", "elmaymış", "elmaydık", "elmayım", "elmadır");
     }
 
     @Test
     public void testAdj2Verb() {
         Tester tester = new Tester("mavi [P:Adj]");
-        tester.assertHasParses("mavileşti", "mavileşmiş", "maviydi");
+        tester.assertHasParses("mavileşti", "mavileşmiş", "maviydi", "maviyim");
     }
 
 
@@ -129,7 +129,7 @@ public class TurkishSuffixesTest {
     public void testPrograesive() {
         // Noun-Noun
         Tester tester = new Tester("aramak", "gelmek");
-        tester.assertHasParses("arıyor", "aramıyor", "geliyor", "gelmiyor");
+        tester.assertHasParses("arıyor", "aramıyor", "geliyor", "gelmiyor", "arıyordu", "arıyorlardı", "gelmiyorlarsa");
         tester.assertHasParses("aramakta", "aramamakta", "gelmekte", "gelmemekte");
     }
 
@@ -248,7 +248,42 @@ public class TurkishSuffixesTest {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
         // WithoutDoing_mAdAn
         tester.assertHasParses("aramadan", "arayamadan", "gitmeden", "gidemeden");
+        // When_yIncA, , UnableToDo_yAmAdAn, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
+        //                .add(InsteadOfDoing_mAktAnsA, AsLongAs_dIkcA, AfterDoing_yIp
+        //SinceDoing_yAlI
+        tester.assertHasParses("arayalı", "aramayalı", "gideli", "gitmeyeli");
+        //ByDoing_yArAk
+        tester.assertHasParses("arayarak", "aramayarak", "giderek", "gitmeyerek");
+        //WithoutDoing_mAdAn.
+        tester.assertHasParses("aramadan", "gitmeden", "aranmadan", "aratmadan");
+        //WithoutDoing2_mAksIzIn
+        tester.assertHasParses("aramaksızın", "gitmeksizin", "aranmaksızın");
+        //InsteadOfDoing_mAktAnsA
+        tester.assertHasParses("aramaktansa", "aramamaktansa", "aranmaktansa", "aratmaktansa", "aranmamaktansa");
+        //AsLongAs_dIkcA
+        tester.assertHasParses("aradıkça", "aramadıkça", "aranmadıkça", "aratmadıkça", "arayamadıkça");
+        //AfterDoing_yIp
+        tester.assertHasParses("arayıp", "aramayıp");
     }
+
+    @Test
+    public void Des() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("arasa", "arasak", "arasalar", "aramasalar", "aransalar", "aratsalar", "arattırsak", "arattırmasanız");
+    }
+
+    @Test
+    public void Agt() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        tester.assertHasParses("arayıcı", "gidici");
+    }
+
+    @Test
+    public void AgtNoun() {
+        Tester tester = new Tester("elma", "armut");
+        tester.assertHasParses("elmacı", "armutçu", "elmacılar", "elmacısın", "elmacısınız", "elmacıyız");
+    }
+
 
     class Tester {
 
