@@ -129,7 +129,8 @@ public class StemNodeGenerator {
                     break;
                 case LastVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 2);
-                    originalExpectations.add(PhoneticExpectation.ConsonantStart);
+                    if (!dicItem.primaryPos.equals(PrimaryPos.Verb))
+                        originalExpectations.add(PhoneticExpectation.ConsonantStart);
                     modifiedExpectations.add(PhoneticExpectation.VowelStart);
                     break;
                 case InverseHarmony:
@@ -137,7 +138,6 @@ public class StemNodeGenerator {
                     originalAttrs.remove(PhonAttr.LastVowelBack);
                     modifiedAttrs.add(PhonAttr.LastVowelFrontal);
                     modifiedAttrs.remove(PhonAttr.LastVowelBack);
-
                     break;
                 case ProgressiveVowelDrop:
                     modifiedSeq.delete(modifiedSeq.length() - 1);

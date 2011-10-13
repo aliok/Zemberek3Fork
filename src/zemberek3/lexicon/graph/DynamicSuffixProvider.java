@@ -21,10 +21,6 @@ public class DynamicSuffixProvider implements SuffixProvider {
 
     protected IdMaker idMaker = new IdMaker(3);
 
-    protected static SuffixFormSet getNull(String suffix, String suffixId) {
-        return new SuffixFormSet(suffixId, new Suffix(suffix), "", TerminationType.TRANSFER);
-    }
-
     protected static SuffixFormSet getNull(String suffixId, Suffix suffix) {
         return new SuffixFormSet(suffixId, suffix, "", TerminationType.TRANSFER);
     }
@@ -77,7 +73,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
         }
     }
 
-    class TemplateData {
+    protected class TemplateData {
         String templateId;
         SuffixData successors;
         SuffixData directSuccessors;
@@ -130,6 +126,23 @@ public class DynamicSuffixProvider implements SuffixProvider {
         }
     }
 
+    protected SuffixFormSet generateSetFromTemplate(SuffixFormSet set, TemplateData tdata) {
+        if (templateData.get(set.id).contains(tdata)) {
+            return templateSets.get(tdata);
+        } else {
+            SuffixFormSet newSet = new SuffixFormSet(
+                    idMaker.get(set.id),
+                    set.getSuffix(),
+                    set.generation,
+                    set.terminationType);
+            newSet.directSuccessors = tdata.directSuccessors;
+            newSet.successors = tdata.successors;
+            templateData.put(set.id, tdata);
+            templateSets.put(tdata, newSet);
+            return newSet;
+        }
+    }
+
     protected void registerForm(SuffixFormSet formSet) {
 
         // if this is a template, we put basic template data to a lookup table. we will use this table later to detect
@@ -151,9 +164,10 @@ public class DynamicSuffixProvider implements SuffixProvider {
         Set<SuffixFormSet> toAdd = new HashSet<SuffixFormSet>();
         for (SuffixFormSet directSuccessor : formSet.directSuccessors) {
             if (directSuccessor.isTemplate()) {
-                SuffixFormSet nullSet = generateSetFromTemplate(directSuccessor, allSuccessors);
-                if (nullSet == null)
-                    System.out.println("crap");
+                SuffixData d = new SuffixData(directSuccessor.directSuccessors).retain(allSuccessors);
+                SuffixData s = new SuffixData(directSuccessor.successors).retain(allSuccessors);
+                TemplateData tdata = new TemplateData(directSuccessor.getId(), s, d);
+                SuffixFormSet nullSet = generateSetFromTemplate(directSuccessor, tdata);
                 toAdd.add(nullSet);
                 toRemove.add(directSuccessor);
             }
@@ -166,8 +180,6 @@ public class DynamicSuffixProvider implements SuffixProvider {
         formSet.successors.remove(toRemove);
         formSet.directSuccessors.add(toAdd);
         for (SuffixFormSet suffixFormSet : toAdd) {
-            if (suffixFormSet == null)
-                System.out.println("crap");
             registerForm(suffixFormSet);
         }
     }
