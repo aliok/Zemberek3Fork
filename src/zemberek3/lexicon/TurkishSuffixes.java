@@ -734,14 +734,21 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         PastPart_dIk_2Noun.directSuccessors.add(A3sg_TEMPLATE);
         PastPart_dIk_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
 
-        EvidPart_mIs_2Noun.directSuccessors.add(A3sg_TEMPLATE);
+        EvidPart_mIs_2Noun.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
         EvidPart_mIs_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
+
+        // Oflazer suggests only with A3pl. I think A3sg is also possible.
+        FutPart_yAcAk_2Noun.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
+        FutPart_yAcAk_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
 
         PastPart_dIk_2Adj.directSuccessors.add(Adj2Noun);
         PastPart_dIk_2Adj.successors.add(Adj2Noun.allSuccessors());
 
         EvidPart_mIs_2Adj.directSuccessors.add(Adj2Noun);
         EvidPart_mIs_2Adj.successors.add(Adj2Noun.allSuccessors());
+
+        FutPart_yAcAk_2Adj.directSuccessors.add(Adj2Noun);
+        FutPart_yAcAk_2Noun.successors.add(Adj2Noun.allSuccessors());
 
         PresPart_yAn.directSuccessors.add(Adj2Noun);
         PresPart_yAn.successors.add(Adj2Noun.allSuccessors());

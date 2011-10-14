@@ -270,7 +270,7 @@ public class TurkishSuffixesTest {
     @Test
     public void PresPart_yAn() {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
-        // WithoutDoing_mAdAn
+        //
         tester.assertHasParses("gidene", "arayandan", "gitmeyenden", "aramayanı", "aratmayanı", "aranmayanı");
     }
 
@@ -278,10 +278,8 @@ public class TurkishSuffixesTest {
     public void FutPart_yAcAK() {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
         // WithoutDoing_mAdAn
-        tester.assertHasParses("gidene", "arayandan", "gitmeyenden", "aramayanı", "aratmayanı", "aranmayanı");
+        tester.assertHasParses("gidecekleri", "gitmeyeceklere", "arayacaklardan", "aramayacaklardan", "arayamayacaklardan");
     }
-
-
 
     @Test
     public void Des() {
