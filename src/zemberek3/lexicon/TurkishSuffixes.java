@@ -94,6 +94,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public static Suffix A3pl = new Suffix("A3pl");
     public static SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
+    public static SuffixFormSet A3pl_Verb_lAr_After_Tense = new SuffixFormSet("A3pl_Verb_lAr_After_Tense", A3pl, "lAr"); // gel-ecek-ler
     public static SuffixFormSet A3pl_Verb_lAr = new SuffixFormSet("A3pl_Verb_lAr", A3pl, "lAr"); // gel-ecek-ler
     public static SuffixFormSet A3pl_Comp_lAr = new SuffixFormSet("A3pl_Comp_lAr", A3pl, "lAr", TerminationType.NON_TERMINAL); //zeytinyağlarımız
     public static SuffixFormSet A3pl_sInlAr = new SuffixFormSet(A3pl, "sInlAr"); // gel-sinler
@@ -168,11 +169,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormSet PastPart_dIk_2Adj = new SuffixFormSet("PastPart_dIk_2Noun", PastPart, ">dI~k");
 
     public static Suffix AorPart = new Suffix("AorPart"); // convert to an Adjective
-    public static SuffixFormSet AorPart_Ir_2Noun = new SuffixFormSet("AorPart_Ir_2Noun", AorPart, "+Ir"); //gel-ir
     public static SuffixFormSet AorPart_Ir_2Adj = new SuffixFormSet("AorPart_Ir_2Adj", AorPart, "+Ir"); //gel-ir
-    public static SuffixFormSet AorPart_Ar_2Noun = new SuffixFormSet("AorPart_Ar_2Noun", AorPart, "+Ar"); //ser-er
     public static SuffixFormSet AorPart_Ar_2Adj = new SuffixFormSet("AorPart_Ar_2Adj", AorPart, "+Ar"); //ser-er
-    public static SuffixFormSet AorPart_z_2Noun = new SuffixFormSet("AorPart_z_2Noun", AorPart, "z"); // gel-me-z
     public static SuffixFormSet AorPart_z_2Adj = new SuffixFormSet("AorPart_z_2Noun", AorPart, "z"); // gel-me-z
 
     public static Suffix FutPart = new Suffix("FutPart");
@@ -471,7 +469,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Verb2Noun.directSuccessors.add(Inf1_mAk, Inf2_mA, Inf3_yIs, FeelLike_yAsI_2Noun, Agt_yIcI_2Noun);
         Verb2Noun.successors.add(Noun_TEMPLATE.successors);
 
-        Verb2NounPart.directSuccessors.add(PastPart_dIk_2Noun, EvidPart_mIs_2Noun, FutPart_yAcAk_2Noun, AorPart_Ar_2Noun, AorPart_Ir_2Noun, AorPart_z_2Noun);
+        Verb2NounPart.directSuccessors.add(PastPart_dIk_2Noun, EvidPart_mIs_2Noun, FutPart_yAcAk_2Noun);
         Verb2AdjPart.directSuccessors.add(PastPart_dIk_2Adj, EvidPart_mIs_2Adj, FutPart_yAcAk_2Adj, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj, PresPart_yAn);
 
         Verb2Adv.directSuccessors.add(When_yIncA, SinceDoing_yAlI, UnableToDo_yAmAdAn, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
@@ -516,14 +514,14 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Verb_TEMPLATE.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Verb2Verb);
         Verb_TEMPLATE.successors
-                .add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, Aor_Ar, Aor_z, AorPart_Ir_2Adj, AorPart_Ir_2Noun, AorPart_Ar_2Adj, AorPart_Ar_2Noun)
+                .add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, Aor_Ar, Aor_z, AorPart_Ir_2Adj, AorPart_Ar_2Adj)
                 .add(Abil_yAbil, Abil_yA, Caus_tIr, Caus_t, Opt_yA, Imp_TEMPLATE, Agt_yIcI_2Adj, Agt_yIcI_2Noun, Des_sA)
                 .add(NotState_mAzlIk, ActOf_mAcA, PastPart_dIk_2Adj, PastPart_dIk_2Noun, EvidPart_mIs_2Adj, EvidPart_mIs_2Noun, Pass_In, Pass_nIl, Pass_InIl)
                 .add(FutPart_yAcAk_2Adj, FutPart_yAcAk_2Noun, PresPart_yAn, AsLongAs_dIkcA, A2pl2_sAnIzA)
                 .add(A1sg_yIm, A2sg_sIn, A2sg_TEMPLATE, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr, A3sg_sIn, A3pl_sInlAr, A2sg2_sAnA, A2sg3_yInIz)
                 .add(Inf1_mAk, Inf2_mA, Inf3_yIs, Necess_mAlI)
                 .add(When_yIncA, FeelLike_yAsI_2Adj, FeelLike_yAsI_2Noun, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
-                .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
+                .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA, A3pl_Verb_lAr_After_Tense)
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
                 .add(UntilDoing_yAsIyA, Verb2VerbCompounds, Verb2Noun, Verb2Adv, Verb2Adj, Verb2NounPart, Verb2AdjPart);
 
@@ -565,7 +563,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         A3sg_Verb_TEMPLATE.directSuccessors.add(Cop_dIr);
         A1pl_yIz.directSuccessors.add(Cop_dIr);
         A2pl_sInIz.directSuccessors.add(Cop_dIr);
-        A3pl_Verb_lAr.directSuccessors.add(Cop_dIr);
+        A3pl_Verb_lAr.directSuccessors.add(Evid_mIs, Past_dI, Cond_sA, Cop_dIr);
 
         Dim_cIk.directSuccessors.add(Noun_Default.directSuccessors);
         Dim_cIk.successors.add(Noun_Default.allSuccessors().add(Noun2VerbCopular).remove(Dim_cIk, Dim2_cAgIz));
@@ -684,7 +682,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .remove(Neg_m, Neg_mA);
 
         Neg_mA.directSuccessors.add(Verb2VerbCompounds, Verb2Noun, Verb2Verb, Verb2Adv, Verb2Adj, Verb2AdjPart, Verb2NounPart,
-                Aor_z, AorPart_Ar_2Adj, AorPart_Ar_2Noun, AorPart_Ir_2Adj, AorPart_Ir_2Noun, AorPart_z_2Adj, AorPart_z_2Noun, Aor_EMPTY, Prog2_mAktA, Imp_TEMPLATE, Opt_yA, Des_sA,
+                Aor_z, AorPart_z_2Adj,AorPart_Ir_2Adj, AorPart_Ar_2Adj, Aor_EMPTY, Prog2_mAktA, Imp_TEMPLATE, Opt_yA, Des_sA,
                 Fut_yAcAk, Past_dI, Evid_mIs, Necess_mAlI, NotState_mAzlIk,
                 ActOf_mAcA);
 
@@ -722,13 +720,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Aor_Ir.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
         Aor_z.directSuccessors.add(A3sg_Verb_TEMPLATE, A3sg_sIn).add(PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, Cop_dIr);
         Aor_EMPTY.directSuccessors.add(A1sg_m, A1pl_yIz);
-
-        AorPart_Ar_2Noun.directSuccessors.add(A3sg_TEMPLATE);
-        AorPart_Ar_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
-        AorPart_Ir_2Noun.directSuccessors.add(A3sg_TEMPLATE);
-        AorPart_Ir_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
-        AorPart_z_2Noun.directSuccessors.add(A3sg_TEMPLATE);
-        AorPart_z_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
 
         AorPart_Ar_2Adj.directSuccessors.add(Adj2Noun);
         AorPart_Ar_2Adj.successors.add(Adj2Noun.allSuccessors());
@@ -855,7 +846,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 Become_lAs, Become_Adj_lAs,
                 Resemb_ImsI, Resemb_msI, Related_sAl,
                 Aor_Ir, Aor_Ar, Aor_z, Des_sA,
-                Aor_EMPTY, AorPart_Ar_2Noun, AorPart_Ir_2Noun, AorPart_z_2Noun, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj,
+                Aor_EMPTY, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj,
                 Prog_Iyor, Prog2_mAktA, Fut_yAcAk,
                 FutPart_yAcAk_2Adj, FutPart_yAcAk_2Noun, Past_dI, PastPart_dIk_2Noun, PastPart_dIk_2Adj,
                 Evid_mIs, EvidPart_mIs_2Adj, EvidPart_mIs_2Noun, PresPart_yAn, Neg_mA, Neg_m, Cond_sA,
@@ -1143,19 +1134,19 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         for (RootAttr attribute : attrList) {
             switch (attribute) {
                 case Aorist_A:
-                    original.add(Aor_Ar, AorPart_Ar_2Adj, AorPart_Ar_2Noun);
-                    original.remove(Aor_Ir, AorPart_Ir_2Adj, AorPart_Ir_2Noun);
+                    original.add(Aor_Ar, AorPart_Ar_2Adj);
+                    original.remove(Aor_Ir, AorPart_Ir_2Adj);
                     if (!item.attrs.contains(RootAttr.ProgressiveVowelDrop)) {
-                        modified.add(Aor_Ar, AorPart_Ar_2Adj, AorPart_Ar_2Noun);
-                        modified.remove(Aor_Ir, AorPart_Ir_2Adj, AorPart_Ir_2Noun);
+                        modified.add(Aor_Ar, AorPart_Ar_2Adj);
+                        modified.remove(Aor_Ir, AorPart_Ir_2Adj);
                     }
                     break;
                 case Aorist_I:
-                    original.add(Aor_Ir, AorPart_Ir_2Adj, AorPart_Ir_2Noun);
-                    original.remove(Aor_Ar, AorPart_Ar_2Adj, AorPart_Ar_2Noun);
+                    original.add(Aor_Ir, AorPart_Ir_2Adj);
+                    original.remove(Aor_Ar, AorPart_Ar_2Adj);
                     if (!item.attrs.contains(RootAttr.ProgressiveVowelDrop)) {
-                        modified.add(Aor_Ir, AorPart_Ir_2Adj, AorPart_Ir_2Noun);
-                        modified.remove(Aor_Ar, AorPart_Ar_2Adj, AorPart_Ar_2Noun);
+                        modified.add(Aor_Ir, AorPart_Ir_2Adj);
+                        modified.remove(Aor_Ar, AorPart_Ar_2Adj);
                     }
                     break;
                 case Passive_In:

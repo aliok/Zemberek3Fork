@@ -418,12 +418,12 @@ public class LexiconGraph {
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case Aorist_A:
-                        original.successors.add(Aor_Ar, AorPart_Ar_2Adj).remove(Aor_Ir, AorPart_Ir_2Noun );
-                        modified.successors.add(Aor_Ar, AorPart_Ar_2Adj).remove(Aor_Ir, AorPart_Ir_2Noun);
+                        original.successors.add(Aor_Ar, AorPart_Ar_2Adj).remove(Aor_Ir );
+                        modified.successors.add(Aor_Ar, AorPart_Ar_2Adj).remove(Aor_Ir);
                         break;
                     case Aorist_I:
-                        original.successors.add(Aor_Ir, AorPart_Ir_2Noun).remove(Aor_Ar, AorPart_Ar_2Adj);
-                        modified.successors.add(Aor_Ir, AorPart_Ir_2Noun).remove(Aor_Ar, AorPart_Ar_2Adj);
+                        original.successors.add(Aor_Ir).remove(Aor_Ar, AorPart_Ar_2Adj);
+                        modified.successors.add(Aor_Ir).remove(Aor_Ar, AorPart_Ar_2Adj);
                         break;
                     case Passive_In:
                         original.successors.remove(Pass_nIl).add(Pass_In);
