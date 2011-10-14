@@ -119,7 +119,7 @@ public class TurkicLetter {
     }
 
     private void checkConsistency() {
-        if (((voiceless||stopConsonant) && vowel) || (!vowel && (frontal || rounded))) {
+        if (((voiceless || stopConsonant) && vowel) || (!vowel && (frontal || rounded))) {
             throw new IllegalArgumentException("Letter seems to have both vowel and Consonant attributes");
         } else if ((!inAscii) && (charValue < 'a' && charValue > 'z')) {
             throw new IllegalArgumentException("Marked as english alphabet but it is not." + charValue);

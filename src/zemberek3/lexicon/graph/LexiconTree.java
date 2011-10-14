@@ -13,17 +13,16 @@ import zemberek3.structure.TurkishAlphabet;
 
 /**
  * LexiconTree is a simple compact trie that holds stems
- * 
- * @author mdakin@gmail.com
  *
+ * @author mdakin@gmail.com
  */
 public class LexiconTree {
-    
+
     Node root = new Node();
     static TurkishAlphabet alphabet = new TurkishAlphabet();
-    
+
     public void add(StemNode stem) {
-        if (stem == null) { 
+        if (stem == null) {
             throw new NullPointerException("Input key can not be null");
         }
         char[] chars = stem.surfaceForm.toCharArray();
@@ -60,7 +59,7 @@ public class LexiconTree {
                 // root-foo* <-- foo ==> root-foo**              
                 if (i == chars.length) {
                     // Homonym   
-                    if(fragmentSplitIndex == node.fragment.length) {
+                    if (fragmentSplitIndex == node.fragment.length) {
                         node.addStem(stem);
                         break;
                     }
@@ -75,7 +74,7 @@ public class LexiconTree {
                 //                                  \-xes*
                 if (i < chars.length && fragmentSplitIndex < node.fragment.length) {
                     Node node1 = new Node();
-                    node1.setFragment( Arrays.copyOf(node.fragment, fragmentSplitIndex)); // fo
+                    node1.setFragment(Arrays.copyOf(node.fragment, fragmentSplitIndex)); // fo
                     previousNode.addChild(node1);
                     node.trimLeft(fragmentSplitIndex); // obar
                     node1.addChild(node);
@@ -89,18 +88,17 @@ public class LexiconTree {
 
     /**
      * Finds the last position of common chars for 2 char arrays relative to a given index.
-     * @param input input char array to look in the fragment
-     * @param start start index where method starts looking the input in the fragment
+     *
+     * @param input    input char array to look in the fragment
+     * @param start    start index where method starts looking the input in the fragment
      * @param fragment the char array to look input array.
-     * @return 
-     *   for input: "foo" fragment = "foobar" index = 0, returns 3
-     *   for input: "fool" fragment = "foobar" index = 0, returns 3
-     *   for input: "fool" fragment = "foobar" index = 1, returns 2
-     *   for input: "foo" fragment = "obar" index = 1, returns 2
-     *   for input: "xyzfoo" fragment = "foo" index = 3, returns 2
-     *   for input: "xyzfoo" fragment = "xyz" index = 3, returns 0
-     *   for input: "xyz" fragment = "abc" index = 0, returns 0
-     * 
+     * @return for input: "foo" fragment = "foobar" index = 0, returns 3
+     *         for input: "fool" fragment = "foobar" index = 0, returns 3
+     *         for input: "fool" fragment = "foobar" index = 1, returns 2
+     *         for input: "foo" fragment = "obar" index = 1, returns 2
+     *         for input: "xyzfoo" fragment = "foo" index = 3, returns 2
+     *         for input: "xyzfoo" fragment = "xyz" index = 3, returns 0
+     *         for input: "xyz" fragment = "abc" index = 0, returns 0
      */
     static int getSplitPoint(char[] input, int start, char[] fragment) {
         int fragmentIndex = 0;
@@ -116,11 +114,11 @@ public class LexiconTree {
         System.arraycopy(arr, index, res, 0, arr.length - index);
         return res;
     }
-    
+
     public String toString() {
         return root != null ? root.dump() : "";
     }
-    
+
     public List<StemNode> getMatchingStems(String input) {
         Node node = root;
         int index = 0;
@@ -145,7 +143,7 @@ public class LexiconTree {
         private ArrayList<Node> children;
         private ArrayList<StemNode> stems;
 
-        public Node() { 
+        public Node() {
         }
 
         public Node(StemNode s, char[] fragment) {
@@ -190,13 +188,13 @@ public class LexiconTree {
                 children = new ArrayList<Node>(2);
             }
             int pos = getChildIndex(node.index);
-            if(pos < 0) {
+            if (pos < 0) {
                 children.add(-(pos + 1), node);
             } else {
                 children.set(pos, node);
             }
         }
-        
+
         // Search based on index values of children Node array. 
         // Returns index of node if it already exists,
         // -(pos +1) position to insert, if no element exist with given index 
@@ -206,9 +204,9 @@ public class LexiconTree {
             }
             int size = children.size();
             // Linear search if element count is smaller than a threshold.
-            if(size < 7) {
+            if (size < 7) {
                 int i = 0;
-                for (; i < size && children.get(i).index < index; i++);
+                for (; i < size && children.get(i).index < index; i++) ;
                 if (i == size) return -(size + 1);
                 return children.get(i).index == index ? i : -(i + 1);
             }
@@ -228,7 +226,7 @@ public class LexiconTree {
             }
             return -(low + 1);
         }
-        
+
         public String getString() {
             return fragment == null ? "#" : new String(fragment);
         }
@@ -268,14 +266,16 @@ public class LexiconTree {
         }
 
         private char getChar() {
-            if (fragment == null) { return '#'; }
+            if (fragment == null) {
+                return '#';
+            }
             return fragment[0];
         }
 
         /**
          * Returns string representation of node and all child nodes until leafs.
          *
-         * @param b string buffer to append.
+         * @param b     string buffer to append.
          * @param level level of the operation
          */
         private void toDeepString(StringBuffer b, int level) {
@@ -309,7 +309,7 @@ public class LexiconTree {
         }
 
     }
-    
+
     public static void main(String[] args) throws IOException {
         LexiconTree lexicon = new LexiconTree();
 //        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("src/resources/tr/master-dictionary.txt"));
@@ -319,7 +319,7 @@ public class LexiconTree {
         graph.generate();
         long st = System.currentTimeMillis();
         int i = 0;
-        for(StemNode s : graph.getStems()) {
+        for (StemNode s : graph.getStems()) {
             lexicon.add(s);
             i++;
         }

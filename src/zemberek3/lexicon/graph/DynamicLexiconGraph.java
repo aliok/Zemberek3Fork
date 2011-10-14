@@ -18,7 +18,7 @@ public class DynamicLexiconGraph {
 
     final SuffixProvider suffixProvider;
 
-    private Map<SuffixFormSet, Set<SuffixNode>> suffixFormMap = Maps.newConcurrentMap();
+    private Map<SuffixForm, Set<SuffixNode>> suffixFormMap = Maps.newConcurrentMap();
 
     public DynamicLexiconGraph(SuffixProvider suffixProvider) {
         this.suffixProvider = suffixProvider;
@@ -27,7 +27,7 @@ public class DynamicLexiconGraph {
 
     public int totalSuffixNodeCount() {
         int total = 0;
-        for (SuffixFormSet suffixFormSet : suffixFormMap.keySet()) {
+        for (SuffixForm suffixFormSet : suffixFormMap.keySet()) {
             total += suffixFormMap.get(suffixFormSet).size();
         }
         return total;
@@ -84,7 +84,7 @@ public class DynamicLexiconGraph {
     }
 
     public SuffixNode getRootSuffixNode(StemNode node) {
-        SuffixFormSet set = suffixProvider.getRootSet(node.dictionaryItem, node.exclusiveSuffixData);
+        SuffixForm set = suffixProvider.getRootSet(node.dictionaryItem, node.exclusiveSuffixData);
         // construct a new suffix node.
         return new SuffixNode(
                 set,
@@ -100,7 +100,7 @@ public class DynamicLexiconGraph {
         // get the successive form sets for this node.
         SuffixData successors = node.suffixSet.directSuccessors;
         // iterate over form sets.
-        for (SuffixFormSet succSet : successors) {
+        for (SuffixForm succSet : successors) {
             // get the nodes for the  suffix form.
             if (succSet.isTemplate())
                 continue;
@@ -138,12 +138,12 @@ public class DynamicLexiconGraph {
 
     }
 
-    private boolean nodeExists(SuffixFormSet set, SuffixNode newNode) {
+    private boolean nodeExists(SuffixForm set, SuffixNode newNode) {
         Set<SuffixNode> nodes = suffixFormMap.get(set);
         return nodes != null && nodes.contains(newNode);
     }
 
-    public SuffixNode addOrReturnExisting(SuffixFormSet set, SuffixNode newNode) {
+    public SuffixNode addOrReturnExisting(SuffixForm set, SuffixNode newNode) {
 
         if (!suffixFormMap.containsKey(set)) {
             suffixFormMap.put(set, new HashSet<SuffixNode>());

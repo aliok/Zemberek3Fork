@@ -9,32 +9,32 @@ import java.util.Set;
 
 public class SuffixNode extends MorphNode {
 
-    SuffixFormSet suffixSet;
+    SuffixForm suffixSet;
     Set<SuffixNode> successors = new HashSet<SuffixNode>(1);
 
     public SuffixNode(
-            SuffixFormSet suffixSet,
-            String form,
+            SuffixForm suffixSet,
+            String surfaceForm,
             AttributeSet<PhonAttr> attributes,
             AttributeSet<PhoneticExpectation> expectations,
             SuffixData exclusiveSuffixData,
             TerminationType termination) {
-        super(form, termination, attributes, expectations, exclusiveSuffixData);
+        super(surfaceForm, termination, attributes, expectations, exclusiveSuffixData);
         this.suffixSet = suffixSet;
     }
 
     public SuffixNode(
-            SuffixFormSet suffixSet,
-            String form,
+            SuffixForm suffixSet,
+            String surfaceForm,
             AttributeSet<PhonAttr> attributes,
             TerminationType termination) {
         // TODO: expectations and exclusive suffix data is empty.
-        super(form, termination, attributes, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData());
+        super(surfaceForm, termination, attributes, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData());
         this.suffixSet = suffixSet;
         this.attributes = attributes;
     }
 
-    public SuffixFormSet getSuffixSet() {
+    public SuffixForm getSuffixSet() {
         return suffixSet;
     }
 

@@ -3,10 +3,7 @@ package zemberek3.lexicon;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.TerminationType;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class SuffixFormSet {
+public class SuffixForm {
     // an id that defines the node
     public final String id;
     // parent suffix
@@ -21,7 +18,7 @@ public class SuffixFormSet {
 
     public boolean template = false;
 
-    public SuffixFormSet(String id, Suffix suffix, String generation) {
+    public SuffixForm(String id, Suffix suffix, String generation) {
         this.id = id;
         this.suffix = suffix;
         this.generation = generation;
@@ -31,34 +28,34 @@ public class SuffixFormSet {
         return new SuffixData(successors, directSuccessors);
     }
 
-    public SuffixFormSet(Suffix suffix, String generation, TerminationType terminationType) {
+    public SuffixForm(Suffix suffix, String generation, TerminationType terminationType) {
         this.id = suffix.id + "_" + generation;
         this.suffix = suffix;
         this.generation = generation;
         this.terminationType = terminationType;
     }
 
-    public SuffixFormSet(String id, Suffix suffix, String generation, TerminationType terminationType) {
+    public SuffixForm(String id, Suffix suffix, String generation, TerminationType terminationType) {
         this.id = id;
         this.suffix = suffix;
         this.generation = generation;
         this.terminationType = terminationType;
     }
 
-    public static SuffixFormSet getTemplate(String id, Suffix suffix) {
-        SuffixFormSet set = new SuffixFormSet(id, suffix, "", TerminationType.TRANSFER);
+    public static SuffixForm getTemplate(String id, Suffix suffix) {
+        SuffixForm set = new SuffixForm(id, suffix, "", TerminationType.TRANSFER);
         set.template = true;
         return set;
     }
 
-    public static SuffixFormSet getTemplate(String id, Suffix suffix, TerminationType type) {
-        SuffixFormSet set = new SuffixFormSet(id, suffix, "", type);
+    public static SuffixForm getTemplate(String id, Suffix suffix, TerminationType type) {
+        SuffixForm set = new SuffixForm(id, suffix, "", type);
         set.template = true;
         return set;
     }
 
 
-    public SuffixFormSet(Suffix suffix, String generation) {
+    public SuffixForm(Suffix suffix, String generation) {
         this.suffix = suffix;
         this.generation = generation;
         this.id = suffix.id + "_" + generation;
@@ -89,7 +86,7 @@ public class SuffixFormSet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SuffixFormSet that = (SuffixFormSet) o;
+        SuffixForm that = (SuffixForm) o;
 
         if (template != that.template) return false;
         if (!directSuccessors.equals(that.directSuccessors)) return false;

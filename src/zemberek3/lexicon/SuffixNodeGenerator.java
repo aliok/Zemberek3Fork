@@ -24,7 +24,7 @@ public class SuffixNodeGenerator {
             AttributeSet<PhonAttr> attrs,
             AttributeSet<PhoneticExpectation> expectations,
             SuffixData suffixData,
-            SuffixFormSet set) {
+            SuffixForm set) {
         return getNodes(attrs, expectations, suffixData, set).get(0);
     }
 
@@ -32,7 +32,7 @@ public class SuffixNodeGenerator {
             AttributeSet<PhonAttr> attrs,
             AttributeSet<PhoneticExpectation> expectations,
             SuffixData suffixData,
-            SuffixFormSet set) {
+            SuffixForm set) {
 
         List<SuffixToken> tokenList = Lists.newArrayList(new SuffixStringTokenizer(set.generation));
 

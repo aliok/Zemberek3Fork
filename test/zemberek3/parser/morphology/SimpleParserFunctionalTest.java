@@ -99,7 +99,7 @@ public class SimpleParserFunctionalTest {
         SimpleTextWriter stw = SimpleTextWriter.keepOpenUTF8Writer(new File("test/data/unknowns.txt"));
         System.out.println("Initial number of Suffix Form Sets: " + suffixes.getFormCount());
         SimpleParser parser = simpleParser(new File("src/resources/tr/master-dictionary.txt"));
-        System.out.println("Total number of Suffix Form Sets: " + suffixes.getFormCount());
+        System.out.println("Total number of Suffix Form Sets After Adding Stems: " + suffixes.getFormCount());
         System.out.println("Total number of Suffix nodes: " + parser.graph.totalSuffixNodeCount());
         System.out.println("Total number of Stem nodes: " + parser.graph.totalStemNodeCount());
         System.out.println("Parsing started");
@@ -108,6 +108,7 @@ public class SimpleParserFunctionalTest {
         for (String word : allWords) {
             if (parser.parse(word).size() > 0)
                 pass++;
+
             else
                 stw.writeLine(word);
         }

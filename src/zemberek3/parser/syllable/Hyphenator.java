@@ -16,10 +16,10 @@ public interface Hyphenator {
      * <p><code>("merhaba", 2) -> -1 []</code>
      * <p><code>("dddaddd", 2) -> -1 []</code>
      * <p><code>("merhaba", 8) -> 7 ["merhaba"]</code>
+     *
      * @param input          input String.
      * @param spaceAvailable the available space
      * @return an integer.
-     *
      */
     int splitIndex(String input, int spaceAvailable);
 }

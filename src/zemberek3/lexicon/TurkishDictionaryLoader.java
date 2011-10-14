@@ -217,8 +217,8 @@ public class TurkishDictionaryLoader {
                 if (token.length() < 2)
                     throw new LexiconException("Unexepected Suffix token in line: " + line);
                 String suffixId = token.substring(1);
-                List<SuffixFormSet> sets = new ArrayList<SuffixFormSet>();
-                List<SuffixFormSet> ss = suffixProvider.getFormsBySuffixId(suffixId);
+                List<SuffixForm> sets = new ArrayList<SuffixForm>();
+                List<SuffixForm> ss = suffixProvider.getFormsBySuffixId(suffixId);
                 if (ss == null)
                     throw new LexiconException("Cannot identify Suffix id:" + suffixId + " in line:" + line);
                 sets.addAll(ss);

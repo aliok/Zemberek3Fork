@@ -1,17 +1,17 @@
 package zemberek3.lexicon.graph;
 
-import zemberek3.lexicon.SuffixFormSet;
+import zemberek3.lexicon.SuffixForm;
 
 import java.util.*;
 
-public class SuffixData implements Iterable<SuffixFormSet> {
-    public Set<SuffixFormSet> set = new HashSet<SuffixFormSet>();
+public class SuffixData implements Iterable<SuffixForm> {
+    public Set<SuffixForm> set = new HashSet<SuffixForm>();
 
-    public SuffixData(Set<SuffixFormSet> set) {
+    public SuffixData(Set<SuffixForm> set) {
         this.set = set;
     }
 
-    public SuffixData(SuffixFormSet... set) {
+    public SuffixData(SuffixForm... set) {
         this.set.addAll(Arrays.asList(set));
     }
 
@@ -24,7 +24,7 @@ public class SuffixData implements Iterable<SuffixFormSet> {
     public SuffixData() {
     }
 
-    public boolean contains(SuffixFormSet suffSet) {
+    public boolean contains(SuffixForm suffSet) {
         return set.contains(suffSet);
     }
 
@@ -37,7 +37,7 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         return this;
     }
 
-    public SuffixData add(SuffixFormSet... sets) {
+    public SuffixData add(SuffixForm... sets) {
         this.set.addAll(Arrays.asList(sets));
         return this;
     }
@@ -49,21 +49,21 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         return this;
     }
 
-    public SuffixData add(Iterable<SuffixFormSet> it) {
-        for (SuffixFormSet suff : it)
+    public SuffixData add(Iterable<SuffixForm> it) {
+        for (SuffixForm suff : it)
             set.add(suff);
         return this;
     }
 
-    public SuffixData add(SuffixFormSet[]... sets) {
-        for (SuffixFormSet[] suffixArray : sets) {
+    public SuffixData add(SuffixForm[]... sets) {
+        for (SuffixForm[] suffixArray : sets) {
             this.set.addAll(Arrays.asList(suffixArray));
         }
         return this;
     }
 
-    public SuffixData remove(SuffixFormSet... sets) {
-        for (SuffixFormSet set : sets) {
+    public SuffixData remove(SuffixForm... sets) {
+        for (SuffixForm set : sets) {
             this.set.remove(set);
         }
         return this;
@@ -80,14 +80,14 @@ public class SuffixData implements Iterable<SuffixFormSet> {
         return new SuffixData(set);
     }
 
-    public SuffixData remove(Collection<SuffixFormSet> it) {
-        for (SuffixFormSet suff : it) {
+    public SuffixData remove(Collection<SuffixForm> it) {
+        for (SuffixForm suff : it) {
             set.remove(suff);
         }
         return this;
     }
 
-    public SuffixData retain(Collection<SuffixFormSet> coll) {
+    public SuffixData retain(Collection<SuffixForm> coll) {
         set.retainAll(coll);
         return this;
     }
@@ -112,14 +112,14 @@ public class SuffixData implements Iterable<SuffixFormSet> {
     @Override
     public int hashCode() {
         int result = 31;
-        for (SuffixFormSet successor : set) {
+        for (SuffixForm successor : set) {
             result = 31 * result + successor.getId().hashCode();
         }
         return result;
     }
 
     @Override
-    public Iterator<SuffixFormSet> iterator() {
+    public Iterator<SuffixForm> iterator() {
         return set.iterator();
     }
 }

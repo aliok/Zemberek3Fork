@@ -19,7 +19,7 @@ public class StrictTurkishSyllableParser implements SyllableParser {
 
     /**
      * Returns the syllables as a String List. if word cannot be parsed, an empty list is returned.
-     * <p>Example 
+     * <p>Example
      * <p><code>("merhaba") -> ["mer","ha","ba"]</code>
      * <p><code>("mr") -> []</code>
      * <p><code>("al") -> ["al"]</code>

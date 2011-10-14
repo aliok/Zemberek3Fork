@@ -1,8 +1,5 @@
 package zemberek3.lexicon.graph;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import org.junit.Test;
 import zemberek3.lexicon.*;
 
@@ -25,7 +22,7 @@ public class DynamicLexiconGraphTest {
         //StemNode nodeArmud = getNode("armud", graph);
         //Assert.assertNotNull(nodeArmud);
         //Assert.assertEquals("armud", nodeArmud.surfaceForm);
-        //Set<SuffixFormSet> sets = nodeArmud.getRootSuffixNode().suffixSet.getSuccSetCopy();
+        //Set<SuffixForm> sets = nodeArmud.getRootSuffixNode().suffixSet.getSuccSetCopy();
     }
 
     private List<DictionaryItem> getItems(String[] lines, SuffixProvider suffixProvider) {
@@ -48,23 +45,23 @@ public class DynamicLexiconGraphTest {
 
     public SuffixProvider getProvider1() {
         Suffix Dat = new Suffix("Dat");
-        SuffixFormSet Dat_yA = new SuffixFormSet(Dat, "+yA");
+        SuffixForm Dat_yA = new SuffixForm(Dat, "+yA");
         Suffix Loc = new Suffix("Loc");
-        SuffixFormSet Loc_dA = new SuffixFormSet(Loc, ">dA");
+        SuffixForm Loc_dA = new SuffixForm(Loc, ">dA");
         Suffix P1sg = new Suffix("P1sg");
-        SuffixFormSet P1sg_Im = new SuffixFormSet(P1sg, "Im");
+        SuffixForm P1sg_Im = new SuffixForm(P1sg, "Im");
         Suffix P3sg = new Suffix("P3sg");
-        SuffixFormSet P3sg_sI = new SuffixFormSet(P3sg, "+sI");
+        SuffixForm P3sg_sI = new SuffixForm(P3sg, "+sI");
         Suffix P1pl = new Suffix("P1pl");
-        SuffixFormSet P1pl_ImIz = new SuffixFormSet(P1pl, "ImIz");
+        SuffixForm P1pl_ImIz = new SuffixForm(P1pl, "ImIz");
         Suffix Pnon = new Suffix("Pnon");
-        SuffixFormSet Pnon_EMPTY = new SuffixFormSet("Pnon_TEMPLATE", Pnon, "");
+        SuffixForm Pnon_EMPTY = new SuffixForm("Pnon_TEMPLATE", Pnon, "");
         Suffix Nom = new Suffix("Nom");
-        SuffixFormSet Nom_EMPTY = new SuffixFormSet("Nom_TEMPLATE", Nom, ""); // ben
+        SuffixForm Nom_EMPTY = new SuffixForm("Nom_TEMPLATE", Nom, ""); // ben
         Suffix A3sg = new Suffix("A3sg");
-        SuffixFormSet A3sg_EMPTY = new SuffixFormSet("A3sg_TEMPLATE", A3sg, ""); // gel-di-, o-
+        SuffixForm A3sg_EMPTY = new SuffixForm("A3sg_TEMPLATE", A3sg, ""); // gel-di-, o-
         Suffix A3pl = new Suffix("A3pl");
-        SuffixFormSet A3pl_lAr = new SuffixFormSet(A3pl, "lAr"); // gel-ecek-ler
+        SuffixForm A3pl_lAr = new SuffixForm(A3pl, "lAr"); // gel-ecek-ler
         DynamicSuffixes suffixes = new DynamicSuffixes();
     //    DynamicSuffixes.Noun_TEMPLATE.getSuccessors().add(A3pl_lAr, A3sg_TEMPLATE);
         A3sg_EMPTY.successors.add(P1sg_Im, P3sg_sI, Pnon_EMPTY, P1pl_ImIz);

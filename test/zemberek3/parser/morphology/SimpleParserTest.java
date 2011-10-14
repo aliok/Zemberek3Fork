@@ -117,18 +117,18 @@ public class SimpleParserTest {
 
     static class NounSuffixes extends DynamicSuffixProvider {
 
-        static SuffixFormSet Dim_CIK = getSet("Dim", ">cI~k");
-        static SuffixFormSet P1sg_Im = getSet("P1sg", "Im");
-        static SuffixFormSet Dat_yA = getSet("Dat", "+yA");
-        static SuffixFormSet Dat_nA = getSet("Dat", "nA");
-        static SuffixFormSet Pnon_TEMPLATE = getTemplate("Pnon", "Pnon_TEMPLATE");
-        static SuffixFormSet Nom_TEMPLATE = getTemplate("Nom", "Nom_TEMPLATE");
-        static SuffixFormSet A3sg_TEMPLATE = getTemplate("A3sg", "A3sg_TEMPLATE");
-        static SuffixFormSet A3pl_lAr = getSet("A3pl", "lAr");
+        static SuffixForm Dim_CIK = getSet("Dim", ">cI~k");
+        static SuffixForm P1sg_Im = getSet("P1sg", "Im");
+        static SuffixForm Dat_yA = getSet("Dat", "+yA");
+        static SuffixForm Dat_nA = getSet("Dat", "nA");
+        static SuffixForm Pnon_TEMPLATE = getTemplate("Pnon", "Pnon_TEMPLATE");
+        static SuffixForm Nom_TEMPLATE = getTemplate("Nom", "Nom_TEMPLATE");
+        static SuffixForm A3sg_TEMPLATE = getTemplate("A3sg", "A3sg_TEMPLATE");
+        static SuffixForm A3pl_lAr = getSet("A3pl", "lAr");
         static Suffix Noun_Root = new Suffix("Noun");
-        static SuffixFormSet Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
-        static SuffixFormSet Noun_Default = getNull("Noun_Default", Noun_Root);
-        static SuffixFormSet Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
+        static SuffixForm Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
+        static SuffixForm Noun_Default = getNull("Noun_Default", Noun_Root);
+        static SuffixForm Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
 
         NounSuffixes() {
 
@@ -165,7 +165,7 @@ public class SimpleParserTest {
         }
 
 
-        public SuffixFormSet getRootSet(DictionaryItem item, SuffixData successorConstraint) {
+        public SuffixForm getRootSet(DictionaryItem item, SuffixData successorConstraint) {
 
             if (successorConstraint.isEmpty()) {
                 switch (item.primaryPos) {
@@ -177,7 +177,7 @@ public class SimpleParserTest {
             } else {
                 switch (item.primaryPos) {
                     case Noun:
-                        SuffixFormSet copyOfTemplate = generateSetFromTemplate(Noun_TEMPLATE, successorConstraint);
+                        SuffixForm copyOfTemplate = generateSetFromTemplate(Noun_TEMPLATE, successorConstraint);
                         if (formSetLookup.containsKey(copyOfTemplate)) {
                             copyOfTemplate = formSetLookup.get(copyOfTemplate);
                         } else {

@@ -3,21 +3,18 @@ package zemberek3.lexicon.graph;
 import org.junit.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.Suffix;
-import zemberek3.lexicon.SuffixFormSet;
-
-import java.util.HashSet;
-import java.util.Set;
+import zemberek3.lexicon.SuffixForm;
 
 public class SuffixFormSetTest {
     @Test
     public void equalityTest() {
         Suffix suffix = new Suffix("SUFFIX");
-        SuffixFormSet sf1 = new SuffixFormSet("sf1", suffix, "lAr", TerminationType.TERMINAL);
-        SuffixFormSet sf2 = new SuffixFormSet("sf2", suffix, "lAr", TerminationType.TERMINAL);
+        SuffixForm sf1 = new SuffixForm("sf1", suffix, "lAr", TerminationType.TERMINAL);
+        SuffixForm sf2 = new SuffixForm("sf2", suffix, "lAr", TerminationType.TERMINAL);
         Assert.assertTrue(sf1.equals(sf2));
         Assert.assertTrue(sf2.equals(sf1));
 
-        SuffixFormSet sf3 = new SuffixFormSet("sf3", suffix, "k", TerminationType.TERMINAL);
+        SuffixForm sf3 = new SuffixForm("sf3", suffix, "k", TerminationType.TERMINAL);
         Assert.assertFalse(sf1.equals(sf3));
 
         sf1.directSuccessors.add(sf3);
@@ -27,7 +24,7 @@ public class SuffixFormSetTest {
         Assert.assertTrue(sf1.equals(sf2));
 
         sf1.directSuccessors.remove(sf3);
-        SuffixFormSet sf4 = new SuffixFormSet("sf4", suffix, "lAr", TerminationType.NON_TERMINAL);
+        SuffixForm sf4 = new SuffixForm("sf4", suffix, "lAr", TerminationType.NON_TERMINAL);
         Assert.assertFalse(sf4.equals(sf2));
     }
 

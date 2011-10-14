@@ -143,12 +143,12 @@ public class SuffixNodeGeneratorTest {
     }
 
     private SuffixNode getFirstNodeNoExpectatios(SuffixNodeGenerator sfg, AttributeSet<PhonAttr> attributes, String generation) {
-        SuffixFormSet dummySet = new SuffixFormSet("dummy-form", new Suffix("dummy"), generation);
+        SuffixForm dummySet = new SuffixForm("dummy-form", new Suffix("dummy"), generation);
         return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData(), dummySet).get(0);
     }
 
     private List<SuffixNode> getNodes(SuffixNodeGenerator sfg, AttributeSet<PhonAttr> attributes, String generation) {
-        SuffixFormSet dummySet = new SuffixFormSet("dummy-form", new Suffix("dummy"), generation);
+        SuffixForm dummySet = new SuffixForm("dummy-form", new Suffix("dummy"), generation);
         return sfg.getNodes(attributes, AttributeSet.<PhoneticExpectation>emptySet(), new SuffixData(), dummySet);
     }
 

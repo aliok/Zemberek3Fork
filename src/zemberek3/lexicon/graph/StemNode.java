@@ -28,7 +28,7 @@ public class StemNode extends MorphNode {
                     DictionaryItem dictionaryItem,
                     AttributeSet<PhonAttr> phonAttrs,
                     AttributeSet<PhoneticExpectation> expectations) {
-        super(surfaceForm,  phonAttrs, expectations);
+        super(surfaceForm, phonAttrs, expectations);
         this.dictionaryItem = dictionaryItem;
     }
 
