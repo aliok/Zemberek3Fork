@@ -479,7 +479,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Verb2AdjPart.directSuccessors.add(PastPart_dIk_2Adj, EvidPart_mIs_2Adj, FutPart_yAcAk_2Adj, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj, PresPart_yAn);
 
         Verb2Adv.directSuccessors.add(When_yIncA, SinceDoing_yAlI, UnableToDo_yAmAdAn, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
-                .add(InsteadOfDoing_mAktAnsA, AsLongAs_dIkcA, AfterDoing_yIp);
+                .add(InsteadOfDoing_mAktAnsA, AsLongAs_dIkcA, AfterDoing_yIp, AsIf_cAsInA);
 
         Verb2Adj.directSuccessors.add(When_yIncA, FeelLike_yAsI_2Adj, Agt_yIcI_2Adj);
 
@@ -568,10 +568,14 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         A1sg_yIm.directSuccessors.add(Cop_dIr);
         A2sg_sIn.directSuccessors.add(Cop_dIr);
-        A3sg_Verb_TEMPLATE.directSuccessors.add(Cop_dIr);
-        A1pl_yIz.directSuccessors.add(Cop_dIr);
-        A2pl_sInIz.directSuccessors.add(Cop_dIr);
-        A3pl_Verb_lAr.directSuccessors.add(Evid_mIs, Past_dI, Cond_sA, Cop_dIr);
+        A3sg_Verb_TEMPLATE.directSuccessors.add(Cop_dIr, Verb2Adv);
+        A3sg_Verb_TEMPLATE.successors.add(AsIf_cAsInA);
+        A1pl_yIz.directSuccessors.add(Cop_dIr, Verb2Adv);
+        A1pl_yIz.successors.add(AsIf_cAsInA);
+        A2pl_sInIz.directSuccessors.add(Cop_dIr, Verb2Adv);
+        A2pl_sInIz.successors.add(AsIf_cAsInA);
+        A3pl_Verb_lAr.directSuccessors.add(Evid_mIs, Past_dI, Cond_sA, Cop_dIr, Verb2Adv);
+        A3pl_Verb_lAr.successors.add(AsIf_cAsInA);
 
         Dim_cIk.directSuccessors.add(Noun_Default.directSuccessors);
         Dim_cIk.successors.add(Noun_Default.allSuccessors().add(Noun2VerbCopular).remove(Dim_cIk, Dim2_cAgIz));
@@ -615,6 +619,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         With_lI.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
         With_lI.successors.add(Adj_TEMPLATE.successors);
+
+        Related_sAl.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
+        Related_sAl.successors.add(Adj_TEMPLATE.successors);
 
         Without_sIz.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
         Without_sIz.successors.add(Adj_TEMPLATE.successors);
@@ -699,7 +706,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Neg_mA.successors.add(Verb2VerbCompounds.directSuccessors, Verb2AdjPart.directSuccessors, Verb2NounPart.directSuccessors,
                 Verb2Noun.directSuccessors, Verb2Adv.directSuccessors, Verb2Adj.directSuccessors)
-                .add(A2sg_TEMPLATE, A1sg_yIm, A2sg_sIn, A2sg2_sAnA, A2sg3_yInIz, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A2pl2_sAnIzA, A2pl_yIn, A3pl_Verb_lAr, A3sg_sIn, A3pl_sInlAr)
+                .add(A2sg_TEMPLATE, A1sg_m, A1sg_yIm, A2sg_sIn, A2sg2_sAnA, A2sg3_yInIz, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A2pl2_sAnIzA, A2pl_yIn, A3pl_Verb_lAr, A3sg_sIn, A3pl_sInlAr)
                 .add(Abil_yAbil);
 
         Neg_m.directSuccessors.add(Prog_Iyor);
@@ -721,15 +728,18 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Pass_InIl.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
         Pass_InIl.successors.add(Verb_TEMPLATE.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
-        // TODO: geliyorlarmış and geliyormuşlar are parsed.
         Prog_Iyor.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+
         Prog2_mAktA.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
         Fut_yAcAk.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
         Aor_Ar.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Aor_Ar.successors.add(Verb2Adv, AsIf_cAsInA);
         Aor_Ir.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Aor_Ir.successors.add(Verb2Adv, AsIf_cAsInA);
         Aor_z.directSuccessors.add(A3sg_Verb_TEMPLATE, A3sg_sIn).add(PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, Cop_dIr);
+        Aor_z.successors.add(Verb2Adv, AsIf_cAsInA);
         Aor_EMPTY.directSuccessors.add(A1sg_m, A1pl_yIz);
 
         AorPart_Ar_2Adj.directSuccessors.add(Adj2Noun);
@@ -769,7 +779,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Cond_sA.directSuccessors.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr, PastCop_ydI, EvidCop_ymIs);
 
         PastCop_ydI.directSuccessors.add(PERSON_FORMS_COP);
-        EvidCop_ymIs.directSuccessors.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr, AsIf_cAsInA);
+        EvidCop_ymIs.directSuccessors.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr);
+        EvidCop_ymIs.successors.add(Verb2Adv, AsIf_cAsInA);
         CondCop_ysA.directSuccessors.add(PERSON_FORMS_COP);
         Cop_dIr.directSuccessors.add(A3pl_Verb_lAr);
 

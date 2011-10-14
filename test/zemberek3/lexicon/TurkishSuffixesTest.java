@@ -52,7 +52,7 @@ public class TurkishSuffixesTest {
     public void testAcquire() {
         // noun
         Tester tester = new Tester("elma", "mavi [P:Adj]");
-        tester.assertHasParses("elmalan","elmalanıyor","elmalandırmak");
+        tester.assertHasParses("elmalan", "elmalanıyor", "elmalandırmak");
         // adj
         tester.assertHasParses("mavilendirilebileceğinden");
     }
@@ -96,10 +96,10 @@ public class TurkishSuffixesTest {
 
     @Test
     public void testA3pl() {
-        Tester tester = new Tester("elma","mavi [P:Adj]");
-        tester.assertHasParses("elmalar", "elmalara","elmalarda","elmalardaki","elmalardakilerdeki");
-        tester.assertHasParses("elmalardı", "elmalaraydı", "elmalardır", "elmalardandır","elmalarsa");
-        tester.assertHasParses("maviler", "mavilere", "mavilerim", "mavilerdendir","mavilerdeymiş");
+        Tester tester = new Tester("elma", "mavi [P:Adj]");
+        tester.assertHasParses("elmalar", "elmalara", "elmalarda", "elmalardaki", "elmalardakilerdeki");
+        tester.assertHasParses("elmalardı", "elmalaraydı", "elmalardır", "elmalardandır", "elmalarsa");
+        tester.assertHasParses("maviler", "mavilere", "mavilerim", "mavilerdendir", "mavilerdeymiş");
     }
 
     @Test
@@ -145,10 +145,11 @@ public class TurkishSuffixesTest {
     }
 
     @Test
-    public void testPrograesive() {
+    public void testProgressive() {
         // Noun-Noun
         Tester tester = new Tester("aramak", "gelmek");
         tester.assertHasParses("arıyor", "aramıyor", "geliyor", "gelmiyor", "arıyordu", "arıyorlardı", "gelmiyorlarsa");
+        tester.assertHasParses("arıyormuş", "aramıyorsak", "geliyormuşuz");
         tester.assertHasParses("aramakta", "aramamakta", "gelmekte", "gelmemekte");
     }
 
@@ -273,7 +274,14 @@ public class TurkishSuffixesTest {
         tester.assertHasParses("arayabil", "arayabilir", "arayabilecek", "gidebil", "gidebilecek", "gidebiliyor");
         // a
         tester.assertHasParses("arayamıyorum", "arayamaya", "arayamasın", "arayamamaktan", "gidemese");
-        tester.assertHasParses("arayama", "arayamayabilir", "gideme", "gidemeyebilir");
+        tester.assertHasParses("arayamam", "arayamazsın", "arayamayız", "arayama", "arayamayabilir", "gideme", "gidemeyebilir");
+    }
+
+    @Test
+    public void asif() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        // abil
+        tester.assertHasParses("ararcasına", "aramazcasına", "arıyormuşçasına", "gidebilirmişsinizcesine");
     }
 
     @Test
