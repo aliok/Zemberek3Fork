@@ -31,10 +31,11 @@ public class TurkishSuffixesTest {
         tester.assertUnParseable("atkuyruğlarım", "atkuyruk");
     }
 
+    //TODO elmalidir should have single parse
     @Test
     public void testWithAndWithout() {
         Tester tester = new Tester("elma", "kitap");
-        tester.assertHasParses("elmalı", "elmasız", "kitaplı", "kitapsız");
+        tester.assertHasParses("elmalı", "elmasız", "kitaplı", "kitapsız","elmalıydı","elmalıdır");
         tester.assertUnParseable("elmayalı", "elmalarlı", "elmadasız", "elmalarsız");
     }
 
