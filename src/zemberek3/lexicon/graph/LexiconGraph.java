@@ -210,9 +210,9 @@ public class LexiconGraph {
             SuffixFormSet Verb_Ye = new SuffixFormSet("Verb_Ye", VerbRoot, "");
             SuffixFormSet Verb_Yi = new SuffixFormSet("Verb_Yi", VerbRoot, "");
             Verb_Ye.successors.add(Verb_TEMPLATE.successors).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk,
-                    FutPart_yAcAk, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
+                    FutPart_yAcAk_2Adj, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
                     KeepDoing2_yAdur,  UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
-            Verb_Yi.successors.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, When_yIncA, AfterDoing_yIp, Abil_yA,
+            Verb_Yi.successors.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk_2Adj, When_yIncA, AfterDoing_yIp, Abil_yA,
                     Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI_2Adj, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
                     FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
@@ -230,10 +230,10 @@ public class LexiconGraph {
             SuffixFormSet Verb_Di = new SuffixFormSet("Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
             Verb_De.successors.add(Verb_TEMPLATE.successors)
-                    .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, FutPart_yAcAk, Opt_yA,
+                    .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, FutPart_yAcAk_2Adj, Opt_yA,
                             PresPart_yAn, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn)
                     .add(Pass_In);
-            Verb_Di.successors.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk, Abil_yA, Abil_yAbil, PresPart_yAn,
+            Verb_Di.successors.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk_2Adj, Abil_yA, Abil_yAbil, PresPart_yAn,
                     PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
             StemNode[] stems = new StemNode[3];
             SuffixNode formDe = getSuffixRootNode(calculateAttributes(item.root), Verb_De);
@@ -418,12 +418,12 @@ public class LexiconGraph {
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case Aorist_A:
-                        original.successors.add(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
-                        modified.successors.add(Aor_Ar, AorPart_Ar).remove(Aor_Ir, AorPart_Ir);
+                        original.successors.add(Aor_Ar, AorPart_Ar_2Adj).remove(Aor_Ir, AorPart_Ir_2Noun );
+                        modified.successors.add(Aor_Ar, AorPart_Ar_2Adj).remove(Aor_Ir, AorPart_Ir_2Noun);
                         break;
                     case Aorist_I:
-                        original.successors.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
-                        modified.successors.add(Aor_Ir, AorPart_Ir).remove(Aor_Ar, AorPart_Ar);
+                        original.successors.add(Aor_Ir, AorPart_Ir_2Noun).remove(Aor_Ar, AorPart_Ar_2Adj);
+                        modified.successors.add(Aor_Ir, AorPart_Ir_2Noun).remove(Aor_Ar, AorPart_Ar_2Adj);
                         break;
                     case Passive_In:
                         original.successors.remove(Pass_nIl).add(Pass_In);

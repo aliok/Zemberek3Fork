@@ -268,6 +268,22 @@ public class TurkishSuffixesTest {
     }
 
     @Test
+    public void PresPart_yAn() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        // WithoutDoing_mAdAn
+        tester.assertHasParses("gidene", "arayandan", "gitmeyenden", "aramayanı", "aratmayanı", "aranmayanı");
+    }
+
+    @Test
+    public void FutPart_yAcAK() {
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
+        // WithoutDoing_mAdAn
+        tester.assertHasParses("gidene", "arayandan", "gitmeyenden", "aramayanı", "aratmayanı", "aranmayanı");
+    }
+
+
+
+    @Test
     public void Des() {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
         tester.assertHasParses("arasa", "arasak", "arasalar", "aramasalar", "aransalar", "aratsalar", "arattırsak", "arattırmasanız");
@@ -285,6 +301,7 @@ public class TurkishSuffixesTest {
         tester.assertHasParses("elmacı", "armutçu", "elmacılar", "elmacısın", "elmacısınız", "elmacıyız");
     }
 
+    static SuffixProvider suffixProvider = new TurkishSuffixes();
 
     class Tester {
 
@@ -292,7 +309,6 @@ public class TurkishSuffixesTest {
 
         Tester(String... words) {
             synchronized (this) {
-                SuffixProvider suffixProvider = new TurkishSuffixes();
                 List<DictionaryItem> items = getItems(words, suffixProvider);
                 graph = new DynamicLexiconGraph(suffixProvider);
                 graph.addDictionaryItems(items);
