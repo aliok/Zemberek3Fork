@@ -13,7 +13,6 @@ import zemberek3.lexicon.graph.DynamicLexiconGraph;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleParserFunctionalTest {
@@ -108,7 +107,6 @@ public class SimpleParserFunctionalTest {
         for (String word : allWords) {
             if (parser.parse(word).size() > 0)
                 pass++;
-
             else
                 stw.writeLine(word);
         }

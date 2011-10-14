@@ -49,6 +49,15 @@ public class TurkishSuffixesTest {
     }
 
     @Test
+    public void testAcquire() {
+        // noun
+        Tester tester = new Tester("elma", "mavi [P:Adj]");
+        tester.assertHasParses("elmalan","elmalanıyor","elmalandırmak");
+        // adj
+        tester.assertHasParses("mavilendirilebileceğinden");
+    }
+
+    @Test
     public void testNounToVerbCopular() {
         Tester tester = new Tester("elma");
         tester.assertHasParses("elmaydı", "elmaymış", "elmaydık", "elmayım", "elmadır");
@@ -58,6 +67,7 @@ public class TurkishSuffixesTest {
     public void testAdj2Verb() {
         Tester tester = new Tester("mavi [P:Adj]");
         tester.assertHasParses("mavileşti", "mavileşmiş", "maviydi", "maviyim");
+        tester.assertHasParses("mavilendi", "mavilendir");
     }
 
 
@@ -82,6 +92,14 @@ public class TurkishSuffixesTest {
         tester.assertHasParses("elmadaki", "elmadakini");
         tester.assertUnParseable("elmaki", "elmayaki", "elmadakiki");
         //TODO: add akşamki etc. uses Rel_kI instead of Rel_ki
+    }
+
+    @Test
+    public void testA3pl() {
+        Tester tester = new Tester("elma","mavi [P:Adj]");
+        tester.assertHasParses("elmalar", "elmalara","elmalarda","elmalardaki","elmalardakilerdeki");
+        tester.assertHasParses("elmalardı", "elmalaraydı", "elmalardır", "elmalardandır","elmalarsa");
+        tester.assertHasParses("maviler", "mavilere", "mavilerim", "mavilerdendir","mavilerdeymiş");
     }
 
     @Test
@@ -254,6 +272,7 @@ public class TurkishSuffixesTest {
         // abil
         tester.assertHasParses("arayabil", "arayabilir", "arayabilecek", "gidebil", "gidebilecek", "gidebiliyor");
         // a
+        tester.assertHasParses("arayamıyorum", "arayamaya", "arayamasın", "arayamamaktan", "gidemese");
         tester.assertHasParses("arayama", "arayamayabilir", "gideme", "gidemeyebilir");
     }
 
@@ -298,6 +317,12 @@ public class TurkishSuffixesTest {
     public void Des() {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
         tester.assertHasParses("arasa", "arasak", "arasalar", "aramasalar", "aransalar", "aratsalar", "arattırsak", "arattırmasanız");
+    }
+
+    @Test
+    public void Rel_Sal() {
+        Tester tester = new Tester("elma");
+        tester.assertHasParses("elmasal");
     }
 
     @Test
