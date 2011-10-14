@@ -25,6 +25,18 @@ public class DynamicLexiconGraph {
         this.stemNodeGenerator = new StemNodeGenerator(suffixProvider);
     }
 
+    public int totalSuffixNodeCount() {
+        int total = 0;
+        for (SuffixFormSet suffixFormSet : suffixFormMap.keySet()) {
+            total += suffixFormMap.get(suffixFormSet).size();
+        }
+        return total;
+    }
+
+    public int totalStemNodeCount() {
+        return stemNodes.size();
+    }
+
     public void addDictionaryItem(DictionaryItem item) {
 
         StemNode[] stems = stemNodeGenerator.generate(item);

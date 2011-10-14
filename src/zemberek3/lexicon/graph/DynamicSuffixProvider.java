@@ -57,6 +57,10 @@ public class DynamicSuffixProvider implements SuffixProvider {
         return formSetLookup.keySet();
     }
 
+    public int getFormCount() {
+        return formSetLookup.size();
+    }
+
     @Override
     public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
         return new SuffixData[0];  //To change body of implemented methods use File | Settings | File Templates.

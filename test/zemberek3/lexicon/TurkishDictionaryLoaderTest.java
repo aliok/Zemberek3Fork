@@ -96,7 +96,7 @@ public class TurkishDictionaryLoaderTest {
     @Test
     public void nounVoicingTest() {
         TurkishDictionaryLoader loader = new TurkishDictionaryLoader(suffixProvider);
-        String[] voicing = {"kabak", "kabak [A:Voicing]", "psikolog", "havuç", "turp [A:Voicing]", "galip", "nohut", "cenk"};
+        String[] voicing = {"kabak", "kabak [A:Voicing]", "psikolog", "havuç", "turp [A:Voicing]", "galip", "nohut", "cenk", "kükürt"};
         for (String s : voicing) {
             DictionaryItem item = loader.loadFromString(s);
             Assert.assertEquals(Noun, item.primaryPos);

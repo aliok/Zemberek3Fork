@@ -35,7 +35,7 @@ public class TurkishSuffixesTest {
     @Test
     public void testWithAndWithout() {
         Tester tester = new Tester("elma", "kitap");
-        tester.assertHasParses("elmalı", "elmasız", "kitaplı", "kitapsız","elmalıydı","elmalıdır");
+        tester.assertHasParses("elmalı", "elmasız", "kitaplı", "kitapsız", "elmalıydı", "elmalıdır");
         tester.assertUnParseable("elmayalı", "elmalarlı", "elmadasız", "elmalarsız");
     }
 
@@ -95,7 +95,6 @@ public class TurkishSuffixesTest {
 
     @Test
     public void testResembl() {
-        // Noun-Noun
         Tester tester = new Tester("armut", "yeşil [P:Adj]");
         tester.assertHasParses("armutsu", "armudumsu", "yeşilsi", "yeşilimsi");
         // TODO: oflazer uses JustLike for this. It parses words like "tuhafsı","arabası" as JustLike
@@ -103,10 +102,11 @@ public class TurkishSuffixesTest {
 
     @Test
     public void testCausative() {
-        // Noun-Noun
         Tester tester = new Tester("yapmak", "aramak");
         tester.assertHasParses("yaptır", "yaptırt", "yaptırttır", "arat", "arattır", "arattırt");
+        tester.assertHasParses("yaptırarak", "yaptırtarak", "yaptırtmayacak");
         tester.assertUnParseable("yapt", "aratt");
+
     }
 
     @Test
@@ -138,6 +138,7 @@ public class TurkishSuffixesTest {
     public void testAorist() {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]", "gelmek [A:NonTransitive, Aorist_I]");
         tester.assertHasParses("arar", "ararsa", "gider", "gelir", "aramaz");
+        tester.assertHasParses("ararlar", "ararlarsa", "ararsalar");
         tester.assertUnParseable("geler", "gidir");
     }
 
@@ -234,6 +235,18 @@ public class TurkishSuffixesTest {
         tester.assertHasParses("gitmeli", "gitmeliyim", "gitmemeli", "gitmemelisiniz", "gitmeliyiz");
         tester.assertHasParses("aramalı", "aramamalı", "aramalıyım", "aramamalısın", "aramamalısınız");
     }
+
+    @Test
+    public void possession() {
+        Tester tester = new Tester("elma", "mavi [P:Adj]");
+        tester.assertHasParses("elmam", "elman", "elması", "elmamız", "elmaları");
+        tester.assertHasParses("elmamı", "elmanda", "elmasında", "elmamızdan", "elmalarıyla");
+        tester.assertHasParses("mavim", "mavin", "mavisi", "mavimiz", "mavileri");
+        tester.assertHasParses("mavimi", "mavinde", "mavisinden", "mavimizde", "mavileriyle");
+        tester.assertHasParses("elmamdı", "elmammış", "elmamızsa", "elmamızdır");
+        tester.assertHasParses("mavimdi", "mavinmiş", "mavisiyse", "mavimizdir");
+    }
+
 
     @Test
     public void ability() {

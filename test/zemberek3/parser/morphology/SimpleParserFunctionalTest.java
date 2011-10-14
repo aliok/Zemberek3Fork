@@ -97,7 +97,11 @@ public class SimpleParserFunctionalTest {
                 new File("test/data/z2-vocab.tr")).asStringList();
         System.out.println("word list loaded");
         SimpleTextWriter stw = SimpleTextWriter.keepOpenUTF8Writer(new File("test/data/unknowns.txt"));
+        System.out.println("Initial number of Suffix Form Sets: " + suffixes.getFormCount());
         SimpleParser parser = simpleParser(new File("src/resources/tr/master-dictionary.txt"));
+        System.out.println("Total number of Suffix Form Sets: " + suffixes.getFormCount());
+        System.out.println("Total number of Suffix nodes: " + parser.graph.totalSuffixNodeCount());
+        System.out.println("Total number of Stem nodes: " + parser.graph.totalStemNodeCount());
         System.out.println("Parsing started");
         long start = System.currentTimeMillis();
         int pass = 0;
@@ -110,6 +114,8 @@ public class SimpleParserFunctionalTest {
         stw.close();
         long elapsed = System.currentTimeMillis() - start;
         System.out.println("Elapsed:" + elapsed + " ms.");
+        System.out.println("Speed:" + ((double) allWords.size()*1000 / elapsed) + " word/sec.");
+
         System.out.println("Total words:" + allWords.size());
         System.out.println("Passed words:" + pass);
         System.out.println("Ratio=%" + ((double) pass * 100 / allWords.size()));
@@ -125,13 +131,13 @@ public class SimpleParserFunctionalTest {
         return new TrieBasedParser(graph);
     }
 
+    static TurkishSuffixes suffixes = new TurkishSuffixes();
+
     private DynamicLexiconGraph getLexiconGraph(File dictionary) throws IOException {
-        SuffixProvider suffixProvider = new TurkishSuffixes();
+        SuffixProvider suffixProvider = suffixes;
         List<DictionaryItem> items = new TurkishDictionaryLoader(suffixProvider).load(dictionary);
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);
         return graph;
     }
-
-
 }

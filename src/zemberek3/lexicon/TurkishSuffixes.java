@@ -590,16 +590,22 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Noun2Adj.allSuccessors());
 
         P1sg_Im.directSuccessors.add(CASE_FORMS);
+        P1sg_Im.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
         P2sg_In.directSuccessors.add(CASE_FORMS);
+        P2sg_In.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
         P3sg_sI.directSuccessors.add(Nom_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
+        P3sg_sI.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
         P1pl_ImIz.directSuccessors.add(CASE_FORMS);
+        P1pl_ImIz.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
         P2pl_InIz.directSuccessors.add(CASE_FORMS);
+        P2pl_InIz.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
         P3pl_lArI.directSuccessors.add(CASE_FORMS);
+        P3pl_lArI.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
         With_lI.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
         With_lI.successors.add(Adj_TEMPLATE.successors);
@@ -864,8 +870,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 A3pl_Comp_lAr, Interj_Main, Verb_Prog_Drop, PersPron_BenSen, PersPron_BanSan,
                 Ordinal_IncI, Grouping_sAr);
 
-        System.out.println(formSetLookup.size());
-        //  dumpPath(Dim_cIk, 7);
 /*
         Noun_TEMPLATE.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI,

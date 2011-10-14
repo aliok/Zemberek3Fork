@@ -198,7 +198,7 @@ public class TurkishDictionaryLoader {
                             && !attributesList.contains(RootAttr.NoVoicing)
                             && !attributesList.contains(RootAttr.InverseHarmony))
                         attributesList.add(RootAttr.Voicing);
-                    else if (word.endsWith("nk") || word.endsWith("og"))
+                    else if (word.endsWith("nk") || word.endsWith("og") || word.endsWith("rt"))
                         attributesList.add(RootAttr.Voicing);
                     else if (!attributesList.contains(RootAttr.Voicing))
                         attributesList.add(RootAttr.NoVoicing);
