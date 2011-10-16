@@ -27,30 +27,30 @@ public class DynamicSuffixProviderTest {
         //   |           \
         //   .............-> set2_1        --- Direct link  ... indirect link.
 
-        set1.directSuccessors.add(tmp1);
-        set1.successors.add(set2_2);
-        set4.directSuccessors.add(tmp1);
-        set4.successors.add(set2_1);
-        tmp1.directSuccessors.add(set2_1);
-        tmp1.directSuccessors.add(set2_2);
+        set1.connections.add(tmp1);
+        set1.indirectConnections.add(set2_2);
+        set4.connections.add(tmp1);
+        set4.indirectConnections.add(set2_1);
+        tmp1.connections.add(set2_1);
+        tmp1.connections.add(set2_2);
 
         DynamicSuffixProvider provider = new DynamicSuffixProvider();
         provider.registerForms(tmp1, set1, set4);
-        Assert.assertEquals(1, set1.directSuccessors.set.size());
-        Assert.assertFalse(set1.directSuccessors.contains(tmp1));
+        Assert.assertEquals(1, set1.connections.set.size());
+        Assert.assertFalse(set1.connections.contains(tmp1));
 
-        SuffixForm nullSet1 = set1.directSuccessors.set.iterator().next();
+        SuffixForm nullSet1 = set1.connections.set.iterator().next();
         Assert.assertEquals("tmp1_1", nullSet1.getId());
-        Assert.assertEquals(1, nullSet1.directSuccessors.set.size());
-        Assert.assertTrue(nullSet1.directSuccessors.contains(set2_2));
+        Assert.assertEquals(1, nullSet1.connections.set.size());
+        Assert.assertTrue(nullSet1.connections.contains(set2_2));
 
-        Assert.assertEquals(1, set4.directSuccessors.set.size());
-        Assert.assertFalse(set4.directSuccessors.contains(tmp1));
+        Assert.assertEquals(1, set4.connections.set.size());
+        Assert.assertFalse(set4.connections.contains(tmp1));
 
-        SuffixForm nullSet2 = set4.directSuccessors.set.iterator().next();
+        SuffixForm nullSet2 = set4.connections.set.iterator().next();
         Assert.assertEquals("tmp1_2", nullSet2.getId());
-        Assert.assertEquals(1, nullSet2.directSuccessors.set.size());
-        Assert.assertTrue(nullSet2.directSuccessors.contains(set2_1));
+        Assert.assertEquals(1, nullSet2.connections.set.size());
+        Assert.assertTrue(nullSet2.connections.contains(set2_1));
 
     }
 }

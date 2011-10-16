@@ -13,8 +13,8 @@ public class SuffixForm {
     // can be an end suffix.
     public TerminationType terminationType = TerminationType.TERMINAL;
 
-    public SuffixData successors = new SuffixData();
-    public SuffixData directSuccessors = new SuffixData();
+    public SuffixData indirectConnections = new SuffixData();
+    public SuffixData connections = new SuffixData();
 
     public boolean template = false;
 
@@ -25,7 +25,7 @@ public class SuffixForm {
     }
 
     public SuffixData allSuccessors() {
-        return new SuffixData(successors, directSuccessors);
+        return new SuffixData(indirectConnections, connections);
     }
 
     public SuffixForm(Suffix suffix, String generation, TerminationType terminationType) {
@@ -89,11 +89,11 @@ public class SuffixForm {
         SuffixForm that = (SuffixForm) o;
 
         if (template != that.template) return false;
-        if (!directSuccessors.equals(that.directSuccessors)) return false;
         if (!generation.equals(that.generation)) return false;
         if (!id.equals(that.id)) return false;
-/*        if (!successors.equals(that.successors)) return false;
-        if (!suffix.equals(that.suffix)) return false;*/
+        if (!connections.equals(that.connections)) return false;
+        if (!indirectConnections.equals(that.indirectConnections)) return false;
+        if (!suffix.equals(that.suffix)) return false;
         if (terminationType != that.terminationType) return false;
 
         return true;
@@ -105,8 +105,8 @@ public class SuffixForm {
         result = 31 * result + suffix.hashCode();
         result = 31 * result + generation.hashCode();
         result = 31 * result + terminationType.hashCode();
-/*        result = 31 * result + successors.hashCode();
-        result = 31 * result + directSuccessors.hashCode();*/
+//        result = 31 * result + indirectConnections.hashCode();
+//        result = 31 * result + connections.hashCode();
         result = 31 * result + (template ? 1 : 0);
         return result;
     }

@@ -132,31 +132,31 @@ public class SimpleParserTest {
 
         NounSuffixes() {
 
-            Noun_TEMPLATE.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
-            Noun_TEMPLATE.successors.add(P1sg_Im, Pnon_TEMPLATE, Nom_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Noun_Deriv);
+            Noun_TEMPLATE.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+            Noun_TEMPLATE.indirectConnections.add(P1sg_Im, Pnon_TEMPLATE, Nom_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Noun_Deriv);
 
-            Noun_Default.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-            Noun_Default.successors.add(Noun_TEMPLATE.successors).remove(Dat_nA);
+            Noun_Default.connections.add(Noun_TEMPLATE.connections);
+            Noun_Default.indirectConnections.add(Noun_TEMPLATE.indirectConnections).remove(Dat_nA);
 
-            Noun_Deriv.directSuccessors.add(Dim_CIK);
-            //Noun2Noun.successors.add(Noun_TEMPLATE.allSuccessors());
+            Noun_Deriv.connections.add(Dim_CIK);
+            //Noun2Noun.indirectConnections.add(Noun_TEMPLATE.allSuccessors());
 
-            A3sg_TEMPLATE.directSuccessors.add(Pnon_TEMPLATE, P1sg_Im);
-            A3sg_TEMPLATE.successors.add(Nom_TEMPLATE, Dat_yA, Dat_nA, Noun_Deriv).add(Noun_Deriv.allSuccessors());
+            A3sg_TEMPLATE.connections.add(Pnon_TEMPLATE, P1sg_Im);
+            A3sg_TEMPLATE.indirectConnections.add(Nom_TEMPLATE, Dat_yA, Dat_nA, Noun_Deriv).add(Noun_Deriv.allSuccessors());
 
-            A3pl_lAr.directSuccessors.add(P1sg_Im, Pnon_TEMPLATE);
-            A3pl_lAr.successors.add(Nom_TEMPLATE, Dat_yA);
+            A3pl_lAr.connections.add(P1sg_Im, Pnon_TEMPLATE);
+            A3pl_lAr.indirectConnections.add(Nom_TEMPLATE, Dat_yA);
 
-            P1sg_Im.directSuccessors.add(Nom_TEMPLATE, Dat_yA);
+            P1sg_Im.connections.add(Nom_TEMPLATE, Dat_yA);
 
-            Pnon_TEMPLATE.directSuccessors.add(Nom_TEMPLATE, Dat_nA, Dat_yA);
-            Pnon_TEMPLATE.successors.add(Noun_Deriv).add(Noun_Deriv.allSuccessors());
+            Pnon_TEMPLATE.connections.add(Nom_TEMPLATE, Dat_nA, Dat_yA);
+            Pnon_TEMPLATE.indirectConnections.add(Noun_Deriv).add(Noun_Deriv.allSuccessors());
 
-            Nom_TEMPLATE.directSuccessors.add(Noun_Deriv);
-            Nom_TEMPLATE.successors.add(Noun_Deriv.allSuccessors());
+            Nom_TEMPLATE.connections.add(Noun_Deriv);
+            Nom_TEMPLATE.indirectConnections.add(Noun_Deriv.allSuccessors());
 
-            Dim_CIK.directSuccessors.add(Noun_Default.directSuccessors);
-            Dim_CIK.successors.add(Noun_Default.allSuccessors().remove(Dim_CIK));
+            Dim_CIK.connections.add(Noun_Default.connections);
+            Dim_CIK.indirectConnections.add(Noun_Default.allSuccessors().remove(Dim_CIK));
 
             registerForms(Noun_TEMPLATE, Noun_Deriv, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE);
             registerForms(Noun_Default, A3pl_lAr, P1sg_Im, Dat_yA, Dat_nA, Dim_CIK);

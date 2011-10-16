@@ -425,8 +425,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         //---------------------------- Root and Derivation Morphemes ---------------------------------------------------
 
         // noun template. it has all possible suffix forms that a noun can have
-        Noun_TEMPLATE.directSuccessors.add(A3pl_lAr, A3pl_Comp_lAr, A3sg_TEMPLATE);
-        Noun_TEMPLATE.successors
+        Noun_TEMPLATE.connections.add(A3pl_lAr, A3pl_Comp_lAr, A3sg_TEMPLATE);
+        Noun_TEMPLATE.indirectConnections
                 .add(POSSESSIVE_FORMS, CASE_FORMS)
                 .add(Cop_dIr, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken)
                 .add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, Cop_dIr)
@@ -437,74 +437,74 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Noun2Noun, Noun2Adj, Noun2Verb, Noun2VerbCopular);
 
         // default noun suffix form. we remove some suffixes so that words like araba-na (dative)
-        Noun_Default.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
-        Noun_Default.successors
-                .add(Noun_TEMPLATE.successors)
+        Noun_Default.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+        Noun_Default.indirectConnections
+                .add(Noun_TEMPLATE.indirectConnections)
                 .remove(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
 
-        Noun2Noun.directSuccessors.add(Dim_cIk, Dim2_cAgIz, Agt_cI, Ness_lIk);
+        Noun2Noun.connections.add(Dim_cIk, Dim2_cAgIz, Agt_cI, Ness_lIk);
 
-        Noun2Adj.directSuccessors.add(With_lI, Without_sIz, Resemb_msI, Resemb_ImsI, Rel_ki, Related_sAl);
+        Noun2Adj.connections.add(With_lI, Without_sIz, Resemb_msI, Resemb_ImsI, Rel_ki, Related_sAl);
 
-        Noun2Verb.directSuccessors.add(Become_lAs, Acquire_lAn);
+        Noun2Verb.connections.add(Become_lAs, Acquire_lAn);
 
-        Noun2VerbCopular.directSuccessors.add(Pres_TEMPLATE, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken);
-        Noun2VerbCopular.successors.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr);
-        Noun2VerbCopular.successors.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, Cop_dIr);
+        Noun2VerbCopular.connections.add(Pres_TEMPLATE, PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken);
+        Noun2VerbCopular.indirectConnections.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr);
+        Noun2VerbCopular.indirectConnections.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, Cop_dIr);
 
-        Adj2Noun.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-        Adj2Noun.successors.add(Noun_TEMPLATE.successors).remove(Related_sAl, Become_lAs, Resemb_ImsI, Resemb_msI);
+        Adj2Noun.connections.add(Noun_TEMPLATE.connections);
+        Adj2Noun.indirectConnections.add(Noun_TEMPLATE.indirectConnections).remove(Related_sAl, Become_lAs, Resemb_ImsI, Resemb_msI);
 
-        Adj2Adj.directSuccessors.add(Quite_cA, Resemb_Adj_ImsI, Resemb_Adj_msI);
+        Adj2Adj.connections.add(Quite_cA, Resemb_Adj_ImsI, Resemb_Adj_msI);
 
-        Adj2Adv.directSuccessors.add(Ly_cA);
+        Adj2Adv.connections.add(Ly_cA);
 
-        Adv2Noun.directSuccessors.add(A3sg_TEMPLATE);
-        Adv2Noun.successors.add(Pnon_TEMPLATE, Dat_yA);
+        Adv2Noun.connections.add(A3sg_TEMPLATE);
+        Adv2Noun.indirectConnections.add(Pnon_TEMPLATE, Dat_yA);
 
-        Adv2Adj.directSuccessors.add(Rel_ki); // ararkenki
+        Adv2Adj.connections.add(Rel_ki); // ararkenki
 
-        Adj2Verb.directSuccessors.add(Become_Adj_lAs, Acquire_lAn).add(COPULAR_FORMS);
+        Adj2Verb.connections.add(Become_Adj_lAs, Acquire_lAn).add(COPULAR_FORMS);
 
-        Verb2Verb.directSuccessors.add(Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl, Abil_yA);
+        Verb2Verb.connections.add(Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl, Abil_yA);
 
-        Verb2VerbCompounds.directSuccessors.add(KeepDoing_yAgor, KeepDoing2_yAdur, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal);
+        Verb2VerbCompounds.connections.add(KeepDoing_yAgor, KeepDoing2_yAdur, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal);
 
-        Verb2VerbAbility.directSuccessors.add(Abil_yAbil);
+        Verb2VerbAbility.connections.add(Abil_yAbil);
 
-        Verb2Noun.directSuccessors.add(Inf1_mAk, Inf2_mA, Inf3_yIs, FeelLike_yAsI_2Noun, Agt_yIcI_2Noun, NotState_mAzlIk);
-        Verb2Noun.successors.add(Noun_TEMPLATE.successors);
+        Verb2Noun.connections.add(Inf1_mAk, Inf2_mA, Inf3_yIs, FeelLike_yAsI_2Noun, Agt_yIcI_2Noun, NotState_mAzlIk);
+        Verb2Noun.indirectConnections.add(Noun_TEMPLATE.indirectConnections);
 
-        Verb2NounPart.directSuccessors.add(PastPart_dIk_2Noun, EvidPart_mIs_2Noun, FutPart_yAcAk_2Noun);
-        Verb2AdjPart.directSuccessors.add(PastPart_dIk_2Adj, EvidPart_mIs_2Adj, FutPart_yAcAk_2Adj, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj, PresPart_yAn);
+        Verb2NounPart.connections.add(PastPart_dIk_2Noun, EvidPart_mIs_2Noun, FutPart_yAcAk_2Noun);
+        Verb2AdjPart.connections.add(PastPart_dIk_2Adj, EvidPart_mIs_2Adj, FutPart_yAcAk_2Adj, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj, PresPart_yAn);
 
-        Verb2Adv.directSuccessors.add(When_yIncA, SinceDoing_yAlI, UnableToDo_yAmAdAn, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
+        Verb2Adv.connections.add(When_yIncA, SinceDoing_yAlI, UnableToDo_yAmAdAn, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
                 .add(InsteadOfDoing_mAktAnsA, AsLongAs_dIkcA, AfterDoing_yIp, AsIf_cAsInA);
 
-        Verb2Adj.directSuccessors.add(When_yIncA, FeelLike_yAsI_2Adj, Agt_yIcI_2Adj);
+        Verb2Adj.connections.add(When_yIncA, FeelLike_yAsI_2Adj, Agt_yIcI_2Adj);
 
-        Adv_TEMPLATE.directSuccessors.add(Adv2Noun, Adv2Adj);
+        Adv_TEMPLATE.connections.add(Adv2Noun, Adv2Adj);
 
-        Adj_TEMPLATE.directSuccessors.add(Adj2Noun, Adj2Adj, Adj2Adv, Adj2Verb);
-        Adj_TEMPLATE.successors.add(
+        Adj_TEMPLATE.connections.add(Adj2Noun, Adj2Adj, Adj2Adv, Adj2Verb);
+        Adj_TEMPLATE.indirectConnections.add(
                 Adj2Noun.allSuccessors(),
                 Adj2Adj.allSuccessors(),
                 Adj2Adv.allSuccessors(),
                 Adj2Verb.allSuccessors());
 
-        Adj_Default.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        Adj_Default.successors.add(Adj_TEMPLATE.successors);
+        Adj_Default.connections.add(Adj_TEMPLATE.connections);
+        Adj_Default.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
         // P3sg compound suffixes. (full form. such as zeytinyağı-na)
-        Noun_Comp_P3sg.directSuccessors.add(A3sg_TEMPLATE);
-        Noun_Comp_P3sg.successors.add(POSSESSIVE_FORMS)
+        Noun_Comp_P3sg.connections.add(A3sg_TEMPLATE);
+        Noun_Comp_P3sg.indirectConnections.add(POSSESSIVE_FORMS)
                 .add(Pnon_TEMPLATE, Nom_TEMPLATE)
                 .add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
                 .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
 
         // P3sg compound suffixes. (root form. such as zeytinyağ-lar-ı)
-        Noun_Comp_P3sg_Root.directSuccessors.add(A3pl_Comp_lAr, A3sg_TEMPLATE); // A3pl_Comp_lAr is used, because zeytinyağ-lar is not allowed.
-        Noun_Comp_P3sg_Root.successors
+        Noun_Comp_P3sg_Root.connections.add(A3pl_Comp_lAr, A3sg_TEMPLATE); // A3pl_Comp_lAr is used, because zeytinyağ-lar is not allowed.
+        Noun_Comp_P3sg_Root.indirectConnections
                 .add(Pnon_TEMPLATE, Nom_TEMPLATE, With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl)
                 .add(P3pl_lArI)
                 .add(Noun2Noun.allSuccessors())
@@ -513,13 +513,13 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Noun2Adj);
 
         // Proper noun default //TODO: should be a template
-        ProperNoun_Main.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
-        ProperNoun_Main.successors
+        ProperNoun_Main.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+        ProperNoun_Main.indirectConnections
                 .add(CASE_FORMS, POSSESSIVE_FORMS)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_TEMPLATE, Agt_cI, Ness_lIk);
 
-        Verb_TEMPLATE.directSuccessors.add(Neg_mA, Neg_m, Pos_EMPTY, Verb2Verb);
-        Verb_TEMPLATE.successors
+        Verb_TEMPLATE.connections.add(Neg_mA, Neg_m, Pos_EMPTY, Verb2Verb);
+        Verb_TEMPLATE.indirectConnections
                 .add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, Aor_Ar, Aor_z, AorPart_Ir_2Adj, AorPart_Ar_2Adj)
                 .add(Abil_yAbil, Abil_yA, Caus_tIr, Caus_t, Opt_yA, Imp_TEMPLATE, Agt_yIcI_2Adj, Agt_yIcI_2Noun, Des_sA)
                 .add(NotState_mAzlIk, ActOf_mAcA, PastPart_dIk_2Adj, PastPart_dIk_2Noun, EvidPart_mIs_2Adj, EvidPart_mIs_2Noun, Pass_In, Pass_nIl, Pass_InIl)
@@ -531,320 +531,320 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
                 .add(UntilDoing_yAsIyA, Verb2VerbCompounds, Verb2Noun, Verb2Adv, Verb2Adj, Verb2NounPart, Verb2AdjPart, Verb2VerbAbility);
 
-        Verb_Default.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Verb_Default.successors.add(Verb_TEMPLATE.successors).remove(Caus_t);
+        Verb_Default.connections.add(Verb_TEMPLATE.connections);
+        Verb_Default.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t);
 
         //---------------------------- Noun -----------------------------------------------------------------------
 
-        A3pl_lAr.directSuccessors.add(POSSESSIVE_FORMS).remove(P3pl_lArI);
-        A3pl_lAr.successors
+        A3pl_lAr.connections.add(POSSESSIVE_FORMS).remove(P3pl_lArI);
+        A3pl_lAr.indirectConnections
                 .add(Noun2VerbCopular)
                 .add(Noun2VerbCopular.allSuccessors())
                 .add(CASE_FORMS)
                 .add(A1pl_yIz, A2pl_sInIz);
 
         //TODO: check below.
-        A3pl_Comp_lAr.directSuccessors.add(A3pl_lAr.directSuccessors);
-        A3pl_Comp_lAr.successors.add(CASE_FORMS)
+        A3pl_Comp_lAr.connections.add(A3pl_lAr.connections);
+        A3pl_Comp_lAr.indirectConnections.add(CASE_FORMS)
                 .add(A1pl_yIz, A2pl_sInIz);
 
-        A3sg_TEMPLATE.directSuccessors.add(POSSESSIVE_FORMS);
-        A3sg_TEMPLATE.successors
-                .add(Noun_TEMPLATE.successors).remove(POSSESSIVE_FORMS)
+        A3sg_TEMPLATE.connections.add(POSSESSIVE_FORMS);
+        A3sg_TEMPLATE.indirectConnections
+                .add(Noun_TEMPLATE.indirectConnections).remove(POSSESSIVE_FORMS)
                 .add(Noun2Noun.allSuccessors()).add(Noun2Noun)
                 .add(Noun2VerbCopular.allSuccessors())
                 .add(Noun2Adj.allSuccessors().add(Noun2Adj));
 
-        Nom_TEMPLATE.directSuccessors.add(Noun2Noun, Noun2Adj, Noun2Verb, Noun2VerbCopular);
+        Nom_TEMPLATE.connections.add(Noun2Noun, Noun2Adj, Noun2Verb, Noun2VerbCopular);
 
-        Nom_TEMPLATE.successors
+        Nom_TEMPLATE.indirectConnections
                 .add(Noun2Noun.allSuccessors())
                 .add(Noun2Adj.allSuccessors())
                 .add(Noun2VerbCopular.allSuccessors())
                 .add(Noun2Verb.allSuccessors());
 
-        Pres_TEMPLATE.directSuccessors.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr);
-        Pres_TEMPLATE.successors.add(Cop_dIr);
+        Pres_TEMPLATE.connections.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr);
+        Pres_TEMPLATE.indirectConnections.add(Cop_dIr);
 
-        A1sg_yIm.directSuccessors.add(Cop_dIr);
-        A2sg_sIn.directSuccessors.add(Cop_dIr);
-        A3sg_Verb_TEMPLATE.directSuccessors.add(Cop_dIr, Verb2Adv);
-        A3sg_Verb_TEMPLATE.successors.add(AsIf_cAsInA);
-        A1pl_yIz.directSuccessors.add(Cop_dIr, Verb2Adv);
-        A1pl_yIz.successors.add(AsIf_cAsInA);
-        A2pl_sInIz.directSuccessors.add(Cop_dIr, Verb2Adv);
-        A2pl_sInIz.successors.add(AsIf_cAsInA);
-        A3pl_Verb_lAr.directSuccessors.add(Evid_mIs, Past_dI, Cond_sA, Cop_dIr, Verb2Adv);
-        A3pl_Verb_lAr.successors.add(AsIf_cAsInA);
+        A1sg_yIm.connections.add(Cop_dIr);
+        A2sg_sIn.connections.add(Cop_dIr);
+        A3sg_Verb_TEMPLATE.connections.add(Cop_dIr, Verb2Adv);
+        A3sg_Verb_TEMPLATE.indirectConnections.add(AsIf_cAsInA);
+        A1pl_yIz.connections.add(Cop_dIr, Verb2Adv);
+        A1pl_yIz.indirectConnections.add(AsIf_cAsInA);
+        A2pl_sInIz.connections.add(Cop_dIr, Verb2Adv);
+        A2pl_sInIz.indirectConnections.add(AsIf_cAsInA);
+        A3pl_Verb_lAr.connections.add(Evid_mIs, Past_dI, Cond_sA, Cop_dIr, Verb2Adv);
+        A3pl_Verb_lAr.indirectConnections.add(AsIf_cAsInA);
 
-        Dim_cIk.directSuccessors.add(Noun_Default.directSuccessors);
-        Dim_cIk.successors.add(Noun_Default.allSuccessors().add(Noun2VerbCopular).remove(Dim_cIk, Dim2_cAgIz));
+        Dim_cIk.connections.add(Noun_Default.connections);
+        Dim_cIk.indirectConnections.add(Noun_Default.allSuccessors().add(Noun2VerbCopular).remove(Dim_cIk, Dim2_cAgIz));
 
-        Agt_cI.directSuccessors.add(Noun_Default.directSuccessors);
-        Agt_cI.successors.add(Noun_Default.allSuccessors().add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors()).remove(Agt_cI));
+        Agt_cI.connections.add(Noun_Default.connections);
+        Agt_cI.indirectConnections.add(Noun_Default.allSuccessors().add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors()).remove(Agt_cI));
 
-        Dim2_cAgIz.directSuccessors.add(Noun_Default.directSuccessors);
-        Dim2_cAgIz.successors.add(Noun_Default.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
+        Dim2_cAgIz.connections.add(Noun_Default.connections);
+        Dim2_cAgIz.indirectConnections.add(Noun_Default.allSuccessors().remove(Dim_cIk, Dim2_cAgIz));
 
-        Ness_lIk.directSuccessors.add(Noun_Default.directSuccessors);
-        Ness_lIk.successors.add(Noun_Default.allSuccessors().remove(Ness_lIk));
+        Ness_lIk.connections.add(Noun_Default.connections);
+        Ness_lIk.indirectConnections.add(Noun_Default.allSuccessors().remove(Ness_lIk));
 
-        Pnon_TEMPLATE.directSuccessors
+        Pnon_TEMPLATE.connections
                 .add(CASE_FORMS)
                 .add(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
-        Pnon_TEMPLATE.successors
-                .add(Nom_TEMPLATE.directSuccessors)
+        Pnon_TEMPLATE.indirectConnections
+                .add(Nom_TEMPLATE.connections)
                 .add(Noun2Noun.allSuccessors())
                 .add(Noun2Verb.allSuccessors())
                 .add(Noun2VerbCopular.allSuccessors())
                 .add(Noun2Adj.allSuccessors());
 
-        P1sg_Im.directSuccessors.add(CASE_FORMS);
-        P1sg_Im.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
+        P1sg_Im.connections.add(CASE_FORMS);
+        P1sg_Im.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
-        P2sg_In.directSuccessors.add(CASE_FORMS);
-        P2sg_In.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
+        P2sg_In.connections.add(CASE_FORMS);
+        P2sg_In.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
-        P3sg_sI.directSuccessors.add(Nom_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
-        P3sg_sI.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
+        P3sg_sI.connections.add(Nom_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
+        P3sg_sI.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
-        P1pl_ImIz.directSuccessors.add(CASE_FORMS);
-        P1pl_ImIz.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
+        P1pl_ImIz.connections.add(CASE_FORMS);
+        P1pl_ImIz.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
-        P2pl_InIz.directSuccessors.add(CASE_FORMS);
-        P2pl_InIz.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
+        P2pl_InIz.connections.add(CASE_FORMS);
+        P2pl_InIz.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
-        P3pl_lArI.directSuccessors.add(CASE_FORMS);
-        P3pl_lArI.successors.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
+        P3pl_lArI.connections.add(CASE_FORMS);
+        P3pl_lArI.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allSuccessors());
 
-        With_lI.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        With_lI.successors.add(Adj_TEMPLATE.successors);
+        With_lI.connections.add(Adj_TEMPLATE.connections);
+        With_lI.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
-        Related_sAl.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        Related_sAl.successors.add(Adj_TEMPLATE.successors);
+        Related_sAl.connections.add(Adj_TEMPLATE.connections);
+        Related_sAl.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
-        Without_sIz.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        Without_sIz.successors.add(Adj_TEMPLATE.successors);
+        Without_sIz.connections.add(Adj_TEMPLATE.connections);
+        Without_sIz.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
         // Noun->Adj derivation elmadaki=elma+Loc-Adj+Rel
-        Loc_dA.directSuccessors.add(Noun2Adj, Noun2VerbCopular);
-        Loc_dA.successors.add(Rel_ki).add(Noun2VerbCopular.allSuccessors());
+        Loc_dA.connections.add(Noun2Adj, Noun2VerbCopular);
+        Loc_dA.indirectConnections.add(Rel_ki).add(Noun2VerbCopular.allSuccessors());
 
-        Loc_ndA.directSuccessors.add(Noun2Adj, Noun2VerbCopular);
-        Loc_ndA.successors.add(Rel_ki).add(Noun2VerbCopular.allSuccessors());
+        Loc_ndA.connections.add(Noun2Adj, Noun2VerbCopular);
+        Loc_ndA.indirectConnections.add(Rel_ki).add(Noun2VerbCopular.allSuccessors());
 
-        Dat_nA.directSuccessors.add(Noun2VerbCopular);
-        Dat_nA.successors.add(Noun2VerbCopular.allSuccessors());
+        Dat_nA.connections.add(Noun2VerbCopular);
+        Dat_nA.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Dat_yA.directSuccessors.add(Noun2VerbCopular);
-        Dat_yA.successors.add(Noun2VerbCopular.allSuccessors());
+        Dat_yA.connections.add(Noun2VerbCopular);
+        Dat_yA.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Gen_nIn.directSuccessors.add(Noun2VerbCopular);
-        Gen_nIn.successors.add(Noun2VerbCopular.allSuccessors());
+        Gen_nIn.connections.add(Noun2VerbCopular);
+        Gen_nIn.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Dat_yA.directSuccessors.add(Noun2VerbCopular);
-        Dat_yA.successors.add(Noun2VerbCopular.allSuccessors());
+        Dat_yA.connections.add(Noun2VerbCopular);
+        Dat_yA.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Abl_dAn.directSuccessors.add(Noun2VerbCopular);
-        Abl_dAn.successors.add(Noun2VerbCopular.allSuccessors());
+        Abl_dAn.connections.add(Noun2VerbCopular);
+        Abl_dAn.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Abl_ndAn.directSuccessors.add(Noun2VerbCopular);
-        Abl_ndAn.successors.add(Noun2VerbCopular.allSuccessors());
+        Abl_ndAn.connections.add(Noun2VerbCopular);
+        Abl_ndAn.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Inst_ylA.directSuccessors.add(Noun2VerbCopular);
-        Inst_ylA.successors.add(Noun2VerbCopular.allSuccessors());
+        Inst_ylA.connections.add(Noun2VerbCopular);
+        Inst_ylA.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Equ_cA.directSuccessors.add(Noun2VerbCopular);
-        Equ_cA.successors.add(Noun2VerbCopular.allSuccessors());
+        Equ_cA.connections.add(Noun2VerbCopular);
+        Equ_cA.indirectConnections.add(Noun2VerbCopular.allSuccessors());
 
-        Rel_ki.directSuccessors.add(Adj2Noun);
-        Rel_ki.successors.add(Adj2Noun.successors).add(A3sg_TEMPLATE, Pnon_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
+        Rel_ki.connections.add(Adj2Noun);
+        Rel_ki.indirectConnections.add(Adj2Noun.indirectConnections).add(A3sg_TEMPLATE, Pnon_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
 
-        Resemb_msI.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        Resemb_msI.successors.add(Adj_TEMPLATE.successors);
+        Resemb_msI.connections.add(Adj_TEMPLATE.connections);
+        Resemb_msI.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
-        Resemb_ImsI.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        Resemb_ImsI.successors.add(Adj_TEMPLATE.successors);
+        Resemb_ImsI.connections.add(Adj_TEMPLATE.connections);
+        Resemb_ImsI.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
-        Resemb_Adj_msI.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        Resemb_Adj_msI.successors.add(Adj_TEMPLATE.successors);
+        Resemb_Adj_msI.connections.add(Adj_TEMPLATE.connections);
+        Resemb_Adj_msI.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
-        Resemb_Adj_ImsI.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
-        Resemb_Adj_ImsI.successors.add(Adj_TEMPLATE.successors);
+        Resemb_Adj_ImsI.connections.add(Adj_TEMPLATE.connections);
+        Resemb_Adj_ImsI.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
         //---------------------------- Adjective -----------------------------------------------------------------------
 
-        Become_lAs.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Become_lAs.successors.add(Verb_TEMPLATE.successors);
+        Become_lAs.connections.add(Verb_TEMPLATE.connections);
+        Become_lAs.indirectConnections.add(Verb_TEMPLATE.indirectConnections);
 
-        Acquire_lAn.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Acquire_lAn.successors.add(Verb_TEMPLATE.successors);
+        Acquire_lAn.connections.add(Verb_TEMPLATE.connections);
+        Acquire_lAn.indirectConnections.add(Verb_TEMPLATE.indirectConnections);
 
-        Become_Adj_lAs.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Become_Adj_lAs.successors.add(Verb_TEMPLATE.successors);
+        Become_Adj_lAs.connections.add(Verb_TEMPLATE.connections);
+        Become_Adj_lAs.indirectConnections.add(Verb_TEMPLATE.indirectConnections);
 
-        Quite_cA.directSuccessors.add(Adj_TEMPLATE.directSuccessors);
+        Quite_cA.connections.add(Adj_TEMPLATE.connections);
 
-        Ly_cA.directSuccessors.add(Adv_TEMPLATE.directSuccessors);
+        Ly_cA.connections.add(Adv_TEMPLATE.connections);
 
         //---------------------------- Verb ----------------------------------------------------------------------------
 
-        Pos_EMPTY.directSuccessors
+        Pos_EMPTY.connections
                 .add(Verb2VerbCompounds, Verb2Noun, Verb2Adv, Verb2Adj, Verb2AdjPart, Verb2NounPart, Verb2VerbAbility,
                         Imp_TEMPLATE, Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Aor_Ar, Aor_Ir, Past_dI, Evid_mIs)
                 .add(Cond_sA, Necess_mAlI, Opt_yA, Des_sA);
-        Pos_EMPTY.successors
-                .add(Verb_Default.successors)
+        Pos_EMPTY.indirectConnections
+                .add(Verb_Default.indirectConnections)
                 .add(A2pl2_sAnIzA, A2pl_yIn)
-                .add(Verb2AdjPart.directSuccessors, Verb2NounPart.directSuccessors)
+                .add(Verb2AdjPart.connections, Verb2NounPart.connections)
                 .remove(Neg_m, Neg_mA);
 
-        Neg_mA.directSuccessors.add(Verb2VerbCompounds, Verb2VerbAbility, Verb2Noun, Verb2Verb, Verb2Adv, Verb2Adj, Verb2AdjPart, Verb2NounPart,
+        Neg_mA.connections.add(Verb2VerbCompounds, Verb2VerbAbility, Verb2Noun, Verb2Verb, Verb2Adv, Verb2Adj, Verb2AdjPart, Verb2NounPart,
                 Aor_z, Aor_EMPTY, Prog2_mAktA, Imp_TEMPLATE, Opt_yA, Des_sA,
                 Fut_yAcAk, Past_dI, Evid_mIs, Necess_mAlI, NotState_mAzlIk,
                 ActOf_mAcA);
 
-        Neg_mA.successors.add(Verb2VerbCompounds.directSuccessors, Verb2AdjPart.directSuccessors, Verb2NounPart.directSuccessors,
-                Verb2Noun.directSuccessors, Verb2Adv.directSuccessors, Verb2Adj.directSuccessors)
+        Neg_mA.indirectConnections.add(Verb2VerbCompounds.connections, Verb2AdjPart.connections, Verb2NounPart.connections,
+                Verb2Noun.connections, Verb2Adv.connections, Verb2Adj.connections)
                 .add(A2sg_TEMPLATE, A1sg_m, A1sg_yIm, A2sg_sIn, A2sg2_sAnA, A2sg3_yInIz, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A2pl2_sAnIzA, A2pl_yIn, A3pl_Verb_lAr, A3sg_sIn, A3pl_sInlAr)
                 .add(Abil_yAbil);
 
-        Neg_m.directSuccessors.add(Prog_Iyor);
+        Neg_m.connections.add(Prog_Iyor);
 
-        Imp_TEMPLATE.directSuccessors.add(A2sg_TEMPLATE, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
+        Imp_TEMPLATE.connections.add(A2sg_TEMPLATE, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
 
-        Caus_t.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Caus_t.successors.add(Verb_TEMPLATE.allSuccessors()).add(Pass_nIl).add(Caus_tIr).remove(Caus_t);
+        Caus_t.connections.add(Verb_TEMPLATE.connections);
+        Caus_t.indirectConnections.add(Verb_TEMPLATE.allSuccessors()).add(Pass_nIl).add(Caus_tIr).remove(Caus_t);
 
-        Caus_tIr.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Caus_tIr.successors.add(Verb_TEMPLATE.allSuccessors()).add(Pass_nIl).add(Caus_t).remove(Caus_tIr);
+        Caus_tIr.connections.add(Verb_TEMPLATE.connections);
+        Caus_tIr.indirectConnections.add(Verb_TEMPLATE.allSuccessors()).add(Pass_nIl).add(Caus_t).remove(Caus_tIr);
 
-        Pass_nIl.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Pass_nIl.successors.add(Verb_TEMPLATE.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+        Pass_nIl.connections.add(Verb_TEMPLATE.connections);
+        Pass_nIl.indirectConnections.add(Verb_TEMPLATE.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
-        Pass_In.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Pass_In.successors.add(Verb_TEMPLATE.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+        Pass_In.connections.add(Verb_TEMPLATE.connections);
+        Pass_In.indirectConnections.add(Verb_TEMPLATE.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
-        Pass_InIl.directSuccessors.add(Verb_TEMPLATE.directSuccessors);
-        Pass_InIl.successors.add(Verb_TEMPLATE.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+        Pass_InIl.connections.add(Verb_TEMPLATE.connections);
+        Pass_InIl.indirectConnections.add(Verb_TEMPLATE.allSuccessors()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
-        Prog_Iyor.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Prog_Iyor.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
-        Prog2_mAktA.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Prog2_mAktA.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
-        Fut_yAcAk.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Fut_yAcAk.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
-        Aor_Ar.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
-        Aor_Ar.successors.add(Verb2Adv, AsIf_cAsInA);
-        Aor_Ir.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
-        Aor_Ir.successors.add(Verb2Adv, AsIf_cAsInA);
-        Aor_z.directSuccessors.add(A3sg_Verb_TEMPLATE, A3sg_sIn).add(PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, Cop_dIr);
-        Aor_z.successors.add(Verb2Adv, AsIf_cAsInA);
-        Aor_EMPTY.directSuccessors.add(A1sg_m, A1pl_yIz);
+        Aor_Ar.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Aor_Ar.indirectConnections.add(Verb2Adv, AsIf_cAsInA);
+        Aor_Ir.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Aor_Ir.indirectConnections.add(Verb2Adv, AsIf_cAsInA);
+        Aor_z.connections.add(A3sg_Verb_TEMPLATE, A3sg_sIn).add(PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken, Cop_dIr);
+        Aor_z.indirectConnections.add(Verb2Adv, AsIf_cAsInA);
+        Aor_EMPTY.connections.add(A1sg_m, A1pl_yIz);
 
-        AorPart_Ar_2Adj.directSuccessors.add(Adj2Noun);
-        AorPart_Ar_2Adj.successors.add(Adj2Noun.allSuccessors());
-        AorPart_Ir_2Adj.directSuccessors.add(Adj2Noun);
-        AorPart_Ir_2Adj.successors.add(Adj2Noun.allSuccessors());
-        AorPart_z_2Adj.directSuccessors.add(Adj2Noun);
-        AorPart_z_2Adj.successors.add(Adj2Noun.allSuccessors());
+        AorPart_Ar_2Adj.connections.add(Adj2Noun);
+        AorPart_Ar_2Adj.indirectConnections.add(Adj2Noun.allSuccessors());
+        AorPart_Ir_2Adj.connections.add(Adj2Noun);
+        AorPart_Ir_2Adj.indirectConnections.add(Adj2Noun.allSuccessors());
+        AorPart_z_2Adj.connections.add(Adj2Noun);
+        AorPart_z_2Adj.indirectConnections.add(Adj2Noun.allSuccessors());
 
-        PastPart_dIk_2Noun.directSuccessors.add(A3sg_TEMPLATE);
-        PastPart_dIk_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
+        PastPart_dIk_2Noun.connections.add(A3sg_TEMPLATE);
+        PastPart_dIk_2Noun.indirectConnections.add(POSSESSIVE_FORMS, CASE_FORMS);
 
-        EvidPart_mIs_2Noun.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
-        EvidPart_mIs_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
+        EvidPart_mIs_2Noun.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+        EvidPart_mIs_2Noun.indirectConnections.add(POSSESSIVE_FORMS, CASE_FORMS);
 
         // Oflazer suggests only with A3pl. I think A3sg is also possible.
-        FutPart_yAcAk_2Noun.directSuccessors.add(A3pl_lAr, A3sg_TEMPLATE);
-        FutPart_yAcAk_2Noun.successors.add(POSSESSIVE_FORMS, CASE_FORMS);
+        FutPart_yAcAk_2Noun.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+        FutPart_yAcAk_2Noun.indirectConnections.add(POSSESSIVE_FORMS, CASE_FORMS);
 
-        PastPart_dIk_2Adj.directSuccessors.add(Adj2Noun);
-        PastPart_dIk_2Adj.successors.add(Adj2Noun.allSuccessors());
+        PastPart_dIk_2Adj.connections.add(Adj2Noun);
+        PastPart_dIk_2Adj.indirectConnections.add(Adj2Noun.allSuccessors());
 
-        EvidPart_mIs_2Adj.directSuccessors.add(Adj2Noun);
-        EvidPart_mIs_2Adj.successors.add(Adj2Noun.allSuccessors());
+        EvidPart_mIs_2Adj.connections.add(Adj2Noun);
+        EvidPart_mIs_2Adj.indirectConnections.add(Adj2Noun.allSuccessors());
 
-        FutPart_yAcAk_2Adj.directSuccessors.add(Adj2Noun);
-        FutPart_yAcAk_2Noun.successors.add(Adj2Noun.allSuccessors());
+        FutPart_yAcAk_2Adj.connections.add(Adj2Noun);
+        FutPart_yAcAk_2Noun.indirectConnections.add(Adj2Noun.allSuccessors());
 
-        PresPart_yAn.directSuccessors.add(Adj2Noun);
-        PresPart_yAn.successors.add(Adj2Noun.allSuccessors());
+        PresPart_yAn.connections.add(Adj2Noun);
+        PresPart_yAn.indirectConnections.add(Adj2Noun.allSuccessors());
 
-        Past_dI.directSuccessors.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr, CondCop_ysA, PastCop_ydI);
+        Past_dI.connections.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr, CondCop_ysA, PastCop_ydI);
 
-        Evid_mIs.directSuccessors.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr)
+        Evid_mIs.connections.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr)
                 .add(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
 
-        Cond_sA.directSuccessors.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr, PastCop_ydI, EvidCop_ymIs);
+        Cond_sA.connections.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr, PastCop_ydI, EvidCop_ymIs);
 
-        PastCop_ydI.directSuccessors.add(PERSON_FORMS_COP);
-        EvidCop_ymIs.directSuccessors.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr);
-        EvidCop_ymIs.successors.add(Verb2Adv, AsIf_cAsInA);
-        CondCop_ysA.directSuccessors.add(PERSON_FORMS_COP);
-        Cop_dIr.directSuccessors.add(A3pl_Verb_lAr);
+        PastCop_ydI.connections.add(PERSON_FORMS_COP);
+        EvidCop_ymIs.connections.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr);
+        EvidCop_ymIs.indirectConnections.add(Verb2Adv, AsIf_cAsInA);
+        CondCop_ysA.connections.add(PERSON_FORMS_COP);
+        Cop_dIr.connections.add(A3pl_Verb_lAr);
 
         // TODO: may be too broad
-        Inf1_mAk.directSuccessors.add(A3sg_TEMPLATE);
-        Inf1_mAk.successors.add(Pnon_TEMPLATE, Nom_TEMPLATE, Inst_ylA, Dat_yA, Abl_dAn, Acc_yI, Noun2Adj, Noun2Noun, Noun2VerbCopular);
-        Inf1_mAk.successors.add(Noun2Adj.allSuccessors(), Noun2Noun.allSuccessors(), Noun2VerbCopular.allSuccessors());
-        Inf2_mA.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-        Inf2_mA.successors.add(Noun_TEMPLATE.successors);
-        Inf3_yIs.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-        Inf3_yIs.successors.add(Noun_TEMPLATE.successors);
-        NotState_mAzlIk.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-        NotState_mAzlIk.successors.add(Noun_TEMPLATE.successors);
+        Inf1_mAk.connections.add(A3sg_TEMPLATE);
+        Inf1_mAk.indirectConnections.add(Pnon_TEMPLATE, Nom_TEMPLATE, Inst_ylA, Dat_yA, Abl_dAn, Acc_yI, Noun2Adj, Noun2Noun, Noun2VerbCopular);
+        Inf1_mAk.indirectConnections.add(Noun2Adj.allSuccessors(), Noun2Noun.allSuccessors(), Noun2VerbCopular.allSuccessors());
+        Inf2_mA.connections.add(Noun_TEMPLATE.connections);
+        Inf2_mA.indirectConnections.add(Noun_TEMPLATE.indirectConnections);
+        Inf3_yIs.connections.add(Noun_TEMPLATE.connections);
+        Inf3_yIs.indirectConnections.add(Noun_TEMPLATE.indirectConnections);
+        NotState_mAzlIk.connections.add(Noun_TEMPLATE.connections);
+        NotState_mAzlIk.indirectConnections.add(Noun_TEMPLATE.indirectConnections);
 
 
-        Abil_yA.directSuccessors.add(Neg_mA, Neg_m);
-        Abil_yA.successors.add(Neg_mA.allSuccessors());
+        Abil_yA.connections.add(Neg_mA, Neg_m);
+        Abil_yA.indirectConnections.add(Neg_mA.allSuccessors());
 
-        Abil_yAbil.directSuccessors.add(Neg_mA.directSuccessors).add(Aor_Ir, Prog_Iyor).remove(Verb2VerbAbility);
-        Abil_yAbil.successors.add(Neg_mA.successors);
+        Abil_yAbil.connections.add(Neg_mA.connections).add(Aor_Ir, Prog_Iyor).remove(Verb2VerbAbility);
+        Abil_yAbil.indirectConnections.add(Neg_mA.indirectConnections);
 
         // TODO: removing false positives like geliveriver may be necessary
 
-        KeepDoing_yAgor.directSuccessors.add(Pos_EMPTY.directSuccessors, Neg_mA.directSuccessors);
-        KeepDoing_yAgor.successors.add(Pos_EMPTY.successors, Neg_mA.successors);
+        KeepDoing_yAgor.connections.add(Pos_EMPTY.connections, Neg_mA.connections);
+        KeepDoing_yAgor.indirectConnections.add(Pos_EMPTY.indirectConnections, Neg_mA.indirectConnections);
 
-        KeepDoing2_yAdur.directSuccessors.add(Pos_EMPTY.directSuccessors, Neg_mA.directSuccessors);
-        KeepDoing2_yAdur.successors.add(Pos_EMPTY.successors, Neg_mA.successors);
+        KeepDoing2_yAdur.connections.add(Pos_EMPTY.connections, Neg_mA.connections);
+        KeepDoing2_yAdur.indirectConnections.add(Pos_EMPTY.indirectConnections, Neg_mA.indirectConnections);
 
-        EverSince_yAgel.directSuccessors.add(Pos_EMPTY.directSuccessors, Neg_mA.directSuccessors);
-        EverSince_yAgel.successors.add(Pos_EMPTY.successors, Neg_mA.successors);
+        EverSince_yAgel.connections.add(Pos_EMPTY.connections, Neg_mA.connections);
+        EverSince_yAgel.indirectConnections.add(Pos_EMPTY.indirectConnections, Neg_mA.indirectConnections);
 
-        Almost_yAyAz.directSuccessors.add(Pos_EMPTY.directSuccessors, Neg_mA.directSuccessors);
-        Almost_yAyAz.successors.add(Pos_EMPTY.successors, Neg_mA.successors);
+        Almost_yAyAz.connections.add(Pos_EMPTY.connections, Neg_mA.connections);
+        Almost_yAyAz.indirectConnections.add(Pos_EMPTY.indirectConnections, Neg_mA.indirectConnections);
 
-        Hastily_yIver.directSuccessors.add(Pos_EMPTY.directSuccessors, Neg_mA.directSuccessors);
-        Hastily_yIver.successors.add(Pos_EMPTY.successors, Neg_mA.successors);
+        Hastily_yIver.connections.add(Pos_EMPTY.connections, Neg_mA.connections);
+        Hastily_yIver.indirectConnections.add(Pos_EMPTY.indirectConnections, Neg_mA.indirectConnections);
 
-        Stay_yAkal.directSuccessors.add(Pos_EMPTY.directSuccessors, Neg_mA.directSuccessors);
-        Stay_yAkal.successors.add(Pos_EMPTY.successors, Neg_mA.successors);
+        Stay_yAkal.connections.add(Pos_EMPTY.connections, Neg_mA.connections);
+        Stay_yAkal.indirectConnections.add(Pos_EMPTY.indirectConnections, Neg_mA.indirectConnections);
 
-        Necess_mAlI.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Necess_mAlI.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
-        Des_sA.directSuccessors.add(A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
+        Des_sA.connections.add(A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
 
-        When_yIncA.directSuccessors.add(Adv2Noun);
-        When_yIncA.successors.add(Adv2Noun.allSuccessors());
+        When_yIncA.connections.add(Adv2Noun);
+        When_yIncA.indirectConnections.add(Adv2Noun.allSuccessors());
 
         //TODO ararkendi ararkenmiş legal?
-        While_ken.directSuccessors.add(Adv2Adj);
-        While_ken.successors.add(Rel_ki);
+        While_ken.connections.add(Adv2Adj);
+        While_ken.indirectConnections.add(Rel_ki);
 
         // TODO: FeelLike_yAsI_2Noun, Agt_yIcI_Noun may be too broad.
-        FeelLike_yAsI_2Noun.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-        FeelLike_yAsI_2Noun.successors.add(Noun_TEMPLATE.successors);
+        FeelLike_yAsI_2Noun.connections.add(Noun_TEMPLATE.connections);
+        FeelLike_yAsI_2Noun.indirectConnections.add(Noun_TEMPLATE.indirectConnections);
 
-        FeelLike_yAsI_2Adj.directSuccessors.add(Adj_TEMPLATE);
+        FeelLike_yAsI_2Adj.connections.add(Adj_TEMPLATE);
 
-        Agt_yIcI_2Noun.directSuccessors.add(Noun_TEMPLATE.directSuccessors);
-        Agt_yIcI_2Noun.successors.add(Noun_TEMPLATE.successors);
+        Agt_yIcI_2Noun.connections.add(Noun_TEMPLATE.connections);
+        Agt_yIcI_2Noun.indirectConnections.add(Noun_TEMPLATE.indirectConnections);
 
-        Agt_yIcI_2Adj.directSuccessors.add(Adj_TEMPLATE);
+        Agt_yIcI_2Adj.connections.add(Adj_TEMPLATE);
 
-        Opt_yA.directSuccessors.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_lIm, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Opt_yA.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_lIm, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
         registerForms(
                 Noun_TEMPLATE, Verb_TEMPLATE, Adj_TEMPLATE, Adv_TEMPLATE, Pnon_TEMPLATE,

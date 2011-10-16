@@ -98,7 +98,7 @@ public class DynamicLexiconGraph {
 
     private void connectSuffixNodes(SuffixNode node) {
         // get the successive form sets for this node.
-        SuffixData successors = node.suffixSet.directSuccessors;
+        SuffixData successors = node.suffixSet.connections;
         // iterate over form sets.
         for (SuffixForm succSet : successors) {
             // get the nodes for the  suffix form.

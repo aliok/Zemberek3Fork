@@ -17,13 +17,13 @@ public class SuffixFormSetTest {
         SuffixForm sf3 = new SuffixForm("sf3", suffix, "k", TerminationType.TERMINAL);
         Assert.assertFalse(sf1.equals(sf3));
 
-        sf1.directSuccessors.add(sf3);
+        sf1.connections.add(sf3);
         Assert.assertFalse(sf1.equals(sf2));
 
-        sf2.directSuccessors.add(sf3);
+        sf2.connections.add(sf3);
         Assert.assertTrue(sf1.equals(sf2));
 
-        sf1.directSuccessors.remove(sf3);
+        sf1.connections.remove(sf3);
         SuffixForm sf4 = new SuffixForm("sf4", suffix, "lAr", TerminationType.NON_TERMINAL);
         Assert.assertFalse(sf4.equals(sf2));
     }
