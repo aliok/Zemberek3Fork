@@ -14,7 +14,7 @@ public class SuffixNodeTest {
 
     @Test
     public void equalityTest() {
-        SuffixForm dummySet = new SuffixForm("dummy-set", new Suffix("dummy-suffix"), "lar");
+        SuffixForm dummySet = new SuffixForm(1,"dummy-set", new Suffix("dummy-suffix"), "lar");
         SuffixNode node1 = new SuffixNode(
                 dummySet,
                 "ler",

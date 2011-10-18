@@ -20,7 +20,7 @@ public class SimpleParserTest {
     public void testSuffixNonDeterminism() {
         DynamicLexiconGraph graph = getLexiconGraph("elma");
         assertHasParses(graph, "elmacığa", "elmacık");
-        assertUnParseable(graph, "elmacığ", "elmacıka","elmamcık","elmayacık","elmalarcık");
+        assertUnParseable(graph, "elmacığ", "elmacıka", "elmamcık", "elmayacık", "elmalarcık");
     }
 
     @Test
@@ -47,7 +47,7 @@ public class SimpleParserTest {
     @Test
     public void testCompounds() {
         DynamicLexiconGraph graph = getLexiconGraph("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
-        assertHasParses(graph, "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcık","zeytinyağcığa", "zeytinyağlarım");
+        assertHasParses(graph, "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcık", "zeytinyağcığa", "zeytinyağlarım");
         assertUnParseable(graph, "zeytinyağılar", "zeytinyağıcık");
     }
 
@@ -76,6 +76,8 @@ public class SimpleParserTest {
         SimpleParser parser = new SimpleParser(graph);
         for (String word : words) {
             List<ParseResult> results = parser.parse(word);
+            if (results.size() == 0)
+                parser.dump(word);
             Assert.assertTrue("No parse for:" + word, results.size() > 0);
             for (ParseResult result : results) {
                 System.out.println(word + "= " + result.asParseString());
@@ -117,18 +119,18 @@ public class SimpleParserTest {
 
     static class NounSuffixes extends DynamicSuffixProvider {
 
-        static SuffixForm Dim_CIK = getSet("Dim", ">cI~k");
-        static SuffixForm P1sg_Im = getSet("P1sg", "Im");
-        static SuffixForm Dat_yA = getSet("Dat", "+yA");
-        static SuffixForm Dat_nA = getSet("Dat", "nA");
-        static SuffixForm Pnon_TEMPLATE = getTemplate("Pnon", "Pnon_TEMPLATE");
-        static SuffixForm Nom_TEMPLATE = getTemplate("Nom", "Nom_TEMPLATE");
-        static SuffixForm A3sg_TEMPLATE = getTemplate("A3sg", "A3sg_TEMPLATE");
-        static SuffixForm A3pl_lAr = getSet("A3pl", "lAr");
+        static SuffixForm Dim_CIK = getForm(new Suffix("Dim"), ">cI~k");
+        static SuffixForm P1sg_Im = getForm(new Suffix("P1sg"), "Im");
+        static SuffixForm Dat_yA = getForm(new Suffix("Dat"), "+yA");
+        static SuffixForm Dat_nA = getForm(new Suffix("Dat"), "nA");
+        static SuffixFormTemplate Pnon_TEMPLATE = getTemplate("Pnon_TEMPLATE", new Suffix("Pnon"));
+        static SuffixFormTemplate Nom_TEMPLATE = getTemplate("Nom_TEMPLATE", new Suffix("Nom"));
+        static SuffixFormTemplate A3sg_TEMPLATE = getTemplate("A3sg_TEMPLATE", new Suffix("A3sg"));
+        static SuffixForm A3pl_lAr = getForm(new Suffix("A3pl"), "lAr");
         static Suffix Noun_Root = new Suffix("Noun");
-        static SuffixForm Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
-        static SuffixForm Noun_Default = getNull("Noun_Default", Noun_Root);
-        static SuffixForm Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
+        static SuffixFormTemplate Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
+        static SuffixForm Noun_Default = getNull("Noun_Default", Noun_TEMPLATE);
+        static SuffixFormTemplate Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
 
         NounSuffixes() {
 
@@ -139,10 +141,10 @@ public class SimpleParserTest {
             Noun_Default.indirectConnections.add(Noun_TEMPLATE.indirectConnections).remove(Dat_nA);
 
             Noun_Deriv.connections.add(Dim_CIK);
-            //Noun2Noun.indirectConnections.add(Noun_TEMPLATE.allSuccessors());
+            //Noun2Noun.indirectConnections.add(Noun_TEMPLATE.allConnections());
 
             A3sg_TEMPLATE.connections.add(Pnon_TEMPLATE, P1sg_Im);
-            A3sg_TEMPLATE.indirectConnections.add(Nom_TEMPLATE, Dat_yA, Dat_nA, Noun_Deriv).add(Noun_Deriv.allSuccessors());
+            A3sg_TEMPLATE.indirectConnections.add(Nom_TEMPLATE, Dat_yA, Dat_nA, Noun_Deriv).add(Noun_Deriv.allConnections());
 
             A3pl_lAr.connections.add(P1sg_Im, Pnon_TEMPLATE);
             A3pl_lAr.indirectConnections.add(Nom_TEMPLATE, Dat_yA);
@@ -150,18 +152,16 @@ public class SimpleParserTest {
             P1sg_Im.connections.add(Nom_TEMPLATE, Dat_yA);
 
             Pnon_TEMPLATE.connections.add(Nom_TEMPLATE, Dat_nA, Dat_yA);
-            Pnon_TEMPLATE.indirectConnections.add(Noun_Deriv).add(Noun_Deriv.allSuccessors());
+            Pnon_TEMPLATE.indirectConnections.add(Noun_Deriv).add(Noun_Deriv.allConnections());
 
             Nom_TEMPLATE.connections.add(Noun_Deriv);
-            Nom_TEMPLATE.indirectConnections.add(Noun_Deriv.allSuccessors());
+            Nom_TEMPLATE.indirectConnections.add(Noun_Deriv.allConnections());
 
             Dim_CIK.connections.add(Noun_Default.connections);
-            Dim_CIK.indirectConnections.add(Noun_Default.allSuccessors().remove(Dim_CIK));
+            Dim_CIK.indirectConnections.add(Noun_Default.allConnections().remove(Dim_CIK));
 
             registerForms(Noun_TEMPLATE, Noun_Deriv, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE);
             registerForms(Noun_Default, A3pl_lAr, P1sg_Im, Dat_yA, Dat_nA, Dim_CIK);
-
-            dumpPath(Dim_CIK,3);
         }
 
 
@@ -177,13 +177,9 @@ public class SimpleParserTest {
             } else {
                 switch (item.primaryPos) {
                     case Noun:
-                        SuffixForm copyOfTemplate = generateSetFromTemplate(Noun_TEMPLATE, successorConstraint);
-                        if (formSetLookup.containsKey(copyOfTemplate)) {
-                            copyOfTemplate = formSetLookup.get(copyOfTemplate);
-                        } else {
-                            registerForm(copyOfTemplate);
-                        }
-                        return copyOfTemplate;
+                        SuffixForm nullForm = generateNullFormFromTemplate(Noun_TEMPLATE, successorConstraint);
+                        registerForm(nullForm);
+                        return nullForm;
                     default:
                         throw new UnsupportedOperationException("In this class only some noun morphemes exist.");
 
@@ -214,7 +210,7 @@ public class SimpleParserTest {
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case CompoundP3sg:
-                        original.add(Noun_Default.allSuccessors().remove(Dim_CIK, A3pl_lAr, Dat_yA).add(Dat_nA));
+                        original.add(Noun_Default.allConnections().remove(Dim_CIK, A3pl_lAr, Dat_yA).add(Dat_nA));
                         modified.add(Dim_CIK, Noun_Deriv, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE, A3pl_lAr);
                         break;
                     default:

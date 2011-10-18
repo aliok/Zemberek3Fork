@@ -102,7 +102,7 @@ public class DynamicLexiconGraph {
         // iterate over form sets.
         for (SuffixForm succSet : successors) {
             // get the nodes for the  suffix form.
-            if (succSet.isTemplate())
+            if (succSet instanceof SuffixFormTemplate)
                 continue;
             List<SuffixNode> nodesInSuccessor = suffixNodeGenerator.getNodes(
                     node.attributes,

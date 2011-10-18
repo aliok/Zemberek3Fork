@@ -9,23 +9,18 @@ public class SuffixFormSetTest {
     @Test
     public void equalityTest() {
         Suffix suffix = new Suffix("SUFFIX");
-        SuffixForm sf1 = new SuffixForm("sf1", suffix, "lAr", TerminationType.TERMINAL);
-        SuffixForm sf2 = new SuffixForm("sf2", suffix, "lAr", TerminationType.TERMINAL);
-        Assert.assertTrue(sf1.equals(sf2));
-        Assert.assertTrue(sf2.equals(sf1));
+        SuffixForm sf1 = new SuffixForm(1,"sf1", suffix, "lAr", TerminationType.TERMINAL);
+        SuffixForm sf2 = new SuffixForm(2,"sf2", suffix, "lAr", TerminationType.TERMINAL);
+        SuffixForm sf3 = new SuffixForm(3,"sf3", suffix, "k", TerminationType.TERMINAL);
+        sf1.index = 0;
+        sf2.index = 1;
+        sf3.index = 100;
+        
+        SuffixData data1 = new SuffixData(sf1, sf2);
+        Assert.assertTrue(data1.contains(sf1));
+        Assert.assertTrue(data1.contains(sf2));
 
-        SuffixForm sf3 = new SuffixForm("sf3", suffix, "k", TerminationType.TERMINAL);
-        Assert.assertFalse(sf1.equals(sf3));
 
-        sf1.connections.add(sf3);
-        Assert.assertFalse(sf1.equals(sf2));
-
-        sf2.connections.add(sf3);
-        Assert.assertTrue(sf1.equals(sf2));
-
-        sf1.connections.remove(sf3);
-        SuffixForm sf4 = new SuffixForm("sf4", suffix, "lAr", TerminationType.NON_TERMINAL);
-        Assert.assertFalse(sf4.equals(sf2));
     }
 
 }

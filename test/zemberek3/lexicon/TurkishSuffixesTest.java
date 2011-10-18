@@ -63,6 +63,13 @@ public class TurkishSuffixesTest {
         tester.assertHasParses("elmaydı", "elmaymış", "elmaydık", "elmayım", "elmadır");
     }
 
+
+    @Test
+    public void fitFor() {
+        Tester tester = new Tester("elma");
+        tester.assertHasParses("elmalık", "elmalığa");
+    }
+
     @Test
     public void testAdj2Verb() {
         Tester tester = new Tester("mavi [P:Adj]");
@@ -90,6 +97,7 @@ public class TurkishSuffixesTest {
         // Noun-Adj
         Tester tester = new Tester("elma");
         tester.assertHasParses("elmadaki", "elmadakini");
+        tester.assertHasParses("elmanınki", "elmanınkinde", "elmanınkinden");
         tester.assertUnParseable("elmaki", "elmayaki", "elmadakiki");
         //TODO: add akşamki etc. uses Rel_kI instead of Rel_ki
     }
@@ -121,7 +129,7 @@ public class TurkishSuffixesTest {
     @Test
     public void testCausative() {
         Tester tester = new Tester("yapmak", "aramak");
-        tester.assertHasParses("yaptır", "yaptırt", "yaptırttır", "arat", "arattır", "arattırt");
+        tester.assertHasParses("yaptırttır", "yaptır", "yaptırt", "arat", "arattır", "arattırt");
         tester.assertHasParses("yaptırarak", "yaptırtarak", "yaptırtmayacak");
         tester.assertUnParseable("yapt", "aratt");
 
@@ -342,7 +350,7 @@ public class TurkishSuffixesTest {
     @Test
     public void AgtNoun() {
         Tester tester = new Tester("elma", "armut");
-        tester.assertHasParses("elmacı", "armutçu", "elmacılar", "elmacısın", "elmacısınız", "elmacıyız");
+        tester.assertHasParses("elmacı", "armutçu", "elmacılar", "elmacısın", "elmacısınız", "elmacıyız", "elmacılık");
     }
 
     static SuffixProvider suffixProvider = new TurkishSuffixes();
@@ -388,6 +396,42 @@ public class TurkishSuffixesTest {
             }
             return items;
         }
+    }
+
+    @Test
+    public void testFormCount() {
+        int t = formCount();
+        new Tester("elma", "ekma", "armut");
+        Assert.assertEquals(t, formCount());
+    }
+
+    @Test
+    public void testFormCount2() {
+        System.out.println("======== adding roots =========");
+        int t = formCount();
+        new Tester("gitmek");
+        System.out.println("======== gitmek added =========");
+        int k = formCount();
+        Assert.assertFalse(t == k);
+        new Tester("yitmek");
+        System.out.println("======== yitmek added =========");
+        int j = formCount();
+        Assert.assertEquals(k, j);
+    }
+
+    @Test
+    public void testForms() {
+        for (SuffixForm form : suffixProvider.getAllForms()) {
+            Assert.assertTrue(!(form instanceof SuffixFormTemplate));
+        }
+    }
+
+    private int formCount() {
+        int t = 0;
+        for (SuffixForm form : suffixProvider.getAllForms()) {
+            t++;
+        }
+        return t;
     }
 
 

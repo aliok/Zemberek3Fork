@@ -81,15 +81,15 @@ public class TurkishDictionaryLoaderTest {
         DictionaryItem item = loader.loadFromString("ben [P:Pron; S: +A1sg_TEMPLATE]");
         Assert.assertEquals(Pronoun, item.primaryPos);
         Assert.assertNotNull(item.suffixData);
-        Assert.assertTrue(!item.suffixData.accepts.set.isEmpty());
-        Assert.assertTrue(item.suffixData.rejects.set.isEmpty());
-        Assert.assertTrue(item.suffixData.onlyAccepts.set.isEmpty());
+        Assert.assertTrue(!item.suffixData.accepts.isEmpty());
+        Assert.assertTrue(item.suffixData.rejects.isEmpty());
+        Assert.assertTrue(item.suffixData.onlyAccepts.isEmpty());
 
         item = loader.loadFromString("ben [P:Pron; S: -A1sg, +A1sg_TEMPLATE, +Dim]");
-        Assert.assertTrue(item.suffixData.rejects.set.contains(TurkishSuffixes.A1sg_m));
-        Assert.assertTrue(item.suffixData.rejects.set.contains(TurkishSuffixes.A1sg_yIm));
-        Assert.assertTrue(item.suffixData.accepts.set.contains(TurkishSuffixes.A1sg_TEMPLATE));
-        Assert.assertTrue(item.suffixData.accepts.set.contains(TurkishSuffixes.Dim_cIk));
+        Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_m));
+        Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_yIm));
+        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.A1sg_TEMPLATE));
+        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.Dim_cIk));
     }
 
 

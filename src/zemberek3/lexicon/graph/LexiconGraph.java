@@ -207,8 +207,8 @@ public class LexiconGraph {
     private StemNode[] handleSpecialStems(DictionaryItem item) {
 
         if (item.getId().equals("yemek_Verb")) {
-            SuffixForm Verb_Ye = new SuffixForm("Verb_Ye", VerbRoot, "");
-            SuffixForm Verb_Yi = new SuffixForm("Verb_Yi", VerbRoot, "");
+            SuffixForm Verb_Ye = new SuffixForm(-1, "Verb_Ye", VerbRoot, "");
+            SuffixForm Verb_Yi = new SuffixForm(-1, "Verb_Yi", VerbRoot, "");
             Verb_Ye.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk,
                     FutPart_yAcAk_2Adj, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
                     KeepDoing2_yAdur, UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
@@ -226,8 +226,8 @@ public class LexiconGraph {
             return stems;
         }
         if (item.getId().equals("demek_Verb")) {
-            SuffixForm Verb_De = new SuffixForm("Verb_De", VerbRoot, "");
-            SuffixForm Verb_Di = new SuffixForm("Verb_Di", VerbRoot, "");
+            SuffixForm Verb_De = new SuffixForm(1, "Verb_De", VerbRoot, "");
+            SuffixForm Verb_Di = new SuffixForm(2, "Verb_Di", VerbRoot, "");
             // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
             Verb_De.indirectConnections.add(Verb_TEMPLATE.indirectConnections)
                     .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, FutPart_yAcAk_2Adj, Opt_yA,
@@ -393,15 +393,15 @@ public class LexiconGraph {
                     break;
             }
             if (item.suffixData != null) {
-                original.indirectConnections.remove(item.suffixData.rejects.set);
-                original.indirectConnections.add(item.suffixData.accepts.set);
-                modified.indirectConnections.remove(item.suffixData.rejects.set);
-                modified.indirectConnections.add(item.suffixData.accepts.set);
+                original.indirectConnections.remove(item.suffixData.rejects.getSet());
+                original.indirectConnections.add(item.suffixData.accepts.getSet());
+                modified.indirectConnections.remove(item.suffixData.rejects.getSet());
+                modified.indirectConnections.add(item.suffixData.accepts.getSet());
             }
         }
 
         private SuffixForm addOrReturnExisting(DictionaryItem item, SuffixForm set) {
-            RootSuffixKey key = new RootSuffixKey(item, set.indirectConnections.set);
+            RootSuffixKey key = new RootSuffixKey(item, set.indirectConnections.getSet());
             if (dynamicFormSetMap.containsKey(key)) {
                 return dynamicFormSetMap.get(key);
             } else {
@@ -411,8 +411,8 @@ public class LexiconGraph {
         }
 
         private void getForVerb(DictionaryItem item) {
-            original = new SuffixForm("Verb", TurkishSuffixes.VerbRoot, "");
-            modified = new SuffixForm("Verb-Mod", TurkishSuffixes.VerbRoot, "");
+            original = new SuffixForm(-1, "Verb", TurkishSuffixes.VerbRoot, "");
+            modified = new SuffixForm(-1, "Verb-Mod", TurkishSuffixes.VerbRoot, "");
             original.indirectConnections.add(Verb_TEMPLATE.indirectConnections.copy());
             modified.indirectConnections.add(Verb_TEMPLATE.indirectConnections.copy());
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
@@ -468,8 +468,8 @@ public class LexiconGraph {
         }
 
         void getForNoun(DictionaryItem item) {
-            original = new SuffixForm("Noun", TurkishSuffixes.NounRoot, "");
-            modified = new SuffixForm("Noun-Mod", TurkishSuffixes.NounRoot, "");
+            original = new SuffixForm(-1, "Noun", TurkishSuffixes.NounRoot, "");
+            modified = new SuffixForm(-1, "Noun-Mod", TurkishSuffixes.NounRoot, "");
             original.indirectConnections.add(Noun_TEMPLATE.indirectConnections.copy());
             modified.indirectConnections.add(Noun_TEMPLATE.indirectConnections.copy());
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
@@ -496,8 +496,8 @@ public class LexiconGraph {
         }
 
         void getForAdjective(DictionaryItem item) {
-            original = new SuffixForm("Adjective", TurkishSuffixes.AdjRoot, "");
-            modified = new SuffixForm("Adjective-Mod", TurkishSuffixes.AdjRoot, "");
+            original = new SuffixForm(1, "Adjective", TurkishSuffixes.AdjRoot, "");
+            modified = new SuffixForm(2, "Adjective-Mod", TurkishSuffixes.AdjRoot, "");
             original.indirectConnections.add(Adj_TEMPLATE.indirectConnections.copy());
             modified.indirectConnections.add(Adj_TEMPLATE.indirectConnections.copy());
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
@@ -517,8 +517,8 @@ public class LexiconGraph {
         }
 
         void getForPronoun(DictionaryItem item) {
-            original = new SuffixForm("Pronoun", TurkishSuffixes.PersPronRoot, "");
-            modified = new SuffixForm("Pronoun-Mod", TurkishSuffixes.PersPronRoot, "");
+            original = new SuffixForm(-1, "Pronoun", TurkishSuffixes.PersPronRoot, "");
+            modified = new SuffixForm(-1, "Pronoun-Mod", TurkishSuffixes.PersPronRoot, "");
             original.indirectConnections.add(PersPron_TEMPLATE.indirectConnections.copy());
             modified.indirectConnections.add(PersPron_TEMPLATE.indirectConnections.copy());
             original = addOrReturnExisting(item, original);

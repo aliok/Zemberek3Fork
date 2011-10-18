@@ -6,6 +6,8 @@ import zemberek3.lexicon.graph.TerminationType;
 public class SuffixForm {
     // an id that defines the node
     public final String id;
+    // an id that defines the node
+    public int index=-1;
     // parent suffix
     public final Suffix suffix;
     // generation word.
@@ -16,46 +18,43 @@ public class SuffixForm {
     public SuffixData indirectConnections = new SuffixData();
     public SuffixData connections = new SuffixData();
 
-    public boolean template = false;
-
-    public SuffixForm(String id, Suffix suffix, String generation) {
+    public SuffixForm(int index, String id, Suffix suffix, String generation) {
+        this.index = index;
         this.id = id;
         this.suffix = suffix;
         this.generation = generation;
     }
 
-    public SuffixData allSuccessors() {
+    public SuffixForm(int index, String id, Suffix suffix, TerminationType type) {
+        this.index = index;
+        this.id = id;
+        this.suffix = suffix;
+        this.terminationType = type;
+        this.generation = "";
+    }
+
+    public SuffixData allConnections() {
         return new SuffixData(indirectConnections, connections);
     }
 
-    public SuffixForm(Suffix suffix, String generation, TerminationType terminationType) {
+    public SuffixForm(int index, Suffix suffix, String generation, TerminationType terminationType) {
+        this.index = index;
         this.id = suffix.id + "_" + generation;
         this.suffix = suffix;
         this.generation = generation;
         this.terminationType = terminationType;
     }
 
-    public SuffixForm(String id, Suffix suffix, String generation, TerminationType terminationType) {
+    public SuffixForm(int index, String id, Suffix suffix, String generation, TerminationType terminationType) {
+        this.index = index;
         this.id = id;
         this.suffix = suffix;
         this.generation = generation;
         this.terminationType = terminationType;
     }
 
-    public static SuffixForm getTemplate(String id, Suffix suffix) {
-        SuffixForm set = new SuffixForm(id, suffix, "", TerminationType.TRANSFER);
-        set.template = true;
-        return set;
-    }
-
-    public static SuffixForm getTemplate(String id, Suffix suffix, TerminationType type) {
-        SuffixForm set = new SuffixForm(id, suffix, "", type);
-        set.template = true;
-        return set;
-    }
-
-
-    public SuffixForm(Suffix suffix, String generation) {
+    public SuffixForm(int index, Suffix suffix, String generation) {
+        this.index = index;
         this.suffix = suffix;
         this.generation = generation;
         this.id = suffix.id + "_" + generation;
@@ -88,9 +87,9 @@ public class SuffixForm {
 
         SuffixForm that = (SuffixForm) o;
 
-        if (template != that.template) return false;
-        if (!generation.equals(that.generation)) return false;
+        if (index != that.index) return false;
         if (!id.equals(that.id)) return false;
+        if (!generation.equals(that.generation)) return false;
         if (!connections.equals(that.connections)) return false;
         if (!indirectConnections.equals(that.indirectConnections)) return false;
         if (!suffix.equals(that.suffix)) return false;
@@ -102,16 +101,13 @@ public class SuffixForm {
     @Override
     public int hashCode() {
         int result = id.hashCode();
+        result = 31 * result + index;
         result = 31 * result + suffix.hashCode();
         result = 31 * result + generation.hashCode();
         result = 31 * result + terminationType.hashCode();
-//        result = 31 * result + indirectConnections.hashCode();
-//        result = 31 * result + connections.hashCode();
-        result = 31 * result + (template ? 1 : 0);
+        result = 31 * result + indirectConnections.hashCode();
+        result = 31 * result + connections.hashCode();
         return result;
     }
 
-    public boolean isTemplate() {
-        return template;
-    }
 }
