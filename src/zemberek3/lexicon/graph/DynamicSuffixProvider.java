@@ -13,7 +13,6 @@ public class DynamicSuffixProvider implements SuffixProvider {
     protected Map<String, Suffix> suffixLookup = Maps.newHashMap();
     protected ArrayListMultimap<String, SuffixForm> formsPerSuffix = ArrayListMultimap.create(100, 2);
     private Map<NullSuffixForm, NullSuffixForm> nullFormsUnprocessed = Maps.newHashMap();
-    private Map<NullSuffixForm, NullSuffixForm> nullForms = Maps.newHashMap();
 
     protected IdMaker idMaker = new IdMaker(3);
     protected static AtomicInteger indexMaker = new AtomicInteger();
@@ -73,7 +72,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
 
     @Override
     public SuffixForm getRootSet(DictionaryItem item, SuffixData successors) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 
     protected void registerForms(SuffixForm... setz) {
@@ -104,46 +103,32 @@ public class DynamicSuffixProvider implements SuffixProvider {
             return;
         }
 
-/*
-        if (formSet instanceof NullSuffixForm) {
-            if (nullForms.containsKey(formSet))
-                return;
-        }
-*/
-
         if (formSetLookup.containsKey(formSet)) {
             return;
         }
 
         SuffixData allConnections = formSet.allConnections();
-        List<SuffixForm> toRemove = new ArrayList<SuffixForm>();
-        List<SuffixForm> toAdd = new ArrayList<SuffixForm>();
+        List<SuffixForm> templateFormsToRemove = new ArrayList<SuffixForm>();
+        List<SuffixForm> nullFormsToRegister = new ArrayList<SuffixForm>();
         for (SuffixForm connection : formSet.connections) {
             if (connection instanceof SuffixFormTemplate) {
-                NullSuffixForm nullFormtoBeProcessed = generateNullFormFromTemplate((SuffixFormTemplate) connection, new SuffixData(allConnections));
-                toAdd.add(nullFormtoBeProcessed.copy());
-                toRemove.add(connection);
+                NullSuffixForm nullForm =
+                        generateNullFormFromTemplate((SuffixFormTemplate) connection, new SuffixData(allConnections)).copy();
+                nullFormsToRegister.add(nullForm);
+                templateFormsToRemove.add(connection);
             }
         }
 
-        for (SuffixForm suffixFormSet : formSet.indirectConnections) {
-            if (suffixFormSet instanceof SuffixFormTemplate)
-                toRemove.add(suffixFormSet);
-        }
-
-        formSet.connections.remove(toRemove);
-        formSet.indirectConnections.remove(toRemove);
-        formSet.connections.add(toAdd);
+        formSet.connections.remove(templateFormsToRemove);
+        // we dont need indirect connection data anymore.
+        formSet.indirectConnections.clear();
+        formSet.connections.add(nullFormsToRegister);
 
         formSet.index = getNewIndex();
 
-        if (formSet instanceof NullSuffixForm) {
-            nullForms.put((NullSuffixForm) formSet, (NullSuffixForm) formSet);
-        }
-
         formSetLookup.put(formSet, formSet);
 
-        for (SuffixForm form : toAdd) {
+        for (SuffixForm form : nullFormsToRegister) {
             registerForm(form);
         }
     }
