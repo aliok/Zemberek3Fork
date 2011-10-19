@@ -354,6 +354,15 @@ public class TurkishSuffixesTest {
         tester.assertHasParses("elmacı", "armutçu", "elmacılar", "elmacısın", "elmacısınız", "elmacıyız", "elmacılık");
     }
 
+
+    @Test
+    public void stemChange() {
+        Tester tester = new Tester("demek [A:StemChange]", "yemek [A:StemChange]");
+        tester.assertHasParses("ye", "de", "yeme", "deme", "yiyor", "diyor", "yemiyor", "demiyor", "yedi", "dedi");
+        tester.assertUnParseable("yi", "di", "yime", "dime", "yeyor", "deyor", "yemeyor");
+    }
+
+
     static DynamicSuffixProvider suffixProvider = new TurkishSuffixes();
 
     class Tester {

@@ -403,7 +403,14 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormTemplate Verb2VerbAbility = getTemplate("Verb2VerbAbility", VerbRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2VerbCompounds = getTemplate("Verb2VerbCompounds", VerbRoot, TerminationType.NON_TERMINAL);
     public static SuffixForm Verb_Default = getNull("Verb_Default", Verb_TEMPLATE);
+    public static SuffixForm Verb_De = getNull("Verb_De", Verb_TEMPLATE);
+    public static SuffixForm Verb_Di = getNull("Verb_Di", Verb_TEMPLATE);
+    public static SuffixForm Verb_Ye = getNull("Verb_Ye", Verb_TEMPLATE);
+    public static SuffixForm Verb_Yi = getNull("Verb_Yi", Verb_TEMPLATE);
+
+    public static SuffixForm Verb_De_Ye_Prog = getNull("Verb_De_Ye_Prog", Verb_TEMPLATE);
     public static SuffixForm Verb_Prog_Drop = getNull("Verb_Prog_Drop", Verb_TEMPLATE);
+
 
     public static Suffix PersPronRoot = new Suffix("PersPron");
     public static SuffixFormTemplate PersPron_TEMPLATE = getTemplate("PersPron_TEMPLATE", PersPronRoot);
@@ -537,6 +544,35 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Verb_Default.connections.add(Verb_TEMPLATE.connections);
         Verb_Default.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t);
+
+        Verb_Prog_Drop.connections.add(Pos_EMPTY);
+        Verb_Prog_Drop.indirectConnections.add(Prog_Iyor).add(Prog_Iyor.allConnections());
+
+        Verb_Ye.connections.add(Neg_m, Neg_mA, Pos_EMPTY, Verb2Verb);
+        Verb_Ye.indirectConnections.add(Verb_Default.indirectConnections)
+                .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, Caus_tIr,
+                        FutPart_yAcAk_2Adj, Opt_yA, When_yIncA, AfterDoing_yIp, PresPart_yAn, KeepDoing_yAgor,
+                        KeepDoing2_yAdur, UnableToDo_yAmAdAn).add(Pass_In, Recip_Is, Inf3_yIs);
+
+        Verb_De_Ye_Prog.connections.add(Pos_EMPTY);
+        Verb_De_Ye_Prog.indirectConnections.add(Prog_Iyor).add(Prog_Iyor.allConnections());
+
+        Verb_Yi.connections.add(Pos_EMPTY, Verb2Verb);
+        Verb_Yi.indirectConnections.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk_2Adj, When_yIncA, AfterDoing_yIp, Abil_yA,
+                Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI_2Adj, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
+                FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
+
+        // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
+
+        Verb_De.connections.add(Neg_m, Neg_mA, Pos_EMPTY, Verb2Verb);
+        Verb_De.indirectConnections.add(Verb_Default.indirectConnections)
+                .remove(Abil_yA, Abil_yAbil, Prog_Iyor, Fut_yAcAk, FutPart_yAcAk_2Adj, Opt_yA,
+                        PresPart_yAn, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn)
+                .add(Pass_In);
+
+        Verb_Di.connections.add(Pos_EMPTY, Verb2Verb);
+        Verb_Di.indirectConnections.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk_2Adj, Abil_yA, Abil_yAbil, PresPart_yAn,
+                PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
 
         //---------------------------- Noun -----------------------------------------------------------------------
 
