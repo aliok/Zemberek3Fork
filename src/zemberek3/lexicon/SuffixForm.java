@@ -83,8 +83,10 @@ public class SuffixForm {
         if (!id.equals(that.id)) return false;
         if (!generation.equals(that.generation)) return false;
         if (!suffix.equals(that.suffix)) return false;
+
         if (!connections.equals(that.connections)) return false;
         if (!indirectConnections.equals(that.indirectConnections)) return false;
+
         if (terminationType != that.terminationType) return false;
 
         return true;
@@ -97,8 +99,11 @@ public class SuffixForm {
         result = 31 * result + suffix.hashCode();
         result = 31 * result + generation.hashCode();
         result = 31 * result + terminationType.hashCode();
+/*
         result = 31 * result + indirectConnections.hashCode();
         result = 31 * result + connections.hashCode();
+*/
+
         return result;
     }
 

@@ -682,13 +682,13 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         //---------------------------- Adjective -----------------------------------------------------------------------
 
         Become_lAs.connections.add(Verb_TEMPLATE.connections);
-        Become_lAs.indirectConnections.add(Verb_TEMPLATE.indirectConnections);
+        Become_lAs.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Pass_In, Pass_InIl);
 
         Acquire_lAn.connections.add(Verb_TEMPLATE.connections);
-        Acquire_lAn.indirectConnections.add(Verb_TEMPLATE.indirectConnections);
+        Acquire_lAn.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Pass_In, Pass_InIl);
 
         Become_Adj_lAs.connections.add(Verb_TEMPLATE.connections);
-        Become_Adj_lAs.indirectConnections.add(Verb_TEMPLATE.indirectConnections);
+        Become_Adj_lAs.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Pass_In, Pass_InIl);
 
         Quite_cA.connections.add(Adj_TEMPLATE.connections);
 
@@ -706,7 +706,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Verb2AdjPart.connections, Verb2NounPart.connections)
                 .remove(Neg_m, Neg_mA);
 
-        Neg_mA.connections.add(Verb2VerbCompounds, Verb2VerbAbility, Verb2Noun, Verb2Verb, Verb2Adv, Verb2Adj, Verb2AdjPart, Verb2NounPart,
+        Neg_mA.connections.add(Verb2VerbCompounds, Verb2VerbAbility, Verb2Noun, Verb2Adv, Verb2Adj, Verb2AdjPart, Verb2NounPart,
                 Aor_z, Aor_EMPTY, Prog2_mAktA, Imp_TEMPLATE, Opt_yA, Des_sA,
                 Fut_yAcAk, Past_dI, Evid_mIs, Necess_mAlI, NotState_mAzlIk,
                 ActOf_mAcA);

@@ -129,11 +129,6 @@ public class TurkishSuffixesTest {
 
     @Test
     public void testCausative() {
-        SuffixForm form = suffixProvider.getFormById("Verb2Verb_129");
-        suffixProvider.dumpPath(form,1);
-        form = suffixProvider.getFormById("Verb2Verb_114");
-        suffixProvider.dumpPath(form,1);
-
         Tester tester = new Tester("yapmak", "aramak");
         tester.assertHasParses("yaptırttır", "yaptır", "yaptırt", "arat", "arattır", "arattırt");
         tester.assertHasParses("yaptırarak", "yaptırtarak", "yaptırtmayacak");

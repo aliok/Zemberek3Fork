@@ -9,10 +9,7 @@ public class SuffixData implements Iterable<SuffixForm> {
     private BitSet bitSet = new BitSet();
 
     public SuffixData(Set<SuffixForm> forms) {
-        this.set = forms;
-        for (SuffixForm suffixForm : forms) {
-            bitSet.set(suffixForm.index);
-        }
+        add(forms);
     }
 
     public SuffixData(SuffixForm... forms) {
@@ -50,7 +47,7 @@ public class SuffixData implements Iterable<SuffixForm> {
 
     public SuffixData add(SuffixForm... forms) {
         for (SuffixForm suffixForm : forms) {
-            addForm(suffixForm);
+            _addForm(suffixForm);
         }
         return this;
     }
@@ -58,7 +55,7 @@ public class SuffixData implements Iterable<SuffixForm> {
     public SuffixData add(SuffixData... datas) {
         for (SuffixData suffixData : datas) {
             for (SuffixForm suffixForm : suffixData) {
-                addForm(suffixForm);
+                _addForm(suffixForm);
             }
         }
         return this;
@@ -66,31 +63,33 @@ public class SuffixData implements Iterable<SuffixForm> {
 
     public SuffixData add(Iterable<SuffixForm> it) {
         for (SuffixForm suff : it) {
-            addForm(suff);
+            _addForm(suff);
         }
         return this;
     }
 
-    private void addForm(SuffixForm suff) {
+    private void _addForm(SuffixForm suff) {
         set.add(suff);
         bitSet.set(suff.index);
     }
 
-    private void removeForm(SuffixForm suff) {
+    private void _removeForm(SuffixForm suff) {
         set.remove(suff);
         bitSet.clear(suff.index);
     }
 
     public SuffixData add(SuffixForm[]... forms) {
         for (SuffixForm[] suffixArray : forms) {
-            add(Arrays.asList(suffixArray));
+            for (SuffixForm suffixForm : suffixArray) {
+                _addForm(suffixForm);
+            }
         }
         return this;
     }
 
     public SuffixData remove(SuffixForm... forms) {
         for (SuffixForm set : forms) {
-            removeForm(set);
+            _removeForm(set);
         }
         return this;
     }
@@ -108,7 +107,7 @@ public class SuffixData implements Iterable<SuffixForm> {
 
     public SuffixData remove(Collection<SuffixForm> it) {
         for (SuffixForm suff : it) {
-            removeForm(suff);
+            _removeForm(suff);
         }
         return this;
     }

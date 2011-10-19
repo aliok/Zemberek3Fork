@@ -121,14 +121,9 @@ public class DynamicSuffixProvider implements SuffixProvider {
             }
         }
 
-        for (SuffixForm indirectConnection : formSet.indirectConnections) {
-            if (indirectConnection instanceof SuffixFormTemplate)
-                templateFormsToRemove.add(indirectConnection);
-        }
-
         formSet.connections.remove(templateFormsToRemove);
         // we dont need indirect connection data anymore.
-        formSet.indirectConnections.remove(templateFormsToRemove);
+        formSet.indirectConnections.clear();
         formSet.connections.add(nullFormsToRegister);
 
         if (formSet.index != -1)
