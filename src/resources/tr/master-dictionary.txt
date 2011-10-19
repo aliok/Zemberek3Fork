@@ -1576,7 +1576,7 @@ arşidük [A:NoVoicing]
 arşidüşes
 arşiv
 arşivlemek
-art [A:Voicing]
+art
 art [P:Adj]
 artağan
 artakalmak
@@ -6013,7 +6013,7 @@ dershane
 dersiam
 derslik
 derslik [P:Adj]
-dert [A:Voicing]
+dert
 dertlenmek
 dertop [P:Adj; A:NoVoicing]
 deruhte
@@ -6687,8 +6687,8 @@ dönüşüm
 dönüt [A:NoVoicing]
 döpiyes
 dördül
-dört [P:Num; A:Voicing]
-dört [A:Voicing]
+dört [P:Num]
+dört
 dördüz [P:Adj]
 dörtcihar
 Dörtdivan
@@ -8179,7 +8179,7 @@ fermiyum
 fermuar
 fersah
 fersude
-fert [A:Voicing]
+fert
 feryat
 ferz
 fes

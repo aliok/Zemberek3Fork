@@ -15,7 +15,7 @@ public class TurkishSuffixesTest {
     public void testVoicing() {
         Tester tester = new Tester("armut");
         tester.assertHasParses("armut", "armuda", "armutlar", "armutlara");
-        tester.assertUnParseable("armud", "armuta", "armudlar","armutlarlar","armutalar");
+        tester.assertUnParseable("armud", "armuta", "armudlar", "armutlarlar", "armutalar");
     }
 
     @Test
@@ -215,7 +215,7 @@ public class TurkishSuffixesTest {
     public void testNess() {
         Tester tester = new Tester("elma", "mavi [P:Adj]");
         tester.assertHasParses("elmacıktı", "elmalık", "elmalığı", "elmalıktı", "elmalığa", "mavilik", "maviliği", "mavilikti");
-        tester.assertUnParseable("elmalıklık", "elmalıka", "maviliklik", "maviliki");
+        tester.assertUnParseable("elmalıka", "maviliki");
     }
 
     @Test
@@ -401,22 +401,22 @@ public class TurkishSuffixesTest {
 
     @Test
     public void testFormCount() {
-        int t = formCount();
+        int t = suffixProvider.getFormCount();
         new Tester("elma", "ekma", "armut");
-        Assert.assertEquals(t, formCount());
+        Assert.assertEquals(t, suffixProvider.getFormCount());
     }
 
     @Test
     public void testFormCount2() {
         System.out.println("======== adding roots =========");
-        int t = formCount();
+        int t = suffixProvider.getFormCount();
         new Tester("gitmek");
         System.out.println("======== gitmek added =========");
-        int k = formCount();
+        int k = suffixProvider.getFormCount();
         Assert.assertFalse(t == k);
         new Tester("yitmek");
         System.out.println("======== yitmek added =========");
-        int j = formCount();
+        int j = suffixProvider.getFormCount();
         Assert.assertEquals(k, j);
     }
 
@@ -426,14 +426,5 @@ public class TurkishSuffixesTest {
             Assert.assertTrue(!(form instanceof SuffixFormTemplate));
         }
     }
-
-    private int formCount() {
-        int t = 0;
-        for (SuffixForm form : suffixProvider.getAllForms()) {
-            t++;
-        }
-        return t;
-    }
-
 
 }

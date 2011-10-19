@@ -43,7 +43,7 @@ public class ParseResult {
         sb.append("[");
         int i = 0;
         for (SuffixNode suffixNode : suffixNodes) {
-            sb.append(suffixNode.getSuffixSet().id).append(":").append(suffixNode.surfaceForm);
+            sb.append(suffixNode.getSuffixSet().getSuffix().id).append(":").append(suffixNode.surfaceForm);
             if (i++ < suffixNodes.size() - 1)
                 sb.append(" + ");
         }

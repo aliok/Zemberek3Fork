@@ -164,7 +164,6 @@ public class StemNodeGenerator {
         return new StemNode[]{original, modified};
     }
 
-
     private StemNode[] handleP3sgCompounds(DictionaryItem item) {
         StemNode[] nodes = new StemNode[2];
         TurkicSeq originalSeq = new TurkicSeq(item.lemma, alphabet);
@@ -174,7 +173,6 @@ public class StemNodeGenerator {
         SuffixData[] roots = suffixProvider.defineSuccessorSuffixes(item);
         nodes[0].exclusiveSuffixData = roots[0];
         nodes[1].exclusiveSuffixData = roots[1];
-
         return nodes;
     }
 
