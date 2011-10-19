@@ -3,6 +3,7 @@ package zemberek3.lexicon;
 import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
+import zemberek3.lexicon.graph.DynamicSuffixProvider;
 import zemberek3.parser.morphology.ParseResult;
 import zemberek3.parser.morphology.SimpleParser;
 
@@ -14,7 +15,7 @@ public class TurkishSuffixesTest {
     public void testVoicing() {
         Tester tester = new Tester("armut");
         tester.assertHasParses("armut", "armuda", "armutlar", "armutlara");
-        tester.assertUnParseable("armud", "armuta", "armudlar");
+        tester.assertUnParseable("armud", "armuta", "armudlar","armutlarlar","armutalar");
     }
 
     @Test
@@ -128,6 +129,11 @@ public class TurkishSuffixesTest {
 
     @Test
     public void testCausative() {
+        SuffixForm form = suffixProvider.getFormById("Verb2Verb_129");
+        suffixProvider.dumpPath(form,1);
+        form = suffixProvider.getFormById("Verb2Verb_114");
+        suffixProvider.dumpPath(form,1);
+
         Tester tester = new Tester("yapmak", "aramak");
         tester.assertHasParses("yaptırttır", "yaptır", "yaptırt", "arat", "arattır", "arattırt");
         tester.assertHasParses("yaptırarak", "yaptırtarak", "yaptırtmayacak");
@@ -353,7 +359,7 @@ public class TurkishSuffixesTest {
         tester.assertHasParses("elmacı", "armutçu", "elmacılar", "elmacısın", "elmacısınız", "elmacıyız", "elmacılık");
     }
 
-    static SuffixProvider suffixProvider = new TurkishSuffixes();
+    static DynamicSuffixProvider suffixProvider = new TurkishSuffixes();
 
     class Tester {
 

@@ -477,9 +477,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Verb2VerbAbility.connections.add(Abil_yAbil);
 
         Verb2Noun.connections.add(Inf1_mAk, Inf2_mA, Inf3_yIs, FeelLike_yAsI_2Noun, Agt_yIcI_2Noun, NotState_mAzlIk);
-        Verb2Noun.indirectConnections.add(Noun_TEMPLATE.indirectConnections);
 
         Verb2NounPart.connections.add(PastPart_dIk_2Noun, EvidPart_mIs_2Noun, FutPart_yAcAk_2Noun);
+
         Verb2AdjPart.connections.add(PastPart_dIk_2Adj, EvidPart_mIs_2Adj, FutPart_yAcAk_2Adj, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj, PresPart_yAn);
 
         Verb2Adv.connections.add(When_yIncA, SinceDoing_yAlI, UnableToDo_yAmAdAn, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
@@ -543,7 +543,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         A3pl_lAr.connections.add(POSSESSIVE_FORMS).remove(P3pl_lArI);
         A3pl_lAr.indirectConnections
                 .add(Noun2VerbCopular)
-                .add(Noun2VerbCopular.allConnections())
+                .add(Noun2VerbCopular.allConnections()).remove(A3pl_Verb_lAr)
                 .add(CASE_FORMS)
                 .add(A1pl_yIz, A2pl_sInIz);
 
@@ -720,20 +720,20 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Imp_TEMPLATE.connections.add(A2sg_TEMPLATE, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
 
-        Caus_t.connections.add(Verb_TEMPLATE.connections);
-        Caus_t.indirectConnections.add(Verb_TEMPLATE.allConnections()).add(Pass_nIl).add(Caus_tIr).remove(Caus_t);
+        Caus_t.connections.add(Verb2Verb, Pos_EMPTY, Neg_mA, Neg_m);
+        Caus_t.indirectConnections.add(Verb_TEMPLATE.indirectConnections).add(Pass_nIl).add(Caus_tIr).remove(Caus_t);
 
         Caus_tIr.connections.add(Verb_TEMPLATE.connections);
-        Caus_tIr.indirectConnections.add(Verb_TEMPLATE.allConnections()).add(Pass_nIl).add(Caus_t).remove(Caus_tIr);
+        Caus_tIr.indirectConnections.add(Verb_TEMPLATE.indirectConnections).add(Pass_nIl).add(Caus_t).remove(Caus_tIr);
 
         Pass_nIl.connections.add(Verb_TEMPLATE.connections);
-        Pass_nIl.indirectConnections.add(Verb_TEMPLATE.allConnections()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+        Pass_nIl.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
         Pass_In.connections.add(Verb_TEMPLATE.connections);
-        Pass_In.indirectConnections.add(Verb_TEMPLATE.allConnections()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+        Pass_In.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
         Pass_InIl.connections.add(Verb_TEMPLATE.connections);
-        Pass_InIl.indirectConnections.add(Verb_TEMPLATE.allConnections()).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
+        Pass_InIl.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
 
         Prog_Iyor.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
@@ -1094,8 +1094,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     }
 
     @Override
-    public SuffixForm getRootSet(DictionaryItem item, SuffixData successorConstraint) {
-        if (successorConstraint.isEmpty()) {
+    public SuffixForm getRootSet(DictionaryItem item, SuffixData suffixConstraint) {
+        if (suffixConstraint.isEmpty()) {
             switch (item.primaryPos) {
                 case Noun:
                     return Noun_Default;
@@ -1123,7 +1123,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 default:
                     template = Noun_TEMPLATE;
             }
-            NullSuffixForm copy = generateNullFormFromTemplate(template, successorConstraint).copy();
+            NullSuffixForm copy = generateNullFormFromTemplate(template, suffixConstraint).copy();
             registerForm(copy);
             return copy;
         }

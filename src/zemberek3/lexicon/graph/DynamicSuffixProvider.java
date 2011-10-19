@@ -9,8 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class DynamicSuffixProvider implements SuffixProvider {
 
-    protected Map<SuffixForm, SuffixForm> formSetLookup = Maps.newHashMap();
+    protected Map<SuffixForm, SuffixForm> suffixForms = Maps.newHashMap();
     protected Map<String, Suffix> suffixLookup = Maps.newHashMap();
+    protected Map<String, SuffixForm> formLookupByName = Maps.newHashMap();
     protected ArrayListMultimap<String, SuffixForm> formsPerSuffix = ArrayListMultimap.create(100, 2);
     private Map<NullSuffixForm, NullSuffixForm> nullFormsUnprocessed = Maps.newHashMap();
 
@@ -58,11 +59,11 @@ public class DynamicSuffixProvider implements SuffixProvider {
     }
 
     public Iterable<SuffixForm> getAllForms() {
-        return formSetLookup.keySet();
+        return suffixForms.keySet();
     }
 
     public int getFormCount() {
-        return formSetLookup.size();
+        return suffixForms.size();
     }
 
     @Override
@@ -82,7 +83,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
     }
 
     protected NullSuffixForm generateNullFormFromTemplate(SuffixFormTemplate templateForm, SuffixData constraints) {
-        NullSuffixForm nullForm = new NullSuffixForm(-1, idMaker.get(templateForm.id), templateForm);
+        NullSuffixForm nullForm = new NullSuffixForm(-1, "", templateForm);
         nullForm.connections = new SuffixData(templateForm.connections).retain(constraints);
         nullForm.indirectConnections = new SuffixData(templateForm.indirectConnections).retain(constraints);
 
@@ -90,6 +91,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
             return nullFormsUnprocessed.get(nullForm);
         } else {
             nullForm.index = getNewIndex();
+            nullForm.id = idMaker.get(templateForm.id);
             nullFormsUnprocessed.put(nullForm, nullForm);
             return nullForm;
         }
@@ -103,7 +105,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
             return;
         }
 
-        if (formSetLookup.containsKey(formSet)) {
+        if (suffixForms.containsKey(formSet)) {
             return;
         }
 
@@ -119,18 +121,29 @@ public class DynamicSuffixProvider implements SuffixProvider {
             }
         }
 
+        for (SuffixForm indirectConnection : formSet.indirectConnections) {
+            if (indirectConnection instanceof SuffixFormTemplate)
+                templateFormsToRemove.add(indirectConnection);
+        }
+
         formSet.connections.remove(templateFormsToRemove);
         // we dont need indirect connection data anymore.
-        formSet.indirectConnections.clear();
+        formSet.indirectConnections.remove(templateFormsToRemove);
         formSet.connections.add(nullFormsToRegister);
 
-        formSet.index = getNewIndex();
+        if (formSet.index != -1)
+            formSet.index = getNewIndex();
 
-        formSetLookup.put(formSet, formSet);
+        suffixForms.put(formSet, formSet);
+        formLookupByName.put(formSet.getId(), formSet);
 
         for (SuffixForm form : nullFormsToRegister) {
             registerForm(form);
         }
+    }
+
+    public SuffixForm getFormById(String id) {
+        return formLookupByName.get(id);
     }
 
     public void dumpPath(SuffixForm set, int level) {

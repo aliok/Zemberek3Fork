@@ -5,7 +5,7 @@ import zemberek3.lexicon.graph.TerminationType;
 
 public class SuffixForm {
     // an id that defines the node
-    public final String id;
+    public String id;
     // an id that defines the node
     public int index=-1;
     // parent suffix
@@ -60,14 +60,6 @@ public class SuffixForm {
         this.id = suffix.id + "_" + generation;
     }
 
-    public boolean isTerminal() {
-        return terminationType == TerminationType.TERMINAL;
-    }
-
-    public boolean isNullMorpheme() {
-        return generation == null || generation.length() == 0;
-    }
-
     public Suffix getSuffix() {
         return suffix;
     }
@@ -90,9 +82,9 @@ public class SuffixForm {
         if (index != that.index) return false;
         if (!id.equals(that.id)) return false;
         if (!generation.equals(that.generation)) return false;
+        if (!suffix.equals(that.suffix)) return false;
         if (!connections.equals(that.connections)) return false;
         if (!indirectConnections.equals(that.indirectConnections)) return false;
-        if (!suffix.equals(that.suffix)) return false;
         if (terminationType != that.terminationType) return false;
 
         return true;

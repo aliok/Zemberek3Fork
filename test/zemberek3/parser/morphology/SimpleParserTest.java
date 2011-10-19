@@ -177,8 +177,8 @@ public class SimpleParserTest {
             } else {
                 switch (item.primaryPos) {
                     case Noun:
-                        SuffixForm nullForm = generateNullFormFromTemplate(Noun_TEMPLATE, successorConstraint);
-                        registerForm(nullForm);
+                        NullSuffixForm nullForm = generateNullFormFromTemplate(Noun_TEMPLATE, successorConstraint);
+                        registerForm(nullForm.copy());
                         return nullForm;
                     default:
                         throw new UnsupportedOperationException("In this class only some noun morphemes exist.");

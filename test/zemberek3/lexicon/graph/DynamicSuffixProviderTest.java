@@ -198,4 +198,46 @@ public class DynamicSuffixProviderTest {
     }
 
 
+    @Test
+    public void testCausativeMock() {
+
+        DynamicSuffixProvider provider = new DynamicSuffixProvider();
+
+        Suffix verb = new Suffix("verb");
+        Suffix causative = new Suffix("causative");
+        Suffix positive = new Suffix("positive");
+        Suffix future = new Suffix("future");
+
+        SuffixForm caus_t = DynamicSuffixProvider.getForm("causative-t", causative, "t");
+        SuffixForm caus_tir = DynamicSuffixProvider.getForm("causative-tir", causative, "tir");
+        SuffixForm future_acak = DynamicSuffixProvider.getForm("future-acak", future, "acak");
+
+        SuffixFormTemplate verb_temp = DynamicSuffixProvider.getTemplate("verb_temp", verb);
+        SuffixFormTemplate verb2verb = DynamicSuffixProvider.getTemplate("verb2verb", verb);
+        SuffixFormTemplate positive_temp = DynamicSuffixProvider.getTemplate("positive_temp", positive);
+
+        verb_temp.connections.add(positive_temp, verb2verb);
+        verb_temp.indirectConnections.add(caus_t, caus_tir, future_acak);
+
+        verb2verb.connections.add(caus_t, caus_tir);
+
+        caus_t.connections.add(positive_temp, verb2verb);
+        caus_t.indirectConnections.add(future_acak, caus_tir);
+
+        caus_tir.connections.add(positive_temp, verb2verb);
+        caus_tir.indirectConnections.add(future_acak, caus_t);
+
+        positive_temp.connections.add(future_acak);
+
+        provider.registerForms(verb_temp, verb2verb, caus_tir, caus_t, positive_temp, future_acak);
+
+        Assert.assertEquals(6, provider.getFormCount());
+
+        provider.dumpPath(caus_t, 2);
+        provider.dumpPath(caus_tir, 2);
+
+
+
+    }
+
 }
