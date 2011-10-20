@@ -358,7 +358,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormTemplate Verb2Noun = getTemplate("Verb2Noun", NounRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2NounPart = getTemplate("Verb2NounPart", NounRoot, TerminationType.NON_TERMINAL);
 
-    public static SuffixForm Noun_Default = getNull("Noun_Default", Noun_TEMPLATE);
+    public static NullSuffixForm Noun_Default = getNull("Noun_Default", Noun_TEMPLATE);
     public static SuffixFormTemplate Noun_Comp_P3sg = getTemplate("Noun_Comp_P3sg", NounRoot);
     public static SuffixFormTemplate Noun_Comp_P3sg_Root = getTemplate("Noun_Comp_P3sg_Root", NounRoot);
 
@@ -369,30 +369,36 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormTemplate Adv2Adj = getTemplate("Adv2Adj", AdjRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2Adj = getTemplate("Verb2Adj", AdjRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2AdjPart = getTemplate("Verb2AdjPart", AdjRoot, TerminationType.NON_TERMINAL);
-    public static SuffixForm Adj_Main_Rel = getNull("Adj_TEMPLATE", Adj_TEMPLATE);
-    public static SuffixForm Adj_Default = getNull("Adj_Default", Adj_TEMPLATE, TerminationType.TERMINAL);
+    public static SuffixFormTemplate Adj_Main_Rel = getTemplate("Adj_TEMPLATE", AdjRoot);
+    public static NullSuffixForm Adj_Default = getNull("Adj_Default", Adj_TEMPLATE, TerminationType.TERMINAL);
 
-    public static Suffix AdvRoot = new Suffix("AdvRoot");
+    public static Suffix AdvRoot = new Suffix("Adv");
 
     public static SuffixFormTemplate Adv_TEMPLATE = getTemplate("Adv_TEMPLATE", AdvRoot);
     public static SuffixFormTemplate Adj2Adv = getTemplate("Adj2Adv", AdvRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2Adv = getTemplate("Verb2Adv", AdvRoot, TerminationType.NON_TERMINAL);
-    public static SuffixForm Adv_Default = getNull("Adv_Default", Adv_TEMPLATE);
+    public static NullSuffixForm Adv_Default = getNull("Adv_Default", Adv_TEMPLATE);
 
     public static Suffix InterjRoot = new Suffix("Interj");
-    public static SuffixFormTemplate Interj_Main = getTemplate("Interj_Main", InterjRoot);
+    public static SuffixFormTemplate Interj_Template = getTemplate("Interj_Template", InterjRoot);
+    public static NullSuffixForm Interj_Default = getNull("Interj_Default", Interj_Template);
 
     public static Suffix ConjRoot = new Suffix("Conj");
-    public static SuffixFormTemplate Conj_Main = getTemplate("Conj_Main", ConjRoot);
+    public static SuffixFormTemplate Conj_Template = getTemplate("Conj_Template", ConjRoot);
+    public static NullSuffixForm Conj_Default = getNull("Conj_Default", Conj_Template);
+
 
     public static Suffix NumeralRoot = new Suffix("Numeral");
-    public static SuffixForm Numeral_Main = getTemplate("Numeral_Main", NumeralRoot);
+    public static SuffixFormTemplate Numeral_Template = getTemplate("Numeral_Template", NumeralRoot);
+    public static NullSuffixForm Numeral_Default = getNull("Numeral_Default", Numeral_Template);
 
     public static Suffix DetRoot = new Suffix("Det");
-    public static SuffixForm Det_Main = getTemplate("Det_Main", DetRoot);
+    public static SuffixFormTemplate Det_Template = getTemplate("Det_Template", DetRoot);
+    public static NullSuffixForm Det_Default = getNull("Det_Default", Det_Template);
+
 
     public static Suffix ProperNounRoot = new Suffix("ProperNoun");
-    public static SuffixForm ProperNoun_Default = getTemplate("ProperNoun_Default", ProperNounRoot);
+    public static SuffixForm ProperNoun_Template = getTemplate("ProperNoun_Template", ProperNounRoot);
 
     public static Suffix VerbRoot = new Suffix("Verb");
     public static SuffixFormTemplate Verb_TEMPLATE = getTemplate("Verb_TEMPLATE", VerbRoot);
@@ -403,14 +409,13 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormTemplate Verb2VerbAbility = getTemplate("Verb2VerbAbility", VerbRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2VerbCompounds = getTemplate("Verb2VerbCompounds", VerbRoot, TerminationType.NON_TERMINAL);
     public static NullSuffixForm Verb_Default = getNull("Verb_Default", Verb_TEMPLATE);
-    public static SuffixForm Verb_De = getNull("Verb_De", Verb_TEMPLATE);
-    public static SuffixForm Verb_Di = getNull("Verb_Di", Verb_TEMPLATE);
-    public static SuffixForm Verb_Ye = getNull("Verb_Ye", Verb_TEMPLATE);
-    public static SuffixForm Verb_Yi = getNull("Verb_Yi", Verb_TEMPLATE);
+    public static NullSuffixForm Verb_De = getNull("Verb_De", Verb_TEMPLATE);
+    public static NullSuffixForm Verb_Di = getNull("Verb_Di", Verb_TEMPLATE);
+    public static NullSuffixForm Verb_Ye = getNull("Verb_Ye", Verb_TEMPLATE);
+    public static NullSuffixForm Verb_Yi = getNull("Verb_Yi", Verb_TEMPLATE);
 
     public static SuffixForm Verb_De_Ye_Prog = getNull("Verb_De_Ye_Prog", Verb_TEMPLATE);
     public static SuffixForm Verb_Prog_Drop = getNull("Verb_Prog_Drop", Verb_TEMPLATE);
-
 
     public static Suffix PersPronRoot = new Suffix("PersPron");
     public static Suffix DemonsPronRoot = new Suffix("DemonsPron");
@@ -423,8 +428,10 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
 
     public static Suffix QuesRoot = new Suffix("Ques");
-    public static SuffixFormTemplate Ques_mI = getTemplate("Ques_mI", QuesRoot);
+    public static SuffixFormTemplate Ques_Template = getTemplate("Ques_Template", QuesRoot);
+    public static NullSuffixForm Ques_Default = getNull("Ques_Default", Ques_Template);
 
+    // TODO: particle may not be used in the system, it is a too broad POS
     public static Suffix ParticleRoot = new Suffix("Particle");
     public static SuffixFormTemplate Particle_Main = getTemplate("Particle_Main", ParticleRoot);
 
@@ -529,8 +536,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Noun2Adj);
 
         // Proper noun default //TODO: should be a template
-        ProperNoun_Default.connections.add(A3pl_lAr, A3sg_TEMPLATE);
-        ProperNoun_Default.indirectConnections
+        ProperNoun_Template.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+        ProperNoun_Template.indirectConnections
                 .add(CASE_FORMS, POSSESSIVE_FORMS)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_TEMPLATE, Agt_cI, Ness_lIk);
 
@@ -935,7 +942,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 KeepDoing_yAgor, KeepDoing2_yAdur, EverSince_yAgel,
                 Almost_yAyAz, Hastily_yIver, Stay_yAkal, Inf1_mAk, Inf2_mA, Inf3_yIs, Ly_cA,
                 Quite_cA, Equ_cA, Equ_ncA, UntilDoing_yAsIyA,
-                A3pl_Comp_lAr, Interj_Main, Verb_Prog_Drop, PersPron_BenSen, PersPron_BanSan,
+                A3pl_Comp_lAr, Interj_Template, Verb_Prog_Drop, PersPron_BenSen, PersPron_BanSan,
                 Ordinal_IncI, Grouping_sAr);
         //dumpPath(Caus_t, 5);
 
@@ -951,7 +958,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl,
                 P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI, A3pl_Comp_lAr);
 
-        ProperNoun_Default
+        ProperNoun_Template
                 .add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
                 .add(Pl_lAr, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_TEMPLATE, Agt_cI, Ness_lIk);
 
@@ -981,7 +988,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         PersPron_BenSen.add(PersPron_TEMPLATE.getSuccSetCopy()).remove(Dat_yA);
         PersPron_BanSan.add(Dat_yA);
 
-        Ques_mI.add(PERSON_FORMS_N).add(Cop_dIr, EvidCop_ymIs, PastCop_ydI);
+        Ques_Template.add(PERSON_FORMS_N).add(Cop_dIr, EvidCop_ymIs, PastCop_ydI);
 
         Adj_TEMPLATE.add(Noun_TEMPLATE.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA).remove(Related_sAl);
         Adj_Exp_C.add(Noun_Exp_C.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);
@@ -989,10 +996,10 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Become_lAs.add(Verb_TEMPLATE.getSuccSetCopy());
         Quite_cA.add(Noun_TEMPLATE.getSuccSetCopy()).remove(Related_sAl);
 
-        Numeral_Main.add(COPULAR_FORMS, CASE_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N)
+        Numeral_Template.add(COPULAR_FORMS, CASE_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N)
                 .add(Ordinal_IncI, Grouping_sAr, With_lI, Without_sIz, Ness_lIk, Pl_lAr);
 
-        Ordinal_IncI.add(Numeral_Main.getSuccSetCopy()).remove(Ordinal_IncI, Grouping_sAr);
+        Ordinal_IncI.add(Numeral_Template.getSuccSetCopy()).remove(Ordinal_IncI, Grouping_sAr);
         Grouping_sAr.add(With_lI, Ness_lIk, Abl_dAn).add(COPULAR_FORMS);
 
         Pl_lAr.add(CASE_FORMS, COPULAR_FORMS)
@@ -1140,7 +1147,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
             switch (item.primaryPos) {
                 case Noun:
                     if(item.secondaryPos == SecondaryPos.ProperNoun)
-                        return ProperNoun_Default;
+                        return ProperNoun_Template;
                     return Noun_Default;
                 case Adjective:
                     return Adj_Default;
@@ -1148,6 +1155,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                     return Verb_Default;
                 case Adverb:
                     return Adv_Default;
+                case Numeral:
+                    return Numeral_Template;
                 case Pronoun:
                     if (item.secondaryPos == SecondaryPos.Demonstrative)
                         return DemonsPron_Default;

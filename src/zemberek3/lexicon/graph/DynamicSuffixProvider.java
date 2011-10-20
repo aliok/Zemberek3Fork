@@ -22,7 +22,7 @@ public abstract class DynamicSuffixProvider implements SuffixProvider {
         return new NullSuffixForm(getNewIndex(), suffixId, template);
     }
 
-    public static SuffixForm getNull(String suffixId, SuffixFormTemplate template, TerminationType type) {
+    public static NullSuffixForm getNull(String suffixId, SuffixFormTemplate template, TerminationType type) {
         return new NullSuffixForm(getNewIndex(), suffixId, template, type);
     }
 
