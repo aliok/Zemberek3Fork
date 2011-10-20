@@ -5,7 +5,6 @@ import zemberek3.lexicon.SuffixProvider;
 import zemberek3.lexicon.TurkishDictionaryLoader;
 import zemberek3.lexicon.TurkishSuffixes;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
-import zemberek3.lexicon.graph.LexiconGraph;
 
 import java.io.File;
 import java.io.IOException;

@@ -6,7 +6,6 @@ import com.google.common.collect.Maps;
 import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.Suffix;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
-import zemberek3.lexicon.graph.LexiconGraph;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
 

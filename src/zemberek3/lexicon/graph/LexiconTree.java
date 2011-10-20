@@ -315,11 +315,11 @@ public class LexiconTree {
 //        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("src/resources/tr/master-dictionary.txt"));
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();
-        LexiconGraph graph = new LexiconGraph(items, suffixes);
-        graph.generate();
+        DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixes);
+        graph.addDictionaryItems(items);
         long st = System.currentTimeMillis();
         int i = 0;
-        for (StemNode s : graph.getStems()) {
+        for (StemNode s : graph.getStemNodes()) {
             lexicon.add(s);
             i++;
         }
