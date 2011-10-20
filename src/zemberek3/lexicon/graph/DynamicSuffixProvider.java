@@ -1,18 +1,18 @@
 package zemberek3.lexicon.graph;
 
-import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class DynamicSuffixProvider implements SuffixProvider {
+public abstract class DynamicSuffixProvider implements SuffixProvider {
 
     protected Map<SuffixForm, SuffixForm> suffixForms = Maps.newHashMap();
     protected Map<String, Suffix> suffixLookup = Maps.newHashMap();
     protected Map<String, SuffixForm> formLookupByName = Maps.newHashMap();
-    protected ArrayListMultimap<String, SuffixForm> formsPerSuffix = ArrayListMultimap.create(100, 2);
     private Map<NullSuffixForm, NullSuffixForm> nullFormsUnprocessed = Maps.newHashMap();
 
     protected IdMaker idMaker = new IdMaker(3);
@@ -54,9 +54,9 @@ public class DynamicSuffixProvider implements SuffixProvider {
         return suffixLookup.get(suffixId);
     }
 
-    public List<SuffixForm> getFormsBySuffixId(String suffixId) {
-        return formsPerSuffix.get(suffixId);
-    }
+/*    public SuffixForm getSuffixFormById(String suffixId) {
+        return formLookupByName.get(suffixId);
+    } */
 
     public Iterable<SuffixForm> getAllForms() {
         return suffixForms.keySet();
@@ -67,14 +67,10 @@ public class DynamicSuffixProvider implements SuffixProvider {
     }
 
     @Override
-    public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
-        return new SuffixData[0];  //To change body of implemented methods use File | Settings | File Templates.
-    }
+    public abstract SuffixData[] defineSuccessorSuffixes(DictionaryItem item);
 
     @Override
-    public SuffixForm getRootSet(DictionaryItem item, SuffixData successors) {
-        return null;
-    }
+    public abstract SuffixForm getRootSet(DictionaryItem item, SuffixData successors);
 
     protected void registerForms(SuffixForm... setz) {
         for (SuffixForm formSet : setz) {
@@ -102,6 +98,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
         // if this is a template, we put basic template data to a lookup table. we will use this table later to detect
         // duplicates of newly generated FormSets.
         if (formSet instanceof SuffixFormTemplate) {
+            formLookupByName.put(formSet.getId(), formSet);
             return;
         }
 
@@ -137,7 +134,7 @@ public class DynamicSuffixProvider implements SuffixProvider {
         }
     }
 
-    public SuffixForm getFormById(String id) {
+    public SuffixForm getSuffixFormById(String id) {
         return formLookupByName.get(id);
     }
 

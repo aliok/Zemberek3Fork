@@ -2,17 +2,27 @@ package zemberek3.lexicon.graph;
 
 import junit.framework.Assert;
 import org.junit.Test;
-import zemberek3.lexicon.NullSuffixForm;
-import zemberek3.lexicon.Suffix;
-import zemberek3.lexicon.SuffixForm;
-import zemberek3.lexicon.SuffixFormTemplate;
+import zemberek3.lexicon.*;
 
 public class DynamicSuffixProviderTest {
+
+    class TestSuffixProvider extends DynamicSuffixProvider{
+
+        @Override
+        public SuffixData[] defineSuccessorSuffixes(DictionaryItem item) {
+            return new SuffixData[0];  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public SuffixForm getRootSet(DictionaryItem item, SuffixData successors) {
+            return null;
+        }
+    }
 
     @Test
     public void testSimpleFormGraph() {
 
-        DynamicSuffixProvider provider = new DynamicSuffixProvider();
+        DynamicSuffixProvider provider = new TestSuffixProvider();
 
         Suffix sf1 = new Suffix("sf1");
         Suffix sf2 = new Suffix("sf2");
@@ -62,7 +72,7 @@ public class DynamicSuffixProviderTest {
     @Test
     public void testNullSets() {
 
-        DynamicSuffixProvider provider = new DynamicSuffixProvider();
+        DynamicSuffixProvider provider = new TestSuffixProvider();
 
         Suffix sf1 = new Suffix("sf1");
         Suffix sf2 = new Suffix("sf2");
@@ -100,7 +110,7 @@ public class DynamicSuffixProviderTest {
     @Test
     public void testRegister() {
 
-        DynamicSuffixProvider provider = new DynamicSuffixProvider();
+        DynamicSuffixProvider provider = new TestSuffixProvider();
 
         Suffix sf1 = new Suffix("sf1");
         Suffix sf2 = new Suffix("sf2");
@@ -201,7 +211,7 @@ public class DynamicSuffixProviderTest {
     @Test
     public void testCausativeMock() {
 
-        DynamicSuffixProvider provider = new DynamicSuffixProvider();
+        DynamicSuffixProvider provider = new TestSuffixProvider();
 
         Suffix verb = new Suffix("verb");
         Suffix causative = new Suffix("causative");
@@ -235,9 +245,6 @@ public class DynamicSuffixProviderTest {
 
         provider.dumpPath(caus_t, 2);
         provider.dumpPath(caus_tir, 2);
-
-
-
     }
 
 }

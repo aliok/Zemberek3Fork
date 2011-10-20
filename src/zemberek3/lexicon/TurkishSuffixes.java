@@ -24,6 +24,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public static Suffix Gen = new Suffix("Gen");
     public static SuffixForm Gen_nIn = getForm(Gen, "+nIn");
+    public static SuffixForm Gen_Im = getForm("Gen_Im", Gen, "+Im"); // benim, bizim
 
     public static Suffix Acc = new Suffix("Acc");
     public static SuffixForm Acc_yI = getForm(Acc, "+yI");
@@ -234,7 +235,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixForm Abil_yAbil = getForm(Abil, "+yAbil");
     public static SuffixForm Abil_yA = getForm("Abil_yA", Abil, "+yA", TerminationType.NON_TERMINAL);
 
-    // TODO: Copular suffixes are not correct in verbs here. causes verb derivation.
     public static Suffix Cop = new Suffix("Cop");
     public static SuffixForm Cop_dIr = getForm(Cop, ">dIr");
 
@@ -391,8 +391,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static Suffix DetRoot = new Suffix("Det");
     public static SuffixForm Det_Main = getTemplate("Det_Main", DetRoot);
 
-    public static Suffix ProperNounRoot = new Suffix("ProperNounRoot");
-    public static SuffixForm ProperNoun_Main = getTemplate("ProperNoun_Main", ProperNounRoot);
+    public static Suffix ProperNounRoot = new Suffix("ProperNoun");
+    public static SuffixForm ProperNoun_Default = getTemplate("ProperNoun_Default", ProperNounRoot);
 
     public static Suffix VerbRoot = new Suffix("Verb");
     public static SuffixFormTemplate Verb_TEMPLATE = getTemplate("Verb_TEMPLATE", VerbRoot);
@@ -402,7 +402,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormTemplate Verb2Verb = getTemplate("Verb2Verb", VerbRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2VerbAbility = getTemplate("Verb2VerbAbility", VerbRoot, TerminationType.NON_TERMINAL);
     public static SuffixFormTemplate Verb2VerbCompounds = getTemplate("Verb2VerbCompounds", VerbRoot, TerminationType.NON_TERMINAL);
-    public static SuffixForm Verb_Default = getNull("Verb_Default", Verb_TEMPLATE);
+    public static NullSuffixForm Verb_Default = getNull("Verb_Default", Verb_TEMPLATE);
     public static SuffixForm Verb_De = getNull("Verb_De", Verb_TEMPLATE);
     public static SuffixForm Verb_Di = getNull("Verb_Di", Verb_TEMPLATE);
     public static SuffixForm Verb_Ye = getNull("Verb_Ye", Verb_TEMPLATE);
@@ -413,9 +413,14 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
 
     public static Suffix PersPronRoot = new Suffix("PersPron");
+    public static Suffix DemonsPronRoot = new Suffix("DemonsPron");
     public static SuffixFormTemplate PersPron_TEMPLATE = getTemplate("PersPron_TEMPLATE", PersPronRoot);
+    public static NullSuffixForm PersPron_Default = getNull("PersPron_Default", PersPron_TEMPLATE);
     public static SuffixFormTemplate PersPron_BenSen = getTemplate("PersPron_BenSen", PersPronRoot);
     public static SuffixFormTemplate PersPron_BanSan = getTemplate("PersPron_BanSan", PersPronRoot);
+    public static SuffixFormTemplate DemonsPron_TEMPLATE = getTemplate("DemonsPron_TEMPLATE", DemonsPronRoot);
+    public static NullSuffixForm DemonsPron_Default = getNull("DemonsPron_Default", DemonsPron_TEMPLATE);
+
 
     public static Suffix QuesRoot = new Suffix("Ques");
     public static SuffixFormTemplate Ques_mI = getTemplate("Ques_mI", QuesRoot);
@@ -424,8 +429,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public static SuffixFormTemplate Particle_Main = getTemplate("Particle_Main", ParticleRoot);
 
     // TODO: add time root. (with Rel_ki + Noun)
-
     public static final SuffixForm[] CASE_FORMS = {Nom_TEMPLATE, Dat_yA, Loc_dA, Abl_dAn, Gen_nIn, Acc_yI, Inst_ylA, Equ_cA};
+
     public static final SuffixForm[] POSSESSIVE_FORMS = {Pnon_TEMPLATE, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, P3pl_lArI};
     public static final SuffixForm[] PERSON_FORMS_N = {A1sg_yIm, A2sg_sIn, A3sg_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_lAr};
     public static final SuffixForm[] PERSON_FORMS_COP = {A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr};
@@ -524,8 +529,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Noun2Adj);
 
         // Proper noun default //TODO: should be a template
-        ProperNoun_Main.connections.add(A3pl_lAr, A3sg_TEMPLATE);
-        ProperNoun_Main.indirectConnections
+        ProperNoun_Default.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+        ProperNoun_Default.indirectConnections
                 .add(CASE_FORMS, POSSESSIVE_FORMS)
                 .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_TEMPLATE, Agt_cI, Ness_lIk);
 
@@ -946,7 +951,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl,
                 P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI, A3pl_Comp_lAr);
 
-        ProperNoun_Main
+        ProperNoun_Default
                 .add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
                 .add(Pl_lAr, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_TEMPLATE, Agt_cI, Ness_lIk);
 
@@ -1134,6 +1139,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         if (suffixConstraint.isEmpty()) {
             switch (item.primaryPos) {
                 case Noun:
+                    if(item.secondaryPos == SecondaryPos.ProperNoun)
+                        return ProperNoun_Default;
                     return Noun_Default;
                 case Adjective:
                     return Adj_Default;
@@ -1141,6 +1148,11 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                     return Verb_Default;
                 case Adverb:
                     return Adv_Default;
+                case Pronoun:
+                    if (item.secondaryPos == SecondaryPos.Demonstrative)
+                        return DemonsPron_Default;
+                    else
+                        return PersPron_Default;
                 default:
                     return Noun_Default;
             }
@@ -1156,8 +1168,15 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 case Verb:
                     template = Verb_TEMPLATE;
                     break;
+                case Pronoun:
+                    if (item.secondaryPos == SecondaryPos.Demonstrative)
+                        template = DemonsPron_TEMPLATE;
+                    else
+                        return PersPron_TEMPLATE;
+                    break;
                 default:
                     template = Noun_TEMPLATE;
+
             }
             NullSuffixForm copy = generateNullFormFromTemplate(template, suffixConstraint).copy();
             registerForm(copy);
@@ -1185,7 +1204,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         return new SuffixData[]{original, modified};
     }
 
-
     private void getForNoun(DictionaryItem item, SuffixData original, SuffixData modified) {
 
         for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
@@ -1199,6 +1217,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
             }
         }
     }
+
 
     private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
         original.add(Verb_TEMPLATE.allConnections().remove(Caus_t));

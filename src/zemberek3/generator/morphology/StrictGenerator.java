@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class SimpleGenerator {
+public class StrictGenerator {
 
     DynamicLexiconGraph graph;
     ArrayListMultimap<DictionaryItem, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<DictionaryItem, StemNode> singeStems = Maps.newHashMap();
 
-    public SimpleGenerator(DynamicLexiconGraph graph) {
+    public StrictGenerator(DynamicLexiconGraph graph) {
         this.graph = graph;
         for (StemNode stemNode : graph.getStemNodes()) {
             final DictionaryItem item = stemNode.getDictionaryItem();

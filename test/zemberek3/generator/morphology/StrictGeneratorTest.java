@@ -21,12 +21,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleGeneratorTest {
+public class StrictGeneratorTest {
     @Test
     public void regenerateTest() throws IOException {
         DynamicLexiconGraph graph = getLexicon();
         SimpleParser parser = new SimpleParser(graph);
-        SimpleGenerator generator = new SimpleGenerator(graph);
+        StrictGenerator generator = new StrictGenerator(graph);
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         for (String parseable : parseables) {
             List<ParseResult> parseResults = parser.parse(parseable);
@@ -41,7 +41,7 @@ public class SimpleGeneratorTest {
     public void morphemeGenerationTest() throws IOException {
         DynamicLexiconGraph graph = getLexicon();
         SimpleParser parser = new SimpleParser(graph);
-        SimpleGenerator generator = new SimpleGenerator(graph);
+        StrictGenerator generator = new StrictGenerator(graph);
         List<String> testLines = SimpleTextReader.trimmingUTF8Reader(new File("test/data/separate-morphemes.txt")).asStringList();
         ArrayListMultimap<String, String> results = ArrayListMultimap.create(100, 2);
         for (String testLine : testLines) {
@@ -63,7 +63,7 @@ public class SimpleGeneratorTest {
     public void speedTest() throws IOException {
         DynamicLexiconGraph graph = getLexicon();
         SimpleParser parser = new SimpleParser(graph);
-        SimpleGenerator generator = new SimpleGenerator(graph);
+        StrictGenerator generator = new StrictGenerator(graph);
         List<String> parseables = SimpleTextReader.trimmingUTF8Reader(new File("test/data/parseable.txt")).asStringList();
         List<ParseResult> parses = new ArrayList<ParseResult>();
         for (String word : parseables) {

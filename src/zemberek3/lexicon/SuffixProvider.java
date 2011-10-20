@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface SuffixProvider {
 
-    Suffix getSuffixById(String suffixId);
-
-    List<SuffixForm> getFormsBySuffixId(String suffixId);
+    SuffixForm getSuffixFormById(String suffixId);
 
     Iterable<SuffixForm> getAllForms();
 
