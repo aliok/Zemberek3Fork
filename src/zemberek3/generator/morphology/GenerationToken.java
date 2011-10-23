@@ -1,6 +1,7 @@
 package zemberek3.generator.morphology;
 
 import com.google.common.base.Joiner;
+import zemberek3.lexicon.NullSuffixForm;
 import zemberek3.lexicon.Suffix;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
@@ -58,4 +59,18 @@ public class GenerationToken {
         formList.add(node.surfaceForm);
         return new GenerationToken(stemNode, node, hist, formList, t);
     }
+
+    GenerationToken getForNull(SuffixNode node) {
+        boolean t = terminal;
+        switch (node.termination) {
+            case TERMINAL:
+                t = true;
+                break;
+            case NON_TERMINAL:
+                t = false;
+                break;
+        }
+        return new GenerationToken(stemNode, node, new ArrayList<Suffix>(nodesLeft), formList, t);
+    }
+
 }

@@ -13479,7 +13479,7 @@ kilovat [A:NoVoicing]
 kilovolt [A:NoVoicing]
 kils
 kilüs
-kim [P:Pron ;S:+A3pl]
+kim [P:Pron]
 kim [P:Conj]
 kimi [P:Adj]
 kimi [P:Pron]

@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class StrictGenerator {
+public class SimpleGenerator {
 
     DynamicLexiconGraph graph;
     ArrayListMultimap<DictionaryItem, StemNode> multiStems = ArrayListMultimap.create(1000, 2);
     Map<DictionaryItem, StemNode> singeStems = Maps.newHashMap();
 
-    public StrictGenerator(DynamicLexiconGraph graph) {
+    public SimpleGenerator(DynamicLexiconGraph graph) {
         this.graph = graph;
         for (StemNode stemNode : graph.getStemNodes()) {
             final DictionaryItem item = stemNode.getDictionaryItem();
@@ -96,6 +96,8 @@ public class StrictGenerator {
             for (SuffixNode successor : token.currentNode.getSuccessors()) {
                 if (successor.getSuffixSet().getSuffix() == token.getSuffix()) {
                     newtokens.add(token.getCopy(successor));
+                } else if(successor.getSuffixSet() instanceof NullSuffixForm ) {
+                    newtokens.add(token.getForNull(successor));
                 }
             }
         }
