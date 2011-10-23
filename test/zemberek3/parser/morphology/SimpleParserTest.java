@@ -121,18 +121,18 @@ public class SimpleParserTest {
 
     static class NounSuffixes extends DynamicSuffixProvider {
 
-        static SuffixForm Dim_CIK = getForm(new Suffix("Dim"), ">cI~k");
-        static SuffixForm P1sg_Im = getForm(new Suffix("P1sg"), "Im");
-        static SuffixForm Dat_yA = getForm(new Suffix("Dat"), "+yA");
-        static SuffixForm Dat_nA = getForm(new Suffix("Dat"), "nA");
-        static SuffixFormTemplate Pnon_TEMPLATE = getTemplate("Pnon_TEMPLATE", new Suffix("Pnon"));
-        static SuffixFormTemplate Nom_TEMPLATE = getTemplate("Nom_TEMPLATE", new Suffix("Nom"));
-        static SuffixFormTemplate A3sg_TEMPLATE = getTemplate("A3sg_TEMPLATE", new Suffix("A3sg"));
-        static SuffixForm A3pl_lAr = getForm(new Suffix("A3pl"), "lAr");
-        static Suffix Noun_Root = new Suffix("Noun");
-        static SuffixFormTemplate Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
-        static SuffixForm Noun_Default = getNull("Noun_Default", Noun_TEMPLATE);
-        static SuffixFormTemplate Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
+        SuffixForm Dim_CIK = getForm(new Suffix("Dim"), ">cI~k");
+        SuffixForm P1sg_Im = getForm(new Suffix("P1sg"), "Im");
+        SuffixForm Dat_yA = getForm(new Suffix("Dat"), "+yA");
+        SuffixForm Dat_nA = getForm(new Suffix("Dat"), "nA");
+        SuffixFormTemplate Pnon_TEMPLATE = getTemplate("Pnon_TEMPLATE", new Suffix("Pnon"));
+        SuffixFormTemplate Nom_TEMPLATE = getTemplate("Nom_TEMPLATE", new Suffix("Nom"));
+        SuffixFormTemplate A3sg_TEMPLATE = getTemplate("A3sg_TEMPLATE", new Suffix("A3sg"));
+        SuffixForm A3pl_lAr = getForm(new Suffix("A3pl"), "lAr");
+        Suffix Noun_Root = new Suffix("Noun");
+        SuffixFormTemplate Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
+        SuffixForm Noun_Default = getNull("Noun_Default", Noun_TEMPLATE);
+        SuffixFormTemplate Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
 
         NounSuffixes() {
 
