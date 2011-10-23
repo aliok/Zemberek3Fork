@@ -16,37 +16,37 @@ public abstract class DynamicSuffixProvider implements SuffixProvider {
     private Map<NullSuffixForm, NullSuffixForm> nullFormsUnprocessed = Maps.newHashMap();
 
     protected IdMaker idMaker = new IdMaker(3);
-    protected static AtomicInteger indexMaker = new AtomicInteger();
+    protected AtomicInteger indexMaker = new AtomicInteger();
 
-    public static NullSuffixForm getNull(String suffixId, SuffixFormTemplate template) {
+    public NullSuffixForm getNull(String suffixId, SuffixFormTemplate template) {
         return new NullSuffixForm(getNewIndex(), suffixId, template);
     }
 
-    public static NullSuffixForm getNull(String suffixId, SuffixFormTemplate template, TerminationType type) {
+    public NullSuffixForm getNull(String suffixId, SuffixFormTemplate template, TerminationType type) {
         return new NullSuffixForm(getNewIndex(), suffixId, template, type);
     }
 
-    public static SuffixForm getForm(Suffix suffix, String generationStr) {
+    public SuffixForm getForm(Suffix suffix, String generationStr) {
         return new SuffixForm(getNewIndex(), suffix, generationStr);
     }
 
-    public static SuffixForm getForm(String id, Suffix suffix, String generationStr) {
+    public SuffixForm getForm(String id, Suffix suffix, String generationStr) {
         return new SuffixForm(getNewIndex(), id, suffix, generationStr);
     }
 
-    public static SuffixForm getForm(String id, Suffix suffix, String generationStr, TerminationType type) {
+    public SuffixForm getForm(String id, Suffix suffix, String generationStr, TerminationType type) {
         return new SuffixForm(getNewIndex(), id, suffix, generationStr, type);
     }
 
-    public static SuffixFormTemplate getTemplate(String id, Suffix suffix) {
+    public SuffixFormTemplate getTemplate(String id, Suffix suffix) {
         return new SuffixFormTemplate(getNewIndex(), id, suffix);
     }
 
-    public static SuffixFormTemplate getTemplate(String id, Suffix suffix, TerminationType type) {
+    public SuffixFormTemplate getTemplate(String id, Suffix suffix, TerminationType type) {
         return new SuffixFormTemplate(getNewIndex(), id, suffix, type);
     }
 
-    private static int getNewIndex() {
+    private int getNewIndex() {
         return indexMaker.getAndIncrement();
     }
 

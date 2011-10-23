@@ -122,17 +122,17 @@ public class DynamicSuffixProviderTest {
         Suffix sf8 = new Suffix("sf6");
         Suffix sf9 = new Suffix("sf6");
 
-        SuffixForm frm1 = DynamicSuffixProvider.getForm("fs1", sf1, "abc");
-        SuffixForm frm2_1 = DynamicSuffixProvider.getForm("fs2-1", sf2, "ali");
-        SuffixForm frm2_2 = DynamicSuffixProvider.getForm("fs2-2", sf2, "kaan");
-        SuffixForm frm4 = DynamicSuffixProvider.getForm("fs4", sf4, "akin");
-        SuffixForm frm5 = DynamicSuffixProvider.getForm("frm5", sf6, "dadada");
-        SuffixForm frm6 = DynamicSuffixProvider.getForm("frm6", sf9, "aguagu");
+        SuffixForm frm1 = provider.getForm("fs1", sf1, "abc");
+        SuffixForm frm2_1 = provider.getForm("fs2-1", sf2, "ali");
+        SuffixForm frm2_2 = provider.getForm("fs2-2", sf2, "kaan");
+        SuffixForm frm4 = provider.getForm("fs4", sf4, "akin");
+        SuffixForm frm5 = provider.getForm("frm5", sf6, "dadada");
+        SuffixForm frm6 = provider.getForm("frm6", sf9, "aguagu");
 
-        SuffixFormTemplate tmp1 = DynamicSuffixProvider.getTemplate("tmp1", sf3, TerminationType.TRANSFER);
-        SuffixFormTemplate tmp2 = DynamicSuffixProvider.getTemplate("tmp2", sf5, TerminationType.TRANSFER);
-        SuffixFormTemplate tmp3 = DynamicSuffixProvider.getTemplate("tmp3", sf7, TerminationType.TRANSFER);
-        SuffixFormTemplate tmp4 = DynamicSuffixProvider.getTemplate("tmp4", sf8, TerminationType.TRANSFER);
+        SuffixFormTemplate tmp1 = provider.getTemplate("tmp1", sf3, TerminationType.TRANSFER);
+        SuffixFormTemplate tmp2 = provider.getTemplate("tmp2", sf5, TerminationType.TRANSFER);
+        SuffixFormTemplate tmp3 = provider.getTemplate("tmp3", sf7, TerminationType.TRANSFER);
+        SuffixFormTemplate tmp4 = provider.getTemplate("tmp4", sf8, TerminationType.TRANSFER);
 
         //
         //        /--frm5.............
@@ -218,13 +218,13 @@ public class DynamicSuffixProviderTest {
         Suffix positive = new Suffix("positive");
         Suffix future = new Suffix("future");
 
-        SuffixForm caus_t = DynamicSuffixProvider.getForm("causative-t", causative, "t");
-        SuffixForm caus_tir = DynamicSuffixProvider.getForm("causative-tir", causative, "tir");
-        SuffixForm future_acak = DynamicSuffixProvider.getForm("future-acak", future, "acak");
+        SuffixForm caus_t = provider.getForm("causative-t", causative, "t");
+        SuffixForm caus_tir = provider.getForm("causative-tir", causative, "tir");
+        SuffixForm future_acak = provider.getForm("future-acak", future, "acak");
 
-        SuffixFormTemplate verb_temp = DynamicSuffixProvider.getTemplate("verb_temp", verb);
-        SuffixFormTemplate verb2verb = DynamicSuffixProvider.getTemplate("verb2verb", verb);
-        SuffixFormTemplate positive_temp = DynamicSuffixProvider.getTemplate("positive_temp", positive);
+        SuffixFormTemplate verb_temp = provider.getTemplate("verb_temp", verb);
+        SuffixFormTemplate verb2verb = provider.getTemplate("verb2verb", verb);
+        SuffixFormTemplate positive_temp = provider.getTemplate("positive_temp", positive);
 
         verb_temp.connections.add(positive_temp, verb2verb);
         verb_temp.indirectConnections.add(caus_t, caus_tir, future_acak);
