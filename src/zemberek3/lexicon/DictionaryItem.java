@@ -1,10 +1,9 @@
 package zemberek3.lexicon;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
+import zemberek3.lexicon.tr.RootAttr;
 import zemberek3.structure.AttributeSet;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * DictionaryItem represents an entity from a dictionary.

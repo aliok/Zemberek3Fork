@@ -2,6 +2,9 @@ package zemberek3.lexicon.graph;
 
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.*;
+import zemberek3.lexicon.tr.PhonAttr;
+import zemberek3.lexicon.tr.PhoneticExpectation;
+import zemberek3.lexicon.tr.StemNodeGenerator;
 
 import java.util.HashSet;
 import java.util.List;

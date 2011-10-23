@@ -4,6 +4,8 @@ import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
 import zemberek3.lexicon.graph.DynamicSuffixProvider;
+import zemberek3.lexicon.tr.TurkishDictionaryLoader;
+import zemberek3.lexicon.tr.TurkishSuffixes;
 import zemberek3.parser.morphology.ParseResult;
 import zemberek3.parser.morphology.SimpleParser;
 

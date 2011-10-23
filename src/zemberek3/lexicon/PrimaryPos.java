@@ -15,7 +15,7 @@ public enum PrimaryPos implements StringEnum<PrimaryPos> {
     Determiner("Det"),
     Particle("Part");
 
-    String shortForm;
+    public String shortForm;
 
     PrimaryPos(String shortForm) {
         this.shortForm = shortForm;

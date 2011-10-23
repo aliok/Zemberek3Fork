@@ -1,5 +1,6 @@
-package zemberek3.lexicon;
+package zemberek3.lexicon.tr;
 
+import zemberek3.lexicon.*;
 import zemberek3.lexicon.graph.DynamicSuffixProvider;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.TerminationType;

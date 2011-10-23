@@ -4,6 +4,8 @@ import junit.framework.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.*;
 import zemberek3.lexicon.graph.*;
+import zemberek3.lexicon.tr.RootAttr;
+import zemberek3.lexicon.tr.TurkishDictionaryLoader;
 
 import java.util.*;
 

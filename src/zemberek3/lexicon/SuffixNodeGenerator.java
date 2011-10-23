@@ -1,10 +1,11 @@
 package zemberek3.lexicon;
 
 import com.google.common.collect.Lists;
-import zemberek3.lexicon.graph.PhoneticExpectation;
+import zemberek3.lexicon.tr.PhoneticExpectation;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.SuffixNode;
 import zemberek3.lexicon.graph.TerminationType;
+import zemberek3.lexicon.tr.PhonAttr;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
@@ -15,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static zemberek3.lexicon.PhonAttr.*;
+import static zemberek3.lexicon.tr.PhonAttr.*;
 import static zemberek3.structure.TurkishAlphabet.*;
 
 public class SuffixNodeGenerator {

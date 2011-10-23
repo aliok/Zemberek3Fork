@@ -1,4 +1,4 @@
-package zemberek3.lexicon.graph;
+package zemberek3.lexicon.tr;
 
 import zemberek3.structure.IndexedEnum;
 

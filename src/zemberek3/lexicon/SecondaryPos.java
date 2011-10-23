@@ -12,7 +12,7 @@ public enum SecondaryPos implements StringEnum<SecondaryPos> {
     ProperNoun("Prop"),
     None("None");
 
-    String shortForm;
+    public String shortForm;
 
     SecondaryPos(String shortForm) {
         this.shortForm = shortForm;

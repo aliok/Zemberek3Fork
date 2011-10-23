@@ -1,7 +1,7 @@
 package zemberek3.lexicon.graph;
 
-import zemberek3.lexicon.ExclusiveSuffixData;
-import zemberek3.lexicon.PhonAttr;
+import zemberek3.lexicon.tr.PhonAttr;
+import zemberek3.lexicon.tr.PhoneticExpectation;
 import zemberek3.structure.AttributeSet;
 
 public abstract class MorphNode {

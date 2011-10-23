@@ -7,8 +7,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.SuffixProvider;
-import zemberek3.lexicon.TurkishDictionaryLoader;
-import zemberek3.lexicon.TurkishSuffixes;
+import zemberek3.lexicon.tr.TurkishDictionaryLoader;
+import zemberek3.lexicon.tr.TurkishSuffixes;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
 
 import java.io.File;

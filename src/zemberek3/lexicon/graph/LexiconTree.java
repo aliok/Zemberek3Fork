@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import zemberek3.lexicon.DictionaryItem;
-import zemberek3.lexicon.TurkishDictionaryLoader;
-import zemberek3.lexicon.TurkishSuffixes;
+import zemberek3.lexicon.tr.TurkishDictionaryLoader;
+import zemberek3.lexicon.tr.TurkishSuffixes;
 import zemberek3.structure.TurkishAlphabet;
 
 /**

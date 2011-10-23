@@ -1,4 +1,4 @@
-package zemberek3.lexicon;
+package zemberek3.lexicon.tr;
 
 import zemberek3.structure.BitEnumMap;
 import zemberek3.structure.IndexedEnum;

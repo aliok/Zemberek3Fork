@@ -3,8 +3,9 @@ package zemberek3.lexicon.graph;
 import org.junit.Assert;
 import org.junit.Test;
 import zemberek3.lexicon.*;
-
-import java.util.List;
+import zemberek3.lexicon.tr.StemNodeGenerator;
+import zemberek3.lexicon.tr.TurkishDictionaryLoader;
+import zemberek3.lexicon.tr.TurkishSuffixes;
 
 public class StemNodeGeneratorTest {
 

@@ -3,9 +3,10 @@ package zemberek3.lexicon.graph;
 import com.google.common.collect.Sets;
 import org.junit.Assert;
 import org.junit.Test;
-import zemberek3.lexicon.PhonAttr;
+import zemberek3.lexicon.tr.PhonAttr;
 import zemberek3.lexicon.Suffix;
 import zemberek3.lexicon.SuffixForm;
+import zemberek3.lexicon.tr.PhoneticExpectation;
 import zemberek3.structure.AttributeSet;
 
 import java.util.Set;

@@ -1,9 +1,10 @@
-package zemberek3.lexicon;
+package zemberek3.lexicon.tr;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
+import zemberek3.lexicon.*;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;

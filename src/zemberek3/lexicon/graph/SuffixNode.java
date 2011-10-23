@@ -1,6 +1,8 @@
 package zemberek3.lexicon.graph;
 
 import zemberek3.lexicon.*;
+import zemberek3.lexicon.tr.PhonAttr;
+import zemberek3.lexicon.tr.PhoneticExpectation;
 import zemberek3.structure.AttributeSet;
 
 import java.util.HashSet;

@@ -2,9 +2,10 @@ package zemberek3.lexicon;
 
 import org.junit.Assert;
 import org.junit.Test;
-import zemberek3.lexicon.graph.PhoneticExpectation;
+import zemberek3.lexicon.tr.PhoneticExpectation;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.SuffixNode;
+import zemberek3.lexicon.tr.PhonAttr;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
@@ -12,7 +13,7 @@ import zemberek3.structure.TurkishAlphabet;
 import java.util.Arrays;
 import java.util.List;
 
-import static zemberek3.lexicon.PhonAttr.*;
+import static zemberek3.lexicon.tr.PhonAttr.*;
 
 public class SuffixNodeGeneratorTest {
 

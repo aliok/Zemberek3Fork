@@ -7,6 +7,9 @@ import org.jcaki.SimpleTextWriter;
 import org.jcaki.Strings;
 import org.junit.Ignore;
 import org.junit.Test;
+import zemberek3.lexicon.tr.RootAttr;
+import zemberek3.lexicon.tr.TurkishDictionaryLoader;
+import zemberek3.lexicon.tr.TurkishSuffixes;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
@@ -18,7 +21,7 @@ import java.util.*;
 import static zemberek3.lexicon.PrimaryPos.Noun;
 import static zemberek3.lexicon.PrimaryPos.Pronoun;
 import static zemberek3.lexicon.PrimaryPos.Verb;
-import static zemberek3.lexicon.RootAttr.*;
+import static zemberek3.lexicon.tr.RootAttr.*;
 
 public class TurkishDictionaryLoaderTest {
 

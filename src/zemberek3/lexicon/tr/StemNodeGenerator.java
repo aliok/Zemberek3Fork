@@ -1,13 +1,16 @@
-package zemberek3.lexicon.graph;
+package zemberek3.lexicon.tr;
 
 import zemberek3.lexicon.*;
+import zemberek3.lexicon.graph.StemNode;
+import zemberek3.lexicon.graph.SuffixData;
+import zemberek3.lexicon.graph.TerminationType;
 import zemberek3.structure.AttributeSet;
 import zemberek3.structure.TurkicLetter;
 import zemberek3.structure.TurkicSeq;
 import zemberek3.structure.TurkishAlphabet;
 
-import static zemberek3.lexicon.RootAttr.*;
-import static zemberek3.lexicon.TurkishSuffixes.*;
+import static zemberek3.lexicon.tr.RootAttr.*;
+import static zemberek3.lexicon.tr.TurkishSuffixes.*;
 
 
 /**
