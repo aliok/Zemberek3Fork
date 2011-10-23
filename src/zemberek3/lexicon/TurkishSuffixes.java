@@ -547,7 +547,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Abil_yAbil, Abil_yA, Caus_tIr, Caus_t, Opt_yA, Imp_TEMPLATE, Agt_yIcI_2Adj, Agt_yIcI_2Noun, Des_sA)
                 .add(NotState_mAzlIk, ActOf_mAcA, PastPart_dIk_2Adj, PastPart_dIk_2Noun, EvidPart_mIs_2Adj, EvidPart_mIs_2Noun, Pass_In, Pass_nIl, Pass_InIl)
                 .add(FutPart_yAcAk_2Adj, FutPart_yAcAk_2Noun, PresPart_yAn, AsLongAs_dIkcA, A2pl2_sAnIzA)
-                .add(A1sg_yIm, A2sg_sIn, A2sg_TEMPLATE, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr, A3sg_sIn, A3pl_sInlAr, A2sg2_sAnA, A2sg3_yInIz)
+                .add(A1sg_yIm, A2sg_sIn, A2sg_TEMPLATE, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_yIn, A2pl_sInIz, A3pl_Verb_lAr, A3sg_sIn, A3pl_sInlAr, A2sg2_sAnA, A2sg3_yInIz)
                 .add(Inf1_mAk, Inf2_mA, Inf3_yIs, Necess_mAlI)
                 .add(When_yIncA, FeelLike_yAsI_2Adj, FeelLike_yAsI_2Noun, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
                 .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA, A3pl_Verb_lAr_After_Tense)
@@ -1250,6 +1250,11 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                         modified.remove(Aor_Ar, AorPart_Ar_2Adj);
                     }
                     break;
+                case Voicing:
+                    modified.remove(Pass_In);
+                    modified.remove(Pass_InIl);
+                    break;
+
                 case Passive_In:
                     original.add(Pass_In);
                     original.add(Pass_InIl);

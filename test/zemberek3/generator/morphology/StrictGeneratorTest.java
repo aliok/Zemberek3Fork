@@ -19,6 +19,7 @@ import zemberek3.parser.morphology.SimpleParser;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StrictGeneratorTest {
@@ -31,9 +32,28 @@ public class StrictGeneratorTest {
         for (String parseable : parseables) {
             List<ParseResult> parseResults = parser.parse(parseable);
             for (ParseResult parseResult : parseResults) {
-                String res = generator.generate(parseResult.getDictionaryItem(), parseResult.getSuffixNodes());
-                Assert.assertEquals("Error in:" + parseable, parseable, res);
+                String[] res = generator.generate(parseResult.getDictionaryItem(), parseResult.getSuffixNodes());
+                boolean found = false;
+                for (String re : res) {
+                    if (re.equals(parseable))
+                        found = true;
+                }
+                Assert.assertTrue("Error in:" + parseable + " with parse:" + parseResult, found);
             }
+        }
+    }
+
+    @Test
+    public void regenerateTest2() throws IOException {
+        DynamicLexiconGraph graph = getLexicon();
+        SimpleParser parser = new SimpleParser(graph);
+        StrictGenerator generator = new StrictGenerator(graph);
+        String word = "elmada";
+        List<ParseResult> parseResults = parser.parse(word);
+        for (ParseResult parseResult : parseResults) {
+            System.out.println(parseResult);
+            String[] res = generator.generate(parseResult.getDictionaryItem(), parseResult.getSuffixNodes());
+            System.out.println(Arrays.toString(res));
         }
     }
 
@@ -73,9 +93,9 @@ public class StrictGeneratorTest {
         final long iteration = 1000;
         for (int i = 0; i < iteration; i++) {
             for (ParseResult parseToken : parses) {
-                String result = generator.generate(parseToken.getDictionaryItem(), parseToken.getSuffixNodes());
+                String[] result = generator.generate(parseToken.getDictionaryItem(), parseToken.getSuffixNodes());
                 if (i == 0) {
-                    System.out.println(parseToken + " = " + result);
+                    System.out.println(parseToken + " = " + Arrays.toString(result));
                 }
             }
         }
@@ -84,8 +104,9 @@ public class StrictGeneratorTest {
         System.out.println("Speed:" + (iteration * 1000 * parses.size() / elapsed) + " words/second");
     }
 
+    SuffixProvider suffixProvider = new TurkishSuffixes();
+
     private DynamicLexiconGraph getLexicon() throws IOException {
-        SuffixProvider suffixProvider = new TurkishSuffixes();
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         DynamicLexiconGraph graph = new DynamicLexiconGraph(suffixProvider);
         graph.addDictionaryItems(items);

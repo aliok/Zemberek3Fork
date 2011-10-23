@@ -4,7 +4,9 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import zemberek3.lexicon.DictionaryItem;
+import zemberek3.lexicon.NullSuffixForm;
 import zemberek3.lexicon.Suffix;
+import zemberek3.lexicon.SuffixForm;
 import zemberek3.lexicon.graph.DynamicLexiconGraph;
 import zemberek3.lexicon.graph.StemNode;
 import zemberek3.lexicon.graph.SuffixNode;
@@ -41,11 +43,26 @@ public class StrictGenerator {
         else return tokens.get(0).getAsMorphemes();
     }
 
-    public String generate(DictionaryItem item, List<Suffix> suffixes) {
+    /**
+     * generates a word from a dictionary item and a list of Suffixes. There can be multiple results for this operation.
+     * Because a suffix can have multiple forms.
+     *
+     * @param item     dictionary item
+     * @param suffixes suffixes.
+     * @return zero or more words generated from input.
+     */
+    public String[] generate(DictionaryItem item, List<Suffix> suffixes) {
         List<GenerationToken> tokens = getTokens(item, suffixes);
         if (tokens.size() == 0)
-            return "";
-        else return tokens.get(0).getAsString();
+            return new String[0];
+        else {
+            String[] res = new String[tokens.size()];
+            int i = 0;
+            for (GenerationToken token : tokens) {
+                res[i++] = token.getAsString();
+            }
+            return res;
+        }
     }
 
     private List<GenerationToken> getTokens(DictionaryItem item, List<Suffix> suffixes) {

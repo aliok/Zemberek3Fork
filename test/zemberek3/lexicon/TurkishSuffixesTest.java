@@ -11,6 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TurkishSuffixesTest {
+
+    @Test
+    public void testCase() {
+        Tester tester = new Tester("elma","armut");
+        tester.assertHasParses("elma", "armut", "elmada", "armutta");
+    }
+
     @Test
     public void testVoicing() {
         Tester tester = new Tester("armut");
@@ -179,9 +186,10 @@ public class TurkishSuffixesTest {
 
     @Test
     public void testImp() {
-        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
-        tester.assertHasParses("ara", "git", "gitme", "gidiniz", "gitsene", "gitsenize", "aramayacak", "aramasın", "gitmesin", "arasınlar", "gitmesinler");
+        Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]", "hapsetmek [A:Voicing]");
+        tester.assertHasParses("ara", "arayın", "git", "gitme", "gidiniz", "gitsene", "gitsenize", "aramayacak", "aramasın", "gitmesin", "arasınlar", "gitmesinler");
         tester.assertHasParses("aramasanıza", "aramayın", "gitmeyin");
+        tester.assertUnParseable(TurkishSuffixes.Pass, "hapsedin");
     }
 
     @Test
@@ -395,6 +403,17 @@ public class TurkishSuffixesTest {
             for (String word : words) {
                 List<ParseResult> results = parser.parse(word);
                 Assert.assertTrue("Unexpected parse for:" + word + " parse:" + results, results.size() == 0);
+            }
+        }
+
+        void assertUnParseable(Suffix suffix, String... words) {
+            SimpleParser parser = new SimpleParser(graph);
+            for (String word : words) {
+                List<ParseResult> results = parser.parse(word);
+                for (ParseResult result : results) {
+                    Assert.assertFalse(word + " parse should not contain suffix:" + suffix.id + " parse:" + results,
+                            result.getSuffixNodes().contains(suffix));
+                }
             }
         }
 
