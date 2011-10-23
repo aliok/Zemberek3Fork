@@ -299,8 +299,7 @@ public class TurkishSuffixesTest {
     @Test
     public void asif() {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]");
-        // abil
-        tester.assertHasParses("ararcasına", "aramazcasına", "arıyormuşçasına", "gidebilirmişsinizcesine");
+        tester.assertHasParses("ararcasına", "aramazcasına", "arıyormuşçasına", "aranılmışçasına", "gidebilirmişsinizcesine");
     }
 
     @Test

@@ -551,7 +551,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(A1sg_yIm, A2sg_sIn, A2sg_TEMPLATE, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_yIn, A2pl_sInIz, A3pl_Verb_lAr, A3sg_sIn, A3pl_sInlAr, A2sg2_sAnA, A2sg3_yInIz)
                 .add(Inf1_mAk, Inf2_mA, Inf3_yIs, Necess_mAlI)
                 .add(When_yIncA, FeelLike_yAsI_2Adj, FeelLike_yAsI_2Noun, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
-                .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA, A3pl_Verb_lAr_After_Tense)
+                .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA, A3pl_Verb_lAr_After_Tense, AsIf_cAsInA)
                 .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
                 .add(UntilDoing_yAsIyA, Verb2VerbCompounds, Verb2Noun, Verb2Adv, Verb2Adj, Verb2NounPart, Verb2AdjPart, Verb2VerbAbility);
 
@@ -789,6 +789,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Prog2_mAktA.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
 
         Fut_yAcAk.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
+        Fut_yAcAk.indirectConnections.add(A3sg_Verb_TEMPLATE.allConnections());
+
 
         Aor_Ar.connections.add(A3sg_Verb_TEMPLATE, A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr).add(COPULAR_FORMS);
         Aor_Ar.indirectConnections.add(Verb2Adv, AsIf_cAsInA);
@@ -831,12 +833,13 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Evid_mIs.connections.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr)
                 .add(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
+        Evid_mIs.indirectConnections.add(A3sg_Verb_TEMPLATE.allConnections());
 
         Cond_sA.connections.add(A1sg_m, A2sg_n, A3sg_Verb_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_Verb_lAr, PastCop_ydI, EvidCop_ymIs);
 
         PastCop_ydI.connections.add(PERSON_FORMS_COP);
         EvidCop_ymIs.connections.add(A1sg_yIm, A2sg_sIn, A3sg_Verb_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_Verb_lAr);
-        EvidCop_ymIs.indirectConnections.add(Verb2Adv, AsIf_cAsInA);
+        EvidCop_ymIs.indirectConnections.add(A3sg_Verb_TEMPLATE.allConnections());
         CondCop_ysA.connections.add(PERSON_FORMS_COP);
         Cop_dIr.connections.add(A3pl_Verb_lAr);
 
