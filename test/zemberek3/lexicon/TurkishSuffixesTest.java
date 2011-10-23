@@ -191,7 +191,7 @@ public class TurkishSuffixesTest {
         Tester tester = new Tester("aramak", "gitmek [A:Voicing, Aorist_A]", "hapsetmek [A:Voicing]");
         tester.assertHasParses("ara", "arayın", "git", "gitme", "gidiniz", "gitsene", "gitsenize", "aramayacak", "aramasın", "gitmesin", "arasınlar", "gitmesinler");
         tester.assertHasParses("aramasanıza", "aramayın", "gitmeyin");
-        tester.assertUnParseable(TurkishSuffixes.Pass, "hapsedin");
+        tester.assertUnParseable(suffixProvider.Pass, "hapsedin");
     }
 
     @Test
@@ -373,7 +373,7 @@ public class TurkishSuffixesTest {
     }
 
 
-    static DynamicSuffixProvider suffixProvider = new TurkishSuffixes();
+    static TurkishSuffixes suffixProvider = new TurkishSuffixes();
 
     class Tester {
 

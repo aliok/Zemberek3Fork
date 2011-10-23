@@ -173,37 +173,40 @@ public class StemNodeGenerator {
     // handle stem changes demek-diyecek , beni-bana
     private StemNode[] handleSpecialStems(DictionaryItem item) {
 
+        TurkishSuffixes turkishSuffixes = (TurkishSuffixes) suffixProvider;
+
+
         if (item.getId().equals("yemek_Verb")) {
             StemNode[] stems = new StemNode[3];
             stems[0] = new StemNode("ye", item, TerminationType.TERMINAL, calculateAttributes(item.root));
-            stems[0].exclusiveSuffixData.add(Verb_Ye.allConnections());
+            stems[0].exclusiveSuffixData.add(turkishSuffixes.Verb_Ye.allConnections());
             AttributeSet<PhonAttr> attrs = calculateAttributes(item.root).remove(PhonAttr.LastLetterVowel).add(PhonAttr.LastLetterConsonant);
             stems[1] = new StemNode("y", item, TerminationType.NON_TERMINAL, attrs, AttributeSet.<PhoneticExpectation>emptySet());
-            stems[1].exclusiveSuffixData.add(Verb_De_Ye_Prog.allConnections());
+            stems[1].exclusiveSuffixData.add(turkishSuffixes.Verb_De_Ye_Prog.allConnections());
             stems[2] = new StemNode("yi", item, TerminationType.NON_TERMINAL, calculateAttributes(item.root));
-            stems[2].exclusiveSuffixData.add(Verb_Yi.allConnections());
+            stems[2].exclusiveSuffixData.add(turkishSuffixes.Verb_Yi.allConnections());
             return stems;
         }
         if (item.getId().equals("demek_Verb")) {
             StemNode[] stems = new StemNode[3];
             stems[0] = new StemNode("de", item, TerminationType.TERMINAL, calculateAttributes(item.root));
-            stems[0].exclusiveSuffixData.add(Verb_De.allConnections());
+            stems[0].exclusiveSuffixData.add(turkishSuffixes.Verb_De.allConnections());
             AttributeSet<PhonAttr> attrs = calculateAttributes(item.root).remove(PhonAttr.LastLetterVowel).add(PhonAttr.LastLetterConsonant);
             stems[1] = new StemNode("d", item, TerminationType.NON_TERMINAL, attrs, AttributeSet.<PhoneticExpectation>emptySet());
-            stems[1].exclusiveSuffixData.add(Verb_De_Ye_Prog.allConnections());
+            stems[1].exclusiveSuffixData.add(turkishSuffixes.Verb_De_Ye_Prog.allConnections());
             stems[2] = new StemNode("di", item, TerminationType.NON_TERMINAL, calculateAttributes(item.root));
-            stems[2].exclusiveSuffixData.add(Verb_Di.allConnections());
+            stems[2].exclusiveSuffixData.add(turkishSuffixes.Verb_Di.allConnections());
             return stems;
         }
         if (item.getId().equals("ben_Pron") || item.getId().equals("sen_Pron")) {
             StemNode[] stems = new StemNode[2];
             stems[0] = new StemNode(item.root, item, TerminationType.TERMINAL, calculateAttributes(item.root));
-            stems[0].exclusiveSuffixData.add(PersPron_BenSen.allConnections());
+            stems[0].exclusiveSuffixData.add(turkishSuffixes.PersPron_BenSen.allConnections());
             if (item.lemma.equals("ben"))
                 stems[1] = new StemNode("ban", item, TerminationType.NON_TERMINAL, calculateAttributes("san"));
             else
                 stems[1] = new StemNode("san", item, TerminationType.NON_TERMINAL, calculateAttributes("san"));
-            stems[1].exclusiveSuffixData.add(PersPron_BanSan);
+            stems[1].exclusiveSuffixData.add(turkishSuffixes.PersPron_BanSan);
             return stems;
         }
         throw new IllegalArgumentException("Lexicon Item with special stem change cannot be handled:" + item);

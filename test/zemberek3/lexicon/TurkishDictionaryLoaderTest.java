@@ -25,7 +25,7 @@ import static zemberek3.lexicon.tr.RootAttr.*;
 
 public class TurkishDictionaryLoaderTest {
 
-    SuffixProvider suffixProvider = new TurkishSuffixes();
+    TurkishSuffixes suffixProvider = new TurkishSuffixes();
 
     @Test
     public void loadNounsFromFileTest() throws IOException {
@@ -89,10 +89,10 @@ public class TurkishDictionaryLoaderTest {
         Assert.assertTrue(item.suffixData.onlyAccepts.isEmpty());
 
         item = loader.loadFromString("ben [P:Pron; S: -A1sg, +A1sg_TEMPLATE, +Dim]");
-        Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_m));
-        Assert.assertTrue(item.suffixData.rejects.contains(TurkishSuffixes.A1sg_yIm));
-        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.A1sg_TEMPLATE));
-        Assert.assertTrue(item.suffixData.accepts.contains(TurkishSuffixes.Dim_cIk));
+        Assert.assertTrue(item.suffixData.rejects.contains(suffixProvider.A1sg_m));
+        Assert.assertTrue(item.suffixData.rejects.contains(suffixProvider.A1sg_yIm));
+        Assert.assertTrue(item.suffixData.accepts.contains(suffixProvider.A1sg_TEMPLATE));
+        Assert.assertTrue(item.suffixData.accepts.contains(suffixProvider.Dim_cIk));
     }
 
 
