@@ -329,6 +329,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public Suffix Inf1 = new Suffix("Inf1");
     public SuffixForm Inf1_mAk = getForm(Inf1, "mAk");
 
+    //TODO: consider -maca inf suffix.
+    //public SuffixForm Inf1_mAcA = getForm(Inf1, "mAcA");
+
     public Suffix Inf2 = new Suffix("Inf2");
     public SuffixForm Inf2_mA = getForm(Inf2, "mA");
 
@@ -464,11 +467,11 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Noun_Default.connections.add(A3pl_lAr, A3sg_TEMPLATE);
         Noun_Default.indirectConnections
                 .add(Noun_TEMPLATE.indirectConnections)
-                .remove(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI);
+                .remove(Dat_nA, Loc_ndA, Abl_ndAn, Acc_nI, Rel_kI);
 
         Noun2Noun.connections.add(Dim_cIk, Dim2_cAgIz, Agt_cI, Ness_lIk);
 
-        Noun2Adj.connections.add(With_lI, Without_sIz, Resemb_msI, Resemb_ImsI, Rel_ki, Related_sAl, FitFor_lIk);
+        Noun2Adj.connections.add(With_lI, Without_sIz, Resemb_msI, Resemb_ImsI, Rel_ki, Rel_kI, Related_sAl, FitFor_lIk);
 
         Noun2Verb.connections.add(Become_lAs, Acquire_lAn);
 
@@ -490,7 +493,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Adj2Verb.connections.add(Become_Adj_lAs, Acquire_lAn).add(COPULAR_FORMS);
 
-        Verb2Verb.connections.add(Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl, Abil_yA);
+        Verb2Verb.connections.add(Caus_t, Caus_tIr, Pass_In, Pass_nIl, Pass_InIl, Abil_yA, Recip_Is, Recip_yIs);
 
         Verb2VerbCompounds.connections.add(KeepDoing_yAgor, KeepDoing2_yAdur, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal);
 
@@ -573,7 +576,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Verb_Yi.connections.add(Pos_EMPTY, Verb2Verb);
         Verb_Yi.indirectConnections.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk_2Adj, When_yIncA, AfterDoing_yIp, Abil_yA,
                 Abil_yAbil, Recip_yIs, Inf3_yIs, FeelLike_yAsI_2Adj, PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur,
-                FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
+                FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn, Verb2Adv);
+
 
         // modification rule does not apply for some suffixes for "demek". like deyip, not diyip
 
@@ -585,7 +589,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Verb_Di.connections.add(Pos_EMPTY, Verb2Verb);
         Verb_Di.indirectConnections.add(Opt_yA, Fut_yAcAk, FutPart_yAcAk_2Adj, Abil_yA, Abil_yAbil, PresPart_yAn,
-                PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn);
+                PresPart_yAn, KeepDoing_yAgor, KeepDoing2_yAdur, FeelLike_yAsI_2Adj, UnableToDo_yAmAdAn, Verb2Adv);
 
         //---------------------------- Noun -----------------------------------------------------------------------
 
@@ -716,6 +720,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         Rel_ki.connections.add(Adj2Noun);
         Rel_ki.indirectConnections.add(Adj2Noun.indirectConnections).add(A3sg_TEMPLATE, Pnon_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
 
+        Rel_kI.connections.add(Adj2Noun);
+        Rel_kI.indirectConnections.add(Adj2Noun.indirectConnections).add(A3sg_TEMPLATE, Pnon_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
+
         Resemb_msI.connections.add(Adj_TEMPLATE.connections);
         Resemb_msI.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
 
@@ -774,6 +781,11 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         Caus_tIr.connections.add(Verb_TEMPLATE.connections);
         Caus_tIr.indirectConnections.add(Verb_TEMPLATE.indirectConnections).add(Pass_nIl).add(Caus_t).remove(Caus_tIr);
+
+        Recip_Is.connections.add(Verb_TEMPLATE.connections);
+        Recip_Is.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In, Recip_Is, Recip_yIs);
+        Recip_yIs.connections.add(Verb_TEMPLATE.connections);
+        Recip_yIs.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In, Recip_Is, Recip_yIs);
 
         Pass_nIl.connections.add(Verb_TEMPLATE.connections);
         Pass_nIl.indirectConnections.add(Verb_TEMPLATE.indirectConnections).remove(Caus_t, Caus_tIr, Pass_nIl, Pass_InIl, Pass_In);
@@ -949,200 +961,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 A3pl_Comp_lAr, Interj_Template, Verb_Prog_Drop, PersPron_BenSen, PersPron_BanSan,
                 Ordinal_IncI, Grouping_sAr);
         //dumpPath(Caus_t, 5);
-
-/*
-        Noun_TEMPLATE.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .add(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Agt_cI, Resemb_msI,
-                        Resemb_ImsI, Ness_lIk, Related_sAl, Become_lAs, Equ_cA);
-        Noun_Exp_V.add(Dat_yA, Acc_yI, Gen_nIn, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, A1sg_yIm, A1pl_yIz, Resemb_ImsI);
-        Noun_Exp_C.add(Noun_TEMPLATE.getSuccSetCopy()).remove(Noun_Exp_V.getSuccSetCopy());
-        Noun_Comp_P3sg.add(COPULAR_FORMS, POSSESSIVE_FORMS)
-                .add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
-                .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz);
-        Noun_Comp_P3sg_Root.add(With_lI, Without_sIz, Agt_cI, Resemb_msI, Resemb_ImsI, Ness_lIk, Related_sAl,
-                P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, P3pl_lArI, A3pl_Comp_lAr);
-
-        ProperNoun_Template
-                .add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, PERSON_FORMS_N)
-                .add(Pl_lAr, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, A3sg_TEMPLATE, Agt_cI, Ness_lIk);
-
-        Verb_TEMPLATE.add(Prog_Iyor, Prog2_mAktA, Fut_yAcAk, Past_dI, Evid_mIs, Aor_Ir, AorPart_Ir)
-                .add(Neg_mA, Neg_m, Abil_yAbil, Abil_yA, Caus_tIr, Opt_yA, Imp_TEMPLATE, Agt_yIcI, Des_sA)
-                .add(Pass_nIl, NotState_mAzlIk, ActOf_mAcA, PastPart_dIk, EvidPart_mIs)
-                .add(FutPart_yAcAk, PresPart_yAn, AsLongAs_dIkcA)
-                .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
-                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing_mAdAn, WithoutDoing2_mAksIzIn)
-                .add(AfterDoing_yIp, When_yIncA, UnableToDo_yAmAdAn, InsteadOfDoing_mAktAnsA)
-                .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal, Recip_Is)
-                .add(NounDeriv_nIm, UntilDoing_yAsIyA);
-
-        Verb_Exp_V.add(Opt_yA, Fut_yAcAk, Aor_Ar, AorPart_Ar, Prog_Iyor, PresPart_yAn, Pass_nIl,
-                KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Almost_yAyAz, Hastily_yIver, Stay_yAkal,
-                When_yIncA, UnableToDo_yAmAdAn, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, Inf3_yIs, Abil_yA,
-                Abil_yAbil, AfterDoing_yIp, Agt_yIcI, FutPart_yAcAk, Imp_EMPTY_V).remove(Imp_TEMPLATE);
-        Verb_Exp_C.add(Verb_TEMPLATE.getSuccSetCopy())
-                .remove(Verb_Exp_V.getSuccSetCopy()).remove(Aor_Ir, AorPart_Ir, Imp_TEMPLATE)
-                .add(Imp_EMPTY_V);
-
-        Verb_Prog_Drop.add(Prog_Iyor);
-
-        Adv_TEMPLATE.add(COPULAR_FORMS);
-
-        PersPron_TEMPLATE.add(CASE_FORMS).add(PastCop_ydI, EvidCop_ymIs, CondCop_ysA, While_ken);
-        PersPron_BenSen.add(PersPron_TEMPLATE.getSuccSetCopy()).remove(Dat_yA);
-        PersPron_BanSan.add(Dat_yA);
-
-        Ques_Template.add(PERSON_FORMS_N).add(Cop_dIr, EvidCop_ymIs, PastCop_ydI);
-
-        Adj_TEMPLATE.add(Noun_TEMPLATE.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA).remove(Related_sAl);
-        Adj_Exp_C.add(Noun_Exp_C.getSuccSetCopy()).add(Ly_cA, Become_lAs, Quite_cA);
-        Adj_Exp_V.add(Noun_Exp_V.getSuccSetCopy());
-        Become_lAs.add(Verb_TEMPLATE.getSuccSetCopy());
-        Quite_cA.add(Noun_TEMPLATE.getSuccSetCopy()).remove(Related_sAl);
-
-        Numeral_Template.add(COPULAR_FORMS, CASE_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N)
-                .add(Ordinal_IncI, Grouping_sAr, With_lI, Without_sIz, Ness_lIk, Pl_lAr);
-
-        Ordinal_IncI.add(Numeral_Template.getSuccSetCopy()).remove(Ordinal_IncI, Grouping_sAr);
-        Grouping_sAr.add(With_lI, Ness_lIk, Abl_dAn).add(COPULAR_FORMS);
-
-        Pl_lAr.add(CASE_FORMS, COPULAR_FORMS)
-                .add(P1sg_Im, P2sg_In, P1pl_ImIz, P2pl_InIz, A1pl_yIz, A2pl_sInIz, Equ_cA);
-
-        P1sg_Im.add(CASE_FORMS, COPULAR_FORMS).add(A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3sg_TEMPLATE, Equ_cA);
-        P2sg_In.add(CASE_FORMS, COPULAR_FORMS).add(A1sg_yIm, A1pl_yIz, A3sg_TEMPLATE, Equ_cA);
-        P3sg_sI.add(COPULAR_FORMS)
-                .add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA)
-                .add(A1sg_yIm, A1pl_yIz, A2sg_sIn, A2pl_sInIz, A3sg_TEMPLATE, Equ_ncA);
-        P1pl_ImIz.add(CASE_FORMS, COPULAR_FORMS).add(A1sg_yIm, A2sg_sIn, A3sg_TEMPLATE, Equ_cA, A2pl_sInIz);
-        P2pl_InIz.add(CASE_FORMS, COPULAR_FORMS).add(A1sg_yIm, A2sg_sIn, A1pl_yIz, A2pl_sInIz, A3sg_TEMPLATE, Equ_cA);
-        P3pl_lArI.add(P3sg_sI.getSuccSetCopy()).add(A1sg_yIm, A2sg_sIn, A3sg_TEMPLATE, A1pl_yIz, A2pl_sInIz, Equ_ncA);
-
-        Rel_ki.add(COPULAR_FORMS, PERSON_FORMS_N).add(Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Pl_lAr);
-        Rel_kI.add(Rel_ki.getSuccSetCopy());
-        Dat_yA.add(COPULAR_FORMS);
-        Dat_nA.add(COPULAR_FORMS);
-
-        Loc_dA.add(COPULAR_FORMS, PERSON_FORMS_N).add(Rel_ki);
-        Loc_ndA.add(COPULAR_FORMS, PERSON_FORMS_N).add(Rel_ki);
-
-        Inst_ylA.add(COPULAR_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS);
-
-        Abl_dAn.add(COPULAR_FORMS, PERSON_FORMS_N);
-        Abl_ndAn.add(COPULAR_FORMS, PERSON_FORMS_N);
-
-        Gen_nIn.add(COPULAR_FORMS, PERSON_FORMS_N).add(Rel_ki);
-
-        A1sg_yIm.add(Cop_dIr);
-        A2sg_sIn.add(Cop_dIr);
-        A3sg_TEMPLATE.add(Cop_dIr);
-        A1pl_yIz.add(Cop_dIr);
-        A2pl_sInIz.add(Cop_dIr);
-        A3pl_lAr.add(Pl_lAr.getSuccSetCopy());
-        A3pl_Comp_lAr.add(Pl_lAr.getSuccSetCopy());
-
-        Dim_cIk.add(Loc_dA, Abl_dAn, Inst_ylA, P3pl_lArI, A2sg_sIn, A2pl_sInIz, A3pl_lAr, Pl_lAr, Inst_ylA).add(COPULAR_FORMS);
-        Dim2_cAgIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr);
-
-        With_lI.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr, Ness_lIk, Become_lAs, Ly_cA);
-        Without_sIz.add(CASE_FORMS, COPULAR_FORMS, POSSESSIVE_FORMS, PERSON_FORMS_N).add(Pl_lAr, Ness_lIk, Become_lAs, Ly_cA);
-
-        Resemb_msI.add(CASE_FORMS, PERSON_FORMS_N, COPULAR_FORMS, POSSESSIVE_FORMS)
-                .add(Pl_lAr, Ness_lIk, With_lI, Without_sIz, Become_lAs);
-        Resemb_ImsI.add(Resemb_ImsI.getSuccSetCopy());
-
-        Ness_lIk.add(CASE_FORMS, POSSESSIVE_FORMS, COPULAR_FORMS, CASE_FORMS).add(Pl_lAr, Agt_cI, With_lI, Without_sIz, Equ_cA);
-
-        Related_sAl.add(Adj_TEMPLATE.getSuccSetCopy()).remove(Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Related_sAl,
-                Resemb_msI, Resemb_msI);
-        PastCop_ydI.add(PERSON_FORMS_COP);
-        EvidCop_ymIs.add(A1sg_yIm, A2sg_sIn, A3sg_TEMPLATE, A1pl_yIz, A2pl_sInIz, A3pl_lAr, AsIf_cAsInA);
-        CondCop_ysA.add(PERSON_FORMS_COP);
-        Cop_dIr.add(A3pl_lAr);
-
-        Neg_mA.add(Aor_z, AorPart_z, Aor_EMPTY, Prog2_mAktA, Imp_TEMPLATE, Opt_yA, Des_sA,
-                Fut_yAcAk, Past_dI, Evid_mIs, Cond_sA, Abil_yAbil, Necess_mAlI, NotState_mAzlIk,
-                ActOf_mAcA, PastPart_dIk, FutPart_yAcAk, EvidPart_mIs, Agt_yIcI)
-                .add(AsLongAs_dIkcA, PresPart_yAn)
-                .add(Inf1_mAk, Inf2_mA, Inf3_yIs)
-                .add(When_yIncA, FeelLike_yAsI, SinceDoing_yAlI, ByDoing_yArAk, WithoutDoing2_mAksIzIn)
-                .add(AfterDoing_yIp, When_yIncA, InsteadOfDoing_mAktAnsA)
-                .add(KeepDoing2_yAdur, KeepDoing_yAgor, EverSince_yAgel, Hastily_yIver);
-
-        Neg_m.add(Prog_Iyor);
-
-        Aor_Ar.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA);
-        Aor_Ir.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA);
-        Aor_z.add(COPULAR_FORMS).add(A3sg_sIn, Cond_sA);
-        Aor_EMPTY.add(A1sg_m, A1pl_yIz);
-
-        Set<SuffixForm> noParticipleSuff =
-                Sets.newHashSet(Become_lAs, Dim_cIk, Dim2_cAgIz, With_lI, Without_sIz, Related_sAl,
-                        Resemb_msI, Resemb_msI);
-
-        AorPart_Ar.add(Adj_TEMPLATE.getSuccSetCopy()).remove(noParticipleSuff).add(AsIf_cAsInA);
-        AorPart_Ir.add(AorPart_Ar.getSuccSetCopy());
-        AorPart_z.add(AorPart_Ar.getSuccSetCopy());
-
-        FutPart_yAcAk.add(Adj_Exp_C.getSuccSetCopy());
-        NotState_mAzlIk.add(Adj_Exp_C.getSuccSetCopy());
-
-        PresPart_yAn.add(AorPart_Ar.getSuccSetCopy());
-
-        EvidPart_mIs.add(AorPart_Ar.getSuccSetCopy());
-
-        PastPart_dIk.add(Adj_Exp_C.getSuccSetCopy()).remove(AsIf_cAsInA).remove(noParticipleSuff);
-
-        Prog_Iyor.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA);
-        Prog2_mAktA.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA);
-
-        Fut_yAcAk.add(PERSON_FORMS_N, COPULAR_FORMS).add(Cond_sA, AsIf_cAsInA);
-
-        Past_dI.add(A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr, CondCop_ysA, PastCop_ydI);
-        Evid_mIs.add(PERSON_FORMS_N).add(CondCop_ysA, PastCop_ydI, EvidCop_ymIs, While_ken, Cop_dIr);
-
-        Cond_sA.add(A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
-
-        Imp_TEMPLATE.add(A2sg_TEMPLATE, A2sg2_sAnA, A2sg3_yInIz, A2pl2_sAnIzA, A2pl_yIn, A3sg_sIn, A3pl_sInlAr);
-        Imp_EMPTY_C.add(A2sg_TEMPLATE, A2sg2_sAnA, A2pl2_sAnIzA, A3sg_sIn, A3pl_sInlAr);
-        Imp_EMPTY_V.add(A2sg3_yInIz, A2pl_yIn);
-        Agt_cI.add(CASE_FORMS, PERSON_FORMS_N, POSSESSIVE_FORMS, COPULAR_FORMS).add(Pl_lAr, Become_lAs, With_lI, Without_sIz, Ness_lIk);
-        Agt_yIcI.add(Agt_cI.getSuccSetCopy());
-
-        Abil_yAbil.add(Verb_TEMPLATE.getSuccSetCopy()).remove(Abil_yAbil, Abil_yA, Neg_mA, Pass_nIl).add(Cond_sA, Pass_In);
-        Abil_yA.add(Neg_mA, Neg_m);
-
-        Opt_yA.add(A1sg_yIm, A2sg_sIn, A3sg_TEMPLATE, A1pl_lIm, A2pl_sInIz, A3pl_lAr);
-        Des_sA.add(COPULAR_FORMS).add(A1sg_m, A2sg_n, A3sg_TEMPLATE, A1pl_k, A2pl_nIz, A3pl_lAr, PastCop_ydI, EvidCop_ymIs);
-
-        Caus_t.add(Verb_TEMPLATE.getSuccSetCopy()).add(Pass_nIl);
-        Caus_tIr.add(Verb_TEMPLATE.getSuccSetCopy()).remove(Caus_tIr).add(Caus_t, Pass_nIl);
-
-        Pass_nIl.add(Verb_TEMPLATE.getSuccSetCopy()).remove(Pass_In, Pass_nIl, Caus_tIr).add(Caus_t);
-        Pass_In.add(Verb_TEMPLATE.getSuccSetCopy()).remove(Pass_In);
-
-        Reflex_In.add(Verb_TEMPLATE.getSuccSetCopy());
-        Recip_Is.add(Verb_TEMPLATE.getSuccSetCopy()).remove(Recip_Is);
-        Recip_yIs.add(Verb_TEMPLATE.getSuccSetCopy()).remove(Recip_Is);
-
-        Inf1_mAk.add(COPULAR_FORMS).add(Abl_dAn, Loc_dA, Inst_ylA);
-        Inf2_mA.add(Noun_TEMPLATE.getSuccessors());
-        Inf3_yIs.add(Noun_TEMPLATE.getSuccessors());
-
-        NounDeriv_nIm.add(Noun_TEMPLATE.getSuccSetCopy());
-
-        When_yIncA.add(Dat_yA);
-        While_ken.add(Rel_ki).add(PastCop_ydI, EvidCop_ymIs, CondCop_ysA);
-        FeelLike_yAsI.add(POSSESSIVE_FORMS).add(COPULAR_FORMS);
-
-        KeepDoing_yAgor.add(Neg_mA.getSuccSetCopy()).remove(Aor_z).add(Neg_mA, Neg_m, Aor_Ir, Prog_Iyor);
-        KeepDoing2_yAdur.add(KeepDoing_yAgor.getSuccSetCopy());
-        EverSince_yAgel.add(KeepDoing_yAgor.getSuccSetCopy());
-        Almost_yAyAz.add(KeepDoing_yAgor.getSuccSetCopy());
-        Hastily_yIver.add(KeepDoing_yAgor.getSuccSetCopy());
-        Stay_yAkal.add(KeepDoing_yAgor.getSuccSetCopy());
-        Necess_mAlI.add(COPULAR_FORMS, PERSON_FORMS_N);
-*/
     }
 
     @Override
@@ -1230,7 +1048,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
             }
         }
     }
-
 
     private void getForVerb(DictionaryItem item, SuffixData original, SuffixData modified) {
         original.add(Verb_TEMPLATE.allConnections().remove(Caus_t));

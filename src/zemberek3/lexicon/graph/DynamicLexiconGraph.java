@@ -47,6 +47,7 @@ public class DynamicLexiconGraph {
         for (StemNode stem : stems) {
 
             if (!stemNodes.contains(stem)) {
+
                 SuffixNode rootSuffixNode = getRootSuffixNode(stem);
                 if (!rootSuffixNodeMap.containsKey(rootSuffixNode)) {
                     connectSuffixNodes(rootSuffixNode);
