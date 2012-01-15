@@ -12,7 +12,7 @@ import zemberek3.lexicon.DictionaryItem;
 import zemberek3.lexicon.PrimaryPos;
 import zemberek3.structure.TurkishAlphabet;
 
-public class LexiconTreeTest {
+public class StemTrieTest {
 
     static Random r = new Random(0xCAFEDEADBEEFL);
     TurkishAlphabet alphabet = new TurkishAlphabet();
@@ -37,14 +37,14 @@ public class LexiconTreeTest {
 	
 	@Test
 	public void empty(){
-		LexiconTree lt = new LexiconTree();
+		StemTrie lt = new StemTrie();
 		List<StemNode> stems = lt.getMatchingStems("foo");
 		assertEquals(stems.size(), 0);
 	}
 	
 	@Test
 	public void singleItem() {
-		LexiconTree lt = new LexiconTree();
+		StemTrie lt = new StemTrie();
 		StemNode sn = createStemNode("elma");
 		lt.add(sn);
 		List<StemNode> stems = lt.getMatchingStems("elma");
@@ -54,7 +54,7 @@ public class LexiconTreeTest {
 	
 	@Test
 	public void distinctStems() {
-		LexiconTree lt = new LexiconTree();
+		StemTrie lt = new StemTrie();
 		StemNode sn = createStemNode("elma");
 		StemNode sn2 = createStemNode("armut");
 		lt.add(sn);
@@ -69,7 +69,7 @@ public class LexiconTreeTest {
 	
 	@Test
 	public void stemsSharingSamePrefixOrder1() {
-		LexiconTree lt = new LexiconTree();
+		StemTrie lt = new StemTrie();
 		StemNode sn = createStemNode("elma");
 		StemNode sn2 = createStemNode("elmas");
 		lt.add(sn);
@@ -86,7 +86,7 @@ public class LexiconTreeTest {
 	
 	@Test
 	public void stemsSharingSamePrefixOrder2() {
-		LexiconTree lt = new LexiconTree();
+		StemTrie lt = new StemTrie();
 		StemNode sn = createStemNode("elmas");
 		StemNode sn2 = createStemNode("elma");
 		lt.add(sn);
@@ -103,7 +103,7 @@ public class LexiconTreeTest {
 	
 	@Test
 	public void stemsSharingSamePrefix3Stems() {
-		LexiconTree lt = new LexiconTree();
+		StemTrie lt = new StemTrie();
 		StemNode sn = createStemNode("elmas");
 		StemNode sn2 = createStemNode("el");
 		StemNode sn3 = createStemNode("elma");
@@ -130,7 +130,7 @@ public class LexiconTreeTest {
 	
     @Test
     public void stemsSharingPartialPrefix1() {
-        LexiconTree lt = new LexiconTree();
+        StemTrie lt = new StemTrie();
         StemNode sn3 = createStemNode("fix");
         StemNode sn1 = createStemNode("foobar");
         StemNode sn2 = createStemNode("foxes");
@@ -142,7 +142,7 @@ public class LexiconTreeTest {
 
     @Test
     public void testBigNumberOfBigWords() {
-        LexiconTree lt = new LexiconTree();
+        StemTrie lt = new StemTrie();
         List<String> words = generateRandomWords(10000);
         List<StemNode> nodes = Lists.newArrayList();
         for (String s : words) {

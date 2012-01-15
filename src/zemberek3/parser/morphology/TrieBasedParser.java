@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TrieBasedParser implements MorphParser {
     DynamicLexiconGraph graph;
-    LexiconTree lexicon = new LexiconTree();
+    StemTrie lexicon = new StemTrie();
 
     public TrieBasedParser(DynamicLexiconGraph graph) {
         this.graph = graph;

@@ -12,11 +12,11 @@ import zemberek3.lexicon.tr.TurkishSuffixes;
 import zemberek3.structure.TurkishAlphabet;
 
 /**
- * LexiconTree is a simple compact trie that holds stems
+ * StemTrie is a simple compact trie that holds stems
  *
  * @author mdakin@gmail.com
  */
-public class LexiconTree {
+public class StemTrie {
 
     Node root = new Node();
     static TurkishAlphabet alphabet = new TurkishAlphabet();
@@ -311,7 +311,7 @@ public class LexiconTree {
     }
 
     public static void main(String[] args) throws IOException {
-        LexiconTree lexicon = new LexiconTree();
+        StemTrie lexicon = new StemTrie();
 //        List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("src/resources/tr/master-dictionary.txt"));
         List<DictionaryItem> items = new TurkishDictionaryLoader().load(new File("test/data/dev-lexicon.txt"));
         TurkishSuffixes suffixes = new TurkishSuffixes();
