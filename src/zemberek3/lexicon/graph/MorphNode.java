@@ -27,7 +27,7 @@ public abstract class MorphNode {
         this.termination = termination;
         this.attributes = attributes;
         this.expectations = expectations;
-        this.exclusiveSuffixData = exclusiveSuffixData;
+        this.exclusiveSuffixData = suffixData;
     }
 
     protected MorphNode(

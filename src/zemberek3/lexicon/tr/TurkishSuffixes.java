@@ -539,7 +539,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 .add(Noun2Adj.allConnections())
                 .add(Noun2Adj);
 
-        // Proper noun default //TODO: should be a template
         ProperNoun_Template.connections.add(A3pl_lAr, A3sg_TEMPLATE);
         ProperNoun_Template.indirectConnections
                 .add(CASE_FORMS, POSSESSIVE_FORMS)
@@ -960,7 +959,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 Quite_cA, Equ_cA, Equ_ncA, UntilDoing_yAsIyA,
                 A3pl_Comp_lAr, Interj_Template, Verb_Prog_Drop, PersPron_BenSen, PersPron_BanSan,
                 Ordinal_IncI, Grouping_sAr);
-        //dumpPath(Caus_t, 5);
     }
 
     @Override

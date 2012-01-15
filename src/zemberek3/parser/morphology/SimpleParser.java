@@ -61,7 +61,6 @@ public class SimpleParser implements MorphParser {
             boolean matchFound = false;
             for (SuffixNode successor : token.currentNode.getSuccessors()) {
                 if (token.rest.startsWith(successor.surfaceForm)) {
-//                    System.out.println("Rest:" + token.rest + " Succ:" + successor.getSuffixSet().getId());
                     if (token.rest.length() > 0) {
                         newtokens.add(token.getCopy(successor));
                         matchFound = true;

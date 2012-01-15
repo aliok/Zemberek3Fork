@@ -44,6 +44,28 @@ bingen [P:Adj]
 milyongen [P:Adj]
 trilyongen [P:Adj]
 katrilyongen [P:Adj]
+ikigen 
+üçgen 
+dörtgen 
+beşgen 
+altıgen 
+yedigen 
+sekizgen 
+dokuzgen 
+ongen 
+yirmigen 
+otuzgen 
+kırkgen 
+elligen 
+atmışgen 
+yetmişgen 
+seksengen 
+doksangen 
+yüzgen 
+bingen 
+milyongen 
+trilyongen 
+katrilyongen
 ikiz [P:Adj]
 üçüz [P:Adj]
 dördüz [P:Adj]
@@ -53,26 +75,26 @@ yediz [P:Adj]
 sekiziz [P:Adj]
 dokuzuz [P:Adj]
 onuz [P:Adj]
-birer [P:Adj]
-ikişer [P:Adj]
-üçer [P:Adj]
-dörder [P:Adj]
-beşer [P:Adj]
-altışar [P:Adj]
-yedişer [P:Adj]
-sekizer [P:Adj]
-dokuzar [P:Adj]
-onar [P:Adj]
-yirmişer [P:Adj]
-otuzar [P:Adj]
-kırkar [P:Adj]
-ellişer [P:Adj]
-atmışar [P:Adj]
-yetmişer [P:Adj]
-seksener [P:Adj]
-doksanar [P:Adj]
-yüzer [P:Adj]
-biner [P:Adj]
-milyonar [P:Adj]
-trilyonar [P:Adj]
-katrilyonar [P:Adj]
+birer [P:Adj,Dist]
+ikişer [P:Adj,Dist]
+üçer [P:Adj,Dist]
+dörder [P:Adj,Dist]
+beşer [P:Adj,Dist]
+altışar [P:Adj,Dist]
+yedişer [P:Adj,Dist]
+sekizer [P:Adj,Dist]
+dokuzar [P:Adj,Dist]
+onar [P:Adj,Dist]
+yirmişer [P:Adj,Dist]
+otuzar [P:Adj,Dist]
+kırkar [P:Adj,Dist]
+ellişer [P:Adj,Dist]
+atmışar [P:Adj,Dist]
+yetmişer [P:Adj,Dist]
+seksener [P:Adj,Dist]
+doksanar [P:Adj,Dist]
+yüzer [P:Adj,Dist]
+biner [P:Adj,Dist]
+milyonar [P:Adj,Dist]
+trilyonar [P:Adj,Dist]
+katrilyonar [P:Adj,Dist]
