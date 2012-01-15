@@ -125,7 +125,9 @@ public class StemNodeGenerator {
                         modifiedLetter = TurkishAlphabet.L_g;
                     modifiedSeq.changeLetter(modifiedSeq.length() - 1, modifiedLetter);
                     modifiedAttrs.remove(PhonAttr.LastLetterVoicelessStop);
-                    originalExpectations.add(PhoneticExpectation.ConsonantStart);
+                    if (attribute != VoicingOpt) {
+                        originalExpectations.add(PhoneticExpectation.ConsonantStart);
+                    }
                     modifiedExpectations.add(PhoneticExpectation.VowelStart);
                     break;
                 case Doubling:

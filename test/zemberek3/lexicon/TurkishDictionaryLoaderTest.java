@@ -121,6 +121,7 @@ public class TurkishDictionaryLoaderTest {
         List<ItemAttrPair> testList = Lists.newArrayList(
                 testPair("takat [A:NoVoicing, InverseHarmony]", NoVoicing, InverseHarmony),
                 testPair("nakit [A: LastVowelDrop]", Voicing, LastVowelDrop),
+                testPair("yok [A: VoicingOpt]", VoicingOpt),
                 testPair("ret [A:Voicing, Doubling]", Voicing, Doubling)
         );
         for (ItemAttrPair pair : testList) {

@@ -27,6 +27,13 @@ public class TurkishSuffixesTest {
     }
 
     @Test
+    public void testVoicingOptional() {
+        Tester tester = new Tester("yok [A:VoicingOpt]");
+        tester.assertHasParses("yok", "yoka", "yoğa" ,"yoktan");
+        tester.assertUnParseable("yoğta", "yokku");
+    }
+
+    @Test
     public void testCompounds() {
         Tester tester = new Tester("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
         tester.assertHasParses("zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
