@@ -6,10 +6,7 @@ import zemberek3.lexicon.tr.PhonAttr;
 import zemberek3.lexicon.tr.PhoneticExpectation;
 import zemberek3.lexicon.tr.StemNodeGenerator;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DynamicLexiconGraph {
 
@@ -50,7 +47,7 @@ public class DynamicLexiconGraph {
 
                 SuffixNode rootSuffixNode = getRootSuffixNode(stem);
                 if (!rootSuffixNodeMap.containsKey(rootSuffixNode)) {
-                    connectSuffixNodes(rootSuffixNode);
+                    generateNodeConnections(rootSuffixNode);
                 }
                 // check if it already exist. If it exists, use the existing one or add the new one.
                 rootSuffixNode = addOrRetrieveExisting(rootSuffixNode);
@@ -99,20 +96,28 @@ public class DynamicLexiconGraph {
                 node.termination);
     }
 
-
-    private void connectSuffixNodes(SuffixNode node) {
+    /**
+     * This method generates connections of a SuffixNode.
+     * A SuffixNode is surfaceForm of a SuffixForm. (Suffix form ->A1pl_lAr, SuffixNode is lar)
+     * We already know the morphotactics of SuffixForms. So we get the specific SuffixNodes that can be connected to a particular SuffixNode.
+     * Such as, SuffixForm P1sg_Im can follow A1pl_lAr. Therefore, the SuffixNode lar can only connect to "ım" node of the P1sg_Im suffixForm.
+     * Here this connection is generated, as the node reference in the successor form is added to this node.
+     * However, if node to be connected does not exist, it is generated as well. And once it is generated and connection is provided
+     * Recursively connections to that node are also generated.
+     * @param node Node that connections to successive nodes will be generated.
+     */
+    private void generateNodeConnections(SuffixNode node) {
         // get the successive form sets for this node.
         SuffixData successors = node.suffixSet.connections;
         // iterate over form sets.
-        for (SuffixForm succSet : successors) {
+        for (SuffixForm successiveForm : successors) {
+
             // get the nodes for the  suffix form.
-            if (succSet instanceof SuffixFormTemplate)
-                continue;
-            List<SuffixNode> nodesInSuccessor = suffixNodeGenerator.getNodes(
+            List<SuffixNode> nodesInSuccessor = suffixNodeGenerator.generate(
                     node.attributes,
                     node.expectations,
                     node.exclusiveSuffixData,
-                    succSet);
+                    successiveForm);
             for (SuffixNode nodeInSuccessor : nodesInSuccessor) {
                 // if there are expectations for the node, check if it matches with the attributes of the node in successor.
                 if (!node.expectations.isEmpty()) {
@@ -120,13 +125,13 @@ public class DynamicLexiconGraph {
                         continue;
                 }
                 boolean recurse = false;
-                if (!nodeExists(succSet, nodeInSuccessor)) {
+                if (!nodeExists(successiveForm, nodeInSuccessor)) {
                     recurse = true;
                 }
-                nodeInSuccessor = addOrReturnExisting(succSet, nodeInSuccessor);
+                nodeInSuccessor = addOrReturnExisting(successiveForm, nodeInSuccessor);
                 node.addSuccNode(nodeInSuccessor);
                 if (recurse) {
-                    connectSuffixNodes(nodeInSuccessor);
+                    generateNodeConnections(nodeInSuccessor);
                 }
             }
         }
@@ -145,6 +150,23 @@ public class DynamicLexiconGraph {
     private boolean nodeExists(SuffixForm set, SuffixNode newNode) {
         Set<SuffixNode> nodes = suffixFormMap.get(set);
         return nodes != null && nodes.contains(newNode);
+    }
+    
+    public void stats() {
+        Set<StemNode> stemNodes = getStemNodes();
+        System.out.println("Stem Node Count:" + stemNodes.size());
+        Set<SuffixNode> rootSuffixNodes = new HashSet<SuffixNode>();
+        for (StemNode stemNode : stemNodes) {
+            rootSuffixNodes.add(stemNode.getSuffixRootNode());
+        }
+        System.out.println("Root SuffixNode count:"+rootSuffixNodes.size());
+        int nodeCount = 0;
+        for(SuffixForm form: suffixFormMap.keySet()) {
+            System.out.println(form.toString());
+            Set<SuffixNode> nodes = suffixFormMap.get(form);
+            nodeCount+=nodes.size();
+        }
+        System.out.println("SuffixNode count:"+nodeCount);
     }
 
     public SuffixNode addOrReturnExisting(SuffixForm set, SuffixNode newNode) {

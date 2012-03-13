@@ -3,6 +3,13 @@ package zemberek3.lexicon;
 import zemberek3.lexicon.graph.SuffixData;
 import zemberek3.lexicon.graph.TerminationType;
 
+/**
+ * A suffix form represents a lexical form of a suffix and it's connections to other forms.
+ * For example for Aorist Tense there are 3 Suffix Forms available.
+ * -Ar -Ir -z
+ * For all those lexical forms a SuffixForm is used representing the form and the connections before compiling the
+ * Lexicon Graph.
+ */
 public class SuffixForm {
     // an id that defines the node
     public String id;

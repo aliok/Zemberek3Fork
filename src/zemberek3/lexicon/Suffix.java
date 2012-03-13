@@ -1,5 +1,8 @@
 package zemberek3.lexicon;
 
+/**
+ * This is the representation of a Suffix. It only contains an id.
+ */
 public class Suffix {
 
     public final String id;

@@ -34,6 +34,7 @@ public class ParseConsole {
 
     private SimpleParser simpleParser(File dictionary) throws IOException {
         DynamicLexiconGraph graph = getLexiconGraph(dictionary);
+        //graph.stats();
         return new SimpleParser(graph);
     }
 

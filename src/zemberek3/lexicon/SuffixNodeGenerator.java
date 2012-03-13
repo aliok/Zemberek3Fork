@@ -26,10 +26,10 @@ public class SuffixNodeGenerator {
             AttributeSet<PhoneticExpectation> expectations,
             SuffixData suffixData,
             SuffixForm set) {
-        return getNodes(attrs, expectations, suffixData, set).get(0);
+        return generate(attrs, expectations, suffixData, set).get(0);
     }
 
-    public List<SuffixNode> getNodes(
+    public List<SuffixNode> generate(
             AttributeSet<PhonAttr> attrs,
             AttributeSet<PhoneticExpectation> expectations,
             SuffixData suffixData,

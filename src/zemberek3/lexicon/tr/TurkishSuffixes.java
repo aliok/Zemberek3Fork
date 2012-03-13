@@ -430,7 +430,6 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public SuffixFormTemplate DemonsPron_TEMPLATE = getTemplate("DemonsPron_TEMPLATE", DemonsPronRoot);
     public NullSuffixForm DemonsPron_Default = getNull("DemonsPron_Default", DemonsPron_TEMPLATE);
 
-
     public Suffix QuesRoot = new Suffix("Ques");
     public SuffixFormTemplate Ques_Template = getTemplate("Ques_Template", QuesRoot);
     public NullSuffixForm Ques_Default = getNull("Ques_Default", Ques_Template);
@@ -835,7 +834,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
         EvidPart_mIs_2Adj.indirectConnections.add(Adj2Noun.allConnections());
 
         FutPart_yAcAk_2Adj.connections.add(Adj2Noun);
-        FutPart_yAcAk_2Noun.indirectConnections.add(Adj2Noun.allConnections());
+        FutPart_yAcAk_2Adj.indirectConnections.add(Adj2Noun.allConnections());
 
         PresPart_yAn.connections.add(Adj2Noun);
         PresPart_yAn.indirectConnections.add(Adj2Noun.allConnections());
@@ -918,7 +917,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         registerForms(
                 Noun_TEMPLATE, Verb_TEMPLATE, Adj_TEMPLATE, Adv_TEMPLATE, Pnon_TEMPLATE,
-                Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
+              //  Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
 
                 Noun2Adj, Noun2Noun, Noun2Verb, Noun2VerbCopular,
                 Adj2Adj, Adj2Adv, Adj2Noun, Adj2Verb,

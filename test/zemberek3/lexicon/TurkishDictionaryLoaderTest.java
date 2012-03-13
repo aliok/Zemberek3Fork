@@ -88,7 +88,7 @@ public class TurkishDictionaryLoaderTest {
         Assert.assertTrue(item.suffixData.rejects.isEmpty());
         Assert.assertTrue(item.suffixData.onlyAccepts.isEmpty());
 
-        item = loader.loadFromString("ben [P:Pron; S: -A1sg, +A1sg_TEMPLATE, +Dim]");
+        item = loader.loadFromString("ben [P:Pron; S: -A1sg_m, -A1sg_+yIm, +A1sg_TEMPLATE, +Dim_>cI~k]");
         Assert.assertTrue(item.suffixData.rejects.contains(suffixProvider.A1sg_m));
         Assert.assertTrue(item.suffixData.rejects.contains(suffixProvider.A1sg_yIm));
         Assert.assertTrue(item.suffixData.accepts.contains(suffixProvider.A1sg_TEMPLATE));

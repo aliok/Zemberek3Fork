@@ -50,7 +50,7 @@ public class SimpleParserTest {
     public void testCompounds() {
         DynamicLexiconGraph graph = getLexiconGraph("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
         assertHasParses(graph, "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcık", "zeytinyağcığa", "zeytinyağlarım");
-        assertUnParseable(graph, "zeytinyağılar", "zeytinyağıcık");
+        assertUnParseable(graph, "zeytinyağıcık", "zeytinyağılar");
     }
 
     @Test
@@ -129,14 +129,18 @@ public class SimpleParserTest {
         SuffixFormTemplate Nom_TEMPLATE = getTemplate("Nom_TEMPLATE", new Suffix("Nom"));
         SuffixFormTemplate A3sg_TEMPLATE = getTemplate("A3sg_TEMPLATE", new Suffix("A3sg"));
         SuffixForm A3pl_lAr = getForm(new Suffix("A3pl"), "lAr");
+        SuffixForm A3pl_Comp_lAr = getForm("A3pl_Comp_lAr", new Suffix("A3pl"), "lAr", TerminationType.NON_TERMINAL); //zeytinyağlarımız
         Suffix Noun_Root = new Suffix("Noun");
         SuffixFormTemplate Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", Noun_Root);
         SuffixForm Noun_Default = getNull("Noun_Default", Noun_TEMPLATE);
         SuffixFormTemplate Noun_Deriv = getTemplate("Noun2Noun", Noun_Root, TerminationType.NON_TERMINAL);
 
+        SuffixFormTemplate Noun_Comp_P3sg = getTemplate("Noun_Comp_P3sg", Noun_Root);
+        SuffixFormTemplate Noun_Comp_P3sg_Root = getTemplate("Noun_Comp_P3sg_Root", Noun_Root);
+
         NounSuffixes() {
 
-            Noun_TEMPLATE.connections.add(A3pl_lAr, A3sg_TEMPLATE);
+            Noun_TEMPLATE.connections.add(A3pl_lAr, A3pl_Comp_lAr, A3sg_TEMPLATE);
             Noun_TEMPLATE.indirectConnections.add(P1sg_Im, Pnon_TEMPLATE, Nom_TEMPLATE, Dat_yA, Dat_nA, Dim_CIK, Noun_Deriv);
 
             Noun_Default.connections.add(Noun_TEMPLATE.connections);
@@ -162,8 +166,20 @@ public class SimpleParserTest {
             Dim_CIK.connections.add(Noun_Default.connections);
             Dim_CIK.indirectConnections.add(Noun_Default.allConnections().remove(Dim_CIK));
 
+            // P3sg compound suffixes. (full form. such as zeytinyağı-na)
+            Noun_Comp_P3sg.connections.add(A3sg_TEMPLATE);
+            Noun_Comp_P3sg.indirectConnections.add(P1sg_Im, Pnon_TEMPLATE, Nom_TEMPLATE, Dat_nA);
+
+            A3pl_Comp_lAr.connections.add(A3pl_lAr.connections);
+            A3pl_Comp_lAr.indirectConnections.add(A3pl_lAr.indirectConnections);
+
+            // P3sg compound suffixes. (root form. such as zeytinyağ-lar-ı)
+            Noun_Comp_P3sg_Root.connections.add(A3pl_Comp_lAr, A3sg_TEMPLATE); // A3pl_Comp_lAr is used, because zeytinyağ-lar is not allowed.
+            Noun_Comp_P3sg_Root.indirectConnections.add(Pnon_TEMPLATE, Nom_TEMPLATE);
+
             registerForms(Noun_TEMPLATE, Noun_Deriv, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE);
-            registerForms(Noun_Default, A3pl_lAr, P1sg_Im, Dat_yA, Dat_nA, Dim_CIK);
+            registerForms(Noun_Default, A3pl_lAr, P1sg_Im, Dat_yA, Dat_nA, Dim_CIK,Noun_Comp_P3sg_Root,Noun_Comp_P3sg,A3pl_Comp_lAr);
+
         }
 
 
@@ -212,8 +228,8 @@ public class SimpleParserTest {
             for (RootAttr attribute : item.attrs.getAsList(RootAttr.class)) {
                 switch (attribute) {
                     case CompoundP3sg:
-                        original.add(Noun_Default.allConnections().remove(Dim_CIK, A3pl_lAr, Dat_yA).add(Dat_nA));
-                        modified.add(Dim_CIK, Noun_Deriv, A3sg_TEMPLATE, Pnon_TEMPLATE, Nom_TEMPLATE, A3pl_lAr);
+                        original.add(Noun_Comp_P3sg.allConnections());
+                        modified.add(Noun_Comp_P3sg_Root.allConnections());
                         break;
                     default:
                         break;

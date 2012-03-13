@@ -33,10 +33,11 @@ public class TurkishSuffixesTest {
         tester.assertUnParseable("yoğta", "yokku");
     }
 
+    // TODO:  "zeytinyağlılarım" gives two identical parse result.
     @Test
     public void testCompounds() {
         Tester tester = new Tester("zeytinyağı [A:CompoundP3sg ;R:zeytinyağ]");
-        tester.assertHasParses("zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
+        tester.assertHasParses("zeytinyağcık", "zeytinyağım", "zeytinyağına", "zeytinyağlılar", "zeytinyağlılarım","zeytinyağı", "zeytinyağcığa", "zeytinyağlarım");
         tester.assertUnParseable("zeytinyağılar", "zeytinyağıcık");
     }
 
