@@ -1,19 +1,13 @@
 package zemberek3.crosscheck;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.ByteStreams;
-import com.google.common.io.CharStreams;
-import com.google.common.io.Files;
-import com.google.common.io.InputSupplier;
-import org.jcaki.IOs;
 import org.jcaki.SimpleTextReader;
 import org.jcaki.SimpleTextWriter;
 import org.jcaki.Strings;
-import zemberek3.structure.TurkishAlphabet;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
-import java.nio.charset.Charset;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
