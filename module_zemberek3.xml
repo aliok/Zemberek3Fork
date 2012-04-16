@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_zemberek3" default="compile.module.zemberek3">
+  <dirname property="module.zemberek3.basedir" file="${ant.file.module_zemberek3}"/>
+  
+  
+  <property name="compiler.args.zemberek3" value="${compiler.args}"/>
+  
+  <property name="zemberek3.output.dir" value="${module.zemberek3.basedir}/out/production/Zemberek3"/>
+  <property name="zemberek3.testoutput.dir" value="${module.zemberek3.basedir}/out/test/Zemberek3"/>
+  
+  <path id="zemberek3.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="zemberek3.module.production.classpath">
+    <path refid="library.dev-lib.classpath"/>
+  </path>
+  
+  <path id="zemberek3.runtime.production.module.classpath">
+    <pathelement location="${zemberek3.output.dir}"/>
+    <path refid="library.dev-lib.classpath"/>
+  </path>
+  
+  <path id="zemberek3.module.classpath">
+    <pathelement location="${zemberek3.output.dir}"/>
+    <path refid="library.dev-lib.classpath"/>
+  </path>
+  
+  <path id="zemberek3.runtime.module.classpath">
+    <pathelement location="${zemberek3.testoutput.dir}"/>
+    <pathelement location="${zemberek3.output.dir}"/>
+    <path refid="library.dev-lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.zemberek3">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.zemberek3">
+    <patternset refid="excluded.from.module.zemberek3"/>
+  </patternset>
+  
+  <path id="zemberek3.module.sourcepath">
+    <dirset dir="${module.zemberek3.basedir}">
+      <include name="src"/>
+      <include name="apps/crosscheck"/>
+    </dirset>
+  </path>
+  
+  <path id="zemberek3.module.test.sourcepath">
+    <dirset dir="${module.zemberek3.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.zemberek3" depends="compile.module.zemberek3.production,compile.module.zemberek3.tests" description="Compile module Zemberek3"/>
+  
+  <target name="compile.module.zemberek3.production" description="Compile module Zemberek3; production classes">
+    <mkdir dir="${zemberek3.output.dir}"/>
+    <javac destdir="${zemberek3.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" encoding="UTF-8">
+      <compilerarg line="${compiler.args.zemberek3}"/>
+      <bootclasspath refid="zemberek3.module.bootclasspath"/>
+      <classpath refid="zemberek3.module.production.classpath"/>
+      <src refid="zemberek3.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.zemberek3"/>
+    </javac>
+    
+    <copy todir="${zemberek3.output.dir}">
+      <fileset dir="${module.zemberek3.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.zemberek3.basedir}/apps/crosscheck">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+
+    <jar destfile="${zemberek3.output.dir}../../zemberek-custom.jar" basedir="${zemberek3.output.dir}" encoding="UTF-8"/>
+
+  </target>
+  
+  <target name="compile.module.zemberek3.tests" depends="compile.module.zemberek3.production" description="compile module Zemberek3; test classes" unless="skip.tests">
+    <mkdir dir="${zemberek3.testoutput.dir}"/>
+    <javac destdir="${zemberek3.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" encoding="UTF-8">
+      <compilerarg line="${compiler.args.zemberek3}"/>
+      <bootclasspath refid="zemberek3.module.bootclasspath"/>
+      <classpath refid="zemberek3.module.classpath"/>
+      <src refid="zemberek3.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.zemberek3"/>
+    </javac>
+    
+    <copy todir="${zemberek3.testoutput.dir}">
+      <fileset dir="${module.zemberek3.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.zemberek3" description="cleanup module">
+    <delete dir="${zemberek3.output.dir}"/>
+    <delete dir="${zemberek3.testoutput.dir}"/>
+  </target>
+</project>
