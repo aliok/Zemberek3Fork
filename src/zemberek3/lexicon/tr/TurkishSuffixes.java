@@ -11,90 +11,90 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     // ------------ case suffixes ---------------------------
 
-    public Suffix Dat = new Suffix("Dat");
+    public Suffix Dat = registerSuffix("Dat");
     public SuffixForm Dat_yA = getForm(Dat, "+yA");
     public SuffixForm Dat_nA = getForm(Dat, "nA");
 
-    public Suffix Loc = new Suffix("Loc");
+    public Suffix Loc = registerSuffix("Loc");
     public SuffixForm Loc_dA = getForm(Loc, ">dA");
     public SuffixForm Loc_ndA = getForm(Loc, "ndA");
 
-    public Suffix Abl = new Suffix("Abl");
+    public Suffix Abl = registerSuffix("Abl");
     public SuffixForm Abl_dAn = getForm(Abl, ">dAn");
     public SuffixForm Abl_ndAn = getForm(Abl, "ndAn");
 
-    public Suffix Gen = new Suffix("Gen");
+    public Suffix Gen = registerSuffix("Gen");
     public SuffixForm Gen_nIn = getForm(Gen, "+nIn");
     public SuffixForm Gen_Im = getForm("Gen_Im", Gen, "+Im"); // benim, bizim
 
-    public Suffix Acc = new Suffix("Acc");
+    public Suffix Acc = registerSuffix("Acc");
     public SuffixForm Acc_yI = getForm(Acc, "+yI");
     public SuffixForm Acc_nI = getForm(Acc, "nI");
 
-    public Suffix Inst = new Suffix("Inst");
+    public Suffix Inst = registerSuffix("Inst");
     public SuffixForm Inst_ylA = getForm(Inst, "+ylA");
 
-    public Suffix Nom = new Suffix("Nom");
+    public Suffix Nom = registerSuffix("Nom");
     public SuffixFormTemplate Nom_TEMPLATE = getTemplate("Nom_TEMPLATE", Nom);
 
     // ----------------- possesive ----------------------------
 
-    public Suffix Pnon = new Suffix("Pnon");
+    public Suffix Pnon = registerSuffix("Pnon");
     public SuffixFormTemplate Pnon_TEMPLATE = getTemplate("Pnon_TEMPLATE", Pnon);
 
-    public Suffix P1sg = new Suffix("P1sg");
+    public Suffix P1sg = registerSuffix("P1sg");
     public SuffixForm P1sg_Im = getForm(P1sg, "Im");
 
-    public Suffix P2sg = new Suffix("P2sg");
+    public Suffix P2sg = registerSuffix("P2sg");
     public SuffixForm P2sg_In = getForm(P2sg, "In");
 
-    public Suffix P3sg = new Suffix("P3sg");
+    public Suffix P3sg = registerSuffix("P3sg");
     public SuffixForm P3sg_sI = getForm(P3sg, "+sI");
 
-    public Suffix P1pl = new Suffix("P1pl");
+    public Suffix P1pl = registerSuffix("P1pl");
     public SuffixForm P1pl_ImIz = getForm(P1pl, "ImIz");
 
-    public Suffix P2pl = new Suffix("P2pl");
+    public Suffix P2pl = registerSuffix("P2pl");
     public SuffixForm P2pl_InIz = getForm(P2pl, "InIz");
 
-    public Suffix P3pl = new Suffix("P3pl");
+    public Suffix P3pl = registerSuffix("P3pl");
     public SuffixForm P3pl_lArI = getForm(P3pl, "lArI");
 
     // -------------- Number-Person agreement --------------------
 
-    public Suffix A1sg = new Suffix("A1sg");
+    public Suffix A1sg = registerSuffix("A1sg");
     public SuffixForm A1sg_yIm = getForm(A1sg, "+yIm"); // gel-e-yim
     public SuffixForm A1sg_m = getForm(A1sg, "m"); // gel-se-m
     public SuffixFormTemplate A1sg_TEMPLATE = getTemplate("A1sg_TEMPLATE", A1sg); // ben
 
-    public Suffix A2sg = new Suffix("A2sg");
+    public Suffix A2sg = registerSuffix("A2sg");
     public SuffixForm A2sg_sIn = getForm(A2sg, "sIn"); // gel-ecek-sin
     public SuffixForm A2sg_n = getForm(A2sg, "n"); // gel-di-n
     public SuffixFormTemplate A2sg_TEMPLATE = getTemplate("A2sg_TEMPLATE", A2sg); // gel, sen,..
     public SuffixForm A2sg2_sAnA = getForm(A2sg, "sAnA"); //gel-sene
     public SuffixForm A2sg3_yInIz = getForm(A2sg, "+yInIz"); //gel-iniz
 
-    public Suffix A3sg = new Suffix("A3sg");
+    public Suffix A3sg = registerSuffix("A3sg");
     public SuffixFormTemplate A3sg_TEMPLATE = getTemplate("A3sg_TEMPLATE", A3sg); // gel-di-, o-
     public SuffixFormTemplate A3sg_Verb_TEMPLATE = getTemplate("A3sg_Verb_TEMPLATE", A3sg); // gel-di-, o-
     public SuffixForm A3sg_sIn = getForm(A3sg, "sIn"); // gel-sin
 
-    public Suffix A1pl = new Suffix("A1pl");
+    public Suffix A1pl = registerSuffix("A1pl");
     public SuffixForm A1pl_yIz = getForm(A1pl, "+yIz"); // geliyor-uz
     public SuffixForm A1pl_k = getForm(A1pl, "k"); // gel-di-k
     public SuffixForm A1pl_lIm = getForm(A1pl, "lIm"); // gel-e-lim
     public SuffixFormTemplate A1pl_TEMPLATE = getTemplate("A1pl_TEMPLATE", A1pl); // biz
 
-    public Suffix A2pl = new Suffix("A2pl");
+    public Suffix A2pl = registerSuffix("A2pl");
     public SuffixForm A2pl_sInIz = getForm(A2pl, "sInIz"); // gel-ecek-siniz
     public SuffixForm A2pl_nIz = getForm(A2pl, "nIz"); // gel-di-niz
     public SuffixForm A2pl_yIn = getForm(A2pl, "+yIn"); // gel-me-yin
     public SuffixFormTemplate A2pl_TEMPLATE = getTemplate("A2pl_TEMPLATE", A2pl); // gel-e-lim
 
-    public Suffix A2pl2 = new Suffix("A2pl2");
+    public Suffix A2pl2 = registerSuffix("A2pl2");
     public SuffixForm A2pl2_sAnIzA = getForm(A2pl2, "sAnIzA"); // gel-senize
 
-    public Suffix A3pl = new Suffix("A3pl");
+    public Suffix A3pl = registerSuffix("A3pl");
     public SuffixForm A3pl_lAr = getForm(A3pl, "lAr"); // gel-ecek-ler
     public SuffixForm A3pl_Verb_lAr_After_Tense = getForm("A3pl_Verb_lAr_After_Tense", A3pl, "lAr"); // gel-ecek-ler
     public SuffixForm A3pl_Verb_lAr = getForm("A3pl_Verb_lAr", A3pl, "lAr"); // gel-ecek-ler
@@ -103,140 +103,140 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     // ------------ derivatioonal ----------------------
 
-    public Suffix Dim = new Suffix("Dim");
+    public Suffix Dim = registerSuffix("Dim");
     public SuffixForm Dim_cIk = getForm(Dim, ">cI~k");
 
-    public Suffix Dim2 = new Suffix("Dim2");
+    public Suffix Dim2 = registerSuffix("Dim2");
     public SuffixForm Dim2_cAgIz = getForm(Dim2, "cAğIz");
 
-    public Suffix With = new Suffix("With");
+    public Suffix With = registerSuffix("With");
     public SuffixForm With_lI = getForm(With, "lI");
 
-    public Suffix Without = new Suffix("Without");
+    public Suffix Without = registerSuffix("Without");
     public SuffixForm Without_sIz = getForm(Without, "sIz");
 
-    public Suffix Rel = new Suffix("Rel");
+    public Suffix Rel = registerSuffix("Rel");
     public SuffixForm Rel_ki = getForm(Rel, "ki"); // masa-da-ki
     public SuffixForm Rel_kI = getForm(Rel, "kI"); // dünkü
 
-    public Suffix Agt = new Suffix("Agt");
+    public Suffix Agt = registerSuffix("Agt");
     public SuffixForm Agt_cI = getForm(Agt, ">cI"); // araba-cı. Converts to another Noun.
     public SuffixForm Agt_yIcI_2Noun = getForm("Agt_yIcI_2Noun", Agt, "+yIcI"); // otur-ucu. converts to both Noun and Adj
     public SuffixForm Agt_yIcI_2Adj = getForm("Agt_yIcI_2Adj", Agt, "+yIcI"); // otur-ucu. converts to both Noun and Adj
 
-    public Suffix Ness = new Suffix("Ness");
+    public Suffix Ness = registerSuffix("Ness");
     public SuffixForm Ness_lIk = getForm(Ness, "lI~k");
 
-    public Suffix FitFor = new Suffix("FitFor");
+    public Suffix FitFor = registerSuffix("FitFor");
     public SuffixForm FitFor_lIk = getForm(FitFor, "lI~k");
 
 
-    public Suffix Become = new Suffix("Become");
+    public Suffix Become = registerSuffix("Become");
     public SuffixForm Become_lAs = getForm(Become, "lAş");
     public SuffixForm Become_Adj_lAs = getForm("Become_Adj_lAs", Become, "lAş");
 
-    public Suffix Acquire = new Suffix("Acquire");
+    public Suffix Acquire = registerSuffix("Acquire");
     public SuffixForm Acquire_lAn = getForm(Acquire, "lAn");
 
-    public Suffix Resemb = new Suffix("Resemb");
+    public Suffix Resemb = registerSuffix("Resemb");
     public SuffixForm Resemb_ImsI = getForm(Resemb, "ImsI"); // udunumsu
     public SuffixForm Resemb_msI = getForm(Resemb, "+msI"); // odunsu
 
     public SuffixForm Resemb_Adj_ImsI = getForm("Resemb_Adj_ImsI", Resemb, "ImsI"); // udunumsu
     public SuffixForm Resemb_Adj_msI = getForm("Resemb_Adj_msI", Resemb, "+msI"); // odunsu
 
-    public Suffix Related = new Suffix("Related");
+    public Suffix Related = registerSuffix("Related");
     public SuffixForm Related_sAl = getForm(Related, "sAl");
 
     // ----------------------------  verbal tense --------------------------------
 
-    public Suffix Aor = new Suffix("Aor");
+    public Suffix Aor = registerSuffix("Aor");
     public SuffixForm Aor_Ir = getForm(Aor, "+Ir"); //gel-ir
     public SuffixForm Aor_Ar = getForm(Aor, "+Ar"); //ser-er
     public SuffixForm Aor_z = getForm(Aor, "z"); // gel-me-z
     public SuffixFormTemplate Aor_EMPTY = getTemplate("Aor_EMPTY", Aor, TerminationType.NON_TERMINAL); // gel-me--yiz
 
-    public Suffix Prog = new Suffix("Prog");
+    public Suffix Prog = registerSuffix("Prog");
     public SuffixForm Prog_Iyor = getForm(Prog, "Iyor");
 
-    public Suffix Prog2 = new Suffix("Prog2");
+    public Suffix Prog2 = registerSuffix("Prog2");
     public SuffixForm Prog2_mAktA = getForm(Prog2, "mAktA");
 
-    public Suffix Fut = new Suffix("Fut");
+    public Suffix Fut = registerSuffix("Fut");
     public SuffixForm Fut_yAcAk = getForm(Fut, "+yAcA~k");
 
-    public Suffix Past = new Suffix("Past");
+    public Suffix Past = registerSuffix("Past");
     public SuffixForm Past_dI = getForm(Past, ">dI");
 
-    public Suffix Evid = new Suffix("Evid");
+    public Suffix Evid = registerSuffix("Evid");
     public SuffixForm Evid_mIs = getForm(Evid, "mIş");
 
     // ---------------------------------------------------
 
-    public Suffix PastPart = new Suffix("PastPart");
+    public Suffix PastPart = registerSuffix("PastPart");
     public SuffixForm PastPart_dIk_2Noun = getForm("PastPart_dIk_2Noun", PastPart, ">dI~k");
     public SuffixForm PastPart_dIk_2Adj = getForm("PastPart_dIk_2Noun", PastPart, ">dI~k");
 
-    public Suffix AorPart = new Suffix("AorPart"); // convert to an Adjective
+    public Suffix AorPart = registerSuffix("AorPart"); // convert to an Adjective
     public SuffixForm AorPart_Ir_2Adj = getForm("AorPart_Ir_2Adj", AorPart, "+Ir"); //gel-ir
     public SuffixForm AorPart_Ar_2Adj = getForm("AorPart_Ar_2Adj", AorPart, "+Ar"); //ser-er
     public SuffixForm AorPart_z_2Adj = getForm("AorPart_z_2Noun", AorPart, "z"); // gel-me-z
 
-    public Suffix FutPart = new Suffix("FutPart");
+    public Suffix FutPart = registerSuffix("FutPart");
     public SuffixForm FutPart_yAcAk_2Adj = getForm("FutPart_yAcAk_2Adj", FutPart, "+yAcA~k");
     public SuffixForm FutPart_yAcAk_2Noun = getForm("FutPart_yAcAk_2Noun", FutPart, "+yAcA~k");
 
-    public Suffix EvidPart = new Suffix("EvidPart");
+    public Suffix EvidPart = registerSuffix("EvidPart");
     public SuffixForm EvidPart_mIs_2Noun = getForm("EvidPart_mIs_2Noun", EvidPart, "mIş");
     public SuffixForm EvidPart_mIs_2Adj = getForm("EvidPart_mIs_2Adj", EvidPart, "mIş");
 
-    public Suffix PresPart = new Suffix("PresPart");
+    public Suffix PresPart = registerSuffix("PresPart");
     public SuffixForm PresPart_yAn = getForm(PresPart, "+yAn");
 
-    public Suffix Pos = new Suffix("Pos");
+    public Suffix Pos = registerSuffix("Pos");
     public SuffixFormTemplate Pos_EMPTY = getTemplate("Pos_EMPTY", Pos); // Verb Positive Null Morpheme template.
 
-    public Suffix Neg = new Suffix("Neg");
+    public Suffix Neg = registerSuffix("Neg");
     public SuffixForm Neg_mA = getForm(Neg, "mA"); //gel-me
     public SuffixForm Neg_m = getForm("Neg_m", Neg, "m", TerminationType.NON_TERMINAL); // gel-m-iyor
 
     //TODO: May be redundant. Cond_Cop may suffice
-    public Suffix Cond = new Suffix("Cond");
+    public Suffix Cond = registerSuffix("Cond");
     public SuffixForm Cond_sA = getForm(Cond, "sA");
 
-    public Suffix Necess = new Suffix("Necess");
+    public Suffix Necess = registerSuffix("Necess");
     public SuffixForm Necess_mAlI = getForm(Necess, "mAlI");
 
-    public Suffix Opt = new Suffix("Opt");
+    public Suffix Opt = registerSuffix("Opt");
     public SuffixForm Opt_yA = getForm(Opt, "+yA");
 
-    public Suffix Pass = new Suffix("Pass");
+    public Suffix Pass = registerSuffix("Pass");
     public SuffixForm Pass_In = getForm(Pass, "+In");
     public SuffixForm Pass_InIl = getForm(Pass, "+InIl");
     public SuffixForm Pass_nIl = getForm(Pass, "+nIl");
 
-    public Suffix Caus = new Suffix("Caus");
+    public Suffix Caus = registerSuffix("Caus");
     public SuffixForm Caus_t = getForm(Caus, "t");
     public SuffixForm Caus_tIr = getForm(Caus, ">dIr");
 
-    public Suffix Imp = new Suffix("Imp");
+    public Suffix Imp = registerSuffix("Imp");
     public SuffixFormTemplate Imp_TEMPLATE = getTemplate("Imp_TEMPLATE", Imp);
 
-    public Suffix Des = new Suffix("Des");
+    public Suffix Des = registerSuffix("Des");
     public SuffixForm Des_sA = getForm(Des, "sA");
 
-    public Suffix Recip = new Suffix("Recip");
+    public Suffix Recip = registerSuffix("Recip");
     public SuffixForm Recip_Is = getForm(Recip, "+Iş");
     public SuffixForm Recip_yIs = getForm(Recip, "+yIş");
 
-    public Suffix Reflex = new Suffix("Reflex");
+    public Suffix Reflex = registerSuffix("Reflex");
     public SuffixForm Reflex_In = getForm(Reflex, "+In");
 
-    public Suffix Abil = new Suffix("Abil");
+    public Suffix Abil = registerSuffix("Abil");
     public SuffixForm Abil_yAbil = getForm(Abil, "+yAbil");
     public SuffixForm Abil_yA = getForm("Abil_yA", Abil, "+yA", TerminationType.NON_TERMINAL);
 
-    public Suffix Cop = new Suffix("Cop");
+    public Suffix Cop = registerSuffix("Cop");
     public SuffixForm Cop_dIr = getForm(Cop, ">dIr");
 
     public SuffixForm PastCop_ydI = getForm("PastCop_ydI", Past, "+y>dI");
@@ -245,116 +245,116 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public SuffixForm CondCop_ysA = getForm("CondCop_ysA", Cond, "+ysA");
 
-    public Suffix While = new Suffix("While");
+    public Suffix While = registerSuffix("While");
     public SuffixForm While_ken = getForm(While, "+yken");
 
-    public Suffix Pres = new Suffix("Pres");  // Present tense only appears after a zero morpheme verb derivation such as "kalemdir"
+    public Suffix Pres = registerSuffix("Pres");  // Present tense only appears after a zero morpheme verb derivation such as "kalemdir"
     public SuffixFormTemplate Pres_TEMPLATE = getTemplate("Pres_TEMPLATE", Pres);
 
-    public Suffix Equ = new Suffix("Equ");
+    public Suffix Equ = registerSuffix("Equ");
     public SuffixForm Equ_cA = getForm(Equ, ">cA");
     public SuffixForm Equ_ncA = getForm(Equ, "ncA");
 
-    public Suffix NotState = new Suffix("NotState");
+    public Suffix NotState = registerSuffix("NotState");
     public SuffixForm NotState_mAzlIk = getForm(NotState, "mAzlI~k");
 
-    public Suffix ActOf = new Suffix("ActOf");
+    public Suffix ActOf = registerSuffix("ActOf");
     public SuffixForm ActOf_mAcA = getForm(ActOf, "mAcA");
 
-    public Suffix AsIf = new Suffix("AsIf");
+    public Suffix AsIf = registerSuffix("AsIf");
     public SuffixForm AsIf_cAsInA = getForm(AsIf, ">cAsInA");
 
     // Converts to an Adverb.
-    public Suffix AsLongAs = new Suffix("AsLongAs");
+    public Suffix AsLongAs = registerSuffix("AsLongAs");
     public SuffixForm AsLongAs_dIkcA = getForm(AsLongAs, ">dIkçA");
 
-    public Suffix When = new Suffix("When");
+    public Suffix When = registerSuffix("When");
     public SuffixForm When_yIncA = getForm(When, "+yIncA");
 
     // It also may have "worthy of doing" meaning after passive. Converts to an Adjective.
-    public Suffix FeelLike = new Suffix("FeelLike");
+    public Suffix FeelLike = registerSuffix("FeelLike");
     public SuffixForm FeelLike_yAsI_2Noun = getForm("FeelLike_yAsI_2Noun", FeelLike, "+yAsI");
     public SuffixForm FeelLike_yAsI_2Adj = getForm("FeelLike_yAsI_2Adj", FeelLike, "+yAsI");
 
     // Converts to an Adverb.
-    public Suffix SinceDoing = new Suffix("SinceDoing");
+    public Suffix SinceDoing = registerSuffix("SinceDoing");
     public SuffixForm SinceDoing_yAlI = getForm(SinceDoing, "+yAlI");
 
     // Converts to an Adverb.
-    public Suffix ByDoing = new Suffix("ByDoing");
+    public Suffix ByDoing = registerSuffix("ByDoing");
     public SuffixForm ByDoing_yArAk = getForm(ByDoing, "+yArAk");
 
     // Converts to an Adverb.
     // TODO: this should have a Neg_null effect
-    public Suffix WithoutDoing = new Suffix("WithoutDoing");
+    public Suffix WithoutDoing = registerSuffix("WithoutDoing");
     public SuffixForm WithoutDoing_mAdAn = getForm(WithoutDoing, "mAdAn");
 
     // Converts to an Adverb.
-    public Suffix UntilDoing = new Suffix("UntilDoing");
+    public Suffix UntilDoing = registerSuffix("UntilDoing");
     public SuffixForm UntilDoing_yAsIyA = getForm(UntilDoing, "+yAsIyA");
 
 
-    public Suffix WithoutDoing2 = new Suffix("WithoutDoing2");
+    public Suffix WithoutDoing2 = registerSuffix("WithoutDoing2");
     public SuffixForm WithoutDoing2_mAksIzIn = getForm(WithoutDoing2, "mAksIzIn");
 
     // Converts to an Adverb.
-    public Suffix AfterDoing = new Suffix("AfterDoing");
+    public Suffix AfterDoing = registerSuffix("AfterDoing");
     public SuffixForm AfterDoing_yIp = getForm(AfterDoing, "+yIp");
 
-    public Suffix UnableToDo = new Suffix("UnableToDo");
+    public Suffix UnableToDo = registerSuffix("UnableToDo");
     public SuffixForm UnableToDo_yAmAdAn = getForm(UnableToDo, "+yAmAdAn");
 
-    public Suffix InsteadOfDoing = new Suffix("InsteadOfDoing");
+    public Suffix InsteadOfDoing = registerSuffix("InsteadOfDoing");
     public SuffixForm InsteadOfDoing_mAktAnsA = getForm(InsteadOfDoing, "mAktAnsA");
 
     // Converts to an Adverb.
-    public Suffix KeepDoing = new Suffix("KeepDoing");
+    public Suffix KeepDoing = registerSuffix("KeepDoing");
     public SuffixForm KeepDoing_yAgor = getForm(KeepDoing, "+yAgör");
 
-    public Suffix KeepDoing2 = new Suffix("KeepDoing2");
+    public Suffix KeepDoing2 = registerSuffix("KeepDoing2");
     public SuffixForm KeepDoing2_yAdur = getForm(KeepDoing2, "+yAdur");
 
-    public Suffix EverSince = new Suffix("EverSince");
+    public Suffix EverSince = registerSuffix("EverSince");
     public SuffixForm EverSince_yAgel = getForm(EverSince, "+yAgel");
 
-    public Suffix Almost = new Suffix("Almost");
+    public Suffix Almost = registerSuffix("Almost");
     public SuffixForm Almost_yAyAz = getForm(Almost, "+yAyaz");
 
-    public Suffix Hastily = new Suffix("Hastily");
+    public Suffix Hastily = registerSuffix("Hastily");
     public SuffixForm Hastily_yIver = getForm(Hastily, "+yIver");
 
-    public Suffix Stay = new Suffix("Stay");
+    public Suffix Stay = registerSuffix("Stay");
     public SuffixForm Stay_yAkal = getForm(Stay, "+yAkal");
 
-    public Suffix Inf1 = new Suffix("Inf1");
+    public Suffix Inf1 = registerSuffix("Inf1");
     public SuffixForm Inf1_mAk = getForm(Inf1, "mAk");
 
     //TODO: consider -maca inf suffix.
     //public SuffixForm Inf1_mAcA = getForm(Inf1, "mAcA");
 
-    public Suffix Inf2 = new Suffix("Inf2");
+    public Suffix Inf2 = registerSuffix("Inf2");
     public SuffixForm Inf2_mA = getForm(Inf2, "mA");
 
-    public Suffix Inf3 = new Suffix("Inf3");
+    public Suffix Inf3 = registerSuffix("Inf3");
     public SuffixForm Inf3_yIs = getForm(Inf3, "+yIş");
 
     // TODO is below a valid morpheme? 
-/*    public Suffix NounDeriv = new Suffix("NounDeriv");
+/*    public Suffix NounDeriv = registerSuffix("NounDeriv");
     public SuffixForm NounDeriv_nIm = getForm(NounDeriv, "+nIm");*/
 
-    public Suffix Ly = new Suffix("Ly");
+    public Suffix Ly = registerSuffix("Ly");
     public SuffixForm Ly_cA = getForm(Ly, ">cA");
 
-    public Suffix Quite = new Suffix("Quite");
+    public Suffix Quite = registerSuffix("Quite");
     public SuffixForm Quite_cA = getForm(Quite, ">cA");
 
-    public Suffix Ordinal = new Suffix("Ordinal");
+    public Suffix Ordinal = registerSuffix("Ordinal");
     public SuffixForm Ordinal_IncI = getForm(Ordinal, "+IncI");
 
-    public Suffix Grouping = new Suffix("Grouping");
+    public Suffix Grouping = registerSuffix("Grouping");
     public SuffixForm Grouping_sAr = getForm(Grouping, "+şAr");
 
-    public Suffix NounRoot = new Suffix("Noun");
+    public Suffix NounRoot = registerSuffix("Noun");
     public SuffixFormTemplate Noun_TEMPLATE = getTemplate("Noun_TEMPLATE", NounRoot);
     public SuffixFormTemplate Noun2Noun = getTemplate("Noun2Noun", NounRoot, TerminationType.NON_TERMINAL);
     public SuffixFormTemplate Adj2Noun = getTemplate("Adj2Noun", NounRoot, TerminationType.NON_TERMINAL);
@@ -366,7 +366,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public SuffixFormTemplate Noun_Comp_P3sg = getTemplate("Noun_Comp_P3sg", NounRoot);
     public SuffixFormTemplate Noun_Comp_P3sg_Root = getTemplate("Noun_Comp_P3sg_Root", NounRoot);
 
-    public Suffix AdjRoot = new Suffix("Adj");
+    public Suffix AdjRoot = registerSuffix("Adj");
     public SuffixFormTemplate Adj_TEMPLATE = getTemplate("Adj_TEMPLATE", AdjRoot);
     public SuffixFormTemplate Noun2Adj = getTemplate("Noun2Adj", AdjRoot, TerminationType.NON_TERMINAL);
     public SuffixFormTemplate Adj2Adj = getTemplate("Adj2Adj", AdjRoot, TerminationType.NON_TERMINAL);
@@ -376,35 +376,35 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public SuffixFormTemplate Adj_Main_Rel = getTemplate("Adj_TEMPLATE", AdjRoot);
     public NullSuffixForm Adj_Default = getNull("Adj_Default", Adj_TEMPLATE, TerminationType.TERMINAL);
 
-    public Suffix AdvRoot = new Suffix("Adv");
+    public Suffix AdvRoot = registerSuffix("Adv");
 
     public SuffixFormTemplate Adv_TEMPLATE = getTemplate("Adv_TEMPLATE", AdvRoot);
     public SuffixFormTemplate Adj2Adv = getTemplate("Adj2Adv", AdvRoot, TerminationType.NON_TERMINAL);
     public SuffixFormTemplate Verb2Adv = getTemplate("Verb2Adv", AdvRoot, TerminationType.NON_TERMINAL);
     public NullSuffixForm Adv_Default = getNull("Adv_Default", Adv_TEMPLATE);
 
-    public Suffix InterjRoot = new Suffix("Interj");
+    public Suffix InterjRoot = registerSuffix("Interj");
     public SuffixFormTemplate Interj_Template = getTemplate("Interj_Template", InterjRoot);
     public NullSuffixForm Interj_Default = getNull("Interj_Default", Interj_Template);
 
-    public Suffix ConjRoot = new Suffix("Conj");
+    public Suffix ConjRoot = registerSuffix("Conj");
     public SuffixFormTemplate Conj_Template = getTemplate("Conj_Template", ConjRoot);
     public NullSuffixForm Conj_Default = getNull("Conj_Default", Conj_Template);
 
 
-    public Suffix NumeralRoot = new Suffix("Numeral");
+    public Suffix NumeralRoot = registerSuffix("Numeral");
     public SuffixFormTemplate Numeral_Template = getTemplate("Numeral_Template", NumeralRoot);
     public NullSuffixForm Numeral_Default = getNull("Numeral_Default", Numeral_Template);
 
-    public Suffix DetRoot = new Suffix("Det");
+    public Suffix DetRoot = registerSuffix("Det");
     public SuffixFormTemplate Det_Template = getTemplate("Det_Template", DetRoot);
     public NullSuffixForm Det_Default = getNull("Det_Default", Det_Template);
 
 
-    public Suffix ProperNounRoot = new Suffix("ProperNoun");
+    public Suffix ProperNounRoot = registerSuffix("ProperNoun");
     public SuffixForm ProperNoun_Template = getTemplate("ProperNoun_Template", ProperNounRoot);
 
-    public Suffix VerbRoot = new Suffix("Verb");
+    public Suffix VerbRoot = registerSuffix("Verb");
     public SuffixFormTemplate Verb_TEMPLATE = getTemplate("Verb_TEMPLATE", VerbRoot);
     public SuffixFormTemplate Adj2Verb = getTemplate("Adj2Verb", VerbRoot, TerminationType.NON_TERMINAL);
     public SuffixFormTemplate Noun2Verb = getTemplate("Noun2Verb", VerbRoot, TerminationType.NON_TERMINAL);
@@ -421,8 +421,8 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public SuffixForm Verb_De_Ye_Prog = getNull("Verb_De_Ye_Prog", Verb_TEMPLATE);
     public SuffixForm Verb_Prog_Drop = getNull("Verb_Prog_Drop", Verb_TEMPLATE);
 
-    public Suffix PersPronRoot = new Suffix("PersPron");
-    public Suffix DemonsPronRoot = new Suffix("DemonsPron");
+    public Suffix PersPronRoot = registerSuffix("PersPron");
+    public Suffix DemonsPronRoot = registerSuffix("DemonsPron");
     public SuffixFormTemplate PersPron_TEMPLATE = getTemplate("PersPron_TEMPLATE", PersPronRoot);
     public NullSuffixForm PersPron_Default = getNull("PersPron_Default", PersPron_TEMPLATE);
     public SuffixFormTemplate PersPron_BenSen = getTemplate("PersPron_BenSen", PersPronRoot);
@@ -430,12 +430,12 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
     public SuffixFormTemplate DemonsPron_TEMPLATE = getTemplate("DemonsPron_TEMPLATE", DemonsPronRoot);
     public NullSuffixForm DemonsPron_Default = getNull("DemonsPron_Default", DemonsPron_TEMPLATE);
 
-    public Suffix QuesRoot = new Suffix("Ques");
+    public Suffix QuesRoot = registerSuffix("Ques");
     public SuffixFormTemplate Ques_Template = getTemplate("Ques_Template", QuesRoot);
     public NullSuffixForm Ques_Default = getNull("Ques_Default", Ques_Template);
 
     // TODO: particle may not be used in the system, it is a too broad POS
-    public Suffix ParticleRoot = new Suffix("Particle");
+    public Suffix ParticleRoot = registerSuffix("Particle");
     public SuffixFormTemplate Particle_Main = getTemplate("Particle_Main", ParticleRoot);
 
     // TODO: add time root. (with Rel_ki + Noun)

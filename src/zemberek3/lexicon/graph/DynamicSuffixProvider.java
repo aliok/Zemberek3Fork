@@ -134,6 +134,12 @@ public abstract class DynamicSuffixProvider implements SuffixProvider {
         }
     }
 
+    protected Suffix registerSuffix(String suffixStr) {
+        final Suffix suffix = new Suffix(suffixStr);
+        suffixLookup.put(suffix.id, suffix);
+        return suffix;
+    }
+
     public SuffixForm getSuffixFormById(String id) {
         return formLookupByName.get(id);
     }

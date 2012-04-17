@@ -8,6 +8,7 @@ import zemberek3.lexicon.tr.TurkishSuffixes;
 import zemberek3.parser.morphology.ParseResult;
 import zemberek3.parser.morphology.SimpleParser;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -376,6 +377,17 @@ public class TurkishSuffixesTest {
         Tester tester = new Tester("demek [A:StemChange]", "yemek [A:StemChange]");
         tester.assertHasParses("ye", "de", "yeme", "deme", "yiyor", "diyor", "yemiyor", "demiyor", "yedi", "dedi");
         tester.assertUnParseable("yi", "di", "yime", "dime", "yeyor", "deyor", "yemeyor");
+    }
+
+    @Test
+    public void testSuffixRegistries() throws IllegalAccessException {
+        final Field[] fields = TurkishSuffixes.class.getFields();   //only take public ones
+        for (Field field : fields) {
+            if(field.getType().isAssignableFrom(Suffix.class)){
+                final Suffix fieldValue = (Suffix) field.get(suffixProvider);
+                Assert.assertNotNull("Suffix is not registered : " + fieldValue.id, suffixProvider.getSuffixById(fieldValue.id));
+            }
+        }
     }
 
 
