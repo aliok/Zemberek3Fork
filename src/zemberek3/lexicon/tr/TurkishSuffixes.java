@@ -917,15 +917,16 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         registerForms(
                 Noun_TEMPLATE, Verb_TEMPLATE, Adj_TEMPLATE, Adv_TEMPLATE, Pnon_TEMPLATE,
-              //  Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
+                //  Noun_Comp_P3sg, Noun_Comp_P3sg_Root,
 
                 Noun2Adj, Noun2Noun, Noun2Verb, Noun2VerbCopular,
                 Adj2Adj, Adj2Adv, Adj2Noun, Adj2Verb,
-                Verb2Adj, Verb2Verb, Verb2VerbCompounds, Verb2Noun, Verb2Adv,
+                Verb2Adj, Verb2AdjPart, Verb2Verb, Verb2VerbCompounds, Verb2VerbAbility, Verb2Noun, Verb2NounPart, Verb2Adv,
+                Adv2Noun, Adv2Adj,
 
                 Pres_TEMPLATE,
 
-                Noun_Default, Verb_Default, Adj_Default, Resemb_Adj_ImsI, Resemb_msI,
+                Noun_Default, Verb_Default, Adj_Default, Resemb_Adj_ImsI, Resemb_Adj_msI, Resemb_msI,
                 Pass_InIl,
                 Nom_TEMPLATE, Dat_yA, Dat_nA, Loc_dA, Loc_ndA, Abl_dAn, Abl_ndAn, Gen_nIn,
                 Acc_yI, Acc_nI, Inst_ylA,
@@ -936,7 +937,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 A1sg_yIm, A1sg_m, A1sg_TEMPLATE, A2sg_sIn, A2sg_n, A2sg_TEMPLATE, A2sg2_sAnA,
                 A3sg_TEMPLATE, A3sg_Verb_TEMPLATE, A2sg3_yInIz, A3sg_sIn,
                 A1pl_yIz, A1pl_k, A1pl_lIm, A1pl_TEMPLATE, A2pl_sInIz, A2pl_nIz, A2pl_yIn, A2pl_TEMPLATE, A2pl2_sAnIzA,
-                A3pl_lAr, A3pl_Verb_lAr, A3pl_sInlAr, Agt_cI, Agt_yIcI_2Adj, Agt_yIcI_2Noun,
+                A3pl_lAr, A3pl_Verb_lAr, A3pl_Verb_lAr_After_Tense, A3pl_sInlAr, Agt_cI, Agt_yIcI_2Adj, Agt_yIcI_2Noun,
 
                 Ness_lIk, FitFor_lIk,
                 Become_lAs, Become_Adj_lAs, Acquire_lAn,
@@ -945,7 +946,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 Aor_EMPTY, AorPart_Ar_2Adj, AorPart_Ir_2Adj, AorPart_z_2Adj,
                 Prog_Iyor, Prog2_mAktA, Fut_yAcAk,
                 FutPart_yAcAk_2Adj, FutPart_yAcAk_2Noun, Past_dI, PastPart_dIk_2Noun, PastPart_dIk_2Adj,
-                Evid_mIs, EvidPart_mIs_2Adj, EvidPart_mIs_2Noun, PresPart_yAn, Neg_mA, Neg_m, Cond_sA,
+                Evid_mIs, EvidPart_mIs_2Adj, EvidPart_mIs_2Noun, PresPart_yAn, Pos_EMPTY, Neg_mA, Neg_m, Cond_sA,
                 Necess_mAlI, Opt_yA,
                 Pass_In, Pass_nIl,
                 Caus_t, Caus_tIr,
