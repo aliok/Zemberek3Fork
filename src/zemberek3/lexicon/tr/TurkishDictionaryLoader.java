@@ -2,7 +2,9 @@ package zemberek3.lexicon.tr;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
+import com.google.common.io.CharStreams;
 import com.google.common.io.Files;
+import com.google.common.io.InputSupplier;
 import com.google.common.io.LineProcessor;
 import zemberek3.lexicon.*;
 import zemberek3.structure.AttributeSet;
@@ -12,6 +14,8 @@ import zemberek3.structure.TurkishAlphabet;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,6 +36,17 @@ public class TurkishDictionaryLoader {
 
     public List<DictionaryItem> load(File input) throws IOException {
         return Files.readLines(input, Charsets.UTF_8, new LexiconFileProcessor(suffixProvider));
+    }
+
+    public List<DictionaryItem> load(final InputStream inputStream) throws IOException {
+        final InputSupplier<InputStreamReader> supplier = new InputSupplier<InputStreamReader>() {
+            @Override
+            public InputStreamReader getInput() throws IOException {
+                return new InputStreamReader(inputStream, Charsets.UTF_8);
+            }
+        };
+
+        return CharStreams.readLines(supplier, new LexiconFileProcessor(suffixProvider));
     }
 
     public DictionaryItem loadFromString(String lexiconItemString) {
