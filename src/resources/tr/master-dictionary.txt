@@ -18179,7 +18179,8 @@ ozuga
 öykü
 öykülemek
 öykünmek
-öyle
+öyle [P:Adj]
+öyle [P:Adv]
 öylelikle [P:Adv]
 öylemesine [P:Adv]
 öz
@@ -20959,6 +20960,7 @@ sivrilmek
 sivrisinek
 siya
 siyah
+siyah [P:Adj]
 siyahımtırak
 siyahî
 siyahlanmak
@@ -22047,7 +22049,8 @@ süzülmek
 şömizye
 şövale
 şövalye
-şöyle
+şöyle [P:Adj]
+şöyle [P:Adv]
 şöylesine [P:Adv]
 şu [P:Pron]
 şua
@@ -25389,6 +25392,7 @@ yürürlük
 yürüteç
 yürütmek
 yüsrü
+yüz
 yüz [P:Num]
 yüzbaşı
 yüzbeyüz [P:Adv]
