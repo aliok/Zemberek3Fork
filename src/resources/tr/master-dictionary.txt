@@ -2937,7 +2937,7 @@ bembeyaz [P:Adj]
 bembeyaz [P:Adv]
 bemol
 ben
-ben [P:Pron ;A:StemChange]
+ben [P:Pron; A:StemChange]
 benbenci [P:Adj]
 bence [P:Adv]
 benci [P:Adj]
@@ -3356,6 +3356,8 @@ binyaprak
 bir
 bir [P:Adj]
 bir [P:Adv]
+bir [P:Det]
+bir [P:Num]
 bira
 birader
 birader [P:Interj]
@@ -3785,6 +3787,7 @@ Brüksel
 brülör
 brüt [P:Adj]
 bu [P:Pron]
+bu [P:Det]
 buat [A:NoVoicing]
 Buca
 bucak
@@ -6475,7 +6478,7 @@ dogmatizm
 doğa
 doğaç
 doğaçlama
-doğal
+doğal [P:Adj]
 doğan
 Doğanhisar
 Doğankent
@@ -8943,6 +8946,7 @@ gen
 gencecik [P:Adj]
 gencelmek
 genç [A:Voicing]
+genç [P:Adj; A:Voicing]
 Genç
 gençten [P:Adj]
 gene [P:Adv]
@@ -16006,7 +16010,7 @@ mezuniyet [A:NoVoicing]
 mezura
 mezür
 mezzosoprano
-mı [P:Ques]
+mı [P:Part, Ques]
 mıh
 mıhlamak
 mık [P:Adj, Dup]
@@ -16048,7 +16052,7 @@ mızmızlanmak
 mızrak
 mızrap
 mi
-mi [P:Ques]
+mi [P:Part, Ques]
 miat
 mibzer
 miço
@@ -18209,7 +18213,7 @@ ozuga
 özgül
 özgülemek
 özgün [P:Adj]
-özgür
+özgür [P:Adj]
 özgürlük
 özlem
 özlemek
