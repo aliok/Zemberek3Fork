@@ -20666,6 +20666,7 @@ sevecen [P:Adj]
 sever [P:Adj]
 sever [P:Adj]
 sevgi
+sevgili
 sevgili [P:Adj]
 sevi
 sevici
