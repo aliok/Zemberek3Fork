@@ -20099,7 +20099,7 @@ sanık
 sanidin
 saniye
 sanki [P:Adv]
-sanmak
+sanmak [A:Aorist_I]
 sanrı
 sanrılamak
 sansar
