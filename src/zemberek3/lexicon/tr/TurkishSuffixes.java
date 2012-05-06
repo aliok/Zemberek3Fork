@@ -59,6 +59,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
     public Suffix P3pl = registerSuffix("P3pl");
     public SuffixForm P3pl_lArI = getForm(P3pl, "lArI");
+    public SuffixForm P3pl_I = getForm(P3pl, "I");
 
     // -------------- Number-Person agreement --------------------
 
@@ -591,7 +592,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         //---------------------------- Noun -----------------------------------------------------------------------
 
-        A3pl_lAr.connections.add(POSSESSIVE_FORMS).remove(P3pl_lArI);
+        A3pl_lAr.connections.add(POSSESSIVE_FORMS).remove(P3pl_lArI).add(P3pl_I);
         A3pl_lAr.indirectConnections
                 .add(Noun2VerbCopular)
                 .add(Noun2VerbCopular.allConnections()).remove(A3pl_Verb_lAr)
@@ -671,6 +672,9 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
 
         P3pl_lArI.connections.add(CASE_FORMS);
         P3pl_lArI.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allConnections());
+
+        P3pl_I.connections.add(Nom_TEMPLATE, Dat_nA, Loc_ndA, Abl_ndAn, Gen_nIn, Acc_nI, Inst_ylA, Equ_ncA);
+        P3pl_I.indirectConnections.add(Noun2VerbCopular).add(Noun2VerbCopular.allConnections());
 
         With_lI.connections.add(Adj_TEMPLATE.connections);
         With_lI.indirectConnections.add(Adj_TEMPLATE.indirectConnections);
@@ -930,7 +934,7 @@ public class TurkishSuffixes extends DynamicSuffixProvider {
                 Pass_InIl,
                 Nom_TEMPLATE, Dat_yA, Dat_nA, Loc_dA, Loc_ndA, Abl_dAn, Abl_ndAn, Gen_nIn,
                 Acc_yI, Acc_nI, Inst_ylA,
-                Pnon_TEMPLATE, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, P3pl_lArI,
+                Pnon_TEMPLATE, P1sg_Im, P2sg_In, P3sg_sI, P1pl_ImIz, P2pl_InIz, P3pl_lArI, P3pl_I,
                 Dim_cIk, Dim2_cAgIz,
                 With_lI, Without_sIz, Rel_ki, Rel_kI,
 
